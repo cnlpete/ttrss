@@ -89,9 +89,9 @@ Page {
         }
 
         Image {
-            width: 398
-            height: 225
-            source: "resources/ttrsslogo.png"
+            width: 256
+            height: 256
+            source: "resources/ttrss256.png"
         }
     }
 
