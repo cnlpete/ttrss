@@ -13,14 +13,6 @@ import QtQuick 1.1
 import com.nokia.meego 1.0
 
 Page {
-    function openFile(file) {
-        var component = Qt.createComponent(file)
-        if (component.status === Component.Ready)
-            pageStack.push(component);
-        else
-            console.log("Error loading component:", component.errorString());
-    }
-
     property bool loading: false
 
     tools: commonTools
@@ -181,7 +173,7 @@ Page {
             MenuItem {
                 text: qsTr("About")
                 onClicked: {
-                    openFile("About.qml");
+                    rootWindow.openFile("About.qml");
                 }
             }
         }
@@ -201,6 +193,32 @@ Page {
         //Start the loading anim
         loading = true;
 
+        var ttrss = rootWindow.getTTRSS();
+        ttrss.clearState();
+        ttrss.setLoginDetails(username.text, password.text, server.text);
+        ttrss.login(feedTreeCreated);
+    }
+
+    function feedTreeCreated(retcode, text) {
+        var settings = rootWindow.settingsObject();
+
+        //stop the loading anim
+        loading = false;
+
+        if(retcode) {
+            //login failed....don't autlogin
+            settings.set("dologin", "false");
+
+            //Let the user know
+            loginErrorDialogText.text = text;
+            loginErrorDialog.open();
+        } else {
+            //Login succeeded, auto login next Time
+            settings.set("dologin", "true");
+
+            //Now show the categories View
+            rootWindow.openFile('Categories.qml');
+        }
     }
 
     //Dialog for login errors
@@ -241,8 +259,7 @@ Page {
         password.text = settings.get("password", "");
         var dologin = settings.get("dologin", "false");
 
-        if(dologin === "true") {
+        if(dologin === "true")
             startLogin();
-        }
     }
 }

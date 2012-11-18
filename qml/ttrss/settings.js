@@ -2,7 +2,7 @@
 //http://www.developer.nokia.com/Community/Wiki/How-to_create_a_persistent_settings_database_in_Qt_Quick_%28QML%29
 
 function getDatabase() {
-     return openDatabaseSync("TTRssGo", "1.0", "Saved state for TTRssGo", 1000);
+     return openDatabaseSync("TTRss", "1.0", "Saved state for TTRss", 1000);
 }
 
 // At the start of the application, we can initialize the tables we need if they haven't been created yet

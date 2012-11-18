@@ -12,10 +12,21 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
 import "settings.js" as Settings
+import "tinytinyrss.js" as TTRss
 
 PageStackWindow {
     id: rootWindow
 
+    function openFile(file) {
+        var component = Qt.createComponent(file)
+        if (component.status === Component.Ready)
+            pageStack.push(component);
+        else
+            console.log("Error loading component:", component.errorString());
+    }
+    function getTTRSS() {
+        return TTRss;
+    }
     function settingsObject() {
         return Settings;
     }
