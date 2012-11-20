@@ -20,24 +20,26 @@ var state={
     'password':         null,
     'token':            null,
     'apilevel':         0,
-//    'categoryunread':   null,       //category unread counts (created by updateUnread() )
-//    'feedtree':         null,       //feeds arranged by category including unread count (created by makeFeedTree() )
-//    'feedlist':         null,       //feeds arranged in an associative array (key = id)
     'numStatusUpdates': 0,          //each time the state updates such that the app might want to redisplay we update this (get via getNumStatusUpdates)
     'showall':          false,      //boolean should all items be shown (or only those with unread stuff?)
     'closeIfEmpty':     false,      //Should pages close if they have no content to display
-//    'feedcache':        {},         //as feed items are retrieved they are stored here for re-use
     'tracelevel':       4,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
+
+    'categories': {},
+    'feeds': {},
+    'lastcategoryid': null,
 };
 
 var requestsPending={
     'token'       : false,
     'categories'  : false,
+    'feeds'       : false,
 };
 
 var responsesPending={
     'token'       : false,
     'categories'  : false,
+    'feeds'       : false,
 };
 
 var constants={
@@ -157,7 +159,7 @@ function updateCategories(callback) {
     var params = {
         'op': 'getCategories',
         'sid': state['token'],
-        'unread_only': false
+        'unread_only': state['showAll']
     }
 
     var http = new XMLHttpRequest();
@@ -184,16 +186,8 @@ function process_updateCategories(callback, httpreq) {
             state['categories'] = {};
 
             for(var i = 0; i < responseObject.content.length; i++) {
-                if (responseObject.content[i].order_id) {
-                    var feedid = responseObject.content[i].order_id;
-                    trace(4, "Setting feedlist key:"+feedid);
-                    state['categories'][feedid] = responseObject.content[i];
-                }
-                else {
-                    // special categories
-                    var feedid = responseObject.content[i].id;
-                    state['categories'][feedid] = responseObject.content[i];
-                }
+                var feedid = responseObject.content[i].id;
+                state['categories'][feedid] = responseObject.content[i];
             }
             // TODO sort
         }
@@ -213,6 +207,78 @@ function process_updateCategories(callback, httpreq) {
     responsesPending['categories'] = false;
 
     if(state['categories'])
+        if(!processPendingRequests(callback))
+            //This action is complete (as there's no other requests to do, fire callback saying all ok
+            if(callback)
+                callback(0);
+}
+
+function updateFeeds(catId, callback) {
+    if(responsesPending['feeds'])
+        return;
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeds'] = true;
+        state['lastcategoryid'] = catId;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeds'] = true;
+
+    var params = {
+        'op': 'getFeeds',
+        'sid': state['token'],
+        'cat_id': catId,
+        'unread_only': state['showAll']
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE)
+            process_updateFeeds(catId, callback, http);
+    }
+    http.send(JSON.stringify(params));
+}
+
+function process_updateFeeds(catId, callback, httpreq) {
+    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
+    trace(3, "response: "+httpreq.responseText);
+
+    if(httpreq.status === 200)  {
+        var responseObject=JSON.parse(httpreq.responseText);
+        trace(1,dump(responseObject))
+        if (responseObject.status === 0) {
+            state['feeds'][catId] = [];
+
+            for(var i = 0; i < responseObject.content.length; i++) {
+                var feedid = responseObject.content[i].id;
+                state['feeds'][catId][feedid] = responseObject.content[i];
+            }
+        }
+        else {
+            if(responseObject.content.error)
+                errorText = "Update Feeds failed: "+responseObject.content.error;
+            else
+                errorText = "Update Feeds failed (received http code: "+http.status+")";
+        }
+    }
+    else {
+        trace(1, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+        if(callback)
+            callback(40, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+    }
+
+    responsesPending['feeds'] = false;
+
+    if(state['feeds'][catId])
         if(!processPendingRequests(callback))
             //This action is complete (as there's no other requests to do, fire callback saying all ok
             if(callback)
@@ -242,6 +308,17 @@ function processPendingRequests(callback) {
         else
             updateCategories(callback);
     }
+    else if (requestsPending['feeds']) {
+        trace(4, 'feeds request pending');
+        foundWork = true;
+        if(responsesPending['feeds'])
+            return foundWork;
+        if(!state['token'])
+            //Get the auth token
+            login(callback);
+        else
+            updateFeeds(state['lastcategoryid'], callback);
+    }
 
     return foundWork;
 }
@@ -253,7 +330,7 @@ function getShowAll() {
 
 //Sets whether only unread items should be shown
 function setShowAll(showAll) {
-    state['showall'] = showAll;
+    state['showall'] = !!showAll;
     state['numStatusUpdates']++;
 }
 
@@ -271,4 +348,8 @@ function getNumStatusUpdates() {
 
 function getCategories() {
     return state['categories'];
+}
+
+function getFeeds(catId) {
+    return state['feeds'][catId];
 }
