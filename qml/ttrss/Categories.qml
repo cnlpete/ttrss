@@ -24,6 +24,25 @@ Page {
         id: categoriesModel
     }
 
+    Component {
+        id: listHeading
+        Rectangle {
+            width: parent.width
+            height: 60
+            radius: 10
+            color: "orange"
+            Text {
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+                text: qsTr("Tiny Tiny RSS Reader")
+                font.weight: Font.Bold
+                font.pixelSize: 26
+            }
+        }
+    }
+
     ListView {
         id: listView
         anchors.fill: parent
@@ -86,13 +105,24 @@ Page {
                 id: mouseArea
                 anchors.fill: background
                 onClicked: {
-                    showCategory(model.categoryId);
+                    showCategory(model.categoryId, model.title);
                 }
             }
         }
     }
     ScrollDecorator {
         flickableItem: listView
+    }
+
+    function showCategory(catId, title) {
+        if(catId !== null) {
+            console.log("Loading feeds for category "+catId+"\n");
+            var component = Qt.createComponent("Feeds.qml");
+            if (component.status === Component.Ready)
+                pageStack.push(component, { categoryId: catId, pageTitle: title });
+            else
+                console.log("Error loading component:", component.errorString());
+        }
     }
 
     function showCategories() {
@@ -175,12 +205,12 @@ Page {
 
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
-        if(status === PageStatus.Deactivating) {
+        if(status === PageStatus.Deactivating)
             numStatusUpdates = ttrss.getNumStatusUpdates();
-        } else if (status === PageStatus.Activating) {
+        else if (status === PageStatus.Activating) {
             if(ttrss.getNumStatusUpdates() > numStatusUpdates) {
                 numStatusUpdates = ttrss.getNumStatusUpdates();
-                updateCategories(showCategories);
+                ttrss.updateCategories(showCategories);
             }
         }
     }
@@ -189,6 +219,11 @@ Page {
         id: categoriesTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { categoriesMenu.close(); pageStack.pop(); } }
+        ToolIcon {
+            iconId: "toolbar-refresh";
+            visible: !loading;
+            onClicked: { rootWindow.getTTRSS().updateCategories(showCategories); }
+        }
         BusyIndicator {
             visible: loading
             running: loading
@@ -202,6 +237,19 @@ Page {
         visualParent: pageStack
 
         MenuLayout {
+            MenuItem {
+                id: toggleUnread
+                text: qsTr("Toggle Unread Only")
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS();
+                    var oldval = ttrss.getShowAll();
+                    var newval = !oldval;
+                    ttrss.setShowAll(newval);
+
+                    //console.log("Updating categories with showAll: "+newval+"\n");
+                    ttrss.updateCategories(showCategories);
+                }
+            }
             MenuItem {
                 text: qsTr("About")
                 onClicked: {
