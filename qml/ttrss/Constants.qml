@@ -10,32 +10,23 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
-import "settings.js" as Settings
-import "tinytinyrss.js" as TTRss
 
-PageStackWindow {
-    id: rootWindow
+QtObject{
+    id: constant
+    property int paddingSmall: 4
+    property int paddingMedium: 6
+    property int paddingLarge: 8
+    property int paddingXLarge: 12
+    property int paddingXXLarge: 16
 
-    function openFile(file) {
-        var component = Qt.createComponent(file)
-        if (component.status === Component.Ready)
-            pageStack.push(component);
-        else
-            console.log("Error loading component:", component.errorString());
-    }
-    function getTTRSS() {
-        return TTRss;
-    }
-    function settingsObject() {
-        return Settings;
-    }
+    property int fontSizeXSmall: 20
+    property int fontSizeSmall: 22
+    property int fontSizeMedium: 24
+    property int fontSizeLarge: 26
+    property int fontSizeXLarge: 28
+    property int fontSizeXXLarge: 32
 
-    initialPage: mainPage
+    property int headerHeight: inPortrait ? 72 : 56
 
-    Constants{ id: constant }
-
-    MainPage {
-        id: mainPage
-    }
+    property url sourceRepoSite: "https://github.com/cnlpete/ttrss"
 }

@@ -79,7 +79,7 @@ Page {
                         id: mainText
                         text: model.title
                         font.weight: Font.Bold
-                        font.pixelSize: 26
+                        font.pixelSize: constant.fontSizeLarge
                         color: (model.unreadcount > 0) ? "#000033" : "#888888";
 
                     }
@@ -88,7 +88,7 @@ Page {
                         id: subText
                         text: model.subtitle
                         font.weight: Font.Light
-                        font.pixelSize: 22
+                        font.pixelSize: constant.fontSizeSmall
                         color: (model.unreadcount > 0) ? "#cc6633" : "#888888"
 
                         visible: text != ""
