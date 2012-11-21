@@ -15,7 +15,6 @@ import com.nokia.meego 1.0
 Page {
     id: categoriesPage
     tools: categoriesTools
-    anchors.margins: rootWindow.pageMargin
 
     property int numStatusUpdates
     property bool loading: false
@@ -24,28 +23,10 @@ Page {
         id: categoriesModel
     }
 
-    Component {
-        id: listHeading
-        Rectangle {
-            width: parent.width
-            height: 60
-            radius: 10
-            color: "orange"
-            Text {
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-                text: qsTr("Tiny Tiny RSS Reader")
-                font.weight: Font.Bold
-                font.pixelSize: 26
-            }
-        }
-    }
-
     ListView {
         id: listView
-        anchors.fill: parent
+        anchors.margins: constant.paddingLarge
+        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
 
         model: categoriesModel
 
@@ -213,6 +194,11 @@ Page {
                 ttrss.updateCategories(showCategories);
             }
         }
+    }
+
+    PageHeader {
+        id: pageHeader
+        text: qsTr("Tiny Tiny RSS Reader")
     }
 
     ToolBarLayout {

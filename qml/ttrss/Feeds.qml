@@ -20,37 +20,15 @@ Page {
     property bool loading: false
     property string pageTitle: ""
 
-    anchors.margins: rootWindow.pageMargin
-
     ListModel {
         id: feedsModel
     }
 
-    Component {
-        id: listHeading
-        Rectangle {
-            width: parent.width
-            height: 60
-            radius: 10
-            color: "orange"
-            visible: pageTitle !== ""
-            Text {
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-                text: pageTitle
-                font.weight: Font.Bold
-                font.pixelSize: 26
-            }
-        }
-    }
-
     ListView {
         id: listView
-        anchors.fill: parent
+        anchors.margins: constant.paddingLarge
+        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
         model: feedsModel
-        header: listHeading
 
         delegate:  Item {
             id: listItem
@@ -209,6 +187,11 @@ Page {
             else
                 console.log("Error loading component:", component.errorString());
         }
+    }
+
+    PageHeader {
+        id: pageHeader
+        text: pageTitle
     }
 
     ToolBarLayout {
