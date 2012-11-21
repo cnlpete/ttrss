@@ -13,6 +13,11 @@ import QtQuick 1.1
 
 QtObject{
     id: constant
+
+    property color colorListItemActive: "#000033"
+    property color colorListItemActiveTwo: "#cc6633"
+    property color colorListItemDisabled: "#888888"
+
     property int paddingSmall: 4
     property int paddingMedium: 6
     property int paddingLarge: 8

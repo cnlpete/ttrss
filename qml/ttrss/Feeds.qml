@@ -58,7 +58,7 @@ Page {
                         text: model.title
                         font.weight: Font.Bold
                         font.pixelSize: constant.fontSizeLarge
-                        color: (model.unreadcount > 0) ? "#000033" : "#888888";
+                        color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
 
                     }
 
@@ -67,7 +67,7 @@ Page {
                         text: model.subtitle
                         font.weight: Font.Light
                         font.pixelSize: constant.fontSizeSmall
-                        color: (model.unreadcount > 0) ? "#cc6633" : "#888888"
+                        color: (model.unreadcount > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
 
                         visible: text != ""
                     }
