@@ -109,7 +109,8 @@ Page {
         feedsModel.clear();
 
         loading = false;
-        if(feeds && categoryId) {
+
+        if(feeds) {
             var emptyList = feeds.length;
             var unreadcount;
             console.log("showing feeds for category: "+categoryId+"\n");
