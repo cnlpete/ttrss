@@ -23,7 +23,7 @@ var state={
     'numStatusUpdates': 0,          //each time the state updates such that the app might want to redisplay we update this (get via getNumStatusUpdates)
     'showall':          false,      //boolean should all items be shown (or only those with unread stuff?)
     'closeIfEmpty':     false,      //Should pages close if they have no content to display
-    'tracelevel':       4,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
+    'tracelevel':       2,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
 
     'categories': {},
     'feeds': {},
@@ -254,9 +254,8 @@ function process_updateFeeds(catId, callback, httpreq) {
 
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
-        trace(1,dump(responseObject))
         if (responseObject.status === 0) {
-            state['feeds'][catId] = [];
+            state['feeds'][catId] = {};
 
             for(var i = 0; i < responseObject.content.length; i++) {
                 var feedid = responseObject.content[i].id;
