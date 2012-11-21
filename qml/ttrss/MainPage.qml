@@ -210,7 +210,7 @@ Page {
             settings.set("dologin", "false");
 
             //Let the user know
-            loginErrorDialogText.text = text;
+            loginErrorDialog.text = text;
             loginErrorDialog.open();
         } else {
             //Login succeeded, auto login next Time
@@ -222,33 +222,9 @@ Page {
     }
 
     //Dialog for login errors
-    Dialog {
+    ErrorDialog {
         id: loginErrorDialog
-        title: Rectangle {
-            id: titleField
-            height: 2
-            width: parent.width
-            color: "red"
-        }
-
-        content:Item {
-            id: loginErrorDialogContents
-            height: 50
-            width: parent.width
-            Text {
-                id: loginErrorDialogText
-                font.pixelSize: 22
-                anchors.centerIn: parent
-                color: "white"
-                text: "Hello Dialog"
-            }
-        }
-
-        buttons: ButtonRow {
-            style: ButtonStyle { }
-            anchors.horizontalCenter: parent.horizontalCenter
-            Button { text: "OK"; onClicked: loginErrorDialog.accept() }
-        }
+        text: "pageTitle"
     }
 
     Component.onCompleted: {
