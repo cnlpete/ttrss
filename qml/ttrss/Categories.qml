@@ -106,11 +106,19 @@ Page {
         }
     }
 
+    function updateCategories() {
+        loading = true;
+        var ttrss = rootWindow.getTTRSS();
+        numStatusUpdates = ttrss.getNumStatusUpdates();
+        ttrss.updateCategories(showCategories);
+    }
+
     function showCategories() {
         var ttrss = rootWindow.getTTRSS();
         var showAll = ttrss.getShowAll();
         var categories = ttrss.getCategories();
         categoriesModel.clear();
+        loading = false;
 
         if(categories) {
             var someCategories   = false;
@@ -178,10 +186,8 @@ Page {
     }
 
     Component.onCompleted: {
-        var ttrss = rootWindow.getTTRSS();
-//        gr.addStatusListener(categoriesStatusListener);
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateCategories(showCategories);
+        showCategories();
+        updateCategories();
     }
 
     onStatusChanged: {
@@ -189,10 +195,8 @@ Page {
         if(status === PageStatus.Deactivating)
             numStatusUpdates = ttrss.getNumStatusUpdates();
         else if (status === PageStatus.Activating) {
-            if(ttrss.getNumStatusUpdates() > numStatusUpdates) {
-                numStatusUpdates = ttrss.getNumStatusUpdates();
-                ttrss.updateCategories(showCategories);
-            }
+            if(ttrss.getNumStatusUpdates() > numStatusUpdates)
+                updateCategories();
         }
     }
 
@@ -208,7 +212,7 @@ Page {
         ToolIcon {
             iconId: "toolbar-refresh";
             visible: !loading;
-            onClicked: { rootWindow.getTTRSS().updateCategories(showCategories); }
+            onClicked: { updateCategories(); }
         }
         BusyIndicator {
             visible: loading
@@ -232,8 +236,7 @@ Page {
                     var newval = !oldval;
                     ttrss.setShowAll(newval);
 
-                    //console.log("Updating categories with showAll: "+newval+"\n");
-                    ttrss.updateCategories(showCategories);
+                    updateCategories();
                 }
             }
             MenuItem {

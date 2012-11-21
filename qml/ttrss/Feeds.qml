@@ -95,12 +95,20 @@ Page {
         flickableItem: listView
     }
 
+    function updateFeeds() {
+        loading = true;
+        var ttrss = rootWindow.getTTRSS();
+        numStatusUpdates = ttrss.getNumStatusUpdates();
+        ttrss.updateFeeds(categoryId, showFeeds);
+    }
+
     function showFeeds() {
         var ttrss = rootWindow.getTTRSS();
         var feeds = ttrss.getFeeds(categoryId);
         var showAll = ttrss.getShowAll();
         feedsModel.clear();
 
+        loading = false;
         if(feeds && categoryId) {
             var emptyList = feeds.length;
             var unreadcount;
@@ -156,25 +164,21 @@ Page {
     }
 
     onCategoryIdChanged: {
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeeds(categoryId, showFeeds);
+        showFeeds();
+        updateFeeds();
     }
 
     Component.onCompleted: {
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeeds(categoryId, showFeeds);
+        showFeeds();
+        updateFeeds();
     }
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
         if(status === PageStatus.Deactivating)
             numStatusUpdates = ttrss.getNumStatusUpdates();
         else if (status === PageStatus.Activating) {
-            if(ttrss.getNumStatusUpdates() > numStatusUpdates) {
-                numStatusUpdates = ttrss.getNumStatusUpdates();
-                ttrss.updateFeeds(categoryId, showFeeds);
-            }
+            if(ttrss.getNumStatusUpdates() > numStatusUpdates)
+                updateFeeds();
         }
     }
 
@@ -201,7 +205,7 @@ Page {
         ToolIcon {
             iconId: "toolbar-refresh";
             visible: !loading;
-            onClicked: { rootWindow.getTTRSS().updateFeeds(categoryId, showFeeds); }
+            onClicked: { updateFeeds(); }
         }
         BusyIndicator {
             visible: loading
