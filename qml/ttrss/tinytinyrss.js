@@ -325,7 +325,6 @@ function updateFeedItems(feedId, callback) {
         'view_mode': (state['showall'] ? 'all_articles' : 'unread'),
         'skip': state['lastfeed']['continuation']
     }
-    trace(2, 'request: ' + dump(params))
 
     var http = new XMLHttpRequest();
     http.open("POST", state['url'], true);
@@ -461,4 +460,11 @@ function getFeeds(catId) {
 
 function getFeedItems(feedId) {
     return state['feeditems'][feedId];
+}
+
+function getFeedItem(feedId, articleId) {
+    if (state['feeditems'][feedId])
+        return state['feeditems'][feedId][articleId]
+    else
+        console.log("no cache found")
 }

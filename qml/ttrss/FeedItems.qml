@@ -88,14 +88,27 @@ Page {
             MouseArea {
                 id: mouseArea
                 anchors.fill: background
-                onClicked: {
-                   //TODO open item view with this item
-                }
+                onClicked: { showFeedItem(model.id, feedId, model.title) }
             }
         }
     }
     ScrollDecorator {
         flickableItem: listView
+    }
+
+    function showFeedItem(articleId, feedId, title) {
+        if(articleId != null && feedId != null) {
+            console.log("Loading items for "+articleId+" in "+feedId+"\n");
+            var component = Qt.createComponent("FeedItem.qml");
+            if (component.status === Component.Ready)
+                pageStack.push(component, {
+                                   articleId: articleId,
+                                   feedId: feedId,
+                                   pageTitle: title
+                               });
+            else
+                console.log("Error loading component:", component.errorString());
+        }
     }
 
     function updateFeedItems() {
@@ -112,7 +125,7 @@ Page {
         itemListModel.clear();
 
         loading = false;
-        ttrss.trace(2, ttrss.dump(feeditems))
+
         if (!ttrss.isEmpty(feeditems)) {
             for(var feeditem in feeditems) {
                 itemListModel.append({
