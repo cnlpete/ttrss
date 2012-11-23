@@ -29,18 +29,21 @@ var state={
     'feeds':            {},
     'feeditems':        {},
     'lastcategory':     { 'id': null },
+    'lastfeed':         { 'id': null, 'continuation': 0 },
 };
 
 var requestsPending={
     'token'       : false,
     'categories'  : false,
     'feeds'       : false,
+    'feeditems'   : false,
 };
 
 var responsesPending={
     'token'       : false,
     'categories'  : false,
     'feeds'       : false,
+    'feeditems'   : false,
 };
 
 var constants={
@@ -294,6 +297,88 @@ function process_updateFeeds(catId, callback, httpreq) {
                 callback(0);
 }
 
+function updateFeedItems(feedId, callback) {
+    if(responsesPending['feeditems'])
+        return;
+
+    if (state['lastfeed']['id'] !== feedId) {
+        state['lastfeed']['id'] = feedId;
+        state['lastfeed']['continuation'] = 0;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeditems'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeditems'] = true;
+
+    var params = {
+        'op': 'getHeadlines',
+        'sid': state['token'],
+        'feed_id': feedId,
+        'is_cat': false,
+        'show_excerpt': false,
+        'show_content': true, // we want the content, so we do not have to load every article for itself
+        'view_mode': (state['showall'] ? 'all_articles' : 'unread'),
+        'skip': state['lastfeed']['continuation']
+    }
+    trace(2, 'request: ' + dump(params))
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE)
+            process_updateFeedItems(feedId, callback, http);
+    }
+    http.send(JSON.stringify(params));
+}
+
+function process_updateFeedItems(feedId, callback, httpreq) {
+    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
+    trace(3, "response: "+httpreq.responseText);
+
+    if(httpreq.status === 200)  {
+        var responseObject=JSON.parse(httpreq.responseText);
+        if (responseObject.status === 0) {
+            state['feeditems'][feedId] = {};
+
+            //TODO update the continuation counter
+
+            for(var i = 0; i < responseObject.content.length; i++) {
+                var feeditemid = responseObject.content[i].id;
+                state['feeditems'][feedId][feeditemid] = responseObject.content[i];
+            }
+        }
+        else {
+            if(responseObject.content.error)
+                errorText = "Update Feeds failed: "+responseObject.content.error;
+            else
+                errorText = "Update Feeds failed (received http code: "+http.status+")";
+        }
+    }
+    else {
+        trace(1, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+        if(callback)
+            callback(50, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+    }
+
+    responsesPending['feeditems'] = false;
+
+    if(state['feeditems'][feedId])
+        if(!processPendingRequests(callback))
+            //This action is complete (as there's no other requests to do, fire callback saying all ok
+            if(callback)
+                callback(0);
+}
+
 function processPendingRequests(callback) {
     trace(4, 'In pPR');
     var foundWork = false;
@@ -328,6 +413,17 @@ function processPendingRequests(callback) {
         else
             updateFeeds(state['lastcategory']['id'], callback);
     }
+    else if (requestsPending['feeditems']) {
+        trace(4, 'feeditems request pending');
+        foundWork = true;
+        if(responsesPending['feeditems'])
+            return foundWork;
+        if(!state['token'])
+            //Get the auth token
+            login(callback);
+        else
+            updateFeedItems(state['lastfeed']['id'], callback);
+    }
 
     return foundWork;
 }
@@ -361,4 +457,8 @@ function getCategories() {
 
 function getFeeds(catId) {
     return state['feeds'][catId];
+}
+
+function getFeedItems(feedId) {
+    return state['feeditems'][feedId];
 }
