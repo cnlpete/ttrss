@@ -21,6 +21,7 @@ Page {
     property string pageTitle: ""
     property string url:        ""
     property bool   loading: false
+    property bool   starloading: false
     property bool   marked: false
 
     anchors.margins: 0
@@ -61,6 +62,7 @@ Page {
             itemView.html = data.content;
             url = data.link
             pageTitle = data.title
+            marked = data.marked
         }
     }
 
@@ -72,6 +74,16 @@ Page {
         showFeedItem();
     }
 
+    function markedCallback() {
+        var ttrss = rootWindow.getTTRSS()
+        var data = ttrss.getFeedItem(feedId, articleId);
+
+        starloading = false
+
+        if (data)
+            marked = data.marked
+    }
+
     PageHeader {
         id: pageHeader
         text: pageTitle
@@ -81,7 +93,19 @@ Page {
         id: itemTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { itemMenu.close(); pageStack.pop(); }  }
-        ToolIcon { iconId: "toolbar-favorite-"+(marked?"":"un")+"mark"; onClicked: { marked = !marked }  }
+        BusyIndicator {
+            visible: starloading
+            running: starloading
+            platformStyle: BusyIndicatorStyle { size: 'medium' }
+        }
+        ToolIcon {
+            iconId: "toolbar-favorite-"+(marked?"":"un")+"mark";
+            visible: !starloading
+            onClicked: {
+                starloading = true
+                var ttrss = rootWindow.getTTRSS()
+                ttrss.updateFeedStar(feedId, articleId, !marked, markedCallback)
+            } }
         ToolIcon { iconId: "toolbar-share"; onClicked: { }  }
 
         BusyIndicator {

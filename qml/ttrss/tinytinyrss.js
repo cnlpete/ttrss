@@ -30,6 +30,7 @@ var state={
     'feeditems':        {},
     'lastcategory':     { 'id': null },
     'lastfeed':         { 'id': null, 'continuation': 0 },
+    'lastfeeditem':     { 'feedId': null, 'articleId': null },
 };
 
 var requestsPending={
@@ -37,6 +38,7 @@ var requestsPending={
     'categories'  : false,
     'feeds'       : false,
     'feeditems'   : false,
+    'feeditemstar': false,
 };
 
 var responsesPending={
@@ -44,6 +46,7 @@ var responsesPending={
     'categories'  : false,
     'feeds'       : false,
     'feeditems'   : false,
+    'feeditemstar': false,
 };
 
 var constants={
@@ -423,8 +426,68 @@ function processPendingRequests(callback) {
         else
             updateFeedItems(state['lastfeed']['id'], callback);
     }
+    else if (requestsPending['feeditemstar']) {
+        trace(4, 'feeditemstar request pending');
+        foundWork = true;
+        if(responsesPending['feeditemstar'])
+            return foundWork;
+        if(!state['token'])
+            //Get the auth token
+            login(callback);
+        else
+            updateFeedStar(state['lastfeeditem']['feedId'],
+                           state['lastfeeditem']['articleId'],
+                           state['lastfeeditem']['value'],
+                           callback);
+    }
 
     return foundWork;
+}
+
+function updateFeedStar(feedId, articleId, starred, callback) {
+    if(responsesPending['feeditemstar'])
+        return;
+
+    if (state['lastfeeditem']['feedId'] !== feedId || state['lastfeeditem']['articleId'] !== articleId) {
+        state['lastfeeditem']['feedId'] = feedId;
+        state['lastfeeditem']['articleId'] = articleId;
+        state['lastfeeditem']['value'] = starred;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeditemstar'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeditemstar'] = true;
+
+    var params = {
+        'op': 'updateArticle',
+        'sid': state['token'],
+        'article_ids': articleId,
+        'field': 0,
+        'mode': (starred ? 1 : 0)
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE) {
+            state['feeditems'][feedId][articleId].marked = starred;
+            responsesPending['feeditemstar'] = false;
+            if(!processPendingRequests(callback))
+                if(callback)
+                    callback(0);
+        }
+    }
+    http.send(JSON.stringify(params));
 }
 
 //Indicates whether only unread items should be shown
