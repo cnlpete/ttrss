@@ -78,7 +78,7 @@ Page {
                 source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
                 anchors.right: parent.right;
                 anchors.verticalCenter: parent.verticalCenter
-                visible: model.categoryId !== null
+                visible: model.categoryId != null
             }
 
             MouseArea {
@@ -95,7 +95,7 @@ Page {
     }
 
     function showCategory(catId, title) {
-        if(catId !== null) {
+        if(catId != null) {
             console.log("Loading feeds for category "+catId+"\n");
             var component = Qt.createComponent("Feeds.qml");
             if (component.status === Component.Ready)
@@ -128,7 +128,7 @@ Page {
                 someCategories = true;
 
                 if(categories[category].unread > 0) {
-                    if (category >= 0)
+                    if (categories[category].id >= 0)
                         totalUnreadCount += categories[category].unread;
 
                     categoriesModel.append({

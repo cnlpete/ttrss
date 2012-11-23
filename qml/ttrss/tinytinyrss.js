@@ -25,9 +25,10 @@ var state={
     'closeIfEmpty':     false,      //Should pages close if they have no content to display
     'tracelevel':       2,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
 
-    'categories': {},
-    'feeds': {},
-    'lastcategoryid': null,
+    'categories':       {},
+    'feeds':            {},
+    'feeditems':        {},
+    'lastcategory':     { 'id': null },
 };
 
 var requestsPending={
@@ -51,6 +52,15 @@ var constants={
 var initial_state            = JSON.parse(JSON.stringify(state));
 var initial_requestsPending  = JSON.parse(JSON.stringify(requestsPending));
 var initial_responsesPending = JSON.parse(JSON.stringify(responsesPending));
+
+function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return true;
+}
 
 function trace(level, text) {
     if(level <= state['tracelevel'])
@@ -159,7 +169,7 @@ function updateCategories(callback) {
     var params = {
         'op': 'getCategories',
         'sid': state['token'],
-        'unread_only': state['showAll']
+        'unread_only': !state['showall']
     }
 
     var http = new XMLHttpRequest();
@@ -220,7 +230,7 @@ function updateFeeds(catId, callback) {
     // needs to be logged in
     if(!state['token']) {
         requestsPending['feeds'] = true;
-        state['lastcategoryid'] = catId;
+        state['lastcategory']['id'] = catId;
         processPendingRequests(callback);
         return;
     }
@@ -231,7 +241,7 @@ function updateFeeds(catId, callback) {
         'op': 'getFeeds',
         'sid': state['token'],
         'cat_id': catId,
-        'unread_only': state['showAll']
+        'unread_only': !state['showall']
     }
 
     var http = new XMLHttpRequest();
@@ -316,7 +326,7 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeeds(state['lastcategoryid'], callback);
+            updateFeeds(state['lastcategory']['id'], callback);
     }
 
     return foundWork;

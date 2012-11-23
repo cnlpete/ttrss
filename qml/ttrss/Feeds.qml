@@ -59,7 +59,6 @@ Page {
                         font.weight: Font.Bold
                         font.pixelSize: constant.fontSizeLarge
                         color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
-
                     }
 
                     Label {
@@ -79,14 +78,14 @@ Page {
                 source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
                 anchors.right: parent.right;
                 anchors.verticalCenter: parent.verticalCenter
-                visible: (model.feedId !== null)
+                visible: (model.feedId != null)
             }
 
             MouseArea {
                 id: mouseArea
                 anchors.fill: background
                 onClicked: {
-                    showFeed(model.feedId);
+                    showFeed(model.feedId, model.title);
                 }
             }
         }
@@ -110,57 +109,27 @@ Page {
 
         loading = false;
 
-        if(feeds) {
-            var emptyList = feeds.length;
-            var unreadcount;
-            console.log("showing feeds for category: "+categoryId+"\n");
-
+        if(!ttrss.isEmpty(feeds)) {
             //First add feed with unread items
             for(var feed in feeds) {
-                unreadcount = feeds[feed].unread;
-                if( unreadcount && (unreadcount > 0)) {
-                    emptyList = false;
-
+                if( showAll || feeds[feed].unread > 0) {
                     feedsModel.append({
-                                          title:     ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),
-                                          subtitle:  "Unread: " + unreadcount,
-                                          unreadcount:  unreadcount,
-                                          feedId:     feeds[feed].id,
+                                          title:        ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),
+                                          subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: ") + feeds[feed].unread : ""),
+                                          unreadcount:  feeds[feed].unread,
+                                          feedId:       feeds[feed].id,
                                       });
                 }
             }
-            //If we're showing all feeds, add the ones with no unread items
-            if(showAll) {
-                for(var feed in feeds) {
-                    unreadcount = feeds[feed].unread;
-                    if(unreadcount === 0) {
-                        feedsModel.append({
-                                              title:     ttrss.html_entity_decode(feeds[feed].title,'ENT_QUOTES'),
-                                              subtitle:  "Unread: " + unreadcount,
-                                              unreadcount:  unreadcount,
-                                              feedId:     feeds[feed].id,
-                                          });
-                    }
-                }
-            }
-
-            if(emptyList) {
-                if(showAll ||(feeds.length === 0) ) {
-                    feedsModel.append({
-                                          title: qsTr("No feeds in category"),
-                                          subtitle: "",
-                                          feedId: null,
-                                          unreadCount: 0,
-                                      });
-                } else {
-                    feedsModel.append({
-                                          title: qsTr("Category has no unread items"),
-                                          subtitle: "",
-                                          feedId: null,
-                                          unreadCount: 0,
-                                      });
-                }
-            }
+        }
+        else {
+            var t = (showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items"))
+            feedsModel.append({
+                                  title:        t,
+                                  subtitle:     "",
+                                  unreadcount:  0,
+                                  feedId:       null,
+                              });
         }
     }
 
@@ -183,12 +152,12 @@ Page {
         }
     }
 
-    function showFeed(feedId) {
-        if(feedId !== null) {
+    function showFeed(feedId, title) {
+        if(feedId != null) {
             console.log("Loading items for "+feedId+"\n");
-            var component = Qt.createComponent("ItemList.qml");
+            var component = Qt.createComponent("FeedItems.qml");
             if (component.status === Component.Ready)
-                pageStack.push(component, { feedId: feedId });
+                pageStack.push(component, { feedId: feedId, pageTitle: title });
             else
                 console.log("Error loading component:", component.errorString());
         }
