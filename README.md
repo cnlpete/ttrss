@@ -7,14 +7,15 @@ ttrss is using the [Tiny Tiny RSS API](http://tt-rss.org/redmine/projects/tt-rss
 
 ToDo
 ----------
-* Feed Icons
-* Settings Page
-* Feed Details page
+* Show Feed Icons
+* Add Settings Page
+* Add Feed Details page with star/publish/mark unread actions
+* Swipe left/right in Feeds View, FeedItems View and FeedDetails View to show next/previous Entry
 * Accounts Plugin with global Accounts
 
 ArtWork
 ----------
-* TinyTinyRSS Logo is taken from the [Android Project](htts://github.com/gothfox/Tiny-Tiny-RSS-for-Honeycomb)
+* TinyTinyRSS Logo is taken from the [Android Project](http://tt-rss.org/redmine/projects/tt-rss-android/wiki/)
 
 License
 ----------
