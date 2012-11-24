@@ -22,7 +22,9 @@ Page {
     property string url:        ""
     property bool   loading: false
     property bool   starloading: false
+    property bool   unreadloading: false
     property bool   marked: false
+    property bool   unread: true
 
     anchors.margins: 0
 
@@ -63,6 +65,7 @@ Page {
             url = data.link
             pageTitle = data.title
             marked = data.marked
+            unread = data.unread
         }
     }
 
@@ -82,6 +85,16 @@ Page {
 
         if (data)
             marked = data.marked
+    }
+
+    function unreadCallback() {
+        var ttrss = rootWindow.getTTRSS()
+        var data = ttrss.getFeedItem(feedId, articleId);
+
+        unreadloading = false
+
+        if (data)
+            unread = data.unread
     }
 
     PageHeader {
@@ -106,13 +119,19 @@ Page {
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedStar(feedId, articleId, !marked, markedCallback)
             } }
-        ToolIcon { iconId: "toolbar-share"; onClicked: { }  }
-
         BusyIndicator {
-            visible: loading
-            running: loading
+            visible: unreadloading
+            running: unreadloading
             platformStyle: BusyIndicatorStyle { size: 'medium' }
         }
+        ToolIcon {
+            iconId: "toolbar-"+(unread?"share":"add");
+            visible: !unreadloading
+            onClicked: {
+                unreadloading = true
+                var ttrss = rootWindow.getTTRSS()
+                ttrss.updateFeedUnread(feedId, articleId, !unread, unreadCallback)
+            } }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close() }
     }
 

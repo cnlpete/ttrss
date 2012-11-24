@@ -31,6 +31,7 @@ var state={
     'lastcategory':     { 'id': null },
     'lastfeed':         { 'id': null, 'continuation': 0 },
     'lastfeeditem':     { 'feedId': null, 'articleId': null },
+    'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
 };
 
 var requestsPending={
@@ -39,6 +40,7 @@ var requestsPending={
     'feeds'       : false,
     'feeditems'   : false,
     'feeditemstar': false,
+    'feeditemunread': false,
 };
 
 var responsesPending={
@@ -47,6 +49,7 @@ var responsesPending={
     'feeds'       : false,
     'feeditems'   : false,
     'feeditemstar': false,
+    'feeditemunread': false,
 };
 
 var constants={
@@ -440,6 +443,20 @@ function processPendingRequests(callback) {
                            state['lastfeeditem']['value'],
                            callback);
     }
+    else if (requestsPending['feeditemunread']) {
+        trace(4, 'feeditemunread request pending');
+        foundWork = true;
+        if(responsesPending['feeditemunread'])
+            return foundWork;
+        if(!state['token'])
+            //Get the auth token
+            login(callback);
+        else
+            updateFeedUnrad(state['lastfeeditemunread']['feedId'],
+                            state['lastfeeditemunread']['articleId'],
+                            state['lastfeeditemunread']['value'],
+                            callback);
+    }
 
     return foundWork;
 }
@@ -482,6 +499,52 @@ function updateFeedStar(feedId, articleId, starred, callback) {
         else if (http.readyState === XMLHttpRequest.DONE) {
             state['feeditems'][feedId][articleId].marked = starred;
             responsesPending['feeditemstar'] = false;
+            if(!processPendingRequests(callback))
+                if(callback)
+                    callback(0);
+        }
+    }
+    http.send(JSON.stringify(params));
+}
+
+function updateFeedUnread(feedId, articleId, unread, callback) {
+    if(responsesPending['feeditemunread'])
+        return;
+
+    if (state['lastfeeditemunread']['feedId'] !== feedId || state['lastfeeditemunread']['articleId'] !== articleId) {
+        state['lastfeeditemunread']['feedId'] = feedId;
+        state['lastfeeditemunread']['articleId'] = articleId;
+        state['lastfeeditemunread']['value'] = unread;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeditemunread'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeditemunread'] = true;
+
+    var params = {
+        'op': 'updateArticle',
+        'sid': state['token'],
+        'article_ids': articleId,
+        'field': 2,
+        'mode': (unread ? 1 : 0)
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE) {
+            state['feeditems'][feedId][articleId].unread = unread;
+            responsesPending['feeditemunread'] = false;
             if(!processPendingRequests(callback))
                 if(callback)
                     callback(0);
