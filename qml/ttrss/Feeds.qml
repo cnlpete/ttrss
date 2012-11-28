@@ -109,9 +109,9 @@ Page {
 
         loading = false;
 
-        if(!ttrss.isEmpty(feeds)) {
+        if(feeds && feeds.length) {
             //First add feed with unread items
-            for(var feed in feeds) {
+            for(var feed = 0; feed < feeds.length; feed++) {
                 if( showAll || feeds[feed].unread > 0) {
                     feedsModel.append({
                                           title:        ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),

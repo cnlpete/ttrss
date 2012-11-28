@@ -126,8 +126,8 @@ Page {
 
         loading = false;
 
-        if (!ttrss.isEmpty(feeditems)) {
-            for(var feeditem in feeditems) {
+        if (feeditems && feeditems.length) {
+            for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
                 itemListModel.append({
                                          title:    ttrss.html_entity_decode(feeditems[feeditem].title, 'ENT_QUOTES'),
                                          subtitle: "subtitle",

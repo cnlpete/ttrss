@@ -119,12 +119,12 @@ Page {
         categoriesModel.clear();
         loading = false;
 
-        if(categories) {
+        if(categories && categories.length) {
             var someCategories   = false;
             var totalUnreadCount = 0;
 
             //first add all the categories with unread itens
-            for(var category in categories) {
+            for(var category = 0; category < categories.length; category++) {
                 someCategories = true;
 
                 if(categories[category].unread > 0) {

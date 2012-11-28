@@ -25,8 +25,9 @@ var state={
     'closeIfEmpty':     false,      //Should pages close if they have no content to display
     'tracelevel':       2,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
 
-    'categories':       {},
-    'feeds':            {},
+    'categorycache':    {},
+    'feedcache':        {},
+    'categoryfeeds':    {},
     'feeditems':        {},
     'lastcategory':     { 'id': null },
     'lastfeed':         { 'id': null, 'continuation': 0 },
@@ -202,11 +203,11 @@ function process_updateCategories(callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
         if (responseObject.status === 0) {
-            state['categories'] = {};
+            state['categorycache'] = {};
 
             for(var i = 0; i < responseObject.content.length; i++) {
-                var feedid = responseObject.content[i].id;
-                state['categories'][feedid] = responseObject.content[i];
+                var catid = responseObject.content[i].id;
+                state['categorycache'][catid] = responseObject.content[i];
             }
             // TODO sort
         }
@@ -225,7 +226,7 @@ function process_updateCategories(callback, httpreq) {
 
     responsesPending['categories'] = false;
 
-    if(state['categories'])
+    if(state['categorycache'])
         if(!processPendingRequests(callback))
             //This action is complete (as there's no other requests to do, fire callback saying all ok
             if(callback)
@@ -274,11 +275,13 @@ function process_updateFeeds(catId, callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
         if (responseObject.status === 0) {
-            state['feeds'][catId] = {};
+            state['feedcache'] = {};
+            state['categoryfeeds'][catId] = [];
 
             for(var i = 0; i < responseObject.content.length; i++) {
                 var feedid = responseObject.content[i].id;
-                state['feeds'][catId][feedid] = responseObject.content[i];
+                state['categoryfeeds'][catId][i] = feedid;
+                state['feedcache'][feedid] = responseObject.content[i];
             }
         }
         else {
@@ -296,7 +299,7 @@ function process_updateFeeds(catId, callback, httpreq) {
 
     responsesPending['feeds'] = false;
 
-    if(state['feeds'][catId])
+    if(state['categoryfeeds'][catId])
         if(!processPendingRequests(callback))
             //This action is complete (as there's no other requests to do, fire callback saying all ok
             if(callback)
@@ -353,13 +356,15 @@ function process_updateFeedItems(feedId, callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
         if (responseObject.status === 0) {
-            state['feeditems'][feedId] = {};
+            state['feeditemcache'] = {};
+            state['feeditems'][feedId] = [];
 
             //TODO update the continuation counter
 
             for(var i = 0; i < responseObject.content.length; i++) {
                 var feeditemid = responseObject.content[i].id;
-                state['feeditems'][feedId][feeditemid] = responseObject.content[i];
+                state['feeditems'][feedId][i] = feeditemid;
+                state['feeditemcache'][feeditemid] = responseObject.content[i];
             }
         }
         else {
@@ -497,7 +502,7 @@ function updateFeedStar(feedId, articleId, starred, callback) {
             trace(3, http.getAllResponseHeaders());
         }
         else if (http.readyState === XMLHttpRequest.DONE) {
-            state['feeditems'][feedId][articleId].marked = starred;
+            state['feeditemcache'][articleId].marked = starred;
             responsesPending['feeditemstar'] = false;
             if(!processPendingRequests(callback))
                 if(callback)
@@ -543,7 +548,7 @@ function updateFeedUnread(feedId, articleId, unread, callback) {
             trace(3, http.getAllResponseHeaders());
         }
         else if (http.readyState === XMLHttpRequest.DONE) {
-            state['feeditems'][feedId][articleId].unread = unread;
+            state['feeditemcache'][articleId].unread = unread;
             responsesPending['feeditemunread'] = false;
             if(!processPendingRequests(callback))
                 if(callback)
@@ -577,20 +582,43 @@ function getNumStatusUpdates() {
 }
 
 function getCategories() {
-    return state['categories'];
+    var retVal = []
+    var i = 0
+    for (var cat in state['categorycache']) {
+        retVal[i] = state['categorycache'][cat]
+        i++
+    }
+
+    return retVal
 }
 
 function getFeeds(catId) {
-    return state['feeds'][catId];
+    var retVal = []
+    var i = 0
+    if (state['categoryfeeds'][catId]) {
+        for (var feed = 0; feed < state['categoryfeeds'][catId].length; feed++) {
+            retVal[i] = state['feedcache'][state['categoryfeeds'][catId][feed]]
+            i++
+        }
+    }
+    return retVal
 }
 
 function getFeedItems(feedId) {
-    return state['feeditems'][feedId];
+    var retVal = []
+    var i = 0
+    if (state['feeditems'][feedId]) {
+        for (var feed = 0; feed < state['feeditems'][feedId].length; feed++) {
+            retVal[i] = state['feeditemcache'][state['feeditems'][feedId][feed]]
+            i++
+        }
+    }
+    return retVal
 }
 
 function getFeedItem(feedId, articleId) {
-    if (state['feeditems'][feedId])
-        return state['feeditems'][feedId][articleId]
+    if (state['feeditemcache'][articleId])
+        return state['feeditemcache'][articleId]
     else
         console.log("no cache found")
 }
