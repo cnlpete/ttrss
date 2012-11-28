@@ -16,15 +16,15 @@ import QtWebKit 1.0
 Page {
     id: itemPage
     tools: itemTools
-    property string feedId:     ""
-    property string articleId:     ""
-    property string pageTitle: ""
-    property string url:        ""
-    property bool   loading: false
-    property bool   starloading: false
-    property bool   unreadloading: false
-    property bool   marked: false
-    property bool   unread: true
+    property string feedId:         ""
+    property string articleId:      ""
+    property string pageTitle:      ""
+    property string url:            ""
+    property bool   loading:        false
+    property bool   starloading:    false
+    property bool   unreadloading:  false
+    property bool   marked:         false
+    property bool   unread:         true
 
     anchors.margins: 0
 
@@ -38,13 +38,15 @@ Page {
         clip: true
         anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
 
-        signal newWindowRequested(string url)
+//        signal newWindowRequested(string url)
 
         WebView {
             id: itemView
             transformOrigin: Item.TopLeft
             settings.standardFontFamily: "Arial"
-            settings.defaultFontSize: 22
+            settings.defaultFontSize: constant.fontSizeSmall
+            settings.linksIncludedInFocusChain: true
+            settings.localContentCanAccessRemoteUrls: true
             preferredWidth: flick.width
             preferredHeight: flick.height
         }
@@ -58,14 +60,13 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
         var data = ttrss.getFeedItem(feedId, articleId);
-//        var dataFeed = ttrss.getFeed(feedId);
 
         if (data) {
             itemView.html = data.content;
-            url = data.link
-            pageTitle = data.title
-            marked = data.marked
-            unread = data.unread
+            url         = data.link
+            pageTitle   = data.title
+            marked      = data.marked
+            unread      = data.unread
         }
     }
 
@@ -132,6 +133,12 @@ Page {
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedUnread(feedId, articleId, !unread, unreadCallback)
             } }
+        ToolIcon {
+            iconId: "toolbar-jump-to";
+            enabled: url && (url != "")
+            onClicked: {
+                Qt.openUrlExternally(url);
+            } }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close() }
     }
 
@@ -140,6 +147,14 @@ Page {
         visualParent: pageStack
 
         MenuLayout {
+            MenuItem {
+                id: openInBrowser
+                text: qsTr("Open in Web Browser")
+                enabled: url && (url != "")
+                onClicked: {
+                    Qt.openUrlExternally(url);
+                }
+            }
             MenuItem {
                 text: qsTr("About")
                 onClicked: {
