@@ -77,6 +77,28 @@ function trace(level, text) {
         console.log(text+'\n');
 }
 
+function categorySort(a, b) {
+    if (!a.order_id && !b.order_id)
+        return a.id - b.id
+    else if (!a.order_id)
+        return a.id - b.order_id
+    else if (!b.order_id)
+        return a.order_id - b.id
+    else
+        return a.order_id - b.order_id
+}
+
+function dateSort(a, b) {
+    if (!a.updated && !b.updated)
+        return b.id - a.id
+    else if (!a.updated)
+        return b.updated - a.id
+    else if (!b.updated)
+        return b.id - a.updated
+    else
+        return b.updated - a.updated
+}
+
 function clearState() {
     state            = JSON.parse(JSON.stringify(initial_state));
     requestsPending  = JSON.parse(JSON.stringify(initial_requestsPending));
@@ -588,6 +610,7 @@ function getCategories() {
         retVal[i] = state['categorycache'][cat]
         i++
     }
+    retVal.sort(categorySort)
 
     return retVal
 }
@@ -601,6 +624,7 @@ function getFeeds(catId) {
             i++
         }
     }
+    retVal.sort(categorySort)
     return retVal
 }
 
@@ -613,6 +637,7 @@ function getFeedItems(feedId) {
             i++
         }
     }
+    retVal.sort(dateSort)
     return retVal
 }
 
