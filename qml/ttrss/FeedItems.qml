@@ -20,8 +20,6 @@ Page {
     property int numStatusUpdates
     property bool loading: false
 
-    anchors.margins: rootWindow.pageMargin
-
     ListModel {
         id: itemListModel
     }
@@ -41,10 +39,10 @@ Page {
                 id: background
                 anchors.fill: parent
                 // Fill page borders
-                anchors.leftMargin: -itemListPage.anchors.leftMargin
-                anchors.rightMargin: -itemListPage.anchors.rightMargin
+                anchors.leftMargin: -listView.anchors.leftMargin
+                anchors.rightMargin: -listView.anchors.rightMargin
                 visible: mouseArea.pressed
-                source: "image://theme/meegotouch-list-background-pressed-center"
+                source: "image://theme/meegotouch-list-background-selected-center"
             }
 
             Row {
@@ -84,7 +82,6 @@ Page {
                 visible: ((model.id != null)&&(model.id !== "__ttrss_get_more_items"))
             }
 
-
             MouseArea {
                 id: mouseArea
                 anchors.fill: background
@@ -98,7 +95,6 @@ Page {
 
     function showFeedItem(articleId, feedId, title) {
         if(articleId != null && feedId != null) {
-            console.log("Loading items for "+articleId+" in "+feedId+"\n");
             var component = Qt.createComponent("FeedItem.qml");
             if (component.status === Component.Ready)
                 pageStack.push(component, {

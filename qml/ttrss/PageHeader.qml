@@ -25,7 +25,7 @@ Item{
     Image{
         id: background
         anchors.fill: parent
-        source: "resources/color10-meegotouch-view-header.png"
+        source: "image://theme/color15-meegotouch-view-header-fixed"
         sourceSize.width: parent.width
         sourceSize.height: parent.height
     }

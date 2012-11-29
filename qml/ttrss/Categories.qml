@@ -39,10 +39,10 @@ Page {
                 id: background
                 anchors.fill: parent
                 // Fill page borders
-                anchors.leftMargin: -categoriesPage.anchors.leftMargin
-                anchors.rightMargin: -categoriesPage.anchors.rightMargin
+                anchors.leftMargin: -listView.anchors.leftMargin
+                anchors.rightMargin: -listView.anchors.rightMargin
                 visible: mouseArea.pressed
-                source: "image://theme/meegotouch-list-background-pressed-center"
+                source: "image://theme/color15-meegotouch-list-background-selected-center"
             }
 
             Row {
