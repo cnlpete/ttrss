@@ -120,41 +120,22 @@ Page {
         loading = false;
 
         if(categories && categories.length) {
-            var someCategories   = false;
             var totalUnreadCount = 0;
 
             //first add all the categories with unread itens
             for(var category = 0; category < categories.length; category++) {
-                someCategories = true;
+                if (categories[category].id >= 0)
+                    totalUnreadCount += categories[category].unread;
 
-                if(categories[category].unread > 0) {
-                    if (categories[category].id >= 0)
-                        totalUnreadCount += categories[category].unread;
-
-                    categoriesModel.append({
-                                               title:       ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES'),
-                                               subtitle:    "Unread: " + categories[category].unread,
-                                               unreadcount: categories[category].unread,
-                                               categoryId:  categories[category].id
-                                           });
-                }
+                categoriesModel.append({
+                                           title:       ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES'),
+                                           subtitle:    "Unread: " + categories[category].unread,
+                                           unreadcount: categories[category].unread,
+                                           categoryId:  categories[category].id
+                                       });
             }
 
-            //then if we are showing all categories, add the ones with no unread items
-            if(showAll) {
-                for(var category in categories) {
-                    if(categories[category].unread === 0) {
-                        categoriesModel.append({
-                                                   title:       ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES'),
-                                                   subtitle:    "Unread: 0",
-                                                   unreadcount:  0,
-                                                   categoryId:   categories[category].id
-                                               });
-                    }
-                }
-            }
-
-            if((totalUnreadCount > 0) || ((showAll) && someCategories)) {
+            if(totalUnreadCount > 0 || showAll) {
                 //Add the "All category"
                 categoriesModel.insert(0, {
                                            title: qsTr("All Categories"),
@@ -163,24 +144,16 @@ Page {
                                            unreadcount: totalUnreadCount,
                                        });
             }
-            else if (!someCategories) {
-                //There are categories they just don't have unread items
-                categoriesModel.append({
-                                           title: qsTr("No categories have unread items"),
-                                           subtitle: "",
-                                           categoryId: null,
-                                           unreadcount: 0,
-                                       });
-            }
-            else {
-                //There are no categories
-                categoriesModel.append({
-                                           title: qsTr("No categories to display"),
-                                           subtitle: "",
-                                           categoryId: null,
-                                           unreadcount: 0,
-                                       });
-            }
+        }
+        else {
+            //There are no categories
+            var t = (showAll ? qsTr("No categories to display") : qsTr("No categories have unread items"))
+            categoriesModel.append({
+                                       title: t,
+                                       subtitle: "",
+                                       categoryId: null,
+                                       unreadcount: 0,
+                                   });
         }
     }
 
