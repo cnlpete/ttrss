@@ -118,7 +118,7 @@ Page {
             onClicked: {
                 starloading = true
                 var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedStar(feedId, articleId, !marked, markedCallback)
+                ttrss.updateFeedStar(articleId, !marked, markedCallback)
             } }
         BusyIndicator {
             visible: unreadloading
@@ -131,7 +131,7 @@ Page {
             onClicked: {
                 unreadloading = true
                 var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedUnread(feedId, articleId, !unread, unreadCallback)
+                ttrss.updateFeedUnread(articleId, !unread, unreadCallback)
             } }
         ToolIcon {
             iconId: "toolbar-jump-to";

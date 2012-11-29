@@ -465,8 +465,7 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeedStar(state['lastfeeditem']['feedId'],
-                           state['lastfeeditem']['articleId'],
+            updateFeedStar(state['lastfeeditem']['articleId'],
                            state['lastfeeditem']['value'],
                            callback);
     }
@@ -479,8 +478,7 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeedUnrad(state['lastfeeditemunread']['feedId'],
-                            state['lastfeeditemunread']['articleId'],
+            updateFeedUnrad(state['lastfeeditemunread']['articleId'],
                             state['lastfeeditemunread']['value'],
                             callback);
     }
@@ -488,12 +486,11 @@ function processPendingRequests(callback) {
     return foundWork;
 }
 
-function updateFeedStar(feedId, articleId, starred, callback) {
+function updateFeedStar(articleId, starred, callback) {
     if(responsesPending['feeditemstar'])
         return;
 
-    if (state['lastfeeditem']['feedId'] !== feedId || state['lastfeeditem']['articleId'] !== articleId) {
-        state['lastfeeditem']['feedId'] = feedId;
+    if (state['lastfeeditem']['articleId'] !== articleId) {
         state['lastfeeditem']['articleId'] = articleId;
         state['lastfeeditem']['value'] = starred;
     }
@@ -534,12 +531,11 @@ function updateFeedStar(feedId, articleId, starred, callback) {
     http.send(JSON.stringify(params));
 }
 
-function updateFeedUnread(feedId, articleId, unread, callback) {
+function updateFeedUnread(articleId, unread, callback) {
     if(responsesPending['feeditemunread'])
         return;
 
-    if (state['lastfeeditemunread']['feedId'] !== feedId || state['lastfeeditemunread']['articleId'] !== articleId) {
-        state['lastfeeditemunread']['feedId'] = feedId;
+    if (state['lastfeeditemunread']['articleId'] !== articleId) {
         state['lastfeeditemunread']['articleId'] = articleId;
         state['lastfeeditemunread']['value'] = unread;
     }

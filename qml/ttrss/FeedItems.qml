@@ -86,6 +86,11 @@ Page {
                 id: mouseArea
                 anchors.fill: background
                 onClicked: { showFeedItem(model.id, feedId, model.title) }
+                onPressAndHold: {
+                    feeditemMenu.unread = model.unread
+                    feeditemMenu.marked = model.marked
+                    feeditemMenu.articleId = model.id
+                    feeditemMenu.open() }
             }
         }
     }
@@ -121,14 +126,14 @@ Page {
         itemListModel.clear();
 
         loading = false;
-
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
                 itemListModel.append({
-                                         title:    ttrss.html_entity_decode(feeditems[feeditem].title, 'ENT_QUOTES'),
-                                         subtitle: "subtitle",
-                                         id:       feeditems[feeditem].id,
-                                         unread:   !!feeditems[feeditem].unread,
+                                         title:     ttrss.html_entity_decode(feeditems[feeditem].title, 'ENT_QUOTES'),
+                                         subtitle:  "subtitle",
+                                         id:        feeditems[feeditem].id,
+                                         unread:    !!feeditems[feeditem].unread,
+                                         marked:    !!feeditems[feeditem].marked
                                      });
             }
         }
@@ -138,6 +143,7 @@ Page {
                                      subtitle:  "",
                                      id:        null,
                                      unread:    false,
+                                     marked:    false
                                  });
         }
     }
@@ -211,6 +217,36 @@ Page {
                     rootWindow.openFile("About.qml");
                 }
             }
+        }
+    }
+
+    Menu {
+        id: feeditemMenu
+        visualParent: pageStack
+
+        property bool marked: false
+        property bool unread: false
+        property int articleId: 0
+
+        MenuLayout {
+            MenuItem {
+                text: (feeditemMenu.marked?qsTr("Unstar"):qsTr("Star"))
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    ttrss.updateFeedStar(articleId, !marked, markedCallback)
+                } }
+            MenuItem {
+                text: (feeditemMenu.unread?qsTr("Mark read"):qsTr("Mark Unread"))
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    ttrss.updateFeedUnread(articleId, !unread, unreadCallback)
+                } }
+            MenuItem {
+                text: qsTr("Open in Web Browser")
+                enabled: url && (url != "")
+                onClicked: {
+                    Qt.openUrlExternally(url);
+                } }
         }
     }
 }
