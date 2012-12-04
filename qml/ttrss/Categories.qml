@@ -42,7 +42,7 @@ Page {
                 anchors.leftMargin: -listView.anchors.leftMargin
                 anchors.rightMargin: -listView.anchors.rightMargin
                 visible: mouseArea.pressed
-                source: "image://theme/color15-meegotouch-list-background-selected-center"
+                source: "image://theme/meegotouch-list-background-selected-center"
             }
 
             Row {
