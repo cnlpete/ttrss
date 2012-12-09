@@ -107,6 +107,16 @@ Page {
         id: itemTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { itemMenu.close(); pageStack.pop(); }  }
+        ToolIcon {
+            iconId: "toolbar-previous";
+            onClicked: {
+                var ttrss = rootWindow.getTTRSS()
+                var tmpArticleId = ttrss.getPreviousFeedId(feedId, articleId)
+                if (tmpArticleId !== false)
+                    articleId = tmpArticleId
+                else
+                    console.log("no next articleid found")
+            } }
         BusyIndicator {
             visible: starloading
             running: starloading
@@ -134,10 +144,14 @@ Page {
                 ttrss.updateFeedUnread(articleId, !unread, unreadCallback)
             } }
         ToolIcon {
-            iconId: "toolbar-jump-to";
-            enabled: url && (url != "")
+            iconId: "toolbar-next";
             onClicked: {
-                Qt.openUrlExternally(url);
+                var ttrss = rootWindow.getTTRSS()
+                var tmpArticleId = ttrss.getNextFeedId(feedId, articleId)
+                if (tmpArticleId !== false)
+                    articleId = tmpArticleId
+                else
+                    console.log("no next articleid found")
             } }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close() }
     }
