@@ -252,7 +252,6 @@ Page {
                 text: (feeditemMenu.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    console.log(feeditemMenu.articleId + " <-- articleid")
                     ttrss.updateFeedUnread(feeditemMenu.articleId,
                                            !feeditemMenu.unread,
                                            showFeedItems)

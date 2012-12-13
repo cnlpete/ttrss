@@ -21,10 +21,9 @@ Page {
     property string pageTitle:      ""
     property string url:            ""
     property bool   loading:        false
-    property bool   starloading:    false
-    property bool   unreadloading:  false
     property bool   marked:         false
     property bool   unread:         true
+    property bool   rss:            false
 
     anchors.margins: 0
 
@@ -56,6 +55,17 @@ Page {
         flickableItem: flick
     }
 
+    BusyIndicator {
+        id: busyindicator1
+        visible: loading
+        running: loading
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            verticalCenter: parent.verticalCenter
+        }
+        platformStyle: BusyIndicatorStyle { size: 'large' }
+    }
+
     function showFeedItem() {
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
@@ -67,6 +77,18 @@ Page {
             pageTitle   = data.title
             marked      = data.marked
             unread      = data.unread
+            rss         = data.published
+        }
+    }
+
+    function callback() {
+        var ttrss = rootWindow.getTTRSS();
+        var data = ttrss.getFeedItem(feedId, articleId);
+        loading = false
+        if (data) {
+            marked      = data.marked
+            unread      = data.unread
+            rss         = data.published
         }
     }
 
@@ -82,24 +104,9 @@ Page {
         showFeedItem();
     }
 
-    function markedCallback() {
-        var ttrss = rootWindow.getTTRSS()
-        var data = ttrss.getFeedItem(feedId, articleId);
-
-        starloading = false
-
-        if (data)
-            marked = data.marked
-    }
-
-    function unreadCallback() {
-        var ttrss = rootWindow.getTTRSS()
-        var data = ttrss.getFeedItem(feedId, articleId);
-
-        unreadloading = false
-
-        if (data)
-            unread = data.unread
+    onLoadingChanged: {
+        if (loading && itemMenu.status !== DialogStatus.Closed)
+             itemMenu.close()
     }
 
     PageHeader {
@@ -121,31 +128,21 @@ Page {
                 else
                     console.log("no next articleid found")
             } }
-        BusyIndicator {
-            visible: starloading
-            running: starloading
-            platformStyle: BusyIndicatorStyle { size: 'medium' }
-        }
         ToolIcon {
-            iconId: "toolbar-favorite-"+(marked?"":"un")+"mark";
-            visible: !starloading
+            iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+            enabled: !loading
             onClicked: {
-                starloading = true
+                loading = true
                 var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedStar(articleId, !marked, markedCallback)
+                ttrss.updateFeedStar(articleId, !marked, callback)
             } }
-        BusyIndicator {
-            visible: unreadloading
-            running: unreadloading
-            platformStyle: BusyIndicatorStyle { size: 'medium' }
-        }
         ToolIcon {
-            iconId: "toolbar-"+(unread?"share":"add");
-            visible: !unreadloading
+            iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+            enabled: !loading
             onClicked: {
-                unreadloading = true
+                loading = true
                 var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedUnread(articleId, !unread, unreadCallback)
+                ttrss.updateFeedRSS(articleId, !rss, callback)
             } }
         ToolIcon {
             iconId: "toolbar-next";
@@ -157,7 +154,11 @@ Page {
                 else
                     console.log("no next articleid found")
             } }
-        ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close() }
+        ToolIcon {
+            iconId: "toolbar-view-menu" ;
+            onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close()
+            enabled: !loading
+        }
     }
 
     Menu {
@@ -166,11 +167,20 @@ Page {
 
         MenuLayout {
             MenuItem {
-                id: openInBrowser
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
                 onClicked: {
                     Qt.openUrlExternally(url);
+                }
+            }
+            MenuItem {
+                text: (unread?qsTr("Mark read"):qsTr("Mark Unread"))
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    loading = true
+                    ttrss.updateFeedUnread(articleId,
+                                           !unread,
+                                           callback)
                 }
             }
             MenuItem {
