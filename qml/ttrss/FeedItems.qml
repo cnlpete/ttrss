@@ -90,6 +90,7 @@ Page {
                     feeditemMenu.unread = model.unread
                     feeditemMenu.marked = model.marked
                     feeditemMenu.articleId = model.id
+                    feeditemMenu.url = model.url
                     feeditemMenu.open() }
             }
         }
@@ -133,7 +134,8 @@ Page {
                                          subtitle:  "subtitle",
                                          id:        feeditems[feeditem].id,
                                          unread:    !!feeditems[feeditem].unread,
-                                         marked:    !!feeditems[feeditem].marked
+                                         marked:    !!feeditems[feeditem].marked,
+                                         url:       feeditems[feeditem].link
                                      });
             }
         }
@@ -143,7 +145,8 @@ Page {
                                      subtitle:  "",
                                      id:        null,
                                      unread:    false,
-                                     marked:    false
+                                     marked:    false,
+                                     url: ""
                                  });
         }
     }
@@ -230,6 +233,7 @@ Page {
 
         property bool marked: false
         property bool unread: false
+        property string url: ""
         property int articleId: 0
 
         MenuLayout {
@@ -237,19 +241,24 @@ Page {
                 text: (feeditemMenu.marked?qsTr("Unstar"):qsTr("Star"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    ttrss.updateFeedStar(articleId, !marked, markedCallback)
+                    ttrss.updateFeedStar(feeditemMenu.articleId,
+                                         !feeditemMenu.marked,
+                                         showFeedItems)
                 } }
             MenuItem {
                 text: (feeditemMenu.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    ttrss.updateFeedUnread(articleId, !unread, unreadCallback)
+                    console.log(feeditemMenu.articleId + " <-- articleid")
+                    ttrss.updateFeedUnread(feeditemMenu.articleId,
+                                           !feeditemMenu.unread,
+                                           showFeedItems)
                 } }
             MenuItem {
                 text: qsTr("Open in Web Browser")
-                enabled: url && (url != "")
+                enabled: feeditemMenu.url && (feeditemMenu.url != "")
                 onClicked: {
-                    Qt.openUrlExternally(url);
+                    Qt.openUrlExternally(feeditemMenu.url);
                 } }
         }
     }
