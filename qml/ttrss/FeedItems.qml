@@ -89,6 +89,7 @@ Page {
                 onPressAndHold: {
                     feeditemMenu.unread = model.unread
                     feeditemMenu.marked = model.marked
+                    feeditemMenu.rss = model.rss
                     feeditemMenu.articleId = model.id
                     feeditemMenu.url = model.url
                     feeditemMenu.open() }
@@ -138,6 +139,7 @@ Page {
                                          id:        feeditems[feeditem].id,
                                          unread:    !!feeditems[feeditem].unread,
                                          marked:    !!feeditems[feeditem].marked,
+                                         rss:       feeditems[feeditem].published,
                                          url:       feeditems[feeditem].link
                                      });
             }
@@ -149,6 +151,7 @@ Page {
                                      id:        null,
                                      unread:    false,
                                      marked:    false,
+                                     rss:       false,
                                      url: ""
                                  });
         }
@@ -236,6 +239,7 @@ Page {
 
         property bool marked: false
         property bool unread: false
+        property bool rss: false
         property string url: ""
         property int articleId: 0
 
@@ -246,6 +250,14 @@ Page {
                     var ttrss = rootWindow.getTTRSS()
                     ttrss.updateFeedStar(feeditemMenu.articleId,
                                          !feeditemMenu.marked,
+                                         showFeedItems)
+                } }
+            MenuItem {
+                text: (feeditemMenu.rss?qsTr("Unpublish"):qsTr("Publish"))
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    ttrss.updateFeedRSS(feeditemMenu.articleId,
+                                         !feeditemMenu.rss,
                                          showFeedItems)
                 } }
             MenuItem {

@@ -33,6 +33,7 @@ var state={
     'lastfeed':         { 'id': null, 'continuation': 0 },
     'lastfeeditem':     { 'feedId': null, 'articleId': null },
     'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
+    'lastfeeditemrss':  { 'feedId': null, 'articleId': null },
 };
 
 var requestsPending={
@@ -42,6 +43,7 @@ var requestsPending={
     'feeditems'   : false,
     'feeditemstar': false,
     'feeditemunread': false,
+    'feeditemrss' : false,
 };
 
 var responsesPending={
@@ -51,6 +53,7 @@ var responsesPending={
     'feeditems'   : false,
     'feeditemstar': false,
     'feeditemunread': false,
+    'feeditemrss' : false,
 };
 
 var constants={
@@ -478,8 +481,21 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeedUnrad(state['lastfeeditemunread']['articleId'],
-                            state['lastfeeditemunread']['value'],
+            updateFeedUnread(state['lastfeeditemunread']['articleId'],
+                             state['lastfeeditemunread']['value'],
+                             callback);
+    }
+    else if (requestsPending['feeditemrss']) {
+        trace(4, 'feeditemrss request pending');
+        foundWork = true;
+        if(responsesPending['feeditemrss'])
+            return foundWork;
+        if(!state['token'])
+            //Get the auth token
+            login(callback);
+        else
+            updateFeedRSS(state['lastfeeditemrss']['articleId'],
+                            state['lastfeeditemrss']['value'],
                             callback);
     }
 
@@ -523,6 +539,51 @@ function updateFeedStar(articleId, starred, callback) {
         else if (http.readyState === XMLHttpRequest.DONE) {
             state['feeditemcache'][articleId].marked = starred;
             responsesPending['feeditemstar'] = false;
+            if(!processPendingRequests(callback))
+                if(callback)
+                    callback(0);
+        }
+    }
+    http.send(JSON.stringify(params));
+}
+
+function updateFeedRSS(articleId, rss, callback) {
+    if(responsesPending['feeditemrss'])
+        return;
+
+    if (state['lastfeeditemrss']['articleId'] !== articleId) {
+        state['lastfeeditemrss']['articleId'] = articleId;
+        state['lastfeeditemrss']['value'] = rss;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeditemrss'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeditemrss'] = true;
+
+    var params = {
+        'op': 'updateArticle',
+        'sid': state['token'],
+        'article_ids': articleId,
+        'field': 1,
+        'mode': (rss ? 1 : 0)
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE) {
+            state['feeditemcache'][articleId].published = rss;
+            responsesPending['feeditemrss'] = false;
             if(!processPendingRequests(callback))
                 if(callback)
                     callback(0);
