@@ -129,9 +129,12 @@ Page {
         loading = false;
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
+                var x = ttrss.html_entity_decode(feeditems[feeditem].content, 'ENT_QUOTES')
+                if (x.length > 102)
+                    x = x.substring(0,100) + "..."
                 itemListModel.append({
                                          title:     ttrss.html_entity_decode(feeditems[feeditem].title, 'ENT_QUOTES'),
-                                         subtitle:  "subtitle",
+                                         subtitle:  x,
                                          id:        feeditems[feeditem].id,
                                          unread:    !!feeditems[feeditem].unread,
                                          marked:    !!feeditems[feeditem].marked,
