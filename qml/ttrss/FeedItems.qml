@@ -141,7 +141,7 @@ Page {
         }
         else {
             itemListModel.append({
-                                     title:     (showAll ? "No items in feed" : "No unread items in feed"),
+                                     title:     (showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")),
                                      subtitle:  "",
                                      id:        null,
                                      unread:    false,
