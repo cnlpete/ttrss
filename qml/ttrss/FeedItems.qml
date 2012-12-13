@@ -162,6 +162,10 @@ Page {
         updateFeedItems();
     }
 
+    onVisibleChanged: {
+        showFeedItems();
+    }
+
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
         if(status === PageStatus.Deactivating)

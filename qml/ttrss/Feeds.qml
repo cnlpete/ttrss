@@ -138,6 +138,10 @@ Page {
         updateFeeds();
     }
 
+    onVisibleChanged: {
+        showFeeds();
+    }
+
     Component.onCompleted: {
         showFeeds();
         updateFeeds();

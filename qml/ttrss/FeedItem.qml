@@ -74,6 +74,10 @@ Page {
         showFeedItem();
     }
 
+    onVisibleChanged: {
+        showFeedItem();
+    }
+
     Component.onCompleted: {
         showFeedItem();
     }
