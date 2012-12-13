@@ -60,6 +60,14 @@
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
+    <message>
+        <source>Mark read</source>
+        <translation>Als gelesen markieren</translation>
+    </message>
+    <message>
+        <source>Mark Unread</source>
+        <translation>Als ungelesen markieren</translation>
+    </message>
 </context>
 <context>
     <name>FeedItems</name>
@@ -98,6 +106,14 @@
     <message>
         <source>No unread items in feed</source>
         <translation>Keine ungelesenen Nachrichten</translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation>Nicht veröffentlichen</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Veröffentlichen</translation>
     </message>
 </context>
 <context>
