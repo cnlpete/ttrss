@@ -98,7 +98,12 @@ Page {
         loading = true;
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeeds(categoryId, showFeeds);
+        ttrss.updateFeeds(categoryId, showFeedsCallback);
+    }
+
+    function showFeedsCallback() {
+        loading = false;
+        showFeeds();
     }
 
     function showFeeds() {
@@ -106,8 +111,6 @@ Page {
         var feeds = ttrss.getFeeds(categoryId);
         var showAll = ttrss.getShowAll();
         feedsModel.clear();
-
-        loading = false;
 
         if(feeds && feeds.length) {
             //First add feed with unread items

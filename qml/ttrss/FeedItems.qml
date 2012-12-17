@@ -118,7 +118,12 @@ Page {
         loading = true;
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeedItems(feedId, showFeedItems);
+        ttrss.updateFeedItems(feedId, showFeedItemsCallback);
+    }
+
+    function showFeedItemsCallback() {
+        loading = false;
+        showFeedItems();
     }
 
     function showFeedItems() {
@@ -127,7 +132,6 @@ Page {
         var showAll = ttrss.getShowAll();
         itemListModel.clear();
 
-        loading = false;
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
                 var x = ttrss.html_entity_decode(feeditems[feeditem].content, 'ENT_QUOTES')

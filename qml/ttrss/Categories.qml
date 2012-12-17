@@ -109,7 +109,12 @@ Page {
         loading = true;
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateCategories(showCategories);
+        ttrss.updateCategories(showCategoriesCallback);
+    }
+
+    function showCategoriesCallback() {
+        loading = false;
+        showCategories();
     }
 
     function showCategories() {
@@ -117,7 +122,6 @@ Page {
         var showAll = ttrss.getShowAll();
         var categories = ttrss.getCategories();
         categoriesModel.clear();
-        loading = false;
 
         if(categories && categories.length) {
             var totalUnreadCount = 0;
