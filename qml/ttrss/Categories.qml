@@ -211,12 +211,7 @@ Page {
                     updateCategories();
                 }
             }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: {
-                    rootWindow.openFile("About.qml");
-                }
-            }
+            AboutItem {}
         }
     }
 }

@@ -20,36 +20,39 @@
     </message>
 </context>
 <context>
+    <name>AboutItem</name>
+    <message>
+        <location filename="../qml/ttrss/AboutItem.qml" line="16"/>
+        <source>About</source>
+        <translation>About</translation>
+    </message>
+</context>
+<context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="141"/>
+        <location filename="../qml/ttrss/Categories.qml" line="145"/>
         <source>All Categories</source>
         <translation>All Categories</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="150"/>
+        <location filename="../qml/ttrss/Categories.qml" line="154"/>
         <source>No categories have unread items</source>
         <translation>No categories with unread items</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="150"/>
+        <location filename="../qml/ttrss/Categories.qml" line="154"/>
         <source>No categories to display</source>
         <translation>No categories</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="177"/>
+        <location filename="../qml/ttrss/Categories.qml" line="181"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS Reader</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="204"/>
+        <location filename="../qml/ttrss/Categories.qml" line="208"/>
         <source>Toggle Unread Only</source>
         <translation>Toggle unread only</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/Categories.qml" line="215"/>
-        <source>About</source>
-        <translation>About</translation>
     </message>
 </context>
 <context>
@@ -77,66 +80,56 @@
         <source>Mark Unread</source>
         <translation>Mark Unread</translation>
     </message>
-    <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="187"/>
-        <source>About</source>
-        <translation>About</translation>
-    </message>
 </context>
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="149"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="153"/>
         <source>No items in feed</source>
         <translation>No items in feed</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="149"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="153"/>
         <source>No unread items in feed</source>
         <translation>No unread items in feed</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="217"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="221"/>
         <source>Toggle Unread Only</source>
         <translation>Toggle unread only</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="228"/>
-        <source>About</source>
-        <translation>About</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="247"/>
         <source>Unstar</source>
         <translation>Unstar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="247"/>
         <source>Star</source>
         <translation>Star</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="256"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="255"/>
         <source>Unpublish</source>
         <translation>Unpublish</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="256"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="255"/>
         <source>Publish</source>
         <translation>Publish</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="264"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="263"/>
         <source>Mark read</source>
         <translation>Mark read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="264"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="263"/>
         <source>Mark Unread</source>
         <translation>Mark Unread</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="272"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="271"/>
         <source>Open in Web Browser</source>
         <translation>Open in Web Browser</translation>
     </message>
@@ -144,27 +137,27 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="118"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="121"/>
         <source>Unread: </source>
         <translation>Unread: </translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="126"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="129"/>
         <source>No feeds in category</source>
         <translation>No feeds in category</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="126"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="129"/>
         <source>Category has no unread items</source>
         <translation>Category has no feeds with unread items</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="199"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="202"/>
         <source>Toggle Unread Only</source>
         <translation>Toggle unread only</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="211"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="214"/>
         <source>About</source>
         <translation>About</translation>
     </message>
@@ -190,11 +183,6 @@
         <location filename="../qml/ttrss/MainPage.qml" line="148"/>
         <source>Login</source>
         <translation>Login</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="174"/>
-        <source>About</source>
-        <translation>About</translation>
     </message>
 </context>
 </TS>

@@ -17,6 +17,13 @@
     </message>
 </context>
 <context>
+    <name>AboutItem</name>
+    <message>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+</context>
+<context>
     <name>Categories</name>
     <message>
         <source>All Categories</source>
@@ -38,10 +45,6 @@
         <source>Toggle Unread Only</source>
         <translation>Toggle Unread Only</translation>
     </message>
-    <message>
-        <source>About</source>
-        <translation>Über</translation>
-    </message>
 </context>
 <context>
     <name>ErrorDialog</name>
@@ -52,10 +55,6 @@
 </context>
 <context>
     <name>FeedItem</name>
-    <message>
-        <source>About</source>
-        <translation>Über</translation>
-    </message>
     <message>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
@@ -74,10 +73,6 @@
     <message>
         <source>Toggle Unread Only</source>
         <translation>Toggle Unread Only</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Über</translation>
     </message>
     <message>
         <source>Unstar</source>
@@ -156,10 +151,6 @@
     <message>
         <source>Login</source>
         <translation>Einloggen</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Über</translation>
     </message>
 </context>
 </TS>

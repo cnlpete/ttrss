@@ -183,12 +183,7 @@ Page {
                                            callback)
                 }
             }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: {
-                    rootWindow.openFile("About.qml");
-                }
-            }
+            AboutItem {}
         }
     }
 }

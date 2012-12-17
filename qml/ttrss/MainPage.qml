@@ -170,12 +170,7 @@ Page {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
-            MenuItem {
-                text: qsTr("About")
-                onClicked: {
-                    rootWindow.openFile("About.qml");
-                }
-            }
+            AboutItem {}
         }
     }
 
