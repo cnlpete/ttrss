@@ -628,6 +628,14 @@ function updateFeedUnread(articleId, unread, callback) {
         }
         else if (http.readyState === XMLHttpRequest.DONE) {
             state['feeditemcache'][articleId].unread = unread;
+            var feed_id = state['feeditemcache'][articleId]['feed_id']
+            if (state['feedcache'][feed_id]) {
+                state['feedcache'][feed_id].unread += (unread?1:-1)
+                var cat_id = state['feedcache'][feed_id]['cat_id']
+                if (state['categorycache'][cat_id])
+                    state['categorycache'][cat_id].unread += (unread?1:-1)
+            }
+
             responsesPending['feeditemunread'] = false;
             if(!processPendingRequests(callback))
                 if(callback)
