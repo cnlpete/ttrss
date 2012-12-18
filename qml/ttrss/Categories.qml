@@ -166,6 +166,10 @@ Page {
         updateCategories();
     }
 
+    onVisibleChanged: {
+        showCategories();
+    }
+
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
         if(status === PageStatus.Deactivating)
