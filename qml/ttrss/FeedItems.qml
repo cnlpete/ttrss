@@ -222,10 +222,8 @@ Page {
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS();
                     var oldval = ttrss.getShowAll();
-                    var newval = !oldval;
-                    ttrss.setShowAll(newval);
-
-                    ttrss.updateFeedItems(feedId, showFeedItems);
+                    ttrss.setShowAll(!oldval);
+                    updateFeedItems();
                 }
             }
             AboutItem {}
@@ -247,25 +245,28 @@ Page {
                 text: (feeditemMenu.marked?qsTr("Unstar"):qsTr("Star"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
+                    loading = true
                     ttrss.updateFeedStar(feeditemMenu.articleId,
                                          !feeditemMenu.marked,
-                                         showFeedItems)
+                                         showFeedItemsCallback)
                 } }
             MenuItem {
                 text: (feeditemMenu.rss?qsTr("Unpublish"):qsTr("Publish"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
+                    loading = true
                     ttrss.updateFeedRSS(feeditemMenu.articleId,
                                          !feeditemMenu.rss,
-                                         showFeedItems)
+                                         showFeedItemsCallback)
                 } }
             MenuItem {
                 text: (feeditemMenu.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
+                    loading = true
                     ttrss.updateFeedUnread(feeditemMenu.articleId,
                                            !feeditemMenu.unread,
-                                           showFeedItems)
+                                           showFeedItemsCallback)
                 } }
             MenuItem {
                 text: qsTr("Open in Web Browser")
