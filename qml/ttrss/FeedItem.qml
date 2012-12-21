@@ -77,6 +77,8 @@ Page {
             itemView.html = data.content;
             url         = data.link
             pageTitle   = data.title
+            pageTitle   = pageTitle.replace(/<br.*>/gi, "")
+            pageTitle   = pageTitle.replace(/\n/gi, "")
             marked      = data.marked
             unread      = data.unread
             rss         = data.published
