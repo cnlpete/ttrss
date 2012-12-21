@@ -46,10 +46,15 @@ Page {
             transformOrigin: Item.TopLeft
             settings.standardFontFamily: "Arial"
             settings.defaultFontSize: constant.fontSizeSmall
-            settings.linksIncludedInFocusChain: true
-            settings.localContentCanAccessRemoteUrls: true
             preferredWidth: flick.width
             preferredHeight: flick.height
+
+            onUrlChanged: {
+                if (url != "") {
+                    Qt.openUrlExternally(url)
+                    showFeedItem()
+                }
+            }
         }
     }
 
@@ -69,12 +74,13 @@ Page {
     }
 
     function showFeedItem() {
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        var data = ttrss.getFeedItem(feedId, articleId);
+        var ttrss = rootWindow.getTTRSS()
+        numStatusUpdates = ttrss.getNumStatusUpdates()
+        var data = ttrss.getFeedItem(feedId, articleId)
 
         if (data) {
-            itemView.html = data.content;
+            var content = data.content
+            itemView.html = content.replace('target="_blank"', '')
             url         = data.link
             pageTitle   = data.title
             pageTitle   = pageTitle.replace(/<br.*>/gi, "")
