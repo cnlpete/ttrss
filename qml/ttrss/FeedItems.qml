@@ -143,7 +143,7 @@ Page {
                 var title = feeditems[feeditem].title
                 title = title.replace(/<br.*>/gi, "")
                 title = title.replace(/\n/gi, "")
-                console.log(title)
+
                 itemListModel.append({
                                          title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
                                          subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
