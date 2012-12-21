@@ -9,9 +9,9 @@ ToDo
 ----------
 * Show Feed Icons
 * Add Settings Page
-* Add Feed Details page with star/publish/mark unread actions
 * Swipe left/right in Feeds View, FeedItems View and FeedDetails View to show next/previous Entry
 * Accounts Plugin with global Accounts
+* System Integration, so it will periodically check for new items and notify? / integrate into events feed
 
 ArtWork
 ----------
