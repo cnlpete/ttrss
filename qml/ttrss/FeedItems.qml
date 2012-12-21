@@ -134,12 +134,19 @@ Page {
 
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
-                var x = ttrss.html_entity_decode(feeditems[feeditem].content, 'ENT_QUOTES')
-                if (x.length > 102)
-                    x = x.substring(0,100) + "..."
+                var subtitle = feeditems[feeditem].content
+                subtitle = subtitle.replace(/\n/gi, "")
+                subtitle = subtitle.replace(/<br.*>/gi, "")
+                subtitle = subtitle.replace(/<[\/]*(p|div|body|img)[^>]*>/gi, "")
+                if (subtitle.length > 102)
+                    subtitle = subtitle.substring(0,100) + "..."
+                var title = feeditems[feeditem].title
+                title = title.replace(/<br.*>/gi, "")
+                title = title.replace(/\n/gi, "")
+                console.log(title)
                 itemListModel.append({
-                                         title:     ttrss.html_entity_decode(feeditems[feeditem].title, 'ENT_QUOTES'),
-                                         subtitle:  x,
+                                         title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+                                         subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
                                          id:        feeditems[feeditem].id,
                                          unread:    !!feeditems[feeditem].unread,
                                          marked:    !!feeditems[feeditem].marked,
