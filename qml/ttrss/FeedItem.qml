@@ -24,6 +24,8 @@ Page {
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
+    property bool   previousId:     false
+    property bool   nextId:         false
 
     anchors.margins: 0
 
@@ -78,6 +80,9 @@ Page {
             marked      = data.marked
             unread      = data.unread
             rss         = data.published
+
+            previousId  = ttrss.getPreviousFeedId(feedId, articleId)
+            nextId      = ttrss.getNextFeedId(feedId, articleId)
         }
     }
 
@@ -119,7 +124,8 @@ Page {
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { itemMenu.close(); pageStack.pop(); }  }
         ToolIcon {
-            iconId: "toolbar-previous";
+            iconId: "toolbar-previous"
+            visible: previousId !== false
             onClicked: {
                 var ttrss = rootWindow.getTTRSS()
                 var tmpArticleId = ttrss.getPreviousFeedId(feedId, articleId)
@@ -145,7 +151,8 @@ Page {
                 ttrss.updateFeedRSS(articleId, !rss, callback)
             } }
         ToolIcon {
-            iconId: "toolbar-next";
+            iconId: "toolbar-next"
+            visible: nextId !== false
             onClicked: {
                 var ttrss = rootWindow.getTTRSS()
                 var tmpArticleId = ttrss.getNextFeedId(feedId, articleId)
