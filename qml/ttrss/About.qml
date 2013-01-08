@@ -104,9 +104,15 @@ Page {
             width: 350
             text:  qsTr("Version")+": 0.0.1<br/>"
                   +qsTr("Copyright")+": Hauke Schade 2012<br/>"
-                   +'<a href="http://github.com/cnlpete/ttrss">'+qsTr('TTRss Privacy Policy')+'</a><br/>';
+                   +'';
             onLinkActivated: {
                 Qt.openUrlExternally(link)
+            }
+        }
+        Button {
+            text: qsTr("Homepage")
+            onClicked: {
+                Qt.openUrlExternally(constant.sourceRepoSite)
             }
         }
     }
