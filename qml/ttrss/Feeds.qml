@@ -115,14 +115,12 @@ Page {
         if(feeds && feeds.length) {
             //First add feed with unread items
             for(var feed = 0; feed < feeds.length; feed++) {
-                if( showAll || feeds[feed].unread > 0) {
-                    feedsModel.append({
-                                          title:        ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),
-                                          subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: ") + feeds[feed].unread : ""),
-                                          unreadcount:  feeds[feed].unread,
-                                          feedId:       feeds[feed].id,
-                                      });
-                }
+                feedsModel.append({
+                                      title:        ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),
+                                      subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: ") + feeds[feed].unread : ""),
+                                      unreadcount:  feeds[feed].unread,
+                                      feedId:       feeds[feed].id,
+                                  });
             }
         }
         else {
