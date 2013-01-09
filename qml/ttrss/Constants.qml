@@ -33,5 +33,5 @@ QtObject{
 
     property int headerHeight: inPortrait ? 72 : 56
 
-    property url sourceRepoSite: "https://github.com/cnlpete/ttrss"
+    property url sourceRepoSite: "http://cnlpete.github.com/ttrss"
 }
