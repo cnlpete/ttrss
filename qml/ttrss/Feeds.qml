@@ -208,12 +208,7 @@ Page {
                     ttrss.updateFeeds(categoryId, showFeeds);
                 }
             }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: {
-                    rootWindow.openFile("About.qml");
-                }
-            }
+            AboutItem {}
         }
     }
 }
