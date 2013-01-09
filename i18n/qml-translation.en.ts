@@ -14,9 +14,9 @@
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="107"/>
-        <source>TTRss Privacy Policy</source>
-        <translation>TTRss Privacy Policy</translation>
+        <location filename="../qml/ttrss/About.qml" line="113"/>
+        <source>Homepage</source>
+        <translation>Homepage</translation>
     </message>
 </context>
 <context>
