@@ -115,8 +115,23 @@ Page {
         if(feeds && feeds.length) {
             //First add feed with unread items
             for(var feed = 0; feed < feeds.length; feed++) {
+
+                var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
+                if (feeds[feed].id == ttrss.constants['feeds']['archived'])
+                    title = constant.archivedArticles
+                if (feeds[feed].id == ttrss.constants['feeds']['starred'])
+                    title = constant.starredArticles
+                if (feeds[feed].id == ttrss.constants['feeds']['published'])
+                    title = constant.publishedArticles
+                if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
+                    title = constant.freshArticles
+                if (feeds[feed].id == ttrss.constants['feeds']['all'])
+                    title = constant.allArticles
+                if (feeds[feed].id == ttrss.constants['feeds']['recently'])
+                    title = constant.recentlyArticles
+
                 feedsModel.append({
-                                      title:        ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES'),
+                                      title:        title,
                                       subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: ") + feeds[feed].unread : ""),
                                       unreadcount:  feeds[feed].unread,
                                       feedId:       feeds[feed].id,

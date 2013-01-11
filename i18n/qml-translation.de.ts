@@ -30,29 +30,82 @@
 <context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="145"/>
-        <source>All Categories</source>
-        <translation>Alle Kategorien</translation>
+        <location filename="../qml/ttrss/Categories.qml" line="146"/>
+        <source>Unread: </source>
+        <translation>Ungelesene: </translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="154"/>
+        <location filename="../qml/ttrss/Categories.qml" line="164"/>
         <source>No categories have unread items</source>
         <translation>Keine Kategorien mit neuen Einträgen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="154"/>
+        <location filename="../qml/ttrss/Categories.qml" line="164"/>
         <source>No categories to display</source>
         <translation>Keine Kategorien</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="185"/>
+        <location filename="../qml/ttrss/Categories.qml" line="195"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS Reader</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="212"/>
+        <location filename="../qml/ttrss/Categories.qml" line="222"/>
         <source>Toggle Unread Only</source>
         <translation>Toggle Unread Only</translation>
+    </message>
+</context>
+<context>
+    <name>Constants</name>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="38"/>
+        <source>Archived articles</source>
+        <translation>Archivierte Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="39"/>
+        <source>Starred articles</source>
+        <translation>Bewertete Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="40"/>
+        <source>Published articles</source>
+        <translation>Veröffentlichte Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="41"/>
+        <source>Fresh articles</source>
+        <translation>Neue Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="42"/>
+        <source>All articles</source>
+        <translation>Alle Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="43"/>
+        <source>Recently read</source>
+        <translation>Zuletzt gelesene Artikel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="45"/>
+        <source>Labels</source>
+        <translation>Labels</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="46"/>
+        <source>Special</source>
+        <translation>Spezielle Feeds</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="47"/>
+        <source>All Feeds</source>
+        <translation>Alle Feeds</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Constants.qml" line="48"/>
+        <source>Uncategorized</source>
+        <translation>Unkategorisierte Feeds</translation>
     </message>
 </context>
 <context>
@@ -137,22 +190,22 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="120"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="135"/>
         <source>Unread: </source>
         <translation>Ungelesene: </translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="127"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="142"/>
         <source>No feeds in category</source>
         <translation>Keine Feeds</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="127"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="142"/>
         <source>Category has no unread items</source>
         <translation>Keine ungelesenen Einträge</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="200"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="215"/>
         <source>Toggle Unread Only</source>
         <translation>Toggle Unread Only</translation>
     </message>

@@ -34,4 +34,16 @@ QtObject{
     property int headerHeight: inPortrait ? 72 : 56
 
     property url sourceRepoSite: "http://cnlpete.github.com/ttrss"
+
+    property string archivedArticles: qsTr('Archived articles')
+    property string starredArticles: qsTr('Starred articles')
+    property string publishedArticles: qsTr('Published articles')
+    property string freshArticles: qsTr('Fresh articles')
+    property string allArticles: qsTr('All articles')
+    property string recentlyArticles: qsTr('Recently read')
+
+    property string labelsCategory: qsTr('Labels')
+    property string specialCategory: qsTr('Special')
+    property string allFeeds: qsTr('All Feeds')
+    property string uncategorizedCategory: qsTr('Uncategorized')
 }

@@ -57,8 +57,20 @@ var responsesPending={
 };
 
 var constants={
-    "ALL_CATEGORIES": -3,
-    "SPECIAL_CATEGORIES": -1,
+    "categories":{
+        "ALL":          -3,
+        "LABELS":       -2,
+        "SPECIAL":      -1,
+        "UNCATEGORIZED": 0
+    },
+    "feeds": {
+        'archived':     0,
+        'starred':      -1,
+        'published':    -2,
+        'fresh':        -3,
+        'all':          -4,
+        'recently':     -6
+    }
 }
 
 //Clone the initial state so we can clear the state by recloning...

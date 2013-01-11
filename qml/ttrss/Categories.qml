@@ -131,20 +131,30 @@ Page {
                 if (categories[category].id >= 0)
                     totalUnreadCount += categories[category].unread;
 
+                var title = ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES')
+                if (categories[category].id == ttrss.constants['categories']['ALL'])
+                    title = constant.allFeeds
+                if (categories[category].id == ttrss.constants['categories']['LABELS'])
+                    title = constant.labelsCategory
+                if (categories[category].id == ttrss.constants['categories']['SPECIAL'])
+                    title = constant.specialCategory
+                if (categories[category].id == ttrss.constants['categories']['UNCATEGORIZED'])
+                    title = constant.uncategorizedCategory
+
                 categoriesModel.append({
-                                           title:       ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES'),
-                                           subtitle:    "Unread: " + categories[category].unread,
+                                           title:       title,
+                                           subtitle:    qsTr("Unread: ") + categories[category].unread,
                                            unreadcount: categories[category].unread,
                                            categoryId:  categories[category].id
                                        });
             }
 
             if(totalUnreadCount > 0 || showAll) {
-                //Add the "All category"
+                //Add the "All" category
                 categoriesModel.insert(0, {
-                                           title: qsTr("All Categories"),
+                                           title: constant.allFeeds,
                                            subtitle: "Unread: " + totalUnreadCount,
-                                           categoryId: ttrss.constants['ALL_CATEGORIES'],
+                                           categoryId: ttrss.constants['categories']['ALL'],
                                            unreadcount: totalUnreadCount,
                                        });
             }
