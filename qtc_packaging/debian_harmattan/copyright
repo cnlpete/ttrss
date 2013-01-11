@@ -1,17 +1,15 @@
-This package was debianized by Hauke Schade <hauke@unknown> on
+This package was debianized by Hauke Schade <cnlpete@cnlpete.de> on
 Thu, 15 Nov 2012 23:50:39 +0100.
 
 It was downloaded from <url://example.com>
 
 Upstream Author(s):
 
-    <put author's name and email here>
-    <likewise for another author>
+    Hauke Schade <cnlpete@cnlpete.de>
 
 Copyright:
 
-    <Copyright (C) YYYY Name OfAuthor>
-    <likewise for another author>
+    Copyright (C) 2012-1013 Hauke Schade <cnlpete@cnlpete.de>
 
 License:
 
@@ -32,7 +30,7 @@ License:
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
-The Debian packaging is (C) 2012, Hauke Schade <hauke@unknown> and
+The Debian packaging is (C) 2012, Hauke Schade <cnlpete@cnlpete.de> and
 is licensed under the GPL, see above.
 
 
