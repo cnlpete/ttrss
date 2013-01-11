@@ -102,7 +102,7 @@ Page {
         Label {
             id: aboutInfo
             width: 350
-            text:  qsTr("Version")+": 0.0.1<br/>"
+            text:  qsTr("Version")+": 0.1.0<br/>"
                   +qsTr("Copyright")+": Hauke Schade 2012<br/>"
                    +'';
             onLinkActivated: {

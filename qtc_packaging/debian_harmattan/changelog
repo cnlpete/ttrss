@@ -1,5 +1,4 @@
-ttrss (0.0.1) unstable; urgency=low
+ttrss (0.1.0) unstable; urgency=low
+  * Initial Release
 
-  * Initial Release.
-
- -- Hauke Schade <hauke@unknown>  Thu, 15 Nov 2012 23:50:39 +0100
+ -- Hauke Schade <cnlpete@cnlpete.de>  Fri, 11 Jan 2013 17:52:38 +0100
