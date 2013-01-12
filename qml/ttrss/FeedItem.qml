@@ -110,7 +110,8 @@ Page {
     }
 
     onVisibleChanged: {
-        showFeedItem();
+        if (visible)
+            showFeedItem();
     }
 
     Component.onCompleted: {

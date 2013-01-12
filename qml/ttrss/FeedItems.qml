@@ -183,7 +183,8 @@ Page {
     }
 
     onVisibleChanged: {
-        showFeedItems();
+        if (visible)
+            showFeedItems();
     }
 
     onStatusChanged: {

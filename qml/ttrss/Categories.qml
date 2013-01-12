@@ -177,7 +177,8 @@ Page {
     }
 
     onVisibleChanged: {
-        showCategories();
+        if (visible)
+            showCategories();
     }
 
     onStatusChanged: {

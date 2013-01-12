@@ -155,7 +155,8 @@ Page {
     }
 
     onVisibleChanged: {
-        showFeeds();
+        if (visible)
+            showFeeds();
     }
 
     Component.onCompleted: {
