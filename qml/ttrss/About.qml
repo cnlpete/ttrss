@@ -100,7 +100,6 @@ Page {
 
 
         Label {
-            id: aboutInfo
             width: 350
             text:  qsTr("Version")+": 0.1.0<br/>"
                   +qsTr("Copyright")+": Hauke Schade 2012<br/>"
@@ -115,7 +114,40 @@ Page {
                 Qt.openUrlExternally(constant.sourceRepoSite)
             }
         }
+        Label {
+            width: 350
+            text: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker")
+        }
+        Button {
+            text: qsTr("Issue Tracker")
+            onClicked: {
+                Qt.openUrlExternally(constant.issueTrackerUrl)
+            }
+        }
+        Button {
+            text: qsTr("License")
+            onClicked: {
+                popup.open();
+            }
+        }
     }
+
+    SimplePopup {
+        id: popup
+        text: "This program is free software; you can redistribute it and/or modify
+                it under the terms of the GNU General Public License as published by
+                the Free Software Foundation; either version 2 of the License, or
+                (at your option) any later version.<br>
+                <br>
+                This program is distributed in the hope that it will be useful,
+                but WITHOUT ANY WARRANTY; without even the implied warranty of
+                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                GNU General Public License for more details.<br>
+                <br>
+                You should have received a copy of the GNU General Public License
+                along with this program. If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>."
+    }
+
 
     ToolBarLayout {
         id: aboutTools
