@@ -4,19 +4,34 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="105"/>
+        <location filename="../qml/ttrss/About.qml" line="112"/>
         <source>Version</source>
         <translation>Versión</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="106"/>
+        <location filename="../qml/ttrss/About.qml" line="113"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="113"/>
+        <location filename="../qml/ttrss/About.qml" line="120"/>
         <source>Homepage</source>
         <translation>Página web</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/About.qml" line="127"/>
+        <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
+        <translation>Si observa errores, o tienes alguna sugerencia, por favor visite el Issue Tracker</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/About.qml" line="130"/>
+        <source>Issue Tracker</source>
+        <translation>Issue Tracker</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/About.qml" line="136"/>
+        <source>License</source>
+        <translation>Licencia</translation>
     </message>
 </context>
 <context>
@@ -54,52 +69,52 @@
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="38"/>
+        <location filename="../qml/ttrss/Constants.qml" line="39"/>
         <source>Archived articles</source>
         <translation>Artículos archivados</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="39"/>
+        <location filename="../qml/ttrss/Constants.qml" line="40"/>
         <source>Starred articles</source>
         <translation>Artículos favoritos</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="40"/>
+        <location filename="../qml/ttrss/Constants.qml" line="41"/>
         <source>Published articles</source>
         <translation>Artículos publicados</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="41"/>
+        <location filename="../qml/ttrss/Constants.qml" line="42"/>
         <source>Fresh articles</source>
         <translation>Nuevos artículos</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="42"/>
+        <location filename="../qml/ttrss/Constants.qml" line="43"/>
         <source>All articles</source>
         <translation>Todos los artículos</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="43"/>
+        <location filename="../qml/ttrss/Constants.qml" line="44"/>
         <source>Recently read</source>
         <translation>Leído recientemente</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="45"/>
+        <location filename="../qml/ttrss/Constants.qml" line="46"/>
         <source>Labels</source>
         <translation>Etiquetas</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="46"/>
+        <location filename="../qml/ttrss/Constants.qml" line="47"/>
         <source>Special</source>
         <translation>Especial</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="47"/>
+        <location filename="../qml/ttrss/Constants.qml" line="48"/>
         <source>All Feeds</source>
         <translation>Todos</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="48"/>
+        <location filename="../qml/ttrss/Constants.qml" line="49"/>
         <source>Uncategorized</source>
         <translation>Sin categoría</translation>
     </message>
@@ -217,6 +232,14 @@
         <location filename="../qml/ttrss/MainPage.qml" line="148"/>
         <source>Login</source>
         <translation>Login</translation>
+    </message>
+</context>
+<context>
+    <name>SimplePopup</name>
+    <message>
+        <location filename="../qml/ttrss/SimplePopup.qml" line="47"/>
+        <source>OK</source>
+        <translation>Aceptar</translation>
     </message>
 </context>
 <context>
