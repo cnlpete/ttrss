@@ -31,6 +31,7 @@
     <name>Categories</name>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="146"/>
+        <location filename="../qml/ttrss/Categories.qml" line="156"/>
         <source>Unread: </source>
         <translation>no leído: </translation>
     </message>
@@ -45,14 +46,9 @@
         <translation>No hay categorías para mostrar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="195"/>
+        <location filename="../qml/ttrss/Categories.qml" line="196"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS Reader</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/Categories.qml" line="222"/>
-        <source>Toggle Unread Only</source>
-        <translation>Alternar sin leer sólo</translation>
     </message>
 </context>
 <context>
@@ -119,17 +115,17 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="185"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="187"/>
         <source>Open in Web Browser</source>
         <translation>Abrir en navegador web</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="192"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="194"/>
         <source>Mark read</source>
         <translation>marcar como leído</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="192"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="194"/>
         <source>Mark Unread</source>
         <translation>marcar como no leído</translation>
     </message>
@@ -147,42 +143,37 @@
         <translation>No hay artículos para mostrar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="228"/>
-        <source>Toggle Unread Only</source>
-        <translation>Alternar sin leer sólo</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="252"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Unstar</source>
         <translation>desmarcar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="252"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Star</source>
         <translation>marcar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="261"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="257"/>
         <source>Unpublish</source>
         <translation>despublicar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="261"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="257"/>
         <source>Publish</source>
         <translation>publicar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="270"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark read</source>
         <translation>marcar como leído</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="270"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark Unread</source>
         <translation>desmarcar como leído</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="279"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="275"/>
         <source>Open in Web Browser</source>
         <translation>Abrir en navegador web</translation>
     </message>
@@ -203,11 +194,6 @@
         <location filename="../qml/ttrss/Feeds.qml" line="142"/>
         <source>Category has no unread items</source>
         <translation>No hay Feeds para mostrar</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="215"/>
-        <source>Toggle Unread Only</source>
-        <translation>Alternar sin leer sólo</translation>
     </message>
 </context>
 <context>
@@ -231,6 +217,19 @@
         <location filename="../qml/ttrss/MainPage.qml" line="148"/>
         <source>Login</source>
         <translation>Login</translation>
+    </message>
+</context>
+<context>
+    <name>ToggleShowAllItem</name>
+    <message>
+        <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
+        <source>Show Unread Only</source>
+        <translation>Mostrar sólo no leído</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
+        <source>Show All</source>
+        <translation>Mostrar todos</translation>
     </message>
 </context>
 </TS>
