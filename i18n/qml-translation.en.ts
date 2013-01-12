@@ -96,7 +96,7 @@
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="47"/>
         <source>All Feeds</source>
-        <translation>All Feeds</translation>
+        <translation>All feeds</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="48"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="194"/>
         <source>Mark Unread</source>
-        <translation>Mark Unread</translation>
+        <translation>Mark unread</translation>
     </message>
 </context>
 <context>
@@ -170,7 +170,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark Unread</source>
-        <translation>Mark Unread</translation>
+        <translation>Mark unread</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="275"/>
