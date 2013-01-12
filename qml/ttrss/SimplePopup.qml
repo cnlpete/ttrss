@@ -27,7 +27,6 @@ Dialog {
 
     content: Text {
         id: popupitem
-        anchors.top: popuptitle
         width: parent.width
         font.pixelSize: constant.fontSizeSmall
         anchors.centerIn: parent
@@ -43,7 +42,6 @@ Dialog {
     buttons: ButtonRow {
         style: ButtonStyle { }
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: popupitem
         Button { text: qsTr("OK"); onClicked: popup.accept() }
     }
 }
