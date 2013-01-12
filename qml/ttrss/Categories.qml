@@ -153,7 +153,7 @@ Page {
                 //Add the "All" category
                 categoriesModel.insert(0, {
                                            title: constant.allFeeds,
-                                           subtitle: "Unread: " + totalUnreadCount,
+                                           subtitle: qsTr("Unread: ") + totalUnreadCount,
                                            categoryId: ttrss.constants['categories']['ALL'],
                                            unreadcount: totalUnreadCount,
                                        });
