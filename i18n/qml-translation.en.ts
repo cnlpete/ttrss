@@ -4,32 +4,32 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="112"/>
-        <source>Version</source>
-        <translation>Version</translation>
+        <location filename="../qml/ttrss/About.qml" line="109"/>
+        <source>Version: %1</source>
+        <translation>Version: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="113"/>
-        <source>Copyright</source>
-        <translation>Copyright</translation>
+        <location filename="../qml/ttrss/About.qml" line="110"/>
+        <source>Copyright: %1</source>
+        <translation>Copyright: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="120"/>
+        <location filename="../qml/ttrss/About.qml" line="117"/>
         <source>Homepage</source>
         <translation>Homepage</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="127"/>
+        <location filename="../qml/ttrss/About.qml" line="124"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation>If you encounter bugs or have feature requests, please visit the Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="130"/>
+        <location filename="../qml/ttrss/About.qml" line="128"/>
         <source>Issue Tracker</source>
         <translation>Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="136"/>
+        <location filename="../qml/ttrss/About.qml" line="135"/>
         <source>License</source>
         <translation>License</translation>
     </message>
@@ -47,8 +47,8 @@
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="146"/>
         <location filename="../qml/ttrss/Categories.qml" line="156"/>
-        <source>Unread: </source>
-        <translation>Unread: </translation>
+        <source>Unread: %1</source>
+        <translation>%1 unread</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="164"/>
@@ -197,8 +197,8 @@
     <name>Feeds</name>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="135"/>
-        <source>Unread: </source>
-        <translation>Unread: </translation>
+        <source>Unread: %1</source>
+        <translation>%1 unread</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="142"/>

@@ -143,7 +143,7 @@ Page {
 
                 categoriesModel.append({
                                            title:       title,
-                                           subtitle:    qsTr("Unread: ") + categories[category].unread,
+                                           subtitle:    qsTr("Unread: %1").arg(categories[category].unread),
                                            unreadcount: categories[category].unread,
                                            categoryId:  categories[category].id
                                        });
@@ -153,7 +153,7 @@ Page {
                 //Add the "All" category
                 categoriesModel.insert(0, {
                                            title: constant.allFeeds,
-                                           subtitle: qsTr("Unread: ") + totalUnreadCount,
+                                           subtitle: qsTr("Unread: %1").arg(totalUnreadCount),
                                            categoryId: ttrss.constants['categories']['ALL'],
                                            unreadcount: totalUnreadCount,
                                        });

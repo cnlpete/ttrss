@@ -106,9 +106,8 @@ Page {
 
         Label {
             width: parent.width
-            text:  qsTr("Version")+": 0.1.0<br/>"
-                  +qsTr("Copyright")+": Hauke Schade 2012<br/>"
-                   +'';
+            text:  qsTr("Version: %1").arg("0.1.0") + "<br/>"
+                   +qsTr("Copyright: %1").arg("Hauke Schade 2012") + "<br/>"
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }

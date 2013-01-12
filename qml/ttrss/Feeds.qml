@@ -132,7 +132,7 @@ Page {
 
                 feedsModel.append({
                                       title:        title,
-                                      subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: ") + feeds[feed].unread : ""),
+                                      subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: %1").arg(feeds[feed].unread) : ""),
                                       unreadcount:  feeds[feed].unread,
                                       feedId:       feeds[feed].id,
                                   });
