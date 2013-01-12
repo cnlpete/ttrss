@@ -134,10 +134,10 @@ Page {
 
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
-                var subtitle = feeditems[feeditem].content
+                var subtitle = feeditems[feeditem].content || ""
                 subtitle = subtitle.replace(/\n/gi, "")
                 subtitle = subtitle.replace(/<br.*>/gi, "")
-                subtitle = subtitle.replace(/<[\/]*(p|div|body|img)[^>]*>/gi, "")
+                subtitle = subtitle.replace(/<[\/]?(p|div|body|img|h|a)[^>]*>/gi, "")
                 if (subtitle.length > 102)
                     subtitle = subtitle.substring(0,100) + "..."
                 var title = feeditems[feeditem].title
