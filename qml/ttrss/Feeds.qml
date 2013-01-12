@@ -210,17 +210,9 @@ Page {
         visualParent: pageStack
 
         MenuLayout {
-            MenuItem {
-                id: toggleUnread
-                text: qsTr("Toggle Unread Only")
-                onClicked: {
-                    var ttrss = rootWindow.getTTRSS();
-                    var oldval = ttrss.getShowAll();
-                    var newval = !oldval;
-                    ttrss.setShowAll(newval);
-
-                    //console.log("Updating categories with showAll: "+newval+"\n");
-                    ttrss.updateFeeds(categoryId, showFeeds);
+            ToggleShowAllItem {
+                onUpdateView: {
+                    feedsPage.updateFeeds()
                 }
             }
             AboutItem {}

@@ -223,14 +223,9 @@ Page {
         visualParent: pageStack
 
         MenuLayout {
-            MenuItem {
-                id: toggleUnread
-                text: qsTr("Toggle Unread Only")
-                onClicked: {
-                    var ttrss = rootWindow.getTTRSS();
-                    var oldval = ttrss.getShowAll();
-                    ttrss.setShowAll(!oldval);
-                    updateFeedItems();
+            ToggleShowAllItem {
+                onUpdateView: {
+                    updateFeedItems()
                 }
             }
             AboutItem {}
