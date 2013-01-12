@@ -6,17 +6,17 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="105"/>
         <source>Version</source>
-        <translation>versión</translation>
+        <translation>Versión</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="106"/>
         <source>Copyright</source>
-        <translation>copyright</translation>
+        <translation>Copyright</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="113"/>
         <source>Homepage</source>
-        <translation>página web</translation>
+        <translation>Página web</translation>
     </message>
 </context>
 <context>
@@ -33,7 +33,7 @@
         <location filename="../qml/ttrss/Categories.qml" line="146"/>
         <location filename="../qml/ttrss/Categories.qml" line="156"/>
         <source>Unread: </source>
-        <translation>no leído: </translation>
+        <translation>No leído: </translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="164"/>
@@ -56,32 +56,32 @@
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="38"/>
         <source>Archived articles</source>
-        <translation>artículos archivados</translation>
+        <translation>Artículos archivados</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="39"/>
         <source>Starred articles</source>
-        <translation>artículos favoritos</translation>
+        <translation>Artículos favoritos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="40"/>
         <source>Published articles</source>
-        <translation>artículos publicados</translation>
+        <translation>Artículos publicados</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="41"/>
         <source>Fresh articles</source>
-        <translation>nuevos artículos</translation>
+        <translation>Nuevos artículos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="42"/>
         <source>All articles</source>
-        <translation>todos los artículos</translation>
+        <translation>Todos los artículos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="43"/>
         <source>Recently read</source>
-        <translation>hace poco leí</translation>
+        <translation>Leído recientemente</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="45"/>
@@ -122,12 +122,12 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="194"/>
         <source>Mark read</source>
-        <translation>marcar como leído</translation>
+        <translation>Marcar como leído</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="194"/>
         <source>Mark Unread</source>
-        <translation>marcar como no leído</translation>
+        <translation>Marcar como no leído</translation>
     </message>
 </context>
 <context>
@@ -145,32 +145,32 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Unstar</source>
-        <translation>desmarcar</translation>
+        <translation>Desmarcar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Star</source>
-        <translation>marcar</translation>
+        <translation>Marcar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="257"/>
         <source>Unpublish</source>
-        <translation>despublicar</translation>
+        <translation>Despublicar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="257"/>
         <source>Publish</source>
-        <translation>publicar</translation>
+        <translation>Publicar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark read</source>
-        <translation>marcar como leído</translation>
+        <translation>Marcar como leído</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark Unread</source>
-        <translation>desmarcar como leído</translation>
+        <translation>Desmarcar como leído</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="275"/>
@@ -183,17 +183,17 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="135"/>
         <source>Unread: </source>
-        <translation>no leído: </translation>
+        <translation>No leído: </translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="142"/>
         <source>No feeds in category</source>
-        <translation>No hay Feeds para mostrar</translation>
+        <translation>No hay feeds para mostrar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="142"/>
         <source>Category has no unread items</source>
-        <translation>No hay Feeds para mostrar</translation>
+        <translation>No hay feeds para mostrar</translation>
     </message>
 </context>
 <context>
