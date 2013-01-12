@@ -30,23 +30,26 @@ Page {
                 target: logo
                 anchors {
                     horizontalCenter: undefined
+                    top: undefined
 
                     left: parent.left
-                    top: parent.top
+                    verticalCenter: parent.verticalCenter
                 }
+            }
+            PropertyChanges {
+                target: aboutInfoContainer
+                anchors.rightMargin: 50
+                width: 400
             }
             AnchorChanges {
                 target: aboutInfoContainer
                 anchors {
                     horizontalCenter: undefined
+                    top: undefined
 
-                    left: logo.right
-                    top: logo.top
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
                 }
-            }
-            PropertyChanges {
-                target: aboutInfoContainer
-                anchors.leftMargin: 50
             }
         },
         State {
@@ -55,23 +58,26 @@ Page {
                 target: logo
                 anchors {
                     left: undefined
+                    verticalCenter: undefined
 
                     top: parent.top
-                    horizontalCenter: parent.horizontalCenter
-                }
-            }
-            AnchorChanges {
-                target: aboutInfoContainer
-                anchors {
-                    left: undefined
-
-                    top: logo.bottom
                     horizontalCenter: parent.horizontalCenter
                 }
             }
             PropertyChanges {
                 target: aboutInfoContainer
                 anchors.topMargin: 50
+                width: 350
+            }
+            AnchorChanges {
+                target: aboutInfoContainer
+                anchors {
+                    left: undefined
+                    verticalCenter: undefined
+
+                    top: logo.bottom
+                    horizontalCenter: parent.horizontalCenter
+                }
             }
         }
     ]
@@ -98,9 +104,8 @@ Page {
     Column {
         id: aboutInfoContainer
 
-
         Label {
-            width: 350
+            width: parent.width
             text:  qsTr("Version")+": 0.1.0<br/>"
                   +qsTr("Copyright")+": Hauke Schade 2012<br/>"
                    +'';
@@ -109,22 +114,25 @@ Page {
             }
         }
         Button {
+            width: parent.width
             text: qsTr("Homepage")
             onClicked: {
                 Qt.openUrlExternally(constant.sourceRepoSite)
             }
         }
         Label {
-            width: 350
+            width: parent.width
             text: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker")
         }
         Button {
+            width: parent.width
             text: qsTr("Issue Tracker")
             onClicked: {
                 Qt.openUrlExternally(constant.issueTrackerUrl)
             }
         }
         Button {
+            width: parent.width
             text: qsTr("License")
             onClicked: {
                 popup.open();
