@@ -52,6 +52,7 @@ Page {
             onUrlChanged: {
                 if (url != "") {
                     Qt.openUrlExternally(url)
+                    // BUGFIX: the url is still changed, so i need to change it back to the original content...
                     showFeedItem()
                 }
             }
