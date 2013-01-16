@@ -1,5 +1,5 @@
 Source: ttrss
-Section: user/other
+Section: user/internet
 Priority: optional
 Maintainer: Hauke Schade <cnlpete@cnlpete.de>
 Build-Depends: debhelper (>= 5), libqt4-dev
