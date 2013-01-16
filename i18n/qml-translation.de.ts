@@ -10,31 +10,36 @@
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="110"/>
-        <source>Copyright: %1</source>
-        <translation>Copyright: %1</translation>
+        <source>Author: %1</source>
+        <translation>Autor: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="117"/>
+        <location filename="../qml/ttrss/About.qml" line="111"/>
+        <source>Thanks to:</source>
+        <translation>Danke an:</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/About.qml" line="119"/>
         <source>Homepage</source>
         <translation>Webseite</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="124"/>
+        <location filename="../qml/ttrss/About.qml" line="126"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation>Wenn dir Fehler auffallen, oder du Verbesserungsvorschläge hast, benutze bitte den  </translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="128"/>
+        <location filename="../qml/ttrss/About.qml" line="130"/>
         <source>Issue Tracker</source>
         <translation>Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="164"/>
+        <location filename="../qml/ttrss/About.qml" line="166"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="170"/>
+        <location filename="../qml/ttrss/About.qml" line="172"/>
         <source>Privacy Policy</source>
         <translation>Datenschutzerklärung</translation>
     </message>
