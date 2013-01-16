@@ -130,17 +130,10 @@ Page {
                 Qt.openUrlExternally(constant.issueTrackerUrl)
             }
         }
-        Button {
-            width: parent.width
-            text: qsTr("License")
-            onClicked: {
-                popup.open();
-            }
-        }
     }
 
     SimplePopup {
-        id: popup
+        id: license
         text: "This program is free software; you can redistribute it and/or modify
                 it under the terms of the GNU General Public License as published by
                 the Free Software Foundation; either version 2 of the License, or
@@ -155,6 +148,17 @@ Page {
                 along with this program. If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>."
     }
 
+    SimplePopup {
+        id: privacypolicy
+        text: "ttrss will collect the login information you give at startup and nothing more.
+                Your login data is stored in a configuration file on your device and nowhere else.
+                ttrss will only use it to establish connections to the available services and/or servers.
+                The login data is not given to any third party and is not used for any other purpose than the functions of ttrss.
+                <br><br>
+                If you have any questions, concerns, or comments about our privacy policy you may contact us via:<br>
+                <a href='mailto:cnlpete@cnlpete.de'>cnlpete@cnlpete.de</a>"
+    }
+
 
     ToolBarLayout {
         id: aboutTools
@@ -162,6 +166,29 @@ Page {
         ToolIcon {
             iconId: "toolbar-back";
             onClicked: { pageStack.pop(); }
+        }
+        ToolIcon {
+            iconId: "toolbar-view-menu" ;
+            onClicked: (menu.status === DialogStatus.Closed) ? menu.open() : menu.close()
+        }
+    }
+    Menu {
+        id: menu
+        visualParent: pageStack
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("License")
+                onClicked: {
+                    license.open();
+                }
+            }
+            MenuItem {
+                text: qsTr("Privacy Policy")
+                onClicked: {
+                    privacypolicy.open();
+                }
+            }
         }
     }
 }
