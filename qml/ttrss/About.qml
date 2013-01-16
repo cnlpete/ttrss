@@ -106,7 +106,7 @@ Page {
 
         Label {
             width: parent.width
-            text:  qsTr("Version: %1").arg("0.1.1") + "<br/>"
+            text:  qsTr("Version: %1").arg("0.1.2") + "<br/>"
                    +qsTr("Author: %1").arg("Hauke Schade 2012") + "<br/>"
                    +qsTr("Thanks to:") + " "
                    + "Francois Cattin"
