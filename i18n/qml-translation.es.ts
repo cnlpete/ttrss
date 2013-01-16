@@ -29,9 +29,14 @@
         <translation>Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/About.qml" line="135"/>
+        <location filename="../qml/ttrss/About.qml" line="164"/>
         <source>License</source>
         <translation>Licencia</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/About.qml" line="170"/>
+        <source>Privacy Policy</source>
+        <translation>Declaración de privacidad</translation>
     </message>
 </context>
 <context>
@@ -237,7 +242,7 @@
 <context>
     <name>SimplePopup</name>
     <message>
-        <location filename="../qml/ttrss/SimplePopup.qml" line="47"/>
+        <location filename="../qml/ttrss/SimplePopup.qml" line="45"/>
         <source>OK</source>
         <translation>Aceptar</translation>
     </message>
