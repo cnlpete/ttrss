@@ -97,7 +97,7 @@ Page {
                 id: mouseArea
                 anchors.fill: background
                 onClicked: {
-                    showFeed(model.feedId, model.title);
+                    showFeed(model.feedId, model.title, model.icon);
                 }
             }
         }
@@ -187,11 +187,15 @@ Page {
         }
     }
 
-    function showFeed(feedId, title) {
+    function showFeed(feedId, title, pageLogo) {
         if(feedId != null) {
             var component = Qt.createComponent("FeedItems.qml");
             if (component.status === Component.Ready)
-                pageStack.push(component, { feedId: feedId, pageTitle: title });
+                pageStack.push(component, {
+                                   feedId: feedId,
+                                   pageTitle: title,
+                                   pageLogo: pageLogo
+                               });
             else
                 console.log("Error loading component:", component.errorString());
         }

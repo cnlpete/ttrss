@@ -17,6 +17,7 @@ Item{
     id: root
 
     property string text
+    property string logourl: ''
 
     height: constant.headerHeight
     width: parent.width
@@ -30,11 +31,29 @@ Item{
         sourceSize.height: parent.height
     }
 
+    Image{
+        id: logo
+        source: logourl
+        sourceSize.width: constant.headerLogoHeight
+        sourceSize.height: constant.headerLogoHeight
+        width: logourl.length > 3 ? constant.headerLogoHeight : 0
+        height: constant.headerLogoHeight
+        visible: logourl.length > 3
+        asynchronous: true
+
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+      //      right: mainText.left
+            margins: constant.paddingLarge
+        }
+    }
+
     Text{
         id: mainText
         anchors{
             verticalCenter: parent.verticalCenter
-            left: parent.left
+            left: logo.right
             right: parent.right
             margins: constant.paddingXLarge
         }

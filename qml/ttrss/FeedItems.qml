@@ -17,6 +17,7 @@ Page {
     tools: feedItemsTools
     property int feedId: 0
     property string pageTitle: ""
+    property string pageLogo: ""
     property int numStatusUpdates
     property bool loading: false
 
@@ -215,6 +216,7 @@ Page {
     PageHeader {
         id: pageHeader
         text: pageTitle
+        logourl: pageLogo
     }
 
     ToolBarLayout {

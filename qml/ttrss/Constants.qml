@@ -32,6 +32,7 @@ QtObject{
     property int fontSizeXXLarge: 32
 
     property int headerHeight: inPortrait ? 72 : 56
+    property int headerLogoHeight: inPortrait ? 56 : 40
 
     property url sourceRepoSite: "http://ttrss.cnlpete.de"
     property url issueTrackerUrl: "https://github.com/cnlpete/ttrss/issues"
