@@ -96,7 +96,6 @@ Page {
 
     function showCategory(catId, title) {
         if(catId != null) {
-            console.log("Loading feeds for category "+catId+"\n");
             var component = Qt.createComponent("Feeds.qml");
             if (component.status === Component.Ready)
                 pageStack.push(component, { categoryId: catId, pageTitle: title });

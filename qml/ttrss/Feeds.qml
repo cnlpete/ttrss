@@ -175,7 +175,6 @@ Page {
 
     function showFeed(feedId, title) {
         if(feedId != null) {
-            console.log("Loading items for "+feedId+"\n");
             var component = Qt.createComponent("FeedItems.qml");
             if (component.status === Component.Ready)
                 pageStack.push(component, { feedId: feedId, pageTitle: title });
