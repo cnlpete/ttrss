@@ -49,6 +49,7 @@ Page {
                 anchors.left: parent.left
                 anchors.right: drilldownarrow.left
                 clip: true
+                spacing: constant.paddingLarge
 
                 Image {
                     sourceSize.height: 80
