@@ -50,6 +50,18 @@ Page {
                 anchors.right: drilldownarrow.left
                 clip: true
 
+                Image {
+                    sourceSize.height: 80
+                    sourceSize.width: 80
+                    asynchronous: true
+                    width: 60
+                    height:60
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    source: model.icon
+                    visible: model.icon.length > 0
+                }
+
                 Column {
                     clip: true
 
@@ -135,6 +147,7 @@ Page {
                                       subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: %1").arg(feeds[feed].unread) : ""),
                                       unreadcount:  feeds[feed].unread,
                                       feedId:       feeds[feed].id,
+                                      icon:         ttrss.getIconUrl(feeds[feed].id)
                                   });
             }
         }
@@ -145,6 +158,7 @@ Page {
                                   subtitle:     "",
                                   unreadcount:  0,
                                   feedId:       null,
+                                  icon:         ''
                               });
         }
     }

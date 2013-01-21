@@ -820,3 +820,7 @@ function getFeedItem(feedId, articleId) {
     else
         console.log("no cache found")
 }
+
+function getIconUrl(feedId) {
+    return state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
+}
