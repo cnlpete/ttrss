@@ -15,6 +15,7 @@ if(Qt) {
 }
 
 var state={
+    'shorturl':         null,
     'url':              null,
     'username':         null,
     'password':         null,
@@ -38,6 +39,7 @@ var state={
 
 var requestsPending={
     'token'       : false,
+    'config'      : false,
     'categories'  : false,
     'feeds'       : false,
     'feeditems'   : false,
@@ -48,6 +50,7 @@ var requestsPending={
 
 var responsesPending={
     'token'       : false,
+    'config'      : false,
     'categories'  : false,
     'feeds'       : false,
     'feeditems'   : false,
@@ -129,7 +132,8 @@ function setLoginDetails(username, password, url) {
         url += "/";
     if (url.substring(url.length-4) !== "api/")
         url += "api/";
-    state['url']      = url;
+    state['url'] = url;
+    state['shorturl'] = url.substring(0, url.length-4);
 
     trace(2, "api url is " + url);
 }
@@ -198,6 +202,72 @@ function process_login(callback, http) {
     }
     else
         callback(10, errorText);
+}
+
+function updateConfig(callback) {
+    if(responsesPending['config'])
+        return;
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['config'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['config'] = true;
+
+    var params = {
+        'op': 'getConfig',
+        'sid': state['token']
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE)
+            process_updateConfig(callback, http);
+    }
+    http.send(JSON.stringify(params));
+}
+
+function process_updateConfig(callback, httpreq) {
+    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
+    trace(3, "response: "+httpreq.responseText);
+
+    if(httpreq.status === 200)  {
+        var responseObject=JSON.parse(httpreq.responseText);
+        if (responseObject.status === 0) {
+            state['icons_dir'] = responseObject.content['icons_dir'];
+            state['icons_url'] = responseObject.content['icons_url'];
+            state['num_feeds'] = responseObject.content['num_feeds'];
+            state['daemon_is_running'] = responseObject.content['daemon_is_running'];
+        }
+        else {
+            if(responseObject.content.error)
+                errorText = "Get Config failed: "+responseObject.content.error;
+            else
+                errorText = "Get Config failed (received http code: "+http.status+")";
+        }
+    }
+    else {
+        trace(1, "Get Config Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+        if(callback)
+            callback(30, "Get Config Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
+    }
+
+    responsesPending['config'] = false;
+
+    if(state['icons_dir'])
+        if(!processPendingRequests(callback))
+            //This action is complete (as there's no other requests to do, fire callback saying all ok
+            if(callback)
+                callback(0);
 }
 
 function updateCategories(callback) {

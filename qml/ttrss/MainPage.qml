@@ -204,26 +204,40 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         ttrss.clearState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
-        ttrss.login(feedTreeCreated);
+        ttrss.login(loginSuccessfull);
     }
 
-    function feedTreeCreated(retcode, text) {
+    function loginSuccessfull(retcode, text) {
         var settings = rootWindow.settingsObject();
-
-        //stop the loading anim
-        loading = false;
 
         if(retcode) {
             //login failed....don't autlogin
             settings.set("dologin", "false");
 
+            //stop the loading anim
+            loading = false;
+
             //Let the user know
             loginErrorDialog.text = text;
             loginErrorDialog.open();
-        } else {
+        }
+        else {
             //Login succeeded, auto login next Time
             settings.set("dologin", "true");
+            rootWindow.getTTRSS().updateConfig(configSuccessfull);
+        }
+    }
 
+    function configSuccessfull(retcode, text) {
+        //stop the loading anim
+        loading = false;
+
+        if(retcode) {
+            //Let the user know
+            loginErrorDialog.text = text;
+            loginErrorDialog.open();
+        }
+        else {
             //Now show the categories View
             rootWindow.openFile('Categories.qml');
         }
