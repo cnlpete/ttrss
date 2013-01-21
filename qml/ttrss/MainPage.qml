@@ -25,29 +25,32 @@ Page {
             PropertyChanges {
                 target: logo
                 anchors.leftMargin: 50
-                anchors.topMargin: 50
+                anchors.bottomMargin: 50
             }
             AnchorChanges {
                 target: logo
                 anchors {
+                    bottom: undefined
                     horizontalCenter: undefined
 
                     left: parent.left
-                    top: parent.top
+                    verticalCenter: parent.verticalCenter
                 }
             }
             AnchorChanges {
                 target: loginBox
                 anchors {
+                    bottom: undefined
                     horizontalCenter: undefined
 
-                    left: logo.right
-                    top: logo.top
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
                 }
             }
             PropertyChanges {
                 target: loginBox
-                anchors.leftMargin: 50
+                width: 400
+                anchors.rightMargin: 50
             }
         },
         State {
@@ -56,23 +59,25 @@ Page {
                 target: logo
                 anchors {
                     left: undefined
+                    verticalCenter: undefined
 
-                    top: parent.top
+                    bottom: loginBox.top
                     horizontalCenter: parent.horizontalCenter
                 }
             }
             AnchorChanges {
                 target: loginBox
                 anchors {
-                    left: undefined
+                    right: undefined
+                    verticalCenter: undefined
 
-                    top: logo.bottom
+                    bottom: parent.bottom
                     horizontalCenter: parent.horizontalCenter
                 }
             }
             PropertyChanges {
                 target: loginBox
-                anchors.topMargin: 50
+                width: 350
             }
         }
     ]
@@ -84,8 +89,8 @@ Page {
     Column {
         id: logo
         anchors {
-            top: parent.top
-            topMargin:  30
+            bottom: loginBox.top
+            bottomMargin:  50
         }
 
         Image {
@@ -97,35 +102,43 @@ Page {
 
     Column {
         id: loginBox
+        width: 350
+        anchors {
+            bottom: parent.bottom
+            bottomMargin:  50
+        }
 
         Label {
             id: serverLabel
             text: qsTr("Server:")
+            width: parent.width
         }
         TextField {
             id: server
             text: ""
-            width: 300
+            width: parent.width
             enabled: !loading
         }
         Label {
             id: usernameLabel
             text: qsTr("Username:")
+            width: parent.width
         }
         TextField {
             id: username
             text: ""
-            width: 300
+            width: parent.width
             enabled: !loading
         }
         Label {
             id: passwordLabel
             text: qsTr("Password:")
+            width: parent.width
         }
         TextField {
             id: password
             echoMode: TextInput.PasswordEchoOnEdit
-            width: 300
+            width: parent.width
             enabled: !loading
         }
     }
