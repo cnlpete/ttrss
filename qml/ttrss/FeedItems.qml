@@ -50,8 +50,23 @@ Page {
                 anchors.right: drilldownarrow.left
                 clip: true
 
+                Image {
+                    source: "resources/ic_star_enabled.png"
+                    visible: model.marked
+                    anchors.verticalCenter: parent.verticalCenter
+                    opacity: 0.5
+                }
+                Image {
+                    source: "resources/ic_rss_enabled.png"
+                    visible: model.rss
+                    anchors.verticalCenter: parent.verticalCenter
+                    opacity: 0.5
+                }
+
                 Column {
                     clip: true
+                    // this gives a warning, but it works for now...
+                    anchors.left: parent.left
 
                     Label {
                         id: mainText
