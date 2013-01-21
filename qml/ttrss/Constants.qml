@@ -33,7 +33,7 @@ QtObject{
 
     property int headerHeight: inPortrait ? 72 : 56
 
-    property url sourceRepoSite: "http://cnlpete.github.com/ttrss"
+    property url sourceRepoSite: "http://ttrss.cnlpete.de"
     property url issueTrackerUrl: "https://github.com/cnlpete/ttrss/issues"
 
     property string archivedArticles: qsTr('Archived articles')
