@@ -47,10 +47,8 @@ Page {
             }
 
             Row {
-                anchors.left: parent.left
-                anchors.right: drilldownarrow.left
-                clip: true
-
+                spacing: constant.paddingMedium
+                anchors.fill: parent
                 Image {
                     source: "resources/ic_star_enabled.png"
                     visible: model.marked
@@ -63,11 +61,15 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     opacity: 0.5
                 }
+            }
+
+            Row {
+                anchors.left: parent.left
+                anchors.right: drilldownarrow.left
+                clip: true
 
                 Column {
                     clip: true
-                    // this gives a warning, but it works for now...
-                    anchors.left: parent.left
 
                     Label {
                         id: mainText
