@@ -299,6 +299,20 @@ a.buttons:hover {
 	text-decoration: none;
 }
 
+#screenshots {
+}
+
+#screenshots li {
+  list-style:none;
+  padding:0;
+  display:inline;
+}
+
+#screenshots img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
 
 /* Section - for main page content */
 
