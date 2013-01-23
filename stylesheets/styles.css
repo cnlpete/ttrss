@@ -222,41 +222,49 @@ header {
 	-webkit-font-smoothing: antialiased;
 }
 
-p.header {
+header p {
 	font-size: 16px;
 }
 
-h1.header {
-	font-family: Arvo, sans-serif;
+header h1 {
 	font-size: 30px;
 	font-weight: 300;
 	line-height: 1.3em;
-	border-bottom: none;
-	margin-top: 0;
 }
 
+header h1,
+header h2,
+header h3 {
+	margin-top: 0;
+	font-family: Arvo, sans-serif;
+	border-bottom: none;
+}
 
-h1.header, a.header, a.name, header a{
+header h1,
+header h2,
+header h3,
+header a {
 	color: #fff;
 }
 
-a.header {
+header a {
 	text-decoration: underline;
 }
 
 a.name {
+	color: #fff;
 	white-space: nowrap;
 }
 
 header ul {
-  list-style:none;
-  padding:0;
+	list-style:none;
+	padding:0;
 }
 
 header li {
 	list-style-type: none;
-  width:132px;
-  height:15px;
+	width:132px;
+	height:15px;
 	margin-bottom: 12px;
 	line-height: 1em;
 	padding: 6px 6px 6px 7px;
@@ -264,11 +272,10 @@ header li {
 	background: #AF0011;
 
 	border-radius:4px;
-  border:1px solid #0D0D0D;
+	border:1px solid #0D0D0D;
 
 	-webkit-box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
 	box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-
 }
 
 header li:hover {
