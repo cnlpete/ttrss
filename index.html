@@ -14,47 +14,48 @@
     <![endif]-->
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" itemscope itemtype="http://schema.org/SoftwareApplication">
       <header>
-        <h1 class="header">Tiny Tiny RSS Reader for Meego</h1>
-        <p class="header">ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 smart phone, written using Qt/QML. It uses the Tiny Tiny RSS API.</p>
+        <h1 class="header" itemprop="name">Tiny Tiny RSS Reader for Meego</h1>
+        <h3 class="header" itemprop="softwareVersion">v0.1.3</h3>
+        <p class="header" itemprop="description">ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 smart phone, written using Qt/QML. It uses the Tiny Tiny RSS API.</p>
 
         <ul>
-          <li class="download"><a class="buttons" href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.deb">Download</a></li>
+          <li class="download"><a class="buttons" itemprop="downloadUrl" href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.deb">Download</a></li>
           <li><a class="buttons github" href="https://github.com/cnlpete/ttrss">GitHub</a></li>
         </ul>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/cnlpete">cnlpete</a></p>
+        <p class="header">This project is maintained by <a class="header name" rel="author" itemprop="author" href="https://github.com/cnlpete">cnlpete</a></p>
 
 
       </header>
       <section>
-        <h1>ttrss</h1>
+        <h1 itemprop="alternativeHeadline">ttrss</h1>
 
-<p>ttrss is a <a href="http://tt-rss.org">Tiny Tiny RSS</a> Reader App for the
-Nokia N9 smart phone, written using Qt/QML.
+<p>ttrss is a <a href="http://tt-rss.org">Tiny Tiny RSS</a> Reader App for the <span itemprop="device">Nokia N9</span> smart phone, written using Qt/QML.
 It uses the <a href="http://tt-rss.org/redmine/projects/tt-rss/wiki/JsonApiReference">Tiny Tiny RSS API</a>.</p>
 
 <h2>Screenshots</h2>
 
 <ul id="screenshots">
-<li><a href="assets/screenshots/categories.png" alt="Categories View"><img src="assets/screenshots/categories.png" /></a></li>
-<li><a href="assets/screenshots/feeds.png" alt="Feeds View"><img src="assets/screenshots/feeds.png" /></a></li>
-<li><a href="assets/screenshots/feeditems_popup.png" alt="Feeditems View with Popup"><img src="assets/screenshots/feeditems_popup.png" /></a></li>
-<li><a href="assets/screenshots/feeditem.png" alt="Feeditem View"><img src="assets/screenshots/feeditem.png" /></a></li>
-<li><a href="assets/screenshots/about.png" alt="About View"><img src="assets/screenshots/about.png" /></a></li>
-<li><a href="assets/screenshots/login.png" alt="Login View"><img src="assets/screenshots/login.png" /></a></li>
+<li><a href="assets/screenshots/categories.png" alt="Categories View"><img itemprop="screenshot" src="assets/screenshots/categories.png" /></a></li>
+<li><a href="assets/screenshots/feeds.png" alt="Feeds View"><img itemprop="screenshot" src="assets/screenshots/feeds.png" /></a></li>
+<li><a href="assets/screenshots/feeditems_popup.png" alt="Feeditems View with Popup"><img itemprop="screenshot" src="assets/screenshots/feeditems_popup.png" /></a></li>
+<li><a href="assets/screenshots/feeditem.png" alt="Feeditem View"><img itemprop="screenshot" src="assets/screenshots/feeditem.png" /></a></li>
+<li><a href="assets/screenshots/about.png" alt="About View"><img itemprop="screenshot" src="assets/screenshots/about.png" /></a></li>
+<li><a href="assets/screenshots/login.png" alt="Login View"><img itemprop="screenshot" src="assets/screenshots/login.png" /></a></li>
 </ul>
 
 <h2>ToDo</h2>
 
 <ul>
-<li>Show Feed Icons</li>
 <li>Add Settings Page</li>
 <li>Swipe left/right in Feeds View, FeedItems View and FeedDetails View to show next/previous Entry</li>
 <li>Accounts Plugin with global Accounts</li>
 <li>System Integration, so it will periodically check for new items and notify? / integrate into events feed</li>
-</ul><h2>ArtWork</h2>
+</ul>
+
+<h2>ArtWork</h2>
 
 <ul>
 <li>TinyTinyRSS Logo is taken from the <a href="http://tt-rss.org/redmine/projects/tt-rss-android/wiki/">Android Project</a>
@@ -64,7 +65,7 @@ It uses the <a href="http://tt-rss.org/redmine/projects/tt-rss/wiki/JsonApiRefer
 <h2>Download</h2>
 
 <ul>
-  <li class="download"><a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.deb">Version 0.1.3</a> - <a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.changes">changes</a></li>
+  <li class="download"><a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.deb">Version 0.1.3</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.1.3_armel.changes">changes</a></li>
   <li class="download"><a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.2_armel.deb">Version 0.1.2</a> - <a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.2_armel.changes">changes</a></li>
   <li class="download"><a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.1_armel.deb">Version 0.1.1</a> - <a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.1_armel.changes">changes</a></li>
   <li class="download"><a href="http://ttrss.cnlpete.de/assets/ttrss_0.1.0_armel.deb">Version 0.1.0</a></li>
@@ -89,7 +90,7 @@ It uses the <a href="http://tt-rss.org/redmine/projects/tt-rss/wiki/JsonApiRefer
 
 <h2>License</h2>
 
-<p>Copyright (C) Hauke Schade, 2012</p>
+<p>Copyright (C) <span itemprop="copyrightHolder">Hauke Schade</span>, <span itemprop="copyrightYear">2012</span></p>
 
 <p>TTRss is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published
