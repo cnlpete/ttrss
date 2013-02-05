@@ -1,11 +1,14 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QtGui/QApplication>
+#include <QtDeclarative/QDeclarativeContext>
 #include "qmlapplicationviewer.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+
+    app->setApplicationVersion(APP_VERSION);
 
     QString locale = QLocale::system().name();
     QTranslator translator;
@@ -21,6 +24,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         app->installTranslator(&translator);
 
     QmlApplicationViewer viewer;
+
+    viewer.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
+
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/ttrss/main.qml"));
     viewer.showExpanded();
