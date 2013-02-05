@@ -15,97 +15,26 @@ import com.nokia.meego 1.0
 Page {
     property bool loading: false
 
+    orientationLock: Screen.Portrait
     tools: commonTools
 
-    state: (screen.currentOrientation === Screen.Portrait) ? "portrait" : "landscape"
-
-    states: [
-        State {
-            name: "landscape"
-            PropertyChanges {
-                target: logo
-                anchors.leftMargin: 50
-                anchors.bottomMargin: 50
-            }
-            AnchorChanges {
-                target: logo
-                anchors {
-                    bottom: undefined
-                    horizontalCenter: undefined
-
-                    left: parent.left
-                    verticalCenter: parent.verticalCenter
-                }
-            }
-            AnchorChanges {
-                target: loginBox
-                anchors {
-                    bottom: undefined
-                    horizontalCenter: undefined
-
-                    right: parent.right
-                    verticalCenter: parent.verticalCenter
-                }
-            }
-            PropertyChanges {
-                target: loginBox
-                width: 400
-                anchors.rightMargin: 50
-            }
-        },
-        State {
-            name: "portrait"
-            AnchorChanges {
-                target: logo
-                anchors {
-                    left: undefined
-                    verticalCenter: undefined
-
-                    bottom: loginBox.top
-                    horizontalCenter: parent.horizontalCenter
-                }
-            }
-            AnchorChanges {
-                target: loginBox
-                anchors {
-                    right: undefined
-                    verticalCenter: undefined
-
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
-            }
-            PropertyChanges {
-                target: loginBox
-                width: 350
-            }
-        }
-    ]
-
-    transitions: Transition {
-        AnchorAnimation { duration: 500 }
-    }
-
     Column {
-        id: logo
+        id: contentcontainer
+        width: 350
+
         anchors {
-            bottom: loginBox.top
-            bottomMargin:  50
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: 50
         }
 
         Image {
             width: 256
             height: 256
+            anchors.horizontalCenter: parent.horizontalCenter
             source: "resources/ttrss256.png"
-        }
-    }
 
-    Column {
-        id: loginBox
-        width: 350
-        anchors {
-            bottom: parent.bottom
-            bottomMargin:  50
+            anchors.bottomMargin: 50
         }
 
         Label {
