@@ -37,7 +37,12 @@ Page {
         contentHeight: itemView.height
         interactive: true
         clip: true
-        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
+        anchors {
+            top: pageHeader.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
 
 //        signal newWindowRequested(string url)
 
@@ -161,6 +166,14 @@ Page {
                 ttrss.updateFeedRSS(articleId, !rss, callback)
             } }
         ToolIcon {
+            iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
+            enabled: !loading
+            onClicked: {
+                loading = true
+                var ttrss = rootWindow.getTTRSS()
+                ttrss.updateFeedUnread(articleId, !unread, callback)
+            } }
+        ToolIcon {
             iconId: "toolbar-next"
             visible: nextId !== false
             onClicked: {
@@ -188,16 +201,6 @@ Page {
                 enabled: url && (url != "")
                 onClicked: {
                     Qt.openUrlExternally(url);
-                }
-            }
-            MenuItem {
-                text: (unread?qsTr("Mark read"):qsTr("Mark Unread"))
-                onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.updateFeedUnread(articleId,
-                                           !unread,
-                                           callback)
                 }
             }
             AboutItem {}
