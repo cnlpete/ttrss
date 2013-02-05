@@ -320,6 +320,15 @@ a.buttons:hover {
   max-height: 100px;
 }
 
+img.downloadqrcode {
+  width: 150px;
+  height: 150px;
+  float: right;
+}
+
+h2 {
+  clear: right;
+}
 
 /* Section - for main page content */
 
@@ -380,6 +389,10 @@ section {
 
   header ul, header p.view {
     position:static;
+  }
+  
+  img.downloadqrcode {
+    display: none;
   }
 }
 
