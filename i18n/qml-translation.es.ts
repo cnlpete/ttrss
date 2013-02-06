@@ -160,7 +160,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="252"/>
         <source>Mark all read</source>
-        <translation>Marcar todos como leído</translation>
+        <translation>Marcar todos como leídos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="275"/>
@@ -218,7 +218,7 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="252"/>
         <source>Mark all read</source>
-        <translation>Marcar todos como leído</translation>
+        <translation>Marcar todos como leídos</translation>
     </message>
 </context>
 <context>
