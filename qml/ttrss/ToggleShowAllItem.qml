@@ -27,8 +27,6 @@ MenuItem {
 
     onShowAllChanged: {
         // send the signal
-        var ttrss = rootWindow.getTTRSS();
-        ttrss.trace(4, "showAll changed to " + ttrss.dump(showAll) + " sending signal")
         updateView(showAll)
     }
 
