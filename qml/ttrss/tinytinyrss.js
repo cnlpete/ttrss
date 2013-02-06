@@ -96,23 +96,22 @@ function trace(level, text) {
 }
 
 function categorySort(a, b) {
-    if (!a.order_id && !b.order_id)
+    if (a.order_id === undefined || b.order_id === undefined)
         return a.id - b.id
-    else if (!a.order_id)
-        return a.id - b.order_id
-    else if (!b.order_id)
-        return a.order_id - b.id
     else
         return a.order_id - b.order_id
 }
 
+function dateSortInverse(a, b) {
+    if (a.updated === undefined || b.updated === undefined)
+        return a.id - b.id
+    else
+        return a.updated - b.updated
+}
+
 function dateSort(a, b) {
-    if (!a.updated && !b.updated)
+    if (a.updated === undefined || b.updated === undefined)
         return b.id - a.id
-    else if (!a.updated)
-        return b.updated - a.id
-    else if (!b.updated)
-        return b.id - a.updated
     else
         return b.updated - a.updated
 }
@@ -775,7 +774,7 @@ function getFeeds(catId) {
     return retVal
 }
 
-function getFeedItems(feedId) {
+function getFeedItems(feedId, inverse) {
     var retVal = []
     var i = 0
     if (state['feeditems'][feedId]) {
@@ -784,7 +783,10 @@ function getFeedItems(feedId) {
             i++
         }
     }
-    retVal.sort(dateSort)
+    if (inverse === true)
+        retVal.sort(dateSortInverse)
+    else
+        retVal.sort(dateSort)
     return retVal
 }
 
@@ -818,7 +820,7 @@ function getFeedItem(feedId, articleId) {
     if (state['feeditemcache'][articleId])
         return state['feeditemcache'][articleId]
     else
-        console.log("no cache found")
+        trace(2, "no cache found")
 }
 
 function getIconUrl(feedId) {
