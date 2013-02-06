@@ -248,6 +248,14 @@ Page {
                     updateFeedItems()
                 }
             }
+            MenuItem {
+                text: qsTr('Mark all read')
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    loading = true
+                    ttrss.catchUp(feedId, showFeedItemsCallback)
+                }
+            }
             AboutItem {}
         }
     }

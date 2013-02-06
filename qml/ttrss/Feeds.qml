@@ -100,6 +100,9 @@ Page {
                 onClicked: {
                     showFeed(model.feedId, model.title, model.icon);
                 }
+                onPressAndHold: {
+                    feedMenu.feedId = model.feedId
+                    feedMenu.open() }
             }
         }
     }
@@ -235,6 +238,23 @@ Page {
                 }
             }
             AboutItem {}
+        }
+    }
+
+    Menu {
+        id: feedMenu
+        visualParent: pageStack
+
+        property int feedId: 0
+
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Mark all read")
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    loading = true
+                    ttrss.catchUp(feedMenu.feedId, showFeedsCallback)
+                } }
         }
     }
 }

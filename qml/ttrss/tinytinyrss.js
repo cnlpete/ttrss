@@ -583,6 +583,55 @@ function processPendingRequests(callback) {
     return foundWork;
 }
 
+function catchUp(feedId, callback) {
+    if(responsesPending['catchup'])
+        return;
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['catchup'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['catchup'] = true;
+
+    var params = {
+        'op': 'catchupFeed',
+        'sid': state['token'],
+        'feed_id': feedId
+    }
+
+    var http = new XMLHttpRequest();
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE) {
+            if (state['feeditems'][feedId]) {
+                for (var feed = 0; feed < state['feeditems'][feedId].length; feed++)
+                    state['feeditemcache'][state['feeditems'][feedId][feed]].unread = false
+            }
+
+            if (state['feedcache'][feedId]) {
+                var cat_id = state['feedcache'][feedId].cat_id
+                if (state['categorycache'][cat_id])
+                    state['categorycache'][cat_id].unread -= state['feedcache'][feedId].unread
+                state['feedcache'][feedId].unread = 0
+            }
+
+            responsesPending['catchup'] = false;
+            if(!processPendingRequests(callback))
+                if(callback)
+                    callback(0);
+        }
+    }
+    http.send(JSON.stringify(params));
+}
+
 function updateFeedStar(articleId, starred, callback) {
     if(responsesPending['feeditemstar'])
         return;
