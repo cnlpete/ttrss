@@ -873,5 +873,20 @@ function getFeedItem(feedId, articleId) {
 }
 
 function getIconUrl(feedId) {
-    return state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
+    switch (feedId) {
+    case constants['feeds']['all']:
+    case constants['feeds']['fresh']:
+    case constants['feeds']['archived']:
+    case constants['feeds']['recently']:
+        return ''
+        break;
+    case constants['feeds']['starred']:
+        return "resources/ic_star_enabled.png"
+        break;
+    case constants['feeds']['published']:
+        return "resources/ic_rss_enabled.png"
+        break;
+    default:
+        return state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
+    }
 }
