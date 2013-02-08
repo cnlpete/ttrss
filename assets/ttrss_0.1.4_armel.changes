@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Fri, 08 Feb 2013 23:13:07 +0100
+Source: ttrss
+Binary: ttrss
+Architecture: armel
+Version: 0.1.4
+Distribution: unstable
+Urgency: low
+Maintainer: Hauke Schade <cnlpete@cnlpete.de>
+Changed-By: Hauke Schade <cnlpete@cnlpete.de>
+Description: 
+ ttrss      - The Tiny Tiny RSS Reader for Meego
+Changes: 
+ ttrss (0.1.4) unstable; urgency=low
+ .
+   * Added feedicons for special feeds
+   * Added a proper harmattan icon
+   * Added a mark read/unread button in the FeedItem View
+Checksums-Sha1: 
+ fb62a2d5ee17b9902d399430204183088c761c52 68404 ttrss_0.1.4_armel.deb
+Checksums-Sha256: 
+ 331db30843f2faa3bad07bcee3d570be64288a570e7fbdc8e89ccd65253a446e 68404 ttrss_0.1.4_armel.deb
+Files: 
+ b4188f2f7e2c343059837dca534345c4 68404 user/internet optional ttrss_0.1.4_armel.deb
+Maemo-Display-Name: Tiny Tiny RSS Reader
