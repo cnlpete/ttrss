@@ -17,6 +17,7 @@ class Settings : public QObject
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
 
     Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
+    Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
 public:
     static Settings *instance();
 
@@ -49,6 +50,11 @@ public:
     }
     void setWhiteTheme(bool whiteTheme);
 
+    bool feeditemsOrder() const {
+        return this->_feeditemsOrder;
+    }
+    void setFeeditemsOrder(int feeditemsOrder);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -56,6 +62,7 @@ signals:
     void autologinChanged();
 
     void whiteThemeChanged();
+    void feeditemsOrderChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -71,5 +78,6 @@ private:
     bool _autologin;
 
     bool _whiteTheme;
+    int _feeditemsOrder;
 };
 #endif // SETTINGS_HH

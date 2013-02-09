@@ -47,11 +47,11 @@ Page {
             onButtonClicked: settings.whiteTheme = index === 1
         }
 
-//        SettingsButtonRow {
-//            text: qsTr("Order")
-//            checkedButtonIndex: 0//settings.feeditemsorder
-//            buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
-//            onButtonClicked: console.log(index)
-//        }
+        SettingsButtonRow {
+            text: qsTr("Order")
+            checkedButtonIndex: settings.feeditemsOrder
+            buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
+            onButtonClicked: settings.feeditemsOrder = index
+        }
     }
 }

@@ -62,6 +62,14 @@ void Settings::setWhiteTheme(bool whiteTheme) {
     }
 }
 
+void Settings::setFeeditemsOrder(int feeditemsOrder) {
+    if (_feeditemsOrder != feeditemsOrder) {
+        _feeditemsOrder = feeditemsOrder;
+        m_settings->setValue("feeditemsOrder", _feeditemsOrder);
+        emit feeditemsOrderChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -69,4 +77,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _autologin = m_settings->value("autologin", false).toBool();
 
     _whiteTheme = m_settings->value("whiteTheme", true).toBool();
+    _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
 }

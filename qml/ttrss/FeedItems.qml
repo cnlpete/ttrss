@@ -146,7 +146,7 @@ Page {
 
     function showFeedItems() {
         var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feedId);
+        var feeditems = ttrss.getFeedItems(feedId, settings.feeditemsOrder === 1);
         var showAll = ttrss.getShowAll();
         itemListModel.clear();
 
