@@ -33,12 +33,13 @@ Page {
         id: settingsColumn
         anchors {
             top: pageHeader.bottom
-            topMargin: constant.paddingMedium
+            topMargin: constant.paddingLarge
             left: parent.left
+            leftMargin: constant.paddingLarge
             right: parent.right
         }
         height: childrenRect.height
-        spacing: constant.paddingMedium
+        spacing: constant.paddingLarge
 
         SettingsButtonRow {
             text: qsTr("Theme")
@@ -52,6 +53,13 @@ Page {
             checkedButtonIndex: settings.feeditemsOrder
             buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
             onButtonClicked: settings.feeditemsOrder = index
+        }
+
+        CheckBox {
+            text: qsTr('Show Icons')
+            checked: settings.displayIcons
+            onClicked: settings.displayIcons = checked
+            anchors.margins: constant.paddingLarge
         }
     }
 }

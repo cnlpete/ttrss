@@ -29,7 +29,6 @@ Item {
         anchors {
             left: parent.left
             top: parent.top
-            leftMargin: constant.paddingMedium
         }
         font.pixelSize: constant.fontSizeMedium
         text: root.text
@@ -41,7 +40,6 @@ Item {
             top: settingText.bottom
             left: parent.left
             right: parent.right
-            margins: constant.paddingMedium
         }
         checkedButton: buttonRepeater.itemAt(root.checkedButtonIndex)
         onVisibleChanged: checkedButton = buttonRepeater.itemAt(root.checkedButtonIndex)

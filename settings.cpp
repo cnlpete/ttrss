@@ -70,6 +70,14 @@ void Settings::setFeeditemsOrder(int feeditemsOrder) {
     }
 }
 
+void Settings::setDisplayIcons(bool displayIcons) {
+    if (_displayIcons != displayIcons) {
+        _displayIcons = displayIcons;
+        m_settings->setValue("displayIcons", _displayIcons);
+        emit displayIconsChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -78,4 +86,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
 
     _whiteTheme = m_settings->value("whiteTheme", true).toBool();
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
+    _displayIcons = m_settings->value("displayIcons", true).toBool();
 }

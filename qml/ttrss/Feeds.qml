@@ -88,7 +88,7 @@ Page {
                                       subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: %1").arg(feeds[feed].unread) : ""),
                                       unreadcount:  feeds[feed].unread,
                                       feedId:       feeds[feed].id,
-                                      icon:         ttrss.getIconUrl(feeds[feed].id)
+                                      icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
                                   });
             }
         }

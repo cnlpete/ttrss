@@ -18,6 +18,7 @@ class Settings : public QObject
 
     Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
+    Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
 public:
     static Settings *instance();
 
@@ -55,6 +56,11 @@ public:
     }
     void setFeeditemsOrder(int feeditemsOrder);
 
+    bool displayIcons() const {
+        return this->_displayIcons;
+    }
+    void setDisplayIcons(bool displayIcons);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -63,6 +69,7 @@ signals:
 
     void whiteThemeChanged();
     void feeditemsOrderChanged();
+    void displayIconsChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -79,5 +86,6 @@ private:
 
     bool _whiteTheme;
     int _feeditemsOrder;
+    bool _displayIcons;
 };
 #endif // SETTINGS_HH

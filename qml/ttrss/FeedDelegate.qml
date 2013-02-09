@@ -44,7 +44,7 @@ Item {
         anchors.rightMargin: constant.listItemSpacing
 
         source: model.icon
-        //visible: model.icon.length > 0
+        visible: settings.displayIcons
     }
 
     Label {
@@ -52,7 +52,7 @@ Item {
         text: model.title
         anchors.right: unreadBubble.left
         anchors.rightMargin: constant.listItemSpacing
-        anchors.left: icon.right
+        anchors.left: icon.visible ? icon.right : parent.left
         anchors.leftMargin: constant.listItemSpacing
         anchors.verticalCenter: parent.verticalCenter
         font.weight: Font.Bold
