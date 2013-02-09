@@ -60,7 +60,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
 
                     source: model.icon
-                    visible: model.icon.length > 0
+                    //visible: model.icon.length > 0
                 }
 
                 Column {
