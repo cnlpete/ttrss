@@ -131,6 +131,8 @@ function setLoginDetails(username, password, url) {
         url += "/";
     if (url.substring(url.length-4) !== "api/")
         url += "api/";
+    if (url.substring(0,1) !== "h")
+        url = "http://" + url;
     state['url'] = url;
     state['shorturl'] = url.substring(0, url.length-4);
 
