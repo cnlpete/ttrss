@@ -1,0 +1,88 @@
+//Copyright Hauke Schade, 2012-2013
+//
+//This file is part of TTRss.
+//
+//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
+//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+
+import QtQuick 1.1
+import com.nokia.meego 1.0
+
+Item {
+    id: root
+
+    signal clicked
+    signal pressAndHold
+    property alias pressed: mouseArea.pressed
+
+    height: 80
+    width: parent.width
+
+    BorderImage {
+        id: background
+        anchors.fill: parent
+        // Fill page borders
+        anchors.leftMargin: -constant.paddingLarge
+        anchors.rightMargin: -constant.paddingLarge
+        visible: mouseArea.pressed
+        source: "image://theme/meegotouch-list-background-selected-center"
+    }
+
+    Image {
+        id: icon
+        sourceSize.height: 80
+        sourceSize.width: 80
+        asynchronous: true
+        width: 60
+        height:60
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: constant.listItemSpacing
+
+        source: model.icon
+        //visible: model.icon.length > 0
+    }
+
+    Label {
+        id: mainText
+        text: model.title
+        anchors.right: unreadBubble.left
+        anchors.rightMargin: constant.listItemSpacing
+        anchors.left: icon.right
+        anchors.leftMargin: constant.listItemSpacing
+        anchors.verticalCenter: parent.verticalCenter
+        font.weight: Font.Bold
+        font.pixelSize: constant.fontSizeLarge
+        color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled
+    }
+
+    Bubble {
+        id: unreadBubble
+        anchors.right: drilldownarrow.left
+        anchors.rightMargin: constant.listItemSpacing
+        anchors.verticalCenter: parent.verticalCenter
+
+        amount: model.unreadcount
+        color: (model.unreadcount > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled
+    }
+
+    Image {
+        id: drilldownarrow
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
+        anchors.verticalCenter: parent.verticalCenter
+        visible: model.feedId != null
+    }
+
+    MouseArea {
+        id: mouseArea;
+        anchors.fill: parent
+        onClicked: root.clicked();
+        onPressAndHold: root.pressAndHold();
+    }
+}

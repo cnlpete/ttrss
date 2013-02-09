@@ -31,7 +31,7 @@ Page {
         anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
         model: itemListModel
 
-        delegate:  Item {
+        delegate: Item {
             id: listItem
             height: 88
             width: parent.width

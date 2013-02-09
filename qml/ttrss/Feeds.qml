@@ -27,83 +27,20 @@ Page {
     ListView {
         id: listView
         anchors.margins: constant.paddingLarge
-        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
+        anchors {
+            top: pageHeader.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
         model: feedsModel
 
-        delegate:  Item {
-            id: listItem
-            height: 88
-            width: parent.width
-
-            BorderImage {
-                id: background
-                anchors.fill: parent
-                // Fill page borders
-                anchors.leftMargin: -listView.anchors.leftMargin
-                anchors.rightMargin: -listView.anchors.rightMargin
-                visible: mouseArea.pressed
-                source: "image://theme/meegotouch-list-background-selected-center"
-            }
-
-            Row {
-                anchors.left: parent.left
-                anchors.right: drilldownarrow.left
-                clip: true
-                spacing: constant.paddingLarge
-
-                Image {
-                    sourceSize.height: 80
-                    sourceSize.width: 80
-                    asynchronous: true
-                    width: 60
-                    height:60
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    source: model.icon
-                    //visible: model.icon.length > 0
-                }
-
-                Column {
-                    clip: true
-
-                    Label {
-                        id: mainText
-                        text: model.title
-                        font.weight: Font.Bold
-                        font.pixelSize: constant.fontSizeLarge
-                        color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
-                    }
-
-                    Label {
-                        id: subText
-                        text: model.subtitle
-                        font.weight: Font.Light
-                        font.pixelSize: constant.fontSizeSmall
-                        color: (model.unreadcount > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
-
-                        visible: text != ""
-                    }
-                }
-            }
-
-            Image {
-                id: drilldownarrow
-                source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
-                anchors.right: parent.right;
-                anchors.verticalCenter: parent.verticalCenter
-                visible: (model.feedId != null)
-            }
-
-            MouseArea {
-                id: mouseArea
-                anchors.fill: background
-                onClicked: {
-                    showFeed(model.feedId, model.title, model.icon);
-                }
+        delegate: FeedDelegate {
+                onClicked: showFeed(model.feedId, model.title, model.icon)
                 onPressAndHold: {
                     feedMenu.feedId = model.feedId
-                    feedMenu.open() }
-            }
+                    feedMenu.open()
+                }
         }
     }
     ScrollDecorator {
