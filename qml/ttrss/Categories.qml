@@ -222,6 +222,7 @@ Page {
                     updateCategories()
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }

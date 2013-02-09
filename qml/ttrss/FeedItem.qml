@@ -203,6 +203,7 @@ Page {
                     Qt.openUrlExternally(url);
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }

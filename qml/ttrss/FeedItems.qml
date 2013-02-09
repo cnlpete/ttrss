@@ -256,6 +256,7 @@ Page {
                     ttrss.catchUp(feedId, showFeedItemsCallback)
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }

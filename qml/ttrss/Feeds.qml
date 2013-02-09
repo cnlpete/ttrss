@@ -237,6 +237,7 @@ Page {
                     feedsPage.updateFeeds()
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }

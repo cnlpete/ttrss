@@ -111,6 +111,7 @@ Page {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
+            SettingsItem {}
             AboutItem {}
         }
     }
