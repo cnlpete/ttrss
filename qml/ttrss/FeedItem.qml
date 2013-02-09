@@ -53,6 +53,13 @@ Page {
             settings.defaultFontSize: constant.fontSizeSmall
             preferredWidth: flick.width
             preferredHeight: flick.height
+            onLoadFinished: {
+                evaluateJavaScript("\
+                    document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
+                    document.body.style.color='" + constant.colorWebviewText + "';\
+                ");
+            }
+
 
             onUrlChanged: {
                 if (url != "") {

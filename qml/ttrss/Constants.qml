@@ -14,9 +14,12 @@ import QtQuick 1.1
 QtObject{
     id: constant
 
-    property color colorListItemActive: "#000033"
-    property color colorListItemActiveTwo: "#cc6633"
-    property color colorListItemDisabled: "#888888"
+    property color colorListItemActive: theme.inverted ? "#ffffff" : "#000033"
+    property color colorListItemActiveTwo: theme.inverted ? "#dd7744" : "#cc6633"
+    property color colorListItemDisabled: theme.inverted ? "#aaaaaa" : "#888888"
+
+    property color colorWebviewBG: theme.inverted ? "#000000" : "#ffffff"
+    property color colorWebviewText: theme.inverted ? "#ffffff" : "#000033"
 
     property int paddingSmall: 4
     property int paddingMedium: 6

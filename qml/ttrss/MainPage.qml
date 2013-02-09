@@ -41,6 +41,7 @@ Page {
             id: serverLabel
             text: qsTr("Server:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: server
@@ -52,6 +53,7 @@ Page {
             id: usernameLabel
             text: qsTr("Username:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: username
@@ -63,6 +65,7 @@ Page {
             id: passwordLabel
             text: qsTr("Password:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: password

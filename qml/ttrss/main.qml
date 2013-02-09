@@ -26,6 +26,11 @@ PageStackWindow {
     function getTTRSS() {
         return TTRss;
     }
+
+    Binding {
+        target: theme
+        property: "inverted"
+        value: !settings.whiteTheme
     }
 
     initialPage: mainPage
@@ -34,5 +39,9 @@ PageStackWindow {
 
     MainPage {
         id: mainPage
+    }
+
+    Component.onCompleted: {
+        theme.inverted = !settings.whiteTheme
     }
 }
