@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012
+//Copyright Hauke Schade, 2012-2013
 //
 //This file is part of TTRss.
 //
@@ -41,6 +41,7 @@ Page {
             id: serverLabel
             text: qsTr("Server:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: server
@@ -52,6 +53,7 @@ Page {
             id: usernameLabel
             text: qsTr("Username:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: username
@@ -63,6 +65,7 @@ Page {
             id: passwordLabel
             text: qsTr("Password:")
             width: parent.width
+            font.pixelSize: constant.fontSizeMedium
         }
         TextField {
             id: password
@@ -90,10 +93,9 @@ Page {
             text: qsTr("Login")
             anchors.right: menuButton.left
             onClicked: {
-                var settings = rootWindow.settingsObject();
-                settings.set("server", server.text);
-                settings.set("username", username.text);
-                settings.set("password", password.text);
+                settings.servername = server.text
+                settings.username = username.text
+                settings.password = password.text
 
                 startLogin();
             }
@@ -112,6 +114,7 @@ Page {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
+            SettingsItem {}
             AboutItem {}
         }
     }
@@ -137,11 +140,9 @@ Page {
     }
 
     function loginSuccessfull(retcode, text) {
-        var settings = rootWindow.settingsObject();
-
         if(retcode) {
             //login failed....don't autlogin
-            settings.set("dologin", "false");
+            settings.autologin = false
 
             //stop the loading anim
             loading = false;
@@ -152,7 +153,7 @@ Page {
         }
         else {
             //Login succeeded, auto login next Time
-            settings.set("dologin", "true");
+            settings.autologin = true
             rootWindow.getTTRSS().updateConfig(configSuccessfull);
         }
     }
@@ -179,14 +180,11 @@ Page {
     }
 
     Component.onCompleted: {
-        var settings = rootWindow.settingsObject();
-        settings.initialize();
-        server.text = settings.get("server", "http://");
-        username.text = settings.get("username", "");
-        password.text = settings.get("password", "");
-        var dologin = settings.get("dologin", "false");
+        server.text = settings.servername
+        username.text = settings.username
+        password.text = settings.password
 
-        if(dologin === "true")
+        if(settings.autologin)
             startLogin();
     }
 }
