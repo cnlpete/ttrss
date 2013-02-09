@@ -17,7 +17,7 @@ ArtWork
 
 License
 ----------
-Copyright (C) Hauke Schade, 2012
+Copyright (C) Hauke Schade, 2012-2013
 
 TTRss is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published

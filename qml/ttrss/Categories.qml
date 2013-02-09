@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012
+//Copyright Hauke Schade, 2012-2013
 //
 //This file is part of TTRss.
 //
