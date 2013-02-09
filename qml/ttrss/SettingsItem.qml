@@ -13,8 +13,8 @@ import QtQuick 1.1
 import com.nokia.meego 1.0
 
 MenuItem {
-    text: qsTr("About")
+    text: qsTr("Settings")
     onClicked: {
-        rootWindow.openFile("About.qml");
+        rootWindow.openFile("Settings.qml");
     }
 }

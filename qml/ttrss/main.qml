@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012
+//Copyright Hauke Schade, 2012-2013
 //
 //This file is part of TTRss.
 //
@@ -11,7 +11,6 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
-import "settings.js" as Settings
 import "tinytinyrss.js" as TTRss
 
 PageStackWindow {
@@ -27,8 +26,11 @@ PageStackWindow {
     function getTTRSS() {
         return TTRss;
     }
-    function settingsObject() {
-        return Settings;
+
+    Binding {
+        target: theme
+        property: "inverted"
+        value: !settings.whiteTheme
     }
 
     initialPage: mainPage
@@ -37,5 +39,9 @@ PageStackWindow {
 
     MainPage {
         id: mainPage
+    }
+
+    Component.onCompleted: {
+        theme.inverted = !settings.whiteTheme
     }
 }

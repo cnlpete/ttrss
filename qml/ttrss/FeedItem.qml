@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012
+//Copyright Hauke Schade, 2012-2013
 //
 //This file is part of TTRss.
 //
@@ -53,6 +53,13 @@ Page {
             settings.defaultFontSize: constant.fontSizeSmall
             preferredWidth: flick.width
             preferredHeight: flick.height
+            onLoadFinished: {
+                evaluateJavaScript("\
+                    document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
+                    document.body.style.color='" + constant.colorWebviewText + "';\
+                ");
+            }
+
 
             onUrlChanged: {
                 if (url != "") {
@@ -203,6 +210,7 @@ Page {
                     Qt.openUrlExternally(url);
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }

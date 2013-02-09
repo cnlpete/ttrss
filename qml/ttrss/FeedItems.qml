@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012
+//Copyright Hauke Schade, 2012-2013
 //
 //This file is part of TTRss.
 //
@@ -146,7 +146,7 @@ Page {
 
     function showFeedItems() {
         var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feedId);
+        var feeditems = ttrss.getFeedItems(feedId, settings.feeditemsOrder === 1);
         var showAll = ttrss.getShowAll();
         itemListModel.clear();
 
@@ -256,6 +256,7 @@ Page {
                     ttrss.catchUp(feedId, showFeedItemsCallback)
                 }
             }
+            SettingsItem {}
             AboutItem {}
         }
     }
