@@ -30,64 +30,8 @@ Page {
 
         model: categoriesModel
 
-        delegate:  Item {
-            id: listItem
-            height: 88
-            width: parent.width
-
-            BorderImage {
-                id: background
-                anchors.fill: parent
-                // Fill page borders
-                anchors.leftMargin: -listView.anchors.leftMargin
-                anchors.rightMargin: -listView.anchors.rightMargin
-                visible: mouseArea.pressed
-                source: "image://theme/meegotouch-list-background-selected-center"
-            }
-
-            Row {
-                anchors.left: parent.left
-                anchors.right: drilldownarrow.left
-                clip: true
-
-                Column {
-                    clip: true
-
-                    Label {
-                        id: mainText
-                        text: model.title
-                        font.weight: Font.Bold
-                        font.pixelSize: constant.fontSizeLarge
-                        color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
-                    }
-
-                    Label {
-                        id: subText
-                        text: model.subtitle
-                        font.weight: Font.Light
-                        font.pixelSize: constant.fontSizeSmall
-                        color: (model.unreadcount > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
-
-                        visible: text != ""
-                    }
-                }
-            }
-
-            Image {
-                id: drilldownarrow
-                source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
-                anchors.right: parent.right;
-                anchors.verticalCenter: parent.verticalCenter
-                visible: model.categoryId != null
-            }
-
-            MouseArea {
-                id: mouseArea
-                anchors.fill: background
-                onClicked: {
-                    showCategory(model.categoryId, model.title);
-                }
-            }
+        delegate: CategoryDelegate {
+            onClicked: showCategory(model.categoryId, model.title)
         }
     }
     ScrollDecorator {

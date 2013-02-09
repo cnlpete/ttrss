@@ -21,12 +21,15 @@ QtObject{
     property color colorWebviewBG: theme.inverted ? "#000000" : "#ffffff"
     property color colorWebviewText: theme.inverted ? "#ffffff" : "#000033"
 
+    property int listItemSpacing: 10
+
     property int paddingSmall: 4
     property int paddingMedium: 6
     property int paddingLarge: 8
     property int paddingXLarge: 12
     property int paddingXXLarge: 16
 
+    property int fontSizeXXSmall: 16
     property int fontSizeXSmall: 20
     property int fontSizeSmall: 22
     property int fontSizeMedium: 24
