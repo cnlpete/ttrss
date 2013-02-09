@@ -31,6 +31,9 @@ Page {
         anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
         model: itemListModel
 
+        section.delegate: SectionHeader {}
+        section.property: "date"
+
         delegate: Item {
             id: listItem
             height: 88
@@ -114,6 +117,10 @@ Page {
             }
         }
     }
+    SectionScroller {
+       listView: listView
+    }
+
     ScrollDecorator {
         flickableItem: listView
     }
@@ -149,6 +156,7 @@ Page {
         var feeditems = ttrss.getFeedItems(feedId, settings.feeditemsOrder === 1);
         var showAll = ttrss.getShowAll();
         itemListModel.clear();
+        var now = new Date();
 
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
@@ -161,7 +169,10 @@ Page {
                 var title = feeditems[feeditem].title
                 title = title.replace(/<br.*>/gi, "")
                 title = title.replace(/\n/gi, "")
-
+                var d = new Date(feeditems[feeditem].updated * 1000)
+                var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
+                if (d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear())
+                    formatedDate = qsTr('Today')
                 itemListModel.append({
                                          title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
                                          subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
@@ -169,7 +180,8 @@ Page {
                                          unread:    !!feeditems[feeditem].unread,
                                          marked:    !!feeditems[feeditem].marked,
                                          rss:       feeditems[feeditem].published,
-                                         url:       feeditems[feeditem].link
+                                         url:       feeditems[feeditem].link,
+                                         date:      formatedDate
                                      });
             }
         }
@@ -181,7 +193,8 @@ Page {
                                      unread:    false,
                                      marked:    false,
                                      rss:       false,
-                                     url: ""
+                                     url:       "",
+                                     date:      ''
                                  });
         }
     }

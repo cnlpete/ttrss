@@ -14,6 +14,8 @@ import QtQuick 1.1
 QtObject{
     id: constant
 
+    property color sectionLabel: "#8c8c8c"
+
     property color colorListItemActive: theme.inverted ? "#ffffff" : "#000033"
     property color colorListItemActiveTwo: theme.inverted ? "#dd7744" : "#cc6633"
     property color colorListItemDisabled: theme.inverted ? "#aaaaaa" : "#888888"
