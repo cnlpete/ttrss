@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[ttrss.main]
+file_filter = i18n/qml-translation.<lang>.ts
+source_file = i18n/qml-translation.en.ts
+source_lang = en
+
