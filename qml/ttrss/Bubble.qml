@@ -38,10 +38,10 @@ Item {
         id: text
         height: parent.height
         y:1
-        opacity: 0.75
+        opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: root.large ? constant.fontSizeSmall : constant.fontSizeXXSmall
+        font.pixelSize: root.large ? constant.fontSizeMedium : constant.fontSizeXSmall
         color: root.color
 
         text: root.amount
