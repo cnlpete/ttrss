@@ -55,23 +55,17 @@
 <context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="89"/>
-        <location filename="../qml/ttrss/Categories.qml" line="99"/>
-        <source>Unread: %1</source>
-        <translation>%1 unread</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/Categories.qml" line="107"/>
+        <location filename="../qml/ttrss/Categories.qml" line="105"/>
         <source>No categories have unread items</source>
         <translation>No categories with unread items</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="107"/>
+        <location filename="../qml/ttrss/Categories.qml" line="105"/>
         <source>No categories to display</source>
         <translation>No categories</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="139"/>
+        <location filename="../qml/ttrss/Categories.qml" line="136"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS Reader</translation>
     </message>
@@ -206,22 +200,17 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="88"/>
-        <source>Unread: %1</source>
-        <translation>%1 unread</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
         <source>No feeds in category</source>
         <translation>No feeds in category</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
         <source>Category has no unread items</source>
         <translation>Category has no feeds with unread items</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="190"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="188"/>
         <source>Mark all read</source>
         <translation>Mark all as read</translation>
     </message>
@@ -257,34 +246,39 @@
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="44"/>
+        <location filename="../qml/ttrss/Settings.qml" line="45"/>
         <source>Theme</source>
         <translation>Theme</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="46"/>
+        <location filename="../qml/ttrss/Settings.qml" line="47"/>
         <source>Dark</source>
         <translation>Dark</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="46"/>
+        <location filename="../qml/ttrss/Settings.qml" line="47"/>
         <source>White</source>
         <translation>White</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="51"/>
+        <location filename="../qml/ttrss/Settings.qml" line="52"/>
         <source>Order</source>
         <translation>Order</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="53"/>
+        <location filename="../qml/ttrss/Settings.qml" line="54"/>
         <source>Newest First</source>
         <translation>Newest first</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="53"/>
+        <location filename="../qml/ttrss/Settings.qml" line="54"/>
         <source>Oldest First</source>
         <translation>Oldest first</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="59"/>
+        <source>Show Icons</source>
+        <translation>Show Icons</translation>
     </message>
 </context>
 <context>

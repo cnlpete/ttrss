@@ -85,7 +85,6 @@ Page {
 
                 feedsModel.append({
                                       title:        title,
-                                      subtitle:     (feeds[feed].unread > 0 ? qsTr("Unread: %1").arg(feeds[feed].unread) : ""),
                                       unreadcount:  feeds[feed].unread,
                                       feedId:       feeds[feed].id,
                                       icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
@@ -96,7 +95,6 @@ Page {
             var t = (showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items"))
             feedsModel.append({
                                   title:        t,
-                                  subtitle:     "",
                                   unreadcount:  0,
                                   feedId:       null,
                                   icon:         ''
