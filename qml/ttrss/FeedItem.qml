@@ -44,6 +44,7 @@ Page {
             right: parent.right
         }
 
+
 //        signal newWindowRequested(string url)
 
         WebView {
@@ -53,6 +54,7 @@ Page {
             settings.defaultFontSize: constant.fontSizeSmall
             preferredWidth: flick.width
             preferredHeight: flick.height
+            scale: 1
             onLoadFinished: {
                 evaluateJavaScript("\
                     document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
@@ -66,6 +68,21 @@ Page {
                     Qt.openUrlExternally(url)
                     // BUGFIX: the url is still changed, so i need to change it back to the original content...
                     showFeedItem()
+                }
+            }
+
+            PinchArea {
+                anchors.fill: parent
+                property real oldscale: 0
+
+                // a pinch scale will always start with 1 and then cahnge, so we need to remmeber the current item scale
+                onPinchStarted: {
+                    oldscale = itemView.contentsScale - 1
+                }
+                onPinchUpdated: {
+                    var totalScaleFactor = pinch.scale + oldscale
+                    totalScaleFactor = Math.max(1.0, Math.min(3.0, totalScaleFactor))
+                    itemView.contentsScale = totalScaleFactor
                 }
             }
         }
