@@ -278,7 +278,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Font Size</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
