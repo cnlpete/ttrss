@@ -51,7 +51,6 @@ Page {
             id: itemView
             transformOrigin: Item.TopLeft
             settings.standardFontFamily: "Arial"
-            settings.defaultFontSize: constant.fontSizeSmall
             preferredWidth: flick.width
             preferredHeight: flick.height
             scale: 1
@@ -68,21 +67,6 @@ Page {
                     Qt.openUrlExternally(url)
                     // BUGFIX: the url is still changed, so i need to change it back to the original content...
                     showFeedItem()
-                }
-            }
-
-            PinchArea {
-                anchors.fill: parent
-                property real oldscale: 0
-
-                // a pinch scale will always start with 1 and then cahnge, so we need to remmeber the current item scale
-                onPinchStarted: {
-                    oldscale = itemView.contentsScale - 1
-                }
-                onPinchUpdated: {
-                    var totalScaleFactor = pinch.scale + oldscale
-                    totalScaleFactor = Math.max(1.0, Math.min(3.0, totalScaleFactor))
-                    itemView.contentsScale = totalScaleFactor
                 }
             }
         }
@@ -144,7 +128,14 @@ Page {
             showFeedItem();
     }
 
+    Binding {
+        target: itemView
+        property: "settings.defaultFontSize"
+        value: settings.webviewFontSize
+    }
+
     Component.onCompleted: {
+        itemView.settings.defaultFontSize = settings.webviewFontSize
         showFeedItem();
     }
 

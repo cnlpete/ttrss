@@ -37,6 +37,7 @@ Page {
             left: parent.left
             leftMargin: constant.paddingLarge
             right: parent.right
+            rightMargin: constant.paddingLarge
         }
         height: childrenRect.height
         spacing: constant.paddingLarge
@@ -55,11 +56,20 @@ Page {
             onButtonClicked: settings.feeditemsOrder = index
         }
 
+        SettingsSliderRow {
+            text: qsTr('Font Size')
+            min: 20
+            max: 30
+            value: settings.webviewFontSize
+            onValueChanged: settings.webviewFontSize = value
+        }
+
         CheckBox {
             text: qsTr('Show Icons')
             checked: settings.displayIcons
             onClicked: settings.displayIcons = checked
             anchors.margins: constant.paddingLarge
         }
+
     }
 }

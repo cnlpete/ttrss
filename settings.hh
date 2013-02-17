@@ -19,6 +19,7 @@ class Settings : public QObject
     Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
     Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
+    Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
 public:
     static Settings *instance();
 
@@ -61,6 +62,11 @@ public:
     }
     void setDisplayIcons(bool displayIcons);
 
+    int webviewFontSize() const {
+        return this->_webviewFontSize;
+    }
+    void setWebviewFontSize(int webviewFontSize);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -70,6 +76,7 @@ signals:
     void whiteThemeChanged();
     void feeditemsOrderChanged();
     void displayIconsChanged();
+    void webviewFontSizeChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -87,5 +94,6 @@ private:
     bool _whiteTheme;
     int _feeditemsOrder;
     bool _displayIcons;
+    int _webviewFontSize;
 };
 #endif // SETTINGS_HH

@@ -78,6 +78,14 @@ void Settings::setDisplayIcons(bool displayIcons) {
     }
 }
 
+void Settings::setWebviewFontSize(int webviewFontSize) {
+    if (_webviewFontSize != webviewFontSize) {
+        _webviewFontSize = webviewFontSize;
+        m_settings->setValue("webviewFontSize", _webviewFontSize);
+        emit webviewFontSizeChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -87,4 +95,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _whiteTheme = m_settings->value("whiteTheme", true).toBool();
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
     _displayIcons = m_settings->value("displayIcons", true).toBool();
+    _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
 }
