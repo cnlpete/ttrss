@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -56,12 +54,12 @@
     <name>Categories</name>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="105"/>
-        <source>No categories to display</source>
+        <source>No categories have unread items</source>
         <translation>No hay categorías para mostrar</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="105"/>
-        <source>No categories have unread items</source>
+        <source>No categories to display</source>
         <translation>No hay categorías para mostrar</translation>
     </message>
     <message>
@@ -248,22 +246,22 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="46"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Oscuro</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
-        <translation type="unfinished"></translation>
+        <translation>Orden cronológico</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
@@ -278,12 +276,12 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño de la fuente</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Show Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar  emblemas</translation>
     </message>
 </context>
 <context>
