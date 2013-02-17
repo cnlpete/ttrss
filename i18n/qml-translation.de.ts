@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -134,7 +132,7 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="207"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="215"/>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
@@ -246,37 +244,42 @@
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="45"/>
+        <location filename="../qml/ttrss/Settings.qml" line="46"/>
         <source>Theme</source>
         <translation>Design</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="47"/>
+        <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>Dark</source>
         <translation>Dunkel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="47"/>
+        <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
         <translation>Hell</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="52"/>
+        <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
         <translation>Sortierreihenfolge</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="54"/>
+        <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Newest First</source>
         <translation>Neueste zuerst</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="54"/>
+        <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Oldest First</source>
         <translation>Ältere zuerst</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="59"/>
+        <location filename="../qml/ttrss/Settings.qml" line="60"/>
+        <source>Font Size</source>
+        <translation>Schrift Größe</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Show Icons</source>
         <translation>Zeige Icons</translation>
     </message>

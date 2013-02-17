@@ -134,7 +134,7 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="207"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="215"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
@@ -246,37 +246,42 @@
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="45"/>
+        <location filename="../qml/ttrss/Settings.qml" line="46"/>
         <source>Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="47"/>
+        <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="47"/>
+        <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="52"/>
+        <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="54"/>
+        <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Newest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="54"/>
+        <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Oldest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Settings.qml" line="59"/>
+        <location filename="../qml/ttrss/Settings.qml" line="60"/>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Show Icons</source>
         <translation type="unfinished"></translation>
     </message>
