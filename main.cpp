@@ -5,6 +5,7 @@
 #include "qmlapplicationviewer.h"
 
 #include "settings.hh"
+#include "mynetworkmanager.hh"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -28,6 +29,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         app->installTranslator(&translator);
 
     QmlApplicationViewer viewer;
+    //QObject::connect(viewer.engine(), SIGNAL(quit()), viewer.data, SLOT(close()));
+    viewer.setNetworkAccessManagerFactory(new MyNetworkManager);
+
 
     viewer.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
 

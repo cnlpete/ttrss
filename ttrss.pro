@@ -34,7 +34,8 @@ CONFIG += qdeclarative-boostable
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    settings.cpp
+    settings.cpp \
+    mynetworkmanager.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -44,4 +45,5 @@ RESOURCES += \
     harmattan.qrc
 
 HEADERS += \
-    settings.hh
+    settings.hh \
+    mynetworkmanager.hh
