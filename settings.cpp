@@ -46,6 +46,22 @@ void Settings::setPassword(QString password) {
     }
 }
 
+void Settings::setHttpauthUsername(QString username) {
+    if (_httpauthuser != username) {
+        _httpauthuser = username;
+        m_settings->setValue("httpauthusername", _httpauthuser);
+        emit httpauthUsernameChanged();
+    }
+}
+
+void Settings::setHttpauthPassword(QString password) {
+    if (_httpauthpasswd != password) {
+        _httpauthpasswd = password;
+        m_settings->setValue("httpauthpassword", _httpauthpasswd);
+        emit httpauthPasswordChanged();
+    }
+}
+
 void Settings::setAutologin(bool autologin) {
     if (_autologin != autologin) {
         _autologin = autologin;
@@ -91,6 +107,9 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _username = m_settings->value("username", "").toString();
     _password = m_settings->value("password", "").toString();
     _autologin = m_settings->value("autologin", false).toBool();
+
+    _httpauthuser = m_settings->value("httpauthusername", "").toString();
+    _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();
 
     _whiteTheme = m_settings->value("whiteTheme", true).toBool();
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();

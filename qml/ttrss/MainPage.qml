@@ -136,6 +136,10 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         ttrss.clearState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
+        if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
+            ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
+            console.log('doing http basic auth with user ' + settings.httpauthusername)
+        }
         ttrss.login(loginSuccessfull);
     }
 

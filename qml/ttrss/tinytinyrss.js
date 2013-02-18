@@ -19,6 +19,7 @@ var state={
     'url':              null,
     'username':         null,
     'password':         null,
+    'httpauth':         { 'dobasicauth' : false },
     'token':            null,
     'apilevel':         0,
     'numStatusUpdates': 0,          //each time the state updates such that the app might want to redisplay we update this (get via getNumStatusUpdates)
@@ -139,10 +140,20 @@ function setLoginDetails(username, password, url) {
     trace(2, "api url is " + url);
 }
 
+function setHttpAuthInfo(username, password) {
+    state['httpauth']['username'] = username
+    state['httpauth']['password'] = password
+    state['httpauth']['dobasicauth'] = true
+}
+
 function networkCall(params, callback) {
     var http = new XMLHttpRequest();
-    //if you want http-auth, do http.open("POST", state['url'], true, username, passoword) instead
-    http.open("POST", state['url'], true);
+
+    if (state['httpauth']['dobasicauth'])
+        http.open("POST", state['url'], true, state['httpauth']['username'], state['httpauth']['password']);
+    else
+        http.open("POST", state['url'], true);
+
     http.setRequestHeader('Content-type','application/json; charset=utf-8');
     http.onreadystatechange = function() {
         if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {

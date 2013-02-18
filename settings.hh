@@ -16,6 +16,9 @@ class Settings : public QObject
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
 
+    Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
+    Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
+
     Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
     Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
@@ -47,6 +50,16 @@ public:
     }
     void setAutologin(bool autologin);
 
+    QString httpauthUsername() const {
+        return this->_httpauthuser;
+    }
+    void setHttpauthUsername(QString username);
+
+    QString httpauthPassword() const {
+        return this->_httpauthpasswd;
+    }
+    void setHttpauthPassword(QString password);
+
     bool isWhiteTheme() const {
         return this->_whiteTheme;
     }
@@ -73,6 +86,9 @@ signals:
     void passwordChanged();
     void autologinChanged();
 
+    void httpauthUsernameChanged();
+    void httpauthPasswordChanged();
+
     void whiteThemeChanged();
     void feeditemsOrderChanged();
     void displayIconsChanged();
@@ -90,6 +106,9 @@ private:
     QString _username;
     QString _password;
     bool _autologin;
+
+    QString _httpauthuser;
+    QString _httpauthpasswd;
 
     bool _whiteTheme;
     int _feeditemsOrder;
