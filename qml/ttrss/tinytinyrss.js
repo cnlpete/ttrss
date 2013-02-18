@@ -139,6 +139,22 @@ function setLoginDetails(username, password, url) {
     trace(2, "api url is " + url);
 }
 
+function networkCall(params, callback) {
+    var http = new XMLHttpRequest();
+    //if you want http-auth, do http.open("POST", state['url'], true, username, passoword) instead
+    http.open("POST", state['url'], true);
+    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->");
+            trace(3, http.getAllResponseHeaders());
+        }
+        else if (http.readyState === XMLHttpRequest.DONE)
+            callback(http);
+    }
+    http.send(JSON.stringify(params));
+}
+
 function login(callback) {
     if(responsesPending['token'])
         return;
@@ -150,19 +166,7 @@ function login(callback) {
         'user': encodeURIComponent(state['username']),
         'password': encodeURIComponent(state['password'])
     }
-
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
-            process_login(callback, http);
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) { process_login(callback, http) });
 }
 
 function process_login(callback, http) {
@@ -223,18 +227,7 @@ function updateConfig(callback) {
         'sid': state['token']
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
-            process_updateConfig(callback, http);
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) { process_updateConfig(callback, http) });
 }
 
 function process_updateConfig(callback, httpreq) {
@@ -290,18 +283,7 @@ function updateCategories(callback) {
         'unread_only': !state['showall']
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
-            process_updateCategories(callback, http);
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) { process_updateCategories(callback, http) });
 }
 
 function process_updateCategories(callback, httpreq) {
@@ -343,12 +325,13 @@ function process_updateCategories(callback, httpreq) {
 
 function updateFeeds(catId, callback) {
     if(responsesPending['feeds'])
-        return;
+        return
+
+    state['lastcategory']['id'] = catId
 
     // needs to be logged in
     if(!state['token']) {
         requestsPending['feeds'] = true;
-        state['lastcategory']['id'] = catId;
         processPendingRequests(callback);
         return;
     }
@@ -362,23 +345,11 @@ function updateFeeds(catId, callback) {
         'unread_only': !state['showall']
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
-            process_updateFeeds(catId, callback, http);
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) { process_updateFeeds(callback, http) });
 }
 
-function process_updateFeeds(catId, callback, httpreq) {
-    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
-    trace(3, "response: "+httpreq.responseText);
+function process_updateFeeds(callback, httpreq) {
+    var catId = state['lastcategory']['id']
 
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
@@ -443,23 +414,11 @@ function updateFeedItems(feedId, callback) {
         'skip': state['lastfeed']['continuation']
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
-            process_updateFeedItems(feedId, callback, http);
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) { process_updateFeedItems(callback, http) });
 }
 
-function process_updateFeedItems(feedId, callback, httpreq) {
-    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
-    trace(3, "response: "+httpreq.responseText);
+function process_updateFeedItems(callback, httpreq) {
+    var feedId = state['lastfeed']['id']
 
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
@@ -604,34 +563,23 @@ function catchUp(feedId, callback) {
         'feed_id': feedId
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE) {
-            if (state['feeditems'][feedId]) {
-                for (var feed = 0; feed < state['feeditems'][feedId].length; feed++)
-                    state['feeditemcache'][state['feeditems'][feedId][feed]].unread = false
-            }
+    networkCall(params, function(http) {
+                    if (state['feeditems'][feedId]) {
+                        for (var feed = 0; feed < state['feeditems'][feedId].length; feed++)
+                            state['feeditemcache'][state['feeditems'][feedId][feed]].unread = false
+                    }
 
-            if (state['feedcache'][feedId]) {
-                var cat_id = state['feedcache'][feedId].cat_id
-                if (state['categorycache'][cat_id])
-                    state['categorycache'][cat_id].unread -= state['feedcache'][feedId].unread
-                state['feedcache'][feedId].unread = 0
-            }
+                    if (state['feedcache'][feedId]) {
+                        var cat_id = state['feedcache'][feedId].cat_id
+                        if (state['categorycache'][cat_id])
+                            state['categorycache'][cat_id].unread -= state['feedcache'][feedId].unread
+                        state['feedcache'][feedId].unread = 0
+                    }
 
-            responsesPending['catchup'] = false;
-            if(!processPendingRequests(callback))
-                if(callback)
-                    callback(0);
-        }
-    }
-    http.send(JSON.stringify(params));
+                    responsesPending['catchup'] = false;
+                    if(!processPendingRequests(callback))
+                        if(callback)
+                            callback(0); });
 }
 
 function updateFeedStar(articleId, starred, callback) {
@@ -660,23 +608,13 @@ function updateFeedStar(articleId, starred, callback) {
         'mode': (starred ? 1 : 0)
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE) {
-            state['feeditemcache'][articleId].marked = starred;
-            responsesPending['feeditemstar'] = false;
-            if(!processPendingRequests(callback))
-                if(callback)
-                    callback(0);
-        }
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) {
+                    state['feeditemcache'][articleId].marked = starred;
+                    responsesPending['feeditemstar'] = false;
+                    if(!processPendingRequests(callback))
+                        if(callback)
+                            callback(0); });
+
 }
 
 function updateFeedRSS(articleId, rss, callback) {
@@ -705,23 +643,12 @@ function updateFeedRSS(articleId, rss, callback) {
         'mode': (rss ? 1 : 0)
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE) {
-            state['feeditemcache'][articleId].published = rss;
-            responsesPending['feeditemrss'] = false;
-            if(!processPendingRequests(callback))
-                if(callback)
-                    callback(0);
-        }
-    }
-    http.send(JSON.stringify(params));
+    networkCall(params, function(http) {
+                    state['feeditemcache'][articleId].published = rss;
+                    responsesPending['feeditemrss'] = false;
+                    if(!processPendingRequests(callback))
+                        if(callback)
+                            callback(0); });
 }
 
 function updateFeedUnread(articleId, unread, callback) {
@@ -750,31 +677,20 @@ function updateFeedUnread(articleId, unread, callback) {
         'mode': (unread ? 1 : 0)
     }
 
-    var http = new XMLHttpRequest();
-    http.open("POST", state['url'], true);
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
-        }
-        else if (http.readyState === XMLHttpRequest.DONE) {
-            state['feeditemcache'][articleId].unread = unread;
-            var feed_id = state['feeditemcache'][articleId]['feed_id']
-            if (state['feedcache'][feed_id]) {
-                state['feedcache'][feed_id].unread += (unread?1:-1)
-                var cat_id = state['feedcache'][feed_id].cat_id
-                if (state['categorycache'][cat_id])
-                    state['categorycache'][cat_id].unread += (unread?1:-1)
-            }
+    networkCall(params, function(http) {
+                    state['feeditemcache'][articleId].unread = unread;
+                    var feed_id = state['feeditemcache'][articleId]['feed_id']
+                    if (state['feedcache'][feed_id]) {
+                        state['feedcache'][feed_id].unread += (unread?1:-1)
+                        var cat_id = state['feedcache'][feed_id].cat_id
+                        if (state['categorycache'][cat_id])
+                            state['categorycache'][cat_id].unread += (unread?1:-1)
+                    }
 
-            responsesPending['feeditemunread'] = false;
-            if(!processPendingRequests(callback))
-                if(callback)
-                    callback(0);
-        }
-    }
-    http.send(JSON.stringify(params));
+                    responsesPending['feeditemunread'] = false;
+                    if(!processPendingRequests(callback))
+                        if(callback)
+                            callback(0); });
 }
 
 //Indicates whether only unread items should be shown
