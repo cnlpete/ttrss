@@ -7,13 +7,16 @@ It uses the [Tiny Tiny RSS API](http://tt-rss.org/redmine/projects/tt-rss/wiki/J
 
 Upcoming
 ----------
-- Add Settings Page
 - Accounts Plugin with global Accounts
-- System Integration, so it will periodically check for new items and notify? / integrate into events feed
+- Global Settings Widget included in System Preferences
+- Feed Integration
 
 ArtWork
 ----------
 * TinyTinyRSS Logo is taken from the [Android Project](http://tt-rss.org/redmine/projects/tt-rss-android/wiki/)
+* All other Icons are free Icons provided by [IconFinder](http://www.iconfinder.com/search/?q=iconset%3Adevelopperss)
+* The Harmattan Desktop Icon was generated using the amazing [Harmattan Icon Generator](http://apps.javispedro.com/nit/hicg/) by [Javier S. Pedro](https://gitorious.org/hicg/hicg)
+
 
 License
 ----------
