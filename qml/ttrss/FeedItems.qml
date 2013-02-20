@@ -117,8 +117,9 @@ Page {
             }
         }
     }
-    SectionScroller {
-       listView: listView
+    FastScroll {
+        listView: listView
+        visible: !!itemListModel && itemListModel.count > 10
     }
 
     ScrollDecorator {
