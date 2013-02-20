@@ -55,10 +55,10 @@ Item {
 
     Item {
         anchors.fill: parent
-        anchors.leftMargin: __hasPageWidth ? -__leftPageMargin : 0
-        anchors.rightMargin: __hasPageWidth ? -__rightPageMargin : 0
-        anchors.topMargin: __hasPageWidth ? -__topPageMargin : 0
-        anchors.bottomMargin: __hasPageWidth ? -__bottomPageMargin : 0
+        anchors.leftMargin: -listView.anchors.leftMargin//__hasPageWidth ? -__leftPageMargin : 0
+        anchors.rightMargin: -listView.anchors.rightMargin//__hasPageWidth ? -__rightPageMargin : 0
+        anchors.topMargin: -listView.anchors.topMargin//__hasPageWidth ? -__topPageMargin : 0
+        anchors.bottomMargin: -listView.anchors.bottomMargin//__hasPageWidth ? -__bottomPageMargin : 0
 
         MouseArea {
             id: dragArea

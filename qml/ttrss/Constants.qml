@@ -23,6 +23,8 @@ QtObject{
     property color colorWebviewBG: theme.inverted ? "#000000" : "#ffffff"
     property color colorWebviewText: theme.inverted ? "#ffffff" : "#000033"
 
+    property color colorFastScrollText: theme.inverted ? "#000033" : "#8c8c8c"
+
     property int listItemSpacing: 10
 
     property int paddingSmall: 4
