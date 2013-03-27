@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -144,7 +142,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="175"/>
         <source>Today</source>
-        <translation></translation>
+        <translation>Aujourd&apos;hui</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="190"/>
@@ -248,42 +246,42 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="46"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Sombre</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanc</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Newest First</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveaux en premier</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Oldest First</source>
-        <translation type="unfinished"></translation>
+        <translation>Anciens en premier</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille de la police</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Show Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer les icônes</translation>
     </message>
 </context>
 <context>
