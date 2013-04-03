@@ -69,12 +69,14 @@ Page {
             checked: settings.autoMarkRead
             onCheckedChanged: settings.autoMarkRead = checked
         }
-        CheckBox {
+
+        SettingsSwitchRow {
             text: qsTr('Show Icons')
             checked: settings.displayIcons
-            onClicked: settings.displayIcons = checked
-            anchors.margins: constant.paddingLarge
+            onCheckedChanged: settings.displayIcons = checked
         }
+
+
 
     }
 }
