@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="fr">
 <context>
     <name>About</name>
     <message>
@@ -71,52 +73,52 @@
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="48"/>
+        <location filename="../qml/ttrss/Constants.qml" line="50"/>
         <source>Archived articles</source>
         <translation>Articles archivés</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="49"/>
+        <location filename="../qml/ttrss/Constants.qml" line="51"/>
         <source>Starred articles</source>
         <translation>Articles étoilés</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="50"/>
+        <location filename="../qml/ttrss/Constants.qml" line="52"/>
         <source>Published articles</source>
         <translation>Articles publiés</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="51"/>
+        <location filename="../qml/ttrss/Constants.qml" line="53"/>
         <source>Fresh articles</source>
         <translation>Articles récents</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="52"/>
+        <location filename="../qml/ttrss/Constants.qml" line="54"/>
         <source>All articles</source>
         <translation>Tous les articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="53"/>
+        <location filename="../qml/ttrss/Constants.qml" line="55"/>
         <source>Recently read</source>
         <translation>Récemment lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="55"/>
+        <location filename="../qml/ttrss/Constants.qml" line="57"/>
         <source>Labels</source>
         <translation>Etiquettes</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="56"/>
+        <location filename="../qml/ttrss/Constants.qml" line="58"/>
         <source>Special</source>
         <translation>Spécial</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="57"/>
+        <location filename="../qml/ttrss/Constants.qml" line="59"/>
         <source>All Feeds</source>
         <translation>Tous les flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="58"/>
+        <location filename="../qml/ttrss/Constants.qml" line="60"/>
         <source>Uncategorized</source>
         <translation>Sans catégorie</translation>
     </message>
@@ -132,7 +134,7 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="215"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="221"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
@@ -140,57 +142,57 @@
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="175"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="176"/>
         <source>Today</source>
         <translation>Aujourd&apos;hui</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="190"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="191"/>
         <source>No items in feed</source>
         <translation>Pas d&apos;article dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="190"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="191"/>
         <source>No unread items in feed</source>
         <translation>Pas d&apos;article non-lu dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="265"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
         <source>Mark all read</source>
         <translation>Marquer tous comme lus</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="289"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="290"/>
         <source>Unstar</source>
         <translation>Enlever l&apos;étoile</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="289"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="290"/>
         <source>Star</source>
         <translation>Etoiler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="298"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="299"/>
         <source>Unpublish</source>
         <translation>Dépublier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="298"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="299"/>
         <source>Publish</source>
         <translation>Publier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="307"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="308"/>
         <source>Mark read</source>
         <translation>Marquer comme lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="307"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="308"/>
         <source>Mark Unread</source>
         <translation>Marquer comme non-lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="316"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="317"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
@@ -280,6 +282,11 @@
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
+        <source>Automatically Mark Items as Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="74"/>
         <source>Show Icons</source>
         <translation>Montrer les icônes</translation>
     </message>
