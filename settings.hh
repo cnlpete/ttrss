@@ -23,6 +23,7 @@ class Settings : public QObject
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
     Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
     Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
+    Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
 public:
     static Settings *instance();
 
@@ -80,6 +81,11 @@ public:
     }
     void setWebviewFontSize(int webviewFontSize);
 
+    bool autoMarkRead() const {
+        return this->_autoMarkRead;
+    }
+    void setAutoMarkRead(bool autoMarkRead);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -93,6 +99,7 @@ signals:
     void feeditemsOrderChanged();
     void displayIconsChanged();
     void webviewFontSizeChanged();
+    void autoMarkReadChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -114,5 +121,6 @@ private:
     int _feeditemsOrder;
     bool _displayIcons;
     int _webviewFontSize;
+    bool _autoMarkRead;
 };
 #endif // SETTINGS_HH

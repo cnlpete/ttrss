@@ -99,12 +99,18 @@ Page {
             pageTitle   = data.title
             pageTitle   = pageTitle.replace(/<br.*>/gi, "")
             pageTitle   = pageTitle.replace(/\n/gi, "")
+
             marked      = data.marked
             unread      = data.unread
             rss         = data.published
 
             previousId  = ttrss.getPreviousFeedId(feedId, articleId)
             nextId      = ttrss.getNextFeedId(feedId, articleId)
+
+            if (settings.autoMarkRead && unread) {
+                loading = true
+                ttrss.updateFeedUnread(articleId, false, callback)
+            }
         }
     }
 

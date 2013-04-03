@@ -102,6 +102,14 @@ void Settings::setWebviewFontSize(int webviewFontSize) {
     }
 }
 
+void Settings::setAutoMarkRead(bool autoMarkRead) {
+    if (_autoMarkRead != autoMarkRead) {
+        _autoMarkRead = autoMarkRead;
+        m_settings->setValue("autoMarkRead", _autoMarkRead);
+        emit autoMarkReadChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -115,4 +123,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
     _displayIcons = m_settings->value("displayIcons", true).toBool();
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
+    _autoMarkRead = m_settings->value("autoMarkRead", false).toBool();
 }

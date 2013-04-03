@@ -64,6 +64,11 @@ Page {
             onValueChanged: settings.webviewFontSize = value
         }
 
+        SettingsSwitchRow {
+            text: qsTr('Automatically Mark Items as Read')
+            checked: settings.autoMarkRead
+            onCheckedChanged: settings.autoMarkRead = checked
+        }
         CheckBox {
             text: qsTr('Show Icons')
             checked: settings.displayIcons
