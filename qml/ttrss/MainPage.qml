@@ -69,7 +69,7 @@ Page {
         }
         TextField {
             id: password
-            echoMode: TextInput.PasswordEchoOnEdit
+            echoMode: TextInput.Password
             width: parent.width
             enabled: !loading
         }
