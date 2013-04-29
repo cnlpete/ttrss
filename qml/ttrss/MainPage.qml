@@ -89,6 +89,23 @@ Page {
         id: commonTools
         visible: true
         ToolButton {
+            id: clearButton
+            text: qsTr("Clear")
+            anchors.right: loginButton.left
+            onClicked: {
+                server.text = ''
+                username.text = ''
+                password.text = ''
+
+                settings.httpauthusername = ''
+                settings.httpauthpassword = ''
+                settings.servername = server.text
+                settings.username = username.text
+                settings.password = password.text
+            }
+            enabled: !loading
+        }
+        ToolButton {
             id: loginButton
             text: qsTr("Login")
             anchors.right: menuButton.left
