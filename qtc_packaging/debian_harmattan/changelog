@@ -1,3 +1,10 @@
+ttrss (0.2.1) unstable; urgency=low
+  * Added detection of httpauth info in servername input
+  * Added an AutoMark as Read Option, so Feeditems get marked as read, when opening them
+  * Added FastScroll in the FeedItems View
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 29 Apr 2013 18:36:07 +0200
+
 ttrss (0.2.0) unstable; urgency=low
   * Added Basic HTTP Auth possibilities (via config file)
   * Added a Settings page with multiple small options
