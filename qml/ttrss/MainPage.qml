@@ -93,6 +93,16 @@ Page {
             text: qsTr("Login")
             anchors.right: menuButton.left
             onClicked: {
+                // check the servername for httpauth data and set/extract those
+                var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
+                var servername = server.text
+                var regexres = servername.match(httpauthregex)
+                if (regexres !== null) {
+                    server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+                    settings.httpauthusername = regexres[2]
+                    settings.httpauthpassword = regexres[3]
+                }
+
                 settings.servername = server.text
                 settings.username = username.text
                 settings.password = password.text
