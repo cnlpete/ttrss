@@ -28,10 +28,6 @@ public:
     static Settings *instance();
 
     QString servername() const {
-        QString s("returning ");
-        s += this->_servername;
-        s += " for servername req";
-        qDebug(s.toStdString().c_str());
         return this->_servername;
     }
     void setServername(QString servername);
