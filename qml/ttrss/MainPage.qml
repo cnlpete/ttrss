@@ -148,7 +148,9 @@ Page {
         ttrss.setLoginDetails(username.text, password.text, server.text);
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
-            console.log('doing http basic auth with user ' + settings.httpauthusername)
+            infoBanner.text = 'doing login with httpauth (' + settings.httpauthusername + ')'
+            infoBanner.show()
+            console.log('doing http basic auth with username ' + settings.httpauthusername)
         }
         ttrss.login(loginSuccessfull);
     }

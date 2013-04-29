@@ -11,6 +11,7 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import com.nokia.extras 1.1
 import "tinytinyrss.js" as TTRss
 
 PageStackWindow {
@@ -36,6 +37,11 @@ PageStackWindow {
     initialPage: mainPage
 
     Constants{ id: constant }
+
+    InfoBanner {
+        id: infoBanner
+        topMargin: 50
+    }
 
     MainPage {
         id: mainPage
