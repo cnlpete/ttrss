@@ -123,5 +123,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
     _displayIcons = m_settings->value("displayIcons", true).toBool();
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
-    _autoMarkRead = m_settings->value("autoMarkRead", false).toBool();
+    _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
 }
