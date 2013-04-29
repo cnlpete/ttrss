@@ -234,6 +234,11 @@
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="93"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/MainPage.qml" line="110"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
