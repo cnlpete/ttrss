@@ -109,7 +109,7 @@ Page {
             text:  qsTr("Version: %1").arg(APP_VERSION) + "<br/>"
                    +qsTr("Author: %1").arg("Hauke Schade 2012") + "<br/>"
                    +qsTr("Thanks to:") + " "
-                   + "Francois Cattin"
+                   + "Francois Cattin, Jakub Kožíšek"
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }
