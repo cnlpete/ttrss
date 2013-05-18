@@ -14,7 +14,7 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="111"/>
         <source>Thanks to:</source>
-        <translation>Poděkování: %1</translation>
+        <translation>Poděkování:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="119"/>

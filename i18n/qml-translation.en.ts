@@ -142,57 +142,57 @@
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="176"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="177"/>
         <source>Today</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="191"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
         <source>No items in feed</source>
         <translation>No items in feed</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="191"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
         <source>No unread items in feed</source>
         <translation>No unread items in feed</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="266"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="267"/>
         <source>Mark all read</source>
         <translation>Mark all as read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="290"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
         <source>Unstar</source>
         <translation>Unstar</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="290"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
         <source>Star</source>
         <translation>Star</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="299"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
         <source>Unpublish</source>
         <translation>Unpublish</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="299"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
         <source>Publish</source>
         <translation>Publish</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="308"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
         <source>Mark read</source>
         <translation>Mark read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="308"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
         <source>Mark Unread</source>
         <translation>Mark unread</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="317"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="318"/>
         <source>Open in Web Browser</source>
         <translation>Open in Web Browser</translation>
     </message>
@@ -294,6 +294,11 @@
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
         <source>Show Icons</source>
         <translation>Show Icons</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="80"/>
+        <source>Use All Feeds on Startup</source>
+        <translation>Use All Feeds on Startup</translation>
     </message>
 </context>
 <context>
