@@ -76,6 +76,12 @@ Page {
             onCheckedChanged: settings.displayIcons = checked
         }
 
+        SettingsSwitchRow {
+            text: qsTr('Use All Feeds on Startup')
+            checked: settings.useAllFeedsOnStartup
+            onCheckedChanged: settings.useAllFeedsOnStartup = checked
+        }
+
 
 
     }

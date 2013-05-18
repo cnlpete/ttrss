@@ -110,6 +110,14 @@ void Settings::setAutoMarkRead(bool autoMarkRead) {
     }
 }
 
+void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
+    if (_useAllFeedsOnStartup != useAllFeedsOnStartup) {
+        _useAllFeedsOnStartup = useAllFeedsOnStartup;
+        m_settings->setValue("useAllFeedsOnStartup", _useAllFeedsOnStartup);
+        emit useAllFeedsOnStartupChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -124,4 +132,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _displayIcons = m_settings->value("displayIcons", true).toBool();
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
+    _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
 }

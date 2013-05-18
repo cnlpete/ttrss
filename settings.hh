@@ -24,6 +24,7 @@ class Settings : public QObject
     Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
     Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
     Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
+    Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
 public:
     static Settings *instance();
 
@@ -82,6 +83,11 @@ public:
     }
     void setAutoMarkRead(bool autoMarkRead);
 
+    bool useAllFeedsOnStartup() const {
+        return this->_useAllFeedsOnStartup;
+    }
+    void setUseAllFeedsOnStartup(bool useAllFeedsOnStartup);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -96,6 +102,7 @@ signals:
     void displayIconsChanged();
     void webviewFontSizeChanged();
     void autoMarkReadChanged();
+    void useAllFeedsOnStartupChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -118,5 +125,6 @@ private:
     bool _displayIcons;
     int _webviewFontSize;
     bool _autoMarkRead;
+    bool _useAllFeedsOnStartup;
 };
 #endif // SETTINGS_HH
