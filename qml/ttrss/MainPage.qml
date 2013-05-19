@@ -141,6 +141,12 @@ Page {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
+            MenuItem {
+                text: qsTr("No Account Yet?")
+                onClicked: {
+                    rootWindow.openFile(Qt.openUrlExternally(constant.registerUrl));
+                }
+            }
             SettingsItem {}
             AboutItem {}
         }

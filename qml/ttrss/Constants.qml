@@ -46,6 +46,7 @@ QtObject{
 
     property url sourceRepoSite: "http://ttrss.cnlpete.de"
     property url issueTrackerUrl: "https://github.com/cnlpete/ttrss/issues"
+    property url registerUrl: "http://tt-rss.org/redmine/projects/tt-rss/wiki"
 
     property string archivedArticles: qsTr('Archived articles')
     property string starredArticles: qsTr('Starred articles')
