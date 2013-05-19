@@ -73,52 +73,52 @@
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="50"/>
+        <location filename="../qml/ttrss/Constants.qml" line="51"/>
         <source>Archived articles</source>
         <translation>Archived articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="51"/>
+        <location filename="../qml/ttrss/Constants.qml" line="52"/>
         <source>Starred articles</source>
         <translation>Starred articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="52"/>
+        <location filename="../qml/ttrss/Constants.qml" line="53"/>
         <source>Published articles</source>
         <translation>Published articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="53"/>
+        <location filename="../qml/ttrss/Constants.qml" line="54"/>
         <source>Fresh articles</source>
         <translation>Fresh articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="54"/>
+        <location filename="../qml/ttrss/Constants.qml" line="55"/>
         <source>All articles</source>
         <translation>All articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="55"/>
+        <location filename="../qml/ttrss/Constants.qml" line="56"/>
         <source>Recently read</source>
         <translation>Recently read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="57"/>
+        <location filename="../qml/ttrss/Constants.qml" line="58"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="58"/>
+        <location filename="../qml/ttrss/Constants.qml" line="59"/>
         <source>Special</source>
         <translation>Special</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="59"/>
+        <location filename="../qml/ttrss/Constants.qml" line="60"/>
         <source>All Feeds</source>
         <translation>All feeds</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Constants.qml" line="60"/>
+        <location filename="../qml/ttrss/Constants.qml" line="61"/>
         <source>Uncategorized</source>
         <translation>Uncategorized</translation>
     </message>
@@ -241,6 +241,11 @@
         <location filename="../qml/ttrss/MainPage.qml" line="110"/>
         <source>Login</source>
         <translation>Login</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/MainPage.qml" line="145"/>
+        <source>No Account Yet?</source>
+        <translation>No Account Yet?</translation>
     </message>
 </context>
 <context>
