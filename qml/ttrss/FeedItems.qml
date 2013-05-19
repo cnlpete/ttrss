@@ -164,7 +164,7 @@ Page {
                 var subtitle = feeditems[feeditem].content || ""
                 subtitle = subtitle.replace(/\n/gi, "")
                 subtitle = subtitle.replace(/<br.*>/gi, "")
-                subtitle = subtitle.replace(/<[\/]?(p|div|img|h|a|ul|li|table|tbody|tr|td|th|pre)[^>]*>/gi, "")
+                subtitle = subtitle.replace(/<[\/]?(p|div|img|h|a|ul|li|table|tbody|tr|td|th|pre|blockquote)[^>]*>/gi, "")
                 // can not strip that easily, since there might be closing tags that are needed for rendering ...
 //                if (subtitle.length > 102)
 //                    subtitle = subtitle.substring(0,100) + "..."
