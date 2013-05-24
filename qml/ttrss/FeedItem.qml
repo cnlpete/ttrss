@@ -93,8 +93,15 @@ Page {
         var data = ttrss.getFeedItem(feedId, articleId)
 
         if (data) {
-            var content = data.content
-            itemView.html = content.replace('target="_blank"', '')
+            var content = data.content.replace('target="_blank"', '')
+            if (!content.match(/<body>/gi)) {
+                // not yet html, detect urls
+                console.log('doing link detection on ' + content)
+                var regex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi;
+                content = content.replace(regex, "<a href='$1'>$1</a> ")
+            }
+
+            itemView.html = content
             url         = data.link
             pageTitle   = data.title
             pageTitle   = pageTitle.replace(/<br.*>/gi, "")
