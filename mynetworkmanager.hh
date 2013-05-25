@@ -14,6 +14,7 @@
 
 #include <qdeclarativenetworkaccessmanagerfactory.h>
 #include <QtNetwork/qnetworkreply.h>
+#include <QtNetwork/QNetworkAccessManager>
 
 class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManagerFactory
 {
@@ -25,6 +26,15 @@ public: // QDeclarativeNetworkAccessManagerFactory
 private slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
 //    void onReplyFinished(QNetworkReply *reply);
+};
+
+class MyNetworkAccessManager : public QNetworkAccessManager {
+    Q_OBJECT
+public:
+    MyNetworkAccessManager(QObject *parent = 0) : QNetworkAccessManager(parent) { }
+protected:
+    QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = 0);
+
 };
 
 #endif // MYNETWORKMANAGER_HH

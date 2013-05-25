@@ -10,15 +10,26 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 #include "mynetworkmanager.hh"
+#include <QtNetwork/QNetworkDiskCache>
 
 QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
-    QNetworkAccessManager *nam = new QNetworkAccessManager(parent);
+    QNetworkAccessManager *nam = new MyNetworkAccessManager(parent);
 
     connect(nam, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
   //  connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onReplyFinished(QNetworkReply*)));
 
-    qDebug("new custom mynetworkManager :)");
+    QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
+    diskCache->setCacheDirectory("/tmp");
+    diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
+    nam->setCache(diskCache);
+
     return nam;
+}
+
+QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Operation op, const QNetworkRequest & req, QIODevice * outgoingData) {
+    QNetworkRequest request(req);
+    request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
+    return QNetworkAccessManager::createRequest(op, request, outgoingData);
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
