@@ -132,7 +132,7 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="221"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
@@ -211,6 +211,11 @@
         <location filename="../qml/ttrss/Feeds.qml" line="188"/>
         <source>Mark all read</source>
         <translation>Alle als gelesen markieren</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="195"/>
+        <source>Unsubscribe</source>
+        <translation>Feed abbestellen</translation>
     </message>
 </context>
 <context>

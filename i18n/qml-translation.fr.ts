@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -134,7 +132,7 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="221"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
@@ -214,6 +212,11 @@
         <source>Mark all read</source>
         <translation>Marquer tous comme lus</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="195"/>
+        <source>Unsubscribe</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MainPage</name>
@@ -235,7 +238,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="93"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="110"/>
@@ -245,7 +248,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -293,7 +296,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
@@ -303,7 +306,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

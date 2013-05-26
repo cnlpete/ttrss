@@ -68,27 +68,28 @@ Page {
         if(feeds && feeds.length) {
             //First add feed with unread items
             for(var feed = 0; feed < feeds.length; feed++) {
+                if (feeds[feed]) {
+                    var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
+                    if (feeds[feed].id == ttrss.constants['feeds']['archived'])
+                        title = constant.archivedArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['starred'])
+                        title = constant.starredArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['published'])
+                        title = constant.publishedArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
+                        title = constant.freshArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['all'])
+                        title = constant.allArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['recently'])
+                        title = constant.recentlyArticles
 
-                var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
-                if (feeds[feed].id == ttrss.constants['feeds']['archived'])
-                    title = constant.archivedArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['starred'])
-                    title = constant.starredArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['published'])
-                    title = constant.publishedArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
-                    title = constant.freshArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['all'])
-                    title = constant.allArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['recently'])
-                    title = constant.recentlyArticles
-
-                feedsModel.append({
-                                      title:        title,
-                                      unreadcount:  feeds[feed].unread,
-                                      feedId:       feeds[feed].id,
-                                      icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
-                                  });
+                    feedsModel.append({
+                                          title:        title,
+                                          unreadcount:  feeds[feed].unread,
+                                          feedId:       feeds[feed].id,
+                                          icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
+                                      });
+                }
             }
         }
         else {
@@ -190,6 +191,14 @@ Page {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
                     ttrss.catchUp(feedMenu.feedId, showFeedsCallback)
+                } }
+            MenuItem {
+                text: qsTr("Unsubscribe")
+                enabled: feedMenu.feedId >= 0
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    loading = true
+                    ttrss.unsubscribe(feedMenu.feedId, showFeedsCallback)
                 } }
         }
     }
