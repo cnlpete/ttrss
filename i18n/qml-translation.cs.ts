@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation type="unfinished"/>
+        <translation>Ještě nemáte účet?</translation>
     </message>
 </context>
 <context>
