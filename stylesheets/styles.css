@@ -306,6 +306,12 @@ a.buttons:hover {
 	text-decoration: none;
 }
 
+#rss-icon { float: right; }
+#rss-icon img {
+  margin: 0;
+  border: 0;
+}
+
 #screenshots {
 }
 
