@@ -595,14 +595,24 @@ function catchUp(feedId, callback) {
                             callback(0); });
 }
 
-function unsubscribe(feedId, callback) {
-    if(responsesPending['unsubscribe'])
+/**
+* 0 - OK, Feed already exists
+* 1 - OK, Feed added
+* 2 - Invalid URL
+* 3 - URL content is HTML, no feeds available
+* 4 - URL content is HTML which contains multiple feeds.
+* 5 - Couldn't download the URL content.
+* 6 - Content is an invalid XML.
+*/
+function subscribe(catId, url, callback) {
+    if(responsesPending['subscribe'])
         return;
 
     // needs to be logged in
     if(!state['token']) {
-        requestsPending['unsubscribe'] = true;
-        processPendingRequests(callback);
+        requestsPending['subscribe'] = true;
+        state['subscribeurl'] = url
+        processPendingRequests(callback)
         return;
     }
 
@@ -611,7 +621,51 @@ function unsubscribe(feedId, callback) {
             if(callback)
                 callback(0)
 
-    responsesPending['unsubscribe'] = true;
+    responsesPending['subscribe'] = true
+
+    var params = {
+        'op': 'subscribeToFeed',
+        'sid': state['token'],
+        'category_id': catId,
+        'feed_url': url
+    }
+
+    networkCall(params, function(http) {
+                    trace(3, "response: "+http.responseText)
+                    responsesPending['subscribe'] = false
+
+                    if(http.status === 200)  {
+                        var responseObject = JSON.parse(http.responseText);
+                        if (responseObject.status === 0) {
+                            if(!processPendingRequests(callback))
+                                if(callback)
+                                    callback(responseObject.content.status.code)
+                        }
+                    }
+                    else
+                        if(!processPendingRequests(callback))
+                            if(callback)
+                                callback(-1)
+                })
+}
+
+function unsubscribe(feedId, callback) {
+    if(responsesPending['unsubscribe'])
+        return
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['unsubscribe'] = true
+        processPendingRequests(callback)
+        return
+    }
+
+    if (state['apilevel'] < 5)
+        if(!processPendingRequests(callback))
+            if(callback)
+                callback(0)
+
+    responsesPending['unsubscribe'] = true
 
     var params = {
         'op': 'unsubscribeFeed',
@@ -620,14 +674,14 @@ function unsubscribe(feedId, callback) {
     }
 
     networkCall(params, function(http) {
-                    trace(3, "response: "+http.responseText);
+                    trace(3, "response: "+http.responseText)
                     if (state['feedcache'][feedId]) {
                         delete state['feedcache'][feedId]
                     }
                     responsesPending['unsubscribe'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
-                            callback(0); });
+                            callback(0); })
 }
 
 function updateFeedStar(articleId, starred, callback) {
