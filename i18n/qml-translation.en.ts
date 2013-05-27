@@ -200,22 +200,62 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
         <source>No feeds in category</source>
         <translation>No feeds in category</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
         <source>Category has no unread items</source>
         <translation>Category has no feeds with unread items</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="188"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="172"/>
+        <source>Add subscription</source>
+        <translation>Add subscription</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="190"/>
+        <source>Add</source>
+        <translation>Add</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="191"/>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="205"/>
+        <source>Feed address:</source>
+        <translation>Feed address:</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="231"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="236"/>
+        <source>Invalid URL</source>
+        <translation>Invalid URL</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="241"/>
+        <source>Already suscribed to Feed</source>
+        <translation>Already suscribed to Feed</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="245"/>
+        <source>Feed added</source>
+        <translation>Feed added</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="261"/>
         <source>Mark all read</source>
         <translation>Mark all as read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="195"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="268"/>
         <source>Unsubscribe</source>
         <translation>Unsubscribe</translation>
     </message>
