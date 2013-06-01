@@ -11,6 +11,7 @@
 
 #include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
+#include <QDesktopServices>
 
 QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     QNetworkAccessManager *nam = new MyNetworkAccessManager(parent);
@@ -19,7 +20,7 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
   //  connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onReplyFinished(QNetworkReply*)));
 
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
-    diskCache->setCacheDirectory("/tmp");
+    diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
     diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
     nam->setCache(diskCache);
 
