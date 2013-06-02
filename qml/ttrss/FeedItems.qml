@@ -165,9 +165,12 @@ Page {
                 subtitle = subtitle.replace(/\n/gi, "")
                 subtitle = subtitle.replace(/<br.*>/gi, "")
                 subtitle = subtitle.replace(/<[\/]?(p|div|img|h|a|ul|ol|dd|dt|dl|li|table|tbody|tr|td|th|pre|blockquote|center)[^>]*>/gi, "")
-                // can not strip that easily, since there might be closing tags that are needed for rendering ...
-//                if (subtitle.length > 102)
-//                    subtitle = subtitle.substring(0,100) + "..."
+                // strip body aswell
+                subtitle = subtitle.replace(/<[\/]?(body)[^>]*>/gi, "")
+                if (subtitle.length > 102)
+                    subtitle = subtitle.substring(0,100) + "..."
+                // and add later
+                subtitle = '<body>' + subtitle + '</body>'
                 var title = feeditems[feeditem].title
                 title = title.replace(/<br.*>/gi, "")
                 title = title.replace(/\n/gi, "")
