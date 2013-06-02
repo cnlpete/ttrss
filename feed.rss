@@ -6,8 +6,24 @@
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
     <copyright>Hauke Schade</copyright>
-    <pubDate>Thu, 16 May 2013 09:39:39 +0200</pubDate>
+    <pubDate>Sun, 02 Jun 2013 19:18:59 +0200</pubDate>
     <atom:link href="http://ttrss.cnlpete.de/feed.rss" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Version 0.2.2</title>
+      <pubDate>Sun, 02 Jun 2013 19:18:59 +0200</pubDate>
+      <description>
+        <![CDATA[
+   * added czech translation, thanks to Jakub Kožíšek
+   * performance improvements
+   * add/remove feed subscriptions
+   * share feeditems with shareUI
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss022</guid>
+      <link>http://schad.es/ttrss022</link>
+    </item>
 
     <item>
       <title>Version 0.2.1</title>
