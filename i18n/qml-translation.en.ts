@@ -138,6 +138,11 @@
         <source>Open in Web Browser</source>
         <translation>Open in Web Browser</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
+        <source>Share</source>
+        <translation>Share</translation>
+    </message>
 </context>
 <context>
     <name>FeedItems</name>

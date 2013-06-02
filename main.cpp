@@ -6,6 +6,7 @@
 
 #include "settings.hh"
 #include "mynetworkmanager.hh"
+#include "qmlutils.hh"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -35,6 +36,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
 
+    viewer.rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
     viewer.rootContext()->setContextProperty("settings", Settings::instance());
 
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);

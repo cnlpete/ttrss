@@ -1,4 +1,4 @@
-VERSION = 0.2.1
+VERSION = 0.2.2
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # Add more folders to ship with the application, here
@@ -27,15 +27,17 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # MOBILITY +=
 
 # Speed up launching on MeeGo/Harmattan when using applauncherd daemon
-CONFIG += qdeclarative-boostable
+CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common qdeclarative-boostable
+DEFINES += Q_OS_HARMATTAN
 
 # Add dependency to Symbian components
 # CONFIG += qt-components
 
-# The .cpp file which was generated for your project. Feel free to hack it.
+# The .cpp files
 SOURCES += main.cpp \
     settings.cpp \
-    mynetworkmanager.cpp
+    mynetworkmanager.cpp \
+    qmlutils.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -46,4 +48,5 @@ RESOURCES += \
 
 HEADERS += \
     settings.hh \
-    mynetworkmanager.hh
+    mynetworkmanager.hh \
+    qmlutils.hh
