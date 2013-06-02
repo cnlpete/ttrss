@@ -1,3 +1,11 @@
+ttrss (0.2.2) unstable; urgency=low
+  * added czech translation, thanks to Jakub Kožíšek
+  * performance improvements
+  * add/remove feed subscriptions
+  * share feeditems with shareUI
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sun, 02 Jun 2013 19:18:59 +0200
+
 ttrss (0.2.1) unstable; urgency=low
   * Added detection of httpauth info in servername input
   * Added an AutoMark as Read Option, so Feeditems get marked as read, when opening them
