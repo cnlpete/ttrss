@@ -134,12 +134,12 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Ouvrir dans le Navigateur</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
         <source>Share</source>
-        <translation type="unfinished"/>
+        <translation>Partager</translation>
     </message>
 </context>
 <context>
@@ -167,7 +167,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
         <source>Unstar</source>
-        <translation>Enlever l&apos;étoile</translation>
+        <translation>Ne pas étoiler</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
@@ -197,7 +197,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="321"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Ouvrir dans le Navigateur</translation>
     </message>
 </context>
 <context>
@@ -215,52 +215,52 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="172"/>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une souscription</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="190"/>
         <source>Add</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="191"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="205"/>
         <source>Feed address:</source>
-        <translation type="unfinished"/>
+        <translation>Adresse du flux:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="231"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="236"/>
         <source>Invalid URL</source>
-        <translation type="unfinished"/>
+        <translation>URL invalide</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="241"/>
         <source>Already suscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Flux déjà souscrit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="245"/>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Flux ajouté</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="261"/>
         <source>Mark all read</source>
-        <translation>Marquer tous comme lus</translation>
+        <translation>Marquer tout comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="268"/>
         <source>Unsubscribe</source>
-        <translation type="unfinished"/>
+        <translation>Désinscrire</translation>
     </message>
 </context>
 <context>
@@ -283,7 +283,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="93"/>
         <source>Clear</source>
-        <translation type="unfinished"/>
+        <translation>Effacer</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="110"/>
@@ -293,7 +293,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation type="unfinished"/>
+        <translation>Pas encore de compte ?</translation>
     </message>
 </context>
 <context>
@@ -336,12 +336,12 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation>Taille de la police</translation>
+        <translation>Taille du texte</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation type="unfinished"/>
+        <translation>Marquer automatiquement comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
@@ -351,7 +351,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
-        <translation type="unfinished"/>
+        <translation>Tous les flux au démarrage</translation>
     </message>
 </context>
 <context>
