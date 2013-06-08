@@ -40,7 +40,7 @@ Page {
             rightMargin: constant.paddingLarge
         }
         height: childrenRect.height
-        spacing: constant.paddingLarge
+        spacing: constant.paddingXLarge
 
         SettingsButtonRow {
             text: qsTr("Theme")

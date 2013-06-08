@@ -56,6 +56,8 @@ Item {
         }
         minimumValue: min
         maximumValue: max
+        stepSize: 1
+        valueIndicatorVisible: true
         value: value
         onValueChanged: {
             if (completed) {

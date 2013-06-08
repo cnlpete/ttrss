@@ -26,8 +26,8 @@ Item {
         id: background
         anchors.fill: parent
         // Fill page borders
-        anchors.leftMargin: -listView.anchors.leftMargin
-        anchors.rightMargin: -listView.anchors.rightMargin
+        anchors.leftMargin: -constant.paddingLarge
+        anchors.rightMargin: -constant.paddingLarge
         visible: mouseArea.pressed
         source: "image://theme/meegotouch-list-background-selected-center"
     }
@@ -55,7 +55,6 @@ Item {
         clip: true
 
         Column {
-            clip: true
 
             Label {
                 id: mainText

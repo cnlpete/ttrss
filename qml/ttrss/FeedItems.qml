@@ -31,11 +31,11 @@ Page {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
-            margins: constant.paddingLarge
         }
         ListView {
             id: listView
             anchors.fill: parent
+            anchors.margins: constant.paddingLarge
 
             model: itemListModel
 
@@ -57,12 +57,10 @@ Page {
             listView: listView
             visible: !!itemListModel && itemListModel.count > 10
         }
-        ScrollDecorator {
-            flickableItem: listView
-        }
         EmptyListInfoLabel {
             text: rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
+            anchors.margins: constant.paddingLarge
             visible: itemListModel.count == 0
         }
     }
@@ -104,18 +102,16 @@ Page {
         if (feeditems && feeditems.length) {
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
                 var subtitle = feeditems[feeditem].content || ""
-                subtitle = subtitle.replace(/\n/gi, "")
-                subtitle = subtitle.replace(/<br.*>/gi, "")
-                subtitle = subtitle.replace(/<[\/]?(p|div|img|h|a|ul|ol|dd|dt|dl|li|table|tbody|tr|td|th|pre|blockquote|center)[^>]*>/gi, "")
-                // strip body aswell
-                subtitle = subtitle.replace(/<[\/]?(body)[^>]*>/gi, "")
+                subtitle = subtitle.replace(/\n/gi, " ")
+                subtitle = subtitle.replace(/<br.*>/gi, " ")
+                subtitle = subtitle.replace(/<[\/]?(span|body|html|p|div|img|h|a|ul|ol|dd|dt|dl|li|table|tbody|tr|td|th|pre|blockquote|center)[^>]*>/gi, "")
+                subtitle = subtitle.replace(/<!--.*-->/gi, "")
+                subtitle = unescape(subtitle)
                 if (subtitle.length > 102)
                     subtitle = subtitle.substring(0,100) + "..."
-                // and add later
-                subtitle = '<body>' + subtitle + '</body>'
                 var title = feeditems[feeditem].title
                 title = title.replace(/<br.*>/gi, "")
-                title = title.replace(/\n/gi, "")
+                title = unescape(title.replace(/\n/gi, ""))
                 var d = new Date(feeditems[feeditem].updated * 1000)
                 var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
                 if (d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear())
