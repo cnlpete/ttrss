@@ -127,7 +127,7 @@ function clearState() {
 
 function setLoginDetails(username, password, url) {
     state['username'] = username
-    state['password'] = unescape(password)
+    state['password'] = password
     if (url.substring(url.length-1) !== "/")
         url += "/"
     if (url.substring(url.length-4) !== "api/")
@@ -177,7 +177,7 @@ function login(callback) {
     var params = {
         'op': 'login',
         'user': encodeURIComponent(state['username']),
-        'password': encodeURIComponent(state['password'])
+        'password': state['password']
     }
     networkCall(params, function(http) { process_login(callback, http) })
 }
