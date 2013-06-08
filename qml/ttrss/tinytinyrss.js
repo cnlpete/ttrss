@@ -126,18 +126,18 @@ function clearState() {
 }
 
 function setLoginDetails(username, password, url) {
-    state['username'] = username;
-    state['password'] = password;
+    state['username'] = username
+    state['password'] = unescape(password)
     if (url.substring(url.length-1) !== "/")
-        url += "/";
+        url += "/"
     if (url.substring(url.length-4) !== "api/")
-        url += "api/";
+        url += "api/"
     if (url.substring(0,1) !== "h")
-        url = "http://" + url;
-    state['url'] = url;
-    state['shorturl'] = url.substring(0, url.length-4);
+        url = "http://" + url
+    state['url'] = url
+    state['shorturl'] = url.substring(0, url.length-4)
 
-    trace(2, "api url is " + url);
+    trace(2, "api url is " + url)
 }
 
 function setHttpAuthInfo(username, password) {
@@ -147,39 +147,39 @@ function setHttpAuthInfo(username, password) {
 }
 
 function networkCall(params, callback) {
-    var http = new XMLHttpRequest();
+    var http = new XMLHttpRequest()
 
     trace(3, dump(params))
 
     if (state['httpauth']['dobasicauth'])
-        http.open("POST", state['url'], true, state['httpauth']['username'], state['httpauth']['password']);
+        http.open("POST", state['url'], true, state['httpauth']['username'], state['httpauth']['password'])
     else
-        http.open("POST", state['url'], true);
+        http.open("POST", state['url'], true)
 
-    http.setRequestHeader('Content-type','application/json; charset=utf-8');
+    http.setRequestHeader('Content-type','application/json; charset=utf-8')
     http.onreadystatechange = function() {
         if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->");
-            trace(3, http.getAllResponseHeaders());
+            trace(3, "Response Headers -->")
+            trace(3, http.getAllResponseHeaders())
         }
         else if (http.readyState === XMLHttpRequest.DONE)
-            callback(http);
+            callback(http)
     }
-    http.send(JSON.stringify(params));
+    http.send(JSON.stringify(params))
 }
 
 function login(callback) {
     if(responsesPending['token'])
         return;
-    responsesPending['token'] = true;
-    state['token'] = null;
+    responsesPending['token'] = true
+    state['token'] = null
 
     var params = {
         'op': 'login',
         'user': encodeURIComponent(state['username']),
         'password': encodeURIComponent(state['password'])
     }
-    networkCall(params, function(http) { process_login(callback, http) });
+    networkCall(params, function(http) { process_login(callback, http) })
 }
 
 function process_login(callback, http) {
