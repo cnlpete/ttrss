@@ -23,19 +23,32 @@ Page {
         id: categoriesModel
     }
 
-    ListView {
-        id: listView
-        anchors.margins: constant.paddingLarge
-        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
-
-        model: categoriesModel
-
-        delegate: CategoryDelegate {
-            onClicked: showCategory(model.categoryId, model.title)
+    Item {
+        anchors {
+            top: pageHeader.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+            margins: constant.paddingLarge
         }
-    }
-    ScrollDecorator {
-        flickableItem: listView
+        ListView {
+            id: listView
+            anchors.fill: parent
+
+            model: categoriesModel
+
+            delegate: CategoryDelegate {
+                onClicked: showCategory(model.categoryId, model.title)
+            }
+        }
+        ScrollDecorator {
+            flickableItem: listView
+        }
+        EmptyListInfoLabel {
+            text: rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
+            anchors.fill: parent
+            visible: categoriesModel.count == 0
+        }
     }
 
     function showCategory(catId, title) {
@@ -63,6 +76,7 @@ Page {
     function showCategories() {
         var ttrss = rootWindow.getTTRSS();
         var showAll = ttrss.getShowAll();
+        rootWindow.showAll = showAll;
         var categories = ttrss.getCategories();
         categoriesModel.clear();
 
@@ -99,15 +113,6 @@ Page {
                                            unreadcount: totalUnreadCount,
                                        });
             }
-        }
-        else {
-            //There are no categories
-            var t = (showAll ? qsTr("No categories to display") : qsTr("No categories have unread items"))
-            categoriesModel.append({
-                                       title: t,
-                                       categoryId: null,
-                                       unreadcount: 0,
-                                   });
         }
     }
 

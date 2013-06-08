@@ -24,27 +24,35 @@ Page {
         id: feedsModel
     }
 
-    ListView {
-        id: listView
-        anchors.margins: constant.paddingLarge
+    Item {
         anchors {
             top: pageHeader.bottom
             bottom: parent.bottom
             left: parent.left
             right: parent.right
+            margins: constant.paddingLarge
         }
-        model: feedsModel
+        ListView {
+            id: listView
+            anchors.fill: parent
+            model: feedsModel
 
-        delegate: FeedDelegate {
-                onClicked: showFeed(model.feedId, model.title, model.icon)
-                onPressAndHold: {
-                    feedMenu.feedId = model.feedId
-                    feedMenu.open()
-                }
+            delegate: FeedDelegate {
+                    onClicked: showFeed(model.feedId, model.title, model.icon)
+                    onPressAndHold: {
+                        feedMenu.feedId = model.feedId
+                        feedMenu.open()
+                    }
+            }
         }
-    }
-    ScrollDecorator {
-        flickableItem: listView
+        ScrollDecorator {
+            flickableItem: listView
+        }
+        EmptyListInfoLabel {
+            text: rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+            anchors.fill: parent
+            visible: feedsModel.count == 0
+        }
     }
 
     function updateFeeds() {
@@ -63,6 +71,7 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         var feeds = ttrss.getFeeds(categoryId);
         var showAll = ttrss.getShowAll();
+        rootWindow.showAll = showAll;
         feedsModel.clear();
 
         if(feeds && feeds.length) {
@@ -91,15 +100,6 @@ Page {
                                       });
                 }
             }
-        }
-        else {
-            var t = (showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items"))
-            feedsModel.append({
-                                  title:        t,
-                                  unreadcount:  0,
-                                  feedId:       null,
-                                  icon:         ''
-                              });
         }
     }
 

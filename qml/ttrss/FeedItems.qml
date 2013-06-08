@@ -25,87 +25,24 @@ Page {
         id: itemListModel
     }
 
-    ListView {
-        id: listView
-        anchors.margins: constant.paddingLarge
-        anchors{ top: pageHeader.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
-        model: itemListModel
+    Item {
+        anchors {
+            top: pageHeader.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+            margins: constant.paddingLarge
+        }
+        ListView {
+            id: listView
+            anchors.fill: parent
 
-        section.delegate: SectionHeader {}
-        section.property: "date"
+            model: itemListModel
 
-        delegate: Item {
-            id: listItem
-            height: 88
-            width: parent.width
+            section.delegate: SectionHeader {}
+            section.property: "date"
 
-            BorderImage {
-                id: background
-                anchors.fill: parent
-                // Fill page borders
-                anchors.leftMargin: -listView.anchors.leftMargin
-                anchors.rightMargin: -listView.anchors.rightMargin
-                visible: mouseArea.pressed
-                source: "image://theme/meegotouch-list-background-selected-center"
-            }
-
-            Row {
-                spacing: constant.paddingMedium
-                anchors.fill: parent
-                Image {
-                    source: "resources/ic_star_enabled.png"
-                    visible: model.marked
-                    anchors.verticalCenter: parent.verticalCenter
-                    opacity: 0.5
-                }
-                Image {
-                    source: "resources/ic_rss_enabled.png"
-                    visible: model.rss
-                    anchors.verticalCenter: parent.verticalCenter
-                    opacity: 0.5
-                }
-            }
-
-            Row {
-                anchors.left: parent.left
-                anchors.right: drilldownarrow.left
-                clip: true
-
-                Column {
-                    clip: true
-
-                    Label {
-                        id: mainText
-                        text: model.title
-                        font.weight: Font.Bold
-                        font.pixelSize: constant.fontSizeLarge
-                        color: (model.unread > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
-                        elide: Text.ElideRight
-                    }
-
-                    Label {
-                        id: subText
-                        text: model.subtitle
-                        font.weight: Font.Light
-                        font.pixelSize: constant.fontSizeSmall
-                        color: (model.unread > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
-                        elide: Text.ElideRight
-                        visible: text != ""
-                    }
-                }
-            }
-
-            Image {
-                id: drilldownarrow
-                source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
-                anchors.right: parent.right;
-                anchors.verticalCenter: parent.verticalCenter
-                visible: ((model.id != null)&&(model.id !== "__ttrss_get_more_items"))
-            }
-
-            MouseArea {
-                id: mouseArea
-                anchors.fill: background
+            delegate: FeedItemDelegate {
                 onClicked: { showFeedItem(model.id, feedId, model.title) }
                 onPressAndHold: {
                     feeditemMenu.unread = model.unread
@@ -116,14 +53,18 @@ Page {
                     feeditemMenu.open() }
             }
         }
-    }
-    FastScroll {
-        listView: listView
-        visible: !!itemListModel && itemListModel.count > 10
-    }
-
-    ScrollDecorator {
-        flickableItem: listView
+        FastScroll {
+            listView: listView
+            visible: !!itemListModel && itemListModel.count > 10
+        }
+        ScrollDecorator {
+            flickableItem: listView
+        }
+        EmptyListInfoLabel {
+            text: rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+            anchors.fill: parent
+            visible: itemListModel.count == 0
+        }
     }
 
     function showFeedItem(articleId, feedId, title) {
@@ -156,6 +97,7 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         var feeditems = ttrss.getFeedItems(feedId, settings.feeditemsOrder === 1);
         var showAll = ttrss.getShowAll();
+        rootWindow.showAll = showAll;
         itemListModel.clear();
         var now = new Date();
 
@@ -189,18 +131,6 @@ Page {
                                          date:      formatedDate
                                      });
             }
-        }
-        else {
-            itemListModel.append({
-                                     title:     (showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")),
-                                     subtitle:  "",
-                                     id:        null,
-                                     unread:    false,
-                                     marked:    false,
-                                     rss:       false,
-                                     url:       "",
-                                     date:      ''
-                                 });
         }
     }
 

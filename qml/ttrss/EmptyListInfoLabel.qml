@@ -9,47 +9,29 @@
 //You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
+// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import com.nokia.meego 1.0
-import com.nokia.extras 1.1
-import "tinytinyrss.js" as TTRss
 
-PageStackWindow {
-    id: rootWindow
+Item {
+    id: root
 
-    function openFile(file) {
-        var component = Qt.createComponent(file)
-        if (component.status === Component.Ready)
-            pageStack.push(component);
-        else
-            console.log("Error loading component:", component.errorString());
-    }
-    function getTTRSS() {
-        return TTRss;
-    }
+    property string text: ""
 
-    property bool showAll: false
+    opacity: 0.4
 
-    Binding {
-        target: theme
-        property: "inverted"
-        value: !settings.whiteTheme
-    }
+    Label {
+        anchors.fill: parent
 
-    initialPage: mainPage
+        platformStyle: LabelStyle {
+            fontFamily: "Nokia Pure Text Light"
+            fontPixelSize: 64
+            inverted: theme.inverted
+        }
 
-    Constants{ id: constant }
-
-    InfoBanner {
-        id: infoBanner
-        topMargin: 50
-    }
-
-    MainPage {
-        id: mainPage
-    }
-
-    Component.onCompleted: {
-        theme.inverted = !settings.whiteTheme
+        text: root.text
+        wrapMode: Text.WordWrap
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
     }
 }
