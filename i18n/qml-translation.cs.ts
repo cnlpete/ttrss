@@ -139,7 +139,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
         <source>Share</source>
-        <translation type="unfinished"/>
+        <translation>Sdílet</translation>
     </message>
 </context>
 <context>
@@ -215,42 +215,42 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="172"/>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Přihlásit se k odběru</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="190"/>
         <source>Add</source>
-        <translation type="unfinished"/>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="191"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="205"/>
         <source>Feed address:</source>
-        <translation type="unfinished"/>
+        <translation>Adresa kanálu:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="231"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="236"/>
         <source>Invalid URL</source>
-        <translation type="unfinished"/>
+        <translation>Neplatná URL</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="241"/>
         <source>Already suscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Kanál již odebírán</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="245"/>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Kanál přidán</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="261"/>
@@ -260,7 +260,7 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="268"/>
         <source>Unsubscribe</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit odběr</translation>
     </message>
 </context>
 <context>
@@ -351,7 +351,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
-        <translation type="unfinished"/>
+        <translation>Všechny kanály při spuštění</translation>
     </message>
 </context>
 <context>
