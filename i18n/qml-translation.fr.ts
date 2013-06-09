@@ -47,7 +47,7 @@
     <message>
         <location filename="../qml/ttrss/AboutItem.qml" line="16"/>
         <source>About</source>
-        <translation>A propos</translation>
+        <translation>À propos</translation>
     </message>
 </context>
 <context>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le Navigateur</translation>
+        <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
@@ -197,7 +197,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="321"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le Navigateur</translation>
+        <translation>Ouvrir dans le navigateur</translation>
     </message>
 </context>
 <context>
@@ -316,22 +316,22 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
-        <translation>Blanc</translation>
+        <translation>Clair</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
-        <translation>Ordre</translation>
+        <translation>Ordre d&apos;affichage</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Newest First</source>
-        <translation>Nouveaux en premier</translation>
+        <translation>Nouveaux avant</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Oldest First</source>
-        <translation>Anciens en premier</translation>
+        <translation>Anciens avant</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
@@ -341,7 +341,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Marquer automatiquement comme lu</translation>
+        <translation>Marquer auto. comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
@@ -375,7 +375,7 @@
     <message>
         <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
         <source>Show Unread Only</source>
-        <translation>Montrer les non-lus seulement</translation>
+        <translation>Cacher les éléments lus</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
