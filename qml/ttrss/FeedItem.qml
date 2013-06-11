@@ -20,7 +20,8 @@ Page {
     property string articleId:      ""
     property string pageTitle:      ""
     property string url:            ""
-    property bool   loading:        false
+    property bool   updating:       false
+    property bool   loading: updating || itemView.progress < 1
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -150,7 +151,7 @@ Page {
             nextId      = ttrss.getNextFeedId(feedId, articleId)
 
             if (settings.autoMarkRead && unread) {
-                loading = true
+                updating = true
                 ttrss.updateFeedUnread(articleId, false, callback)
             }
         }
@@ -159,7 +160,7 @@ Page {
     function callback() {
         var ttrss = rootWindow.getTTRSS();
         var data = ttrss.getFeedItem(feedId, articleId);
-        loading = false
+        updating = false
         if (data) {
             marked      = data.marked
             unread      = data.unread
@@ -214,25 +215,25 @@ Page {
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedStar(articleId, !marked, callback)
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedRSS(articleId, !rss, callback)
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedUnread(articleId, !unread, callback)
             } }
