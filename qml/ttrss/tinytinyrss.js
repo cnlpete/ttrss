@@ -421,6 +421,7 @@ function updateFeedItems(feedId, callback) {
         'sid': state['token'],
         'feed_id': feedId,
         'is_cat': false,
+        'include_attachments': true,
         'show_excerpt': false,
         'show_content': true, // we want the content, so we do not have to load every article for itself
         'view_mode': (state['showall'] ? 'all_articles' : 'unread'),
