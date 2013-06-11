@@ -27,7 +27,10 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # MOBILITY +=
 
 # Speed up launching on MeeGo/Harmattan when using applauncherd daemon
-CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common qdeclarative-boostable
+CONFIG += qdeclarative-boostable
+
+# disable to make builds for use with meecolay
+CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
 DEFINES += Q_OS_HARMATTAN
 
 # Add dependency to Symbian components
