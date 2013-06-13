@@ -861,7 +861,7 @@ function getFeedItems(feedId, inverse) {
 }
 
 function getNextFeedId(feedId, articleId) {
-    var items = getFeedItems(feedId)
+    var items = getFeedItems(feedId, settings.feeditemsOrder === 1)
 
     for(var feeditem = 0; feeditem < items.length; feeditem++) {
         if (items[feeditem].id == articleId) {
@@ -873,7 +873,7 @@ function getNextFeedId(feedId, articleId) {
 }
 
 function getPreviousFeedId(feedId, articleId) {
-    var items = getFeedItems(feedId)
+    var items = getFeedItems(feedId, settings.feeditemsOrder === 1)
 
     for(var feeditem = 0; feeditem < items.length; feeditem++) {
         if (items[feeditem].id == articleId) {
