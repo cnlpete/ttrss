@@ -20,7 +20,8 @@ Page {
     property string articleId:      ""
     property string pageTitle:      ""
     property string url:            ""
-    property bool   loading:        false
+    property bool   updating:       false
+    property bool   loading: updating || itemView.progress < 1
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -87,18 +88,53 @@ Page {
         platformStyle: BusyIndicatorStyle { size: 'large' }
     }
 
+    function computeAttachmentsCode(data) {
+        var attachments = data.attachments
+        if (!attachments) return ""
+
+        var attachmentsCode = ""
+
+        for (var i = 0; i < attachments.length; i++) {
+            var url = attachments[i].content_url
+            var isImage = (attachments[i].content_type.indexOf("image") === 0 ||
+                           /jpe?g$/i.test(url) ||
+                           /png$/i.test(url))
+
+            console.log("URL: " + url + " isImage: " + isImage)
+            var attachmentLabel = ""
+            if (isImage) {
+                attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
+            } else {
+                attachmentLabel = attachments[i].title ? attachments[i].title : url.replace(/^.*[\/]/g, '')
+            }
+            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a>"
+        }
+
+        return attachmentsCode
+    }
+
     function showFeedItem() {
         var ttrss = rootWindow.getTTRSS()
         numStatusUpdates = ttrss.getNumStatusUpdates()
         var data = ttrss.getFeedItem(feedId, articleId)
 
         if (data) {
+            var attachmentsCode = computeAttachmentsCode(data)
+
             var content = data.content.replace('target="_blank"', '')
             if (!content.match(/<body>/gi)) {
                 // not yet html, detect urls
                 console.log('doing link detection on ' + content)
                 var regex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi;
                 content = content.replace(regex, "<a href='$1'>$1</a> ")
+                if (attachmentsCode) {
+                    content += attachmentsCode
+                }
+            } else {
+                if (attachmentsCode) {
+                    var regex =/(<\/body>)/gi
+                    content = content.replace(regex, attachmentsCode + "$1")
+                }
             }
 
             itemView.html = content
@@ -115,7 +151,7 @@ Page {
             nextId      = ttrss.getNextFeedId(feedId, articleId)
 
             if (settings.autoMarkRead && unread) {
-                loading = true
+                updating = true
                 ttrss.updateFeedUnread(articleId, false, callback)
             }
         }
@@ -124,7 +160,7 @@ Page {
     function callback() {
         var ttrss = rootWindow.getTTRSS();
         var data = ttrss.getFeedItem(feedId, articleId);
-        loading = false
+        updating = false
         if (data) {
             marked      = data.marked
             unread      = data.unread
@@ -179,25 +215,25 @@ Page {
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedStar(articleId, !marked, callback)
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedRSS(articleId, !rss, callback)
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
-            enabled: !loading
+            enabled: !updating
             onClicked: {
-                loading = true
+                updating = true
                 var ttrss = rootWindow.getTTRSS()
                 ttrss.updateFeedUnread(articleId, !unread, callback)
             } }
