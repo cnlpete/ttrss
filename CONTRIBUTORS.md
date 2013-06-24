@@ -5,3 +5,4 @@ CONTRIBUTORS
 - Francois Cattin
 - Jakub Kožíšek (nodevel)
 - Alberto Mardegan (mardy)
+- gwmgdemj
