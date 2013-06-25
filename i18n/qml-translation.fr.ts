@@ -53,17 +53,17 @@
 <context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="105"/>
+        <location filename="../qml/ttrss/Categories.qml" line="48"/>
         <source>No categories have unread items</source>
         <translation>Aucune catégorie sans article non-lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="105"/>
+        <location filename="../qml/ttrss/Categories.qml" line="48"/>
         <source>No categories to display</source>
         <translation>Aucune catégorie</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="136"/>
+        <location filename="../qml/ttrss/Categories.qml" line="141"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS Reader</translation>
     </message>
@@ -132,12 +132,12 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="264"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="271"/>
         <source>Share</source>
         <translation>Partager</translation>
     </message>
@@ -145,57 +145,57 @@
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="180"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
         <source>Today</source>
         <translation>Aujourd&apos;hui</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No items in feed</source>
         <translation>Pas d&apos;article dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No unread items in feed</source>
         <translation>Pas d&apos;article non-lu dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="270"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="197"/>
         <source>Mark all read</source>
         <translation>Marquer tous comme lus</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="221"/>
         <source>Unstar</source>
         <translation>Ne pas étoiler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="221"/>
         <source>Star</source>
         <translation>Etoiler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="230"/>
         <source>Unpublish</source>
         <translation>Dépublier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="230"/>
         <source>Publish</source>
         <translation>Publier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="239"/>
         <source>Mark read</source>
         <translation>Marquer comme lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="239"/>
         <source>Mark Unread</source>
         <translation>Marquer comme non-lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="321"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
@@ -203,12 +203,12 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
         <source>No feeds in category</source>
         <translation>Pas de flux dans la catégorie</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
         <source>Category has no unread items</source>
         <translation>La catégorie n&apos;a pas d&apos;article non-lu</translation>
     </message>
@@ -352,6 +352,11 @@
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
         <translation>Tous les flux au démarrage</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="86"/>
+        <source>Automatically Login</source>
+        <translation>Login auto. au démarrage</translation>
     </message>
 </context>
 <context>

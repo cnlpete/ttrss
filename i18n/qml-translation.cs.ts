@@ -53,17 +53,17 @@
 <context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="105"/>
+        <location filename="../qml/ttrss/Categories.qml" line="48"/>
         <source>No categories have unread items</source>
         <translation>Žádné nepřečtené kategorie</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="105"/>
+        <location filename="../qml/ttrss/Categories.qml" line="48"/>
         <source>No categories to display</source>
         <translation>Žádné kategorie</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="136"/>
+        <location filename="../qml/ttrss/Categories.qml" line="141"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Čtečka Tiny Tiny RSS</translation>
     </message>
@@ -132,12 +132,12 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="264"/>
         <source>Open in Web Browser</source>
         <translation>Otevřít v prohlížeči</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="271"/>
         <source>Share</source>
         <translation>Sdílet</translation>
     </message>
@@ -145,57 +145,57 @@
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="180"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
         <source>Today</source>
         <translation>Dnes</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No items in feed</source>
         <translation>Žádné články v tomto kanálu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No unread items in feed</source>
         <translation>Nic nepřečteného v tomto kanálu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="270"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="197"/>
         <source>Mark all read</source>
         <translation>Označit vše jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="221"/>
         <source>Unstar</source>
         <translation>Odznačit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="221"/>
         <source>Star</source>
         <translation>Označit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="230"/>
         <source>Unpublish</source>
         <translation>Nepublikovat</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="230"/>
         <source>Publish</source>
         <translation>Publikovat</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="239"/>
         <source>Mark read</source>
         <translation>Označit jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="239"/>
         <source>Mark Unread</source>
         <translation>Označit jako nepřečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="321"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Open in Web Browser</source>
         <translation>Otevřít v prohlížeči</translation>
     </message>
@@ -203,12 +203,12 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
         <source>No feeds in category</source>
         <translation>Žádné kanály v této kategorii</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
         <source>Category has no unread items</source>
         <translation>Tato kategorie nemá žádné nepřečtené kanály</translation>
     </message>
@@ -352,6 +352,11 @@
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
         <translation>Všechny kanály při spuštění</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Settings.qml" line="86"/>
+        <source>Automatically Login</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
