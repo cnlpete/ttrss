@@ -82,6 +82,12 @@ Page {
             onCheckedChanged: settings.useAllFeedsOnStartup = checked
         }
 
+        SettingsSwitchRow {
+            text: qsTr('Automatically Login')
+            checked: settings.useAutologin
+            onCheckedChanged: settings.useAutologin = checked
+        }
+
 
 
     }

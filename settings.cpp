@@ -70,6 +70,14 @@ void Settings::setAutologin(bool autologin) {
     }
 }
 
+void Settings::setUseAutologin(bool useAutologin) {
+    if (_useAutologin != useAutologin) {
+        _useAutologin = useAutologin;
+        m_settings->setValue("useAutologin", _autologin);
+        emit useAutologinChanged();
+    }
+}
+
 void Settings::setWhiteTheme(bool whiteTheme) {
     if (_whiteTheme != whiteTheme) {
         _whiteTheme = whiteTheme;
@@ -123,6 +131,7 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _username = m_settings->value("username", "").toString();
     _password = m_settings->value("password", "").toString();
     _autologin = m_settings->value("autologin", false).toBool();
+    _useAutologin = m_settings->value("useAutologin", true).toBool();
 
     _httpauthuser = m_settings->value("httpauthusername", "").toString();
     _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();

@@ -230,7 +230,7 @@ Page {
         username.text = settings.username
         password.text = settings.password
 
-        if(settings.autologin)
+        if(settings.autologin && settings.useAutologin)
             startLogin();
     }
 }
