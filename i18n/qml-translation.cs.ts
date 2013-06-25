@@ -341,7 +341,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Automaticky označovat jako přečtené</translation>
+        <translation>Automaticky ozn. jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
