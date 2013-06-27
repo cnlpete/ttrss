@@ -16,7 +16,7 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="111"/>
         <source>Thanks to:</source>
-        <translation>Thanks to:</translation>
+        <translation>Contributors:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="119"/>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="264"/>
         <source>Open in Web Browser</source>
-        <translation>Open in Web Browser</translation>
+        <translation>Open in web browser</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="271"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="248"/>
         <source>Open in Web Browser</source>
-        <translation>Open in Web Browser</translation>
+        <translation>Open in web browser</translation>
     </message>
 </context>
 <context>
@@ -247,7 +247,7 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="241"/>
         <source>Already suscribed to Feed</source>
-        <translation>Already suscribed to Feed</translation>
+        <translation>Already suscribed to feed</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="245"/>
@@ -295,7 +295,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation>No Account Yet?</translation>
+        <translation>No account yet?</translation>
     </message>
 </context>
 <context>
@@ -338,27 +338,27 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation>Font Size</translation>
+        <translation>Fontsize</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Automatically Mark Items as Read</translation>
+        <translation>Automatically mark items as read</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
         <source>Show Icons</source>
-        <translation>Show Icons</translation>
+        <translation>Show icons</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
-        <translation>Use All Feeds on Startup</translation>
+        <translation>Use &apos;All feeds&apos; on startup</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="86"/>
         <source>Automatically Login</source>
-        <translation>Automatically Login on Start</translation>
+        <translation>Automatically login on start</translation>
     </message>
 </context>
 <context>
