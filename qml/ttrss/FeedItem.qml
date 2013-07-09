@@ -28,6 +28,7 @@ Page {
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
+    property int    numStatusUpdates
 
     anchors.margins: 0
 
@@ -265,6 +266,8 @@ Page {
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
                 onClicked: {
+                    infoBanner.text = qsTr("Open in Web Browser")
+                    infoBanner.show()
                     Qt.openUrlExternally(url);
                 }
             }

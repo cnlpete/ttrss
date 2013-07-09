@@ -16,9 +16,7 @@ import "../components" 1.0
 Page {
     id: itemListPage
     tools: feedItemsTools
-    property int feedId: 0
-    property string pageTitle: ""
-    property string pageLogo: ""
+    property variant feed
     property int numStatusUpdates
     property bool loading: false
 
@@ -44,14 +42,11 @@ Page {
             section.property: "date"
 
             delegate: FeedItemDelegate {
-                onClicked: { showFeedItem(model.id, feedId, model.title) }
+                onClicked: { showFeedItem(model.id, model.title) }
                 onPressAndHold: {
-                    feeditemMenu.unread = model.unread
-                    feeditemMenu.marked = model.marked
-                    feeditemMenu.rss = model.rss
-                    feeditemMenu.articleId = model.id
-                    feeditemMenu.url = model.url
-                    feeditemMenu.open() }
+                    feeditemMenu.feedItem = model
+                    feeditemMenu.open()
+                }
             }
         }
         FastScroll {
@@ -66,11 +61,11 @@ Page {
         }
     }
 
-    function showFeedItem(articleId, feedId, title) {
-        if(articleId != null && feedId != null) {
+    function showFeedItem(articleId, title) {
+        if(articleId != null) {
             rootWindow.openFile("FeedItem.qml", {
                                     articleId: articleId,
-                                    feedId: feedId,
+                                    feedId: feed.feedId,
                                     pageTitle: title
                                 })
         }
@@ -80,7 +75,7 @@ Page {
         loading = true;
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeedItems(feedId, showFeedItemsCallback);
+        ttrss.updateFeedItems(feed.feedId, showFeedItemsCallback);
     }
 
     function showFeedItemsCallback() {
@@ -90,7 +85,7 @@ Page {
 
     function showFeedItems() {
         var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feedId, settings.feeditemsOrder === 1);
+        var feeditems = ttrss.getFeedItems(feed.feedId, settings.feeditemsOrder === 1);
         var showAll = ttrss.getShowAll();
         rootWindow.showAll = showAll;
         itemListModel.clear();
@@ -132,10 +127,11 @@ Page {
         updateFeedItems();
     }
 
-    onFeedIdChanged: {
-        showFeedItems();
-        updateFeedItems();
-    }
+
+//    onFeedChanged: {
+//        showFeedItems();
+//        updateFeedItems();
+//    }
 
     Component.onCompleted: {
         showFeedItems();
@@ -159,8 +155,8 @@ Page {
 
     PageHeader {
         id: pageHeader
-        text: pageTitle
-        logourl: pageLogo
+        text: feed.title
+        logourl: feed.icon
     }
 
     ToolBarLayout {
@@ -195,7 +191,7 @@ Page {
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
-                    ttrss.catchUp(feedId, showFeedItemsCallback)
+                    ttrss.catchUp(feed.feedId, showFeedItemsCallback)
                 }
             }
             SettingsItem {}
@@ -207,45 +203,45 @@ Page {
         id: feeditemMenu
         visualParent: pageStack
 
-        property bool marked: false
-        property bool unread: false
-        property bool rss: false
-        property string url: ""
-        property int articleId: 0
+        property variant feedItem
 
         MenuLayout {
             MenuItem {
-                text: (feeditemMenu.marked?qsTr("Unstar"):qsTr("Star"))
+                text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.marked?qsTr("Unstar"):qsTr("Star"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
-                    ttrss.updateFeedStar(feeditemMenu.articleId,
-                                         !feeditemMenu.marked,
+                    ttrss.updateFeedStar(feeditemMenu.feedItem.id,
+                                         !feeditemMenu.feedItem.marked,
                                          showFeedItemsCallback)
                 } }
             MenuItem {
-                text: (feeditemMenu.rss?qsTr("Unpublish"):qsTr("Publish"))
+                text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.rss?qsTr("Unpublish"):qsTr("Publish"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
-                    ttrss.updateFeedRSS(feeditemMenu.articleId,
-                                         !feeditemMenu.rss,
-                                         showFeedItemsCallback)
+                    ttrss.updateFeedRSS(feeditemMenu.feedItem.id,
+                                         !feeditemMenu.feedItem.rss,
+                                        showFeedItemsCallback)
                 } }
             MenuItem {
-                text: (feeditemMenu.unread?qsTr("Mark read"):qsTr("Mark Unread"))
+                text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
-                    ttrss.updateFeedUnread(feeditemMenu.articleId,
-                                           !feeditemMenu.unread,
+                    ttrss.updateFeedUnread(feeditemMenu.feedItem.id,
+                                           !feeditemMenu.feedItem.unread,
                                            showFeedItemsCallback)
                 } }
             MenuItem {
                 text: qsTr("Open in Web Browser")
-                enabled: feeditemMenu.url && (feeditemMenu.url != "")
+                enabled: feeditemMenu.feedItem !== undefined &&
+                         feeditemMenu.feedItem.url &&
+                         (feeditemMenu.feedItem.url != "")
                 onClicked: {
-                    Qt.openUrlExternally(feeditemMenu.url);
+                    infoBanner.text = qsTr("Open in Web Browser")
+                    infoBanner.show()
+                    Qt.openUrlExternally(feeditemMenu.feedItem.url);
                 } }
         }
     }

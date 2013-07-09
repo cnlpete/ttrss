@@ -39,7 +39,7 @@ Page {
             model: categoriesModel
 
             delegate: CategoryDelegate {
-                onClicked: showCategory(model.categoryId, model.title)
+                onClicked: showCategory(model)
             }
         }
         ScrollDecorator {
@@ -52,11 +52,10 @@ Page {
         }
     }
 
-    function showCategory(catId, title) {
-        if(catId != null) {
+    function showCategory(categoryModel) {
+        if(categoryModel != null) {
             rootWindow.openFile("Feeds.qml", {
-                                    categoryId: catId,
-                                    pageTitle: title
+                                    category: categoryModel
                                 })
         }
     }

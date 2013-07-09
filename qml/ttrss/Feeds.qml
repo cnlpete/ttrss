@@ -16,10 +16,9 @@ import "../components" 1.0
 Page {
     id: feedsPage
     tools: feedsTools
-    property int categoryId: 0
+    property variant category
     property int numStatusUpdates
     property bool loading: false
-    property string pageTitle: ""
 
     ListModel {
         id: feedsModel
@@ -39,7 +38,7 @@ Page {
             model: feedsModel
 
             delegate: FeedDelegate {
-                    onClicked: showFeed(model.feedId, model.title, model.icon)
+                    onClicked: showFeed(model)
                     onPressAndHold: {
                         feedMenu.feedId = model.feedId
                         feedMenu.open()
@@ -60,7 +59,7 @@ Page {
         loading = true;
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeeds(categoryId, showFeedsCallback);
+        ttrss.updateFeeds(category.categoryId, showFeedsCallback);
     }
 
     function showFeedsCallback() {
@@ -70,7 +69,7 @@ Page {
 
     function showFeeds() {
         var ttrss = rootWindow.getTTRSS();
-        var feeds = ttrss.getFeeds(categoryId);
+        var feeds = ttrss.getFeeds(category.categoryId);
         var showAll = ttrss.getShowAll();
         rootWindow.showAll = showAll;
         feedsModel.clear();
@@ -104,10 +103,6 @@ Page {
         }
     }
 
-    onCategoryIdChanged: {
-        showFeeds();
-        updateFeeds();
-    }
 
     onVisibleChanged: {
         if (visible)
@@ -128,19 +123,17 @@ Page {
         }
     }
 
-    function showFeed(feedId, title, pageLogo) {
-        if(feedId != null) {
+    function showFeed(feedModel) {
+        if(feedModel != null) {
             rootWindow.openFile("FeedItems.qml", {
-                                    feedId: feedId,
-                                    pageTitle: title,
-                                    pageLogo: pageLogo
+                                    feed: feedModel
                                 })
         }
     }
 
     PageHeader {
         id: pageHeader
-        text: pageTitle
+        text: category.title
     }
 
     ToolBarLayout {
@@ -167,7 +160,7 @@ Page {
         MenuLayout {
             MenuItem {
                 text: qsTr("Add subscription")
-                enabled: feedsPage.categoryId >= 0
+                enabled: feedsPage.category.categoryId >= 0
                 onClicked: {
                     addsubsriptionsheet.open()
                 } }
@@ -213,7 +206,7 @@ Page {
         onAccepted: {
             var ttrss = rootWindow.getTTRSS()
             loading = true
-            ttrss.subscribe(feedsPage.categoryId, server.text, function(result) {
+            ttrss.subscribe(feedsPage.category.categoryId, server.text, function(result) {
                                 loading = false
                                 /**
                                 * 0 - OK, Feed already exists
