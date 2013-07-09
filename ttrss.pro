@@ -53,3 +53,9 @@ HEADERS += \
     settings.hh \
     mynetworkmanager.hh \
     qmlutils.hh
+
+contains(MEEGO_EDITION,harmattan) {
+    icon.files = images/ttrss80.png
+    icon.path = /usr/share/icons/hicolor/80x80/apps
+    INSTALLS += icon
+}
