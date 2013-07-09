@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>Tiny Tiny RSS Reader for Meego</title>
     <description>ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 smart phone, written using Qt/QML.</description>
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
-    <copyright>Hauke Schade</copyright>
+    <copyright>Hauke Schade, cnlpete@cnlpete.de</copyright>
     <pubDate>Thu, 27 Jun 2013 11:13:31 +0200</pubDate>
-    <atom:link href="http://ttrss.cnlpete.de/feed.rss" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2013 23:41:56 +0200</lastBuildDate>
 
     <item>
-      <title>Version 0.2.3</title>
+      <title>Version 0.2.4</title>
       <pubDate>Thu, 27 Jun 2013 11:13:31 +0200</pubDate>
       <description>
         <![CDATA[
