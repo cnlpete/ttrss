@@ -356,7 +356,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="86"/>
         <source>Automatically Login</source>
-        <translation type="unfinished"/>
+        <translation>启动自动登录</translation>
     </message>
 </context>
 <context>
