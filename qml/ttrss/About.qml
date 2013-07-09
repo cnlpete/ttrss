@@ -12,6 +12,7 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
 import QtWebKit 1.0
+import "../components" 1.0
 
 Page {
     tools: aboutTools

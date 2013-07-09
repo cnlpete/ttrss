@@ -17,10 +17,14 @@ import "tinytinyrss.js" as TTRss
 PageStackWindow {
     id: rootWindow
 
-    function openFile(file) {
+    function openFile(file, params) {
         var component = Qt.createComponent(file)
-        if (component.status === Component.Ready)
-            pageStack.push(component);
+        if (component.status === Component.Ready) {
+            if (params !== undefined)
+                pageStack.push(component, params);
+            else
+                pageStack.push(component);
+        }
         else
             console.log("Error loading component:", component.errorString());
     }

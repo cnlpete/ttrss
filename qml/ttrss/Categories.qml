@@ -11,6 +11,7 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import "../components" 1.0
 
 Page {
     id: categoriesPage
@@ -53,11 +54,10 @@ Page {
 
     function showCategory(catId, title) {
         if(catId != null) {
-            var component = Qt.createComponent("Feeds.qml");
-            if (component.status === Component.Ready)
-                pageStack.push(component, { categoryId: catId, pageTitle: title });
-            else
-                console.log("Error loading component:", component.errorString());
+            rootWindow.openFile("Feeds.qml", {
+                                    categoryId: catId,
+                                    pageTitle: title
+                                })
         }
     }
 

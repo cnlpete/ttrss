@@ -11,6 +11,7 @@
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import "../components" 1.0
 
 Page {
     id: feedsPage
@@ -129,15 +130,11 @@ Page {
 
     function showFeed(feedId, title, pageLogo) {
         if(feedId != null) {
-            var component = Qt.createComponent("FeedItems.qml");
-            if (component.status === Component.Ready)
-                pageStack.push(component, {
-                                   feedId: feedId,
-                                   pageTitle: title,
-                                   pageLogo: pageLogo
-                               });
-            else
-                console.log("Error loading component:", component.errorString());
+            rootWindow.openFile("FeedItems.qml", {
+                                    feedId: feedId,
+                                    pageTitle: title,
+                                    pageLogo: pageLogo
+                                })
         }
     }
 
