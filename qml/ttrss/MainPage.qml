@@ -208,15 +208,19 @@ Page {
             loginErrorDialog.open();
         }
         else {
+            //Now show the categories View
             if (settings.useAllFeedsOnStartup) {
-                var ttrss = rootWindow.getTTRSS();
-                var component = Qt.createComponent("Feeds.qml");
-                if (component.status === Component.Ready)
-                    pageStack.push(component, { categoryId: ttrss.constants['categories']['ALL'], pageTitle: constant.allFeeds });
+                var ttrss = rootWindow.getTTRSS()
+                rootWindow.openFile("Feeds.qml", {
+                                        category: {
+                                            categoryId: ttrss.constants['categories']['ALL'],
+                                            title: constant.allFeeds,
+                                            unreadcount: 0
+                                        }
+                                    })
             }
             else
-                //Now show the categories View
-                rootWindow.openFile('Categories.qml');
+                rootWindow.openFile('Categories.qml')
         }
     }
 
