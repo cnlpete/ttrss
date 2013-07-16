@@ -18,10 +18,11 @@ Page {
     tools: feedsTools
     property variant category
     property int numStatusUpdates
-    property bool loading: false
 
-    ListModel {
-        id: feedsModel
+    Component.onCompleted: {
+        feeds.category = feedsPage.category
+        feeds.clear()
+        feeds.update()
     }
 
     Item {
@@ -35,7 +36,7 @@ Page {
         ListView {
             id: listView
             anchors.fill: parent
-            model: feedsModel
+            model: feeds
 
             delegate: FeedDelegate {
                     onClicked: showFeed(model)
@@ -51,75 +52,17 @@ Page {
         EmptyListInfoLabel {
             text: rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
             anchors.fill: parent
-            visible: feedsModel.count == 0
+            visible: feeds.count == 0
         }
     }
 
-    function updateFeeds() {
-        loading = true;
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeeds(category.categoryId, showFeedsCallback);
-    }
-
-    function showFeedsCallback() {
-        loading = false;
-        showFeeds();
-    }
-
-    function showFeeds() {
-        var ttrss = rootWindow.getTTRSS();
-        var feeds = ttrss.getFeeds(category.categoryId);
-        var showAll = ttrss.getShowAll();
-        rootWindow.showAll = showAll;
-        feedsModel.clear();
-
-        if(feeds && feeds.length) {
-            //First add feed with unread items
-            for(var feed = 0; feed < feeds.length; feed++) {
-                if (feeds[feed]) {
-                    var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
-                    if (feeds[feed].id == ttrss.constants['feeds']['archived'])
-                        title = constant.archivedArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['starred'])
-                        title = constant.starredArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['published'])
-                        title = constant.publishedArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
-                        title = constant.freshArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['all'])
-                        title = constant.allArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['recently'])
-                        title = constant.recentlyArticles
-
-                    feedsModel.append({
-                                          title:        title,
-                                          unreadcount:  feeds[feed].unread,
-                                          feedId:       feeds[feed].id,
-                                          icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
-                                      });
-                }
-            }
-        }
-    }
-
-
-    onVisibleChanged: {
-        if (visible)
-            showFeeds();
-    }
-
-    Component.onCompleted: {
-        showFeeds();
-        updateFeeds();
-    }
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
         if(status === PageStatus.Deactivating)
             numStatusUpdates = ttrss.getNumStatusUpdates();
         else if (status === PageStatus.Activating) {
             if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                updateFeeds();
+                feeds.update()
         }
     }
 
@@ -142,12 +85,12 @@ Page {
         ToolIcon { iconId: "toolbar-back"; onClicked: { feedsMenu.close(); pageStack.pop(); } }
         ToolIcon {
             iconId: "toolbar-refresh";
-            visible: !loading;
-            onClicked: { updateFeeds(); }
+            visible: !feeds.loading;
+            onClicked: { feeds.update() }
         }
         BusyIndicator {
-            visible: loading
-            running: loading
+            visible: feeds.loading
+            running: feeds.loading
             platformStyle: BusyIndicatorStyle { size: 'medium' }
         }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (feedsMenu.status === DialogStatus.Closed) ? feedsMenu.open() : feedsMenu.close() }
@@ -166,7 +109,7 @@ Page {
                 } }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedsPage.updateFeeds()
+                    feeds.update()
                 }
             }
             SettingsItem {}
@@ -205,9 +148,9 @@ Page {
         }
         onAccepted: {
             var ttrss = rootWindow.getTTRSS()
-            loading = true
+            feeds.loading = true
             ttrss.subscribe(feedsPage.category.categoryId, server.text, function(result) {
-                                loading = false
+                                feeds.loading = false
                                 /**
                                 * 0 - OK, Feed already exists
                                 * 1 - OK, Feed added
@@ -234,7 +177,7 @@ Page {
                                 else {
                                     infoBanner.text = qsTr('Feed added')
                                     infoBanner.show()
-                                    updateFeeds()
+                                    feeds.update()
                                 }
                             })
         }
@@ -251,16 +194,16 @@ Page {
                 text: qsTr("Mark all read")
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.catchUp(feedMenu.feedId, showFeedsCallback)
+                    feeds.loading = true
+                    ttrss.catchUp(feedMenu.feedId, feeds.update())
                 } }
             MenuItem {
                 text: qsTr("Unsubscribe")
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.unsubscribe(feedMenu.feedId, showFeedsCallback)
+                    feeds.loading = true
+                    ttrss.unsubscribe(feedMenu.feedId, feeds.update())
                 } }
         }
     }

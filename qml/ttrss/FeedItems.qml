@@ -18,10 +18,11 @@ Page {
     tools: feedItemsTools
     property variant feed
     property int numStatusUpdates
-    property bool loading: false
 
-    ListModel {
-        id: itemListModel
+    Component.onCompleted: {
+        feedItems.feed = itemListPage.feed
+        feedItems.clear()
+        feedItems.update()
     }
 
     Item {
@@ -36,14 +37,18 @@ Page {
             anchors.fill: parent
             anchors.margins: constant.paddingLarge
 
-            model: itemListModel
+            model: feedItems
 
             section.delegate: SectionHeader {}
             section.property: "date"
 
             delegate: FeedItemDelegate {
-                onClicked: { showFeedItem(model.id, model.title) }
+                onClicked: {
+                    feedItems.selectedIndex = index
+                    showFeedItem(model.id, model.title)
+                }
                 onPressAndHold: {
+                    feedItems.selectedIndex = index
                     feeditemMenu.feedItem = model
                     feeditemMenu.open()
                 }
@@ -51,13 +56,13 @@ Page {
         }
         FastScroll {
             listView: listView
-            visible: !!itemListModel && itemListModel.count > 10
+            visible: feedItems.count > 10
         }
         EmptyListInfoLabel {
             text: rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
             anchors.margins: constant.paddingLarge
-            visible: itemListModel.count == 0
+            visible: feedItems.count == 0
         }
     }
 
@@ -71,76 +76,8 @@ Page {
         }
     }
 
-    function updateFeedItems() {
-        loading = true;
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateFeedItems(feed.feedId, showFeedItemsCallback);
-    }
-
-    function showFeedItemsCallback() {
-        loading = false;
-        showFeedItems();
-    }
-
-    function showFeedItems() {
-        var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feed.feedId, settings.feeditemsOrder === 1);
-        var showAll = ttrss.getShowAll();
-        rootWindow.showAll = showAll;
-        itemListModel.clear();
-        var now = new Date();
-
-        if (feeditems && feeditems.length) {
-            for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
-                var subtitle = feeditems[feeditem].content || ""
-                subtitle = subtitle.replace(/\n/gi, " ")
-                subtitle = subtitle.replace(/<[\/]?[a-zA-Z][^>]*>/gi, "")
-                subtitle = unescape(subtitle.replace(/<!--.*-->/gi, ""))
-                if (subtitle.length > 102)
-                    subtitle = subtitle.substring(0,100) + "..."
-                subtitle = "<body>" + subtitle + "</body>"
-
-                var title = feeditems[feeditem].title
-                title = title.replace(/<br.*>/gi, "")
-                title = "<body>" + unescape(title.replace(/\n/gi, "")) + "</body>"
-
-                var d = new Date(feeditems[feeditem].updated * 1000)
-                var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
-                if (d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear())
-                    formatedDate = qsTr('Today')
-                itemListModel.append({
-                                         title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
-                                         subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
-                                         id:        feeditems[feeditem].id,
-                                         unread:    !!feeditems[feeditem].unread,
-                                         marked:    !!feeditems[feeditem].marked,
-                                         rss:       feeditems[feeditem].published,
-                                         url:       feeditems[feeditem].link,
-                                         date:      formatedDate
-                                     });
-            }
-        }
-    }
-
     function getMoreItems() {
-        updateFeedItems();
-    }
-
-
-//    onFeedChanged: {
-//        showFeedItems();
-//        updateFeedItems();
-//    }
-
-    Component.onCompleted: {
-        showFeedItems();
-        updateFeedItems();
-    }
-
-    onVisibleChanged: {
-        if (visible)
-            showFeedItems();
+        feedItems.update()
     }
 
     onStatusChanged: {
@@ -149,7 +86,7 @@ Page {
             numStatusUpdates = ttrss.getNumStatusUpdates();
         else if (status === PageStatus.Activating) {
             if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                updateFeedItems();
+                feedItems.update()
         }
     }
 
@@ -165,12 +102,12 @@ Page {
         ToolIcon { iconId: "toolbar-back"; onClicked: { feedItemsMenu.close(); pageStack.pop();} }
         ToolIcon {
             iconId: "toolbar-refresh";
-            visible: !loading;
-            onClicked: { updateFeedItems(); }
+            visible: !feedItems.loading;
+            onClicked: { feedItems.update() }
         }
         BusyIndicator {
-            visible: loading
-            running: loading
+            visible: feedItems.loading
+            running: feedItems.loading
             platformStyle: BusyIndicatorStyle { size: 'medium' }
         }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (feedItemsMenu.status === DialogStatus.Closed) ? feedItemsMenu.open() : feedItemsMenu.close() }
@@ -183,15 +120,13 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
-                    updateFeedItems()
+                    feedItems.update()
                 }
             }
             MenuItem {
                 text: qsTr('Mark all read')
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.catchUp(feed.feedId, showFeedItemsCallback)
+                    feedItems.catchUp()
                 }
             }
             SettingsItem {}
@@ -209,29 +144,17 @@ Page {
             MenuItem {
                 text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.marked?qsTr("Unstar"):qsTr("Star"))
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.updateFeedStar(feeditemMenu.feedItem.id,
-                                         !feeditemMenu.feedItem.marked,
-                                         showFeedItemsCallback)
+                    feedItems.toggleStar()
                 } }
             MenuItem {
                 text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.rss?qsTr("Unpublish"):qsTr("Publish"))
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.updateFeedRSS(feeditemMenu.feedItem.id,
-                                         !feeditemMenu.feedItem.rss,
-                                        showFeedItemsCallback)
+                    feedItems.togglePublished()
                 } }
             MenuItem {
                 text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    loading = true
-                    ttrss.updateFeedUnread(feeditemMenu.feedItem.id,
-                                           !feeditemMenu.feedItem.unread,
-                                           showFeedItemsCallback)
+                    feedItems.toggleRead()
                 } }
             MenuItem {
                 text: qsTr("Open in Web Browser")

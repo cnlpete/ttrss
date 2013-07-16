@@ -208,6 +208,7 @@ Page {
             loginErrorDialog.open();
         }
         else {
+            categories.update()
             //Now show the categories View
             if (settings.useAllFeedsOnStartup) {
                 var ttrss = rootWindow.getTTRSS()

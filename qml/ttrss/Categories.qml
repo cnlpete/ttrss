@@ -18,11 +18,6 @@ Page {
     tools: categoriesTools
 
     property int numStatusUpdates
-    property bool loading: false
-
-    ListModel {
-        id: categoriesModel
-    }
 
     Item {
         anchors {
@@ -36,10 +31,13 @@ Page {
             id: listView
             anchors.fill: parent
 
-            model: categoriesModel
+            model: categories
 
             delegate: CategoryDelegate {
-                onClicked: showCategory(model)
+                onClicked: {
+                    categories.selectedIndex = index
+                    showCategory(model)
+                }
             }
         }
         ScrollDecorator {
@@ -48,7 +46,7 @@ Page {
         EmptyListInfoLabel {
             text: rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
             anchors.fill: parent
-            visible: categoriesModel.count == 0
+            visible: categories.count == 0
         }
     }
 
@@ -60,78 +58,13 @@ Page {
         }
     }
 
-    function updateCategories() {
-        loading = true;
-        var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
-        ttrss.updateCategories(showCategoriesCallback);
-    }
-
-    function showCategoriesCallback() {
-        loading = false;
-        showCategories();
-    }
-
-    function showCategories() {
-        var ttrss = rootWindow.getTTRSS();
-        var showAll = ttrss.getShowAll();
-        rootWindow.showAll = showAll;
-        var categories = ttrss.getCategories();
-        categoriesModel.clear();
-
-        if(categories && categories.length) {
-            var totalUnreadCount = 0;
-
-            //first add all the categories with unread itens
-            for(var category = 0; category < categories.length; category++) {
-                if (categories[category].id >= 0)
-                    totalUnreadCount += categories[category].unread;
-
-                var title = ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES')
-                if (categories[category].id == ttrss.constants['categories']['ALL'])
-                    title = constant.allFeeds
-                if (categories[category].id == ttrss.constants['categories']['LABELS'])
-                    title = constant.labelsCategory
-                if (categories[category].id == ttrss.constants['categories']['SPECIAL'])
-                    title = constant.specialCategory
-                if (categories[category].id == ttrss.constants['categories']['UNCATEGORIZED'])
-                    title = constant.uncategorizedCategory
-
-                categoriesModel.append({
-                                           title:       title,
-                                           unreadcount: categories[category].unread,
-                                           categoryId:  categories[category].id
-                                       });
-            }
-
-            if(totalUnreadCount > 0 || showAll) {
-                //Add the "All" category
-                categoriesModel.insert(0, {
-                                           title: constant.allFeeds,
-                                           categoryId: ttrss.constants['categories']['ALL'],
-                                           unreadcount: totalUnreadCount,
-                                       });
-            }
-        }
-    }
-
-    Component.onCompleted: {
-        showCategories();
-        updateCategories();
-    }
-
-    onVisibleChanged: {
-        if (visible)
-            showCategories();
-    }
-
     onStatusChanged: {
         var ttrss = rootWindow.getTTRSS();
         if(status === PageStatus.Deactivating)
             numStatusUpdates = ttrss.getNumStatusUpdates();
         else if (status === PageStatus.Activating) {
             if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                updateCategories();
+                categories.update();
         }
     }
 
@@ -146,12 +79,12 @@ Page {
         ToolIcon { iconId: "toolbar-back"; onClicked: { categoriesMenu.close(); pageStack.pop(); } }
         ToolIcon {
             iconId: "toolbar-refresh";
-            visible: !loading;
-            onClicked: { updateCategories(); }
+            visible: !categories.loading;
+            onClicked: { categories.update() }
         }
         BusyIndicator {
-            visible: loading
-            running: loading
+            visible: categories.loading
+            running: categories.loading
             platformStyle: BusyIndicatorStyle { size: 'medium' }
         }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (categoriesMenu.status === DialogStatus.Closed) ? categoriesMenu.open() : categoriesMenu.close() }
@@ -164,7 +97,7 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
-                    updateCategories()
+                    categories.update()
                 }
             }
             SettingsItem {}

@@ -53,6 +53,17 @@ PageStackWindow {
         id: mainPage
     }
 
+    CategoryModel {
+        id: categories
+    }
+    FeedModel {
+        id: feeds
+    }
+    FeedItemModel {
+        id: feedItems
+    }
+
+
     Component.onCompleted: {
         theme.inverted = !settings.whiteTheme
     }
