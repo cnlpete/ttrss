@@ -48,6 +48,10 @@ ListModel {
                 var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
                 if (d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear())
                     formatedDate = qsTr('Today')
+
+                var url = feeditems[feeditem].link
+                url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
+
                 root.append({
                                 title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
                                 content:   feeditems[feeditem].content,
@@ -56,7 +60,7 @@ ListModel {
                                 unread:    !!feeditems[feeditem].unread,
                                 marked:    !!feeditems[feeditem].marked,
                                 rss:       feeditems[feeditem].published,
-                                url:       feeditems[feeditem].link,
+                                url:       url,
                                 date:      formatedDate
                             });
             }

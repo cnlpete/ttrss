@@ -68,7 +68,7 @@ Page {
                 if (url != "") {
                     infoBanner.text = qsTr("Open in Web Browser")
                     infoBanner.show()
-                    Qt.openUrlExternally(trim(url));
+                    Qt.openUrlExternally(url);
                     // BUGFIX: the url is still changed, so i need to change it back to the original content...
                     showFeedItem()
                 }
@@ -244,7 +244,7 @@ Page {
                 onClicked: {
                     infoBanner.text = qsTr("Open in Web Browser")
                     infoBanner.show()
-                    Qt.openUrlExternally(trim(url));
+                    Qt.openUrlExternally(url);
                 }
             }
             MenuItem {
