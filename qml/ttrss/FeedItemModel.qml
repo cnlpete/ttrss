@@ -50,6 +50,7 @@ ListModel {
                     formatedDate = qsTr('Today')
                 root.append({
                                 title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+                                content:   feeditems[feeditem].content,
                                 subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
                                 id:        feeditems[feeditem].id,
                                 unread:    !!feeditems[feeditem].unread,
@@ -118,5 +119,20 @@ ListModel {
                           root.unreadCountChanged(feed.unreadcount)
                           loading = false
                       })
+    }
+
+    function hasPrevious() {
+        return root.selectedIndex > 0
+    }
+    function selectPrevious() {
+        root.selectedIndex = Math.max(root.selectedIndex - 1, 0)
+        return root.selectedIndex
+    }
+    function hasNext() {
+        return root.selectedIndex < root.count - 1
+    }
+    function selectNext() {
+        root.selectedIndex = Math.min(root.selectedIndex + 1, root.count - 1)
+        return root.selectedIndex
     }
 }

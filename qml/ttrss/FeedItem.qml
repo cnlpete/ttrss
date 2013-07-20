@@ -117,12 +117,10 @@ Page {
     }
 
     function showFeedItem() {
-        var ttrss = rootWindow.getTTRSS()
-        numStatusUpdates = ttrss.getNumStatusUpdates()
-        var data = ttrss.getFeedItem(feedId, articleId)
+        var data = feedItems.getSelectedItem()
 
         if (data) {
-            var attachmentsCode = computeAttachmentsCode(data)
+            var attachmentsCode = undefined;//computeAttachmentsCode(data)
 
             var content = data.content.replace('target="_blank"', '')
             if (!content.match(/<body>/gi)) {
@@ -141,38 +139,23 @@ Page {
             }
 
             itemView.html = content
-            url         = data.link
+            url         = data.url
             pageTitle   = data.title
-            pageTitle   = pageTitle.replace(/<br.*>/gi, "")
-            pageTitle   = pageTitle.replace(/\n/gi, "")
 
             marked      = data.marked
             unread      = data.unread
-            rss         = data.published
+            rss         = data.rss
 
-            previousId  = ttrss.getPreviousFeedId(feedId, articleId)
-            nextId      = ttrss.getNextFeedId(feedId, articleId)
+            previousId  = feedItems.hasPrevious()
+            nextId      = feedItems.hasNext()
+
+            articleId   = data.id
 
             if (settings.autoMarkRead && unread) {
                 updating = true
-                ttrss.updateFeedUnread(articleId, false, callback)
+                feedItems.toggleRead()
             }
         }
-    }
-
-    function callback() {
-        var ttrss = rootWindow.getTTRSS();
-        var data = ttrss.getFeedItem(feedId, articleId);
-        updating = false
-        if (data) {
-            marked      = data.marked
-            unread      = data.unread
-            rss         = data.published
-        }
-    }
-
-    onArticleIdChanged: {
-        showFeedItem();
     }
 
     onVisibleChanged: {
@@ -193,7 +176,7 @@ Page {
 
     onLoadingChanged: {
         if (loading && itemMenu.status !== DialogStatus.Closed)
-             itemMenu.close()
+            itemMenu.close()
     }
 
     PageHeader {
@@ -209,47 +192,39 @@ Page {
             iconId: "toolbar-previous"
             visible: previousId !== false
             onClicked: {
-                var ttrss = rootWindow.getTTRSS()
-                var tmpArticleId = ttrss.getPreviousFeedId(feedId, articleId)
-                if (tmpArticleId !== false)
-                    articleId = tmpArticleId
-                else
-                    console.log("no next articleid found")
+                feedItems.selectPrevious()
+                showFeedItem()
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
             enabled: !updating
             onClicked: {
                 updating = true
-                var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedStar(articleId, !marked, callback)
+                feedItems.toggleStar()
+                marked = !marked
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
             enabled: !updating
             onClicked: {
                 updating = true
-                var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedRSS(articleId, !rss, callback)
+                feedItems.togglePublished()
+                rss = !rss
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
             enabled: !updating
             onClicked: {
                 updating = true
-                var ttrss = rootWindow.getTTRSS()
-                ttrss.updateFeedUnread(articleId, !unread, callback)
+                feedItems.toggleRead()
+                unread = !unread
             } }
         ToolIcon {
             iconId: "toolbar-next"
             visible: nextId !== false
             onClicked: {
-                var ttrss = rootWindow.getTTRSS()
-                var tmpArticleId = ttrss.getNextFeedId(feedId, articleId)
-                if (tmpArticleId !== false)
-                    articleId = tmpArticleId
-                else
-                    console.log("no next articleid found")
+                feedItems.selectNext()
+                showFeedItem()
             } }
         ToolIcon {
             iconId: "toolbar-view-menu" ;

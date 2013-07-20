@@ -45,7 +45,7 @@ Page {
             delegate: FeedItemDelegate {
                 onClicked: {
                     feedItems.selectedIndex = index
-                    showFeedItem(model.id, model.title)
+                    rootWindow.openFile("FeedItem.qml")
                 }
                 onPressAndHold: {
                     feedItems.selectedIndex = index
@@ -63,16 +63,6 @@ Page {
             anchors.fill: parent
             anchors.margins: constant.paddingLarge
             visible: feedItems.count == 0
-        }
-    }
-
-    function showFeedItem(articleId, title) {
-        if(articleId != null) {
-            rootWindow.openFile("FeedItem.qml", {
-                                    articleId: articleId,
-                                    feedId: feed.feedId,
-                                    pageTitle: title
-                                })
         }
     }
 
