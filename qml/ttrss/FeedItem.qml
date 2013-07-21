@@ -151,14 +151,11 @@ Page {
 
             articleId   = data.id
 
-            if (settings.autoMarkRead && unread)
+            if (settings.autoMarkRead && unread) {
                 feedItems.toggleRead()
+                unread = !unread
+            }
         }
-    }
-
-    onVisibleChanged: {
-        if (visible)
-            showFeedItem();
     }
 
     Binding {
@@ -171,11 +168,6 @@ Page {
         itemView.settings.defaultFontSize = settings.webviewFontSize
         showFeedItem();
     }
-
-//    onLoadingChanged: {
-//        if (loading && itemMenu.status !== DialogStatus.Closed)
-//            itemMenu.close()
-//    }
 
     PageHeader {
         id: pageHeader
