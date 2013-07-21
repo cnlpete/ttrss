@@ -45,7 +45,12 @@ Item {
         anchors.rightMargin: constant.listItemSpacing
 
         source: model.icon
-        visible: settings.displayIcons
+        onStatusChanged: {
+            if (status === Image.Error)
+                feeds.unsetIcon(index)
+        }
+
+        visible: settings.displayIcons && model.icon != ''
     }
 
     Label {

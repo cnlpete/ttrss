@@ -81,4 +81,7 @@ ListModel {
         var m = root.getSelectedItem()
         root.setProperty(root.selectedIndex, "unreadcount", op(m.unreadcount))
     }
+    function unsetIcon(index) {
+        root.setProperty(index, "icon", '')
+    }
 }
