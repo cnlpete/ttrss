@@ -73,7 +73,7 @@ Item{
         anchors.rightMargin: constant.paddingLarge
         width: updateIcon.width
         height: updateIcon.height
-        visible: hasUpdateAction || rootWindow.loading <= 0
+        visible: hasUpdateAction || rootWindow.loading > 0
 
         Image {
             id: updateIcon
