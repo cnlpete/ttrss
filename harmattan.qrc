@@ -5,6 +5,5 @@
         <file>i18n/qml-translation.es.qm</file>
         <file>i18n/qml-translation.fr.qm</file>
         <file>i18n/qml-translation.cs.qm</file>
-        <file>i18n/qml-translation.ko_KR.qm</file>
     </qresource>
 </RCC>
