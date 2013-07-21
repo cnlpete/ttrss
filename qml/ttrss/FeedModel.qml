@@ -6,14 +6,12 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
-    property int numStatusUpdates
     property variant category
 
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
         console.log('calling feed update')
-        numStatusUpdates = ttrss.getNumStatusUpdates();
         ttrss.updateFeeds(root.category.categoryId, function() {
                               console.log('got feed update callback')
                               rootWindow.loading--

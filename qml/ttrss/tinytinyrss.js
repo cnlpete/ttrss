@@ -22,7 +22,6 @@ var state={
     'httpauth':         { 'dobasicauth' : false },
     'token':            null,
     'apilevel':         0,
-    'numStatusUpdates': 0,          //each time the state updates such that the app might want to redisplay we update this (get via getNumStatusUpdates)
     'showall':          false,      //boolean should all items be shown (or only those with unread stuff?)
     'closeIfEmpty':     false,      //Should pages close if they have no content to display
     'tracelevel':       1,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
@@ -804,7 +803,6 @@ function getShowAll() {
 //Sets whether only unread items should be shown
 function setShowAll(showAll) {
     state['showall'] = !!showAll;
-    state['numStatusUpdates']++;
 }
 
 function getCloseIfEmpty() {
@@ -813,10 +811,6 @@ function getCloseIfEmpty() {
 
 function setCloseIfEmpty(newState) {
     state['closeIfEmpty'] = newState;
-}
-
-function getNumStatusUpdates() {
-    return state['numStatusUpdates'];
 }
 
 function getCategories() {

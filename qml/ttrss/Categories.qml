@@ -17,8 +17,6 @@ Page {
     id: categoriesPage
     tools: categoriesTools
 
-    property int numStatusUpdates
-
     Item {
         anchors {
             top: pageHeader.bottom
@@ -55,16 +53,6 @@ Page {
             rootWindow.openFile("Feeds.qml", {
                                     category: categoryModel
                                 })
-        }
-    }
-
-    onStatusChanged: {
-        var ttrss = rootWindow.getTTRSS();
-        if(status === PageStatus.Deactivating)
-            numStatusUpdates = ttrss.getNumStatusUpdates();
-        else if (status === PageStatus.Activating) {
-            if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                categories.update();
         }
     }
 

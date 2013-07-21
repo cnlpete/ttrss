@@ -26,7 +26,6 @@ Page {
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
-    property int    numStatusUpdates
     property bool   progressDidStop: true
     property bool   progressDidStart: false
 

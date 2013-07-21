@@ -17,7 +17,6 @@ Page {
     id: itemListPage
     tools: feedItemsTools
     property variant feed
-    property int numStatusUpdates
 
     Component.onCompleted: {
         feedItems.feed = itemListPage.feed
@@ -68,16 +67,6 @@ Page {
 
     function getMoreItems() {
         feedItems.update()
-    }
-
-    onStatusChanged: {
-        var ttrss = rootWindow.getTTRSS();
-        if(status === PageStatus.Deactivating)
-            numStatusUpdates = ttrss.getNumStatusUpdates();
-        else if (status === PageStatus.Activating) {
-            if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                feedItems.update()
-        }
     }
 
     PageHeader {

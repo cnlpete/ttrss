@@ -17,7 +17,6 @@ Page {
     id: feedsPage
     tools: feedsTools
     property variant category
-    property int numStatusUpdates
 
     Component.onCompleted: {
         feeds.category = feedsPage.category
@@ -57,16 +56,6 @@ Page {
             text: rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
             anchors.fill: parent
             visible: feeds.count == 0
-        }
-    }
-
-    onStatusChanged: {
-        var ttrss = rootWindow.getTTRSS();
-        if(status === PageStatus.Deactivating)
-            numStatusUpdates = ttrss.getNumStatusUpdates();
-        else if (status === PageStatus.Activating) {
-            if(ttrss.getNumStatusUpdates() > numStatusUpdates)
-                feeds.update()
         }
     }
 

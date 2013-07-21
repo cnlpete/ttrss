@@ -6,7 +6,6 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
-    property int numStatusUpdates
     property variant feed
 
     signal unreadCountChanged(int unreadcount)
@@ -14,7 +13,6 @@ ListModel {
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
         ttrss.updateFeedItems(feed.feedId, function() {
                                   rootWindow.loading--
                                   root.load();

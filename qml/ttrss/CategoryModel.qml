@@ -6,12 +6,10 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
-    property int numStatusUpdates
 
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
-        numStatusUpdates = ttrss.getNumStatusUpdates();
         ttrss.updateCategories(function() {
                                    rootWindow.loading--
                                    root.load();
