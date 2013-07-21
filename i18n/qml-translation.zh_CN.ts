@@ -55,17 +55,17 @@
 <context>
     <name>Categories</name>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="49"/>
+        <location filename="../qml/ttrss/Categories.qml" line="45"/>
         <source>No categories have unread items</source>
         <translation>无未阅读条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="49"/>
+        <location filename="../qml/ttrss/Categories.qml" line="45"/>
         <source>No categories to display</source>
         <translation>无条目可显示</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Categories.qml" line="140"/>
+        <location filename="../qml/ttrss/Categories.qml" line="61"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS 阅读器</translation>
     </message>
@@ -134,72 +134,76 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="266"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="269"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="80"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="229"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="232"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="275"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="238"/>
         <source>Share</source>
         <translation>分享</translation>
     </message>
 </context>
 <context>
-    <name>FeedItems</name>
+    <name>FeedItemModel</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="111"/>
+        <location filename="../qml/ttrss/FeedItemModel.qml" line="47"/>
         <source>Today</source>
         <translation>今天</translation>
     </message>
+</context>
+<context>
+    <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="57"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No items in feed</source>
         <translation>订阅源中无条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="57"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
         <source>No unread items in feed</source>
         <translation>订阅源中无未读条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="190"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="101"/>
         <source>Mark all read</source>
         <translation>标记所有为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="210"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
         <source>Unstar</source>
         <translation>取消星标</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="210"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
         <source>Star</source>
         <translation>标星</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="219"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="124"/>
         <source>Unpublish</source>
         <translation>取消发布</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="219"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="124"/>
         <source>Publish</source>
         <translation>发布</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="228"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="129"/>
         <source>Mark read</source>
         <translation>标记为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="228"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="129"/>
         <source>Mark Unread</source>
         <translation>标记为未读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="237"/>
-        <location filename="../qml/ttrss/FeedItems.qml" line="242"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="134"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="139"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
@@ -207,62 +211,62 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="56"/>
         <source>No feeds in category</source>
         <translation>无订阅类别</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="52"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="56"/>
         <source>Category has no unread items</source>
         <translation>此类订阅无任何未读条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="162"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="93"/>
         <source>Add subscription</source>
         <translation>添加订阅</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="180"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="111"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="181"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="112"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="195"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="126"/>
         <source>Feed address:</source>
         <translation>订阅源地址:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="221"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="152"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="226"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="157"/>
         <source>Invalid URL</source>
         <translation>地址无效</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="231"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="162"/>
         <source>Already suscribed to Feed</source>
         <translation>已订阅到订阅源</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="235"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="166"/>
         <source>Feed added</source>
         <translation>已添加订阅源</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="251"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="182"/>
         <source>Mark all read</source>
         <translation>全部标记为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="258"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="187"/>
         <source>Unsubscribe</source>
         <translation>退订</translation>
     </message>
@@ -382,12 +386,12 @@
 <context>
     <name>ToggleShowAllItem</name>
     <message>
-        <location filename="../qml/components/ToggleShowAllItem.qml" line="21"/>
+        <location filename="../qml/components/ToggleShowAllItem.qml" line="22"/>
         <source>Show Unread Only</source>
         <translation>仅显示未读</translation>
     </message>
     <message>
-        <location filename="../qml/components/ToggleShowAllItem.qml" line="21"/>
+        <location filename="../qml/components/ToggleShowAllItem.qml" line="22"/>
         <source>Show All</source>
         <translation>显示全部</translation>
     </message>
