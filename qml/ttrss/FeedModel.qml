@@ -11,9 +11,7 @@ ListModel {
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
-        console.log('calling feed update')
         ttrss.updateFeeds(root.category.categoryId, function() {
-                              console.log('got feed update callback')
                               rootWindow.loading--
                               root.load();
                           })
