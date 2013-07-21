@@ -16,24 +16,32 @@ MenuItem {
     id: toggleUnread
 
     property bool showAll
+    property bool notInitialAssignment: false
     signal updateView(bool showAll)
 
     text: showAll ? qsTr("Show Unread Only") : qsTr("Show All")
     onClicked: {
-        var ttrss = rootWindow.getTTRSS();
-        ttrss.setShowAll(!showAll);
+        var ttrss = rootWindow.getTTRSS()
+        ttrss.setShowAll(!showAll)
         showAll = !showAll
     }
 
     onShowAllChanged: {
-        // send the signal
-        updateView(showAll)
+        // send the signal only if this is not the initial assignment
+        if (notInitialAssignment)
+            updateView(showAll)
+    }
+
+    Component.onCompleted: {
+        var ttrss = rootWindow.getTTRSS()
+        showAll = ttrss.getShowAll()
+        notInitialAssignment = true
     }
 
     onVisibleChanged: {
-        if (visible) {
-            var ttrss = rootWindow.getTTRSS();
-            showAll = ttrss.getShowAll();
+        if (visible && notInitialAssignment) {
+            var ttrss = rootWindow.getTTRSS()
+            showAll = ttrss.getShowAll()
         }
     }
 }
