@@ -6,17 +6,17 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
-    property bool loading: false
     property int numStatusUpdates
     property variant category
 
     function update() {
-        loading = true;
+        rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
-        console.log(ttrss.dump(category))
+        console.log('calling feed update')
         numStatusUpdates = ttrss.getNumStatusUpdates();
         ttrss.updateFeeds(root.category.categoryId, function() {
-                              loading = false;
+                              console.log('got feed update callback')
+                              rootWindow.loading--
                               root.load();
                           })
     }
@@ -64,6 +64,17 @@ ListModel {
             return null;
 
         return root.get(root.selectedIndex)
+    }
+
+    function catchUp() {
+        var ttrss = rootWindow.getTTRSS()
+        rootWindow.loading++
+        var m = root.getSelectedItem()
+        ttrss.catchUp(m.feedId, function() {
+                          root.unreadCountChanged(m.unreadcount)
+                          root.setProperty(m, "unreadcount", 0)
+                          rootWindow.loading--
+                      })
     }
 
     function setRead() {

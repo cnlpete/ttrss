@@ -21,14 +21,14 @@ Page {
     property string articleId:      ""
     property string pageTitle:      ""
     property string url:            ""
-    property bool   updating:       false
-    property bool   loading: updating || itemView.progress < 1
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
     property int    numStatusUpdates
+    property bool   progressDidStop: true
+    property bool   progressDidStart: false
 
     anchors.margins: 0
 
@@ -63,6 +63,18 @@ Page {
                     document.body.style.color='" + constant.colorWebviewText + "';\
                 ");
             }
+            onProgressChanged: {
+                if (progress < 1 && !progressDidStart) {
+                    progressDidStop = false
+                    progressDidStart = true
+                    rootWindow.loading++
+                }
+                if (!progress < 1 && !progressDidStop) {
+                    progressDidStop = true
+                    progressDidStart = false
+                    rootWindow.loading--
+                }
+            }
 
             onUrlChanged: {
                 if (url != "") {
@@ -78,17 +90,6 @@ Page {
 
     ScrollDecorator {
         flickableItem: flick
-    }
-
-    BusyIndicator {
-        id: busyindicator1
-        visible: loading
-        running: loading
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.verticalCenter
-        }
-        platformStyle: BusyIndicatorStyle { size: 'large' }
     }
 
     function computeAttachmentsCode(data) {
@@ -120,7 +121,7 @@ Page {
         var data = feedItems.getSelectedItem()
 
         if (data) {
-            var attachmentsCode = undefined;//computeAttachmentsCode(data)
+            var attachmentsCode = computeAttachmentsCode(data)
 
             var content = data.content.replace('target="_blank"', '')
             if (!content.match(/<body>/gi)) {
@@ -151,10 +152,8 @@ Page {
 
             articleId   = data.id
 
-            if (settings.autoMarkRead && unread) {
-                updating = true
+            if (settings.autoMarkRead && unread)
                 feedItems.toggleRead()
-            }
         }
     }
 
@@ -174,10 +173,10 @@ Page {
         showFeedItem();
     }
 
-    onLoadingChanged: {
-        if (loading && itemMenu.status !== DialogStatus.Closed)
-            itemMenu.close()
-    }
+//    onLoadingChanged: {
+//        if (loading && itemMenu.status !== DialogStatus.Closed)
+//            itemMenu.close()
+//    }
 
     PageHeader {
         id: pageHeader
@@ -197,25 +196,22 @@ Page {
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-            enabled: !updating
+            enabled: !rootWindow.loading
             onClicked: {
-                updating = true
                 feedItems.toggleStar()
                 marked = !marked
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-            enabled: !updating
+            enabled: !rootWindow.loading
             onClicked: {
-                updating = true
                 feedItems.togglePublished()
                 rss = !rss
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
-            enabled: !updating
+            enabled: !rootWindow.loading
             onClicked: {
-                updating = true
                 feedItems.toggleRead()
                 unread = !unread
             } }
@@ -229,7 +225,7 @@ Page {
         ToolIcon {
             iconId: "toolbar-view-menu" ;
             onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close()
-            enabled: !loading
+            enabled: !rootWindow.loading
         }
     }
 

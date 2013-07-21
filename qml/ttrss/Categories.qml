@@ -71,22 +71,17 @@ Page {
     PageHeader {
         id: pageHeader
         text: qsTr("Tiny Tiny RSS Reader")
+
+        hasUpdateAction: true
+        onUpdateActionActivated: {
+            categories.update()
+        }
     }
 
     ToolBarLayout {
         id: categoriesTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { categoriesMenu.close(); pageStack.pop(); } }
-        ToolIcon {
-            iconId: "toolbar-refresh";
-            visible: !categories.loading;
-            onClicked: { categories.update() }
-        }
-        BusyIndicator {
-            visible: categories.loading
-            running: categories.loading
-            platformStyle: BusyIndicatorStyle { size: 'medium' }
-        }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (categoriesMenu.status === DialogStatus.Closed) ? categoriesMenu.open() : categoriesMenu.close() }
     }
 

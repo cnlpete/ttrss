@@ -39,11 +39,15 @@ Page {
             model: feeds
 
             delegate: FeedDelegate {
-                    onClicked: showFeed(model)
-                    onPressAndHold: {
-                        feedMenu.feedId = model.feedId
-                        feedMenu.open()
-                    }
+                onClicked: {
+                    feeds.selectedIndex = index
+                    showFeed(model)
+                }
+                onPressAndHold: {
+                    feeds.selectedIndex = index
+                    feedMenu.feedId = model.feedId
+                    feedMenu.open()
+                }
             }
         }
         ScrollDecorator {
@@ -77,22 +81,17 @@ Page {
     PageHeader {
         id: pageHeader
         text: category.title
+
+        hasUpdateAction: true
+        onUpdateActionActivated: {
+            feeds.update()
+        }
     }
 
     ToolBarLayout {
         id: feedsTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { feedsMenu.close(); pageStack.pop(); } }
-        ToolIcon {
-            iconId: "toolbar-refresh";
-            visible: !feeds.loading;
-            onClicked: { feeds.update() }
-        }
-        BusyIndicator {
-            visible: feeds.loading
-            running: feeds.loading
-            platformStyle: BusyIndicatorStyle { size: 'medium' }
-        }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (feedsMenu.status === DialogStatus.Closed) ? feedsMenu.open() : feedsMenu.close() }
     }
 
@@ -148,9 +147,9 @@ Page {
         }
         onAccepted: {
             var ttrss = rootWindow.getTTRSS()
-            feeds.loading = true
+            rootWindow.loading++
             ttrss.subscribe(feedsPage.category.categoryId, server.text, function(result) {
-                                feeds.loading = false
+                                rootWindow.loading--
                                 /**
                                 * 0 - OK, Feed already exists
                                 * 1 - OK, Feed added
@@ -193,17 +192,15 @@ Page {
             MenuItem {
                 text: qsTr("Mark all read")
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    feeds.loading = true
-                    ttrss.catchUp(feedMenu.feedId, feeds.update())
+                    feeds.catchUp()
                 } }
             MenuItem {
                 text: qsTr("Unsubscribe")
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    feeds.loading = true
-                    ttrss.unsubscribe(feedMenu.feedId, feeds.update())
+                    rootWindow.loading++
+                    ttrss.unsubscribe(feedMenu.feedId, function() { rootWindow.loading--; feeds.update(); })
                 } }
         }
     }

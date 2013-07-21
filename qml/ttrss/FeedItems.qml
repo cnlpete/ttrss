@@ -84,22 +84,17 @@ Page {
         id: pageHeader
         text: feed.title
         logourl: feed.icon
+
+        hasUpdateAction: true
+        onUpdateActionActivated: {
+            feedItems.update()
+        }
     }
 
     ToolBarLayout {
         id: feedItemsTools
 
         ToolIcon { iconId: "toolbar-back"; onClicked: { feedItemsMenu.close(); pageStack.pop();} }
-        ToolIcon {
-            iconId: "toolbar-refresh";
-            visible: !feedItems.loading;
-            onClicked: { feedItems.update() }
-        }
-        BusyIndicator {
-            visible: feedItems.loading
-            running: feedItems.loading
-            platformStyle: BusyIndicatorStyle { size: 'medium' }
-        }
         ToolIcon { iconId: "toolbar-view-menu" ; onClicked: (feedItemsMenu.status === DialogStatus.Closed) ? feedItemsMenu.open() : feedItemsMenu.close() }
     }
 

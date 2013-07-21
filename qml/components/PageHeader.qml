@@ -18,12 +18,15 @@ Item{
 
     property string text
     property string logourl: ''
+    property bool hasUpdateAction: false
+
+    signal updateActionActivated()
 
     height: constant.headerHeight
     width: parent.width
     visible: text !== ""
 
-    Image{
+    Image {
         id: background
         anchors.fill: parent
         source: "image://theme/color15-meegotouch-view-header-fixed"
@@ -31,7 +34,7 @@ Item{
         sourceSize.height: parent.height
     }
 
-    Image{
+    Image {
         id: logo
         source: logourl
         sourceSize.width: constant.headerLogoHeight
@@ -49,17 +52,50 @@ Item{
         }
     }
 
-    Text{
+    Text {
         id: mainText
         anchors{
             verticalCenter: parent.verticalCenter
             left: logo.right
-            right: parent.right
+            right: updateAction.left
             margins: constant.paddingXLarge
         }
         font.pixelSize: constant.fontSizeXLarge
         color: "white"
         elide: Text.ElideRight
         text: root.text
+    }
+
+    Item {
+        id: updateAction
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: constant.paddingLarge
+        width: updateIcon.width
+        height: updateIcon.height
+        visible: hasUpdateAction || rootWindow.loading <= 0
+
+        Image {
+            id: updateIcon
+            source: "image://theme/icon-m-toolbar-refresh"
+            visible: hasUpdateAction&& rootWindow.loading <= 0
+        }
+
+        BusyIndicator {
+            id: busyIndicator
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: rootWindow.loading > 0
+            running: rootWindow.loading > 0
+            platformStyle: BusyIndicatorStyle { size: 'medium' }
+        }
+
+        MouseArea {
+            enabled: rootWindow.loading <= 0 && hasUpdateAction
+            anchors.fill: parent
+            onClicked: {
+                root.updateActionActivated()
+            }
+        }
     }
 }

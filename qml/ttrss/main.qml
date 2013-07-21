@@ -33,6 +33,7 @@ PageStackWindow {
     }
 
     property bool showAll: false
+    property int loading: 0
 
     Binding {
         target: theme

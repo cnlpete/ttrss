@@ -6,18 +6,17 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
-    property bool loading: false
     property int numStatusUpdates
     property variant feed
 
     signal unreadCountChanged(int unreadcount)
 
     function update() {
-        loading = true;
+        rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
         numStatusUpdates = ttrss.getNumStatusUpdates();
         ttrss.updateFeedItems(feed.feedId, function() {
-                                  loading = false;
+                                  rootWindow.loading--
                                   root.load();
                               })
     }
@@ -53,15 +52,16 @@ ListModel {
                 url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
 
                 root.append({
-                                title:     ttrss.html_entity_decode(title, 'ENT_QUOTES'),
-                                content:   feeditems[feeditem].content,
-                                subtitle:  ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
-                                id:        feeditems[feeditem].id,
-                                unread:    !!feeditems[feeditem].unread,
-                                marked:    !!feeditems[feeditem].marked,
-                                rss:       feeditems[feeditem].published,
-                                url:       url,
-                                date:      formatedDate
+                                title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+                                content:    feeditems[feeditem].content,
+                                subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
+                                id:         feeditems[feeditem].id,
+                                unread:     !!feeditems[feeditem].unread,
+                                marked:     !!feeditems[feeditem].marked,
+                                rss:        feeditems[feeditem].published,
+                                url:        url,
+                                date:       formatedDate,
+                                attachments:feeditems[feeditem].attachments
                             });
             }
         }
@@ -76,52 +76,53 @@ ListModel {
 
     function toggleRead() {
         var ttrss = rootWindow.getTTRSS()
-        loading = true
+        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedUnread(m.id,
                                !m.unread,
                                function() {
                                    root.unreadCountChanged(m.unread ? 1 : -1)
                                    root.setProperty(root.selectedIndex, "unread", !m.unread)
-                                   loading = false
+                                   rootWindow.loading--
                                })
     }
 
     function toggleStar() {
         var ttrss = rootWindow.getTTRSS()
-        loading = true
+        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedStar(m.id,
                              !m.marked,
                              function() {
                                  root.setProperty(root.selectedIndex, "marked", !m.marked)
-                                 loading = false
+                                 rootWindow.loading--
                              })
     }
 
     function togglePublished() {
         var ttrss = rootWindow.getTTRSS()
-        loading = true
+        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedRSS(m.id,
                             !m.rss,
                             function() {
                                 root.setProperty(root.selectedIndex, "rss", !m.rss)
-                                loading = false
+                                rootWindow.loading--
                             })
     }
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        loading = true
+        rootWindow.loading++
         ttrss.catchUp(feed.feedId, function() {
                           for(var feeditem = 0; feeditem < root.count; feeditem++) {
                               var item = root.get(feeditem)
-                              if (item.unread)
+                              if (item.unread) {
                                   root.setProperty(feeditem, "unread", false)
+                                  root.unreadCountChanged(1)
+                              }
                           }
-                          root.unreadCountChanged(feed.unreadcount)
-                          loading = false
+                          rootWindow.loading--
                       })
     }
 
