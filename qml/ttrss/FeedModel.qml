@@ -8,6 +8,8 @@ ListModel {
     property int selectedIndex: -1
     property variant category
 
+    signal feedUnreadChanged(variant feed, int oldAmount)
+
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
@@ -67,17 +69,31 @@ ListModel {
         rootWindow.loading++
         var m = root.getSelectedItem()
         ttrss.catchUp(m.feedId, function() {
-                          root.unreadCountChanged(m.unreadcount)
+                          var oldAmount = m.unreadcount
                           root.setProperty(m, "unreadcount", 0)
+                          root.feedUnreadChanged(m, oldAmount)
                           rootWindow.loading--
                       })
     }
 
-    function setRead() {
-        var m = root.getSelectedItem()
-        root.setProperty(root.selectedIndex, "unreadcount", op(m.unreadcount))
-    }
     function unsetIcon(index) {
         root.setProperty(index, "icon", '')
+    }
+    function updateSelectedUnreadCount(op) {
+        var m = root.getSelectedItem()
+        var newUnreadCount = m.unreadcount
+        root.setProperty(root.selectedIndex, "unreadcount", op(m.unreadcount))
+        root.feedUnreadChanged(m, newUnreadCount)
+    }
+    function updateUnreadCountForId(id, op) {
+        for(var feed = 0; feed < root.count; feed++) {
+            var m = root.get(feed)
+            if (m.feedId == id) {
+                var newUnreadCount = m.unreadcount
+                root.setProperty(feed, "unreadcount", op(m.unreadcount))
+                root.feedUnreadChanged(m, newUnreadCount)
+                break
+            }
+        }
     }
 }

@@ -8,7 +8,9 @@ ListModel {
     property int selectedIndex: -1
     property variant feed
 
-    signal unreadCountChanged(int unreadcount)
+    signal itemUnreadChanged(variant item)
+    signal itemPublishedChanged(variant item)
+    signal itemStarChanged(variant item)
 
     function update() {
         rootWindow.loading++
@@ -59,7 +61,8 @@ ListModel {
                                 rss:        feeditems[feeditem].published,
                                 url:        url,
                                 date:       formatedDate,
-                                attachments:feeditems[feeditem].attachments
+                                attachments:feeditems[feeditem].attachments,
+                                feedId:     feeditems[feeditem].feed_id
                             });
             }
         }
@@ -79,8 +82,8 @@ ListModel {
         ttrss.updateFeedUnread(m.id,
                                !m.unread,
                                function() {
-                                   root.unreadCountChanged(m.unread ? 1 : -1)
                                    root.setProperty(root.selectedIndex, "unread", !m.unread)
+                                   root.itemUnreadChanged(m)
                                    rootWindow.loading--
                                })
     }
@@ -93,6 +96,7 @@ ListModel {
                              !m.marked,
                              function() {
                                  root.setProperty(root.selectedIndex, "marked", !m.marked)
+                                 root.itemStarChanged(m)
                                  rootWindow.loading--
                              })
     }
@@ -105,6 +109,7 @@ ListModel {
                             !m.rss,
                             function() {
                                 root.setProperty(root.selectedIndex, "rss", !m.rss)
+                                root.itemPublishedChanged(m)
                                 rootWindow.loading--
                             })
     }
@@ -117,7 +122,7 @@ ListModel {
                               var item = root.get(feeditem)
                               if (item.unread) {
                                   root.setProperty(feeditem, "unread", false)
-                                  root.unreadCountChanged(1)
+                                  root.itemUnreadChanged(item)
                               }
                           }
                           rootWindow.loading--
