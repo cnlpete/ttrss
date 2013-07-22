@@ -896,10 +896,10 @@ function getIconUrl(feedId) {
         return ''
         break;
     case constants['feeds']['starred']:
-        return "resources/ic_star_enabled.png"
+        return "file:///opt/ttrss/qml/ttrss/resources/ic_star_enabled.png"
         break;
     case constants['feeds']['published']:
-        return "resources/ic_rss_enabled.png"
+        return "file:///opt/ttrss/qml/ttrss/resources/ic_rss_enabled.png"
         break;
     default:
         return state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
