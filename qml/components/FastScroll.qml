@@ -181,7 +181,7 @@ Item {
         function initDirtyObserver() {
             Sections.initialize(listView);
             function dirtyObserver() {
-                if (!internal.modelDirty) {
+                if (internal && !internal.modelDirty) {
                     internal.modelDirty = true;
                     dirtyTimer.running = true;
                 }
