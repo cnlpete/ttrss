@@ -66,6 +66,13 @@ PageStackWindow {
 
             // update the 'All Feeds' Category
             categories.updateUnreadCountForId(TTRss.constants['categories']['ALL'], op)
+
+            // if there is an 'all feed items' update that aswell
+            if (feeds.count > 1) {
+                var m = feeds.get(0)
+                if (m.isCat) // just check to be sure
+                    feeds.setProperty(0, "unreadcount", op(m.unreadcount))
+            }
         }
     }
     FeedItemModel {

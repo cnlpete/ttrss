@@ -15,7 +15,7 @@ ListModel {
     function update() {
         rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeedItems(feed.feedId, function() {
+        ttrss.updateFeedItems(feed.feedId, feed.isCat, function() {
                                   rootWindow.loading--
                                   root.load();
                               })
@@ -23,7 +23,7 @@ ListModel {
 
     function load() {
         var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feed.feedId, settings.feeditemsOrder === 1);
+        var feeditems = ttrss.getFeedItems(feed.feedId, settings.feeditemsOrder === 1, feed.isCat || false);
         var showAll = ttrss.getShowAll();
         rootWindow.showAll = showAll;
         root.clear();

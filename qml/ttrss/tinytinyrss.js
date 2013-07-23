@@ -397,12 +397,13 @@ function process_updateFeeds(callback, httpreq) {
                 callback(0);
 }
 
-function updateFeedItems(feedId, callback) {
+function updateFeedItems(feedId, isCat, callback) {
     if(responsesPending['feeditems'])
         return;
 
     if (state['lastfeed']['id'] !== feedId) {
         state['lastfeed']['id'] = feedId;
+        state['lastfeed']['isCat'] = isCat;
         state['lastfeed']['continuation'] = 0;
     }
 
@@ -419,7 +420,7 @@ function updateFeedItems(feedId, callback) {
         'op': 'getHeadlines',
         'sid': state['token'],
         'feed_id': feedId,
-        'is_cat': false,
+        'is_cat': isCat,
         'include_attachments': true,
         'show_excerpt': false,
         'show_content': true, // we want the content, so we do not have to load every article for itself
@@ -512,7 +513,7 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeedItems(state['lastfeed']['id'], callback);
+            updateFeedItems(state['lastfeed']['id'], state['lastfeed']['isCat'], callback);
     }
     else if (requestsPending['feeditemstar']) {
         trace(4, 'feeditemstar request pending');

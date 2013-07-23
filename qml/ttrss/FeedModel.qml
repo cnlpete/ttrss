@@ -28,6 +28,7 @@ ListModel {
 
         if(feeds && feeds.length) {
             //First add feed with unread items
+            var totalUnreadCount = 0
             for(var feed = 0; feed < feeds.length; feed++) {
                 if (feeds[feed]) {
                     var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
@@ -50,10 +51,21 @@ ListModel {
                                     unreadcount:  feeds[feed].unread,
                                     feedId:       feeds[feed].id,
                                     categoryId:   feeds[feed].cat_id,
+                                    isCat:        false,
                                     icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
-                                });
+                                })
+                    totalUnreadCount += feeds[feed].unread
                 }
             }
+            if (root.count >= 2 && root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
+                root.insert(0, {
+                                title:        constant.allArticles,
+                                unreadcount:  totalUnreadCount,
+                                feedId:       root.category.categoryId,
+                                categoryId:   root.category.categoryId,
+                                isCat:        true,
+                                icon:         ''
+                            })
         }
     }
 
