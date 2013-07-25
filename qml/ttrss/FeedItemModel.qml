@@ -63,7 +63,7 @@ ListModel {
                                 date:       formatedDate,
                                 attachments:feeditems[feeditem].attachments,
                                 feedId:     feeditems[feeditem].feed_id
-                            });
+                            })
             }
         }
     }

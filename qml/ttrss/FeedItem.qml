@@ -93,13 +93,14 @@ Page {
 
     function computeAttachmentsCode(data) {
         var attachments = data.attachments
-        if (!attachments) return ""
+        if (attachments.count === 0) return ""
 
         var attachmentsCode = ""
 
-        for (var i = 0; i < attachments.length; i++) {
-            var url = attachments[i].content_url
-            var isImage = (attachments[i].content_type.indexOf("image") === 0 ||
+        for (var i = 0; i < attachments.count; i++) {
+            var a = attachments.get(i)
+            var url = a.content_url
+            var isImage = (a.content_type.indexOf("image") === 0 ||
                            /jpe?g$/i.test(url) ||
                            /png$/i.test(url))
 
@@ -108,7 +109,7 @@ Page {
             if (isImage) {
                 attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
             } else {
-                attachmentLabel = attachments[i].title ? attachments[i].title : url.replace(/^.*[\/]/g, '')
+                attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
             }
             attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a>"
         }
