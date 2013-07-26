@@ -11,20 +11,17 @@ ListModel {
     signal feedUnreadChanged(variant feed, int oldAmount)
 
     function update() {
-        rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeeds(root.category.categoryId, function() {
-                              rootWindow.loading--
                               root.load();
                           })
     }
 
     function load() {
-        var ttrss = rootWindow.getTTRSS();
-        var feeds = ttrss.getFeeds(category.categoryId);
-        var showAll = ttrss.getShowAll();
-        rootWindow.showAll = showAll;
-        root.clear();
+        var ttrss = rootWindow.getTTRSS()
+        var feeds = ttrss.getFeeds(category.categoryId)
+        rootWindow.showAll = ttrss.getShowAll()
+        root.clear()
 
         if(feeds && feeds.length) {
             //First add feed with unread items
@@ -78,13 +75,11 @@ ListModel {
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        rootWindow.loading++
         var m = root.getSelectedItem()
         ttrss.catchUp(m.feedId, function() {
                           var oldAmount = m.unreadcount
                           root.setProperty(m, "unreadcount", 0)
                           root.feedUnreadChanged(m, oldAmount)
-                          rootWindow.loading--
                       })
     }
 

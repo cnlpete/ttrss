@@ -13,11 +13,22 @@
 #include <QtNetwork/QNetworkDiskCache>
 #include <QDesktopServices>
 
+QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
+
+MyNetworkManager *MyNetworkManager::instance() {
+    if (m_instance.isNull())
+        m_instance.reset(new MyNetworkManager);
+
+    m_instance->_numRequests = 0;
+    return m_instance.data();
+}
+
 QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     QNetworkAccessManager *nam = new MyNetworkAccessManager(parent);
 
     connect(nam, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
-  //  connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onReplyFinished(QNetworkReply*)));
+    connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onReplyFinished(QNetworkReply*)));
+    connect(nam, SIGNAL(started()), this, SLOT(onStarted()));
 
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
     diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
@@ -28,6 +39,7 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
 }
 
 QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Operation op, const QNetworkRequest & req, QIODevice * outgoingData) {
+    this->started();
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     return QNetworkAccessManager::createRequest(op, request, outgoingData);
@@ -36,6 +48,18 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
     qDebug("onSslErrors");
     reply->ignoreSslErrors(errors);
+}
+
+void MyNetworkManager::onStarted() {
+    _numRequests++;
+    if (_numRequests > 0)
+        loadingChanged();
+}
+
+void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {
+    _numRequests--;
+    if (_numRequests == 0)
+        loadingChanged();
 }
 
 //void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {

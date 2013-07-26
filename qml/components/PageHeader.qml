@@ -19,6 +19,7 @@ Item{
     property string text
     property string logourl: ''
     property bool hasUpdateAction: false
+    property bool busy: false
 
     signal updateActionActivated()
 
@@ -78,20 +79,20 @@ Item{
         Image {
             id: updateIcon
             source: "image://theme/icon-m-toolbar-refresh"
-            visible: hasUpdateAction&& rootWindow.loading <= 0
+            visible: hasUpdateAction && !network.loading && !busy
         }
 
         BusyIndicator {
             id: busyIndicator
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: rootWindow.loading > 0
-            running: rootWindow.loading > 0
+            visible: network.loading || busy
+            running: network.loading || busy
             platformStyle: BusyIndicatorStyle { size: 'medium' }
         }
 
         MouseArea {
-            enabled: rootWindow.loading <= 0 && hasUpdateAction
+            enabled: !network.loading && !busy && hasUpdateAction
             anchors.fill: parent
             onClicked: {
                 root.updateActionActivated()

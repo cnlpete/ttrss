@@ -31,8 +31,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QmlApplicationViewer viewer;
     //QObject::connect(viewer.engine(), SIGNAL(quit()), viewer.data, SLOT(close()));
-    viewer.setNetworkAccessManagerFactory(new MyNetworkManager);
-
+    viewer.setNetworkAccessManagerFactory(MyNetworkManager::instance());
+    viewer.rootContext()->setContextProperty("network", MyNetworkManager::instance());
 
     viewer.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
 

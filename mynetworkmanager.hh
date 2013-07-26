@@ -20,18 +20,37 @@ class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManager
 {
     Q_OBJECT
 
+    Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
+
 public: // QDeclarativeNetworkAccessManagerFactory
     QNetworkAccessManager *create(QObject *parent);
+    static MyNetworkManager *instance();
+
+    bool loading() const {
+        return this->_numRequests > 0;
+    }
+
+signals:
+    void loadingChanged();
 
 private slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
-//    void onReplyFinished(QNetworkReply *reply);
+    void onReplyFinished(QNetworkReply *reply);
+    void onStarted();
+
+private:
+    static QScopedPointer<MyNetworkManager> m_instance;
+    int _numRequests;
 };
 
 class MyNetworkAccessManager : public QNetworkAccessManager {
     Q_OBJECT
 public:
     MyNetworkAccessManager(QObject *parent = 0) : QNetworkAccessManager(parent) { }
+
+signals:
+    void started();
+
 protected:
     QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = 0);
 

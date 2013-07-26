@@ -13,10 +13,8 @@ ListModel {
     signal itemStarChanged(variant item)
 
     function update() {
-        rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeedItems(feed.feedId, feed.isCat, function() {
-                                  rootWindow.loading--
                                   root.load();
                               })
     }
@@ -77,46 +75,39 @@ ListModel {
 
     function toggleRead() {
         var ttrss = rootWindow.getTTRSS()
-        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedUnread(m.id,
                                !m.unread,
                                function() {
                                    root.setProperty(root.selectedIndex, "unread", !m.unread)
                                    root.itemUnreadChanged(m)
-                                   rootWindow.loading--
                                })
     }
 
     function toggleStar() {
         var ttrss = rootWindow.getTTRSS()
-        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedStar(m.id,
                              !m.marked,
                              function() {
                                  root.setProperty(root.selectedIndex, "marked", !m.marked)
                                  root.itemStarChanged(m)
-                                 rootWindow.loading--
                              })
     }
 
     function togglePublished() {
         var ttrss = rootWindow.getTTRSS()
-        rootWindow.loading++
         var m = root.get(root.selectedIndex)
         ttrss.updateFeedRSS(m.id,
                             !m.rss,
                             function() {
                                 root.setProperty(root.selectedIndex, "rss", !m.rss)
                                 root.itemPublishedChanged(m)
-                                rootWindow.loading--
                             })
     }
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        rootWindow.loading++
         ttrss.catchUp(feed.feedId, function() {
                           for(var feeditem = 0; feeditem < root.count; feeditem++) {
                               var item = root.get(feeditem)
@@ -125,7 +116,6 @@ ListModel {
                                   root.itemUnreadChanged(item)
                               }
                           }
-                          rootWindow.loading--
                       })
     }
 

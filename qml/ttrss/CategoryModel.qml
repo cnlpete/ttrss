@@ -8,10 +8,8 @@ ListModel {
     property int selectedIndex: -1
 
     function update() {
-        rootWindow.loading++
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateCategories(function() {
-                                   rootWindow.loading--
                                    root.load();
                                });
     }

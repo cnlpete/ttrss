@@ -26,8 +26,8 @@ Page {
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
-    property bool   progressDidStop: true
-    property bool   progressDidStart: false
+//    property bool   progressDidStop: true
+//    property bool   progressDidStart: false
 
     anchors.margins: 0
 
@@ -62,18 +62,18 @@ Page {
                     document.body.style.color='" + constant.colorWebviewText + "';\
                 ");
             }
-            onProgressChanged: {
-                if (progress < 1 && !progressDidStart) {
-                    progressDidStop = false
-                    progressDidStart = true
-                    rootWindow.loading++
-                }
-                if (!progress < 1 && !progressDidStop) {
-                    progressDidStop = true
-                    progressDidStart = false
-                    rootWindow.loading--
-                }
-            }
+//            onProgressChanged: {
+//                if (progress < 1 && !progressDidStart) {
+//                    progressDidStop = false
+//                    progressDidStart = true
+//                    rootWindow.loading++
+//                }
+//                if (!progress < 1 && !progressDidStop) {
+//                    progressDidStop = true
+//                    progressDidStart = false
+//                    rootWindow.loading--
+//                }
+//            }
 
             onUrlChanged: {
                 if (url != "") {
@@ -188,21 +188,21 @@ Page {
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-            enabled: !rootWindow.loading
+            enabled: !network.loading
             onClicked: {
                 feedItems.toggleStar()
                 marked = !marked
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-            enabled: !rootWindow.loading
+            enabled: !network.loading
             onClicked: {
                 feedItems.togglePublished()
                 rss = !rss
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
-            enabled: !rootWindow.loading
+            enabled: !network.loading
             onClicked: {
                 feedItems.toggleRead()
                 unread = !unread
@@ -217,7 +217,7 @@ Page {
         ToolIcon {
             iconId: "toolbar-view-menu" ;
             onClicked: (itemMenu.status === DialogStatus.Closed) ? itemMenu.open() : itemMenu.close()
-            enabled: !rootWindow.loading
+            enabled: !network.loading
         }
     }
 

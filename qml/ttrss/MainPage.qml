@@ -14,8 +14,6 @@ import com.nokia.meego 1.0
 import "../components" 1.0
 
 Page {
-    property bool loading: false
-
     orientationLock: Screen.Portrait
     tools: commonTools
 
@@ -48,7 +46,7 @@ Page {
             id: server
             text: ""
             width: parent.width
-            enabled: !loading
+            enabled: !network.loading
         }
         Label {
             id: usernameLabel
@@ -60,7 +58,7 @@ Page {
             id: username
             text: ""
             width: parent.width
-            enabled: !loading
+            enabled: !network.loading
         }
         Label {
             id: passwordLabel
@@ -72,13 +70,13 @@ Page {
             id: password
             echoMode: TextInput.Password
             width: parent.width
-            enabled: !loading
+            enabled: !network.loading
         }
     }
     BusyIndicator {
         id: busyindicator1
-        visible: loading
-        running: loading
+        visible: network.loading
+        running: network.loading
         anchors {
             horizontalCenter: parent.horizontalCenter
             verticalCenter: parent.verticalCenter
@@ -104,7 +102,7 @@ Page {
                 settings.username = username.text
                 settings.password = password.text
             }
-            enabled: !loading
+            enabled: !network.loading
         }
         ToolButton {
             id: loginButton
@@ -127,14 +125,14 @@ Page {
 
                 startLogin();
             }
-            enabled: !loading
+            enabled: !network.loading
         }
         ToolIcon {
             id: menuButton
             platformIconId: "toolbar-view-menu"
             anchors.right: (parent === undefined) ? undefined : parent.right
             onClicked: (myMenu.status === DialogStatus.Closed) ? myMenu.open() : myMenu.close()
-            enabled: !loading
+            enabled: !network.loading
         }
     }
 
@@ -164,9 +162,6 @@ Page {
         if (myMenu.status !== DialogStatus.Closed)
             myMenu.close()
 
-        //Start the loading anim
-        loading = true;
-
         var ttrss = rootWindow.getTTRSS();
         ttrss.clearState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
@@ -184,9 +179,6 @@ Page {
             //login failed....don't autlogin
             settings.autologin = false
 
-            //stop the loading anim
-            loading = false;
-
             //Let the user know
             loginErrorDialog.text = text;
             loginErrorDialog.open();
@@ -199,9 +191,6 @@ Page {
     }
 
     function configSuccessfull(retcode, text) {
-        //stop the loading anim
-        loading = false;
-
         if(retcode) {
             //Let the user know
             loginErrorDialog.text = text;
