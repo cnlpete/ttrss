@@ -136,9 +136,7 @@ Page {
         }
         onAccepted: {
             var ttrss = rootWindow.getTTRSS()
-            rootWindow.loading++
             ttrss.subscribe(feedsPage.category.categoryId, server.text, function(result) {
-                                rootWindow.loading--
                                 /**
                                 * 0 - OK, Feed already exists
                                 * 1 - OK, Feed added
@@ -188,8 +186,7 @@ Page {
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    rootWindow.loading++
-                    ttrss.unsubscribe(feedMenu.feedId, function() { rootWindow.loading--; feeds.update(); })
+                    ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
                 } }
         }
     }
