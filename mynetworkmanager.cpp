@@ -29,6 +29,7 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     connect(nam, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
     connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onReplyFinished(QNetworkReply*)));
     connect(nam, SIGNAL(started()), this, SLOT(onStarted()));
+    connect(nam, SIGNAL(error()), this, SLOT(onError()));
 
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
     diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
@@ -42,7 +43,19 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     this->started();
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
-    return QNetworkAccessManager::createRequest(op, request, outgoingData);
+    QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError()));
+    return reply;
+}
+
+void MyNetworkAccessManager::onError() {
+    this->error();
+}
+
+void MyNetworkManager::onError() {
+    _numRequests--;
+    if (_numRequests == 0)
+        loadingChanged();
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {

@@ -37,6 +37,7 @@ private slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
     void onReplyFinished(QNetworkReply *reply);
     void onStarted();
+    void onError();
 
 private:
     static QScopedPointer<MyNetworkManager> m_instance;
@@ -48,8 +49,12 @@ class MyNetworkAccessManager : public QNetworkAccessManager {
 public:
     MyNetworkAccessManager(QObject *parent = 0) : QNetworkAccessManager(parent) { }
 
+private slots:
+    void onError();
+
 signals:
     void started();
+    void error();
 
 protected:
     QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = 0);
