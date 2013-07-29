@@ -53,10 +53,11 @@ Page {
                 }
             }
         }
-        FastScroll {
-            listView: listView
-            visible: feedItems.count > 10
-        }
+//        FastScroll {
+//            listView: listView
+//            visible: feedItems.count > 10
+
+//        }
         EmptyListInfoLabel {
             text: rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
