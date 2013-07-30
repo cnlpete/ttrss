@@ -12,6 +12,7 @@
 #include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
 #include <QDesktopServices>
+#include <QDebug>
 
 QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
 
@@ -44,18 +45,18 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
     return reply;
 }
 
-void MyNetworkAccessManager::onError() {
-    this->error();
+void MyNetworkAccessManager::onError(QNetworkReply::NetworkError e) {
+    qDebug() << "got network error " << (int)e;
+    if (e < QNetworkReply::ContentAccessDenied)
+        this->error();
 }
 
 void MyNetworkManager::onError() {
-    _numRequests--;
-    if (_numRequests == 0)
-        loadingChanged();
+    this->decNumRequests();
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
@@ -64,15 +65,11 @@ void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> 
 }
 
 void MyNetworkManager::onStarted() {
-    _numRequests++;
-    if (_numRequests > 0)
-        loadingChanged();
+    this->incNumRequests();
 }
 
 void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {
-    _numRequests--;
-    if (_numRequests == 0)
-        loadingChanged();
+    this->decNumRequests();
 }
 
 //void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {

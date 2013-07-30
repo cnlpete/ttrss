@@ -15,6 +15,8 @@
 #include <qdeclarativenetworkaccessmanagerfactory.h>
 #include <QtNetwork/qnetworkreply.h>
 #include <QtNetwork/QNetworkAccessManager>
+#include <QMutex>
+#include <QDebug>
 
 class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManagerFactory
 {
@@ -42,6 +44,22 @@ private slots:
 private:
     static QScopedPointer<MyNetworkManager> m_instance;
     int _numRequests;
+    QMutex _mutex;
+
+    void incNumRequests() {
+        QMutexLocker locker(&_mutex);
+        _numRequests++;
+        qDebug() << "numReq is now " << _numRequests;
+        if (_numRequests == 1)
+            loadingChanged();
+    }
+    void decNumRequests() {
+        QMutexLocker locker(&_mutex);
+        _numRequests--;
+        qDebug() << "numReq is now " << _numRequests;
+        if (_numRequests == 0)
+            loadingChanged();
+    }
 };
 
 class MyNetworkAccessManager : public QNetworkAccessManager {
@@ -50,7 +68,7 @@ public:
     MyNetworkAccessManager(QObject *parent = 0) : QNetworkAccessManager(parent) { }
 
 private slots:
-    void onError();
+    void onError(QNetworkReply::NetworkError e);
 
 signals:
     void started();
