@@ -177,7 +177,7 @@ Page {
     }
     Menu {
         id: menu
-        visualParent: rootWindow
+        visualParent: pageStack
 
         MenuLayout {
             MenuItem {
