@@ -133,13 +133,13 @@
     <name>FeedItem</name>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="80"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="229"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="232"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="230"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="233"/>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="238"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="239"/>
         <source>Share</source>
         <translation>Teilen</translation>
     </message>
@@ -147,7 +147,7 @@
 <context>
     <name>FeedItemModel</name>
     <message>
-        <location filename="../qml/ttrss/FeedItemModel.qml" line="47"/>
+        <location filename="../qml/ttrss/FeedItemModel.qml" line="50"/>
         <source>Today</source>
         <translation>Heute</translation>
     </message>
@@ -155,53 +155,59 @@
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="59"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="66"/>
+        <source>Load more</source>
+        <translation>Mehr</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
         <source>No items in feed</source>
         <translation>Keine Einträge in diesem Feed</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="61"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
         <source>No unread items in feed</source>
         <translation>Keine ungelesenen Nachrichten</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="101"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
         <source>Mark all read</source>
         <translation>Alle als gelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
         <source>Unstar</source>
         <translation>Bewertung entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
         <source>Star</source>
         <translation>Bewerten</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="124"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
         <source>Unpublish</source>
         <translation>Nicht veröffentlichen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="124"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
         <source>Publish</source>
         <translation>Veröffentlichen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="129"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
         <source>Mark read</source>
         <translation>Als gelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="129"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
         <source>Mark Unread</source>
         <translation>Als ungelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="134"/>
-        <location filename="../qml/ttrss/FeedItems.qml" line="139"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="152"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="157"/>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
@@ -239,32 +245,32 @@
         <translation>Feed Adresse:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="152"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="150"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="157"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="155"/>
         <source>Invalid URL</source>
         <translation>Ungültige URL</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="162"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="160"/>
         <source>Already suscribed to Feed</source>
         <translation>Feed bereits abonniert</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="166"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="164"/>
         <source>Feed added</source>
         <translation>Abonnement hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="182"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="180"/>
         <source>Mark all read</source>
         <translation>Alle als gelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="187"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="185"/>
         <source>Unsubscribe</source>
         <translation>Feed abbestellen</translation>
     </message>
@@ -272,32 +278,32 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="43"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="41"/>
         <source>Server:</source>
         <translation>Server:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="55"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="53"/>
         <source>Username:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="67"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="65"/>
         <source>Password:</source>
         <translation>Passwort:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="94"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="92"/>
         <source>Clear</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="111"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="109"/>
         <source>Login</source>
         <translation>Einloggen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/MainPage.qml" line="146"/>
+        <location filename="../qml/ttrss/MainPage.qml" line="144"/>
         <source>No Account Yet?</source>
         <translation>Noch keinen Zugang?</translation>
     </message>
@@ -362,7 +368,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="87"/>
         <source>Automatically Login</source>
-        <translation>Automatisch einloggen</translation>
+        <translation>Automatisch anmelden</translation>
     </message>
 </context>
 <context>
