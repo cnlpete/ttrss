@@ -382,14 +382,14 @@ function process_updateFeeds(callback, httpreq) {
                 callback(0);
 }
 
-function updateFeedItems(feedId, isCat, callback) {
+function updateFeedItems(feedId, isCat, continuation, callback) {
     if(responsesPending['feeditems'])
         return;
 
     if (state['lastfeed']['id'] !== feedId) {
         state['lastfeed']['id'] = feedId;
         state['lastfeed']['isCat'] = isCat;
-        state['lastfeed']['continuation'] = 0;
+        state['lastfeed']['continuation'] = continuation;
     }
 
     // needs to be logged in
@@ -410,7 +410,7 @@ function updateFeedItems(feedId, isCat, callback) {
         'show_excerpt': false,
         'show_content': true, // we want the content, so we do not have to load every article for itself
         'view_mode': (state['showall'] ? 'all_articles' : 'unread'),
-        'skip': state['lastfeed']['continuation']
+        'skip': continuation
     }
 
     networkCall(params, function(http) { process_updateFeedItems(callback, http) });
@@ -424,8 +424,7 @@ function process_updateFeedItems(callback, httpreq) {
         if (responseObject.status === 0) {
             state['feeditemcache'] = {};
             state['feeditems'][feedId] = [];
-
-            //TODO update the continuation counter
+            state['lastfeed']['continuation'] += responseObject.content.length;
 
             for(var i = 0; i < responseObject.content.length; i++) {
                 var feeditemid = responseObject.content[i].id;
@@ -496,7 +495,7 @@ function processPendingRequests(callback) {
             //Get the auth token
             login(callback);
         else
-            updateFeedItems(state['lastfeed']['id'], state['lastfeed']['isCat'], callback);
+            updateFeedItems(state['lastfeed']['id'], state['lastfeed']['isCat'], state['lastfeed']['continuation'], callback);
     }
     else if (requestsPending['feeditemstar']) {
         trace(4, 'feeditemstar request pending');
@@ -789,7 +788,7 @@ function getFeeds(catId) {
     return retVal
 }
 
-function getFeedItems(feedId, inverse) {
+function getFeedItems(feedId) {
     var retVal = []
     var i = 0
     if (state['feeditems'][feedId]) {
@@ -798,10 +797,7 @@ function getFeedItems(feedId, inverse) {
             i++
         }
     }
-    if (inverse === true)
-        retVal.sort(dateSortInverse)
-    else
-        retVal.sort(dateSort)
+    retVal.sort(dateSort)
     return retVal
 }
 

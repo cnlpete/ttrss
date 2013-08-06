@@ -7,6 +7,8 @@ ListModel {
 
     property int selectedIndex: -1
     property variant feed
+    property int continuation: 0
+    property bool hasMoreItems: true
 
     signal itemUnreadChanged(variant item)
     signal itemPublishedChanged(variant item)
@@ -14,20 +16,21 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeedItems(feed.feedId, feed.isCat, function() {
+        ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation, function() {
                                   root.load();
                               })
     }
 
     function load() {
         var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feed.feedId, settings.feeditemsOrder === 1, feed.isCat || false);
+        var feeditems = ttrss.getFeedItems(feed.feedId);
         var showAll = ttrss.getShowAll();
         rootWindow.showAll = showAll;
-        root.clear();
+//        root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
         var now = new Date();
 
         if (feeditems && feeditems.length) {
+            root.continuation += feeditems.length
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
                 var subtitle = feeditems[feeditem].content || ""
                 subtitle = subtitle.replace(/\n/gi, " ")
@@ -49,21 +52,27 @@ ListModel {
                 var url = feeditems[feeditem].link
                 url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
 
-                root.append({
-                                title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
-                                content:    feeditems[feeditem].content,
-                                subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
-                                id:         feeditems[feeditem].id,
-                                unread:     !!feeditems[feeditem].unread,
-                                marked:     !!feeditems[feeditem].marked,
-                                rss:        feeditems[feeditem].published,
-                                url:        url,
-                                date:       formatedDate,
-                                attachments:feeditems[feeditem].attachments,
-                                feedId:     feeditems[feeditem].feed_id
-                            })
+                var modelEntry = {
+                    title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+                    content:    feeditems[feeditem].content,
+                    subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
+                    id:         feeditems[feeditem].id,
+                    unread:     !!feeditems[feeditem].unread,
+                    marked:     !!feeditems[feeditem].marked,
+                    rss:        feeditems[feeditem].published,
+                    url:        url,
+                    date:       formatedDate,
+                    attachments:feeditems[feeditem].attachments,
+                    feedId:     feeditems[feeditem].feed_id
+                }
+                if (settings.feeditemsOrder === 0)
+                    root.append(modelEntry)
+                else
+                    root.insert(0, modelEntry)
             }
         }
+        else
+            hasMoreItems = false
     }
 
     function getSelectedItem() {

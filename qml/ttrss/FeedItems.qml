@@ -20,6 +20,8 @@ Page {
 
     Component.onCompleted: {
         feedItems.feed = itemListPage.feed
+        feedItems.hasMoreItems = true
+        feedItems.continuation = 0
         feedItems.clear()
         feedItems.update()
     }
@@ -51,6 +53,21 @@ Page {
                     feeditemMenu.feedItem = model
                     feeditemMenu.open()
                 }
+            }
+            footer: Button {
+                id: foot
+                text: qsTr("Load more")
+                visible: settings.feeditemsOrder === 0 && feedItems.hasMoreItems
+                height: settings.feeditemsOrder === 0 && feedItems.hasMoreItems ? 51 : 0
+                width: parent.width
+                onClicked: feedItems.update()
+            }
+            header: Button {
+                text: qsTr("Load more")
+                visible: settings.feeditemsOrder === 1 && feedItems.hasMoreItems
+                height: settings.feeditemsOrder === 1 && feedItems.hasMoreItems ? 51 : 0
+                width: parent.width
+                onClicked: feedItems.update()
             }
         }
 //        FastScroll {
