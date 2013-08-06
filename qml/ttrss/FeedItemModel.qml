@@ -88,7 +88,10 @@ ListModel {
         ttrss.updateFeedUnread(m.id,
                                !m.unread,
                                function() {
-                                   root.setProperty(root.selectedIndex, "unread", !m.unread)
+                                   var newState = !m.unread
+                                   root.setProperty(root.selectedIndex, "unread", newState)
+                                   if (!rootWindow.showAll)
+                                       root.continuation += newState ? +1 : -1
                                    root.itemUnreadChanged(m)
                                })
     }
