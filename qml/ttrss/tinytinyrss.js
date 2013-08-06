@@ -182,9 +182,6 @@ function login(callback) {
 }
 
 function process_login(callback, http) {
-    trace(3, "readystate: "+http.readyState+" status: "+http.status);
-    trace(3, "response: "+http.responseText);
-
     var errorText;
     if( http.responseText.length > 2 && http.status === 200 )  {
         var responseObject = JSON.parse(http.responseText);
@@ -243,9 +240,6 @@ function updateConfig(callback) {
 }
 
 function process_updateConfig(callback, httpreq) {
-    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
-    trace(3, "response: "+httpreq.responseText);
-
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
         if (responseObject.status === 0) {
@@ -257,8 +251,6 @@ function process_updateConfig(callback, httpreq) {
         else {
             if(responseObject.content.error)
                 errorText = "Get Config failed: "+responseObject.content.error;
-            else
-                errorText = "Get Config failed (received http code: "+http.status+")";
         }
     }
     else {
@@ -299,9 +291,6 @@ function updateCategories(callback) {
 }
 
 function process_updateCategories(callback, httpreq) {
-    trace(3, "readystate: "+httpreq.readyState+" status: "+httpreq.status);
-    trace(3, "response: "+httpreq.responseText);
-
     if(httpreq.status === 200)  {
         var responseObject=JSON.parse(httpreq.responseText);
         if (responseObject.status === 0) {
@@ -316,8 +305,6 @@ function process_updateCategories(callback, httpreq) {
         else {
             if(responseObject.content.error)
                 errorText = "Update Categories failed: "+responseObject.content.error;
-            else
-                errorText = "Update Categories failed (received http code: "+http.status+")";
         }
     }
     else {
@@ -378,8 +365,6 @@ function process_updateFeeds(callback, httpreq) {
         else {
             if(responseObject.content.error)
                 errorText = "Update Feeds failed: "+responseObject.content.error;
-            else
-                errorText = "Update Feeds failed (received http code: "+http.status+")";
         }
     }
     else {
@@ -451,8 +436,6 @@ function process_updateFeedItems(callback, httpreq) {
         else {
             if(responseObject.content.error)
                 errorText = "Update Feeds failed: "+responseObject.content.error;
-            else
-                errorText = "Update Feeds failed (received http code: "+http.status+")";
         }
     }
     else {
@@ -578,18 +561,6 @@ function catchUp(feedId, callback) {
     }
 
     networkCall(params, function(http) {
-                    if (state['feeditems'][feedId]) {
-                        for (var feed = 0; feed < state['feeditems'][feedId].length; feed++)
-                            state['feeditemcache'][state['feeditems'][feedId][feed]].unread = false
-                    }
-
-                    if (state['feedcache'][feedId]) {
-                        var cat_id = state['feedcache'][feedId].cat_id
-                        if (state['categorycache'][cat_id])
-                            state['categorycache'][cat_id].unread -= state['feedcache'][feedId].unread
-                        state['feedcache'][feedId].unread = 0
-                    }
-
                     responsesPending['catchup'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
@@ -632,7 +603,6 @@ function subscribe(catId, url, callback) {
     }
 
     networkCall(params, function(http) {
-                    trace(3, "response: "+http.responseText)
                     responsesPending['subscribe'] = false
 
                     if(http.status === 200)  {
@@ -675,14 +645,11 @@ function unsubscribe(feedId, callback) {
     }
 
     networkCall(params, function(http) {
-                    trace(3, "response: "+http.responseText)
-                    if (state['feedcache'][feedId]) {
-                        delete state['feedcache'][feedId]
-                    }
                     responsesPending['unsubscribe'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
-                            callback(0); })
+                            callback(0)
+                })
 }
 
 function updateFeedStar(articleId, starred, callback) {
@@ -712,11 +679,11 @@ function updateFeedStar(articleId, starred, callback) {
     }
 
     networkCall(params, function(http) {
-                    state['feeditemcache'][articleId].marked = starred;
                     responsesPending['feeditemstar'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
-                            callback(0); });
+                            callback(0)
+                });
 
 }
 
@@ -747,7 +714,6 @@ function updateFeedRSS(articleId, rss, callback) {
     }
 
     networkCall(params, function(http) {
-                    state['feeditemcache'][articleId].published = rss;
                     responsesPending['feeditemrss'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
@@ -781,19 +747,11 @@ function updateFeedUnread(articleId, unread, callback) {
     }
 
     networkCall(params, function(http) {
-                    state['feeditemcache'][articleId].unread = unread;
-                    var feed_id = state['feeditemcache'][articleId]['feed_id']
-                    if (state['feedcache'][feed_id]) {
-                        state['feedcache'][feed_id].unread += (unread?1:-1)
-                        var cat_id = state['feedcache'][feed_id].cat_id
-                        if (state['categorycache'][cat_id])
-                            state['categorycache'][cat_id].unread += (unread?1:-1)
-                    }
-
                     responsesPending['feeditemunread'] = false;
                     if(!processPendingRequests(callback))
                         if(callback)
-                            callback(0); });
+                            callback(0)
+                });
 }
 
 //Indicates whether only unread items should be shown
@@ -804,14 +762,6 @@ function getShowAll() {
 //Sets whether only unread items should be shown
 function setShowAll(showAll) {
     state['showall'] = !!showAll;
-}
-
-function getCloseIfEmpty() {
-    return state['closeIfEmpty'];
-}
-
-function setCloseIfEmpty(newState) {
-    state['closeIfEmpty'] = newState;
 }
 
 function getCategories() {
