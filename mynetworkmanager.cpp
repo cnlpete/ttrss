@@ -51,7 +51,7 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
 
 void MyNetworkAccessManager::onError(QNetworkReply::NetworkError e) {
     qDebug() << "got network error " << (int)e;
-    if (e < QNetworkReply::ContentAccessDenied)
+    if (e < QNetworkReply::ContentAccessDenied && e != QNetworkReply::TemporaryNetworkFailureError)
         this->error();
 }
 
