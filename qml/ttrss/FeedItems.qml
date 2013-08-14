@@ -112,6 +112,9 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = true
+                    feedItems.clear()
                     feedItems.update()
                 }
             }
