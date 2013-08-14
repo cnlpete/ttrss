@@ -19,7 +19,7 @@ Item {
     signal pressAndHold
     property alias pressed: mouseArea.pressed
 
-    height: 88
+    height: mainText.parent.height + constant.paddingLarge
     width: parent.width
 
     BorderImage {
@@ -55,7 +55,6 @@ Item {
         clip: true
 
         Column {
-
             Label {
                 id: mainText
                 text: model.title
@@ -73,6 +72,17 @@ Item {
                 color: (model.unread > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
                 elide: Text.ElideRight
                 visible: text != ""
+            }
+            Row {
+                id: myrow
+                property variant mymod: model
+
+                Repeater {
+                    model: myrow.mymod.labels
+                    LabelLabel {
+                        label: myrow.mymod.labels.get(index)
+                    }
+                }
             }
         }
     }

@@ -52,6 +52,17 @@ ListModel {
                 var url = feeditems[feeditem].link
                 url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
 
+                var labels = []
+                var labelcount = feeditems[feeditem].labels ? feeditems[feeditem].labels.length : 0
+                for (var l = 0; l < labelcount; l++) {
+                    labels[l] = {
+                        'id': feeditems[feeditem].labels[l][0],
+                        'fgcolor': (feeditems[feeditem].labels[l][2] == "" ? "black" : feeditems[feeditem].labels[l][2]),
+                        'bgcolor': (feeditems[feeditem].labels[l][3] == "" ? "white" : feeditems[feeditem].labels[l][3]),
+                        'text': feeditems[feeditem].labels[l][1]
+                    }
+                }
+
                 var modelEntry = {
                     title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
                     content:    feeditems[feeditem].content,
@@ -63,8 +74,10 @@ ListModel {
                     url:        url,
                     date:       formatedDate,
                     attachments:feeditems[feeditem].attachments,
-                    feedId:     feeditems[feeditem].feed_id
+                    feedId:     feeditems[feeditem].feed_id,
+                    labels:     labels
                 }
+
                 if (settings.feeditemsOrder === 0)
                     root.append(modelEntry)
                 else
