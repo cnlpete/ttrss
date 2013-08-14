@@ -83,6 +83,9 @@ ListModel {
                 else
                     root.insert(0, modelEntry)
             }
+            // QUICKFIX FIXME the ttrss api will always query exactly 200 elements so if we get a different amount there are none left
+            if (feeditems.length !== 200)
+                hasMoreItems = false
         }
         else
             hasMoreItems = false
