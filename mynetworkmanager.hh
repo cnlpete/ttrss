@@ -57,6 +57,10 @@ private:
         QMutexLocker locker(&_mutex);
         _numRequests--;
         qDebug() << "numReq is now " << _numRequests;
+        // BUGFIX there are still scenarios where there is an error signal and a finished signal so this gets called twice :(
+        // therefor try to limit scenarios where this would be decremented one too many
+        if (_numRequests < 0)
+            _numRequests = 0;
         if (_numRequests == 0)
             loadingChanged();
     }
