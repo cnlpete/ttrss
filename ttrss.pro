@@ -62,4 +62,8 @@ contains(MEEGO_EDITION,harmattan) {
     icon.files = images/ttrss80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
     INSTALLS += icon
+
+    splash.files = images/ttrss-splash-portrait.jpg images/ttrss-splash-landscape.jpg
+    splash.path = /opt/$${TARGET}/splash
+    INSTALLS += splash
 }

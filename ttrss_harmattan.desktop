@@ -4,7 +4,7 @@ Version=1.0
 Type=Application
 Terminal=false
 Name=Tiny Tiny RSS
-Exec=/usr/bin/invoker --type=d -s /opt/ttrss/bin/ttrss
+Exec=/usr/bin/invoker --splash=/opt/ttrss/splash/ttrss-splash-portrait.jpg --splash-landscape=/opt/ttrss/splash/ttrss-splash-landscape.jpg  --type=d -s /opt/ttrss/bin/ttrss
 Icon=/usr/share/icons/hicolor/80x80/apps/ttrss80.png
 X-Window-Icon=
 X-HildonDesk-ShowInToolbar=true
