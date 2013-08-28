@@ -20,7 +20,7 @@ Page {
 
     Component.onCompleted: {
         feedItems.feed = itemListPage.feed
-        feedItems.hasMoreItems = true
+        feedItems.hasMoreItems = false
         feedItems.continuation = 0
         feedItems.clear()
         feedItems.update()
@@ -109,7 +109,7 @@ Page {
             ToggleShowAllItem {
                 onUpdateView: {
                     feedItems.continuation = 0
-                    feedItems.hasMoreItems = true
+                    feedItems.hasMoreItems = false
                     feedItems.clear()
                     feedItems.update()
                 }

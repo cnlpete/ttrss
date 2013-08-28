@@ -8,7 +8,7 @@ ListModel {
     property int selectedIndex: -1
     property variant feed
     property int continuation: 0
-    property bool hasMoreItems: true
+    property bool hasMoreItems: false
 
     signal itemUnreadChanged(variant item)
     signal itemPublishedChanged(variant item)
@@ -84,8 +84,8 @@ ListModel {
                     root.insert(0, modelEntry)
             }
             // QUICKFIX FIXME the ttrss api will always query exactly 200 elements so if we get a different amount there are none left
-            if (feeditems.length !== 200)
-                hasMoreItems = false
+            if (feeditems.length === 200)
+                hasMoreItems = true
         }
         else
             hasMoreItems = false
