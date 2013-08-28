@@ -1,3 +1,13 @@
+ttrss (0.3.0) unstable; urgency=low
+  * Show Labels
+  * a little code refactoring, should be faster
+  * Load More Button for FeedItems
+  * LoadingIndicator always in PageHeader
+  * Splash Image
+  * Language Updates
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Wed, 28 Aug 2013 17:45:35 +0200
+
 ttrss (0.2.4) unstable; urgency=low
   * added option to disable autologin
   * added chinese translation by gwmgdemj
