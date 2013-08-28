@@ -132,14 +132,14 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="80"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="230"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="233"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="74"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="223"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="226"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="239"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="232"/>
         <source>Share</source>
         <translation>Partager</translation>
     </message>
@@ -171,43 +171,43 @@
         <translation>Pas d&apos;article non-lu dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="118"/>
         <source>Mark all read</source>
         <translation>Marquer tous comme lus</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Unstar</source>
         <translation>Ne pas étoiler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Star</source>
         <translation>Etoiler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Unpublish</source>
         <translation>Dépublier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Publish</source>
         <translation>Publier</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark read</source>
         <translation>Marquer comme lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark Unread</source>
         <translation>Marquer comme non-lu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="152"/>
-        <location filename="../qml/ttrss/FeedItems.qml" line="157"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="151"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="156"/>
         <source>Open in Web Browser</source>
         <translation>Ouvrir dans le navigateur</translation>
     </message>

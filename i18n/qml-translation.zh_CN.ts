@@ -132,14 +132,14 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="80"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="230"/>
-        <location filename="../qml/ttrss/FeedItem.qml" line="233"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="74"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="223"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="226"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="239"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="232"/>
         <source>Share</source>
         <translation>分享</translation>
     </message>
@@ -171,43 +171,43 @@
         <translation>订阅源中无未读条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="118"/>
         <source>Mark all read</source>
         <translation>标记所有为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Unstar</source>
         <translation>取消星标</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="137"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Star</source>
         <translation>标星</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Unpublish</source>
         <translation>取消发布</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="142"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Publish</source>
         <translation>发布</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark read</source>
         <translation>标记为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="147"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark Unread</source>
         <translation>标记为未读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="152"/>
-        <location filename="../qml/ttrss/FeedItems.qml" line="157"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="151"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="156"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
