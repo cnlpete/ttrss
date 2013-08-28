@@ -83,10 +83,6 @@ Page {
         }
     }
 
-    function getMoreItems() {
-        feedItems.update()
-    }
-
     PageHeader {
         id: pageHeader
         text: feed.title

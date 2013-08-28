@@ -17,8 +17,6 @@ import "../components" 1.0
 Page {
     id: itemPage
     tools: itemTools
-    property string feedId:         ""
-    property string articleId:      ""
     property string pageTitle:      ""
     property string url:            ""
     property bool   marked:         false
@@ -26,8 +24,6 @@ Page {
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
-//    property bool   progressDidStop: true
-//    property bool   progressDidStart: false
 
     anchors.margins: 0
 
@@ -46,9 +42,6 @@ Page {
             right: parent.right
         }
 
-
-//        signal newWindowRequested(string url)
-
         WebView {
             id: itemView
             transformOrigin: Item.TopLeft
@@ -62,18 +55,6 @@ Page {
                     document.body.style.color='" + constant.colorWebviewText + "';\
                 ");
             }
-//            onProgressChanged: {
-//                if (progress < 1 && !progressDidStart) {
-//                    progressDidStop = false
-//                    progressDidStart = true
-//                    rootWindow.loading++
-//                }
-//                if (!progress < 1 && !progressDidStop) {
-//                    progressDidStop = true
-//                    progressDidStart = false
-//                    rootWindow.loading--
-//                }
-//            }
 
             onUrlChanged: {
                 if (url != "") {
@@ -149,8 +130,6 @@ Page {
 
             previousId  = feedItems.hasPrevious()
             nextId      = feedItems.hasNext()
-
-            articleId   = data.id
 
             if (settings.autoMarkRead && unread) {
                 feedItems.toggleRead()

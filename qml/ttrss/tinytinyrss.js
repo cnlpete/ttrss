@@ -801,32 +801,6 @@ function getFeedItems(feedId) {
     return retVal
 }
 
-function getNextFeedId(feedId, articleId) {
-    var items = getFeedItems(feedId, settings.feeditemsOrder === 1)
-
-    for(var feeditem = 0; feeditem < items.length; feeditem++) {
-        if (items[feeditem].id == articleId) {
-            if (feeditem+1 < items.length)
-                return items[feeditem+1].id
-        }
-    }
-    return false
-}
-
-function getPreviousFeedId(feedId, articleId) {
-    var items = getFeedItems(feedId, settings.feeditemsOrder === 1)
-
-    for(var feeditem = 0; feeditem < items.length; feeditem++) {
-        if (items[feeditem].id == articleId) {
-            if (feeditem-1 >= 0)
-                return items[feeditem-1].id
-            else
-                return false
-        }
-    }
-    return false
-}
-
 function getFeedItem(feedId, articleId) {
     if (state['feeditemcache'][articleId])
         return state['feeditemcache'][articleId]
