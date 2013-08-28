@@ -76,6 +76,7 @@ Item {
             Row {
                 id: myrow
                 property variant mymod: model
+                spacing: constant.paddingMedium
 
                 Repeater {
                     model: myrow.mymod.labels

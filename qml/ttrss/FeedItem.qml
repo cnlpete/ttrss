@@ -15,7 +15,7 @@ import QtWebKit 1.0
 import "../components" 1.0
 
 Page {
-    id: itemPage
+    id: root
     tools: itemTools
     property string pageTitle:      ""
     property string url:            ""
@@ -24,6 +24,7 @@ Page {
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
+    property variant labels
 
     anchors.margins: 0
 
@@ -32,7 +33,7 @@ Page {
         width: parent.width;
         height: parent.height
         contentWidth: itemView.width
-        contentHeight: itemView.height
+        contentHeight: content.height
         interactive: true
         clip: true
         anchors {
@@ -42,27 +43,40 @@ Page {
             right: parent.right
         }
 
-        WebView {
-            id: itemView
-            transformOrigin: Item.TopLeft
-            settings.standardFontFamily: "Arial"
-            preferredWidth: flick.width
-            preferredHeight: flick.height
-            scale: 1
-            onLoadFinished: {
-                evaluateJavaScript("\
-                    document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
-                    document.body.style.color='" + constant.colorWebviewText + "';\
-                ");
+        Column {
+            id: content
+            Row {
+                id: labelsrepeater
+                spacing: constant.paddingMedium
+                Repeater {
+                    model: root.labels
+                    LabelLabel {
+                        label: root.labels.get(index)
+                    }
+                }
             }
+            WebView {
+                id: itemView
+                transformOrigin: Item.TopLeft
+                settings.standardFontFamily: "Arial"
+                preferredWidth: flick.width
+                preferredHeight: flick.height
+                scale: 1
+                onLoadFinished: {
+                    evaluateJavaScript("\
+                        document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
+                        document.body.style.color='" + constant.colorWebviewText + "';\
+                    ");
+                }
 
-            onUrlChanged: {
-                if (url != "") {
-                    infoBanner.text = qsTr("Open in Web Browser")
-                    infoBanner.show()
-                    Qt.openUrlExternally(url);
-                    // BUGFIX: the url is still changed, so i need to change it back to the original content...
-                    showFeedItem()
+                onUrlChanged: {
+                    if (url != "") {
+                        infoBanner.text = qsTr("Open in Web Browser")
+                        infoBanner.show()
+                        Qt.openUrlExternally(url);
+                        // BUGFIX: the url is still changed, so i need to change it back to the original content...
+                        showFeedItem()
+                    }
                 }
             }
         }
@@ -123,7 +137,7 @@ Page {
             itemView.html = content
             url         = data.url
             pageTitle   = data.title
-
+            root.labels = data.labels
             marked      = data.marked
             unread      = data.unread
             rss         = data.rss
