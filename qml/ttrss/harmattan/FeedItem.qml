@@ -261,11 +261,6 @@ Page {
                     Qt.openUrlExternally(url);
                 }
             }
-            MenuItem {
-                text: qsTr("Share")
-                enabled: url && (url != "")
-                onClicked: QMLUtils.share(url, pageTitle);
-            }
             SettingsItem {}
             AboutItem {}
         }
