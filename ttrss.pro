@@ -33,8 +33,8 @@ CONFIG += qdeclarative-boostable
 
 contains(MEEGO_EDITION,harmattan) {
     # disable to make builds for use with meecolay
-    CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
-    DEFINES += Q_OS_HARMATTAN
+    #CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
+    #DEFINES += Q_OS_HARMATTAN
 }
 
 # Add dependency to Symbian components
