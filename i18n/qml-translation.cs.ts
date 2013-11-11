@@ -158,7 +158,7 @@
         <location filename="../qml/ttrss/FeedItems.qml" line="59"/>
         <location filename="../qml/ttrss/FeedItems.qml" line="66"/>
         <source>Load more</source>
-        <translation type="unfinished"/>
+        <translation>Načíst více</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="87"/>
         <source>Automatically Login</source>
-        <translation type="unfinished"/>
+        <translation>Automaticky přihlásit při spuštění</translation>
     </message>
 </context>
 <context>

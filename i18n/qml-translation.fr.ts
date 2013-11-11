@@ -158,7 +158,7 @@
         <location filename="../qml/ttrss/FeedItems.qml" line="59"/>
         <location filename="../qml/ttrss/FeedItems.qml" line="66"/>
         <source>Load more</source>
-        <translation type="unfinished"/>
+        <translation>Charger plus</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
