@@ -6,3 +6,4 @@ CONTRIBUTORS
 - Jakub Kožíšek (nodevel)
 - Alberto Mardegan (mardy)
 - gwmgdemj
+- equeim

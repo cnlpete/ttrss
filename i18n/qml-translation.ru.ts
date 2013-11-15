@@ -1,30 +1,30 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
 <context>
     <name>About</name>
     <message>
         <location filename="../qml/ttrss/About.qml" line="110"/>
         <source>Version: %1</source>
-        <translation>Version: %1</translation>
+        <translation>Версия: %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="111"/>
         <source>Author: %1</source>
-        <translation>Auteur: %1</translation>
+        <translation>Автор: %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="112"/>
         <source>Thanks to:</source>
-        <translation>Merci à:</translation>
+        <translation>Соучастники:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="120"/>
         <source>Homepage</source>
-        <translation>Site web</translation>
+        <translation>Сайт</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="127"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
-        <translation>Si vous trouvez des bugs ou désirez de nouvelles fonctionnalités, visitez l&apos;Issue Tracker</translation>
+        <translation>Если вы обнаружили ошибку, или у вас есть предложения по функциональности, пожалуйста, посетите Issue Tracker</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="131"/>
@@ -34,12 +34,12 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="167"/>
         <source>License</source>
-        <translation>Licence</translation>
+        <translation>Лицензия</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="173"/>
         <source>Privacy Policy</source>
-        <translation>Déclaration de confidentialité</translation>
+        <translation>Политика конфиденциальности</translation>
     </message>
 </context>
 <context>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../qml/components/AboutItem.qml" line="16"/>
         <source>About</source>
-        <translation>À propos</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -55,12 +55,12 @@
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="45"/>
         <source>No categories have unread items</source>
-        <translation>Aucune catégorie sans article non-lu</translation>
+        <translation>Нет категорий с непрочитанными сообщениями</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="45"/>
         <source>No categories to display</source>
-        <translation>Aucune catégorie</translation>
+        <translation>Нет категорий</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="61"/>
@@ -73,52 +73,52 @@
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="51"/>
         <source>Archived articles</source>
-        <translation>Articles archivés</translation>
+        <translation>Сохраненные новости </translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="52"/>
         <source>Starred articles</source>
-        <translation>Articles étoilés</translation>
+        <translation>Избранные новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="53"/>
         <source>Published articles</source>
-        <translation>Articles publiés</translation>
+        <translation>Опубликованные новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="54"/>
         <source>Fresh articles</source>
-        <translation>Articles récents</translation>
+        <translation>Свежие новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="55"/>
         <source>All articles</source>
-        <translation>Tous les articles</translation>
+        <translation>Все новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="56"/>
         <source>Recently read</source>
-        <translation>Récemment lu</translation>
+        <translation>Недавно прочитанные</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="58"/>
         <source>Labels</source>
-        <translation>Etiquettes</translation>
+        <translation>Labels</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="59"/>
         <source>Special</source>
-        <translation>Spécial</translation>
+        <translation>Special</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="60"/>
         <source>All Feeds</source>
-        <translation>Tous les flux</translation>
+        <translation>Все подписки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="61"/>
         <source>Uncategorized</source>
-        <translation>Sans catégorie</translation>
+        <translation>Несортированное</translation>
     </message>
 </context>
 <context>
@@ -136,12 +136,12 @@
         <location filename="../qml/ttrss/FeedItem.qml" line="223"/>
         <location filename="../qml/ttrss/FeedItem.qml" line="226"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Открыть в веб-браузере</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="232"/>
         <source>Share</source>
-        <translation>Partager</translation>
+        <translation>Поделиться</translation>
     </message>
 </context>
 <context>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItemModel.qml" line="50"/>
         <source>Today</source>
-        <translation>Aujourd&apos;hui</translation>
+        <translation>Сегодня</translation>
     </message>
 </context>
 <context>
@@ -158,58 +158,58 @@
         <location filename="../qml/ttrss/FeedItems.qml" line="59"/>
         <location filename="../qml/ttrss/FeedItems.qml" line="66"/>
         <source>Load more</source>
-        <translation>Charger plus</translation>
+        <translation>Загрузить следующие</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
         <source>No items in feed</source>
-        <translation>Pas d&apos;article dans le flux</translation>
+        <translation>Нет новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="79"/>
         <source>No unread items in feed</source>
-        <translation>Pas d&apos;article non-lu dans le flux</translation>
+        <translation>Нет непрочитанных новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="118"/>
         <source>Mark all read</source>
-        <translation>Marquer tous comme lus</translation>
+        <translation>Пометить все как прочитанное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Unstar</source>
-        <translation>Ne pas étoiler</translation>
+        <translation>Убрать из избранного</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="136"/>
         <source>Star</source>
-        <translation>Etoiler</translation>
+        <translation>Добавить в избранное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Unpublish</source>
-        <translation>Dépublier</translation>
+        <translation>Unpublish</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="141"/>
         <source>Publish</source>
-        <translation>Publier</translation>
+        <translation>Publish</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark read</source>
-        <translation>Marquer comme lu</translation>
+        <translation>Пометить как прочитанное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="146"/>
         <source>Mark Unread</source>
-        <translation>Marquer comme non-lu</translation>
+        <translation>Пометить как непрочитанное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="151"/>
         <location filename="../qml/ttrss/FeedItems.qml" line="156"/>
         <source>Open in Web Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Открыть в веб-браузере</translation>
     </message>
 </context>
 <context>
@@ -217,62 +217,62 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="56"/>
         <source>No feeds in category</source>
-        <translation>Pas de flux dans la catégorie</translation>
+        <translation>Нет подписок</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="56"/>
         <source>Category has no unread items</source>
-        <translation>La catégorie n&apos;a pas d&apos;article non-lu</translation>
+        <translation>Нет непрочитанных новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="93"/>
         <source>Add subscription</source>
-        <translation>Ajouter une souscription</translation>
+        <translation>Добавить подписку</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="111"/>
         <source>Add</source>
-        <translation>Ajouter</translation>
+        <translation>Добавить</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="112"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="126"/>
         <source>Feed address:</source>
-        <translation>Adresse du flux:</translation>
+        <translation>Адрес подписки:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="150"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="155"/>
         <source>Invalid URL</source>
-        <translation>URL invalide</translation>
+        <translation>Неправильная ссылка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="160"/>
         <source>Already suscribed to Feed</source>
-        <translation>Flux déjà souscrit</translation>
+        <translation>Вы уже подписаны на этот канал</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="164"/>
         <source>Feed added</source>
-        <translation>Flux ajouté</translation>
+        <translation>Добавлено</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="180"/>
         <source>Mark all read</source>
-        <translation>Marquer tout comme lu</translation>
+        <translation>Пометить все как прочитанное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="185"/>
         <source>Unsubscribe</source>
-        <translation>Désinscrire</translation>
+        <translation>Удалить</translation>
     </message>
 </context>
 <context>
@@ -280,32 +280,32 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="41"/>
         <source>Server:</source>
-        <translation>Serveur:</translation>
+        <translation>Сервер:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="53"/>
         <source>Username:</source>
-        <translation>Nom d&apos;utilisateur:</translation>
+        <translation>Логин:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="65"/>
         <source>Password:</source>
-        <translation>Mot de passe:</translation>
+        <translation>Пароль:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="92"/>
         <source>Clear</source>
-        <translation>Effacer</translation>
+        <translation>Очистить</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="109"/>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation>Войти</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="144"/>
         <source>No Account Yet?</source>
-        <translation>Pas encore de compte ?</translation>
+        <translation>Нет аккаунта?</translation>
     </message>
 </context>
 <context>
@@ -313,62 +313,62 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="30"/>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="47"/>
         <source>Theme</source>
-        <translation>Thème</translation>
+        <translation>Тема</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="49"/>
         <source>Dark</source>
-        <translation>Sombre</translation>
+        <translation>Темная</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="49"/>
         <source>White</source>
-        <translation>Clair</translation>
+        <translation>Светлая</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="54"/>
         <source>Order</source>
-        <translation>Ordre d&apos;affichage</translation>
+        <translation>Порядок</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="56"/>
         <source>Newest First</source>
-        <translation>Nouveaux avant</translation>
+        <translation>Новые в начале</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="56"/>
         <source>Oldest First</source>
-        <translation>Anciens avant</translation>
+        <translation>Старые в начале</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="61"/>
         <source>Font Size</source>
-        <translation>Taille du texte</translation>
+        <translation>Размер шрифта</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="69"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Marquer auto. comme lu</translation>
+        <translation>Автоматически помечать новости как прочитанные</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="75"/>
         <source>Show Icons</source>
-        <translation>Montrer les icônes</translation>
+        <translation>Показывать имонки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="81"/>
         <source>Use All Feeds on Startup</source>
-        <translation>Tous les flux au démarrage</translation>
+        <translation>Открывать &quot;Все новости&quot; при запуске</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="87"/>
         <source>Automatically Login</source>
-        <translation>Login auto. au démarrage</translation>
+        <translation>Входить при запуске</translation>
     </message>
 </context>
 <context>
@@ -376,7 +376,7 @@
     <message>
         <location filename="../qml/components/SettingsItem.qml" line="16"/>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -392,12 +392,12 @@
     <message>
         <location filename="../qml/components/ToggleShowAllItem.qml" line="22"/>
         <source>Show Unread Only</source>
-        <translation>Cacher les éléments lus</translation>
+        <translation>Показывать непрочитанные</translation>
     </message>
     <message>
         <location filename="../qml/components/ToggleShowAllItem.qml" line="22"/>
         <source>Show All</source>
-        <translation>Montrer tout</translation>
+        <translation>Показывать все</translation>
     </message>
 </context>
 </TS>

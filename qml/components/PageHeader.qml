@@ -23,7 +23,7 @@ Item{
 
     signal updateActionActivated()
 
-    height: constant.headerHeight
+    height: Math.max(constant.headerHeight, mainText.height)
     width: parent.width
     visible: text !== ""
 
@@ -53,11 +53,11 @@ Item{
         }
     }
 
-    Text {
+    Label {
         id: mainText
         anchors{
             verticalCenter: parent.verticalCenter
-            left: logo.right
+            left: logourl.length > 3 ? logo.right : parent.left
             right: updateAction.left
             margins: constant.paddingXLarge
         }
@@ -65,7 +65,19 @@ Item{
         color: "white"
         elide: Text.ElideRight
         text: root.text
+        maximumLineCount: 3
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (mainText.maximumLineCount === 1)
+                    mainText.maximumLineCount = 3
+                else
+                    mainText.maximumLineCount = 1
+            }
+        }
     }
+
 
     Item {
         id: updateAction
