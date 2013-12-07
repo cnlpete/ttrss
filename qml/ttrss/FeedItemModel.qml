@@ -100,12 +100,13 @@ ListModel {
 
     function toggleRead() {
         var ttrss = rootWindow.getTTRSS()
-        var m = root.get(root.selectedIndex)
+        var sel = root.selectedIndex
+        var m = getSelectedItem()
         ttrss.updateFeedUnread(m.id,
                                !m.unread,
                                function() {
                                    var newState = !m.unread
-                                   root.setProperty(root.selectedIndex, "unread", newState)
+                                   root.setProperty(sel, "unread", newState)
                                    if (!rootWindow.showAll)
                                        root.continuation += newState ? +1 : -1
                                    root.itemUnreadChanged(m)
@@ -114,22 +115,24 @@ ListModel {
 
     function toggleStar() {
         var ttrss = rootWindow.getTTRSS()
-        var m = root.get(root.selectedIndex)
+        var sel = root.selectedIndex
+        var m = getSelectedItem()
         ttrss.updateFeedStar(m.id,
                              !m.marked,
                              function() {
-                                 root.setProperty(root.selectedIndex, "marked", !m.marked)
+                                 root.setProperty(sel, "marked", !m.marked)
                                  root.itemStarChanged(m)
                              })
     }
 
     function togglePublished() {
         var ttrss = rootWindow.getTTRSS()
-        var m = root.get(root.selectedIndex)
+        var sel = root.selectedIndex
+        var m = getSelectedItem()
         ttrss.updateFeedRSS(m.id,
                             !m.rss,
                             function() {
-                                root.setProperty(root.selectedIndex, "rss", !m.rss)
+                                root.setProperty(sel, "rss", !m.rss)
                                 root.itemPublishedChanged(m)
                             })
     }

@@ -181,21 +181,18 @@ Page {
             } }
         ToolIcon {
             iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-            enabled: !network.loading
             onClicked: {
                 feedItems.toggleStar()
                 marked = !marked
             } }
         ToolIcon {
             iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-            enabled: !network.loading
             onClicked: {
                 feedItems.togglePublished()
                 rss = !rss
             } }
         ToolIcon {
             iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
-            enabled: !network.loading
             onClicked: {
                 feedItems.toggleRead()
                 unread = !unread
