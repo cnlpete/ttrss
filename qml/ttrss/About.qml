@@ -87,7 +87,6 @@ Page {
         AnchorAnimation { duration: 500 }
     }
 
-
     Column {
         id: logo
         anchors {
@@ -131,6 +130,13 @@ Page {
             text: qsTr("Issue Tracker")
             onClicked: {
                 Qt.openUrlExternally(constant.issueTrackerUrl)
+            }
+        }
+        Button {
+            width: parent.width
+            text: qsTr("Buy me a beer")
+            onClicked: {
+                Qt.openUrlExternally(constant.sourceRepoSite + "#donate")
             }
         }
     }
