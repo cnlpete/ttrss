@@ -15,6 +15,20 @@ import com.nokia.meego 1.0
 MenuItem {
     text: qsTr("About")
     onClicked: {
-        rootWindow.openFile("About.qml");
+        var params = {
+            title : 'ttrss ' + APP_VERSION,
+            iconSource: Qt.resolvedUrl('/usr/share/icons/hicolor/80x80/apps/ttrss80.png'),
+//            slogan : '',
+            donatebutton: qsTr("Buy me a beer"),
+            donateurl: constant.donateUrl,
+            text: qsTr("Author: %1").arg("Hauke Schade 2013") + "<br/>"
+                   + qsTr("Thanks to:") + " "
+                    + "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, gwmgdemj, equeim",
+            homepageurl: constant.sourceRepoSite,
+            issuetrackertext: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker"),
+            issuetrackerurl: constant.issueTrackerUrl
+        }
+
+        rootWindow.openFile("../components/AboutPage.qml", params);
     }
 }
