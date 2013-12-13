@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../qml/components/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/components/AboutItem.qml" line="24"/>
@@ -34,7 +32,7 @@
     <message>
         <location filename="../qml/components/AboutPage.qml" line="89"/>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/components/AboutPage.qml" line="99"/>
@@ -44,7 +42,7 @@
     <message>
         <location filename="../qml/components/AboutPage.qml" line="131"/>
         <source>Issuetracker</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/components/AboutPage.qml" line="168"/>
@@ -62,7 +60,7 @@
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="46"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="47"/>
@@ -175,7 +173,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="80"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="81"/>
@@ -234,7 +232,7 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="57"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="58"/>
