@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../qml/components/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kauf mir ein Bier</translation>
     </message>
     <message>
         <location filename="../qml/components/AboutItem.qml" line="24"/>
