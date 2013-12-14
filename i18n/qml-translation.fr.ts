@@ -9,7 +9,7 @@
     <message>
         <location filename="../qml/components/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"/>
+        <translation>Payez-moi une bière</translation>
     </message>
     <message>
         <location filename="../qml/components/AboutItem.qml" line="24"/>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../qml/components/AboutPage.qml" line="89"/>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Donner</translation>
     </message>
     <message>
         <location filename="../qml/components/AboutPage.qml" line="99"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../qml/components/AboutPage.qml" line="131"/>
         <source>Issuetracker</source>
-        <translation type="unfinished"/>
+        <translation>Suivi de problèmes</translation>
     </message>
     <message>
         <location filename="../qml/components/AboutPage.qml" line="168"/>
@@ -60,7 +60,7 @@
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="46"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Chargement</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="47"/>
@@ -173,7 +173,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="80"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Chargement</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="81"/>
@@ -232,7 +232,7 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="57"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Chargement</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="58"/>
