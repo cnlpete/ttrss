@@ -9,7 +9,7 @@
     <message>
         <location filename="../qml/components/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"/>
+        <translation>Buy me a beer</translation>
     </message>
     <message>
         <location filename="../qml/components/AboutItem.qml" line="24"/>
