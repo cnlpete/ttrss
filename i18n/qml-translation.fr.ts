@@ -188,7 +188,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="120"/>
         <source>Mark all read</source>
-        <translation>Marquer tous comme lus</translation>
+        <translation>Tout marquer comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="138"/>
