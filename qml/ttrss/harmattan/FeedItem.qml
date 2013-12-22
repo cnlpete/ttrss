@@ -180,19 +180,19 @@ Page {
                 showFeedItem()
             } }
         ToolIcon {
-            iconSource: "resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
             onClicked: {
                 feedItems.toggleStar()
                 marked = !marked
             } }
         ToolIcon {
-            iconSource: "resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
             onClicked: {
                 feedItems.togglePublished()
                 rss = !rss
             } }
         ToolIcon {
-            iconSource: "resources/ic_"+(unread?"unread":"read")+".png"
+            iconSource: "../resources/ic_"+(unread?"unread":"read")+".png"
             onClicked: {
                 feedItems.toggleRead()
                 unread = !unread
