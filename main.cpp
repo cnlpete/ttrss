@@ -14,7 +14,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName("ttrss");
-    app->setOrganizationName("ttrss");
+    app->setOrganizationName("Hauke Schade");
 
     QString locale = QLocale::system().name();
     QTranslator translator;
