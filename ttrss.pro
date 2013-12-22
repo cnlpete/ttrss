@@ -1,12 +1,16 @@
-VERSION = 0.3.2
+VERSION = 0.3.3
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # Add more folders to ship with the application, here
-folder_01.source = qml/ttrss
+folder_01.source = qml/ttrss/models
 folder_01.target = qml
-folder_02.source = qml/components
+folder_02.source = qml/ttrss/harmattan
 folder_02.target = qml
-DEPLOYMENTFOLDERS = folder_01 folder_02
+folder_03.source = qml/ttrss/components
+folder_03.target = qml
+folder_04.source = qml/ttrss/resources
+folder_04.target = qml
+DEPLOYMENTFOLDERS = folder_01 folder_02 folder_03 folder_04
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -57,6 +61,15 @@ HEADERS += \
     settings.hh \
     mynetworkmanager.hh \
     qmlutils.hh
+
+OTHER_FILES += \
+    qtc_packaging/debian_harmattan/rules \
+    qtc_packaging/debian_harmattan/README \
+    qtc_packaging/debian_harmattan/manifest.aegis \
+    qtc_packaging/debian_harmattan/copyright \
+    qtc_packaging/debian_harmattan/control \
+    qtc_packaging/debian_harmattan/compat \
+    qtc_packaging/debian_harmattan/changelog
 
 contains(MEEGO_EDITION,harmattan) {
     icon.files = images/ttrss80.png

@@ -44,9 +44,10 @@ QtObject{
     property int headerHeight: inPortrait ? 72 : 56
     property int headerLogoHeight: inPortrait ? 56 : 40
 
-    property url sourceRepoSite: "http://ttrss.cnlpete.de"
+    property url sourceRepoSite: "http://ttrss.cnlpete.de/"
     property url issueTrackerUrl: "https://github.com/cnlpete/ttrss/issues"
     property url registerUrl: "http://tt-rss.org/redmine/projects/tt-rss/wiki"
+    property url donateUrl: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUWGSGAK8K7ZN"
 
     property string archivedArticles: qsTr('Archived articles')
     property string starredArticles: qsTr('Starred articles')

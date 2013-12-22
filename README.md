@@ -5,6 +5,8 @@ ttrss is a [Tiny Tiny RSS](http://tt-rss.org) Reader App for the
 Nokia N9 smart phone, written using Qt/QML.
 It uses the [Tiny Tiny RSS API](http://tt-rss.org/redmine/projects/tt-rss/wiki/JsonApiReference).
 
+If you want to support me or this app, [buy me a beer](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUWGSGAK8K7ZN) (in &euro;).
+
 Upcoming
 ----------
 - Accounts Plugin with global Accounts

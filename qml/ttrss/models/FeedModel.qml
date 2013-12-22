@@ -87,9 +87,10 @@ ListModel {
         root.setProperty(index, "icon", '')
     }
     function updateSelectedUnreadCount(op) {
+        var sel = root.selectedIndex
         var m = root.getSelectedItem()
         var newUnreadCount = m.unreadcount
-        root.setProperty(root.selectedIndex, "unreadcount", op(m.unreadcount))
+        root.setProperty(sel, "unreadcount", op(m.unreadcount))
         root.feedUnreadChanged(m, newUnreadCount)
     }
     function updateUnreadCountForId(id, op) {

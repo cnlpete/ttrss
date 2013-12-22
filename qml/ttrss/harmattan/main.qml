@@ -12,7 +12,8 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
 import com.nokia.extras 1.1
-import "tinytinyrss.js" as TTRss
+import "../models/tinytinyrss.js" as TTRss
+import "../models" 1.0
 
 PageStackWindow {
     id: rootWindow

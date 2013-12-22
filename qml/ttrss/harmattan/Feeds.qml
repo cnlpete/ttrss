@@ -53,7 +53,9 @@ Page {
             flickableItem: listView
         }
         EmptyListInfoLabel {
-            text: rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+            text: network.loading ?
+                      qsTr("Loading") :
+                      rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
             anchors.fill: parent
             visible: feeds.count == 0
         }

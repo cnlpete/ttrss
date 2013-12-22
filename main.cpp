@@ -14,7 +14,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName("ttrss");
-    app->setOrganizationName("ttrss");
+    app->setOrganizationName("Hauke Schade");
 
     QString locale = QLocale::system().name();
     QTranslator translator;
@@ -40,7 +40,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("settings", Settings::instance());
 
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/ttrss/main.qml"));
+    viewer.setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
     viewer.showExpanded();
 
     return app->exec();
