@@ -1,3 +1,12 @@
+ttrss (0.3.3) unstable; urgency=low
+  * added a donate button
+  * redesigned the AboutPage
+  * bugfixing
+  * added a loading message, when models empty and loading
+  * updated translation files
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sun, 22 Dec 2013 19:28:00 +1100
+
 ttrss (0.3.2) unstable; urgency=low
   * updated translations from transifex
   * show multiple lines of text in the PageHeader if necessary
