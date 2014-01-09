@@ -52,7 +52,27 @@ Item {
     Row {
         anchors.left: parent.left
         anchors.right: drilldownarrow.left
+        spacing: constant.listItemSpacing
         clip: true
+
+        Image {
+            id: icon
+            sourceSize.height: 80
+            sourceSize.width: 80
+            asynchronous: true
+            width: 60
+            height: 60
+            anchors.verticalCenter: parent.verticalCenter
+
+            source: feed.isCat ? model.icon : ''
+            //TODO
+//            onStatusChanged: {
+//                if (status === Image.Error)
+//                    feeds.unsetIcon(index)
+//            }
+
+            visible: settings.displayIcons && model.icon != '' && feed.isCat && status == Image.Ready
+        }
 
         Column {
             Label {
@@ -93,7 +113,7 @@ Item {
         source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
         anchors.right: parent.right;
         anchors.verticalCenter: parent.verticalCenter
-        visible: ((model.id != null)&&(model.id !== "__ttrss_get_more_items"))
+        visible: model.id != null
     }
 
     MouseArea {

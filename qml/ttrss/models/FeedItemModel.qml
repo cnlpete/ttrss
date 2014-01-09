@@ -75,7 +75,8 @@ ListModel {
                     date:       formatedDate,
                     attachments:feeditems[feeditem].attachments,
                     feedId:     feeditems[feeditem].feed_id,
-                    labels:     labels
+                    labels:     labels,
+                    icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : ''
                 }
 
                 if (settings.feeditemsOrder === 0)
