@@ -67,6 +67,7 @@ Item{
             color: "white"
             elide: Text.ElideRight
             maximumLineCount: 3
+            width: parent.width
 
             MouseArea {
                 anchors.fill: parent
@@ -85,6 +86,7 @@ Item{
             elide: Text.ElideRight
             maximumLineCount: 1
             visible: subText.text.length > 0
+            width: parent.width
         }
     }
 
