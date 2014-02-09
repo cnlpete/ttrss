@@ -35,6 +35,7 @@ Item {
     Row {
         spacing: constant.paddingMedium
         anchors.fill: parent
+        anchors.leftMargin: icon.visible ? icon.width + constant.listItemSpacing : 0
         Image {
             source: "../resources/ic_star_enabled.png"
             visible: model.marked
