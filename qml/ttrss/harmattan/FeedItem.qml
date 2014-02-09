@@ -18,12 +18,14 @@ Page {
     id: root
     tools: itemTools
     property string pageTitle:      ""
+    property string subTitle:       ""
     property string url:            ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
     property bool   previousId:     false
     property bool   nextId:         false
+    property bool   isCat:          false
     property variant labels
 
     anchors.margins: 0
@@ -137,6 +139,7 @@ Page {
             itemView.html = content
             url         = data.url
             pageTitle   = data.title
+            subTitle    = data.feedTitle
             root.labels = data.labels
             marked      = data.marked
             unread      = data.unread
@@ -166,6 +169,7 @@ Page {
     PageHeader {
         id: pageHeader
         text: pageTitle
+        subtext: root.isCat ? root.subTitle : ""
     }
 
     ToolBarLayout {
