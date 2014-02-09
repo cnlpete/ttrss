@@ -16,14 +16,15 @@ import com.nokia.extras 1.1
 Item{
     id: root
 
-    property string text
-    property string logourl: ''
+    property alias text: mainText.text
+    property alias subtext: subText.text
+    property alias logourl: logo.source
     property bool hasUpdateAction: false
     property bool busy: false
 
     signal updateActionActivated()
 
-    height: Math.max(constant.headerHeight, mainText.height)
+    height: Math.max(constant.headerHeight, textColumn.height)
     width: parent.width
     visible: text !== ""
 
@@ -37,12 +38,11 @@ Item{
 
     Image {
         id: logo
-        source: logourl
         sourceSize.width: constant.headerLogoHeight
         sourceSize.height: constant.headerLogoHeight
-        width: logourl.length > 3 ? constant.headerLogoHeight : 0
+        width: source.length > 3 ? constant.headerLogoHeight : 0
         height: constant.headerLogoHeight
-        visible: logourl.length > 3
+        visible: source.length > 3
         asynchronous: true
 
         anchors {
@@ -53,31 +53,42 @@ Item{
         }
     }
 
-    Label {
-        id: mainText
+    Column {
+        id: textColumn
         anchors{
             verticalCenter: parent.verticalCenter
             left: logourl.length > 3 ? logo.right : parent.left
             right: updateAction.left
             margins: constant.paddingXLarge
         }
-        font.pixelSize: constant.fontSizeXLarge
-        color: "white"
-        elide: Text.ElideRight
-        text: root.text
-        maximumLineCount: 3
+        Label {
+            id: mainText
+            font.pixelSize: constant.fontSizeXLarge
+            color: "white"
+            elide: Text.ElideRight
+            maximumLineCount: 3
+            width: parent.width
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (mainText.maximumLineCount === 1)
-                    mainText.maximumLineCount = 3
-                else
-                    mainText.maximumLineCount = 1
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if (mainText.maximumLineCount === 1)
+                        mainText.maximumLineCount = 3
+                    else
+                        mainText.maximumLineCount = 1
+                }
             }
         }
+        Label {
+            id: subText
+            font.pixelSize: constant.fontSizeSmall
+            color: "white"
+            elide: Text.ElideRight
+            maximumLineCount: 1
+            visible: subText.text.length > 0
+            width: parent.width
+        }
     }
-
 
     Item {
         id: updateAction

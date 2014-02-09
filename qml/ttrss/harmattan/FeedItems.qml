@@ -46,7 +46,7 @@ Page {
             delegate: FeedItemDelegate {
                 onClicked: {
                     feedItems.selectedIndex = index
-                    rootWindow.openFile("FeedItem.qml")
+                    rootWindow.openFile("FeedItem.qml", { isCat: feed.isCat })
                 }
                 onPressAndHold: {
                     feedItems.selectedIndex = index
