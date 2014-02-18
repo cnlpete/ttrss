@@ -6,8 +6,21 @@
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
     <copyright>Hauke Schade, cnlpete@cnlpete.de</copyright>
-    <pubDate>Sun, 09 Feb 2014 17:38:13 +0100</pubDate>
-    <lastBuildDate>Sun, 09 Feb 2014 17:38:13 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Feb 2014 18:02:27 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Feb 2014 18:02:27 +0100</lastBuildDate>
+
+    <item>
+      <title>Version 0.3.5</title>
+      <pubDate>Tue, 18 Feb 2014 18:02:27 +0100</pubDate>
+      <description>
+        <![CDATA[
+   * updated translations
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss035</guid>
+      <link>http://schad.es/ttrss035</link>
+    </item>
 
     <item>
       <title>Version 0.3.4</title>
