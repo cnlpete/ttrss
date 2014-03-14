@@ -9,7 +9,8 @@
 //You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
-import QtQuick 1.1
+//import QtQuick 1.1 // harmattan
+import QtQuick 2.0 // sailfish
 
 QtObject{
     id: constant

@@ -1,0 +1,31 @@
+Name: harbour-ttrss
+Summary: The Tiny Tiny RSS Reader for Sailfish
+Version: 0.3.4
+Release: 1
+Group: Qt/Qt
+URL: http://example.org/
+License: LICENSE
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: |-
+  ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 smart phone, written using Qt/QML. It uses the Tiny Tiny RSS JSON API.
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- Qt5Quick
+- Qt5Qml
+- Qt5Core
+- sailfishapp >= 0.0.10
+Requires:
+- sailfishsilica-qt5 >= 0.10.9
+Files:
+- /usr/share/harbour-ttrss/qml
+- '%{_bindir}'
+- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- /usr/bin
+- /usr/share/harbour-ttrss
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
+PkgBR: []
