@@ -56,5 +56,6 @@ SOURCES += main.cpp \
 
 OTHER_FILES += rpm/harbour-ttrss.spec \
     rpm/harbour-ttrss.yaml \
-    $$files(rpm/*)
+    $$files(rpm/*) \
+    $$files(qml/ttrss/harmattan/*)
 
