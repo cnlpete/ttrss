@@ -36,7 +36,7 @@ ListModel {
             //first add all the categories with unread itens
             for(var category = 0; category < categories.length; category++) {
                 if (categories[category].id >= 0)
-                    totalUnreadCount += categories[category].unread;
+                    totalUnreadCount += parseInt(categories[category].unread);
 
                 var title = ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES')
                 if (categories[category].id == ttrss.constants['categories']['ALL'])
@@ -50,8 +50,8 @@ ListModel {
 
                 root.append({
                                 title:       title,
-                                unreadcount: categories[category].unread,
-                                categoryId:  categories[category].id
+                                unreadcount: parseInt(categories[category].unread),
+                                categoryId:  parseInt(categories[category].id)
                             });
             }
 
@@ -59,7 +59,7 @@ ListModel {
                 //Add the "All" category
                 root.insert(0, {
                                 title: constant.allFeeds,
-                                categoryId: ttrss.constants['categories']['ALL'],
+                                categoryId: parseInt(ttrss.constants['categories']['ALL']),
                                 unreadcount: totalUnreadCount,
                             });
             }

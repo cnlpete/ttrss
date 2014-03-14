@@ -66,7 +66,7 @@ ListModel {
                 var labelcount = feeditems[feeditem].labels ? feeditems[feeditem].labels.length : 0
                 for (var l = 0; l < labelcount; l++) {
                     labels[l] = {
-                        'id': feeditems[feeditem].labels[l][0],
+                        'id': parseInt(feeditems[feeditem].labels[l][0]),
                         'fgcolor': (feeditems[feeditem].labels[l][2] == "" ? "black" : feeditems[feeditem].labels[l][2]),
                         'bgcolor': (feeditems[feeditem].labels[l][3] == "" ? "white" : feeditems[feeditem].labels[l][3]),
                         'text': feeditems[feeditem].labels[l][1]
@@ -77,14 +77,14 @@ ListModel {
                     title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
                     content:    feeditems[feeditem].content,
                     subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
-                    id:         feeditems[feeditem].id,
+                    id:         parseInt(feeditems[feeditem].id),
                     unread:     !!feeditems[feeditem].unread,
                     marked:     !!feeditems[feeditem].marked,
                     rss:        feeditems[feeditem].published,
                     url:        url,
                     date:       formatedDate,
                     attachments:feeditems[feeditem].attachments,
-                    feedId:     feeditems[feeditem].feed_id,
+                    feedId:     parseInt(feeditems[feeditem].feed_id),
                     feedTitle:  ttrss.html_entity_decode(feeditems[feeditem].feed_title, 'ENT_QUOTES'),
                     labels:     labels,
                     icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : ''

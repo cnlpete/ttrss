@@ -55,21 +55,21 @@ ListModel {
                     // note: cat_id is infact the id the feed originally was in, not the special id of All Feeds or similar
                     root.append({
                                     title:        title,
-                                    unreadcount:  feeds[feed].unread,
-                                    feedId:       feeds[feed].id,
-                                    categoryId:   feeds[feed].cat_id,
+                                    unreadcount:  parseInt(feeds[feed].unread),
+                                    feedId:       parseInt(feeds[feed].id),
+                                    categoryId:   parseInt(feeds[feed].cat_id),
                                     isCat:        false,
                                     icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
                                 })
-                    totalUnreadCount += feeds[feed].unread
+                    totalUnreadCount += parseInt(feeds[feed].unread)
                 }
             }
             if (root.count >= 2 && root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
                 root.insert(0, {
                                 title:        constant.allArticles,
                                 unreadcount:  totalUnreadCount,
-                                feedId:       root.category.categoryId,
-                                categoryId:   root.category.categoryId,
+                                feedId:       parseInt(root.category.categoryId),
+                                categoryId:   parseInt(root.category.categoryId),
                                 isCat:        true,
                                 icon:         ''
                             })
