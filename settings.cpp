@@ -73,7 +73,7 @@ void Settings::setAutologin(bool autologin) {
 void Settings::setUseAutologin(bool useAutologin) {
     if (_useAutologin != useAutologin) {
         _useAutologin = useAutologin;
-        m_settings->setValue("useAutologin", _autologin);
+        m_settings->setValue("useAutologin", _useAutologin);
         emit useAutologinChanged();
     }
 }
