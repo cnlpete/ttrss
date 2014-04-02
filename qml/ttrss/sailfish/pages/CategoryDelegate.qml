@@ -30,16 +30,19 @@ ListItem {
         truncationMode: TruncationMode.Elide
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeLarge
-        color: listItem.highlighted ? Theme.highlightColor : ((model.unreadcount > 0) ? Theme.primaryColor : Theme.secondaryColor)
+        color: model.unreadcount > 0 ?
+                   (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                   (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
     }
-    Label {
+    Bubble {
         id: bubble
-        text: model.unreadcount
+        value: model.unreadcount
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: Theme.paddingMedium
-        font.pixelSize: Theme.fontSizeMedium
-        color: listItem.highlighted ? Theme.highlightColor : ((model.unreadcount > 0) ? Theme.primaryColor : Theme.secondaryColor)
+        color: model.unreadcount > 0 ?
+                   (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                   (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
     }
 
     MouseArea {

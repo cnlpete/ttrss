@@ -48,8 +48,14 @@ Page {
             }
         }
 
-        section.delegate: SectionHeader {}
-        section.property: "date"
+        section {
+            property: 'date'
+
+            delegate: SectionHeader {
+                text: section
+                height: Theme.itemSizeExtraSmall
+            }
+        }
 
         delegate: FeedItemDelegate {
             onClicked: {

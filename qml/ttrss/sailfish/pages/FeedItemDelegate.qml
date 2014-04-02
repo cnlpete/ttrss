@@ -18,13 +18,13 @@ ListItem {
     signal clicked
     property alias pressed: mouseArea.pressed
 
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: Theme.itemSizeExtraLarge
     width: parent.width
 
     Row {
         spacing: Theme.paddingMedium
         anchors.fill: parent
-        anchors.leftMargin: icon.visible ? icon.width + Theme.paddingMedium : 0
+        anchors.leftMargin: (icon.visible ? icon.width : 0) + Theme.paddingMedium
         Image {
             source: "../../resources/ic_star_enabled.png"
             visible: model.marked
@@ -60,29 +60,34 @@ ListItem {
         }
 
         Column {
-            width: parent.width
+            width: icon.visible ? (parent.width - icon.width) : parent.width
             Label {
                 id: mainText
                 width: parent.width
                 text: model.title
+                color: model.unread > 0 ?
+                           (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                           (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
+                maximumLineCount: 2
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeMedium
-                color: listItem.highlighted ? Theme.highlightColor : ((model.unreadcount > 0) ? Theme.primaryColor : Theme.secondaryColor)
-                elide: Text.ElideRight
-                truncationMode: TruncationMode.Elide
             }
-
             Label {
                 id: subText
                 width: parent.width
                 text: model.subtitle
+                color: model.unread > 0 ?
+                           (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                           (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
+                maximumLineCount: 2
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
-                color: listItem.highlighted ? Theme.highlightColor : ((model.unreadcount > 0) ? Theme.primaryColor : Theme.secondaryColor)
-                maximumLineCount: 4
-                elide: Text.ElideRight
-                truncationMode: TruncationMode.Elide
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 visible: text != ""
             }
 //            Row {
@@ -103,7 +108,6 @@ ListItem {
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        onClicked: listItem.clicked();
-        onPressAndHold: listItem.pressAndHold();
+        onClicked: listItem.clicked()
     }
 }
