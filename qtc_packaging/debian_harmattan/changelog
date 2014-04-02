@@ -1,3 +1,8 @@
+ttrss (0.3.5) unstable; urgency=low
+  * updated translations
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Tue, 18 Feb 2014 18:02:27 +0100
+
 ttrss (0.3.4) unstable; urgency=low
   * show the feed title when browsing an 'All Items' view
   * show the feed icons when browsing 'All Feeds'
