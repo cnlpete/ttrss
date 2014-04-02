@@ -19,8 +19,8 @@
  * http://www.gnu.org/licenses/.
  */
 
-//import QtQuick 1.1 // harmattan
-import QtQuick 2.0 // sailfish
+import QtQuick 1.1 // harmattan
+//import QtQuick 2.0 // sailfish
 
 ListModel {
     id: root
