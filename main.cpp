@@ -76,7 +76,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #if defined(Q_OS_SAILFISH)
     viewer->setSource(SailfishApp::pathTo("qml/sailfish/harbour-ttrss.qml"));
 #else
-    viewer.setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
+    viewer->setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
 #endif
 
 #if defined(Q_OS_SAILFISH)
