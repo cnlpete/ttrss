@@ -45,6 +45,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setOrganizationName("Hauke Schade");
 
     QString locale = QLocale::system().name();
+    qDebug() << "detected locale is " << locale;
     QTranslator translator;
     /* the ":/" is a special directory Qt uses to
     * distinguish resources;
