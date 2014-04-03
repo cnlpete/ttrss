@@ -55,6 +55,12 @@ ListItem {
             source: feed.isCat ? model.icon : ''
 
             visible: settings.displayIcons && model.icon != '' && feed.isCat && status == Image.Ready
+            Rectangle {
+                color: "white"
+                anchors.fill: parent
+                visible: settings.whiteBackgroundOnIcons && parent.status == Image.Ready
+                z: parent.z - 1
+            }
         }
 
         Column {

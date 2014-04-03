@@ -58,6 +58,11 @@ Page {
             checked: settings.displayIcons
             onCheckedChanged: settings.displayIcons = checked
         }
+            TextSwitch {
+                text: qsTr('Show a White Background on Icons')
+                checked: settings.whiteBackgroundOnIcons
+                onCheckedChanged: settings.whiteBackgroundOnIcons = checked
+            }
 
         TextSwitch {
             text: qsTr('Use All Feeds on Startup')

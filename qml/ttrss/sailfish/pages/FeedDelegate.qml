@@ -37,6 +37,12 @@ ListItem {
         }
 
         visible: settings.displayIcons && model.icon != ''
+        Rectangle {
+            color: "white"
+            anchors.fill: parent
+            visible: settings.whiteBackgroundOnIcons && parent.status == Image.Ready
+            z: parent.z - 1
+        }
     }
 
     Label {

@@ -126,6 +126,14 @@ void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
     }
 }
 
+void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons()) {
+    if (_whiteBackgroundOnIcons != whiteBackgroundOnIcons) {
+        _whiteBackgroundOnIcons = whiteBackgroundOnIcons;
+        m_settings->setValue("whiteBackgroundOnIcons", _whiteBackgroundOnIcons);
+        emit whiteBackgroundOnIconsChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -142,4 +150,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
+    _whiteBackgroundOnIcons = m_settings->value("whiteBackgroundOnIcons", true).toBool();
 }
