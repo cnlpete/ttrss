@@ -265,8 +265,7 @@ Page {
             previousId  = feedItems.hasPrevious()
             nextId      = feedItems.hasNext()
 
-            // TODO
-            if (false && settings.autoMarkRead && unread) {
+            if (settings.autoMarkRead && unread) {
                 feedItems.toggleRead()
                 unread = !unread
             }
