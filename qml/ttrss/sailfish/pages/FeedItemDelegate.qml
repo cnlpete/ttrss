@@ -75,7 +75,7 @@ ListItem {
                 maximumLineCount: 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 elide: Text.ElideRight
-                textFormat: Text.StyledText
+                textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeMedium
             }
@@ -89,7 +89,7 @@ ListItem {
                 maximumLineCount: 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 elide: Text.ElideRight
-                textFormat: Text.StyledText
+                textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
                 visible: text != ""

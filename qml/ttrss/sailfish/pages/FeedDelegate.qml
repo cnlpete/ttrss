@@ -19,6 +19,7 @@ ListItem {
     width: parent.width
     menu: contextMenu
 
+
     Image {
         id: icon
         sourceSize.height: 80
@@ -52,6 +53,7 @@ ListItem {
         anchors.margins: Theme.paddingMedium
         anchors.right: bubble.left
         truncationMode: TruncationMode.Elide
+        textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
         color: model.unreadcount > 0 ?
