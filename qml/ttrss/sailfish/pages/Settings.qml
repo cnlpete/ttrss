@@ -15,70 +15,70 @@ import Sailfish.Silica 1.0
 Page {
     id: settingsPage
 
-    Column {
-        id: settingsColumn
-        anchors {
-            fill: parent
-            topMargin: Theme.paddingMedium
-            leftMargin: Theme.paddingMedium
-            rightMargin: Theme.paddingMedium
-        }
-        height: childrenRect.height
-        spacing: Theme.paddingMedium
-
-        PageHeader {
-            title: qsTr("Settings")
-        }
-
-        ListModel {
-            id: orderItems
-            ListElement { name: ""; value: 0 }
-            ListElement { name: ""; value: 1 }
-            Component.onCompleted: {
-                orderItems.get(0).name = qsTr("Newest First")
-                orderItems.get(1).name = qsTr("Oldest First")
+    SilicaFlickable {
+        anchors.fill: parent
+        contentWidth: settingsColumn.width
+        contentHeight: settingsColumn.height
+        Column {
+            id: settingsColumn
+            anchors {
+                fill: parent
+                topMargin: Theme.paddingMedium
+                leftMargin: Theme.paddingMedium
+                rightMargin: Theme.paddingMedium
             }
-        }
-        ComboBoxList {
-            label: qsTr("Order")
-            model: orderItems
-            initialValue: settings.feeditemsOrder
-            onCurrentIndexChanged: settings.feeditemsOrder = currentIndex
-        }
+            spacing: Theme.paddingMedium
+
+            PageHeader {
+                title: qsTr("Settings")
+            }
+
+            ListModel {
+                id: orderItems
+                ListElement { name: ""; value: 0 }
+                ListElement { name: ""; value: 1 }
+                Component.onCompleted: {
+                    orderItems.get(0).name = qsTr("Newest First")
+                    orderItems.get(1).name = qsTr("Oldest First")
+                }
+            }
+            ComboBoxList {
+                label: qsTr("Order")
+                model: orderItems
+                initialValue: settings.feeditemsOrder
+                onCurrentIndexChanged: settings.feeditemsOrder = currentIndex
+            }
 
 
-        TextSwitch {
-            text: qsTr('Automatically Mark Items as Read')
-            checked: settings.autoMarkRead
-            onCheckedChanged: settings.autoMarkRead = checked
-        }
+            TextSwitch {
+                text: qsTr('Automatically Mark Items as Read')
+                checked: settings.autoMarkRead
+                onCheckedChanged: settings.autoMarkRead = checked
+            }
 
-        TextSwitch {
-            text: qsTr('Show Icons')
-            checked: settings.displayIcons
-            onCheckedChanged: settings.displayIcons = checked
-        }
+            TextSwitch {
+                text: qsTr('Show Icons')
+                checked: settings.displayIcons
+                onCheckedChanged: settings.displayIcons = checked
+            }
             TextSwitch {
                 text: qsTr('Show a White Background on Icons')
                 checked: settings.whiteBackgroundOnIcons
                 onCheckedChanged: settings.whiteBackgroundOnIcons = checked
             }
 
-        TextSwitch {
-            text: qsTr('Use All Feeds on Startup')
-            description: qsTr('You need to restart the App for this to take effect.')
-            checked: settings.useAllFeedsOnStartup
-            onCheckedChanged: settings.useAllFeedsOnStartup = checked
-        }
-
-        TextSwitch {
-            text: qsTr('Automatically Login')
-            checked: settings.useAutologin
-            onCheckedChanged: {
-                settings.useAutologin = checked
-                console.log("useAutologin is now " + (settings.useAutologin ? "true" : "false"))
+            TextSwitch {
+                text: qsTr('Use All Feeds on Startup')
+                description: qsTr('You need to restart the App for this to take effect.')
+                checked: settings.useAllFeedsOnStartup
+                onCheckedChanged: settings.useAllFeedsOnStartup = checked
             }
-        }
+
+            TextSwitch {
+                text: qsTr('Automatically Login')
+                checked: settings.useAutologin
+                onCheckedChanged: settings.useAutologin = checked
+            }
 
         Slider {
             anchors { left: parent.left; right: parent.right }
@@ -88,7 +88,7 @@ Page {
             stepSize: 1
             value: settings.webviewFontSize
             onValueChanged: settings.webviewFontSize = value
+            }
         }
-
     }
 }
