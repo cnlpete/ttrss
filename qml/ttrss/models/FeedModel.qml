@@ -88,7 +88,7 @@ ListModel {
         var m = root.getSelectedItem()
         ttrss.catchUp(m.feedId, function() {
                           var oldAmount = m.unreadcount
-                          root.setProperty(m, "unreadcount", 0)
+                          root.setProperty(selectedIndex, "unreadcount", 0)
                           root.feedUnreadChanged(m, oldAmount)
                       })
     }

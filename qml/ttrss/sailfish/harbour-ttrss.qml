@@ -57,9 +57,11 @@ ApplicationWindow
         onFeedUnreadChanged: {
             var op = function(x) { return x - oldAmount + feed.unreadcount }
             categories.updateUnreadCountForId(feed.categoryId, op)
+            //console.log("updating category with id: " + feed.categoryId + " op is " + op(0))
 
             // update the 'All Feeds' Category
             categories.updateUnreadCountForId(TTRss.constants['categories']['ALL'], op)
+            //console.log("updating special cat with id: " + TTRss.constants['categories']['ALL'] + " op is " + op(0))
 
             // if there is an 'all feed items' update that aswell
             if (feeds.count > 1) {
@@ -79,11 +81,13 @@ ApplicationWindow
 
             // update the feed's category
             feeds.updateUnreadCountForId(item.feedId, op)
+            //console.log("updating feed with id: " + item.feedId + " op is " + op(0))
 
             // update special for all feeditems category
             categories.updateUnreadCountForId(
                         TTRss.constants['categories']['SPECIAL'],
                         op)
+            //console.log("updating special cat with id: " + TTRss.constants['categories']['SPECIAL'] + " op is " + op(0))
 
             // if the item is new, update 'special feeds' for 'fresh articles'
             // TODO
