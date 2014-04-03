@@ -30,8 +30,8 @@ Page {
         model: feedItems
 
         PullDownMenu {
-            AboutItem {}
-            SettingsItem {}
+//            AboutItem {}
+//            SettingsItem {}
             ToggleShowAllItem {
                 onUpdateView: {
                     feedItems.continuation = 0

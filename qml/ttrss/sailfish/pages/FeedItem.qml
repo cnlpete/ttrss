@@ -40,8 +40,8 @@ Page {
         VerticalScrollDecorator {}
 
         PullDownMenu {
-            AboutItem {}
-            SettingsItem {}
+//            AboutItem {}
+//            SettingsItem {}
             MenuItem {
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
