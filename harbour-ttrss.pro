@@ -7,7 +7,7 @@
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
 
-VERSION = 0.3.4
+VERSION = 0.3.5
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_SAILFISH
@@ -46,12 +46,12 @@ RESOURCES += \
 
 HEADERS += \
     settings.hh \
-#    mynetworkmanager.hh \
+    mynetworkmanager.hh \
     qmlutils.hh
 
 SOURCES += main.cpp \
     settings.cpp \
-#    mynetworkmanager.cpp \
+    mynetworkmanager.cpp \
     qmlutils.cpp
 
 OTHER_FILES += rpm/harbour-ttrss.spec \

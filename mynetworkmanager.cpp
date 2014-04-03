@@ -32,10 +32,12 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     connect(nam, SIGNAL(started()), this, SLOT(onStarted()));
     connect(nam, SIGNAL(error()), this, SLOT(onError()));
 
+#if !defined(Q_OS_SAILFISH)
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
     diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
     diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
     nam->setCache(diskCache);
+#endif
 
     return nam;
 }

@@ -12,13 +12,22 @@
 #ifndef MYNETWORKMANAGER_HH
 #define MYNETWORKMANAGER_HH
 
-#include <qdeclarativenetworkaccessmanagerfactory.h>
+#if defined(Q_OS_SAILFISH)
+    #include <QQmlNetworkAccessManagerFactory>
+#else
+    #include <qdeclarativenetworkaccessmanagerfactory.h>
+#endif
+
 #include <QtNetwork/qnetworkreply.h>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QMutex>
 #include <QDebug>
 
+#if defined(Q_OS_SAILFISH)
+class MyNetworkManager : public QObject, public QQmlNetworkAccessManagerFactory
+#else
 class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManagerFactory
+#endif
 {
     Q_OBJECT
 
