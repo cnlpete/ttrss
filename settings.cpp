@@ -126,7 +126,7 @@ void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
     }
 }
 
-void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons()) {
+void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons) {
     if (_whiteBackgroundOnIcons != whiteBackgroundOnIcons) {
         _whiteBackgroundOnIcons = whiteBackgroundOnIcons;
         m_settings->setValue("whiteBackgroundOnIcons", _whiteBackgroundOnIcons);
