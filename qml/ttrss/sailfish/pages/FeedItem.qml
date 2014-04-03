@@ -137,6 +137,12 @@ Page {
             }
         }
     }
+    BusyIndicator {
+        visible: network.loading
+        running: visible
+        anchors.centerIn: parent
+        size: BusyIndicatorSize.Large
+    }
 
     DockedPanel {
         id: panel

@@ -47,6 +47,12 @@ Page {
                       qsTr("Loading") :
                       rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
         }
+        BusyIndicator {
+            visible: listView.count != 0 && network.loading
+            running: visible
+            anchors.centerIn: parent
+            size: BusyIndicatorSize.Large
+        }
         ScrollDecorator {
             flickable: listView
         }
