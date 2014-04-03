@@ -80,14 +80,38 @@ Page {
                 onCheckedChanged: settings.useAutologin = checked
             }
 
-        Slider {
-            anchors { left: parent.left; right: parent.right }
-            label: qsTr('Font Size')
-            minimumValue: Theme.fontSizeTiny
-            maximumValue: Theme.fontSizeExtraLarge
-            stepSize: 1
-            value: settings.webviewFontSize
-            onValueChanged: settings.webviewFontSize = value
+            Slider {
+                anchors { left: parent.left; right: parent.right }
+                label: qsTr('Font Size')
+                minimumValue: Theme.fontSizeTiny
+                maximumValue: Theme.fontSizeExtraLarge
+                stepSize: 1
+                value: settings.webviewFontSize
+                valueText: {
+                    switch (value) {
+                    case Theme.fontSizeTiny:
+                        qsTr("Tiny")
+                        break
+                    case Theme.fontSizeSmall:
+                        qsTr("Small")
+                        break
+                    case Theme.fontSizeMedium:
+                        qsTr("Medium")
+                        break
+                    case Theme.fontSizeLarge:
+                        qsTr("Large")
+                        break
+                    case Theme.fontSizeHuge:
+                        qsTr("Huge")
+                        break
+                    case Theme.fontSizeExtraLarge:
+                        qsTr("Extra Large")
+                        break
+                    default:
+                        value
+                    }
+                }
+                onValueChanged: settings.webviewFontSize = value
             }
         }
     }
