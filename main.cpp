@@ -19,6 +19,7 @@
     #include <QtGui/QApplication>
     #include <QtDeclarative/QDeclarativeContext>
     #include "qmlapplicationviewer.h"
+    #include <QDeclarativeEngine>
 #endif
 
 #include <QTranslator>
@@ -55,14 +56,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if defined(Q_OS_SAILFISH)
     QQuickView* viewer = SailfishApp::createView();
-    viewer->engine()->setNetworkAccessManagerFactory(MyNetworkManager::instance());
 #else
     QmlApplicationViewer *viewer = new QmlApplicationViewer();
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 
     //QObject::connect(viewer.engine(), SIGNAL(quit()), viewer.data, SLOT(close()));
-    viewer->setNetworkAccessManagerFactory(MyNetworkManager::instance());
 #endif
+    viewer->engine()->setNetworkAccessManagerFactory(MyNetworkManager::instance());
     viewer->rootContext()->setContextProperty("network", MyNetworkManager::instance());
 
     viewer->rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
