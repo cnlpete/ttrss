@@ -12,6 +12,9 @@
 #if defined(Q_OS_SAILFISH)
     #include <QGuiApplication>
     #include <sailfishapp.h>
+    #include <QQuickView>
+    #include <QQmlEngine>
+    #include <QQmlContext>
     #ifdef QT_QML_DEBUG
         #include <QtQuick>
     #endif
