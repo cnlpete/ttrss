@@ -48,9 +48,9 @@ Page {
                 onClicked: Qt.openUrlExternally(url)
             }
             MenuItem {
-                text: qsTr("Open Dock")
-                visible: !panel.open
-                onClicked: panel.show()
+                text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
+                enabled: !panel.moving
+                onClicked: panel.open ? panel.hide() : panel.show()
             }
         }
 
