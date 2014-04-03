@@ -15,9 +15,6 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
 
-    signal clicked
-    property alias pressed: mouseArea.pressed
-
     contentHeight: Theme.itemSizeSmall
     width: parent.width
     menu: contextMenu
@@ -66,12 +63,6 @@ ListItem {
                    (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
     }
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        onClicked: listItem.clicked()
-    }
-
     Component {
         id: contextMenu
         ContextMenu {
@@ -80,13 +71,16 @@ ListItem {
                 onClicked: {
                     feeds.catchUp()
                 } }
-//            MenuItem {
-//                text: qsTr("Unsubscribe")
-//                enabled: feedMenu.feedId >= 0
-//                onClicked: {
-//                    var ttrss = rootWindow.getTTRSS()
-//                    ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
-//                } }
+            MenuItem {
+                text: qsTr("Unsubscribe")
+                visible: model.feedId >= 0
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    ttrss.unsubscribe(model.feedId, function() { feeds.update() })
+                } }
+            Component.onCompleted: {
+                feeds.selectedIndex = index
+            }
         }
     }
 }

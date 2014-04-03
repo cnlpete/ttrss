@@ -15,11 +15,9 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
 
-    signal clicked
-    property alias pressed: mouseArea.pressed
-
     contentHeight: Theme.itemSizeExtraLarge
     width: parent.width
+    menu: contextMenu
 
     Row {
         spacing: Theme.paddingMedium
@@ -104,10 +102,40 @@ ListItem {
 //            }
         }
     }
+    Component {
+        id: contextMenu
+        ContextMenu {
+            MenuItem {
+                id: toggleStarMenuItem
+                text: model.marked ? qsTr("Unstar") : qsTr("Star")
+                onClicked: {
+                    feedItems.toggleStar()
+                } }
+            MenuItem {
+                id: togglePublishedMenuItem
+                text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
+                onClicked: {
+                    feedItems.togglePublished()
+                } }
+            MenuItem {
+                id: toggleReadMenuItem
+                text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
+                onClicked: {
+                    feedItems.toggleRead()
+                } }
+            MenuItem {
+                id: openInBrowserMenuItem
+                text: qsTr("Open in Web Browser")
+                visible: model.url && model.url != ""
+                onClicked: {
+                    var item = feedItems.getSelectedItem()
+                    Qt.openUrlExternally(item.url)
+                }
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        onClicked: listItem.clicked()
+            }
+            Component.onCompleted: {
+                feedItems.selectedIndex = index
+            }
+        }
     }
 }

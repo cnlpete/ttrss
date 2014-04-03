@@ -15,9 +15,6 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
 
-    signal clicked
-    property alias pressed: mouseArea.pressed
-
     contentHeight: Theme.itemSizeMedium
     width: parent.width
 
@@ -43,11 +40,5 @@ ListItem {
         color: model.unreadcount > 0 ?
                    (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                    (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
-    }
-
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        onClicked: listItem.clicked()
     }
 }
