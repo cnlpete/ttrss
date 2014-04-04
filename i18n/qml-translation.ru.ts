@@ -209,12 +209,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
         <source>Unpublish</source>
-        <translation type="unfinished"/>
+        <translation>Unpublish</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
         <source>Publish</source>
-        <translation type="unfinished"/>
+        <translation>Publish</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="128"/>

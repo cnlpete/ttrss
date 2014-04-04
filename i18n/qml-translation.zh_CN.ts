@@ -160,7 +160,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="78"/>
         <source>Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>标记所有为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="83"/>
