@@ -272,13 +272,13 @@ a.buttons:hover {
   border: 0;
 }
 
-#screenshots li {
+.screenshots li {
   list-style:none;
   padding:0;
   display:inline;
 }
 
-#screenshots img {
+.screenshots img {
   max-width: 100px;
   max-height: 100px;
 }
