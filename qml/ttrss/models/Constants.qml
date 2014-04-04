@@ -26,22 +26,6 @@ QtObject{
 
     property color colorFastScrollText: theme.inverted ? "#000033" : "#8c8c8c"
 
-    property int listItemSpacing: 10
-
-    property int paddingSmall: 4
-    property int paddingMedium: 6
-    property int paddingLarge: 8
-    property int paddingXLarge: 12
-    property int paddingXXLarge: 16
-
-    property int fontSizeXXSmall: 16
-    property int fontSizeXSmall: 20
-    property int fontSizeSmall: 22
-    property int fontSizeMedium: 24
-    property int fontSizeLarge: 26
-    property int fontSizeXLarge: 28
-    property int fontSizeXXLarge: 32
-
     property int headerHeight: inPortrait ? 72 : 56
     property int headerLogoHeight: inPortrait ? 56 : 40
 

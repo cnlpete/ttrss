@@ -15,6 +15,7 @@ import com.nokia.extras 1.1
 
 Dialog {
     id: popup
+    width: parent.width
 
     property alias text: popupitem.text
 
@@ -28,7 +29,7 @@ Dialog {
     content: Text {
         id: popupitem
         width: parent.width
-        font.pixelSize: constant.fontSizeSmall
+        font.pixelSize: MyTheme.fontSizeSmall
         anchors.centerIn: parent
         color: "white"
         textFormat: Text.RichText

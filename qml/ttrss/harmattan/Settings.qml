@@ -34,14 +34,14 @@ Page {
         id: settingsColumn
         anchors {
             top: pageHeader.bottom
-            topMargin: constant.paddingLarge
+            topMargin: MyTheme.paddingMedium
             left: parent.left
-            leftMargin: constant.paddingLarge
+            leftMargin: MyTheme.paddingMedium
             right: parent.right
-            rightMargin: constant.paddingLarge
+            rightMargin: MyTheme.paddingMedium
         }
         height: childrenRect.height
-        spacing: constant.paddingXLarge
+        spacing: MyTheme.paddingMedium
 
         SettingsButtonRow {
             text: qsTr("Theme")

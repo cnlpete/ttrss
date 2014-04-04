@@ -27,8 +27,8 @@ Item {
         id: background
         anchors.fill: parent
         // Fill page borders
-        anchors.leftMargin: -constant.paddingLarge
-        anchors.rightMargin: -constant.paddingLarge
+        anchors.leftMargin: -MyTheme.paddingMedium
+        anchors.rightMargin: -MyTheme.paddingMedium
         visible: mouseArea.pressed
         source: "image://theme/meegotouch-list-background-selected-center"
     }
@@ -42,7 +42,7 @@ Item {
         height:60
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: constant.listItemSpacing
+        anchors.rightMargin: MyTheme.paddingMedium
 
         source: model.icon
         onStatusChanged: {
@@ -57,19 +57,19 @@ Item {
         id: mainText
         text: model.title
         anchors.right: unreadBubble.left
-        anchors.rightMargin: constant.listItemSpacing
+        anchors.rightMargin: MyTheme.paddingMedium
         anchors.left: icon.visible ? icon.right : parent.left
-        anchors.leftMargin: constant.listItemSpacing
+        anchors.leftMargin: MyTheme.paddingMedium
         anchors.verticalCenter: parent.verticalCenter
         font.weight: Font.Bold
-        font.pixelSize: constant.fontSizeLarge
+        font.pixelSize: MyTheme.fontSizeLarge
         color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled
     }
 
     Bubble {
         id: unreadBubble
         anchors.right: drilldownarrow.left
-        anchors.rightMargin: constant.listItemSpacing
+        anchors.rightMargin: MyTheme.paddingMedium
         anchors.verticalCenter: parent.verticalCenter
 
         amount: model.unreadcount

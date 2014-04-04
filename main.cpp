@@ -32,6 +32,11 @@
 #include "qmlutils.hh"
 #include "mynetworkmanager.hh"
 
+#if defined(Q_OS_SAILFISH)
+#else
+    #include "theme.hh"
+#endif
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #if defined(Q_OS_SAILFISH)
@@ -73,6 +78,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer->rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
     viewer->rootContext()->setContextProperty("settings", Settings::instance());
+
+#if defined(Q_OS_SAILFISH)
+#else
+    viewer->rootContext()->setContextProperty("MyTheme", Theme::instance());
+#endif
 
 #if defined(Q_OS_SAILFISH)
     viewer->setSource(SailfishApp::pathTo("qml/sailfish/harbour-ttrss.qml"));

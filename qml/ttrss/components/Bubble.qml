@@ -20,8 +20,8 @@ Item {
     property color color: constant.colorListItemActive
 
     implicitWidth: internal.getBubbleWidth()
-    implicitHeight: root.large ? constant.fontSizeSmall + constant.paddingMedium + constant.paddingMedium :
-                                 constant.fontSizeXSmall + constant.paddingMedium + constant.paddingMedium
+    implicitHeight: root.large ? MyTheme.fontSizeSmall + MyTheme.paddingMedium + MyTheme.paddingMedium :
+                                 MyTheme.fontSizeExtraSmall + MyTheme.paddingMedium + MyTheme.paddingMedium
 
     BorderImage {
         source: "image://theme/meegotouch-countbubble-background"
@@ -41,7 +41,7 @@ Item {
         opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: root.large ? constant.fontSizeMedium : constant.fontSizeXSmall
+        font.pixelSize: root.large ? MyTheme.fontSizeMedium : MyTheme.fontSizeExtraSmall
         color: root.color
 
         text: root.amount
@@ -52,9 +52,9 @@ Item {
 
         function getBubbleWidth() {
             if (large)
-                return text.paintedWidth + constant.paddingLarge + constant.paddingLarge
+                return text.paintedWidth + MyTheme.paddingMedium + MyTheme.paddingMedium
             else
-                return text.paintedWidth + constant.paddingSmall + constant.paddingSmall
+                return text.paintedWidth + MyTheme.paddingSmall + MyTheme.paddingSmall
         }
     }
 }

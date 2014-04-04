@@ -49,7 +49,7 @@ Page {
             id: content
             Row {
                 id: labelsrepeater
-                spacing: constant.paddingMedium
+                spacing: MyTheme.paddingMedium
                 Repeater {
                     model: root.labels
                     LabelLabel {

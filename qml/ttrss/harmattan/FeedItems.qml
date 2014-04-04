@@ -36,7 +36,7 @@ Page {
         ListView {
             id: listView
             anchors.fill: parent
-            anchors.margins: constant.paddingLarge
+            anchors.margins: MyTheme.paddingMedium
 
             model: feedItems
 
@@ -80,7 +80,7 @@ Page {
                       qsTr("Loading") :
                       rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
-            anchors.margins: constant.paddingLarge
+            anchors.margins: MyTheme.paddingLarge
             visible: feedItems.count == 0
         }
     }

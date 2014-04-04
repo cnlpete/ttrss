@@ -48,7 +48,8 @@ contains(MEEGO_EDITION,harmattan) {
 SOURCES += main.cpp \
     settings.cpp \
     mynetworkmanager.cpp \
-    qmlutils.cpp
+    qmlutils.cpp \
+    theme.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -60,7 +61,8 @@ RESOURCES += \
 HEADERS += \
     settings.hh \
     mynetworkmanager.hh \
-    qmlutils.hh
+    qmlutils.hh \
+    theme.hh
 
 OTHER_FILES += \
     qtc_packaging/debian_harmattan/rules \

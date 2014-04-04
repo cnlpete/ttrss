@@ -22,7 +22,7 @@ Row {
 
     width: parent.width
     layoutDirection: Qt.RightToLeft
-    spacing: constant.paddingLarge
+    spacing: MyTheme.paddingMedium
 
     Switch {
         id: myswitch

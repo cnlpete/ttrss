@@ -21,7 +21,7 @@ Item {
     Image {
         anchors.left: parent.left
         anchors.right: sectionLabel.left
-        anchors.rightMargin: constant.listItemSpacing
+        anchors.rightMargin: MyTheme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
 
         source: "image://theme/meegotouch-groupheader"+(theme.inverted?"-inverted":"")+"-background"
@@ -32,7 +32,7 @@ Item {
         anchors.right: parent.right
 
         color: constant.sectionLabel
-        font.pixelSize: constant.fontSizeXSmall
+        font.pixelSize: MyTheme.fontSizeTiny
         font.weight: Font.Bold
 
         text: section
