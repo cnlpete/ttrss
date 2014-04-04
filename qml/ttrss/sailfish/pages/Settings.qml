@@ -84,7 +84,7 @@ Page {
                 anchors { left: parent.left; right: parent.right }
                 label: qsTr('Font Size')
                 minimumValue: Theme.fontSizeTiny
-                maximumValue: Theme.fontSizeHuge
+                maximumValue: Theme.fontSizeExtraLarge
                 stepSize: 1
                 value: settings.webviewFontSize
                 valueText: {
@@ -101,7 +101,7 @@ Page {
                     case parseInt(Theme.fontSizeLarge):
                         qsTr("Large")
                         break
-                    case parseInt(Theme.fontSizeHuge):
+                    case parseInt(Theme.fontSizeExtraLarge):
                         qsTr("Huge")
                         break
                     default:
