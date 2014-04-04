@@ -69,8 +69,7 @@ If you want to contribute, feel free to use the <a href="https://github.com/cnlp
 If you want to discuss, there is the official <a href="http://talk.maemo.org/showthread.php?t=89058">Maemo.org Thread</a>.
 </p>
 <p>
-ttrss is available for download at <a href="https://openrepos.net/content/cnlpete/ttrss">OpenRepos.net</a>, so just go ahead and add my OpenRepos repository so you will get the updates straight to your phone.
-The Jolla version is currently in the works and will be added shortly.
+ttrss is available for download at OpenRepos.net (<a href="https://openrepos.net/content/cnlpete/ttrss">Harmattan/N9</a> and <a href="https://openrepos.net/content/cnlpete/ttrss-0">Sailfish/Jolla</a>), so just go ahead and add my OpenRepos repository so you will get the updates straight to your phone.
 </p>
 <p>
 If you are using this app with <a href="http://talk.maemo.org/showthread.php?t=84482">MeeCoLay</a> on your N900, you need <a href="http://talk.maemo.org/showthread.php?t=89116">another package</a> to support com.nokia.extras 1.1.
@@ -114,10 +113,27 @@ To use your old configuration file, copy it to the appropriate place:
 
 <h2>Download <a id="rss-icon" href="feed.rss"><img src="images/feed-icon-28x28.png" alt="RSS Feed" /></a></h2>
 
-<h3>Normal Version</h3>
+<a name="downloads"></a>
+
+<h3>Normal Version for Jolla - Sailfish</h3>
+<script type="text/javascript">
+  function toggleDlsSailfish () {
+    $('#downloadlinkssailfish').slideToggle();
+  }
+</script>
+<p>
+ttrss is now available via <a href="https://openrepos.net/content/cnlpete/ttrss-0">OpenRepos.net</a>.
+If, for some reason, you do not want to use that service, <a href="#downloads" onclick="toggleDlsSailfish();">go ahead and use the rpm's provided here</a>.
+</p>
+
+<ul id="downloadlinkssailfish" style="display:none;">
+  <li class="download"><a href="http://schad.es/harbour-ttrss035">Version 0.3.5</a></li>
+</ul>
+
+<h3>Normal Version for N9 - Harmattan</h3>
 <script type="text/javascript">
   function toggleDls () {
-    $('#downloadlinks').slideToggle();
+    $('#downloadlinksharmattan').slideToggle();
   }
 </script>
 <p>
@@ -125,9 +141,7 @@ ttrss is now available via <a href="https://openrepos.net/content/cnlpete/ttrss"
 If, for some reason, you do not want to use that service, <a href="#downloads" onclick="toggleDls();">go ahead and use the deb's provided here</a>.
 </p>
 
-<a name="downloads"></a>
-
-<ul id="downloadlinks" style="display:none;">
+<ul id="downloadlinksharmattan" style="display:none;">
   <li class="download"><a href="http://schad.es/ttrss035">Version 0.3.5</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.5_armel.changes">changes</a></li>
   <li class="download"><a href="http://schad.es/ttrss034">Version 0.3.4</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.4_armel.changes">changes</a></li>
   <li class="download"><a href="http://schad.es/ttrss033">Version 0.3.3</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.3_armel.changes">changes</a></li>
@@ -146,8 +160,7 @@ If, for some reason, you do not want to use that service, <a href="#downloads" o
   <li class="download"><a href="http://schad.es/ttrss010">Version 0.1.0</a></li>
 </ul>
 
-
-<h3>NoShare Version for MeeCoLay Users</h3>
+<h3>NoShare Version for N900 - MeeCoLay Users</h3>
 <a name="noshare"></a>
 
 <p>
