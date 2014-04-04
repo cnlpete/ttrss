@@ -160,7 +160,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="78"/>
         <source>Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>Tout marquer comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="83"/>
@@ -186,12 +186,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
         <source>Hide Dock</source>
-        <translation type="unfinished"/>
+        <translation>Cacher le dock</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
         <source>Open Dock</source>
-        <translation type="unfinished"/>
+        <translation>Montrer le dock</translation>
     </message>
 </context>
 <context>
@@ -494,37 +494,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Show a White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation>Icones sur fond blanc</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation type="unfinished"/>
+        <translation>Relancer l&apos;App pour activer les changements.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <source>Tiny</source>
-        <translation type="unfinished"/>
+        <translation>Minuscule</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Small</source>
-        <translation type="unfinished"/>
+        <translation>Petit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <source>Medium</source>
-        <translation type="unfinished"/>
+        <translation>Moyen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Large</source>
-        <translation type="unfinished"/>
+        <translation>Grand</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <source>Huge</source>
-        <translation type="unfinished"/>
+        <translation>Énorme</translation>
     </message>
 </context>
 <context>
