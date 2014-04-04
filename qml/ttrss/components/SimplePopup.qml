@@ -16,7 +16,7 @@ import com.nokia.extras 1.1
 Dialog {
     id: popup
 
-    property string text
+    property alias text: popupitem.text
 
     title: Rectangle {
         id: popuptitle
@@ -35,7 +35,6 @@ Dialog {
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignJustify
 
-        text: popup.text
         onLinkActivated : Qt.openUrlExternally(link);
     }
 

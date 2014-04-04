@@ -37,7 +37,7 @@ Item {
     Label {
         id: text
         height: parent.height
-        y:1
+        y: 1
         opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter

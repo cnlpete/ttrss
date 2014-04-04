@@ -15,7 +15,7 @@ import com.nokia.meego 1.0
 Item {
     id: root
 
-    property string text: ""
+    property alias text: settingText.text
     property variant buttonsText: []
     property int checkedButtonIndex: 0
 
@@ -30,8 +30,6 @@ Item {
             left: parent.left
             top: parent.top
         }
-        font.pixelSize: constant.fontSizeMedium
-        text: root.text
     }
 
     ButtonRow {

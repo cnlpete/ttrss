@@ -16,7 +16,7 @@ Row {
     id: root
 
     property string text: ""
-    property bool checked: false
+    property alias checked: myswitch.checked
 
     signal checkedChanged(bool checked)
 
@@ -26,7 +26,6 @@ Row {
 
     Switch {
         id: myswitch
-        checked: root.checked
         onCheckedChanged: {
             root.checkedChanged(myswitch.checked)
         }
@@ -34,13 +33,8 @@ Row {
     }
 
     Label {
-        font.pixelSize: constant.fontSizeMedium
         text: root.text
         anchors.verticalCenter: parent.verticalCenter
 
-    }
-
-    Component.onCompleted: {
-        myswitch.checked = root.checked
     }
 }

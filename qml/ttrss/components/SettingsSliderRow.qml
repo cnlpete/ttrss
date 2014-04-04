@@ -15,10 +15,10 @@ import com.nokia.meego 1.0
 Item {
     id: root
 
-    property string text: ""
-    property int value: 22
-    property int min: 20
-    property int max: 30
+    property alias text: settingText.text
+    property alias value: slider.value
+    property alias min: slider.minimumValue
+    property alias max: slider.maximumValue
 
     property bool completed: false
 
@@ -29,8 +29,6 @@ Item {
 
     Label {
         id: settingText
-        font.pixelSize: constant.fontSizeMedium
-        text: root.text
         anchors {
             right: valuetext.left
             left: parent.left
@@ -39,7 +37,6 @@ Item {
     }
     Label {
         id: valuetext
-        font.pixelSize: constant.fontSizeMedium
         text: value
         anchors {
             right: parent.right
@@ -54,11 +51,11 @@ Item {
             left: parent.left
             right: parent.right
         }
-        minimumValue: min
-        maximumValue: max
+        minimumValue: 20
+        maximumValue: 30
         stepSize: 1
         valueIndicatorVisible: true
-        value: value
+        value: 22
         onValueChanged: {
             if (completed) {
                 root.valueChanged(value)
@@ -68,7 +65,6 @@ Item {
     }
 
     Component.onCompleted: {
-        slider.value= value
         completed = true
     }
 }
