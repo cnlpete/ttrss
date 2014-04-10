@@ -56,7 +56,7 @@ Page {
                     id: server
                     text: ""
                     width: parent.width
-        //            enabled: !network.loading
+                    enabled: !network.loading
                 }
                 Label {
                     id: usernameLabel
@@ -68,7 +68,7 @@ Page {
                     id: username
                     text: ""
                     width: parent.width
-        //            enabled: !network.loading
+                    enabled: !network.loading
                 }
                 Label {
                     id: passwordLabel
@@ -80,7 +80,7 @@ Page {
                     id: password
                     echoMode: TextInput.Password
                     width: parent.width
-        //            enabled: !network.loading
+                    enabled: !network.loading
                 }
                 TextSwitch {
                     text: qsTr('Ignore SSL Errors')
@@ -109,7 +109,7 @@ Page {
 
                         startLogin();
                     }
-        //            enabled: !network.loading
+                    enabled: !network.loading
                 }
                 Button {
                     id: clearButton
@@ -126,14 +126,14 @@ Page {
                         settings.username = username.text
                         settings.password = password.text
                     }
-         //           enabled: !network.loading
+                    enabled: !network.loading
                 }
             }
         }
     }
     BusyIndicator {
         id: busyindicator1
-        visible: false //network.loading
+        visible: network.loading
         running: visible
         anchors {
             horizontalCenter: parent.horizontalCenter
