@@ -78,6 +78,14 @@ void Settings::setUseAutologin(bool useAutologin) {
     }
 }
 
+void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
+    if (_ignoreSSLErrors != ignoreSSLErrors) {
+        _ignoreSSLErrors = ignoreSSLErrors;
+        m_settings->setValue("ignoreSSLErrors", _ignoreSSLErrors);
+        emit ignoreSSLErrorsChanged();
+    }
+}
+
 void Settings::setWhiteTheme(bool whiteTheme) {
     if (_whiteTheme != whiteTheme) {
         _whiteTheme = whiteTheme;
@@ -140,6 +148,7 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _password = m_settings->value("password", "").toString();
     _autologin = m_settings->value("autologin", false).toBool();
     _useAutologin = m_settings->value("useAutologin", true).toBool();
+    _ignoreSSLErrors = m_settings->value("ignoreSSLErrors", false).toBool();
 
     _httpauthuser = m_settings->value("httpauthusername", "").toString();
     _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();

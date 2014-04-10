@@ -13,6 +13,7 @@
 #include <QtNetwork/QNetworkDiskCache>
 #include <QDesktopServices>
 #include <QDebug>
+#include "settings.hh"
 
 QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
 
@@ -47,12 +48,16 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
+    if (Settings::instance()->ignoreSSLErrors()) {
+        reply->ignoreSslErrors();
+    }
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
     return reply;
 }
 
 void MyNetworkAccessManager::onError(QNetworkReply::NetworkError e) {
     qDebug() << "got network error " << (int)e;
+
     if (e < QNetworkReply::ContentAccessDenied && e != QNetworkReply::TemporaryNetworkFailureError)
         this->error();
 }
@@ -62,8 +67,12 @@ void MyNetworkManager::onError() {
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
-    qDebug("onSslErrors");
-    reply->ignoreSslErrors(errors);
+    if (Settings::instance()->ignoreSSLErrors()) {
+        qDebug("onSslErrors");
+        reply->ignoreSslErrors(errors);
+    }
+    else
+        qDebug("not ignoring onSslErrors, since this is not specified in settings");
 }
 
 void MyNetworkManager::onStarted() {

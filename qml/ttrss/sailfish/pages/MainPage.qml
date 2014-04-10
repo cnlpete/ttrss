@@ -82,6 +82,12 @@ Page {
                     width: parent.width
         //            enabled: !network.loading
                 }
+                TextSwitch {
+                    text: qsTr('Ignore SSL Errors')
+                    visible: server.text.substring(0, 5) === "https"
+                    checked: settings.ignoreSSLErrors
+                    onCheckedChanged: settings.ignoreSSLErrors = checked
+                }
                 Button {
                     id: loginButton
                     text: qsTr("Login")

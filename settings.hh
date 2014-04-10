@@ -16,6 +16,7 @@ class Settings : public QObject
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
     Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
+    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
 
     Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
     Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
@@ -54,6 +55,11 @@ public:
         return this->_useAutologin;
     }
     void setUseAutologin(bool useAutologin);
+
+    bool ignoreSSLErrors() const {
+        return this->_ignoreSSLErrors;
+    }
+    void setIgnoreSSLErrors(bool ignoreSSLErrors);
 
     QString httpauthUsername() const {
         return this->_httpauthuser;
@@ -106,6 +112,7 @@ signals:
     void passwordChanged();
     void autologinChanged();
     void useAutologinChanged();
+    void ignoreSSLErrorsChanged();
 
     void httpauthUsernameChanged();
     void httpauthPasswordChanged();
@@ -131,6 +138,7 @@ private:
     QString _password;
     bool _autologin;
     bool _useAutologin;
+    bool _ignoreSSLErrors;
 
     QString _httpauthuser;
     QString _httpauthpasswd;
