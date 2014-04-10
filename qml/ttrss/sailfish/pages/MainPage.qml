@@ -152,6 +152,9 @@ Page {
         var ttrss = rootWindow.getTTRSS();
         ttrss.clearState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
+        // BUGFIX since somehow the silica QML Image can not display images coming from a secure line
+        if (server.text.substring(0, 5) === "https")
+            ttrss.setProxy("http://proxy.cnlpete.de/proxy.php?url=")
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
             console.log('doing http basic auth with username ' + settings.httpauthusername)
