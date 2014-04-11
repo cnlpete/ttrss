@@ -99,52 +99,52 @@
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="53"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="37"/>
         <source>Archived articles</source>
         <translation>Archived articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="54"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="38"/>
         <source>Starred articles</source>
         <translation>Starred articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="55"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="39"/>
         <source>Published articles</source>
         <translation>Published articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="56"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="40"/>
         <source>Fresh articles</source>
         <translation>Fresh articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="57"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="41"/>
         <source>All articles</source>
         <translation>All articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="58"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="42"/>
         <source>Recently read</source>
         <translation>Recently read</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="60"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="44"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="61"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="45"/>
         <source>Special</source>
         <translation>Special</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="62"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="46"/>
         <source>All Feeds</source>
         <translation>All feeds</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="63"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="47"/>
         <source>Uncategorized</source>
         <translation>Uncategorized</translation>
     </message>
@@ -392,34 +392,39 @@
         <translation>Server:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="53"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="52"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
         <source>Username:</source>
         <translation>Username:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="65"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="63"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="75"/>
         <source>Password:</source>
         <translation>Password:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="92"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="110"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="89"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="116"/>
         <source>Clear</source>
         <translation>Clear</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="109"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="87"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="93"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="144"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="141"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="25"/>
         <source>No Account Yet?</source>
         <translation>No account yet?</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
+        <source>Ignore SSL Errors</source>
+        <translation>Ignore SSL Errors</translation>
     </message>
 </context>
 <context>
