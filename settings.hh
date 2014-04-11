@@ -28,6 +28,7 @@ class Settings : public QObject
     Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
     Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
+    Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
 public:
     static Settings *instance();
 
@@ -106,6 +107,11 @@ public:
     }
     void setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons);
 
+    bool showAll() const {
+        return this->_showAll;
+    }
+    void setShowAll(bool showAll);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -124,6 +130,7 @@ signals:
     void autoMarkReadChanged();
     void useAllFeedsOnStartupChanged();
     void whiteBackgroundOnIconsChanged();
+    void showAllChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -150,5 +157,6 @@ private:
     bool _autoMarkRead;
     bool _useAllFeedsOnStartup;
     bool _whiteBackgroundOnIcons;
+    bool _showAll;
 };
 #endif // SETTINGS_HH

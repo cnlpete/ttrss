@@ -142,6 +142,14 @@ void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons) {
     }
 }
 
+void Settings::setShowAll(bool showAll) {
+    if (_showAll != showAll) {
+        _showAll = showAll;
+        m_settings->setValue("showAll", _showAll);
+        emit showAllChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -160,4 +168,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
     _whiteBackgroundOnIcons = m_settings->value("whiteBackgroundOnIcons", true).toBool();
+    _showAll = m_settings->value("showAll", false).toBool();
 }

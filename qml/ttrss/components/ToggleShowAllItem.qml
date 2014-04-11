@@ -24,6 +24,7 @@ MenuItem {
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(!showAll)
         showAll = !showAll
+        settings.showAll = showAll
     }
 
     onShowAllChanged: {
@@ -33,8 +34,9 @@ MenuItem {
     }
 
     Component.onCompleted: {
+        showAll = settings.showAll
         var ttrss = rootWindow.getTTRSS()
-        showAll = ttrss.getShowAll()
+        ttrss.setShowAll(showAll)
         notInitialAssignment = true
     }
 
