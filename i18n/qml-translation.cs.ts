@@ -422,7 +422,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
-        <translation type="unfinished"/>
+        <translation>Ignorovat chyby SSL</translation>
     </message>
 </context>
 <context>
