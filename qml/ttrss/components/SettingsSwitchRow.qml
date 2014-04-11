@@ -35,6 +35,5 @@ Row {
     Label {
         text: root.text
         anchors.verticalCenter: parent.verticalCenter
-
     }
 }
