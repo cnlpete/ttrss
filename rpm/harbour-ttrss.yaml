@@ -1,7 +1,7 @@
 Name: harbour-ttrss
 Summary: The Tiny Tiny RSS Reader for Sailfish
-Version: 0.3.5
-Release: 2
+Version: 0.3.6
+Release: 1
 Group: Qt/Qt
 URL: http://example.org/
 License: LICENSE
@@ -19,6 +19,7 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
 Files:
+- /usr/share/harbour-ttrss/qml
 - /usr/share/icons/hicolor/86x86/apps
 - /usr/share/applications
 - /usr/share/harbour-ttrss
@@ -27,5 +28,4 @@ Files:
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/%{name}/qml'
 - '%{_bindir}'
-- /usr/share/harbour-ttrss/qml
 PkgBR: []

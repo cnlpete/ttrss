@@ -13,8 +13,8 @@ Name:       harbour-ttrss
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    The Tiny Tiny RSS Reader for Sailfish
-Version:    0.3.5
-Release:    2
+Version:    0.3.6
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
@@ -62,6 +62,7 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
+/usr/share/harbour-ttrss/qml
 /usr/share/icons/hicolor/86x86/apps
 /usr/share/applications
 /usr/share/harbour-ttrss
@@ -70,6 +71,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/qml
 %{_bindir}
-/usr/share/harbour-ttrss/qml
 # >> files
 # << files
