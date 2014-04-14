@@ -11,7 +11,7 @@
         <location filename="../qml/ttrss/components/AboutItem.qml" line="22"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation type="unfinished"/>
+        <translation>Оплатите мне пиво</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="24"/>
@@ -38,7 +38,7 @@
         <location filename="../qml/ttrss/components/AboutPage.qml" line="89"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="108"/>
         <source>Donate</source>
-        <translation type="unfinished"/>
+        <translation>Пожертвовать</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="99"/>
@@ -50,7 +50,7 @@
         <location filename="../qml/ttrss/components/AboutPage.qml" line="131"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="150"/>
         <source>Issuetracker</source>
-        <translation type="unfinished"/>
+        <translation>Issuetracker</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="168"/>
@@ -73,7 +73,7 @@
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="46"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="47"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
@@ -186,12 +186,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
         <source>Hide Dock</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть панель</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
         <source>Open Dock</source>
-        <translation type="unfinished"/>
+        <translation>Показать панель</translation>
     </message>
 </context>
 <context>
@@ -253,7 +253,7 @@
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="82"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="81"/>
@@ -316,7 +316,7 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="57"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="53"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="58"/>
@@ -422,7 +422,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
-        <translation type="unfinished"/>
+        <translation>Игнорировать ошибки SSL</translation>
     </message>
 </context>
 <context>
@@ -482,7 +482,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="60"/>
         <source>Show Icons</source>
-        <translation>Показывать имонки</translation>
+        <translation>Показывать иконки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="81"/>
@@ -499,37 +499,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Show a White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation>Показывать белый фон на иконках</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation type="unfinished"/>
+        <translation>Перезапустите приложение для применения изменений.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <source>Tiny</source>
-        <translation type="unfinished"/>
+        <translation>Крошечный</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Small</source>
-        <translation type="unfinished"/>
+        <translation>Маленький</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <source>Medium</source>
-        <translation type="unfinished"/>
+        <translation>Средний</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Large</source>
-        <translation type="unfinished"/>
+        <translation>Большой</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <source>Huge</source>
-        <translation type="unfinished"/>
+        <translation>Огромный</translation>
     </message>
 </context>
 <context>
