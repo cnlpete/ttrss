@@ -17,7 +17,7 @@ Item {
 
     property bool large: false
     property int amount: 0
-    property color color: constant.colorListItemActive
+    property alias color: text.color
 
     implicitWidth: internal.getBubbleWidth()
     implicitHeight: root.large ? MyTheme.fontSizeSmall + MyTheme.paddingMedium + MyTheme.paddingMedium :
@@ -42,7 +42,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: root.large ? MyTheme.fontSizeMedium : MyTheme.fontSizeExtraSmall
-        color: root.color
+        color: MyTheme.highlightColor
 
         text: root.amount
     }

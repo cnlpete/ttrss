@@ -59,8 +59,8 @@ Page {
 
         SettingsSliderRow {
             text: qsTr('Font Size')
-            min: 20
-            max: 30
+            minimumValue: MyTheme.fontSizeTiny
+            maximumValue: MyTheme.fontSizeExtraLarge
             value: settings.webviewFontSize
             onValueChanged: settings.webviewFontSize = value
         }

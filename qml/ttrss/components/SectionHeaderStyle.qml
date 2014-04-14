@@ -10,36 +10,11 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 1.1
-import com.nokia.meego 1.1
+import com.nokia.meego 1.1 // for Style
 
-Item {
-    id: root
+Style {
 
-    height: sectionLabel.height
-    width: parent.width
+    property color textColor: "#8c8c8c"
 
-    property Style platformStyle: SectionHeaderStyle {}
-
-    Image {
-        anchors.left: parent.left
-        anchors.right: sectionLabel.left
-        anchors.rightMargin: MyTheme.paddingSmall
-        anchors.verticalCenter: parent.verticalCenter
-
-        source: platformStyle.backgroundImage
-    }
-
-    Label {
-        id: sectionLabel
-        anchors.right: parent.right
-
-        platformStyle: LabelStyle {
-            textColor: platformStyle.textColor
-        }
-
-        font.pixelSize: MyTheme.fontSizeTiny
-        font.weight: Font.Bold
-
-        text: section
-    }
+    property string backgroundImage: "image://theme/meegotouch-groupheader"+__invertedString+"-background"
 }

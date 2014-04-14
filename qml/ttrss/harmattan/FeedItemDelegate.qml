@@ -81,7 +81,9 @@ Item {
                 text: model.title
                 font.weight: Font.Bold
                 font.pixelSize: MyTheme.fontSizeLarge
-                color: (model.unread > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
+                color: (model.unread) ?
+                           (theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor) :
+                           (theme.inverted ? MyTheme.secondaryColorInverted : MyTheme.secondaryColor)
                 elide: Text.ElideRight
             }
 
@@ -90,7 +92,9 @@ Item {
                 text: model.subtitle
                 font.weight: Font.Light
                 font.pixelSize: MyTheme.fontSizeSmall
-                color: (model.unread > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
+                color: (model.unread) ?
+                           (theme.inverted ? MyTheme.highlightColorInverted : MyTheme.highlightColor) :
+                           (theme.inverted ? MyTheme.secondaryHighlightColorInverted : MyTheme.secondaryHighlightColor)
                 elide: Text.ElideRight
                 visible: text != ""
             }

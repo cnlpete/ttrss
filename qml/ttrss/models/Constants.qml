@@ -15,20 +15,6 @@ import QtQuick 2.0 // sailfish
 QtObject{
     id: constant
 
-    property color sectionLabel: "#8c8c8c"
-
-    property color colorListItemActive: theme.inverted ? "#ffffff" : "#000033"
-    property color colorListItemActiveTwo: theme.inverted ? "#dd7744" : "#cc6633"
-    property color colorListItemDisabled: theme.inverted ? "#aaaaaa" : "#888888"
-
-    property color colorWebviewBG: theme.inverted ? "#000000" : "#ffffff"
-    property color colorWebviewText: theme.inverted ? "#ffffff" : "#000033"
-
-    property color colorFastScrollText: theme.inverted ? "#000033" : "#8c8c8c"
-
-    property int headerHeight: inPortrait ? 72 : 56
-    property int headerLogoHeight: inPortrait ? 56 : 40
-
     property url sourceRepoSite: "http://ttrss.cnlpete.de/"
     property url issueTrackerUrl: "https://github.com/cnlpete/ttrss/issues"
     property url registerUrl: "http://tt-rss.org/redmine/projects/tt-rss/wiki"
