@@ -17,6 +17,7 @@ Row {
 
     property string text: ""
     property alias checked: myswitch.checked
+    property alias enabled: myswitch.enabled
 
     signal checkedChanged(bool checked)
 
