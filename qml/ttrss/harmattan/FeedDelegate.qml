@@ -75,9 +75,11 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
 
         amount: model.unreadcount
-        color: (model.unreadcount > 0) ?
-                   (theme.inverted ? MyTheme.highlightColorInverted : MyTheme.highlightColor) :
-                   (theme.inverted ? MyTheme.secondaryHighlightColorInverted : MyTheme.secondaryHighlightColor)
+        platformStyle: BubbleStyle {
+            textColor: (model.unreadcount > 0) ?
+                           (theme.inverted ? MyTheme.highlightColorInverted : MyTheme.highlightColor) :
+                           (theme.inverted ? MyTheme.secondaryHighlightColorInverted : MyTheme.secondaryHighlightColor)
+        }
     }
 
     Image {
