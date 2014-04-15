@@ -58,7 +58,7 @@ Item {
         valueIndicatorVisible: true
         value: 22
         onValueChanged: {
-            if (completed) {
+            if (root.completed) {
                 valuetext.text = parseInt(value)
                 root.valueChanged(value)
             }
@@ -66,6 +66,6 @@ Item {
     }
 
     Component.onCompleted: {
-        completed = true
+        root.completed = true
     }
 }
