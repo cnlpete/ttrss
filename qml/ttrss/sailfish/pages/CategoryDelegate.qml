@@ -15,7 +15,7 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
 
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: categories.count > 8 ? Theme.itemSizeSmall : Theme.itemSizeMedium
     width: parent.width
 
     Label {
