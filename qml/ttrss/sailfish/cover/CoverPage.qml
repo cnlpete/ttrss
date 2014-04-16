@@ -35,7 +35,7 @@ CoverBackground {
     Column {
         anchors.centerIn: parent
         Image {
-            source: '/usr/share/icons/hicolor/86x86/apps/harbour-ttrss.png'
+            source: '/usr/share/icons/hicolor/86x86/apps/harbour-ttrss-cnlpete.png'
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Label {

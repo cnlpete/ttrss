@@ -17,7 +17,7 @@ MenuItem {
     onClicked: {
         var params = {
             title : 'ttrss ' + APP_VERSION,
-            iconSource: Qt.resolvedUrl('/usr/share/icons/hicolor/86x86/apps/harbour-ttrss.png'),
+            iconSource: Qt.resolvedUrl('/usr/share/icons/hicolor/86x86/apps/harbour-ttrss-cnlpete.png'),
 //            slogan : '',
             donatebutton: qsTr("Buy me a beer"),
             donateurl: constant.donateUrl,
