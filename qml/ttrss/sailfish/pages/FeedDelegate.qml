@@ -19,7 +19,6 @@ ListItem {
     width: parent.width
     menu: contextMenu
 
-
     Image {
         id: icon
         sourceSize.height: 80
@@ -51,8 +50,8 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: icon.visible ? icon.right : parent.left
         anchors.margins: Theme.paddingMedium
-        anchors.right: bubble.left
-        truncationMode: TruncationMode.Elide
+        width: parent.width - (icon.visible ? icon.width : 0) - bubble.width - Theme.paddingMedium
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
