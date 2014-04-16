@@ -17,8 +17,9 @@ Item {
 
     property alias text: settingText.text
     property alias value: slider.value
-    property alias min: slider.minimumValue
-    property alias max: slider.maximumValue
+    property alias minimumValue: slider.minimumValue
+    property alias maximumValue: slider.maximumValue
+    property alias valueText: valuetext.text
 
     property bool completed: false
 
@@ -57,14 +58,14 @@ Item {
         valueIndicatorVisible: true
         value: 22
         onValueChanged: {
-            if (completed) {
-                root.valueChanged(value)
+            if (root.completed) {
                 valuetext.text = parseInt(value)
+                root.valueChanged(value)
             }
         }
     }
 
     Component.onCompleted: {
-        completed = true
+        root.completed = true
     }
 }

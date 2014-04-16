@@ -63,7 +63,9 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         font.weight: Font.Bold
         font.pixelSize: MyTheme.fontSizeLarge
-        color: (model.unreadcount > 0) ? constant.colorListItemActive : constant.colorListItemDisabled
+        color: (model.unreadcount > 0) ?
+                   (theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor) :
+                   (theme.inverted ? MyTheme.secondaryColorInverted : MyTheme.secondaryColor)
     }
 
     Bubble {
@@ -73,7 +75,11 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
 
         amount: model.unreadcount
-        color: (model.unreadcount > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled
+        platformStyle: BubbleStyle {
+            textColor: (model.unreadcount > 0) ?
+                           (theme.inverted ? MyTheme.highlightColorInverted : MyTheme.highlightColor) :
+                           (theme.inverted ? MyTheme.secondaryHighlightColorInverted : MyTheme.secondaryHighlightColor)
+        }
     }
 
     Image {

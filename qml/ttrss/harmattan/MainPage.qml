@@ -79,11 +79,12 @@ Page {
                 enabled: !network.loading
             }
         }
-        SettingsSwitchRow {
+        TextSwitch {
             text: qsTr('Ignore SSL Errors')
             visible: server.text.substring(0, 5) === "https"
             checked: settings.ignoreSSLErrors
             onCheckedChanged: settings.ignoreSSLErrors = checked
+            enabled: !network.loading
         }
     }
     BusyIndicator {

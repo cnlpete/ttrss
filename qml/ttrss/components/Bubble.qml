@@ -17,11 +17,11 @@ Item {
 
     property bool large: false
     property int amount: 0
-    property color color: constant.colorListItemActive
+
+    property Style platformStyle: BubbleStyle { large: large }
 
     implicitWidth: internal.getBubbleWidth()
-    implicitHeight: root.large ? MyTheme.fontSizeSmall + MyTheme.paddingMedium + MyTheme.paddingMedium :
-                                 MyTheme.fontSizeExtraSmall + MyTheme.paddingMedium + MyTheme.paddingMedium
+    implicitHeight: root.platformStyle.fontSize + root.platformStyle.padding + root.platformStyle.padding
 
     BorderImage {
         source: "image://theme/meegotouch-countbubble-background"
@@ -41,8 +41,8 @@ Item {
         opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: root.large ? MyTheme.fontSizeMedium : MyTheme.fontSizeExtraSmall
-        color: root.color
+        font.pixelSize: root.platformStyle.fontSize
+        color: root.platformStyle.textColor
 
         text: root.amount
     }
@@ -51,10 +51,7 @@ Item {
         id: internal
 
         function getBubbleWidth() {
-            if (large)
-                return text.paintedWidth + MyTheme.paddingMedium + MyTheme.paddingMedium
-            else
-                return text.paintedWidth + MyTheme.paddingSmall + MyTheme.paddingSmall
+            return text.paintedWidth + root.platformStyle.padding + root.platformStyle.padding
         }
     }
 }

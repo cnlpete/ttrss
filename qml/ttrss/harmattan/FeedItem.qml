@@ -20,6 +20,7 @@ Page {
     property string pageTitle:      ""
     property string subTitle:       ""
     property string url:            ""
+    property string date:           ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -32,9 +33,9 @@ Page {
 
     Flickable {
         id: flick
-        width: parent.width;
+        width: parent.width - MyTheme.paddingMedium - MyTheme.paddingMedium
         height: parent.height
-        contentWidth: itemView.width
+        contentWidth: parent.width
         contentHeight: content.height
         interactive: true
         clip: true
@@ -43,10 +44,24 @@ Page {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
+            margins: MyTheme.paddingMedium
         }
 
         Column {
             id: content
+            spacing: MyTheme.paddingMedium
+
+            Text {
+                text: date
+                font.pointSize: MyTheme.fontSizeSmall
+                font.weight: Font.Light
+                textFormat: Text.PlainText
+                anchors {
+                    right: parent.right
+                }
+
+                color: theme.inverted ? MyTheme.secondaryColor : secondaryColorInverted
+            }
             Row {
                 id: labelsrepeater
                 spacing: MyTheme.paddingMedium
@@ -57,29 +72,19 @@ Page {
                     }
                 }
             }
-            WebView {
+            RescalingRichText {
                 id: itemView
-                transformOrigin: Item.TopLeft
-                settings.standardFontFamily: "Arial"
-                preferredWidth: flick.width
-                preferredHeight: flick.height
-                scale: 1
-                onLoadFinished: {
-                    evaluateJavaScript("\
-                        document.body.style.backgroundColor='" + constant.colorWebviewBG + "';\
-                        document.body.style.color='" + constant.colorWebviewText + "';\
-                    ");
-                }
-
-                onUrlChanged: {
-                    if (url != "") {
+                fontSize: settings.webviewFontSize - 2
+                text: "content"
+                width: flick.width
+                onLinkActivated: {
+                    if (link != "") {
                         infoBanner.text = qsTr("Open in Web Browser")
                         infoBanner.show()
-                        Qt.openUrlExternally(url);
-                        // BUGFIX: the url is still changed, so i need to change it back to the original content...
-                        showFeedItem()
+                        Qt.openUrlExternally(link);
                     }
                 }
+                color: theme.inverted ? MyTheme.primaryColorInverted: MyTheme.primaryColor
             }
         }
     }
@@ -136,10 +141,11 @@ Page {
                 }
             }
 
-            itemView.html = content
+            itemView.text = content
             url         = data.url
             pageTitle   = data.title
             subTitle    = data.feedTitle
+            date        = data.date
             root.labels = data.labels
             marked      = data.marked
             unread      = data.unread
@@ -155,14 +161,7 @@ Page {
         }
     }
 
-    Binding {
-        target: itemView
-        property: "settings.defaultFontSize"
-        value: settings.webviewFontSize
-    }
-
     Component.onCompleted: {
-        itemView.settings.defaultFontSize = settings.webviewFontSize
         showFeedItem();
     }
 

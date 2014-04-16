@@ -18,6 +18,15 @@ class Theme : public QObject
     Q_PROPERTY(int paddingSmall READ paddingSmall NOTIFY themeChanged)
     Q_PROPERTY(int paddingMedium READ paddingMedium NOTIFY themeChanged)
     Q_PROPERTY(int paddingLarge READ paddingLarge NOTIFY themeChanged)
+
+    Q_PROPERTY(QString primaryColor READ primaryColor NOTIFY themeChanged)
+    Q_PROPERTY(QString secondaryColor READ secondaryColor NOTIFY themeChanged)
+    Q_PROPERTY(QString highlightColor READ highlightColor NOTIFY themeChanged)
+    Q_PROPERTY(QString secondaryHighlightColor READ secondaryHighlightColor NOTIFY themeChanged)
+    Q_PROPERTY(QString primaryColorInverted READ primaryColorInverted NOTIFY themeChanged)
+    Q_PROPERTY(QString secondaryColorInverted READ secondaryColorInverted NOTIFY themeChanged)
+    Q_PROPERTY(QString highlightColorInverted READ highlightColorInverted NOTIFY themeChanged)
+    Q_PROPERTY(QString secondaryHighlightColorInverted READ secondaryHighlightColorInverted NOTIFY themeChanged)
 public:
     static Theme *instance();
 
@@ -32,6 +41,15 @@ public:
     int paddingSmall() const;
     int paddingMedium() const;
     int paddingLarge() const;
+
+    QString primaryColor() const;
+    QString secondaryColor() const;
+    QString highlightColor() const;
+    QString secondaryHighlightColor() const;
+    QString primaryColorInverted() const;
+    QString secondaryColorInverted() const;
+    QString highlightColorInverted() const;
+    QString secondaryHighlightColorInverted() const;
 
 signals:
     void themeChanged();

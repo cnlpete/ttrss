@@ -24,24 +24,26 @@ Item{
 
     signal updateActionActivated()
 
-    height: Math.max(constant.headerHeight, textColumn.height)
+    property Style platformStyle: PageHeaderStyle {}
+
+    height: Math.max(platformStyle.headerHeight, textColumn.height)
     width: parent.width
     visible: text !== ""
 
     Image {
         id: background
         anchors.fill: parent
-        source: "image://theme/color15-meegotouch-view-header-fixed"
+        source: platformStyle.backgroundImage
         sourceSize.width: parent.width
         sourceSize.height: parent.height
     }
 
     Image {
         id: logo
-        sourceSize.width: constant.headerLogoHeight
-        sourceSize.height: constant.headerLogoHeight
-        width: source.length > 3 ? constant.headerLogoHeight : 0
-        height: constant.headerLogoHeight
+        sourceSize.width: platformStyle.headerLogoHeight
+        sourceSize.height: platformStyle.headerLogoHeight
+        width: source.length > 3 ? platformStyle.headerLogoHeight : 0
+        height: platformStyle.headerLogoHeight
         visible: source.length > 3
         asynchronous: true
 

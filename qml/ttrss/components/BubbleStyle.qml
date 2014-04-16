@@ -10,30 +10,14 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 1.1
-import com.nokia.meego 1.0
+import com.nokia.meego 1.1 // for Style
 
-Row {
-    id: root
+Style {
 
-    property string text: ""
-    property alias checked: myswitch.checked
+    property bool large: false
 
-    signal checkedChanged(bool checked)
+    property int fontSize: large ? MyTheme.fontSizeMedium : MyTheme.fontSizeSmall
+    property int padding: large ? MyTheme.paddingMedium : MyTheme.paddingSmall
 
-    width: parent.width
-    layoutDirection: Qt.RightToLeft
-    spacing: MyTheme.paddingMedium
-
-    Switch {
-        id: myswitch
-        onCheckedChanged: {
-            root.checkedChanged(myswitch.checked)
-        }
-        anchors.verticalCenter: parent.verticalCenter
-    }
-
-    Label {
-        text: root.text
-        anchors.verticalCenter: parent.verticalCenter
-    }
+    property color textColor: MyTheme.highlightColor
 }

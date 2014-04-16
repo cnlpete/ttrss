@@ -23,19 +23,19 @@ Theme *Theme::instance() {
 Theme::Theme(QObject *parent) : QObject(parent) { }
 
 int Theme::fontSizeTiny() const {
-    return 18; }
+    return 16; }
 int Theme::fontSizeExtraSmall() const {
-    return 20; }
+    return 18; }
 int Theme::fontSizeSmall() const {
-    return 22; }
+    return 20; }
 int Theme::fontSizeMedium() const {
     return 24; }
 int Theme::fontSizeLarge() const {
     return 26; }
 int Theme::fontSizeExtraLarge() const {
-    return 30; }
+    return 28; }
 int Theme::fontSizeHuge() const {
-    return 34; }
+    return 32; }
 
 int Theme::paddingSmall() const {
     return 6; }
@@ -43,3 +43,21 @@ int Theme::paddingMedium() const {
     return 8; }
 int Theme::paddingLarge() const {
     return 10; }
+
+QString Theme::primaryColor() const {
+    return "#000000"; }
+QString Theme::secondaryColor() const {
+    return "#888888"; }
+QString Theme::highlightColor() const {
+    return "#cc6633"; }
+QString Theme::secondaryHighlightColor() const {
+    return "#888888"; }
+QString Theme::primaryColorInverted() const {
+    return "#ffffff"; }
+QString Theme::secondaryColorInverted() const {
+    return "#aaaaaa"; }
+QString Theme::highlightColorInverted() const {
+    return "#dd7744"; }
+QString Theme::secondaryHighlightColorInverted() const {
+    return "#aaaaaa"; }
+
