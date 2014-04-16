@@ -83,8 +83,18 @@ To use your old configuration file, copy it to the appropriate place:
 
 <h2>Screenshots</h2>
 
-<h3>Harmattan</h3>
+<h3>Sailfish</h3>
+<ul class="screenshots">
+<li><a href="assets/screenshots/sailfish/categories.jpg" alt="Categories View"><img itemprop="screenshot" src="assets/screenshots/sailfish/categories.jpg" /></a></li>
+<li><a href="assets/screenshots/sailfish/feeds.jpg" alt="Feeds View"><img itemprop="screenshot" src="assets/screenshots/sailfish/feeds.jpg" /></a></li>
+<li><a href="assets/screenshots/sailfish/feeditems_menu.jpg" alt="Feeditems View with Pulley Menu"><img itemprop="screenshot" src="assets/screenshots/sailfish/feeditems_menu.jpg" /></a></li>
+<li><a href="assets/screenshots/sailfish/feeditems_popup.jpg" alt="Feeditems View with Context Menu"><img itemprop="screenshot" src="assets/screenshots/sailfish/feeditems_popup.jpg" /></a></li>
+<li><a href="assets/screenshots/sailfish/feeditem.jpg" alt="Feeditem View"><img itemprop="screenshot" src="assets/screenshots/sailfish/feeditem.jpg" /></a></li>
+<li><a href="assets/screenshots/sailfish/about.png" alt="About View"><img itemprop="screenshot" src="assets/screenshots/sailfish/about.png" /></a></li>
+<li><a href="assets/screenshots/sailfish/about_popup.jpg" alt="About View with Menu"><img itemprop="screenshot" src="assets/screenshots/sailfish/about_popup.jpg" /></a></li>
+</ul>
 
+<h3>Harmattan</h3>
 <ul class="screenshots">
 <li><a href="assets/screenshots/harmattan/categories.png" alt="Categories View"><img itemprop="screenshot" src="assets/screenshots/harmattan/categories.png" /></a></li>
 <li><a href="assets/screenshots/harmattan/feeds.png" alt="Feeds View"><img itemprop="screenshot" src="assets/screenshots/harmattan/feeds.png" /></a></li>
@@ -96,12 +106,6 @@ To use your old configuration file, copy it to the appropriate place:
 <li><a href="assets/screenshots/harmattan/login.png" alt="Login View"><img itemprop="screenshot" src="assets/screenshots/harmattan/login.png" /></a></li>
 <li><a href="assets/screenshots/harmattan/settings.png" alt="Settings Page"><img itemprop="screenshot" src="assets/screenshots/harmattan/settings.png" /></a></li>
 </ul>
-
-<h3>Sailfish</h3>
-<ul class="screenshots">
-<li><a href="assets/screenshots/sailfish/about.png" alt="About View"><img itemprop="screenshot" src="assets/screenshots/sailfish/about.png" /></a></li>
-</ul>
-
 
 <h2>ArtWork</h2>
 
@@ -115,7 +119,7 @@ To use your old configuration file, copy it to the appropriate place:
 
 <a name="downloads"></a>
 
-<h3>Normal Version for Jolla - Sailfish</h3>
+<h3>Jolla Version - Sailfish</h3>
 <script type="text/javascript">
   function toggleDlsSailfish () {
     $('#downloadlinkssailfish').slideToggle();
@@ -131,7 +135,7 @@ If, for some reason, you do not want to use that service, <a href="#downloads" o
   <li class="download"><a href="http://schad.es/harbour-ttrss035">Version 0.3.5</a></li>
 </ul>
 
-<h3>Normal Version for N9 - Harmattan</h3>
+<h3>N9 Version - Harmattan</h3>
 <script type="text/javascript">
   function toggleDls () {
     $('#downloadlinksharmattan').slideToggle();
@@ -165,12 +169,18 @@ If, for some reason, you do not want to use that service, <a href="#downloads" o
 <a name="noshare"></a>
 
 <p>
-Note, this special build is roughly the same as the official version.
+Note, this special build is roughly the same as the official N9 version.
 Only without the ShareUI dependency, as that is missing for MeeCoLay users on N900.
 So if you are a N9 user, go and grab the version above.
+Otherwise, <a href="#downloads" onclick="toggleDlsMeeColay();">grab these</a>.
 </p>
+<script type="text/javascript">
+  function toggleDlsMeeColay () {
+    $('#downloadlinksmeecolay').slideToggle();
+  }
+</script>
 
-<ul>
+<ul id="downloadlinksmeecolay" style="display:none;">
   <li class="download"><a href="http://schad.es/ttrss035noshare">Version 0.3.5 - w/o ShareUI</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.5_armel.changes">changes</a></li>
   <li class="download"><a href="http://schad.es/ttrss034noshare">Version 0.3.4 - w/o ShareUI</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.4_armel.changes">changes</a></li>
   <li class="download"><a href="http://schad.es/ttrss033noshare">Version 0.3.3 - w/o ShareUI</a> - <a itemprop="releaseNotes" href="http://ttrss.cnlpete.de/assets/ttrss_0.3.3_armel.changes">changes</a></li>
