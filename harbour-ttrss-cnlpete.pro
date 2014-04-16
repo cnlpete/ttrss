@@ -12,7 +12,7 @@ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_SAILFISH
 
-TARGET = harbour-ttrss
+TARGET = harbour-ttrss-cnlpete
 
 ##CONFIG += sailfishapp
 
@@ -37,7 +37,7 @@ icon.files = images/$${TARGET}.png
 icon.path = /usr/share/icons/hicolor/86x86/apps
 INSTALLS += icon
 
-desktop.files = harbour-ttrss.desktop
+desktop.files = $${TARGET}.desktop
 desktop.path = /usr/share/applications
 INSTALLS += desktop
 
@@ -54,8 +54,8 @@ SOURCES += main.cpp \
     mynetworkmanager.cpp \
     qmlutils.cpp
 
-OTHER_FILES += rpm/harbour-ttrss.spec \
-    rpm/harbour-ttrss.yaml \
+OTHER_FILES += rpm/$${TARGET}.spec \
+    rpm/$${TARGET}.yaml \
     $$files(rpm/*) \
     $$files(qml/ttrss/harmattan/*)
 
