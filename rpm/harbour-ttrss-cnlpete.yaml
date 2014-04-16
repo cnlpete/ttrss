@@ -12,18 +12,18 @@ Description: |-
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- Qt5Quick
-- Qt5Qml
-- Qt5Core
 - sailfishapp >= 0.0.10
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
 Files:
-- '%{_bindir}'
-- '%{_datadir}/%{name}/qml'
-- '%{_datadir}/%{name}'
-- '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/applications'
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - '%{_datadir}/icons/hicolor/86x86/apps'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}'
 PkgBR: []

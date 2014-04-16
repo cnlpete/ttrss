@@ -17,6 +17,7 @@ Page {
     property alias  pageTitle:      pageHeader.title
     property alias  subTitle:       subtitleLabel.text
     property string url:            ""
+    property string date:           ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -70,6 +71,7 @@ Page {
         Column {
             id: content
             width: parent.width
+            spacing: Theme.paddingSmall
 //            Row {
 //                id: labelsrepeater
 //                spacing: constant.paddingMedium
@@ -121,6 +123,18 @@ Page {
                     source: "../../resources/ic_rss_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
+            }
+            Label {
+                text: date
+                font.pixelSize: Theme.fontSizeSmall
+                font.weight: Font.Light
+                textFormat: Text.PlainText
+                anchors {
+                    right: parent.right
+                    rightMargin: Theme.paddingLarge
+                }
+
+                color: Theme.secondaryColor
             }
             RescalingRichText {
                 id: itemView
@@ -254,6 +268,7 @@ Page {
             url         = data.url
             pageTitle   = data.title
             subTitle    = data.feedTitle
+            date        = data.date
             root.labels = data.labels
             marked      = data.marked
             markedSwitch.checked = marked
