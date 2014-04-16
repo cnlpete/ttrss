@@ -34,7 +34,7 @@ Page {
             anchors.margins: Theme.paddingLarge
             Column {
                 id: contentcontainer
-                width: 350
+                width: parent.width - 2 * Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Image {
@@ -88,46 +88,50 @@ Page {
                     checked: settings.ignoreSSLErrors
                     onCheckedChanged: settings.ignoreSSLErrors = checked
                 }
-                Button {
-                    id: loginButton
-                    text: qsTr("Login")
+                Row {
                     width: parent.width
-                    onClicked: {
-                        // check the servername for httpauth data and set/extract those
-                        var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
-                        var servername = server.text
-                        var regexres = servername.match(httpauthregex)
-                        if (regexres !== null) {
-                            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
-                            settings.httpauthusername = regexres[2]
-                            settings.httpauthpassword = regexres[3]
+                    Button {
+                        id: clearButton
+                        text: qsTr("Clear")
+                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                        onClicked: {
+                            server.text = ''
+                            username.text = ''
+                            password.text = ''
+
+                            settings.httpauthusername = ''
+                            settings.httpauthpassword = ''
+                            settings.servername = server.text
+                            settings.username = username.text
+                            settings.password = password.text
                         }
-
-                        settings.servername = server.text
-                        settings.username = username.text
-                        settings.password = password.text
-
-                        startLogin();
+                        enabled: !network.loading
                     }
-                    enabled: !network.loading
-                }
-                Button {
-                    id: clearButton
-                    text: qsTr("Clear")
-                    width: parent.width
-                    onClicked: {
-                        server.text = ''
-                        username.text = ''
-                        password.text = ''
+                    Button {
+                        id: loginButton
+                        text: qsTr("Login")
+                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                        onClicked: {
+                            // check the servername for httpauth data and set/extract those
+                            var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
+                            var servername = server.text
+                            var regexres = servername.match(httpauthregex)
+                            if (regexres !== null) {
+                                server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+                                settings.httpauthusername = regexres[2]
+                                settings.httpauthpassword = regexres[3]
+                            }
 
-                        settings.httpauthusername = ''
-                        settings.httpauthpassword = ''
-                        settings.servername = server.text
-                        settings.username = username.text
-                        settings.password = password.text
+                            settings.servername = server.text
+                            settings.username = username.text
+                            settings.password = password.text
+
+                            startLogin();
+                        }
+                        enabled: !network.loading
                     }
-                    enabled: !network.loading
                 }
+
             }
         }
     }
