@@ -175,7 +175,8 @@ Page {
                 enabled: previousId !== false
                 onClicked: {
                     feedItems.selectPrevious()
-                    showFeedItem()
+                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    //showFeedItem()
                 }
             }
             IconButton {
@@ -210,7 +211,8 @@ Page {
                 enabled: nextId !== false
                 onClicked: {
                     feedItems.selectNext()
-                    showFeedItem()
+                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    //showFeedItem()
                 }
             }
         }
