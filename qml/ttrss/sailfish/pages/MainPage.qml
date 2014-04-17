@@ -24,7 +24,7 @@ Page {
             MenuItem {
                 text: qsTr("No Account Yet?")
                 onClicked: {
-                    rootWindow.openFile(Qt.openUrlExternally("http://tt-rss.org/redmine/projects/tt-rss/wiki"));
+                    Qt.openUrlExternally("http://tt-rss.org/redmine/projects/tt-rss/wiki");
                 }
             }
         }
