@@ -162,7 +162,7 @@ Page {
         id: panel
 
         width: parent.width
-        height: Theme.itemSizeLarge
+        height: Theme.itemSizeMedium
         open: true
 
         dock: Dock.Bottom
@@ -178,28 +178,28 @@ Page {
                     showFeedItem()
                 }
             }
-            Switch {
+            IconButton {
                 id: rssSwitch
                 icon.source: "../../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
-                checked: rss
+                //checked: rss
                 onClicked: {
                     feedItems.togglePublished()
                     rss = !rss
                 }
             }
-            Switch {
+            IconButton {
                 id: markedSwitch
                 icon.source: "../../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
-                checked: marked
+                //checked: marked
                 onClicked: {
                     feedItems.toggleStar()
                     marked = !marked
                 }
             }
-            Switch {
+            IconButton {
                 id: unreadSwitch
                 icon.source: "../../resources/ic_"+(unread?"unread":"read")+".png"
-                checked: unread
+                //checked: unread
                 onClicked: {
                     feedItems.toggleRead()
                     unread = !unread
@@ -271,11 +271,11 @@ Page {
             date        = data.date
             root.labels = data.labels
             marked      = data.marked
-            markedSwitch.checked = marked
+            //markedSwitch.checked = marked
             unread      = data.unread
-            unreadSwitch.checked = unread
+            //unreadSwitch.checked = unread
             rss         = data.rss
-            rssSwitch.checked = rss
+            //rssSwitch.checked = rss
 
             previousId  = feedItems.hasPrevious()
             nextId      = feedItems.hasNext()
