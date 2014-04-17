@@ -88,9 +88,7 @@ Page {
             anchors.centerIn: parent
             size: BusyIndicatorSize.Large
         }
-        ScrollDecorator {
-            flickable: listView
-        }
+        VerticalScrollDecorator { }
     }
 
     function showFeed(feedModel) {

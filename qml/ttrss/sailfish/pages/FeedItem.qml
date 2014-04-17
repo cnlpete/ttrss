@@ -38,7 +38,7 @@ Page {
             bottomMargin: panel.open ? panel.height : 0
         }
 
-        VerticalScrollDecorator {}
+        VerticalScrollDecorator { }
 
         PullDownMenu {
 //            AboutItem {}

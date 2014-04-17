@@ -53,9 +53,7 @@ Page {
             anchors.centerIn: parent
             size: BusyIndicatorSize.Large
         }
-        ScrollDecorator {
-            flickable: listView
-        }
+        VerticalScrollDecorator { }
     }
 
     function showCategory(categoryModel) {
