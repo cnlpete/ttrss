@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>AboutItem</name>
     <message>
@@ -95,54 +97,62 @@
     </message>
 </context>
 <context>
+    <name>CategoriesCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
+        <source>Unread Items</source>
+        <translation>Ungelesene Nachrichten</translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="37"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="23"/>
         <source>Archived articles</source>
         <translation>Archivierte Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="38"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="24"/>
         <source>Starred articles</source>
         <translation>Bewertete Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="39"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="25"/>
         <source>Published articles</source>
         <translation>Veröffentlichte Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="40"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="26"/>
         <source>Fresh articles</source>
         <translation>Neue Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="41"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="27"/>
         <source>All articles</source>
         <translation>Alle Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="42"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="28"/>
         <source>Recently read</source>
         <translation>Zuletzt gelesene Artikel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="44"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="30"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="45"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="31"/>
         <source>Special</source>
         <translation>Spezielle Feeds</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="46"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="32"/>
         <source>All Feeds</source>
         <translation>Alle Feeds</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="47"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="33"/>
         <source>Uncategorized</source>
         <translation>Unkategorisierte Feeds</translation>
     </message>
@@ -158,12 +168,12 @@
 <context>
     <name>FeedDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="78"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="77"/>
         <source>Mark all read</source>
         <translation>Alle als gelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="83"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="82"/>
         <source>Unsubscribe</source>
         <translation>Feed abbestellen</translation>
     </message>
@@ -171,25 +181,25 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="76"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="224"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="227"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="46"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="82"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="223"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="226"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="47"/>
         <source>Open in Web Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="233"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="232"/>
         <source>Share</source>
         <translation>Teilen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Hide Dock</source>
         <translation>Dock schließen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Open Dock</source>
         <translation>Dock öffnen</translation>
     </message>
@@ -311,6 +321,14 @@
     </message>
 </context>
 <context>
+    <name>FeedItemsCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
+        <source>Unread Items</source>
+        <translation>Ungelesene Nachrichten</translation>
+    </message>
+</context>
+<context>
     <name>Feeds</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="57"/>
@@ -382,44 +400,53 @@
     </message>
 </context>
 <context>
+    <name>FeedsCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
+        <source>Unread Items</source>
+        <translation>Ungelesene Nachrichten</translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="41"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="44"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="51"/>
         <source>Server:</source>
         <translation>Server:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="52"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="58"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
         <source>Username:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="75"/>
         <source>Password:</source>
         <translation>Passwort:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="89"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="116"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="95"/>
         <source>Clear</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="93"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="112"/>
         <source>Login</source>
         <translation>Einloggen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="141"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="25"/>
         <source>No Account Yet?</source>
         <translation>Noch keinen Zugang?</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
         <translation>Ignoriere SSL Fehler</translation>

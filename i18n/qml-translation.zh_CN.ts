@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_CN">
 <context>
     <name>AboutItem</name>
     <message>
@@ -95,54 +97,62 @@
     </message>
 </context>
 <context>
+    <name>CategoriesCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
+        <source>Unread Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="37"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="23"/>
         <source>Archived articles</source>
         <translation>已存档的文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="38"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="24"/>
         <source>Starred articles</source>
         <translation>星标文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="39"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="25"/>
         <source>Published articles</source>
         <translation>已发布的文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="40"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="26"/>
         <source>Fresh articles</source>
         <translation>新文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="41"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="27"/>
         <source>All articles</source>
         <translation>所有文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="42"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="28"/>
         <source>Recently read</source>
         <translation>最近阅读的</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="44"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="30"/>
         <source>Labels</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="45"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="31"/>
         <source>Special</source>
         <translation>特殊文章</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="46"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="32"/>
         <source>All Feeds</source>
         <translation>所有订阅</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/Constants.qml" line="47"/>
+        <location filename="../qml/ttrss/models/Constants.qml" line="33"/>
         <source>Uncategorized</source>
         <translation>未分类</translation>
     </message>
@@ -158,12 +168,12 @@
 <context>
     <name>FeedDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="78"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="77"/>
         <source>Mark all read</source>
         <translation>标记所有为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="83"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="82"/>
         <source>Unsubscribe</source>
         <translation>退订</translation>
     </message>
@@ -171,27 +181,27 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="76"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="224"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="227"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="46"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="82"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="223"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="226"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="47"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="233"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="232"/>
         <source>Share</source>
         <translation>分享</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Hide Dock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="51"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Open Dock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -311,6 +321,14 @@
     </message>
 </context>
 <context>
+    <name>FeedItemsCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
+        <source>Unread Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Feeds</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="57"/>
@@ -382,47 +400,56 @@
     </message>
 </context>
 <context>
+    <name>FeedsCover</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
+        <source>Unread Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="41"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="44"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="51"/>
         <source>Server:</source>
         <translation>服务器:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="52"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="58"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
         <source>Username:</source>
         <translation>用户名:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="75"/>
         <source>Password:</source>
         <translation>密码:</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="89"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="116"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="95"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="93"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="112"/>
         <source>Login</source>
         <translation>登陆</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="141"/>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="25"/>
         <source>No Account Yet?</source>
         <translation>还没有账号?</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -499,37 +526,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Show a White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <source>Tiny</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Small</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <source>Medium</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Large</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <source>Huge</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

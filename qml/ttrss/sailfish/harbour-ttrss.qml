@@ -38,7 +38,7 @@ ApplicationWindow
 {
     id: rootWindow
     initialPage: Component { MainPage { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    cover: Qt.resolvedUrl("cover/SimpleCover.qml")
 
     function getTTRSS() {
         return TTRss;

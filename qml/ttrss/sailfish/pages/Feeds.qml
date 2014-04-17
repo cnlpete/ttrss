@@ -69,4 +69,11 @@ Page {
                                 })
         }
     }
+
+    onVisibleChanged: {
+        if (visible) {
+            console.log("now repalcing with FeedsCover")
+            cover = Qt.resolvedUrl("../cover/FeedsCover.qml")
+        }
+    }
 }

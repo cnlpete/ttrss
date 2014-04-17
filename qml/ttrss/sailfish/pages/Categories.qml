@@ -63,4 +63,11 @@ Page {
                                 })
         }
     }
+
+    onVisibleChanged: {
+        if (visible) {
+            console.log("now replacing with CategoriesCover")
+            cover = Qt.resolvedUrl("../cover/CategoriesCover.qml")
+        }
+    }
 }
