@@ -34,7 +34,7 @@ Page {
         delegate: CategoryDelegate {
             onClicked: {
                 categories.selectedIndex = index
-                showCategory(model)
+                showCategory(categories.getSelectedItem())
             }
         }
 

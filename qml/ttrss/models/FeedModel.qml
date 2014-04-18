@@ -23,8 +23,8 @@ ListModel {
     function update() {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeeds(root.category.categoryId, function() {
-                              root.load();
-                          })
+            root.load()
+        })
     }
 
     function load() {

@@ -27,8 +27,8 @@ ListModel {
     function update() {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation, function() {
-                                  root.load();
-                              })
+            root.load()
+        })
     }
 
     function load() {
