@@ -1,5 +1,5 @@
 *~
 *.bak
-
+*.autosave
 *.pro.user*
 *.qm
