@@ -69,7 +69,7 @@ CoverBackground {
         CoverAction {
             iconSource: "image://theme/icon-cover-sync"
             onTriggered: {
-                feeditems.update()
+                feedItems.update()
             }
         }
     }
