@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -101,7 +99,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -196,12 +194,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Hide Dock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Open Dock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -325,7 +323,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -404,7 +402,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -449,7 +447,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -526,37 +524,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Show a White Background on Icons</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <source>Tiny</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <source>Huge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

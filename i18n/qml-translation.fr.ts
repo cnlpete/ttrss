@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -101,7 +99,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Articles non-lus</translation>
     </message>
 </context>
 <context>
@@ -325,7 +323,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Articles non-lus</translation>
     </message>
 </context>
 <context>
@@ -404,7 +402,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Articles non-lus</translation>
     </message>
 </context>
 <context>
