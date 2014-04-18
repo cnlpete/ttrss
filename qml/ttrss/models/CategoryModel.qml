@@ -1,6 +1,16 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
-import QtQuick 1.1
-import com.nokia.meego 1.0
+//Copyright Hauke Schade, 2012-2013
+//
+//This file is part of TTRss.
+//
+//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
+//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+
+import QtQuick 1.1 // harmattan
+//import QtQuick 2.0 // sailfish
 
 ListModel {
     id: root
@@ -10,8 +20,8 @@ ListModel {
     function update() {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateCategories(function() {
-                                   root.load();
-                               });
+            root.load()
+        })
     }
 
     function load() {
@@ -26,7 +36,7 @@ ListModel {
             //first add all the categories with unread itens
             for(var category = 0; category < categories.length; category++) {
                 if (categories[category].id >= 0)
-                    totalUnreadCount += categories[category].unread;
+                    totalUnreadCount += parseInt(categories[category].unread);
 
                 var title = ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES')
                 if (categories[category].id == ttrss.constants['categories']['ALL'])
@@ -40,8 +50,8 @@ ListModel {
 
                 root.append({
                                 title:       title,
-                                unreadcount: categories[category].unread,
-                                categoryId:  categories[category].id
+                                unreadcount: parseInt(categories[category].unread),
+                                categoryId:  parseInt(categories[category].id)
                             });
             }
 
@@ -49,10 +59,19 @@ ListModel {
                 //Add the "All" category
                 root.insert(0, {
                                 title: constant.allFeeds,
-                                categoryId: ttrss.constants['categories']['ALL'],
+                                categoryId: parseInt(ttrss.constants['categories']['ALL']),
                                 unreadcount: totalUnreadCount,
                             });
             }
+        }
+    }
+
+    function getTotalUnreadItems() {
+        if (root.count <= 0)
+            return 0
+        else {
+            var m = root.get(0)
+            return m.unreadcount
         }
     }
 

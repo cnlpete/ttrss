@@ -73,8 +73,16 @@ void Settings::setAutologin(bool autologin) {
 void Settings::setUseAutologin(bool useAutologin) {
     if (_useAutologin != useAutologin) {
         _useAutologin = useAutologin;
-        m_settings->setValue("useAutologin", _autologin);
+        m_settings->setValue("useAutologin", _useAutologin);
         emit useAutologinChanged();
+    }
+}
+
+void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
+    if (_ignoreSSLErrors != ignoreSSLErrors) {
+        _ignoreSSLErrors = ignoreSSLErrors;
+        m_settings->setValue("ignoreSSLErrors", _ignoreSSLErrors);
+        emit ignoreSSLErrorsChanged();
     }
 }
 
@@ -126,12 +134,29 @@ void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
     }
 }
 
+void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons) {
+    if (_whiteBackgroundOnIcons != whiteBackgroundOnIcons) {
+        _whiteBackgroundOnIcons = whiteBackgroundOnIcons;
+        m_settings->setValue("whiteBackgroundOnIcons", _whiteBackgroundOnIcons);
+        emit whiteBackgroundOnIconsChanged();
+    }
+}
+
+void Settings::setShowAll(bool showAll) {
+    if (_showAll != showAll) {
+        _showAll = showAll;
+        m_settings->setValue("showAll", _showAll);
+        emit showAllChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
     _password = m_settings->value("password", "").toString();
     _autologin = m_settings->value("autologin", false).toBool();
     _useAutologin = m_settings->value("useAutologin", true).toBool();
+    _ignoreSSLErrors = m_settings->value("ignoreSSLErrors", false).toBool();
 
     _httpauthuser = m_settings->value("httpauthusername", "").toString();
     _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();
@@ -142,4 +167,6 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
+    _whiteBackgroundOnIcons = m_settings->value("whiteBackgroundOnIcons", true).toBool();
+    _showAll = m_settings->value("showAll", false).toBool();
 }

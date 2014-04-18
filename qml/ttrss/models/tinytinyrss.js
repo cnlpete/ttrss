@@ -20,6 +20,7 @@ var state={
     'username':         null,
     'password':         null,
     'httpauth':         { 'dobasicauth' : false },
+    'proxy':            '',
     'token':            null,
     'apilevel':         0,
     'showall':          false,      //boolean should all items be shown (or only those with unread stuff?)
@@ -122,6 +123,10 @@ function clearState() {
     responsesPending = JSON.parse(JSON.stringify(initial_responsesPending));
 
     trace(2, "State Cleared");
+}
+
+function setProxy(proxy) {
+    state['proxy'] = proxy
 }
 
 function setLoginDetails(username, password, url) {
@@ -823,6 +828,6 @@ function getIconUrl(feedId) {
         return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
         break;
     default:
-        return state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
+        return state['proxy'] + state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
     }
 }

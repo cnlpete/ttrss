@@ -16,6 +16,7 @@ class Settings : public QObject
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
     Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
+    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
 
     Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
     Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
@@ -26,6 +27,8 @@ class Settings : public QObject
     Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
     Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
+    Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
+    Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
 public:
     static Settings *instance();
 
@@ -53,6 +56,11 @@ public:
         return this->_useAutologin;
     }
     void setUseAutologin(bool useAutologin);
+
+    bool ignoreSSLErrors() const {
+        return this->_ignoreSSLErrors;
+    }
+    void setIgnoreSSLErrors(bool ignoreSSLErrors);
 
     QString httpauthUsername() const {
         return this->_httpauthuser;
@@ -94,12 +102,23 @@ public:
     }
     void setUseAllFeedsOnStartup(bool useAllFeedsOnStartup);
 
+    bool whiteBackgroundOnIcons() const {
+        return this->_whiteBackgroundOnIcons;
+    }
+    void setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons);
+
+    bool showAll() const {
+        return this->_showAll;
+    }
+    void setShowAll(bool showAll);
+
 signals:
     void servernameChanged();
     void usernameChanged();
     void passwordChanged();
     void autologinChanged();
     void useAutologinChanged();
+    void ignoreSSLErrorsChanged();
 
     void httpauthUsernameChanged();
     void httpauthPasswordChanged();
@@ -110,6 +129,8 @@ signals:
     void webviewFontSizeChanged();
     void autoMarkReadChanged();
     void useAllFeedsOnStartupChanged();
+    void whiteBackgroundOnIconsChanged();
+    void showAllChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -124,6 +145,7 @@ private:
     QString _password;
     bool _autologin;
     bool _useAutologin;
+    bool _ignoreSSLErrors;
 
     QString _httpauthuser;
     QString _httpauthpasswd;
@@ -134,5 +156,7 @@ private:
     int _webviewFontSize;
     bool _autoMarkRead;
     bool _useAllFeedsOnStartup;
+    bool _whiteBackgroundOnIcons;
+    bool _showAll;
 };
 #endif // SETTINGS_HH

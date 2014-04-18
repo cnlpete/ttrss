@@ -34,14 +34,14 @@ Page {
         id: settingsColumn
         anchors {
             top: pageHeader.bottom
-            topMargin: constant.paddingLarge
+            topMargin: MyTheme.paddingMedium
             left: parent.left
-            leftMargin: constant.paddingLarge
+            leftMargin: MyTheme.paddingMedium
             right: parent.right
-            rightMargin: constant.paddingLarge
+            rightMargin: MyTheme.paddingMedium
         }
         height: childrenRect.height
-        spacing: constant.paddingXLarge
+        spacing: MyTheme.paddingMedium
 
         SettingsButtonRow {
             text: qsTr("Theme")
@@ -59,37 +59,34 @@ Page {
 
         SettingsSliderRow {
             text: qsTr('Font Size')
-            min: 20
-            max: 30
+            minimumValue: MyTheme.fontSizeTiny
+            maximumValue: MyTheme.fontSizeExtraLarge
             value: settings.webviewFontSize
             onValueChanged: settings.webviewFontSize = value
         }
 
-        SettingsSwitchRow {
+        TextSwitch {
             text: qsTr('Automatically Mark Items as Read')
             checked: settings.autoMarkRead
             onCheckedChanged: settings.autoMarkRead = checked
         }
 
-        SettingsSwitchRow {
+        TextSwitch {
             text: qsTr('Show Icons')
             checked: settings.displayIcons
             onCheckedChanged: settings.displayIcons = checked
         }
 
-        SettingsSwitchRow {
+        TextSwitch {
             text: qsTr('Use All Feeds on Startup')
             checked: settings.useAllFeedsOnStartup
             onCheckedChanged: settings.useAllFeedsOnStartup = checked
         }
 
-        SettingsSwitchRow {
+        TextSwitch {
             text: qsTr('Automatically Login')
             checked: settings.useAutologin
             onCheckedChanged: settings.useAutologin = checked
         }
-
-
-
     }
 }

@@ -20,6 +20,7 @@ Page {
     Column {
         id: contentcontainer
         width: 350
+        spacing: MyTheme.paddingMedium
 
         anchors {
             horizontalCenter: parent.horizontalCenter
@@ -36,40 +37,53 @@ Page {
             anchors.bottomMargin: 50
         }
 
-        Label {
-            id: serverLabel
-            text: qsTr("Server:")
+        Column {
             width: parent.width
-            font.pixelSize: constant.fontSizeMedium
+            Label {
+                id: serverLabel
+                text: qsTr("Server:")
+                width: parent.width
+            }
+            TextField {
+                id: server
+                text: ""
+                width: parent.width
+                enabled: !network.loading
+            }
         }
-        TextField {
-            id: server
-            text: ""
+        Column {
             width: parent.width
-            enabled: !network.loading
+            Label {
+                id: usernameLabel
+                text: qsTr("Username:")
+                width: parent.width
+            }
+            TextField {
+                id: username
+                text: ""
+                width: parent.width
+                enabled: !network.loading
+            }
         }
-        Label {
-            id: usernameLabel
-            text: qsTr("Username:")
+        Column {
             width: parent.width
-            font.pixelSize: constant.fontSizeMedium
+            Label {
+                id: passwordLabel
+                text: qsTr("Password:")
+                width: parent.width
+            }
+            TextField {
+                id: password
+                echoMode: TextInput.Password
+                width: parent.width
+                enabled: !network.loading
+            }
         }
-        TextField {
-            id: username
-            text: ""
-            width: parent.width
-            enabled: !network.loading
-        }
-        Label {
-            id: passwordLabel
-            text: qsTr("Password:")
-            width: parent.width
-            font.pixelSize: constant.fontSizeMedium
-        }
-        TextField {
-            id: password
-            echoMode: TextInput.Password
-            width: parent.width
+        TextSwitch {
+            text: qsTr('Ignore SSL Errors')
+            visible: server.text.substring(0, 5) === "https"
+            checked: settings.ignoreSSLErrors
+            onCheckedChanged: settings.ignoreSSLErrors = checked
             enabled: !network.loading
         }
     }

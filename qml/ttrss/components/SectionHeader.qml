@@ -18,21 +18,26 @@ Item {
     height: sectionLabel.height
     width: parent.width
 
+    property Style platformStyle: SectionHeaderStyle {}
+
     Image {
         anchors.left: parent.left
         anchors.right: sectionLabel.left
-        anchors.rightMargin: constant.listItemSpacing
+        anchors.rightMargin: MyTheme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
 
-        source: "image://theme/meegotouch-groupheader"+(theme.inverted?"-inverted":"")+"-background"
+        source: platformStyle.backgroundImage
     }
 
     Label {
         id: sectionLabel
         anchors.right: parent.right
 
-        color: constant.sectionLabel
-        font.pixelSize: constant.fontSizeXSmall
+        platformStyle: LabelStyle {
+            textColor: platformStyle.textColor
+        }
+
+        font.pixelSize: MyTheme.fontSizeTiny
         font.weight: Font.Bold
 
         text: section

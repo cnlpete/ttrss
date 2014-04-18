@@ -16,11 +16,12 @@ import com.nokia.meego 1.0
 Item {
     id: root
 
-    property string text: ""
+    property alias text: label.text
 
     opacity: 0.4
 
     Label {
+        id: label
         anchors.fill: parent
 
         platformStyle: LabelStyle {
@@ -29,7 +30,6 @@ Item {
             inverted: theme.inverted
         }
 
-        text: root.text
         wrapMode: Text.WordWrap
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter

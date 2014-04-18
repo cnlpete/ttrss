@@ -23,7 +23,7 @@ Page {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
-            margins: constant.paddingLarge
+            margins: MyTheme.paddingMedium
         }
         ListView {
             id: listView

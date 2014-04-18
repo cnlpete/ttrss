@@ -9,38 +9,19 @@
 //You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
-import QtQuick 1.1
-import com.nokia.meego 1.0
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-Row {
-    id: root
-
-    property string text: ""
-    property bool checked: false
-
-    signal checkedChanged(bool checked)
-
-    width: parent.width
-    layoutDirection: Qt.RightToLeft
-    spacing: constant.paddingLarge
-
-    Switch {
-        id: myswitch
-        checked: root.checked
-        onCheckedChanged: {
-            root.checkedChanged(myswitch.checked)
+CoverBackground {
+    Column {
+        anchors.centerIn: parent
+        Image {
+            source: '/usr/share/icons/hicolor/86x86/apps/harbour-ttrss-cnlpete.png'
+            anchors.horizontalCenter: parent.horizontalCenter
         }
-        anchors.verticalCenter: parent.verticalCenter
-    }
-
-    Label {
-        font.pixelSize: constant.fontSizeMedium
-        text: root.text
-        anchors.verticalCenter: parent.verticalCenter
-
-    }
-
-    Component.onCompleted: {
-        myswitch.checked = root.checked
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Tiny Tiny RSS"
+        }
     }
 }

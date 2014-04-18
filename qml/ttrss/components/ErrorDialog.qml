@@ -31,7 +31,7 @@ Dialog {
         width: parent.width
         Text {
             id: errorDialogText
-            font.pixelSize: constant.fontSizeSmall
+            font.pixelSize: MyTheme.fontSizeSmall
             anchors.centerIn: parent
             color: "white"
             text: errorDialog.text

@@ -1,22 +1,56 @@
+//Copyright Hauke Schade, 2012-2013
+//
+//This file is part of TTRss.
+//
+//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
+//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+
+#if defined(Q_OS_SAILFISH)
+    #include <QGuiApplication>
+    #include <sailfishapp.h>
+    #include <QQuickView>
+    #include <QQmlEngine>
+    #include <QQmlContext>
+    #ifdef QT_QML_DEBUG
+        #include <QtQuick>
+    #endif
+#else
+    #include <QtGui/QApplication>
+    #include <QtDeclarative/QDeclarativeContext>
+    #include "qmlapplicationviewer.h"
+    #include <QDeclarativeEngine>
+#endif
+
 #include <QTranslator>
 #include <QLocale>
-#include <QtGui/QApplication>
-#include <QtDeclarative/QDeclarativeContext>
-#include "qmlapplicationviewer.h"
 
 #include "settings.hh"
-#include "mynetworkmanager.hh"
 #include "qmlutils.hh"
+#include "mynetworkmanager.hh"
+
+#if defined(Q_OS_SAILFISH)
+#else
+    #include "theme.hh"
+#endif
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
+#if defined(Q_OS_SAILFISH)
+    QGuiApplication *app = SailfishApp::application(argc, argv);
+#else
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+#endif
 
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName("ttrss");
     app->setOrganizationName("Hauke Schade");
 
     QString locale = QLocale::system().name();
+    qDebug() << "detected locale is " << locale;
     QTranslator translator;
     /* the ":/" is a special directory Qt uses to
     * distinguish resources;
@@ -29,19 +63,38 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (translator.load("qml-translation." + locale, ":/i18n"))
         app->installTranslator(&translator);
 
-    QmlApplicationViewer viewer;
+#if defined(Q_OS_SAILFISH)
+    QQuickView* viewer = SailfishApp::createView();
+#else
+    QmlApplicationViewer *viewer = new QmlApplicationViewer();
+    viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+
     //QObject::connect(viewer.engine(), SIGNAL(quit()), viewer.data, SLOT(close()));
-    viewer.setNetworkAccessManagerFactory(MyNetworkManager::instance());
-    viewer.rootContext()->setContextProperty("network", MyNetworkManager::instance());
+#endif
+    viewer->engine()->setNetworkAccessManagerFactory(MyNetworkManager::instance());
+    viewer->rootContext()->setContextProperty("network", MyNetworkManager::instance());
 
-    viewer.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
+    viewer->rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
 
-    viewer.rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
-    viewer.rootContext()->setContextProperty("settings", Settings::instance());
+    viewer->rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
+    viewer->rootContext()->setContextProperty("settings", Settings::instance());
 
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
-    viewer.showExpanded();
+#if defined(Q_OS_SAILFISH)
+#else
+    viewer->rootContext()->setContextProperty("MyTheme", Theme::instance());
+#endif
+
+#if defined(Q_OS_SAILFISH)
+    viewer->setSource(SailfishApp::pathTo("qml/sailfish/harbour-ttrss.qml"));
+#else
+    viewer->setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
+#endif
+
+#if defined(Q_OS_SAILFISH)
+    viewer->show();
+#else
+    viewer->showExpanded();
+#endif
 
     return app->exec();
 }

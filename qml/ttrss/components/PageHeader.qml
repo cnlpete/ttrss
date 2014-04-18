@@ -24,24 +24,26 @@ Item{
 
     signal updateActionActivated()
 
-    height: Math.max(constant.headerHeight, textColumn.height)
+    property Style platformStyle: PageHeaderStyle {}
+
+    height: Math.max(platformStyle.headerHeight, textColumn.height)
     width: parent.width
     visible: text !== ""
 
     Image {
         id: background
         anchors.fill: parent
-        source: "image://theme/color15-meegotouch-view-header-fixed"
+        source: platformStyle.backgroundImage
         sourceSize.width: parent.width
         sourceSize.height: parent.height
     }
 
     Image {
         id: logo
-        sourceSize.width: constant.headerLogoHeight
-        sourceSize.height: constant.headerLogoHeight
-        width: source.length > 3 ? constant.headerLogoHeight : 0
-        height: constant.headerLogoHeight
+        sourceSize.width: platformStyle.headerLogoHeight
+        sourceSize.height: platformStyle.headerLogoHeight
+        width: source.length > 3 ? platformStyle.headerLogoHeight : 0
+        height: platformStyle.headerLogoHeight
         visible: source.length > 3
         asynchronous: true
 
@@ -49,7 +51,7 @@ Item{
             verticalCenter: parent.verticalCenter
             left: parent.left
       //      right: mainText.left
-            margins: constant.paddingLarge
+            margins: MyTheme.paddingLarge
         }
     }
 
@@ -59,11 +61,11 @@ Item{
             verticalCenter: parent.verticalCenter
             left: logourl.length > 3 ? logo.right : parent.left
             right: updateAction.left
-            margins: constant.paddingXLarge
+            margins: MyTheme.paddingLarge
         }
         Label {
             id: mainText
-            font.pixelSize: constant.fontSizeXLarge
+            font.pixelSize: MyTheme.fontSizeLarge
             color: "white"
             elide: Text.ElideRight
             maximumLineCount: 3
@@ -81,7 +83,7 @@ Item{
         }
         Label {
             id: subText
-            font.pixelSize: constant.fontSizeSmall
+            font.pixelSize: MyTheme.fontSizeSmall
             color: "white"
             elide: Text.ElideRight
             maximumLineCount: 1
@@ -94,7 +96,7 @@ Item{
         id: updateAction
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
-        anchors.rightMargin: constant.paddingLarge
+        anchors.rightMargin: MyTheme.paddingLarge
         width: updateIcon.width
         height: updateIcon.height
         visible: hasUpdateAction || network.loading

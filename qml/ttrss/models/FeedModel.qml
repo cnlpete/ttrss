@@ -1,6 +1,16 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
-import QtQuick 1.1
-import com.nokia.meego 1.0
+//Copyright Hauke Schade, 2012-2013
+//
+//This file is part of TTRss.
+//
+//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
+//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+
+import QtQuick 1.1 // harmattan
+//import QtQuick 2.0 // sailfish
 
 ListModel {
     id: root
@@ -13,8 +23,8 @@ ListModel {
     function update() {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeeds(root.category.categoryId, function() {
-                              root.load();
-                          })
+            root.load()
+        })
     }
 
     function load() {
@@ -45,24 +55,33 @@ ListModel {
                     // note: cat_id is infact the id the feed originally was in, not the special id of All Feeds or similar
                     root.append({
                                     title:        title,
-                                    unreadcount:  feeds[feed].unread,
-                                    feedId:       feeds[feed].id,
-                                    categoryId:   feeds[feed].cat_id,
+                                    unreadcount:  parseInt(feeds[feed].unread),
+                                    feedId:       parseInt(feeds[feed].id),
+                                    categoryId:   parseInt(feeds[feed].cat_id),
                                     isCat:        false,
                                     icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
                                 })
-                    totalUnreadCount += feeds[feed].unread
+                    totalUnreadCount += parseInt(feeds[feed].unread)
                 }
             }
             if (root.count >= 2 && root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
                 root.insert(0, {
                                 title:        constant.allArticles,
                                 unreadcount:  totalUnreadCount,
-                                feedId:       root.category.categoryId,
-                                categoryId:   root.category.categoryId,
+                                feedId:       parseInt(root.category.categoryId),
+                                categoryId:   parseInt(root.category.categoryId),
                                 isCat:        true,
                                 icon:         ''
                             })
+        }
+    }
+
+    function getTotalUnreadItems() {
+        if (root.count <= 0)
+            return 0
+        else {
+            var m = root.get(0)
+            return m.unreadcount
         }
     }
 
@@ -78,7 +97,7 @@ ListModel {
         var m = root.getSelectedItem()
         ttrss.catchUp(m.feedId, function() {
                           var oldAmount = m.unreadcount
-                          root.setProperty(m, "unreadcount", 0)
+                          root.setProperty(selectedIndex, "unreadcount", 0)
                           root.feedUnreadChanged(m, oldAmount)
                       })
     }

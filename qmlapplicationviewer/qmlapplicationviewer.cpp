@@ -153,10 +153,6 @@ void QmlApplicationViewer::setOrientation(ScreenOrientation orientation)
     setAttribute(attribute, true);
 }
 
-void QmlApplicationViewer::setNetworkAccessManagerFactory(QDeclarativeNetworkAccessManagerFactory *networkfactory) {
-    engine()->setNetworkAccessManagerFactory(networkfactory);
-}
-
 void QmlApplicationViewer::showExpanded()
 {
 #if defined(Q_OS_SYMBIAN) || defined(MEEGO_EDITION_HARMATTAN) || defined(Q_WS_SIMULATOR)

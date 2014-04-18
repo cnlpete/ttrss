@@ -19,23 +19,23 @@ Item {
     signal pressAndHold
     property alias pressed: mouseArea.pressed
 
-    height: mainText.parent.height + constant.paddingLarge
+    height: mainText.parent.height + MyTheme.paddingMedium
     width: parent.width
 
     BorderImage {
         id: background
         anchors.fill: parent
         // Fill page borders
-        anchors.leftMargin: -constant.paddingLarge
-        anchors.rightMargin: -constant.paddingLarge
+        anchors.leftMargin: -MyTheme.paddingMedium
+        anchors.rightMargin: -MyTheme.paddingMedium
         visible: mouseArea.pressed
         source: "image://theme/meegotouch-list-background-selected-center"
     }
 
     Row {
-        spacing: constant.paddingMedium
+        spacing: MyTheme.paddingMedium
         anchors.fill: parent
-        anchors.leftMargin: icon.visible ? icon.width + constant.listItemSpacing : 0
+        anchors.leftMargin: icon.visible ? icon.width + MyTheme.paddingMedium : 0
         Image {
             source: "../resources/ic_star_enabled.png"
             visible: model.marked
@@ -53,7 +53,7 @@ Item {
     Row {
         anchors.left: parent.left
         anchors.right: drilldownarrow.left
-        spacing: constant.listItemSpacing
+        spacing: MyTheme.paddingMedium
         clip: true
 
         Image {
@@ -80,8 +80,10 @@ Item {
                 id: mainText
                 text: model.title
                 font.weight: Font.Bold
-                font.pixelSize: constant.fontSizeLarge
-                color: (model.unread > 0) ? constant.colorListItemActive : constant.colorListItemDisabled;
+                font.pixelSize: MyTheme.fontSizeLarge
+                color: (model.unread) ?
+                           (theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor) :
+                           (theme.inverted ? MyTheme.secondaryColorInverted : MyTheme.secondaryColor)
                 elide: Text.ElideRight
             }
 
@@ -89,15 +91,17 @@ Item {
                 id: subText
                 text: model.subtitle
                 font.weight: Font.Light
-                font.pixelSize: constant.fontSizeSmall
-                color: (model.unread > 0) ? constant.colorListItemActiveTwo : constant.colorListItemDisabled;
+                font.pixelSize: MyTheme.fontSizeSmall
+                color: (model.unread) ?
+                           (theme.inverted ? MyTheme.highlightColorInverted : MyTheme.highlightColor) :
+                           (theme.inverted ? MyTheme.secondaryHighlightColorInverted : MyTheme.secondaryHighlightColor)
                 elide: Text.ElideRight
                 visible: text != ""
             }
             Row {
                 id: myrow
                 property variant mymod: model
-                spacing: constant.paddingMedium
+                spacing: MyTheme.paddingSmall
 
                 Repeater {
                     model: myrow.mymod.labels

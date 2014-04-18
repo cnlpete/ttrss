@@ -17,11 +17,11 @@ Rectangle {
     id: root
     property variant label
 
-    width: text.width + constant.paddingSmall + constant.paddingSmall
-    height: text.height + constant.paddingSmall
+    width: text.width + MyTheme.paddingSmall + MyTheme.paddingSmall
+    height: text.height + MyTheme.paddingSmall
     color: root.label.bgcolor
-    radius: constant.paddingSmall
-    anchors.margins: constant.paddingSmall
+    radius: MyTheme.paddingSmall
+    anchors.margins: MyTheme.paddingSmall
     Text {
         anchors {
             verticalCenter: root.verticalCenter
@@ -30,7 +30,7 @@ Rectangle {
         id: text
         text: root.label.text
         color: root.label.fgcolor
-        font.pixelSize: constant.fontSizeXSmall
+        font.pixelSize: MyTheme.fontSizeExtraSmall
     }
     MouseArea {
         id: touchArea

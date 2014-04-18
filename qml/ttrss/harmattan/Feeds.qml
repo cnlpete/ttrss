@@ -30,7 +30,7 @@ Page {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
-            margins: constant.paddingLarge
+            margins: MyTheme.paddingMedium
         }
         ListView {
             id: listView
@@ -115,8 +115,8 @@ Page {
 
         content: Flickable {
             anchors.fill: parent
-            anchors.leftMargin: 10
-            anchors.topMargin: 10
+            anchors.leftMargin: MyTheme.paddingMedium
+            anchors.topMargin: MyTheme.paddingMedium
             flickableDirection: Flickable.VerticalFlick
             Column {
                 id: col2
@@ -127,7 +127,7 @@ Page {
                     id: serverLabel
                     text: qsTr("Feed address:")
                     width: parent.width
-                    font.pixelSize: constant.fontSizeMedium
+                    font.pixelSize: MyTheme.fontSizeMedium
                 }
                 TextField {
                     id: server
