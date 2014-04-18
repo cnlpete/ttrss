@@ -1,0 +1,27 @@
+Format: 1.8
+Date: Fri, 18 Apr 2014 13:47:08 +0200
+Source: ttrss
+Binary: ttrss
+Architecture: armel
+Version: 0.4.1
+Distribution: unstable
+Urgency: low
+Maintainer: Hauke Schade <cnlpete@cnlpete.de>
+Changed-By: Hauke Schade <cnlpete@cnlpete.de>
+Description: 
+ ttrss      - The Tiny Tiny RSS Reader for Meego
+Changes: 
+ ttrss (0.4.1) unstable; urgency=low
+ .
+   * now using the RescalingRichText by Martin Grimme instead of WebView
+   * added Ignore SSL cert option to login MainView
+   * remember the ShowAll option
+   * UI improvements
+   * various bugfixes
+Checksums-Sha1: 
+ 26fdf76f2976820328eff9d869bc0fccf675bcb3 126376 ttrss_0.4.1_armel.deb
+Checksums-Sha256: 
+ 8249ba2d7b811628a5d0e515f1628928fb545cb395133ff9565cf227d021de3c 126376 ttrss_0.4.1_armel.deb
+Files: 
+ b45ab62b1b1efd0b644322ee34a4e8c7 126376 user/internet optional ttrss_0.4.1_armel.deb
+Maemo-Display-Name: Tiny Tiny RSS Reader

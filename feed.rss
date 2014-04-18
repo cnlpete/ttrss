@@ -6,8 +6,25 @@
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
     <copyright>Hauke Schade, cnlpete@cnlpete.de</copyright>
-    <pubDate>Tue, 18 Feb 2014 18:02:27 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Feb 2014 18:02:27 +0100</lastBuildDate>
+    <pubDate>Fri, 18 Apr 2014 13:47:08 +0200</pubDate>
+    <lastBuildDate>Fri, 18 Apr 2014 13:47:08 +0200</lastBuildDate>
+
+    <item>
+      <title>Version 0.4.1</title>
+      <pubDate>Fri, 18 Apr 2014 13:47:08 +0200</pubDate>
+      <description>
+        <![CDATA[
+   * now using the RescalingRichText by Martin Grimme instead of WebView
+   * added Ignore SSL cert option to login MainView
+   * remember the ShowAll option
+   * UI improvements
+   * various bugfixes
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss041</guid>
+      <link>http://schad.es/ttrss041</link>
+    </item>
 
     <item>
       <title>Version 0.3.5</title>
