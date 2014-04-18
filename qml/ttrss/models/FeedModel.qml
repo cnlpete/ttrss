@@ -76,6 +76,15 @@ ListModel {
         }
     }
 
+    function getTotalUnreadItems() {
+        if (root.count <= 0)
+            return 0
+        else {
+            var m = root.get(0)
+            return m.unreadcount
+        }
+    }
+
     function getSelectedItem() {
         if (root.selectedIndex === -1)
             return null;

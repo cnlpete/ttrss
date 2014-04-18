@@ -41,7 +41,7 @@ CoverBackground {
             font.pixelSize: Theme.fontSizeHuge
             font.weight: Font.Light
             textFormat: Text.PlainText
-            text: categories.getSelectedItem().unreadcount
+            text: feeds.getTotalUnreadItems()
         }
         Label {
             text: qsTr("Unread Items")
