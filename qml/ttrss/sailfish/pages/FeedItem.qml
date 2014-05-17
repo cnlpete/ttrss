@@ -14,8 +14,8 @@ import Sailfish.Silica 1.0
 
 Page {
     id: root
-    property alias  pageTitle:      pageHeader.title
-    property alias  subTitle:       subtitleLabel.text
+    property alias  pageTitle:      subtitleLabel.text
+    property alias  subTitle:       pageHeader.title
     property string url:            ""
     property string date:           ""
     property bool   marked:         false
@@ -100,7 +100,7 @@ Page {
                     width: parent.width - starImage.width - rssImage.width
                     text: ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    textFormat: Text.PlainText
+                    textFormat: Text.RichText
                     color: Theme.highlightColor
                 }
                 Image {
