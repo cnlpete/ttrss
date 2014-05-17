@@ -99,7 +99,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>elementos no leídos</translation>
     </message>
 </context>
 <context>
@@ -323,7 +323,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>elementos no leídos</translation>
     </message>
 </context>
 <context>
@@ -402,7 +402,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>elementos no leídos</translation>
     </message>
 </context>
 <context>

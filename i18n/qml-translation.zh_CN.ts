@@ -99,7 +99,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>未读项目</translation>
     </message>
 </context>
 <context>
@@ -194,12 +194,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Hide Dock</source>
-        <translation type="unfinished"/>
+        <translation>隐藏Dock</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="52"/>
         <source>Open Dock</source>
-        <translation type="unfinished"/>
+        <translation>显示Dock</translation>
     </message>
 </context>
 <context>
@@ -323,7 +323,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>未读项目</translation>
     </message>
 </context>
 <context>
@@ -402,7 +402,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>未读项目</translation>
     </message>
 </context>
 <context>
@@ -447,7 +447,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
-        <translation type="unfinished"/>
+        <translation>忽略SSL错误</translation>
     </message>
 </context>
 <context>
@@ -524,37 +524,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Show a White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation>图标上显示白色背景</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation type="unfinished"/>
+        <translation>需重启软件后设置才会生效.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <source>Tiny</source>
-        <translation type="unfinished"/>
+        <translation>非常小</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Small</source>
-        <translation type="unfinished"/>
+        <translation>小</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <source>Medium</source>
-        <translation type="unfinished"/>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Large</source>
-        <translation type="unfinished"/>
+        <translation>大</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <source>Huge</source>
-        <translation type="unfinished"/>
+        <translation>非常大</translation>
     </message>
 </context>
 <context>
