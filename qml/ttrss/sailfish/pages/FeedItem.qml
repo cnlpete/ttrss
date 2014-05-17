@@ -147,7 +147,7 @@ Page {
                     leftMargin: Theme.paddingLarge
                     rightMargin: Theme.paddingLarge
                 }
-                onLinkActivated: pageStack.push(Qt.openUrlExternally(url))
+                onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
             }
         }
     }
