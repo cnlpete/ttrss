@@ -38,8 +38,6 @@ Page {
             bottomMargin: panel.open ? panel.height : 0
         }
 
-        VerticalScrollDecorator { }
-
         PullDownMenu {
 //            AboutItem {}
 //            SettingsItem {}
@@ -150,6 +148,12 @@ Page {
                 onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
             }
         }
+        VerticalScrollDecorator { }
+// TODO make the FancyScroller work with SilicaFlickable aswell
+//        FancyScroller {
+//            flickable: flick
+//            anchors.fill: parent
+//        }
     }
     BusyIndicator {
         visible: network.loading
