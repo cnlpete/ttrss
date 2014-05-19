@@ -35,7 +35,7 @@ Item {
     property alias color: contentText.color
     property real fontSize: Theme.fontSizeSmall
 
-    property string _RICHTEXT_STYLESHEET_PREAMBLE: "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>a { text-decoration: none; color: '" + Theme.secondaryHighlightColor + "' }</style></head><body>";
+    property string _RICHTEXT_STYLESHEET_PREAMBLE: "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>a { text-decoration: none; color: '" + Theme.highlightColor + "' }</style></head><body>";
     property string _RICHTEXT_STYLESHEET_APPENDIX: "</body></html>";
 
     property real scaling: 1
