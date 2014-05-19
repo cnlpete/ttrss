@@ -46,7 +46,7 @@ Item {
     clip: true
 
     onWidthChanged: {
-        rescaleTimer.restart();
+        rescaleTimer.restart()
     }
 
     Text {
@@ -60,15 +60,15 @@ Item {
         text: "<style>* { font-size: 1px }</style>" + parent.text
 
         onContentWidthChanged: {
-            console.log("contentWidth: " + contentWidth);
-            rescaleTimer.restart();
+            console.log("contentWidth: " + contentWidth)
+            rescaleTimer.restart()
         }
     }
 
     Text {
         id: contentText
 
-        width: parent.width / scaling
+        width: Math.max(1, parent.width) / scaling
         scale: scaling
 
         transformOrigin: Item.TopLeft
@@ -80,7 +80,7 @@ Item {
 //        text: _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
 
         onLinkActivated: {
-            root.linkActivated(link);
+            root.linkActivated(link)
         }
     }
 
@@ -89,12 +89,12 @@ Item {
         interval: 100
 
         onTriggered: {
-            var contentWidth = Math.floor(layoutText.contentWidth);
-            scaling = Math.min(1, parent.width / (layoutText.contentWidth + 0.0));
-            console.log("scaling: " + scaling);
+            var contentWidth = Math.floor(layoutText.contentWidth + 0.0)
+            scaling = Math.min(1, parent.width / contentWidth)
+            console.log("scaling: " + scaling)
 
             // force reflow
-//            contentText.text = contentText.text + " ";
+//            contentText.text = contentText.text + " "
             contentText.text = _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
 
         }
