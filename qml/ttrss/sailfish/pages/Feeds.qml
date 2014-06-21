@@ -61,10 +61,6 @@ Page {
             size: BusyIndicatorSize.Large
         }
         VerticalScrollDecorator { }
-        FancyScroller {
-            flickable: parent
-            anchors.fill: parent
-        }
     }
 
     function showFeed(feedModel) {
