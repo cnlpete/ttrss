@@ -11,6 +11,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../items"
 
 ListItem {
     id: listItem
@@ -37,6 +38,12 @@ ListItem {
         }
 
         visible: settings.displayIcons && model.icon != ''
+        BusyIndicator {
+            visible: parent.status == Image.Loading
+            running: visible
+            anchors.centerIn: parent
+        }
+
         Rectangle {
             color: "white"
             anchors.fill: parent

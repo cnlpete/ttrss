@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="16"/>
         <location filename="../qml/ttrss/sailfish/items/AboutItem.qml" line="16"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="22"/>
         <location filename="../qml/ttrss/sailfish/items/AboutItem.qml" line="22"/>
         <source>Buy me a beer</source>
-        <translation>Buy me a beer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="24"/>
         <location filename="../qml/ttrss/sailfish/items/AboutItem.qml" line="24"/>
         <source>Author: %1</source>
-        <translation>Author: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="25"/>
         <location filename="../qml/ttrss/sailfish/items/AboutItem.qml" line="25"/>
         <source>Thanks to:</source>
-        <translation>Contributors:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="28"/>
         <location filename="../qml/ttrss/sailfish/items/AboutItem.qml" line="28"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
-        <translation>If you encounter bugs or have feature requests, please visit the Issue Tracker</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="89"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="108"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="125"/>
         <source>Donate</source>
-        <translation>Donate</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="99"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="135"/>
         <source>Homepage</source>
-        <translation>Homepage</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="131"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="150"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="167"/>
         <source>Issuetracker</source>
-        <translation>Issuetracker</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/components/AboutPage.qml" line="168"/>
+        <location filename="../qml/ttrss/components/AboutPage.qml" line="185"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="42"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="45"/>
         <source>License</source>
-        <translation>License</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/components/AboutPage.qml" line="174"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="53"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="56"/>
+        <location filename="../qml/ttrss/components/AboutPage.qml" line="191"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="67"/>
         <source>Privacy Policy</source>
-        <translation>Privacy Policy</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -75,25 +75,25 @@
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="46"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="48"/>
         <source>Loading</source>
-        <translation>Loading</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="49"/>
-        <source>No categories have unread items</source>
-        <translation>No categories with unread items</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="49"/>
         <source>No categories to display</source>
-        <translation>No categories</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="49"/>
+        <source>No categories have unread items</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="63"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="43"/>
         <source>Tiny Tiny RSS Reader</source>
-        <translation>Tiny Tiny RSS Reader</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/CategoriesCover.qml" line="39"/>
         <source>Unread Items</source>
-        <translation>Unread Items</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -109,52 +109,52 @@
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="23"/>
         <source>Archived articles</source>
-        <translation>Archived articles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="24"/>
         <source>Starred articles</source>
-        <translation>Starred articles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="25"/>
         <source>Published articles</source>
-        <translation>Published articles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="26"/>
         <source>Fresh articles</source>
-        <translation>Fresh articles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="27"/>
         <source>All articles</source>
-        <translation>All articles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="28"/>
         <source>Recently read</source>
-        <translation>Recently read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="30"/>
         <source>Labels</source>
-        <translation>Labels</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="31"/>
         <source>Special</source>
-        <translation>Special</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="32"/>
         <source>All Feeds</source>
-        <translation>All feeds</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="33"/>
         <source>Uncategorized</source>
-        <translation>Uncategorized</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../qml/ttrss/components/ErrorDialog.qml" line="44"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -170,12 +170,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="84"/>
         <source>Mark all read</source>
-        <translation>Mark all as read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="89"/>
         <source>Unsubscribe</source>
-        <translation>Unsubscribe</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -186,22 +186,22 @@
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="226"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="45"/>
         <source>Open in Web Browser</source>
-        <translation>Open in web browser</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="232"/>
         <source>Share</source>
-        <translation>Share</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="50"/>
         <source>Hide Dock</source>
-        <translation>Hide Dock</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="50"/>
         <source>Open Dock</source>
-        <translation>Show Dock</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -209,37 +209,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="116"/>
         <source>Unstar</source>
-        <translation>Unstar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="116"/>
         <source>Star</source>
-        <translation>Star</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
         <source>Unpublish</source>
-        <translation>Unpublish</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
         <source>Publish</source>
-        <translation>Publish</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="128"/>
         <source>Mark read</source>
-        <translation>Mark read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="128"/>
         <source>Mark Unread</source>
-        <translation>Mark unread</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="134"/>
         <source>Open in Web Browser</source>
-        <translation>Open in web browser</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -247,7 +247,7 @@
     <message>
         <location filename="../qml/ttrss/models/FeedItemModel.qml" line="60"/>
         <source>Today</source>
-        <translation>Today</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -257,67 +257,67 @@
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="66"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="70"/>
         <source>Load more</source>
-        <translation>Load more</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="83"/>
         <source>Loading</source>
-        <translation>Loading</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="81"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="84"/>
         <source>No items in feed</source>
-        <translation>No items in feed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="81"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="84"/>
         <source>No unread items in feed</source>
-        <translation>No unread items in feed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="120"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="45"/>
         <source>Mark all read</source>
-        <translation>Mark all as read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="138"/>
         <source>Unstar</source>
-        <translation>Unstar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="138"/>
         <source>Star</source>
-        <translation>Star</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="143"/>
         <source>Unpublish</source>
-        <translation>Unpublish</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="143"/>
         <source>Publish</source>
-        <translation>Publish</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="148"/>
         <source>Mark read</source>
-        <translation>Mark read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="148"/>
         <source>Mark Unread</source>
-        <translation>Mark unread</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="153"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="158"/>
         <source>Open in Web Browser</source>
-        <translation>Open in web browser</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -325,7 +325,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedItemsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation>Unread Items</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -334,69 +334,69 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="57"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="54"/>
         <source>Loading</source>
-        <translation>Loading</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="58"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="55"/>
         <source>No feeds in category</source>
-        <translation>No feeds in category</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="58"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="55"/>
         <source>Category has no unread items</source>
-        <translation>Category has no feeds with unread items</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="95"/>
         <source>Add subscription</source>
-        <translation>Add subscription</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="113"/>
         <source>Add</source>
-        <translation>Add</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="114"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="128"/>
         <source>Feed address:</source>
-        <translation>Feed address:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="152"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="157"/>
         <source>Invalid URL</source>
-        <translation>Invalid URL</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="162"/>
         <source>Already suscribed to Feed</source>
-        <translation>Already suscribed to feed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="166"/>
         <source>Feed added</source>
-        <translation>Feed added</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="182"/>
         <source>Mark all read</source>
-        <translation>Mark all as read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="187"/>
         <source>Unsubscribe</source>
-        <translation>Unsubscribe</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/FeedsCover.qml" line="47"/>
         <source>Unread Items</source>
-        <translation>Unread Items</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -413,43 +413,43 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="44"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="52"/>
         <source>Server:</source>
-        <translation>Server:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="58"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
         <source>Username:</source>
-        <translation>Username:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="76"/>
         <source>Password:</source>
-        <translation>Password:</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
-        <source>Clear</source>
-        <translation>Clear</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="113"/>
-        <source>Login</source>
-        <translation>Login</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="26"/>
-        <source>No Account Yet?</source>
-        <translation>No account yet?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="87"/>
         <source>Ignore SSL Errors</source>
-        <translation>Ignore SSL Errors</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="113"/>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="26"/>
+        <source>No Account Yet?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -458,105 +458,105 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="30"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="35"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="47"/>
         <source>Theme</source>
-        <translation>Theme</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="49"/>
         <source>Dark</source>
-        <translation>Dark</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="49"/>
         <source>White</source>
-        <translation>White</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="54"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="49"/>
         <source>Order</source>
-        <translation>Order</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="56"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="43"/>
         <source>Newest First</source>
-        <translation>Newest first</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="56"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="44"/>
         <source>Oldest First</source>
-        <translation>Oldest first</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="61"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="89"/>
         <source>Font Size</source>
-        <translation>Fontsize</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="57"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Automatically mark items as read</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="63"/>
         <source>Show Icons</source>
-        <translation>Show icons</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="81"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="75"/>
         <source>Use All Feeds on Startup</source>
-        <translation>Use &apos;All feeds&apos; on startup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="87"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="82"/>
         <source>Automatically Login</source>
-        <translation>Automatically login on start</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="69"/>
         <source>Show a White Background on Icons</source>
-        <translation>Show a White Background on Icons</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="76"/>
         <source>You need to restart the App for this to take effect.</source>
-        <translation>You need to restart the App for this to take effect.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <source>Tiny</source>
-        <translation>Tiny</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="100"/>
         <source>Small</source>
-        <translation>Small</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="103"/>
         <source>Medium</source>
-        <translation>Medium</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="106"/>
         <source>Large</source>
-        <translation>Large</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="109"/>
         <source>Huge</source>
-        <translation>Huge</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -565,7 +565,7 @@
         <location filename="../qml/ttrss/components/SettingsItem.qml" line="16"/>
         <location filename="../qml/ttrss/sailfish/items/SettingsItem.qml" line="16"/>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -573,7 +573,7 @@
     <message>
         <location filename="../qml/ttrss/components/SimplePopup.qml" line="45"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -582,13 +582,13 @@
         <location filename="../qml/ttrss/components/ToggleShowAllItem.qml" line="22"/>
         <location filename="../qml/ttrss/sailfish/items/ToggleShowAllItem.qml" line="20"/>
         <source>Show Unread Only</source>
-        <translation>Show unread only</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/ToggleShowAllItem.qml" line="22"/>
         <location filename="../qml/ttrss/sailfish/items/ToggleShowAllItem.qml" line="20"/>
         <source>Show All</source>
-        <translation>Show all</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

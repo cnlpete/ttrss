@@ -11,13 +11,15 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../items"
 
-Page {
+Dialog {
     id: settingsPage
 
     SilicaFlickable {
         anchors.fill: parent
-        contentWidth: settingsColumn.width
+
+        //contentWidth: settingsColumn.width
         contentHeight: settingsColumn.height
         Column {
             id: settingsColumn
@@ -29,7 +31,7 @@ Page {
             }
             spacing: Theme.paddingMedium
 
-            PageHeader {
+            DialogHeader {
                 title: qsTr("Settings")
             }
 
@@ -43,44 +45,46 @@ Page {
                 }
             }
             ComboBoxList {
+                id: orderSetting
                 label: qsTr("Order")
                 model: orderItems
                 initialValue: settings.feeditemsOrder
-                onCurrentIndexChanged: settings.feeditemsOrder = currentIndex
             }
 
 
             TextSwitch {
+                id: autoMarkReadSetting
                 text: qsTr('Automatically Mark Items as Read')
                 checked: settings.autoMarkRead
-                onCheckedChanged: settings.autoMarkRead = checked
             }
 
             TextSwitch {
+                id: showIconsSetting
                 text: qsTr('Show Icons')
                 checked: settings.displayIcons
-                onCheckedChanged: settings.displayIcons = checked
             }
             TextSwitch {
+                id: showWhiteBackgroundSetting
+                visible: showIconsSetting.checked
                 text: qsTr('Show a White Background on Icons')
                 checked: settings.whiteBackgroundOnIcons
-                onCheckedChanged: settings.whiteBackgroundOnIcons = checked
             }
 
             TextSwitch {
+                id: useAllFeedsOnStartupSetting
                 text: qsTr('Use All Feeds on Startup')
                 description: qsTr('You need to restart the App for this to take effect.')
                 checked: settings.useAllFeedsOnStartup
-                onCheckedChanged: settings.useAllFeedsOnStartup = checked
             }
 
             TextSwitch {
+                id: autoLoginSetting
                 text: qsTr('Automatically Login')
                 checked: settings.useAutologin
-                onCheckedChanged: settings.useAutologin = checked
             }
 
             Slider {
+                id: fontSizeSetting
                 anchors { left: parent.left; right: parent.right }
                 label: qsTr('Font Size')
                 minimumValue: Theme.fontSizeTiny
@@ -108,8 +112,17 @@ Page {
                         value
                     }
                 }
-                onValueChanged: settings.webviewFontSize = value
             }
         }
+    }
+
+    onAccepted: {
+        settings.feeditemsOrder = orderSetting.currentIndex
+        settings.autoMarkRead = autoMarkReadSetting.checked
+        settings.displayIcons = showIconsSetting.checked
+        settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
+        settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+        settings.useAutologin = autoLoginSetting.checked
+        settings.webviewFontSize = fontSizeSetting.value
     }
 }

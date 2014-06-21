@@ -13,22 +13,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 MenuItem {
-    text: qsTr("About")
+    text: qsTr("Settings")
     onClicked: {
-        var params = {
-            title : 'ttrss ' + APP_VERSION,
-            iconSource: Qt.resolvedUrl('/usr/share/icons/hicolor/86x86/apps/harbour-ttrss-cnlpete.png'),
-//            slogan : '',
-            donatebutton: qsTr("Buy me a beer"),
-            donateurl: constant.donateUrl,
-            text: qsTr("Author: %1").arg("Hauke Schade") + "<br/>"
-                   + qsTr("Thanks to:") + " "
-                    + "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, gwmgdemj, equeim",
-            homepageurl: constant.sourceRepoSite,
-            issuetrackertext: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker"),
-            issuetrackerurl: constant.issueTrackerUrl
-        }
-
-        pageStack.push(Qt.resolvedUrl("AboutPage.qml"), params);
+        pageStack.push(Qt.resolvedUrl("../pages/Settings.qml"));
     }
 }

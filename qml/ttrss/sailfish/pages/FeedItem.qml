@@ -14,8 +14,8 @@ import Sailfish.Silica 1.0
 
 Page {
     id: root
-    property alias  pageTitle:      pageHeader.title
-    property alias  subTitle:       subtitleLabel.text
+    property alias  pageTitle:      subtitleLabel.text
+    property alias  subTitle:       pageHeader.title
     property string url:            ""
     property string date:           ""
     property bool   marked:         false
@@ -37,8 +37,6 @@ Page {
             fill: parent
             bottomMargin: panel.open ? panel.height : 0
         }
-
-        VerticalScrollDecorator { }
 
         PullDownMenu {
 //            AboutItem {}
@@ -100,7 +98,7 @@ Page {
                     width: parent.width - starImage.width - rssImage.width
                     text: ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    textFormat: Text.PlainText
+                    textFormat: Text.RichText
                     color: Theme.highlightColor
                 }
                 Image {
@@ -147,9 +145,15 @@ Page {
                     leftMargin: Theme.paddingLarge
                     rightMargin: Theme.paddingLarge
                 }
-                onLinkActivated: pageStack.push(Qt.openUrlExternally(url))
+                onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
             }
         }
+        VerticalScrollDecorator { }
+// TODO make the FancyScroller work with SilicaFlickable aswell
+//        FancyScroller {
+//            flickable: flick
+//            anchors.fill: parent
+//        }
     }
     BusyIndicator {
         visible: network.loading
