@@ -189,11 +189,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="232"/>
-        <source>Share</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="50"/>
         <source>Hide Dock</source>
         <translation type="unfinished"></translation>
