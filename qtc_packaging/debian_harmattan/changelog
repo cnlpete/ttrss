@@ -1,3 +1,8 @@
+ttrss (0.4.3) unstable; urgency=low
+  * updated translations
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sat, 21 Jun 2014 15:32:03 +0200
+
 ttrss (0.4.1) unstable; urgency=low
   * now using the RescalingRichText by Martin Grimme instead of WebView
   * added Ignore SSL cert option to login MainView
