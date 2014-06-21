@@ -7,7 +7,7 @@
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
 
-VERSION = 0.4.2
+VERSION = 0.4.3
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_SAILFISH
