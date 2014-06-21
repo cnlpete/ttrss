@@ -73,6 +73,35 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/compat \
     qtc_packaging/debian_harmattan/changelog
 
+TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
+
+# Translation source directories
+TRANSLATION_SOURCE_CANDIDATES = $${_PRO_FILE_PWD_}/src $${_PRO_FILE_PWD_}/qml
+for(dir, TRANSLATION_SOURCE_CANDIDATES) {
+    exists($$dir) {
+        TRANSLATION_SOURCES += $$dir
+    }
+}
+
+# The target would really be $$TS_FILE, but we use a non-file target to emulate .PHONY
+update_translations.target = update_translations
+update_translations.commands += mkdir -p translations && lupdate $${TRANSLATION_SOURCES} -ts $${TS_FILE}
+QMAKE_EXTRA_TARGETS += update_translations
+PRE_TARGETDEPS += update_translations
+
+build_translations.target = build_translations
+build_translations.commands += lrelease $${_PRO_FILE_}
+QMAKE_EXTRA_TARGETS += build_translations
+POST_TARGETDEPS += build_translations
+
+TRANSLATIONS += i18n/qml-translation.cs.ts \
+    i18n/qml-translation.de.ts \
+    i18n/qml-translation.en.ts \
+    i18n/qml-translation.es.ts \
+    i18n/qml-translation.fr.ts \
+    i18n/qml-translation.ru.ts \
+    i18n/qml-translation.zh_CN.ts
+
 contains(MEEGO_EDITION,harmattan) {
     icon.files = images/ttrss80.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
