@@ -37,6 +37,12 @@ ListItem {
         }
 
         visible: settings.displayIcons && model.icon != ''
+        BusyIndicator {
+            visible: parent.status == Image.Loading
+            running: visible
+            anchors.centerIn: parent
+        }
+
         Rectangle {
             color: "white"
             anchors.fill: parent
