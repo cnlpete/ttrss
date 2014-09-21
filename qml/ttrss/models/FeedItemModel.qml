@@ -151,7 +151,7 @@ ListModel {
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        ttrss.catchUp(feed.feedId, function() {
+        ttrss.catchUp(feed.feedId, feed.isCat, function() {
                           for(var feeditem = 0; feeditem < root.count; feeditem++) {
                               var item = root.get(feeditem)
                               if (item.unread) {

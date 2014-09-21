@@ -405,7 +405,6 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="166"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="55"/>
         <source>Feed added</source>
         <translation type="unfinished"></translation>
     </message>

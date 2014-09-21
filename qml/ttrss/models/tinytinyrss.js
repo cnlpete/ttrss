@@ -545,7 +545,7 @@ function processPendingRequests(callback) {
     return foundWork;
 }
 
-function catchUp(feedId, callback) {
+function catchUp(feedId, isCat, callback) {
     if(responsesPending['catchup'])
         return;
 
@@ -561,7 +561,8 @@ function catchUp(feedId, callback) {
     var params = {
         'op': 'catchupFeed',
         'sid': state['token'],
-        'feed_id': feedId
+        'feed_id': feedId,
+        'is_cat': isCat
     }
 
     networkCall(params, function(http) {

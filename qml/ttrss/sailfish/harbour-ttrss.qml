@@ -70,8 +70,17 @@ ApplicationWindow
             // if there is an 'all feed items' update that aswell
             if (feeds.count > 1) {
                 var m = feeds.get(0)
-                if (m.isCat) // just check to be sure
-                    feeds.setProperty(0, "unreadcount", op(m.unreadcount))
+
+                if (m.isCat) { // just check to be sure
+
+                    if (feed.isCat && m.feedId == feed.feedId) {
+                        // we can not determine where to substract
+                        ///TODO
+                    }
+                    else {
+                        feeds.setProperty(0, "unreadcount", op(m.unreadcount))
+                    }
+                }
             }
         }
     }
