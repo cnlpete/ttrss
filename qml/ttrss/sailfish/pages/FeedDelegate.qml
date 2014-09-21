@@ -87,7 +87,7 @@ ListItem {
                 } }
             MenuItem {
                 text: qsTr("Unsubscribe")
-                visible: model.feedId >= 0
+                visible: model.feedId >= 0 && !model.isCat
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
                     ttrss.unsubscribe(model.feedId, function() { feeds.update() })
