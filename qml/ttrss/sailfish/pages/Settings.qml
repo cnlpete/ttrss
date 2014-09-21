@@ -21,6 +21,11 @@ Dialog {
 
         //contentWidth: settingsColumn.width
         contentHeight: settingsColumn.height
+
+        PullDownMenu {
+            AboutItem {}
+        }
+
         Column {
             id: settingsColumn
             anchors {

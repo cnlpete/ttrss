@@ -47,6 +47,16 @@ Page {
                     feedItems.catchUp()
                 }
             }
+            MenuItem {
+                text: qsTr("Update")
+                enabled: !network.loading
+                onClicked: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = false
+                    feedItems.clear()
+                    feedItems.update()
+                }
+            }
         }
 
         section {

@@ -29,7 +29,7 @@ Page {
         model: feeds
 
         PullDownMenu {
-            AboutItem {}
+            //AboutItem {}
             SettingsItem {}
             ToggleShowAllItem {
                 onUpdateView: {
@@ -76,9 +76,14 @@ Page {
                                             }
                                         })
                     })
-
                 }
-
+            }
+            MenuItem {
+                text: qsTr("Update")
+                enabled: !network.loading
+                onClicked: {
+                    feeds.update()
+                }
             }
         }
 
