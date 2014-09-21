@@ -1,4 +1,4 @@
-//Copyright Hauke Schade, 2012-2013
+//Copyright Hauke Schade, 2012-2014
 //
 //This file is part of TTRss.
 //
@@ -117,7 +117,6 @@ Page {
 
     onVisibleChanged: {
         if (visible) {
-            console.log("now repalcing with FeedsCover")
             cover = Qt.resolvedUrl("../cover/FeedsCover.qml")
         }
     }
