@@ -73,9 +73,11 @@ PageStackWindow {
 
                 if (m.isCat) { // just check to be sure
 
-                    if (feed.isCat && m.feedId == feed.feedId) {
-                        // we can not determine where to substract
-                        ///TODO
+                    if (feed.isCat && m.feedId == feed.feedId && feed.unreadcount == 0) {
+                        // we can not determine where to substract, but when all is 0, we can update accordingly
+                        for (var i = 1; i < feeds.count; i++) {
+                            feeds.setProperty(i, "unreadcount", 0)
+                        }
                     }
                     else {
                         feeds.setProperty(0, "unreadcount", op(m.unreadcount))
