@@ -3,28 +3,35 @@ import Sailfish.Silica 1.0
 
 
 ComboBox {
-    property string initialValue
+    property int initialValue
     property alias model: repeater.model
+    property bool withTimer: true
 
     function getInitialValue() {
-        var found = false;
-        var i = 0;
-        while ((!found) && (i < model.count)) {
+        for (var i = 0; i < model.count; i++) {
             if (repeater.model.get(i).value == initialValue) {
-                box.currentIndex = i;
-                found = true;
+                box.currentIndex = i
+                break
             }
-            i++;
         }
     }
 
-    Component.onCompleted: timer.start()
+    function startTimer() {
+        timer.start()
+    }
+
+    Component.onCompleted: {
+        if (withTimer)
+            timer.start()
+    }
 
     id: box
     menu: ContextMenu {
           Repeater {
                id: repeater
-               MenuItem { text: model.name }
+               MenuItem {
+                   text: model.name
+               }
           }
     }
 

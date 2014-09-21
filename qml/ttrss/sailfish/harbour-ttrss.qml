@@ -48,6 +48,10 @@ ApplicationWindow
 
     Constants{ id: constant }
 
+    Notification {
+        id: notification
+    }
+
     CategoryModel {
         id: categories
     }

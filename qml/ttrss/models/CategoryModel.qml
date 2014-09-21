@@ -16,6 +16,7 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
+    signal updateFinished()
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
@@ -50,20 +51,25 @@ ListModel {
 
                 root.append({
                                 title:       title,
-                                unreadcount: parseInt(categories[category].unread),
-                                categoryId:  parseInt(categories[category].id)
+                                name:        title,
+                                categoryId:  parseInt(categories[category].id),
+                                value:       parseInt(categories[category].id),
+                                unreadcount: parseInt(categories[category].unread)
                             });
             }
 
             if(totalUnreadCount > 0 || showAll) {
                 //Add the "All" category
                 root.insert(0, {
-                                title: constant.allFeeds,
-                                categoryId: parseInt(ttrss.constants['categories']['ALL']),
-                                unreadcount: totalUnreadCount,
+                                title:          constant.allFeeds,
+                                name:           constant.allFeeds,
+                                categoryId:     parseInt(ttrss.constants['categories']['ALL']),
+                                value:          parseInt(ttrss.constants['categories']['ALL']),
+                                unreadcount:    totalUnreadCount
                             });
             }
         }
+        updateFinished()
     }
 
     function getTotalUnreadItems() {
