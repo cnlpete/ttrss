@@ -89,30 +89,35 @@
     <name>Categories</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="46"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="55"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="62"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="63"/>
         <source>No categories have unread items</source>
         <translation>无未阅读条目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="47"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="63"/>
         <source>No categories to display</source>
         <translation>无条目可显示</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="63"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="50"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="57"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS 阅读器</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="34"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="29"/>
+        <source>Logout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="36"/>
         <source>Update</source>
         <translation type="unfinished"/>
     </message>
@@ -300,7 +305,7 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="120"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="45"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="55"/>
         <source>Mark all read</source>
         <translation>标记所有为已读</translation>
     </message>
@@ -341,7 +346,7 @@
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="51"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="37"/>
         <source>Update</source>
         <translation type="unfinished"/>
     </message>
@@ -358,25 +363,25 @@
     <name>Feeds</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="57"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="103"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="110"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="58"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="104"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="111"/>
         <source>No feeds in category</source>
         <translation>无订阅类别</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="58"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="104"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="111"/>
         <source>Category has no unread items</source>
         <translation>此类订阅无任何未读条目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="95"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="40"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="35"/>
         <source>Add subscription</source>
         <translation>添加订阅</translation>
     </message>
@@ -402,7 +407,7 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="157"/>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="60"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="55"/>
         <source>Invalid URL</source>
         <translation>地址无效</translation>
     </message>
@@ -427,37 +432,42 @@
         <translation>退订</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="52"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="47"/>
         <source>Already subscribed to Feed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="63"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="58"/>
         <source>URL content is HTML, no feeds available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="66"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="61"/>
         <source>URL content is HTML which contains multiple feeds</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="69"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="64"/>
         <source>Couldn&apos;t download the URL content</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="72"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="67"/>
         <source>Content is an invalid XML</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="75"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="70"/>
         <source>An error occured while subscribing to the feed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="82"/>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="77"/>
+        <source>Logout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="84"/>
         <source>Update</source>
         <translation type="unfinished"/>
     </message>
@@ -474,43 +484,43 @@
     <name>MainPage</name>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="44"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="52"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="54"/>
         <source>Server:</source>
         <translation>服务器:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="66"/>
         <source>Username:</source>
         <translation>用户名:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="72"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="76"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
         <source>Password:</source>
         <translation>密码:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="98"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="113"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="115"/>
         <source>Login</source>
         <translation>登陆</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="26"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="28"/>
         <source>No Account Yet?</source>
         <translation>还没有账号?</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="87"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="89"/>
         <source>Ignore SSL Errors</source>
         <translation>忽略SSL错误</translation>
     </message>
