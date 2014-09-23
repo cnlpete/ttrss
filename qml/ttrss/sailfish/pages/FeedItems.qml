@@ -33,6 +33,16 @@ Page {
         PullDownMenu {
 //            AboutItem {}
 //            SettingsItem {}
+            MenuItem {
+                text: qsTr("Update")
+                enabled: !network.loading
+                onClicked: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = false
+                    feedItems.clear()
+                    feedItems.update()
+                }
+            }
             ToggleShowAllItem {
                 onUpdateView: {
                     feedItems.continuation = 0
@@ -45,16 +55,6 @@ Page {
                 text: qsTr('Mark all read')
                 onClicked: {
                     feedItems.catchUp()
-                }
-            }
-            MenuItem {
-                text: qsTr("Update")
-                enabled: !network.loading
-                onClicked: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
                 }
             }
         }

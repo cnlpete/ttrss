@@ -25,15 +25,17 @@ Page {
         PullDownMenu {
             //AboutItem {}
             SettingsItem {}
-            ToggleShowAllItem {
-                onUpdateView: {
-                    categories.update()
                 }
             }
             MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
+                    categories.update()
+                }
+            }
+            ToggleShowAllItem {
+                onUpdateView: {
                     categories.update()
                 }
             }

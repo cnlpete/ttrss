@@ -31,11 +31,6 @@ Page {
         PullDownMenu {
             //AboutItem {}
             SettingsItem {}
-            ToggleShowAllItem {
-                onUpdateView: {
-                    feeds.update()
-                }
-            }
             MenuItem {
                 text: qsTr("Add subscription")
                 onClicked: {
@@ -82,6 +77,11 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
+                    feeds.update()
+                }
+            }
+            ToggleShowAllItem {
+                onUpdateView: {
                     feeds.update()
                 }
             }
