@@ -82,7 +82,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="76"/>
         <source>Category:</source>
-        <translation type="unfinished"/>
+        <translation>Catégorie:</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Mise à jour</translation>
     </message>
 </context>
 <context>
@@ -343,7 +343,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="51"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Mise à jour</translation>
     </message>
 </context>
 <context>
@@ -429,37 +429,37 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="52"/>
         <source>Already subscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Flux déjà souscrit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="63"/>
         <source>URL content is HTML, no feeds available</source>
-        <translation type="unfinished"/>
+        <translation>URL contient du HTML, pas de flux disponible</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="66"/>
         <source>URL content is HTML which contains multiple feeds</source>
-        <translation type="unfinished"/>
+        <translation>URL contient du HTML, plusieurs flux disponibles</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="69"/>
         <source>Couldn&apos;t download the URL content</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de télécharger le contenu de l&apos;URL</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="72"/>
         <source>Content is an invalid XML</source>
-        <translation type="unfinished"/>
+        <translation>Le contenu est du XML invalide</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="75"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>Une erreur est survenue en souscrivant au flux</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="82"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Mise à jour</translation>
     </message>
 </context>
 <context>
