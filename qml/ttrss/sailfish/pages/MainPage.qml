@@ -14,6 +14,8 @@ import Sailfish.Silica 1.0
 import "../items"
 
 Page {
+    property bool doAutoLogin: true
+
     SilicaFlickable {
         contentHeight: contentcontainer.height
         contentWidth: parent.width
@@ -212,7 +214,7 @@ Page {
         username.text = settings.username
         password.text = settings.password
 
-        if(settings.autologin && settings.useAutologin)
+        if(settings.autologin && settings.useAutologin && doAutoLogin)
             startLogin();
     }
 }

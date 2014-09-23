@@ -74,6 +74,13 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Logout")
+                visible: pageStack.depth == 1
+                onClicked: {
+                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"), { doAutoLogin: false })
+                }
+            }
+            MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {

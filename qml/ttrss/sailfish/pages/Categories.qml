@@ -25,6 +25,11 @@ Page {
         PullDownMenu {
             //AboutItem {}
             SettingsItem {}
+            MenuItem {
+                text: qsTr("Logout")
+                visible: pageStack.depth == 1
+                onClicked: {
+                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"), { doAutoLogin: false })
                 }
             }
             MenuItem {
