@@ -114,12 +114,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="29"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Cerrar sesión</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="36"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar</translation>
     </message>
 </context>
 <context>
@@ -348,7 +348,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="37"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar</translation>
     </message>
 </context>
 <context>
@@ -464,12 +464,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="77"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Cerrar sesión</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="84"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar</translation>
     </message>
 </context>
 <context>

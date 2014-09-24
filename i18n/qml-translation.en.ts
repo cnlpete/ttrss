@@ -116,7 +116,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="29"/>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation>Logout</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="36"/>
@@ -466,7 +466,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="77"/>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation>Logout</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="84"/>
