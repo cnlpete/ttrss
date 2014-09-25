@@ -273,7 +273,7 @@
 <context>
     <name>FeedItemModel</name>
     <message>
-        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="60"/>
+        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="62"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
