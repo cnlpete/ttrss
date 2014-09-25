@@ -501,19 +501,19 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="77"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>Ignore SSL Errors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="95"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="103"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="112"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
@@ -530,14 +530,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="66"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="67"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="70"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="71"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="76"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="77"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>

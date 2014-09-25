@@ -56,6 +56,9 @@ Page {
                     label: qsTr("Server address")
                     width: parent.width
                     enabled: !network.loading
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: username.focus = true
                 }
                 TextField {
                     id: username
@@ -64,6 +67,9 @@ Page {
                     label: qsTr("Username")
                     width: parent.width
                     enabled: !network.loading
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: password.focus = true
                 }
                 TextField {
                     id: password
@@ -72,6 +78,9 @@ Page {
                     echoMode: TextInput.Password
                     width: parent.width
                     enabled: !network.loading
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                    EnterKey.onClicked: prepareLogin()
                 }
                 TextSwitch {
                     text: qsTr('Ignore SSL Errors')
@@ -102,23 +111,7 @@ Page {
                         id: loginButton
                         text: qsTr("Login")
                         width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                        onClicked: {
-                            // check the servername for httpauth data and set/extract those
-                            var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
-                            var servername = server.text
-                            var regexres = servername.match(httpauthregex)
-                            if (regexres !== null) {
-                                server.text = (regexres[1]?regexres[1]:'') + regexres[4]
-                                settings.httpauthusername = regexres[2]
-                                settings.httpauthpassword = regexres[3]
-                            }
-
-                            settings.servername = server.text
-                            settings.username = username.text
-                            settings.password = password.text
-
-                            startLogin();
-                        }
+                        onClicked: prepareLogin()
                         enabled: !network.loading
                     }
                 }
@@ -141,6 +134,24 @@ Page {
         if(focus) {
             password.forceActiveFocus();
         }
+    }
+
+    function prepareLogin() {
+        // check the servername for httpauth data and set/extract those
+        var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
+        var servername = server.text
+        var regexres = servername.match(httpauthregex)
+        if (regexres !== null) {
+            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+            settings.httpauthusername = regexres[2]
+            settings.httpauthpassword = regexres[3]
+        }
+
+        settings.servername = server.text
+        settings.username = username.text
+        settings.password = password.text
+
+        startLogin();
     }
 
     function startLogin() {
