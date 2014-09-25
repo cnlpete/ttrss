@@ -49,38 +49,26 @@ Page {
                     anchors.bottomMargin: Theme.paddingLarge
                 }
 
-                Label {
-                    id: serverLabel
-                    text: qsTr("Server:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
                 TextField {
                     id: server
                     text: ""
+                    placeholderText: qsTr("Server address")
+                    label: qsTr("Server address")
                     width: parent.width
                     enabled: !network.loading
-                }
-                Label {
-                    id: usernameLabel
-                    text: qsTr("Username:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
                 }
                 TextField {
                     id: username
                     text: ""
+                    placeholderText: qsTr("Username")
+                    label: qsTr("Username")
                     width: parent.width
                     enabled: !network.loading
                 }
-                Label {
-                    id: passwordLabel
-                    text: qsTr("Password:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
                 TextField {
                     id: password
+                    placeholderText: qsTr("Password")
+                    label: qsTr("Password")
                     echoMode: TextInput.Password
                     width: parent.width
                     enabled: !network.loading
