@@ -73,6 +73,7 @@ Dialog {
                 label: qsTr("Server address")
                 width: parent.width
                 enabled: !network.loading
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhUrlCharactersOnly
                 EnterKey.enabled: text.length > 0
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: username.focus = true
