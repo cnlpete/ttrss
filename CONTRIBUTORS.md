@@ -8,3 +8,4 @@ CONTRIBUTORS
 - gwmgdemj
 - equeim
 - Silviu Vulcan (silviuvulcan)
+- michael-k
