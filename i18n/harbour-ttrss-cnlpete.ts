@@ -486,44 +486,70 @@
     <name>MainPage</name>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="44"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="54"/>
         <source>Server:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="58"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="66"/>
         <source>Username:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="72"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="83"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="89"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="97"/>
         <source>Ignore SSL Errors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="106"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="98"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="50"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="119"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="123"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="115"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="49"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="158"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="28"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="31"/>
         <source>No Account Yet?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="48"/>
+        <source>Tiny Tiny RSS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <source>Server address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="74"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="75"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="84"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="85"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="105"/>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
