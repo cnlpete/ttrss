@@ -29,6 +29,8 @@ ListModel {
     property int continuation: 0
     property bool hasMoreItems: false
 
+    property var categories
+
     signal itemUnreadChanged(variant item)
     signal itemPublishedChanged(variant item)
     signal itemStarChanged(variant item)
@@ -184,5 +186,72 @@ ListModel {
     function selectNext() {
         root.selectedIndex = Math.min(root.selectedIndex + 1, root.count - 1)
         return root.selectedIndex
+    }
+
+    onItemUnreadChanged: {
+        var ttrss = rootWindow.getTTRSS();
+        var op = item.unread ?
+                    function(x) { return x + 1 } :
+                    function(x) { return x - 1 }
+
+        // update the feed's category
+        feeds.updateUnreadCountForId(item.feedId, op)
+
+        // update special for all feeditems category
+        categories.updateUnreadCountForId(
+                    ttrss.constants['categories']['SPECIAL'],
+                    op)
+
+        // if the item is new, update 'special feeds' for 'fresh articles'
+        // TODO
+        if (item.unread && false)
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+
+        // if item was is starred/published, update special feeds aswell
+        if (item.rss)
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+        if (item.marked)
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+
+        // maybe check if currently viewing special feeds and update published
+        // not nesseccary because this is updated by mark unread
+    }
+
+    onItemPublishedChanged: {
+        var ttrss = rootWindow.getTTRSS();
+        var op = item.rss ?
+                    function(x) { return x + 1 } :
+                    function(x) { return x - 1 }
+
+        // if the item is unread, update 'special feeds'
+        if (item.unread)
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+
+        // maybe check if currently viewing special feeds and update published
+        // not nesseccary because this is updated by mark unread
+    }
+
+    onItemStarChanged: {
+        var ttrss = rootWindow.getTTRSS();
+        var op = item.marked ?
+                    function(x) { return x + 1 } :
+                    function(x) { return x - 1 }
+
+        // if the item is unread, update 'special feeds'
+        if (item.unread)
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+
+        // maybe check if currently viewing special feeds and update starred
+        // not nesseccary because this is updated by mark unread
     }
 }
