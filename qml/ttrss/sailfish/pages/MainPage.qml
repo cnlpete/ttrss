@@ -22,7 +22,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../items"
 
-Page {
+Dialog {
+    id: dialog
+    canAccept: !network.loading && server.text.length > 0
+
     property bool doAutoLogin: true
 
     SilicaFlickable {
@@ -41,109 +44,99 @@ Page {
             }
         }
 
-        Rectangle {
-            width: parent.width
-            anchors.margins: Theme.paddingLarge
-            Column {
-                id: contentcontainer
-                width: parent.width - 2 * Theme.paddingLarge
+        Column {
+            id: contentcontainer
+            anchors {
+                leftMargin: Theme.paddingLarge
+                rightMargin: Theme.paddingLarge
+            }
+            spacing: Theme.paddingMedium
+
+            DialogHeader {
+                width: dialog.width
+                title: qsTr("Tiny Tiny RSS")
+                acceptText: qsTr("Login")
+                cancelText: qsTr("Clear")
+            }
+
+            Image {
+                width: 256
+                height: 256
                 anchors.horizontalCenter: parent.horizontalCenter
+                source: "../../resources/ttrss256.png"
+            }
 
-                Image {
-                    width: 256
-                    height: 256
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    source: "../../resources/ttrss256.png"
-
-                    anchors.bottomMargin: Theme.paddingLarge
+            TextField {
+                id: server
+                text: ""
+                placeholderText: qsTr("Server address")
+                label: qsTr("Server address")
+                width: parent.width
+                enabled: !network.loading
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: username.focus = true
+            }
+            TextField {
+                id: username
+                text: ""
+                placeholderText: qsTr("Username")
+                label: qsTr("Username")
+                width: parent.width
+                enabled: !network.loading
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: password.focus = true
+            }
+            TextField {
+                id: password
+                placeholderText: qsTr("Password")
+                label: qsTr("Password")
+                echoMode: TextInput.Password
+                width: parent.width
+                enabled: !network.loading
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.onClicked: {
+                    focus = false
+                    prepareLogin()
                 }
-
-                Label {
-                    id: serverLabel
-                    text: qsTr("Server:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: server
-                    text: ""
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                Label {
-                    id: usernameLabel
-                    text: qsTr("Username:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: username
-                    text: ""
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                Label {
-                    id: passwordLabel
-                    text: qsTr("Password:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: password
-                    echoMode: TextInput.Password
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                TextSwitch {
-                    text: qsTr('Ignore SSL Errors')
-                    visible: server.text.substring(0, 5) === "https"
-                    checked: settings.ignoreSSLErrors
-                    onCheckedChanged: settings.ignoreSSLErrors = checked
-                }
-                Row {
-                    width: parent.width
-                    Button {
-                        id: clearButton
-                        text: qsTr("Clear")
-                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                        onClicked: {
-                            server.text = ''
-                            username.text = ''
-                            password.text = ''
-
-                            settings.httpauthusername = ''
-                            settings.httpauthpassword = ''
-                            settings.servername = server.text
-                            settings.username = username.text
-                            settings.password = password.text
-                        }
-                        enabled: !network.loading
+            }
+            TextSwitch {
+                text: qsTr('Ignore SSL Errors')
+                visible: server.text.substring(0, 5) === "https"
+                checked: settings.ignoreSSLErrors
+                onCheckedChanged: settings.ignoreSSLErrors = checked
+            }
+            Row {
+                width: parent.width
+                Button {
+                    text: qsTr("Restore")
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                    onClicked: {
+                        server.text = settings.servername
+                        username.text = settings.username
+                        password.text = settings.password
                     }
-                    Button {
-                        id: loginButton
-                        text: qsTr("Login")
-                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                        onClicked: {
-                            // check the servername for httpauth data and set/extract those
-                            var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
-                            var servername = server.text
-                            var regexres = servername.match(httpauthregex)
-                            if (regexres !== null) {
-                                server.text = (regexres[1]?regexres[1]:'') + regexres[4]
-                                settings.httpauthusername = regexres[2]
-                                settings.httpauthpassword = regexres[3]
-                            }
-
-                            settings.servername = server.text
-                            settings.username = username.text
-                            settings.password = password.text
-
-                            startLogin();
-                        }
-                        enabled: !network.loading
-                    }
+                    enabled: !network.loading && (
+                                 server.text !== settings.servername
+                                 || username.text !== settings.username
+                                 || password.text !== settings.password
+                             )
                 }
-
+                Button {
+                    text: qsTr("Clear")
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                    onClicked: {
+                        server.text = ''
+                        username.text = ''
+                        password.text = ''
+                    }
+                    enabled: !network.loading && (
+                                 server.text.length > 0
+                                 || username.text.length > 0
+                                 || password.text.length > 0)
+                }
             }
         }
     }
@@ -162,6 +155,27 @@ Page {
         if(focus) {
             password.forceActiveFocus();
         }
+    }
+
+    function prepareLogin() {
+        // check the servername for httpauth data and set/extract those
+        var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
+        var servername = server.text
+        var regexres = servername.match(httpauthregex)
+        if (regexres !== null) {
+            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+            settings.httpauthusername = regexres[2]
+            settings.httpauthpassword = regexres[3]
+        } else {
+            settings.httpauthusername = ''
+            settings.httpauthpassword = ''
+        }
+
+        settings.servername = server.text
+        settings.username = username.text
+        settings.password = password.text
+
+        startLogin();
     }
 
     function startLogin() {
@@ -186,6 +200,7 @@ Page {
             //Let the user know
 //            loginErrorDialog.text = text;
 //            loginErrorDialog.open();
+            dialog.reject()
         }
         else {
             //Login succeeded, auto login next Time
@@ -226,4 +241,6 @@ Page {
         if(settings.autologin && settings.useAutologin && doAutoLogin)
             startLogin();
     }
+
+    onAccepted: prepareLogin()
 }
