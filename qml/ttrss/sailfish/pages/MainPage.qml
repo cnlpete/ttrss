@@ -103,10 +103,10 @@ Dialog {
                 }
             }
             TextSwitch {
+                id: ignoreSSLErrors
                 text: qsTr('Ignore SSL Errors')
                 visible: server.text.substring(0, 5) === "https"
-                checked: settings.ignoreSSLErrors
-                onCheckedChanged: settings.ignoreSSLErrors = checked
+                checked: false
             }
             Row {
                 width: parent.width
@@ -117,11 +117,13 @@ Dialog {
                         server.text = settings.servername
                         username.text = settings.username
                         password.text = settings.password
+                        ignoreSSLErrors.checked = settings.ignoreSSLErrors
                     }
                     enabled: !network.loading && (
                                  server.text !== settings.servername
                                  || username.text !== settings.username
                                  || password.text !== settings.password
+                                 || ignoreSSLErrors.checked !== settings.ignoreSSLErrors
                              )
                 }
                 Button {
@@ -131,11 +133,13 @@ Dialog {
                         server.text = ''
                         username.text = ''
                         password.text = ''
+                        ignoreSSLErrors.checked = false
                     }
                     enabled: !network.loading && (
                                  server.text.length > 0
                                  || username.text.length > 0
-                                 || password.text.length > 0)
+                                 || password.text.length > 0
+                                 || ignoreSSLErrors.checked)
                 }
             }
         }
@@ -174,6 +178,7 @@ Dialog {
         settings.servername = server.text
         settings.username = username.text
         settings.password = password.text
+        settings.ignoreSSLErrors = ignoreSSLErrors.checked
 
         startLogin();
     }
@@ -237,6 +242,7 @@ Dialog {
         server.text = settings.servername
         username.text = settings.username
         password.text = settings.password
+        ignoreSSLErrors.checked = settings.ignoreSSLErrors
 
         if(settings.autologin && settings.useAutologin && doAutoLogin)
             startLogin();
