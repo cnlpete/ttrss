@@ -7,5 +7,6 @@
         <file>i18n/qml-translation.cs.qm</file>
         <file>i18n/qml-translation.zh_CN.qm</file>
         <file>i18n/qml-translation.ru.qm</file>
+        <file>i18n/qml-translation.ro.qm</file>
     </qresource>
 </RCC>
