@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ro" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -446,7 +444,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="61"/>
         <source>URL content is HTML which contains multiple feeds</source>
-	<translation>Continutul URL-ului este HTML si continue surse multiple</translation>
+        <translation>Continutul URL-ului este HTML si continue surse multiple</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="64"/>
