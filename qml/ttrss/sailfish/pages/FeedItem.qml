@@ -247,6 +247,15 @@ Page {
             console.log("URL: " + url + " isImage: " + isImage)
             var attachmentLabel = ""
             if (isImage) {
+                if (!settings.displayImages) {
+                    // Do not attach images if they should not be displayed.
+                    continue
+                }
+                var re = new RegExp("<img\\s[^>]*src=\"" + url + "\"", "i")
+                if (data.content.match(re)) {
+                    // Do not attach images which are part of the content.
+                    continue
+                }
                 attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
@@ -265,7 +274,11 @@ Page {
 
             var content = data.content.replace('target="_blank"', '')
 
-            if (settings.stripInvisibleImg) {
+            if (!settings.displayImages) {
+                // remove images
+                var image_regex = /<img\s[^>]*>/gi;
+                content = content.replace(image_regex, "")
+            } else if (settings.stripInvisibleImg) {
                 // remove images with a height or width of 0 or 1
                 var height_regex = /<img\s[^>]*height="[01]"[^>]*>/gi;
                 content = content.replace(height_regex, "")

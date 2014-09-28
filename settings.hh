@@ -49,6 +49,7 @@ class Settings : public QObject
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
     Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
     Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
+    Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages)
     Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg)
 public:
     static Settings *instance();
@@ -133,6 +134,11 @@ public:
     }
     void setShowAll(bool showAll);
 
+    bool displayImages() const {
+        return this->_displayImages;
+    }
+    void setDisplayImages(bool displayImages);
+
     bool stripInvisibleImg() const {
         return this->_stripInvisibleImg;
     }
@@ -184,6 +190,7 @@ private:
     bool _useAllFeedsOnStartup;
     bool _whiteBackgroundOnIcons;
     bool _showAll;
+    bool _displayImages;
     bool _stripInvisibleImg;
 };
 #endif // SETTINGS_HH

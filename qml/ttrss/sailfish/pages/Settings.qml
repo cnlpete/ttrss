@@ -177,9 +177,17 @@ Dialog {
             }
 
             TextSwitch {
+                id: displayImagesSetting
+                width: parent.width
+                text: qsTr('Display images')
+                checked: settings.displayImages
+            }
+
+            TextSwitch {
                 id: stripInvisibleImgSetting
                 text: qsTr('Strip invisible images')
                 checked: settings.stripInvisibleImg
+                enabled: displayImagesSetting.checked
             }
         }
     }
@@ -191,6 +199,7 @@ Dialog {
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
         settings.useAutologin = autoLoginSetting.checked
+        settings.displayImages = displayImagesSetting.checked
         settings.stripInvisibleImg = stripInvisibleImgSetting.checked
         settings.webviewFontSize = fontSizeSetting.value
     }

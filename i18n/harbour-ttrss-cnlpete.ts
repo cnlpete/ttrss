@@ -665,7 +665,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="181"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
+        <source>Display images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
         <source>Strip invisible images</source>
         <translation type="unfinished"></translation>
     </message>
