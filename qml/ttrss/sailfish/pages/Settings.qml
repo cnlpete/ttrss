@@ -166,6 +166,21 @@ Dialog {
                     }
                 }
             }
+
+            // -- Images --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Images")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+
+            TextSwitch {
+                id: stripInvisibleImgSetting
+                text: qsTr('Strip invisible images')
+                checked: settings.stripInvisibleImg
+            }
         }
     }
 
@@ -176,6 +191,7 @@ Dialog {
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
         settings.useAutologin = autoLoginSetting.checked
+        settings.stripInvisibleImg = stripInvisibleImgSetting.checked
         settings.webviewFontSize = fontSizeSetting.value
     }
 }

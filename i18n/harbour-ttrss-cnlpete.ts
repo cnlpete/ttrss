@@ -578,49 +578,49 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="63"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="85"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
         <source>Order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="94"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Newest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="95"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <source>Oldest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="70"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="138"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="142"/>
         <source>Font Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="78"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="104"/>
         <source>Automatically Mark Items as Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="84"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="116"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="119"/>
         <source>Show Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="90"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="71"/>
         <source>Use All Feeds on Startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="96"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Automatically Login</source>
         <translation type="unfinished"></translation>
     </message>
@@ -635,57 +635,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="110"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
         <source>Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="123"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="126"/>
         <source>Show a White Background on Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="58"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
         <source>Startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="71"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="131"/>
-        <source>Text</source>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
+        <source>Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="146"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="181"/>
+        <source>Strip invisible images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
         <source>Tiny</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="149"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="153"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="152"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="156"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="155"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="159"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="158"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="162"/>
         <source>Huge</source>
         <translation type="unfinished"></translation>
     </message>
