@@ -27,10 +27,9 @@ Dialog {
     id: settingsPage
 
     SilicaFlickable {
-        anchors.fill: parent
-
-        //contentWidth: settingsColumn.width
         contentHeight: settingsColumn.height
+        contentWidth: parent.width
+        anchors.fill: parent
 
         PullDownMenu {
             AboutItem {}
@@ -39,50 +38,32 @@ Dialog {
         Column {
             id: settingsColumn
             anchors {
-                fill: parent
-                topMargin: Theme.paddingMedium
-                leftMargin: Theme.paddingMedium
-                rightMargin: Theme.paddingMedium
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingMedium
             }
             spacing: Theme.paddingMedium
 
             DialogHeader {
+                width: dialog.width
                 title: qsTr("Settings")
+                acceptText: qsTr("Save")
+                cancelText: qsTr("Cancel")
             }
 
-            ListModel {
-                id: orderItems
-                ListElement { name: ""; value: 0 }
-                ListElement { name: ""; value: 1 }
-                Component.onCompleted: {
-                    orderItems.get(0).name = qsTr("Newest First")
-                    orderItems.get(1).name = qsTr("Oldest First")
-                }
-            }
-            ComboBoxList {
-                id: orderSetting
-                label: qsTr("Order")
-                model: orderItems
-                initialValue: settings.feeditemsOrder
-            }
-
-
-            TextSwitch {
-                id: autoMarkReadSetting
-                text: qsTr('Automatically Mark Items as Read')
-                checked: settings.autoMarkRead
+            // -- Startup --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Startup")
+                font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
-                id: showIconsSetting
-                text: qsTr('Show Icons')
-                checked: settings.displayIcons
-            }
-            TextSwitch {
-                id: showWhiteBackgroundSetting
-                visible: showIconsSetting.checked
-                text: qsTr('Show a White Background on Icons')
-                checked: settings.whiteBackgroundOnIcons
+                id: autoLoginSetting
+                text: qsTr('Automatically Login')
+                checked: settings.useAutologin
             }
 
             TextSwitch {
@@ -92,15 +73,72 @@ Dialog {
                 checked: settings.useAllFeedsOnStartup
             }
 
+            // -- Items --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Items")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+
+            ComboBoxList {
+                id: orderSetting
+                label: qsTr("Order")
+                model: orderItems
+                initialValue: settings.feeditemsOrder
+
+                ListModel {
+                    id: orderItems
+                    ListElement { name: ""; value: 0 }
+                    ListElement { name: ""; value: 1 }
+                    Component.onCompleted: {
+                        orderItems.get(0).name = qsTr("Newest First")
+                        orderItems.get(1).name = qsTr("Oldest First")
+                    }
+                }
+            }
+
             TextSwitch {
-                id: autoLoginSetting
-                text: qsTr('Automatically Login')
-                checked: settings.useAutologin
+                id: autoMarkReadSetting
+                text: qsTr('Automatically Mark Items as Read')
+                checked: settings.autoMarkRead
+            }
+
+            // -- Icons --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Icons")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+
+            TextSwitch {
+                id: showIconsSetting
+                text: qsTr('Show Icons')
+                checked: settings.displayIcons
+            }
+
+            TextSwitch {
+                id: showWhiteBackgroundSetting
+                enabled: showIconsSetting.checked
+                text: qsTr('Show a White Background on Icons')
+                checked: settings.whiteBackgroundOnIcons
+            }
+
+            // -- Text --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Text")
+                font.pixelSize: Theme.fontSizeSmall;
             }
 
             Slider {
                 id: fontSizeSetting
-                anchors { left: parent.left; right: parent.right }
+                width: parent.width
                 label: qsTr('Font Size')
                 minimumValue: Theme.fontSizeTiny
                 maximumValue: Theme.fontSizeExtraLarge
