@@ -57,7 +57,8 @@ SOURCES += main.cpp \
 OTHER_FILES += rpm/$${TARGET}.spec \
     rpm/$${TARGET}.yaml \
     $$files(rpm/*) \
-    $$files(qml/ttrss/harmattan/*)
+    $$files(qml/ttrss/harmattan/*) \
+    $$files(qml/ttrss/components/*)
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
