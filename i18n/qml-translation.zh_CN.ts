@@ -555,7 +555,7 @@
     <name>Settings</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="39"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="50"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="49"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -576,86 +576,131 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="63"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
         <source>Order</source>
         <translation>排列顺序</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="58"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Newest First</source>
         <translation>优先新闻</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <source>Oldest First</source>
         <translation>优先历史</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="70"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="104"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="142"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="78"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="104"/>
         <source>Automatically Mark Items as Read</source>
         <translation>自动标记为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="84"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="119"/>
         <source>Show Icons</source>
         <translation>显示图标</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="90"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="90"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="71"/>
         <source>Use All Feeds on Startup</source>
         <translation>启动时使用所有订阅源</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="96"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Automatically Login</source>
         <translation>启动自动登录</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="84"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="126"/>
         <source>Show a White Background on Icons</source>
         <translation>图标上显示白色背景</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="91"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>You need to restart the App for this to take effect.</source>
         <translation>需重启软件后设置才会生效.</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="112"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="50"/>
+        <source>Save</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="51"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
+        <source>Startup</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
+        <source>Items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
+        <source>Icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
+        <source>Text</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
         <source>Tiny</source>
         <translation>非常小</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="153"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="156"/>
         <source>Medium</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="121"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="159"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="124"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="162"/>
         <source>Huge</source>
         <translation>非常大</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
+        <source>Images</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
+        <source>Display images</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
+        <source>Strip invisible images</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
