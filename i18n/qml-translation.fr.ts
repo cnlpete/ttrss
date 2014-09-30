@@ -635,7 +635,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="50"/>
         <source>Save</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarder</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="51"/>
@@ -645,22 +645,22 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
         <source>Startup</source>
-        <translation type="unfinished"/>
+        <translation>Démarrage</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Items</source>
-        <translation type="unfinished"/>
+        <translation>Articles</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Icones</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
         <source>Text</source>
-        <translation type="unfinished"/>
+        <translation>Texte</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
@@ -690,17 +690,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
         <source>Images</source>
-        <translation type="unfinished"/>
+        <translation>Images</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
         <source>Display images</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les images</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
         <source>Strip invisible images</source>
-        <translation type="unfinished"/>
+        <translation>Ignorer les images invisibles</translation>
     </message>
 </context>
 <context>
