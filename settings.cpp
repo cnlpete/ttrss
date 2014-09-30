@@ -159,6 +159,20 @@ void Settings::setShowAll(bool showAll) {
     }
 }
 
+void Settings::setDisplayImages(bool displayImages) {
+    if (_displayImages != displayImages) {
+        _displayImages = displayImages;
+        m_settings->setValue("displayImages", _displayImages);
+    }
+}
+
+void Settings::setStripInvisibleImg(bool stripInvisibleImg) {
+    if (_stripInvisibleImg != stripInvisibleImg) {
+        _stripInvisibleImg = stripInvisibleImg;
+        m_settings->setValue("stripInvisibleImg", _stripInvisibleImg);
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -178,4 +192,6 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
     _whiteBackgroundOnIcons = m_settings->value("whiteBackgroundOnIcons", true).toBool();
     _showAll = m_settings->value("showAll", false).toBool();
+    _displayImages = m_settings->value("displayImages", true).toBool();
+    _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
 }
