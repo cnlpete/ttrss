@@ -49,7 +49,6 @@ Page {
         }
 
         PullDownMenu {
-//            SettingsItem {}
             MenuItem {
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
@@ -61,19 +60,6 @@ Page {
                 onClicked: panel.open ? panel.hide() : panel.show()
             }
         }
-
-//        PushUpMenu {
-//            MenuItem {
-//                text: qsTr("Scroll to top")
-//                onClicked: flick.scrollToTop()
-//                visible: flick.contentHeight >= flick.height
-//            }
-//            MenuItem {
-//                text: qsTr("Open Dock")
-//                visible: !panel.open
-//                onClicked: panel.show()
-//            }
-//        }
 
         Column {
             id: content
@@ -337,12 +323,4 @@ Page {
         itemView.fontSize = settings.webviewFontSize
         showFeedItem();
     }
-
-
-//            MenuItem {
-//                text: qsTr("Share")
-//                enabled: url && (url != "")
-//                onClicked: QMLUtils.share(url, pageTitle);
-//            }
-//            SettingsItem {}
 }

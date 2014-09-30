@@ -41,7 +41,6 @@ Page {
         model: feedItems
 
         PullDownMenu {
-//            SettingsItem {}
             MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
