@@ -232,13 +232,14 @@ Dialog {
             //Now show the categories View
             if (settings.useAllFeedsOnStartup) {
                 var ttrss = rootWindow.getTTRSS()
-                pageStack.replace("Feeds.qml", {
-                                        category: {
-                                            categoryId: ttrss.constants['categories']['ALL'],
-                                            title: constant.allFeeds,
-                                            unreadcount: 0
-                                        }
-                                    })
+                var params = {
+                    category: {
+                        categoryId: ttrss.constants['categories']['ALL'],
+                        title: constant.allFeeds,
+                        unreadcount: 0
+                    }
+                }
+                pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
             }
             else
                 pageStack.replace(Qt.resolvedUrl('Categories.qml'))

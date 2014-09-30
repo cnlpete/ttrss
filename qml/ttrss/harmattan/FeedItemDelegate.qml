@@ -128,7 +128,7 @@ Item {
         source: "image://theme/icon-m-common-drilldown-arrow" + (theme.inverted ? "-inverse" : "")
         anchors.right: parent.right;
         anchors.verticalCenter: parent.verticalCenter
-        visible: model.id != null
+        visible: model.id !== null
     }
 
     MouseArea {

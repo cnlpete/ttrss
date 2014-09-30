@@ -30,7 +30,7 @@ ComboBox {
 
     function getInitialValue() {
         for (var i = 0; i < model.count; i++) {
-            if (repeater.model.get(i).value == initialValue) {
+            if (repeater.model.get(i).value === initialValue) {
                 box.currentIndex = i
                 break
             }
@@ -48,12 +48,12 @@ ComboBox {
 
     id: box
     menu: ContextMenu {
-          Repeater {
-               id: repeater
-               MenuItem {
-                   text: model.name
-               }
-          }
+        Repeater {
+            id: repeater
+            MenuItem {
+                text: model.name
+            }
+        }
     }
 
     Timer {

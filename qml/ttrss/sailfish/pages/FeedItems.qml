@@ -80,7 +80,8 @@ Page {
         delegate: FeedItemDelegate {
             onClicked: {
                 feedItems.selectedIndex = index
-                pageStack.push("FeedItem.qml", { isCat: feed.isCat })
+                pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
+                               { isCat: feed.isCat })
             }
         }
 
@@ -112,10 +113,9 @@ Page {
     }
 
     function showFeed(feedModel) {
-        if(feedModel != null) {
-            pageStack.push("FeedItems.qml", {
-                                    feed: feedModel
-                                })
+        if(feedModel !== null) {
+            pageStack.push(Qt.resolvedUrl("FeedItems.qml"),
+                           { feed: feedModel })
         }
     }
 

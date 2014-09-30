@@ -47,7 +47,7 @@ ListItem {
                 feeds.unsetIcon(index)
         }
 
-        visible: settings.displayIcons && model.icon != ''
+        visible: settings.displayIcons && model.icon !== ''
         BusyIndicator {
             visible: parent.status == Image.Loading
             running: visible
@@ -69,7 +69,9 @@ ListItem {
         anchors.margins: Theme.paddingMedium
         width: parent.width - (icon.visible ? icon.width : 0) - bubble.width - Theme.paddingMedium
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
+        // todo: check for performance issues,
+        // was StyledText before, which might be better
+        textFormat: Text.RichText
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
         color: model.unreadcount > 0 ?

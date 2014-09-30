@@ -36,9 +36,10 @@ Page {
             SettingsItem {}
             MenuItem {
                 text: qsTr("Logout")
-                visible: pageStack.depth == 1
+                visible: pageStack.depth === 1
                 onClicked: {
-                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"), { doAutoLogin: false })
+                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"),
+                                      { doAutoLogin: false })
                 }
             }
             MenuItem {
@@ -69,7 +70,9 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
+                      (rootWindow.showAll ?
+                           qsTr("No categories to display") :
+                           qsTr("No categories have unread items"))
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
@@ -81,10 +84,9 @@ Page {
     }
 
     function showCategory(categoryModel) {
-        if(categoryModel != null) {
-            pageStack.push("Feeds.qml", {
-                                    category: categoryModel
-                                })
+        if(categoryModel !== null) {
+            pageStack.push(Qt.resolvedUrl("Feeds.qml"),
+                           { category: categoryModel })
         }
     }
 

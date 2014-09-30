@@ -36,7 +36,9 @@ ListItem {
         anchors.margins: Theme.paddingMedium
         width: parent.width - bubble.width - Theme.paddingMedium
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
+        // todo: check for performance issues,
+        // was StyledText before, which might be better
+        textFormat: Text.RichText
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeLarge
         color: model.unreadcount > 0 ?

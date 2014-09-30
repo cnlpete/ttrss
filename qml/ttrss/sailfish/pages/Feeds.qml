@@ -84,9 +84,10 @@ Page {
             }
             MenuItem {
                 text: qsTr("Logout")
-                visible: pageStack.depth == 1
+                visible: pageStack.depth === 1
                 onClicked: {
-                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"), { doAutoLogin: false })
+                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"),
+                                      { doAutoLogin: false })
                 }
             }
             MenuItem {
@@ -129,10 +130,9 @@ Page {
     }
 
     function showFeed(feedModel) {
-        if(feedModel != null) {
-            pageStack.push("FeedItems.qml", {
-                                    feed: feedModel
-                                })
+        if(feedModel !== null) {
+            pageStack.push(Qt.resolvedUrl("FeedItems.qml"),
+                           { feed: feedModel })
         }
     }
 

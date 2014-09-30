@@ -37,7 +37,8 @@ Dialog {
         id: allCategories
 
         onUpdateFinished: {
-            // we need to use the timer as the repeater might not have filled the contextmenu of the combobox yet
+            // we need to use the timer as the repeater might not have filled
+            // the contextmenu of the combobox yet
             categoryChooser.startTimer()
         }
     }

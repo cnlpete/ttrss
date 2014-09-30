@@ -188,7 +188,8 @@ Page {
                 enabled: previousId !== false
                 onClicked: {
                     feedItems.selectPrevious()
-                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
                     //showFeedItem()
                 }
             }
@@ -224,7 +225,8 @@ Page {
                 enabled: nextId !== false
                 onClicked: {
                     feedItems.selectNext()
-                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
                     //showFeedItem()
                 }
             }
@@ -297,8 +299,8 @@ Page {
                 }
             } else {
                 if (attachmentsCode) {
-                    var regex =/(<\/body>)/gi
-                    content = content.replace(regex, attachmentsCode + "$1")
+                    var body_regex =/(<\/body>)/gi
+                    content = content.replace(body_regex, attachmentsCode + "$1")
                 }
             }
 

@@ -106,7 +106,7 @@ ListModel {
     function updateUnreadCountForId(id, op) {
         for(var category = 0; category < root.count; category++) {
             var m = root.get(category)
-            if (m.categoryId == id) {
+            if (m.categoryId === id) {
                 root.setProperty(category, "unreadcount", op(m.unreadcount))
                 break
             }

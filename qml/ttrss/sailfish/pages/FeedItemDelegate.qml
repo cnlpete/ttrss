@@ -64,7 +64,7 @@ ListItem {
 
             source: feed.isCat ? model.icon : ''
 
-            visible: settings.displayIcons && model.icon != '' && feed.isCat && status == Image.Ready
+            visible: settings.displayIcons && model.icon !== '' && feed.isCat && status == Image.Ready
             Rectangle {
                 color: "white"
                 anchors.fill: parent
@@ -142,7 +142,7 @@ ListItem {
             MenuItem {
                 id: openInBrowserMenuItem
                 text: qsTr("Open in Web Browser")
-                visible: model.url && model.url != ""
+                visible: model.url && model.url !== ""
                 onClicked: {
                     var item = feedItems.getSelectedItem()
                     Qt.openUrlExternally(item.url)
