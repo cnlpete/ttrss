@@ -52,20 +52,73 @@ Page {
         height: childrenRect.height
         spacing: MyTheme.paddingMedium
 
-        SettingsButtonRow {
-            text: qsTr("Theme")
-            checkedButtonIndex: settings.whiteTheme ? 1 : 0
-            buttonsText: [qsTr("Dark"), qsTr("White")]
-            onButtonClicked: settings.whiteTheme = index === 1
+        // -- Startup --
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignRight
+            color: Theme.highlightColor
+            text: qsTr("Startup")
+            font.pixelSize: Theme.fontSizeSmall
+        }
+        TextSwitch {
+            text: qsTr('Automatically Login')
+            checked: settings.useAutologin
+            onCheckedChanged: settings.useAutologin = checked
+        }
+        TextSwitch {
+            text: qsTr('Use All Feeds on Startup')
+            checked: settings.useAllFeedsOnStartup
+            onCheckedChanged: settings.useAllFeedsOnStartup = checked
         }
 
+        // -- Items --
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignRight
+            color: Theme.highlightColor
+            text: qsTr("Items")
+            font.pixelSize: Theme.fontSizeSmall
+        }
         SettingsButtonRow {
             text: qsTr("Order")
             checkedButtonIndex: settings.feeditemsOrder
             buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
             onButtonClicked: settings.feeditemsOrder = index
         }
+        TextSwitch {
+            text: qsTr('Automatically Mark Items as Read')
+            checked: settings.autoMarkRead
+            onCheckedChanged: settings.autoMarkRead = checked
+        }
 
+        // -- Icons --
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignRight
+            color: Theme.highlightColor
+            text: qsTr("Icons")
+            font.pixelSize: Theme.fontSizeSmall
+        }
+        TextSwitch {
+            text: qsTr('Show Icons')
+            checked: settings.displayIcons
+            onCheckedChanged: settings.displayIcons = checked
+        }
+
+        // -- Text --
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignRight
+            color: Theme.highlightColor
+            text: qsTr("Text")
+            font.pixelSize: Theme.fontSizeSmall
+        }
+        SettingsButtonRow {
+            text: qsTr("Theme")
+            checkedButtonIndex: settings.whiteTheme ? 1 : 0
+            buttonsText: [qsTr("Dark"), qsTr("White")]
+            onButtonClicked: settings.whiteTheme = index === 1
+        }
         SettingsSliderRow {
             text: qsTr('Font Size')
             minimumValue: MyTheme.fontSizeTiny
@@ -74,28 +127,27 @@ Page {
             onValueChanged: settings.webviewFontSize = value
         }
 
-        TextSwitch {
-            text: qsTr('Automatically Mark Items as Read')
-            checked: settings.autoMarkRead
-            onCheckedChanged: settings.autoMarkRead = checked
+        // -- Images --
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignRight
+            color: Theme.highlightColor
+            text: qsTr("Images")
+            font.pixelSize: Theme.fontSizeSmall
         }
-
         TextSwitch {
-            text: qsTr('Show Icons')
-            checked: settings.displayIcons
-            onCheckedChanged: settings.displayIcons = checked
+            id: displayImagesSetting
+            width: parent.width
+            text: qsTr('Display images')
+            checked: settings.displayImages
+            onCheckedChanged: settings.displayImages = checked
         }
-
         TextSwitch {
-            text: qsTr('Use All Feeds on Startup')
-            checked: settings.useAllFeedsOnStartup
-            onCheckedChanged: settings.useAllFeedsOnStartup = checked
-        }
-
-        TextSwitch {
-            text: qsTr('Automatically Login')
-            checked: settings.useAutologin
-            onCheckedChanged: settings.useAutologin = checked
+            id: stripInvisibleImgSetting
+            text: qsTr('Strip invisible images')
+            checked: settings.stripInvisibleImg
+            onCheckedChanged: settings.stripInvisibleImg = checked
+            enabled: displayImagesSetting.checked
         }
     }
 }
