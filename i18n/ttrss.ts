@@ -562,106 +562,106 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="60"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="71"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
         <source>Startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="79"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="90"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
         <source>Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="113"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="124"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="117"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="128"/>
         <source>Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="119"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="130"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="119"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="130"/>
         <source>White</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="135"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="146"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
         <source>Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="141"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="152"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
         <source>Display images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="147"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
         <source>Strip invisible images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="83"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="94"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
         <source>Order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="85"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="96"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="96"/>
         <source>Newest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="85"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="96"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <source>Oldest First</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="123"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="134"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="142"/>
         <source>Font Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="89"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="104"/>
         <source>Automatically Mark Items as Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="103"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="114"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="119"/>
         <source>Show Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="69"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="80"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="71"/>
         <source>Use All Feeds on Startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="64"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="65"/>
         <source>Automatically Login</source>
         <translation type="unfinished"></translation>

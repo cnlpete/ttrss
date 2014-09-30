@@ -37,117 +37,129 @@ Page {
     PageHeader {
         id: pageHeader
         text: qsTr("Settings")
+        z: 20
     }
 
-    Column {
-        id: settingsColumn
+    Flickable {
+        contentHeight: settingsColumn.height
+        contentWidth: parent.width
         anchors {
             top: pageHeader.bottom
-            topMargin: MyTheme.paddingMedium
             left: parent.left
-            leftMargin: MyTheme.paddingMedium
             right: parent.right
-            rightMargin: MyTheme.paddingMedium
-        }
-        height: childrenRect.height
-        spacing: MyTheme.paddingMedium
-
-        // -- Startup --
-        Label {
-            width: parent.width
-            horizontalAlignment: Text.AlignRight
-            color: Theme.highlightColor
-            text: qsTr("Startup")
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        TextSwitch {
-            text: qsTr('Automatically Login')
-            checked: settings.useAutologin
-            onCheckedChanged: settings.useAutologin = checked
-        }
-        TextSwitch {
-            text: qsTr('Use All Feeds on Startup')
-            checked: settings.useAllFeedsOnStartup
-            onCheckedChanged: settings.useAllFeedsOnStartup = checked
+            bottom: parent.bottom
         }
 
-        // -- Items --
-        Label {
-            width: parent.width
-            horizontalAlignment: Text.AlignRight
-            color: Theme.highlightColor
-            text: qsTr("Items")
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        SettingsButtonRow {
-            text: qsTr("Order")
-            checkedButtonIndex: settings.feeditemsOrder
-            buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
-            onButtonClicked: settings.feeditemsOrder = index
-        }
-        TextSwitch {
-            text: qsTr('Automatically Mark Items as Read')
-            checked: settings.autoMarkRead
-            onCheckedChanged: settings.autoMarkRead = checked
-        }
+        Column {
+            id: settingsColumn
+            anchors {
+                top: pageHeader.bottom
+                topMargin: MyTheme.paddingMedium
+                left: parent.left
+                leftMargin: MyTheme.paddingMedium
+                right: parent.right
+                rightMargin: MyTheme.paddingMedium
+            }
+            height: childrenRect.height
+            spacing: MyTheme.paddingMedium
 
-        // -- Icons --
-        Label {
-            width: parent.width
-            horizontalAlignment: Text.AlignRight
-            color: Theme.highlightColor
-            text: qsTr("Icons")
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        TextSwitch {
-            text: qsTr('Show Icons')
-            checked: settings.displayIcons
-            onCheckedChanged: settings.displayIcons = checked
-        }
+            // -- Startup --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignLeft
+                color: MyTheme.highlightColor
+                text: qsTr("Startup")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            TextSwitch {
+                text: qsTr('Automatically Login')
+                checked: settings.useAutologin
+                onCheckedChanged: settings.useAutologin = checked
+            }
+            TextSwitch {
+                text: qsTr('Use All Feeds on Startup')
+                checked: settings.useAllFeedsOnStartup
+                onCheckedChanged: settings.useAllFeedsOnStartup = checked
+            }
 
-        // -- Text --
-        Label {
-            width: parent.width
-            horizontalAlignment: Text.AlignRight
-            color: Theme.highlightColor
-            text: qsTr("Text")
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        SettingsButtonRow {
-            text: qsTr("Theme")
-            checkedButtonIndex: settings.whiteTheme ? 1 : 0
-            buttonsText: [qsTr("Dark"), qsTr("White")]
-            onButtonClicked: settings.whiteTheme = index === 1
-        }
-        SettingsSliderRow {
-            text: qsTr('Font Size')
-            minimumValue: MyTheme.fontSizeTiny
-            maximumValue: MyTheme.fontSizeExtraLarge
-            value: settings.webviewFontSize
-            onValueChanged: settings.webviewFontSize = value
-        }
+            // -- Items --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignLeft
+                color: MyTheme.highlightColor
+                text: qsTr("Items")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            SettingsButtonRow {
+                text: qsTr("Order")
+                checkedButtonIndex: settings.feeditemsOrder
+                buttonsText: [qsTr("Newest First"), qsTr("Oldest First")]
+                onButtonClicked: settings.feeditemsOrder = index
+            }
+            TextSwitch {
+                text: qsTr('Automatically Mark Items as Read')
+                checked: settings.autoMarkRead
+                onCheckedChanged: settings.autoMarkRead = checked
+            }
 
-        // -- Images --
-        Label {
-            width: parent.width
-            horizontalAlignment: Text.AlignRight
-            color: Theme.highlightColor
-            text: qsTr("Images")
-            font.pixelSize: Theme.fontSizeSmall
-        }
-        TextSwitch {
-            id: displayImagesSetting
-            width: parent.width
-            text: qsTr('Display images')
-            checked: settings.displayImages
-            onCheckedChanged: settings.displayImages = checked
-        }
-        TextSwitch {
-            id: stripInvisibleImgSetting
-            text: qsTr('Strip invisible images')
-            checked: settings.stripInvisibleImg
-            onCheckedChanged: settings.stripInvisibleImg = checked
-            enabled: displayImagesSetting.checked
+            // -- Icons --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignLeft
+                color: MyTheme.highlightColor
+                text: qsTr("Icons")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            TextSwitch {
+                text: qsTr('Show Icons')
+                checked: settings.displayIcons
+                onCheckedChanged: settings.displayIcons = checked
+            }
+
+            // -- Text --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignLeft
+                color: MyTheme.highlightColor
+                text: qsTr("Text")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            SettingsButtonRow {
+                text: qsTr("Theme")
+                checkedButtonIndex: settings.whiteTheme ? 1 : 0
+                buttonsText: [qsTr("Dark"), qsTr("White")]
+                onButtonClicked: settings.whiteTheme = index === 1
+            }
+            SettingsSliderRow {
+                text: qsTr('Font Size')
+                minimumValue: MyTheme.fontSizeTiny
+                maximumValue: MyTheme.fontSizeExtraLarge
+                value: settings.webviewFontSize
+                onValueChanged: settings.webviewFontSize = value
+            }
+
+            // -- Images --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignLeft
+                color: MyTheme.highlightColor
+                text: qsTr("Images")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            TextSwitch {
+                id: displayImagesSetting
+                width: parent.width
+                text: qsTr('Display images')
+                checked: settings.displayImages
+                onCheckedChanged: settings.displayImages = checked
+            }
+            TextSwitch {
+                id: stripInvisibleImgSetting
+                text: qsTr('Strip invisible images')
+                checked: settings.stripInvisibleImg
+                onCheckedChanged: settings.stripInvisibleImg = checked
+                enabled: displayImagesSetting.checked
+            }
         }
     }
 }
