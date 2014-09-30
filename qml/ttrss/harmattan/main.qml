@@ -72,12 +72,113 @@ PageStackWindow {
 
     FeedModel {
         id: feeds
-        categories: categories
+
+        onFeedUnreadChanged: {
+            var ttrss = rootWindow.getTTRSS()
+            var op = function(x) {
+                return x - oldAmount + feed.unreadcount
+            }
+            categories.updateUnreadCountForId(feed.categoryId, op)
+
+            // update the 'All Feeds' Category
+            categories.updateUnreadCountForId(ttrss.constants['categories']['ALL'], op)
+
+            // if there is an 'all feed items' update that aswell
+            if (root.count > 1) {
+                var m = root.get(0)
+
+                if (m.isCat) { // just check to be sure
+
+                    if (feed.isCat && m.feedId === feed.feedId && feed.unreadcount === 0) {
+                        // we can not determine where to substract,
+                        // but when all is 0, we can update accordingly
+                        for (var i = 1; i < root.count; i++) {
+                            root.setProperty(i, "unreadcount", 0)
+                        }
+                    }
+                    else {
+                        root.setProperty(0, "unreadcount", op(m.unreadcount))
+                    }
+                }
+            }
+        }
     }
 
     FeedItemModel {
         id: feedItems
-        categories: categories
+
+        onItemUnreadChanged: {
+            var ttrss = rootWindow.getTTRSS();
+            var op = item.unread ?
+                        function(x) { return x + 1 } :
+                        function(x) { return x - 1 }
+
+            // update the feed's category
+            feeds.updateUnreadCountForId(item.feedId, op)
+
+            // update special for all feeditems category
+            categories.updateUnreadCountForId(
+                        ttrss.constants['categories']['SPECIAL'],
+                        op)
+
+            // if the item is new, update 'special feeds' for 'fresh articles'
+            // TODO
+            if (item.unread && false) {
+                categories.updateUnreadCountForId(
+                            ttrss.constants['categories']['SPECIAL'],
+                            op)
+            }
+
+            // if item was is starred/published, update special feeds aswell
+            if (item.rss) {
+                categories.updateUnreadCountForId(
+                            ttrss.constants['categories']['SPECIAL'],
+                            op)
+            }
+
+            if (item.marked) {
+                categories.updateUnreadCountForId(
+                            ttrss.constants['categories']['SPECIAL'],
+                            op)
+            }
+
+            // maybe check if currently viewing special feeds and update published
+            // not nesseccary because this is updated by mark unread
+        }
+
+        onItemPublishedChanged: {
+            var ttrss = rootWindow.getTTRSS();
+            var op = item.rss ?
+                        function(x) { return x + 1 } :
+                        function(x) { return x - 1 }
+
+            // if the item is unread, update 'special feeds'
+            if (item.unread) {
+                categories.updateUnreadCountForId(
+                            ttrss.constants['categories']['SPECIAL'],
+                            op)
+            }
+
+            // maybe check if currently viewing special feeds and update published
+            // not nesseccary because this is updated by mark unread
+        }
+
+        onItemStarChanged: {
+            var ttrss = rootWindow.getTTRSS();
+            var op = item.marked ?
+                        function(x) { return x + 1 } :
+                        function(x) { return x - 1 }
+
+            // if the item is unread, update 'special feeds'
+            if (item.unread) {
+                categories.updateUnreadCountForId(
+                            ttrss.constants['categories']['SPECIAL'],
+                            op)
+            }
+
+            // maybe check if currently viewing special feeds and update starred
+            // not nesseccary because this is updated by mark unread
+        }
     }
 
     Component.onCompleted: {

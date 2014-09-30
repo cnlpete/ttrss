@@ -27,7 +27,6 @@ ListModel {
 
     property int selectedIndex: -1
     property variant category
-    property var categories
 
     signal feedUnreadChanged(variant feed, int oldAmount)
 
@@ -151,35 +150,6 @@ ListModel {
                 root.setProperty(feed, "unreadcount", op(m.unreadcount))
                 root.feedUnreadChanged(m, newUnreadCount)
                 break
-            }
-        }
-    }
-
-    onFeedUnreadChanged: {
-        var ttrss = rootWindow.getTTRSS()
-        var op = function(x) {
-            return x - oldAmount + feed.unreadcount
-        }
-        categories.updateUnreadCountForId(feed.categoryId, op)
-
-        // update the 'All Feeds' Category
-        categories.updateUnreadCountForId(ttrss.constants['categories']['ALL'], op)
-
-        // if there is an 'all feed items' update that aswell
-        if (root.count > 1) {
-            var m = root.get(0)
-
-            if (m.isCat) { // just check to be sure
-
-                if (feed.isCat && m.feedId === feed.feedId && feed.unreadcount === 0) {
-                    // we can not determine where to substract,
-                    // but when all is 0, we can update accordingly
-                    for (var i = 1; i < root.count; i++) {
-                        root.setProperty(i, "unreadcount", 0)
-                    }
-                } else {
-                    root.setProperty(0, "unreadcount", op(m.unreadcount))
-                }
             }
         }
     }
