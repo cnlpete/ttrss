@@ -39,7 +39,6 @@ Page {
         model: feeds
 
         PullDownMenu {
-            //AboutItem {}
             SettingsItem {}
             MenuItem {
                 text: qsTr("Add subscription")

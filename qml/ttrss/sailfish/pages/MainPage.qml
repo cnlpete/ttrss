@@ -35,7 +35,12 @@ Dialog {
         anchors.fill: parent
 
         PullDownMenu {
-            AboutItem {}
+            MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("AboutPage.qml"));
+                }
+            }
             SettingsItem {}
             MenuItem {
                 text: qsTr("No Account Yet?")

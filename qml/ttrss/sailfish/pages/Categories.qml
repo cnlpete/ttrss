@@ -33,7 +33,6 @@ Page {
         model: categories
 
         PullDownMenu {
-            //AboutItem {}
             SettingsItem {}
             MenuItem {
                 text: qsTr("Logout")

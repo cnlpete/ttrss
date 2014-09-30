@@ -49,7 +49,6 @@ Page {
         }
 
         PullDownMenu {
-//            AboutItem {}
 //            SettingsItem {}
             MenuItem {
                 text: qsTr("Open in Web Browser")
@@ -344,5 +343,4 @@ Page {
 //                onClicked: QMLUtils.share(url, pageTitle);
 //            }
 //            SettingsItem {}
-//            AboutItem {}
 }

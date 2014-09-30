@@ -41,7 +41,6 @@ Page {
         model: feedItems
 
         PullDownMenu {
-//            AboutItem {}
 //            SettingsItem {}
             MenuItem {
                 text: qsTr("Update")
