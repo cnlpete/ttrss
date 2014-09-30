@@ -531,7 +531,7 @@
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="73"/>
         <source>Server address</source>
-        <translation type="unfinished"/>
+        <translation>Adresse du serveur</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="84"/>
@@ -548,7 +548,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="115"/>
         <source>Restore</source>
-        <translation type="unfinished"/>
+        <translation>Restaurer</translation>
     </message>
 </context>
 <context>
