@@ -163,6 +163,7 @@ void Settings::setDisplayImages(bool displayImages) {
     if (_displayImages != displayImages) {
         _displayImages = displayImages;
         m_settings->setValue("displayImages", _displayImages);
+        emit displayImagesChanged();
     }
 }
 
@@ -170,6 +171,7 @@ void Settings::setStripInvisibleImg(bool stripInvisibleImg) {
     if (_stripInvisibleImg != stripInvisibleImg) {
         _stripInvisibleImg = stripInvisibleImg;
         m_settings->setValue("stripInvisibleImg", _stripInvisibleImg);
+        emit stripInvisibleImgChanged();
     }
 }
 

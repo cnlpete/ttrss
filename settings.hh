@@ -49,8 +49,8 @@ class Settings : public QObject
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
     Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
     Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
-    Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages)
-    Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg)
+    Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages NOTIFY displayImagesChanged)
+    Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg NOTIFY stripInvisibleImgChanged)
 public:
     static Settings *instance();
 
@@ -163,6 +163,8 @@ signals:
     void useAllFeedsOnStartupChanged();
     void whiteBackgroundOnIconsChanged();
     void showAllChanged();
+    void displayImagesChanged();
+    void stripInvisibleImgChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
