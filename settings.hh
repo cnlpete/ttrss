@@ -51,6 +51,7 @@ class Settings : public QObject
     Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
     Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages NOTIFY displayImagesChanged)
     Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg NOTIFY stripInvisibleImgChanged)
+    Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
 public:
     static Settings *instance();
 
@@ -144,6 +145,11 @@ public:
     }
     void setStripInvisibleImg(bool stripInvisibleImg);
 
+    bool displayLabels() const {
+        return this->_displayLabels;
+    }
+    void setDisplayLabels(bool displayLabels);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -165,6 +171,7 @@ signals:
     void showAllChanged();
     void displayImagesChanged();
     void stripInvisibleImgChanged();
+    void displayLabelsChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -194,5 +201,6 @@ private:
     bool _showAll;
     bool _displayImages;
     bool _stripInvisibleImg;
+    bool _displayLabels;
 };
 #endif // SETTINGS_HH

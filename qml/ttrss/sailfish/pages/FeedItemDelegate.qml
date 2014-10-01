@@ -108,12 +108,12 @@ ListItem {
             Grid  {
                 spacing: Theme.paddingSmall
                 width: parent.width
-                visible: labels.count > 0
+                visible: settings.displayLabels ? (labels.count > 0) : false
 
                 property var labels: model.labels
 
                 Repeater {
-                    model: labels.count
+                    model: settings.displayLabels ? labels.count : 0
                     LabelLabel {
                         label: labels.get(index)
                     }

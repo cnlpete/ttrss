@@ -105,6 +105,12 @@ Dialog {
                 checked: settings.autoMarkRead
             }
 
+            TextSwitch {
+                id: displayLabelsSetting
+                text: qsTr('Display Labels in Item List')
+                checked: settings.displayLabels
+            }
+
             // -- Icons --
             Label {
                 width: parent.width
@@ -202,5 +208,6 @@ Dialog {
         settings.displayImages = displayImagesSetting.checked
         settings.stripInvisibleImg = stripInvisibleImgSetting.checked
         settings.webviewFontSize = fontSizeSetting.value
+        settings.displayLabels = displayLabelsSetting.checked
     }
 }
