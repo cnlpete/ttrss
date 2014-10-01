@@ -210,9 +210,9 @@
     <name>FeedItem</name>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="91"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="232"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="235"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="54"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="255"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="258"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="55"/>
         <source>Open in Web Browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -222,12 +222,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="59"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="60"/>
         <source>Hide Dock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="59"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="60"/>
         <source>Open Dock</source>
         <translation type="unfinished"></translation>
     </message>
@@ -235,37 +235,37 @@
 <context>
     <name>FeedItemDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="125"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="129"/>
         <source>Unstar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="125"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="129"/>
         <source>Star</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="131"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="135"/>
         <source>Unpublish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="131"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="135"/>
         <source>Publish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="137"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="141"/>
         <source>Mark read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="137"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="141"/>
         <source>Mark Unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="143"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="147"/>
         <source>Open in Web Browser</source>
         <translation type="unfinished"></translation>
     </message>

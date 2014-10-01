@@ -39,6 +39,7 @@ Page {
 
     SilicaFlickable {
         id: flick
+        contentWidth: parent.width
         contentHeight: content.height
         interactive: true
         clip: true
@@ -77,34 +78,26 @@ Page {
 
         Column {
             id: content
-            width: parent.width
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingLarge
+            }
             spacing: Theme.paddingSmall
-//            Row {
-//                id: labelsrepeater
-//                spacing: constant.paddingMedium
-//                Repeater {
-//                    model: root.labels
-//                    LabelLabel {
-//                        label: root.labels.get(index)
-//                    }
-//                }
-//            }
+
             PageHeader {
                 id: pageHeader
             }
+
             Row {
                 id: headerRow
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: Theme.paddingLarge
-                    rightMargin: Theme.paddingLarge
-                }
-                spacing: 5
+                width: parent.width
+                spacing: Theme.paddingSmall
 
                 Label {
                     id: subtitleLabel
                     width: parent.width - starImage.width - rssImage.width
+                           - 2*parent.spacing
                     text: ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     textFormat: Text.RichText
@@ -131,6 +124,7 @@ Page {
                     Behavior on opacity { FadeAnimation{} }
                 }
             }
+
             Label {
                 text: date
                 font.pixelSize: Theme.fontSizeSmall
@@ -138,23 +132,28 @@ Page {
                 textFormat: Text.PlainText
                 anchors {
                     right: parent.right
-                    rightMargin: Theme.paddingLarge
                 }
-
                 color: Theme.secondaryColor
             }
+
             RescalingRichText {
                 id: itemView
                 text: body
                 fontSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: Theme.paddingLarge
-                    rightMargin: Theme.paddingLarge
-                }
+                width: parent.width
                 onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
+            }
+
+            Grid {
+                spacing: Theme.paddingMedium
+                width: parent.width
+                Repeater {
+                    model: labels.count
+                    LabelLabel {
+                        label: labels.get(index)
+                    }
+                }
             }
         }
         VerticalScrollDecorator { }
