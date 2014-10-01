@@ -70,6 +70,6 @@ Page {
                 }
             }
         }
-        ScrollDecorator{}
+        VerticalScrollDecorator { }
     }
 }

@@ -195,6 +195,7 @@ Dialog {
                 enabled: displayImagesSetting.checked
             }
         }
+        VerticalScrollDecorator {}
     }
 
     onAccepted: {

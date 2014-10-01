@@ -144,11 +144,6 @@ Page {
             }
         }
         VerticalScrollDecorator { }
-// TODO make the FancyScroller work with SilicaFlickable aswell
-//        FancyScroller {
-//            flickable: flick
-//            anchors.fill: parent
-//        }
     }
     BusyIndicator {
         visible: network.loading
