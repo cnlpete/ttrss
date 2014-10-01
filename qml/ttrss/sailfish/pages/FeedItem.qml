@@ -34,7 +34,7 @@ Page {
     property bool   previousId:     false
     property bool   nextId:         false
     property bool   isCat:          false
-    property variant labels
+    property var    labels
 
     anchors.margins: 0
 

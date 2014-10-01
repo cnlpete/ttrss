@@ -25,7 +25,7 @@ import "../items"
 
 Page {
     id: feedsPage
-    property variant category
+    property var category
 
     Component.onCompleted: {
         feeds.category = feedsPage.category
