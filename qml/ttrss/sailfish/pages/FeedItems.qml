@@ -67,6 +67,23 @@ Page {
             }
         }
 
+        PushUpMenu {
+            MenuItem {
+                text: qsTr('Mark all read')
+                onClicked: {
+                    feedItems.catchUp()
+                }
+            }
+            ToggleShowAllItem {
+                onUpdateView: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = false
+                    feedItems.clear()
+                    feedItems.update()
+                }
+            }
+        }
+
         section {
             property: 'date'
 
