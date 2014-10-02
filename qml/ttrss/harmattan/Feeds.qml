@@ -102,8 +102,9 @@ Page {
         MenuLayout {
             MenuItem {
                 text: qsTr("Add subscription")
-                enabled: feedsPage.category.categoryId >= 0
+                enabled: feedsPage.category.categoryId >= 0 || settings.useAllFeedsOnStartup
                 onClicked: {
+                    addsubsriptionsheet.categoryId = feedsPage.category.categoryId
                     addsubsriptionsheet.open()
                 } }
             ToggleShowAllItem {
@@ -113,70 +114,6 @@ Page {
             }
             SettingsItem {}
             AboutItem {}
-        }
-    }
-
-    Sheet {
-        id: addsubsriptionsheet
-
-        acceptButtonText: qsTr("Add")
-        rejectButtonText: qsTr("Cancel")
-
-        content: Flickable {
-            anchors.fill: parent
-            anchors.leftMargin: MyTheme.paddingMedium
-            anchors.topMargin: MyTheme.paddingMedium
-            flickableDirection: Flickable.VerticalFlick
-            Column {
-                id: col2
-                anchors.top: parent.top
-                spacing: 10
-                width: parent.width
-                Label {
-                    id: serverLabel
-                    text: qsTr("Feed address:")
-                    width: parent.width
-                    font.pixelSize: MyTheme.fontSizeMedium
-                }
-                TextField {
-                    id: server
-                    text: ""
-                    width: parent.width
-                }
-            }
-        }
-        onAccepted: {
-            var ttrss = rootWindow.getTTRSS()
-            ttrss.subscribe(feedsPage.category.categoryId, server.text, function(result) {
-                                /**
-                                * 0 - OK, Feed already exists
-                                * 1 - OK, Feed added
-                                * 2 - Invalid URL
-                                * 3 - URL content is HTML, no feeds available
-                                * 4 - URL content is HTML which contains multiple feeds.
-                                * 5 - Couldn't download the URL content.
-                                * 6 - Content is an invalid XML.
-                                */
-                                if (result === -1 || result >= 3) {
-                                    infoBanner.text = qsTr('Error')
-                                    infoBanner.show()
-                                    addsubsriptionsheet.open()
-                                }
-                                else if (result === 2) {
-                                    infoBanner.text = qsTr('Invalid URL')
-                                    infoBanner.show()
-                                    addsubsriptionsheet.open()
-                                }
-                                else if (result === 0) {
-                                    infoBanner.text = qsTr('Already suscribed to Feed')
-                                    infoBanner.show()
-                                }
-                                else {
-                                    infoBanner.text = qsTr('Feed added')
-                                    infoBanner.show()
-                                    feeds.update()
-                                }
-                            })
         }
     }
 
@@ -199,6 +136,66 @@ Page {
                     var ttrss = rootWindow.getTTRSS()
                     ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
                 } }
+        }
+    }
+
+    AddSubscription {
+        id: addsubsriptionsheet
+
+        onAccepted: {
+            var ttrss = rootWindow.getTTRSS()
+            ttrss.subscribe(addsubsriptionsheet.selectedId, addsubsriptionsheet.src, function(result) {
+                                /**
+                                * 0 - OK, Feed already exists
+                                * 1 - OK, Feed added
+                                * 2 - Invalid URL
+                                * 3 - URL content is HTML, no feeds available
+                                * 4 - URL content is HTML which contains multiple feeds.
+                                * 5 - Couldn't download the URL content.
+                                * 6 - Content is an invalid XML.
+                                */
+                                switch (result) {
+                                case 0:
+                                    infoBanner.text = qsTr('Already subscribed to Feed')
+                                    infoBanner.show()
+                                    break
+                                case 1:
+                                    infoBanner.text = qsTr('Feed added')
+                                    infoBanner.show()
+                                    feeds.update()
+                                    categories.update()
+                                    break
+                                case 2:
+                                    infoBanner.text = qsTr('Invalid URL')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                    break
+                                case 3:
+                                    infoBanner.text = qsTr('URL content is HTML, no feeds available')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                    break
+                                case 4:
+                                    infoBanner.text = qsTr('URL content is HTML which contains multiple feeds')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                    break
+                                case 5:
+                                    infoBanner.text = qsTr('Couldn\'t download the URL content')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                    break
+                                case 6:
+                                    infoBanner.text = qsTr('Content is an invalid XML')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                    break
+                                default:
+                                    infoBanner.text = qsTr('An error occured while subscribing to the feed')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                }
+                            })
         }
     }
 }

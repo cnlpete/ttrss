@@ -77,11 +77,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/components/AddSubscription.qml" line="32"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/components/AddSubscription.qml" line="33"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/components/AddSubscription.qml" line="71"/>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="72"/>
         <source>Feed address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/components/AddSubscription.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="85"/>
         <source>Category:</source>
         <translation type="unfinished"></translation>
@@ -388,77 +400,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="122"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="123"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="137"/>
-        <source>Feed address:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="161"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="166"/>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="169"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="64"/>
         <source>Invalid URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="171"/>
-        <source>Already suscribed to Feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="175"/>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="163"/>
         <source>Feed added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="191"/>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="128"/>
         <source>Mark all read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="196"/>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="133"/>
         <source>Unsubscribe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="159"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="56"/>
         <source>Already subscribed to Feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="174"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="67"/>
         <source>URL content is HTML, no feeds available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="179"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="70"/>
         <source>URL content is HTML which contains multiple feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="184"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="73"/>
         <source>Couldn&apos;t download the URL content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="189"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="76"/>
         <source>Content is an invalid XML</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Feeds.qml" line="194"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="79"/>
         <source>An error occured while subscribing to the feed</source>
         <translation type="unfinished"></translation>
