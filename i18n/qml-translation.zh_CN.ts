@@ -82,7 +82,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="85"/>
         <source>Category:</source>
-        <translation type="unfinished"/>
+        <translation>类别:</translation>
     </message>
 </context>
 <context>
@@ -114,12 +114,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="38"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>注销</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="45"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
@@ -348,7 +348,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="46"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
@@ -434,42 +434,42 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="56"/>
         <source>Already subscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>已订阅的源</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="67"/>
         <source>URL content is HTML, no feeds available</source>
-        <translation type="unfinished"/>
+        <translation>链接地址内容为HTML,无源可以订阅</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="70"/>
         <source>URL content is HTML which contains multiple feeds</source>
-        <translation type="unfinished"/>
+        <translation>链接地址内容为HTML,包含多个可订阅源</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="73"/>
         <source>Couldn&apos;t download the URL content</source>
-        <translation type="unfinished"/>
+        <translation>无法下载链接地址对应的内容</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="76"/>
         <source>Content is an invalid XML</source>
-        <translation type="unfinished"/>
+        <translation>订阅内容为无效XML文件</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="79"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>订阅源时发生错误</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="86"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>注销</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="93"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
@@ -531,7 +531,7 @@
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="73"/>
         <source>Server address</source>
-        <translation type="unfinished"/>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="84"/>
@@ -548,7 +548,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="115"/>
         <source>Restore</source>
-        <translation type="unfinished"/>
+        <translation>还原</translation>
     </message>
 </context>
 <context>
@@ -635,7 +635,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="50"/>
         <source>Save</source>
-        <translation type="unfinished"/>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="51"/>
@@ -645,22 +645,22 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
         <source>Startup</source>
-        <translation type="unfinished"/>
+        <translation>自启动</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Items</source>
-        <translation type="unfinished"/>
+        <translation>项目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>图标</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
         <source>Text</source>
-        <translation type="unfinished"/>
+        <translation>文本</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
@@ -690,17 +690,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
         <source>Images</source>
-        <translation type="unfinished"/>
+        <translation>图片</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
         <source>Display images</source>
-        <translation type="unfinished"/>
+        <translation>显示图片</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
         <source>Strip invisible images</source>
-        <translation type="unfinished"/>
+        <translation>屏蔽不可见图片</translation>
     </message>
 </context>
 <context>
