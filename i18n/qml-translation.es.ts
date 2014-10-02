@@ -434,32 +434,32 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="56"/>
         <source>Already subscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Ya está suscrito a RSS</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="67"/>
         <source>URL content is HTML, no feeds available</source>
-        <translation type="unfinished"/>
+        <translation>Contenidos en el URL son HTML, no hay feeds</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="70"/>
         <source>URL content is HTML which contains multiple feeds</source>
-        <translation type="unfinished"/>
+        <translation>Contenidos en el URL son HTML, hay feeds múltiple</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="73"/>
         <source>Couldn&apos;t download the URL content</source>
-        <translation type="unfinished"/>
+        <translation>No se pudo descargar el contenido de la URL</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="76"/>
         <source>Content is an invalid XML</source>
-        <translation type="unfinished"/>
+        <translation>El contenido está XML inválido</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="79"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>Ha ocurrido un error cuando suscribirse al feed</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="86"/>
@@ -608,7 +608,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="84"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="119"/>
         <source>Show Icons</source>
-        <translation>Mostrar  emblemas</translation>
+        <translation>Mostrar emblemas</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="90"/>
@@ -645,22 +645,22 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="59"/>
         <source>Startup</source>
-        <translation type="unfinished"/>
+        <translation>Inicio</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Items</source>
-        <translation type="unfinished"/>
+        <translation>Artículos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="113"/>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Emblemas</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="135"/>
         <source>Text</source>
-        <translation type="unfinished"/>
+        <translation>Texto</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
@@ -690,17 +690,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="175"/>
         <source>Images</source>
-        <translation type="unfinished"/>
+        <translation>Imágenes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="182"/>
         <source>Display images</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar imágenes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="188"/>
         <source>Strip invisible images</source>
-        <translation type="unfinished"/>
+        <translation>Despojar imágenes invisibles</translation>
     </message>
 </context>
 <context>
