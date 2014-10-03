@@ -1,0 +1,10 @@
+var sec1 = "TTRss will collect the login information you give at startup and "
+  + "nothing more. Your login data is stored in a configuration file on your "
+  + "device and nowhere else. TTRss will only use it to establish connections "
+  + "to the available services and/or servers. The login data is not given to "
+  + "any third party and is not used for any other purpose than the functions "
+  + "of TTRss."
+
+var sec2 = "If you have any questions, concerns, or comments about our privacy "
+  + "policy you may contact the author via e-mail: "
+  + "<a href=\"mailto:cnlpete@cnlpete.de\">cnlpete@cnlpete.de</a>"
