@@ -25,9 +25,11 @@ import Sailfish.Silica 1.0
 Rectangle {
     property var label
 
+    visible: label !== null
+
     width: text.width + 2*Theme.paddingSmall
     height: text.height
-    color: label.bgcolor
+    color: label !== null ? label.bgcolor : Theme.secondaryColor
     radius: Theme.paddingSmall
 
     Text {
@@ -36,8 +38,8 @@ Rectangle {
             horizontalCenter: parent.horizontalCenter
         }
         id: text
-        text: label.text
-        color: label.fgcolor
+        text: label !== null ? label.text : ""
+        color: label !== null ? label.fgcolor : Theme.highlightColor
         font.pixelSize: Theme.fontSizeExtraSmall
     }
 }

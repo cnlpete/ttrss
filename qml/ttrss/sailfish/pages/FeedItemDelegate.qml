@@ -108,7 +108,7 @@ ListItem {
             Grid  {
                 spacing: Theme.paddingSmall
                 width: parent.width
-                visible: settings.displayLabels ? (labels.count > 0) : false
+                visible: settings.displayLabels ? (labels !== null && labels.count > 0) : false
 
                 property var labels: model.labels
 
