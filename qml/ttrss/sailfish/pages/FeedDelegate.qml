@@ -3,19 +3,20 @@
  * for MeeGo Harmattan and Sailfish OS.
  * Copyright (C) 2012–2014  Hauke Schade
  *
- * This program is free software; you can redistribute it and/or modify
+ * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * TTRss is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
  */
 
 import QtQuick 2.0
@@ -46,7 +47,7 @@ ListItem {
                 feeds.unsetIcon(index)
         }
 
-        visible: settings.displayIcons && model.icon != ''
+        visible: settings.displayIcons && model.icon !== ''
         BusyIndicator {
             visible: parent.status == Image.Loading
             running: visible
@@ -68,7 +69,9 @@ ListItem {
         anchors.margins: Theme.paddingMedium
         width: parent.width - (icon.visible ? icon.width : 0) - bubble.width - Theme.paddingMedium
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
+        // todo: check for performance issues,
+        // was StyledText before, which might be better
+        textFormat: Text.RichText
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
         color: model.unreadcount > 0 ?
