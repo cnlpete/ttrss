@@ -24,11 +24,12 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
 
-    contentHeight: Theme.itemSizeExtraLarge
+    contentHeight: content.height + contentRow.anchors.topMargin
+                   + contentRow.anchors.bottomMargin
     width: parent.width
-    menu: contextMenu
 
     Row {
+        id: markerRow
         spacing: Theme.paddingMedium
         anchors.fill: parent
         anchors.leftMargin: (icon.visible ? icon.width : 0) + Theme.paddingMedium
@@ -47,6 +48,7 @@ ListItem {
     }
 
     Row {
+        id: contentRow
         anchors.fill: parent
         anchors.margins: Theme.paddingMedium
         spacing: Theme.paddingMedium
@@ -73,9 +75,10 @@ ListItem {
         }
 
         Column {
+            id: content
             width: icon.visible ? (parent.width - icon.width) : parent.width
+
             Label {
-                id: mainText
                 width: parent.width
                 text: model.title
                 color: model.unread > 0 ?
@@ -83,13 +86,12 @@ ListItem {
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
                 maximumLineCount: 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                elide: Text.ElideRight
-                textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
+                truncationMode: TruncationMode.Fade
+                textFormat: Text.StyledText
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeMedium
             }
             Label {
-                id: subText
                 width: parent.width
                 text: model.subtitle
                 color: model.unread > 0 ?
@@ -97,28 +99,30 @@ ListItem {
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
                 maximumLineCount: 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                elide: Text.ElideRight
-                textFormat: Text.RichText // todo: check for performance issues, was StyledText before, which might be better
+                truncationMode: TruncationMode.Fade
+                textFormat: Text.StyledText
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
                 visible: text != ""
             }
-//            Row {
-//                id: myrow
-//                property variant mymod: model
-//                spacing: constant.paddingMedium
+            Grid  {
+                spacing: Theme.paddingSmall
+                width: parent.width
+                visible: settings.displayLabels ? (labels.count > 0) : false
 
-//                Repeater {
-//                    model: myrow.mymod.labels
-//                    LabelLabel {
-//                        label: myrow.mymod.labels.get(index)
-//                    }
-//                }
-//            }
+                property var labels: model.labels
+
+                Repeater {
+                    model: settings.displayLabels ? labels.count : 0
+                    LabelLabel {
+                        label: labels.get(index)
+                    }
+                }
+            }
         }
     }
-    Component {
-        id: contextMenu
+
+    menu: Component {
         ContextMenu {
             MenuItem {
                 id: toggleStarMenuItem
@@ -146,7 +150,6 @@ ListItem {
                     var item = feedItems.getSelectedItem()
                     Qt.openUrlExternally(item.url)
                 }
-
             }
             Component.onCompleted: {
                 feedItems.selectedIndex = index

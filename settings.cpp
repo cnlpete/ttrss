@@ -175,6 +175,14 @@ void Settings::setStripInvisibleImg(bool stripInvisibleImg) {
     }
 }
 
+void Settings::setDisplayLabels(bool displayLabels) {
+    if (_displayLabels != displayLabels) {
+        _displayLabels = displayLabels;
+        m_settings->setValue("displayLabels", _displayLabels);
+        emit displayLabelsChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -196,4 +204,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _showAll = m_settings->value("showAll", false).toBool();
     _displayImages = m_settings->value("displayImages", true).toBool();
     _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
+    _displayLabels = m_settings->value("displayLabels", true).toBool();
 }
