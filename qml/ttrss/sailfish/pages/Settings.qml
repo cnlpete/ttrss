@@ -199,15 +199,19 @@ Dialog {
     }
 
     onAccepted: {
+        settings.useAutologin = autoLoginSetting.checked
+        settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+
         settings.feeditemsOrder = orderSetting.currentIndex
         settings.autoMarkRead = autoMarkReadSetting.checked
+        settings.displayLabels = displayLabelsSetting.checked
+
         settings.displayIcons = showIconsSetting.checked
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
-        settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
-        settings.useAutologin = autoLoginSetting.checked
+
+        settings.webviewFontSize = fontSizeSetting.value
+
         settings.displayImages = displayImagesSetting.checked
         settings.stripInvisibleImg = stripInvisibleImgSetting.checked
-        settings.webviewFontSize = fontSizeSetting.value
-        settings.displayLabels = displayLabelsSetting.checked
     }
 }
