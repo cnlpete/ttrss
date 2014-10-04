@@ -35,6 +35,8 @@ Page {
         feedItems.update()
     }
 
+    RemorsePopup { id: remorse }
+
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -61,18 +63,14 @@ Page {
             }
             MenuItem {
                 text: qsTr('Mark all read')
-                onClicked: {
-                    feedItems.catchUp()
-                }
+                onClicked: markAllRead()
             }
         }
 
         PushUpMenu {
             MenuItem {
                 text: qsTr('Mark all read')
-                onClicked: {
-                    feedItems.catchUp()
-                }
+                onClicked: markAllRead()
             }
             ToggleShowAllItem {
                 onUpdateView: {
@@ -139,5 +137,12 @@ Page {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedItemsCover.qml")
         }
+    }
+
+    function markAllRead() {
+        remorse.execute(qsTr("Marking all read"),
+                        function() {
+                            feedItems.catchUp()
+                        })
     }
 }
