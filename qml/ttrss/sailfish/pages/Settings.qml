@@ -111,6 +111,12 @@ Dialog {
             }
 
             TextSwitch {
+                id: teaseContentSetting
+                text: qsTr("Tease Content")
+                checked: settings.teaseContent
+            }
+
+            TextSwitch {
                 id: displayLabelsSetting
                 text: qsTr('Display Labels in Item List')
                 checked: settings.displayLabels
@@ -210,6 +216,7 @@ Dialog {
 
         settings.feeditemsOrder = orderSetting.currentIndex
         settings.autoMarkRead = autoMarkReadSetting.checked
+        settings.teaseContent = teaseContentSetting.checked
         settings.displayLabels = displayLabelsSetting.checked
 
         settings.displayIcons = showIconsSetting.checked

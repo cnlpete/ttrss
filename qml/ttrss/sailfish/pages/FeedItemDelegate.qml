@@ -104,7 +104,7 @@ ListItem {
                 textFormat: Text.StyledText
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
-                visible: text != ""
+                visible: settings.teaseContent && text != ""
             }
             Grid  {
                 spacing: Theme.paddingSmall

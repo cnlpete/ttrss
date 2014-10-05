@@ -184,6 +184,14 @@ void Settings::setDisplayLabels(bool displayLabels) {
     }
 }
 
+void Settings::setTeaseContent(bool teaseContent) {
+    if (_teaseContent != teaseContent) {
+        _teaseContent = teaseContent;
+        m_settings->setValue("teaseContent", _teaseContent);
+        emit teaseContentChanged();
+    }
+}
+
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
@@ -206,4 +214,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _displayImages = m_settings->value("displayImages", true).toBool();
     _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
     _displayLabels = m_settings->value("displayLabels", true).toBool();
+    _teaseContent = m_settings->value("teaseContent", true).toBool();
 }
