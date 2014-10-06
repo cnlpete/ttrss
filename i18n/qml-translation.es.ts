@@ -63,7 +63,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="44"/>
         <source>Full License</source>
-        <translation type="unfinished"/>
+        <translation>Licencia completa</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
@@ -73,12 +73,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
         <source>Contributors</source>
-        <translation type="unfinished"/>
+        <translation>Colaboradores</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
         <source>Feature Requests &amp; Bugs</source>
-        <translation type="unfinished"/>
+        <translation>Sugerencias y errores</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
@@ -88,12 +88,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
         <source>Legal Notice</source>
-        <translation type="unfinished"/>
+        <translation>Aviso legal</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
         <source>The source code is available at %1.</source>
-        <translation type="unfinished"/>
+        <translation>El código fuente está disponible en %1.</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Marca todos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
         <source>Unsubcribing</source>
-        <translation type="unfinished"/>
+        <translation>Cancela</translation>
     </message>
 </context>
 <context>
@@ -397,7 +397,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Marca todos</translation>
     </message>
 </context>
 <context>
@@ -701,7 +701,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar etiquetas en la lista de elementos</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="161"/>
