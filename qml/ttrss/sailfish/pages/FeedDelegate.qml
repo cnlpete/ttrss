@@ -94,19 +94,36 @@ ListItem {
         ContextMenu {
             MenuItem {
                 text: qsTr("Mark all read")
-                onClicked: {
-                    feeds.catchUp()
-                } }
+                onClicked: listItem.markAllRead()
+            }
             MenuItem {
                 text: qsTr("Unsubscribe")
                 visible: model.feedId >= 0 && !model.isCat
-                onClicked: {
-                    var ttrss = rootWindow.getTTRSS()
-                    ttrss.unsubscribe(model.feedId, function() { feeds.update() })
-                } }
+                onClicked: listItem.unsubcribe()
+            }
             Component.onCompleted: {
                 feeds.selectedIndex = index
             }
         }
+    }
+
+    RemorseItem { id: remorse }
+
+    function markAllRead() {
+        remorse.execute(listItem,
+                        qsTr("Marking all read"),
+                        function() {
+                            feeds.catchUp()
+                        })
+    }
+
+    function unsubcribe() {
+        remorse.execute(listItem,
+                        qsTr("Unsubcribing"),
+                        function() {
+                            var ttrss = rootWindow.getTTRSS()
+                            ttrss.unsubscribe(model.feedId,
+                                              function() { feeds.update() })
+                        })
     }
 }

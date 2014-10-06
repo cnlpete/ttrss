@@ -229,12 +229,22 @@
 <context>
     <name>FeedDelegate</name>
     <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
+        <source>Marking all read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
+        <source>Unsubcribing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="96"/>
         <source>Mark all read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="101"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="100"/>
         <source>Unsubscribe</source>
         <translation type="unfinished"></translation>
     </message>
@@ -316,31 +326,31 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="76"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="104"/>
         <source>Load more</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="90"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="117"/>
         <source>Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="91"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="120"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="118"/>
         <source>No items in feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="91"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="120"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="118"/>
         <source>No unread items in feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="130"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="63"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="72"/>
         <source>Mark all read</source>
         <translation type="unfinished"></translation>
@@ -382,8 +392,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="45"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="47"/>
         <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
+        <source>Marking all read</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
