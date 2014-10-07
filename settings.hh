@@ -128,7 +128,7 @@ public:
     void setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons);
 
     // Item List
-    bool feeditemsOrder() const {
+    int feeditemsOrder() const {
         return this->_feeditemsOrder;
     }
     void setFeeditemsOrder(int feeditemsOrder);
