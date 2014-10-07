@@ -63,7 +63,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="44"/>
         <source>Full License</source>
-        <translation type="unfinished"/>
+        <translation>Plná licence</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
@@ -73,12 +73,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
         <source>Contributors</source>
-        <translation type="unfinished"/>
+        <translation>Přispěvatelé</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
         <source>Feature Requests &amp; Bugs</source>
-        <translation type="unfinished"/>
+        <translation>Hlášení chyb a poptávka funkcí</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
@@ -88,12 +88,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
         <source>Legal Notice</source>
-        <translation type="unfinished"/>
+        <translation>Právní upozornění</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
         <source>The source code is available at %1.</source>
-        <translation type="unfinished"/>
+        <translation>Zdrojový kód je k dispozici na %1.</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
         <location filename="../qml/ttrss/components/AddSubscription.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="87"/>
         <source>Category:</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie:</translation>
     </message>
 </context>
 <context>
@@ -155,12 +155,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="38"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Odhlásit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="46"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Obnovit</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Označuji vše jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
         <source>Unsubcribing</source>
-        <translation type="unfinished"/>
+        <translation>Odhlašuji odběr</translation>
     </message>
 </context>
 <context>
@@ -392,12 +392,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="47"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Označuji vše jako přečtené</translation>
     </message>
 </context>
 <context>
@@ -451,47 +451,47 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="160"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="119"/>
         <source>Already subscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Ke odběru jste již přihlášeni</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="175"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="130"/>
         <source>URL content is HTML, no feeds available</source>
-        <translation type="unfinished"/>
+        <translation>Na zadané adrese je obsah HTML, nikoli kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="180"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="133"/>
         <source>URL content is HTML which contains multiple feeds</source>
-        <translation type="unfinished"/>
+        <translation>Na zadané adrese je obsah HTML, obsahující různé kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="185"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="136"/>
         <source>Couldn&apos;t download the URL content</source>
-        <translation type="unfinished"/>
+        <translation>Nepodařilo se stáhnout obsah adresy</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="190"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="139"/>
         <source>Content is an invalid XML</source>
-        <translation type="unfinished"/>
+        <translation>Obsah je nepodporované XML</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="195"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="142"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>Nastala chyba při přihlašování odběru</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="48"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Odhlásit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="56"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Obnovit</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="79"/>
         <source>Server address</source>
-        <translation type="unfinished"/>
+        <translation>Adresa serveru</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="90"/>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="121"/>
         <source>Restore</source>
-        <translation type="unfinished"/>
+        <translation>Vrátit změny</translation>
     </message>
 </context>
 <context>
@@ -667,7 +667,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="55"/>
         <source>Save</source>
-        <translation type="unfinished"/>
+        <translation>Uložit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="56"/>
@@ -678,30 +678,30 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="64"/>
         <source>Startup</source>
-        <translation type="unfinished"/>
+        <translation>Po spuštění</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="91"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="86"/>
         <source>Items</source>
-        <translation type="unfinished"/>
+        <translation>Položky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="111"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="124"/>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Ikony</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="125"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="146"/>
         <source>Text</source>
-        <translation type="unfinished"/>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit štítky v seznamu položek</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="161"/>
@@ -732,19 +732,19 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="147"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="186"/>
         <source>Images</source>
-        <translation type="unfinished"/>
+        <translation>Obrázky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="153"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="193"/>
         <source>Display images</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit obrázky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="159"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="199"/>
         <source>Strip invisible images</source>
-        <translation type="unfinished"/>
+        <translation>Odstranit neviditelné obrázky</translation>
     </message>
 </context>
 <context>
