@@ -109,20 +109,14 @@ Dialog {
                 font.pixelSize: Theme.fontSizeSmall;
             }
 
-            ComboBoxList {
+            ComboBox {
                 id: orderSetting
                 label: qsTr("Order")
-                model: orderItems
-                initialValue: settings.feeditemsOrder
+                currentIndex: settings.feeditemsOrder
 
-                ListModel {
-                    id: orderItems
-                    ListElement { name: ""; value: 0 }
-                    ListElement { name: ""; value: 1 }
-                    Component.onCompleted: {
-                        orderItems.get(0).name = qsTr("Newest First")
-                        orderItems.get(1).name = qsTr("Oldest First")
-                    }
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("Newest First") }
+                    MenuItem { text: qsTr("Oldest First") }
                 }
             }
 

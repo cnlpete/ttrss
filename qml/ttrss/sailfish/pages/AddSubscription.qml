@@ -87,7 +87,6 @@ Dialog {
             label: qsTr("Category:")
             model: allCategories
             initialValue: root.categoryId
-            withTimer: false
 
             onCurrentIndexChanged: {
                 root.selectedId = allCategories.get(categoryChooser.currentIndex).categoryId

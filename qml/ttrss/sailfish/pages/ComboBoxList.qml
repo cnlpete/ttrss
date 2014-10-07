@@ -26,7 +26,6 @@ import Sailfish.Silica 1.0
 ComboBox {
     property int initialValue
     property alias model: repeater.model
-    property bool withTimer: true
 
     function getInitialValue() {
         for (var i = 0; i < model.count; i++) {
@@ -39,11 +38,6 @@ ComboBox {
 
     function startTimer() {
         timer.start()
-    }
-
-    Component.onCompleted: {
-        if (withTimer)
-            timer.start()
     }
 
     id: box
