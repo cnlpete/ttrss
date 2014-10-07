@@ -132,11 +132,27 @@ void Settings::setFeeditemsOrder(int feeditemsOrder) {
     }
 }
 
+void Settings::setLengthOfTitle(int lengthOfTitle) {
+    if (_lengthOfTitle != lengthOfTitle) {
+        _lengthOfTitle = lengthOfTitle;
+        m_settings->setValue("lengthOfTitle", _lengthOfTitle);
+        emit lengthOfTitleChanged();
+    }
+}
+
 void Settings::setShowExcerpt(bool showExcerpt) {
     if (_showExcerpt != showExcerpt) {
         _showExcerpt = showExcerpt;
         m_settings->setValue("showExcerpt", _showExcerpt);
         emit showExcerptChanged();
+    }
+}
+
+void Settings::setLengthOfExcerpt(int lengthOfExcerpt) {
+    if (_lengthOfExcerpt != lengthOfExcerpt) {
+        _lengthOfExcerpt = lengthOfExcerpt;
+        m_settings->setValue("lengthOfExcerpt", _lengthOfExcerpt);
+        emit lengthOfExcerptChanged();
     }
 }
 
@@ -219,7 +235,9 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
 
     // Item List
     _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
+    _lengthOfTitle = m_settings->value("lengthOfTitle", 2).toInt();
     _showExcerpt = m_settings->value("showExcerpt", true).toBool();
+    _lengthOfExcerpt = m_settings->value("lengthOfExcerpt", 2).toInt();
     _displayLabels = m_settings->value("displayLabels", true).toBool();
 
     // Items

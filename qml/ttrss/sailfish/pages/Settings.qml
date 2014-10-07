@@ -120,10 +120,33 @@ Dialog {
                 }
             }
 
+            Slider {
+                id: lengthOfTitleSetting
+                width: parent.width
+                label: qsTr("Max. Length of Title (in Lines)")
+                minimumValue: 0
+                maximumValue: 5
+                stepSize: 1
+                value: settings.lengthOfTitle
+                valueText: value == 0 ? qsTr("No Limit") : value
+            }
+
             TextSwitch {
                 id: showExcerptSetting
                 text: qsTr("Show Excerpt")
                 checked: settings.showExcerpt
+            }
+
+            Slider {
+                id: lengthOfExcerptSetting
+                width: parent.width
+                label: qsTr("Max. Length of Excerpt (in Lines)")
+                minimumValue: 0
+                maximumValue: 10
+                stepSize: 1
+                value: settings.lengthOfExcerpt
+                valueText: value == 0 ? qsTr("No Limit") : value
+                enabled: showExcerptSetting.checked
             }
 
             TextSwitch {
@@ -131,7 +154,6 @@ Dialog {
                 text: qsTr("Show Labels")
                 checked: settings.displayLabels
             }
-
 
             // -- Items --
             Label {
@@ -207,7 +229,9 @@ Dialog {
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
         // Item List
         settings.feeditemsOrder = orderSetting.currentIndex
+        settings.lengthOfTitle = lengthOfTitleSetting.value
         settings.showExcerpt = showExcerptSetting.checked
+        settings.lengthOfExcerpt = lengthOfExcerptSetting.value
         settings.displayLabels = displayLabelsSetting.checked
         // Items
         settings.autoMarkRead = autoMarkReadSetting.checked

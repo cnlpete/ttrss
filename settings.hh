@@ -51,7 +51,9 @@ class Settings : public QObject
 
     // Item List
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
+    Q_PROPERTY(int lengthOfTitle READ lengthOfTitle WRITE setLengthOfTitle NOTIFY lengthOfTitleChanged)
     Q_PROPERTY(bool showExcerpt READ showExcerpt WRITE setShowExcerpt NOTIFY showExcerptChanged)
+    Q_PROPERTY(int lengthOfExcerpt READ lengthOfExcerpt WRITE setLengthOfExcerpt NOTIFY lengthOfExcerptChanged)
     Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
 
     // Items
@@ -133,10 +135,20 @@ public:
     }
     void setFeeditemsOrder(int feeditemsOrder);
 
+    int lengthOfTitle() const {
+        return this->_lengthOfTitle;
+    }
+    void setLengthOfTitle(int lengthOfTitle);
+
     bool showExcerpt() const {
         return this->_showExcerpt;
     }
     void setShowExcerpt(bool showExcerpt);
+
+    int lengthOfExcerpt() const {
+        return this->_lengthOfExcerpt;
+    }
+    void setLengthOfExcerpt(int lengthOfExcerpt);
 
     bool displayLabels() const {
         return this->_displayLabels;
@@ -196,7 +208,9 @@ signals:
 
     // Item List
     void feeditemsOrderChanged();
+    void lengthOfTitleChanged();
     void showExcerptChanged();
+    void lengthOfExcerptChanged();
     void displayLabelsChanged();
 
     // Items
@@ -238,7 +252,9 @@ private:
 
     // Item List
     int _feeditemsOrder;
+    int _lengthOfTitle;
     bool _showExcerpt;
+    int _lengthOfExcerpt;
     bool _displayLabels;
 
     // Items
