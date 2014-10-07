@@ -73,17 +73,39 @@ Dialog {
 
             TextSwitch {
                 id: useAllFeedsOnStartupSetting
-                text: qsTr('Use All Feeds on Startup')
+                text: qsTr('Show "All Feeds"')
                 description: qsTr('You need to restart the App for this to take effect.')
                 checked: settings.useAllFeedsOnStartup
             }
 
-            // -- Items --
+            // -- Feeds --
             Label {
                 width: parent.width
                 horizontalAlignment: Text.AlignRight
                 color: Theme.highlightColor
-                text: qsTr("Items")
+                text: qsTr("Feeds")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+
+            TextSwitch {
+                id: showIconsSetting
+                text: qsTr("Show Icons")
+                checked: settings.displayIcons
+            }
+
+            TextSwitch {
+                id: showWhiteBackgroundSetting
+                enabled: showIconsSetting.checked
+                text: qsTr("White Background on Icons")
+                checked: settings.whiteBackgroundOnIcons
+            }
+
+            // -- Item List --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Item List")
                 font.pixelSize: Theme.fontSizeSmall;
             }
 
@@ -105,12 +127,6 @@ Dialog {
             }
 
             TextSwitch {
-                id: autoMarkReadSetting
-                text: qsTr('Automatically Mark Items as Read')
-                checked: settings.autoMarkRead
-            }
-
-            TextSwitch {
                 id: showExcerptSetting
                 text: qsTr("Show Excerpt")
                 checked: settings.showExcerpt
@@ -118,39 +134,39 @@ Dialog {
 
             TextSwitch {
                 id: displayLabelsSetting
-                text: qsTr('Display Labels in Item List')
+                text: qsTr("Show Labels")
                 checked: settings.displayLabels
             }
 
-            // -- Icons --
+
+            // -- Items --
             Label {
                 width: parent.width
                 horizontalAlignment: Text.AlignRight
                 color: Theme.highlightColor
-                text: qsTr("Icons")
+                text: qsTr("Items")
                 font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
-                id: showIconsSetting
-                text: qsTr('Show Icons')
-                checked: settings.displayIcons
+                id: autoMarkReadSetting
+                text: qsTr("Automatically Mark as Read")
+                checked: settings.autoMarkRead
             }
 
             TextSwitch {
-                id: showWhiteBackgroundSetting
-                enabled: showIconsSetting.checked
-                text: qsTr('Show a White Background on Icons')
-                checked: settings.whiteBackgroundOnIcons
-            }
-
-            // -- Text --
-            Label {
+                id: displayImagesSetting
                 width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Text")
-                font.pixelSize: Theme.fontSizeSmall;
+                text: qsTr("Show Images")
+                checked: settings.displayImages
+            }
+
+            TextSwitch {
+                id: stripInvisibleImgSetting
+                text: qsTr("Strip invisible Images")
+                description: qsTr("height or width < 2")
+                checked: settings.stripInvisibleImg
+                enabled: displayImagesSetting.checked
             }
 
             Slider {
@@ -184,47 +200,25 @@ Dialog {
                 }
             }
 
-            // -- Images --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Images")
-                font.pixelSize: Theme.fontSizeSmall;
-            }
-
-            TextSwitch {
-                id: displayImagesSetting
-                width: parent.width
-                text: qsTr('Display images')
-                checked: settings.displayImages
-            }
-
-            TextSwitch {
-                id: stripInvisibleImgSetting
-                text: qsTr('Strip invisible images')
-                checked: settings.stripInvisibleImg
-                enabled: displayImagesSetting.checked
-            }
         }
         VerticalScrollDecorator {}
     }
 
     onAccepted: {
+        // Startup
         settings.useAutologin = autoLoginSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
-
-        settings.feeditemsOrder = orderSetting.currentIndex
-        settings.autoMarkRead = autoMarkReadSetting.checked
-        settings.showExcerpt = showExcerptSetting.checked
-        settings.displayLabels = displayLabelsSetting.checked
-
+        // Feeds
         settings.displayIcons = showIconsSetting.checked
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
-
-        settings.webviewFontSize = fontSizeSetting.value
-
+        // Item List
+        settings.feeditemsOrder = orderSetting.currentIndex
+        settings.showExcerpt = showExcerptSetting.checked
+        settings.displayLabels = displayLabelsSetting.checked
+        // Items
+        settings.autoMarkRead = autoMarkReadSetting.checked
         settings.displayImages = displayImagesSetting.checked
         settings.stripInvisibleImg = stripInvisibleImgSetting.checked
+        settings.webviewFontSize = fontSizeSetting.value
     }
 }
