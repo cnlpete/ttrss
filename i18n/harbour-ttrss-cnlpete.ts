@@ -497,9 +497,9 @@
     </message>
 </context>
 <context>
-    <name>GenericCover</name>
+    <name>GenericUpdateCover</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/cover/GenericCover.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/cover/GenericUpdateCover.qml" line="75"/>
         <source>Unread Items</source>
         <translation type="unfinished"></translation>
     </message>

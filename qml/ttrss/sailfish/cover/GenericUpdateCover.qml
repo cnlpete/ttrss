@@ -24,7 +24,8 @@ import Sailfish.Silica 1.0
 CoverBackground {
     property alias headline: header.text
     property alias unreadCount: count.text
-    property var   toUpdate
+
+    signal updateTriggered()
 
     property bool active: status === Cover.Active
 
@@ -91,9 +92,7 @@ CoverBackground {
 
         CoverAction {
             iconSource: "image://theme/icon-cover-sync"
-            onTriggered: {
-                toUpdate.update()
-            }
+            onTriggered: updateTriggered()
         }
     }
 }

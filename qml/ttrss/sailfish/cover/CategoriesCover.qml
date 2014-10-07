@@ -22,8 +22,10 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-GenericCover {
+GenericUpdateCover {
     headline: ''
     unreadCount: categories.getTotalUnreadItems()
-    toUpdate: categories
+    onUpdateTriggered: {
+        categories.update()
+    }
 }
