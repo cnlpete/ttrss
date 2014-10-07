@@ -32,31 +32,44 @@ class Settings : public QObject
 {
     Q_OBJECT
 
+    // Login Credentials
     Q_PROPERTY(QString servername READ servername WRITE setServername NOTIFY servernameChanged)
     Q_PROPERTY(QString username READ username WRITE setUsername NOTIFY usernameChanged)
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
-    Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
-    Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
-    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
-
     Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
     Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
+    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
 
-    Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
-    Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
-    Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
-    Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
-    Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
+    // Startup
+    Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
+    Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
+
+    // Feeds
+    Q_PROPERTY(bool displayIcons READ displayIcons WRITE setDisplayIcons NOTIFY displayIconsChanged)
     Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
-    Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
+
+    // Item List
+    Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
+    Q_PROPERTY(bool showExcerpt READ showExcerpt WRITE setShowExcerpt NOTIFY showExcerptChanged)
+    Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
+
+    // Items
+    Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
     Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages NOTIFY displayImagesChanged)
     Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg NOTIFY stripInvisibleImgChanged)
-    Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
-    Q_PROPERTY(bool showExcerpt READ showExcerpt WRITE setShowExcerpt NOTIFY showExcerptChanged)
+    Q_PROPERTY(int webviewFontSize READ webviewFontSize WRITE setWebviewFontSize NOTIFY webviewFontSizeChanged)
+
+    // Harmattan
+    Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
+
+    // Other
+    Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
+
 public:
     static Settings *instance();
 
+    // Login Credentials
     QString servername() const {
         return this->_servername;
     }
@@ -72,21 +85,6 @@ public:
     }
     void setPassword(QString password);
 
-    bool hasAutologin() const {
-        return this->_autologin;
-    }
-    void setAutologin(bool autologin);
-
-    bool hasUseAutologin() const {
-        return this->_useAutologin;
-    }
-    void setUseAutologin(bool useAutologin);
-
-    bool ignoreSSLErrors() const {
-        return this->_ignoreSSLErrors;
-    }
-    void setIgnoreSSLErrors(bool ignoreSSLErrors);
-
     QString httpauthUsername() const {
         return this->_httpauthuser;
     }
@@ -97,45 +95,59 @@ public:
     }
     void setHttpauthPassword(QString password);
 
-    bool isWhiteTheme() const {
-        return this->_whiteTheme;
+    bool ignoreSSLErrors() const {
+        return this->_ignoreSSLErrors;
     }
-    void setWhiteTheme(bool whiteTheme);
+    void setIgnoreSSLErrors(bool ignoreSSLErrors);
 
-    bool feeditemsOrder() const {
-        return this->_feeditemsOrder;
+    // Startup
+    bool hasAutologin() const {
+        return this->_autologin;
     }
-    void setFeeditemsOrder(int feeditemsOrder);
+    void setAutologin(bool autologin);
 
-    bool displayIcons() const {
-        return this->_displayIcons;
+    bool hasUseAutologin() const {
+        return this->_useAutologin;
     }
-    void setDisplayIcons(bool displayIcons);
-
-    int webviewFontSize() const {
-        return this->_webviewFontSize;
-    }
-    void setWebviewFontSize(int webviewFontSize);
-
-    bool autoMarkRead() const {
-        return this->_autoMarkRead;
-    }
-    void setAutoMarkRead(bool autoMarkRead);
+    void setUseAutologin(bool useAutologin);
 
     bool useAllFeedsOnStartup() const {
         return this->_useAllFeedsOnStartup;
     }
     void setUseAllFeedsOnStartup(bool useAllFeedsOnStartup);
 
+    // Feeds
+    bool displayIcons() const {
+        return this->_displayIcons;
+    }
+    void setDisplayIcons(bool displayIcons);
+
     bool whiteBackgroundOnIcons() const {
         return this->_whiteBackgroundOnIcons;
     }
     void setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons);
 
-    bool showAll() const {
-        return this->_showAll;
+    // Item List
+    bool feeditemsOrder() const {
+        return this->_feeditemsOrder;
     }
-    void setShowAll(bool showAll);
+    void setFeeditemsOrder(int feeditemsOrder);
+
+    bool showExcerpt() const {
+        return this->_showExcerpt;
+    }
+    void setShowExcerpt(bool showExcerpt);
+
+    bool displayLabels() const {
+        return this->_displayLabels;
+    }
+    void setDisplayLabels(bool displayLabels);
+
+    // Items
+    bool autoMarkRead() const {
+        return this->_autoMarkRead;
+    }
+    void setAutoMarkRead(bool autoMarkRead);
 
     bool displayImages() const {
         return this->_displayImages;
@@ -147,39 +159,57 @@ public:
     }
     void setStripInvisibleImg(bool stripInvisibleImg);
 
-    bool displayLabels() const {
-        return this->_displayLabels;
+    int webviewFontSize() const {
+        return this->_webviewFontSize;
     }
-    void setDisplayLabels(bool displayLabels);
+    void setWebviewFontSize(int webviewFontSize);
 
-    bool showExcerpt() const {
-        return this->_showExcerpt;
+    // Harmattan
+    bool isWhiteTheme() const {
+        return this->_whiteTheme;
     }
-    void setShowExcerpt(bool showExcerpt);
+    void setWhiteTheme(bool whiteTheme);
+
+    // Other
+    bool showAll() const {
+        return this->_showAll;
+    }
+    void setShowAll(bool showAll);
 
 signals:
+    // Login Credentials
     void servernameChanged();
     void usernameChanged();
     void passwordChanged();
-    void autologinChanged();
-    void useAutologinChanged();
-    void ignoreSSLErrorsChanged();
-
     void httpauthUsernameChanged();
     void httpauthPasswordChanged();
+    void ignoreSSLErrorsChanged();
 
-    void whiteThemeChanged();
-    void feeditemsOrderChanged();
-    void displayIconsChanged();
-    void webviewFontSizeChanged();
-    void autoMarkReadChanged();
+    // Startup
+    void autologinChanged();
+    void useAutologinChanged();
     void useAllFeedsOnStartupChanged();
+
+    // Feeds
+    void displayIconsChanged();
     void whiteBackgroundOnIconsChanged();
-    void showAllChanged();
+
+    // Item List
+    void feeditemsOrderChanged();
+    void showExcerptChanged();
+    void displayLabelsChanged();
+
+    // Items
+    void autoMarkReadChanged();
     void displayImagesChanged();
     void stripInvisibleImgChanged();
-    void displayLabelsChanged();
-    void showExcerptChanged();
+    void webviewFontSizeChanged();
+
+    // Harmattan
+    void whiteThemeChanged();
+
+    // Other
+    void showAllChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -189,27 +219,38 @@ private:
 
     QSettings *m_settings;
 
+    // Login Credentials
     QString _servername;
     QString _username;
     QString _password;
-    bool _autologin;
-    bool _useAutologin;
-    bool _ignoreSSLErrors;
-
     QString _httpauthuser;
     QString _httpauthpasswd;
+    bool _ignoreSSLErrors;
 
-    bool _whiteTheme;
-    int _feeditemsOrder;
-    bool _displayIcons;
-    int _webviewFontSize;
-    bool _autoMarkRead;
+    // Startup
+    bool _autologin;
+    bool _useAutologin;
     bool _useAllFeedsOnStartup;
+
+    // Feeds
+    bool _displayIcons;
     bool _whiteBackgroundOnIcons;
-    bool _showAll;
+
+    // Item List
+    int _feeditemsOrder;
+    bool _showExcerpt;
+    bool _displayLabels;
+
+    // Items
+    bool _autoMarkRead;
     bool _displayImages;
     bool _stripInvisibleImg;
-    bool _displayLabels;
-    bool _showExcerpt;
+    int _webviewFontSize;
+
+    // Harmattan
+    bool _whiteTheme;
+
+    // Other
+    bool _showAll;
 };
 #endif // SETTINGS_HH
