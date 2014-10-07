@@ -53,7 +53,7 @@ class Settings : public QObject
     Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages NOTIFY displayImagesChanged)
     Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg NOTIFY stripInvisibleImgChanged)
     Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
-    Q_PROPERTY(bool teaseContent READ teaseContent WRITE setTeaseContent NOTIFY teaseContentChanged)
+    Q_PROPERTY(bool showExcerpt READ showExcerpt WRITE setShowExcerpt NOTIFY showExcerptChanged)
 public:
     static Settings *instance();
 
@@ -152,10 +152,10 @@ public:
     }
     void setDisplayLabels(bool displayLabels);
 
-    bool teaseContent() const {
-        return this->_teaseContent;
+    bool showExcerpt() const {
+        return this->_showExcerpt;
     }
-    void setTeaseContent(bool teaseContent);
+    void setShowExcerpt(bool showExcerpt);
 
 signals:
     void servernameChanged();
@@ -179,7 +179,7 @@ signals:
     void displayImagesChanged();
     void stripInvisibleImgChanged();
     void displayLabelsChanged();
-    void teaseContentChanged();
+    void showExcerptChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -210,6 +210,6 @@ private:
     bool _displayImages;
     bool _stripInvisibleImg;
     bool _displayLabels;
-    bool _teaseContent;
+    bool _showExcerpt;
 };
 #endif // SETTINGS_HH

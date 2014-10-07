@@ -184,11 +184,11 @@ void Settings::setDisplayLabels(bool displayLabels) {
     }
 }
 
-void Settings::setTeaseContent(bool teaseContent) {
-    if (_teaseContent != teaseContent) {
-        _teaseContent = teaseContent;
-        m_settings->setValue("teaseContent", _teaseContent);
-        emit teaseContentChanged();
+void Settings::setShowExcerpt(bool showExcerpt) {
+    if (_showExcerpt != showExcerpt) {
+        _showExcerpt = showExcerpt;
+        m_settings->setValue("showExcerpt", _showExcerpt);
+        emit showExcerptChanged();
     }
 }
 
@@ -214,5 +214,5 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _displayImages = m_settings->value("displayImages", true).toBool();
     _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
     _displayLabels = m_settings->value("displayLabels", true).toBool();
-    _teaseContent = m_settings->value("teaseContent", true).toBool();
+    _showExcerpt = m_settings->value("showExcerpt", true).toBool();
 }

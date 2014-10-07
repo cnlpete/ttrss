@@ -111,9 +111,9 @@ Dialog {
             }
 
             TextSwitch {
-                id: teaseContentSetting
-                text: qsTr("Tease Content")
-                checked: settings.teaseContent
+                id: showExcerptSetting
+                text: qsTr("Show Excerpt")
+                checked: settings.showExcerpt
             }
 
             TextSwitch {
@@ -216,7 +216,7 @@ Dialog {
 
         settings.feeditemsOrder = orderSetting.currentIndex
         settings.autoMarkRead = autoMarkReadSetting.checked
-        settings.teaseContent = teaseContentSetting.checked
+        settings.showExcerpt = showExcerptSetting.checked
         settings.displayLabels = displayLabelsSetting.checked
 
         settings.displayIcons = showIconsSetting.checked
