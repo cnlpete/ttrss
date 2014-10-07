@@ -102,6 +102,11 @@ Page {
                 checked: settings.autoMarkRead
                 onCheckedChanged: settings.autoMarkRead = checked
             }
+            TextSwitch {
+                text: qsTr('Display Labels in Item List')
+                checked: settings.displayLabels
+                onCheckedChanged: settings.displayLabels = checked
+            }
 
             // -- Icons --
             Label {

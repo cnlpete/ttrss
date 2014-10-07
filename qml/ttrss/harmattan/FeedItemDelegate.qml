@@ -110,13 +110,14 @@ Item {
             }
             Row {
                 id: myrow
-                property variant mymod: model
+                property variant labels: model.labels
                 spacing: MyTheme.paddingSmall
+                visible: settings.displayLabels ? (labels !== null && labels.count > 0) : false
 
                 Repeater {
-                    model: myrow.mymod.labels
+                    model: settings.displayLabels ? labels : 0
                     LabelLabel {
-                        label: myrow.mymod.labels.get(index)
+                        label: labels.get(index)
                     }
                 }
             }
