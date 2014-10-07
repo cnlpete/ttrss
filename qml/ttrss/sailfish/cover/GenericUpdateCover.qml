@@ -49,7 +49,9 @@ CoverBackground {
 
             maximumLineCount: 1
             truncationMode: TruncationMode.Fade
+            horizontalAlignment: Text.AlignHCenter
 
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
@@ -61,7 +63,9 @@ CoverBackground {
 
             font.weight: Font.Light
             textFormat: Text.PlainText
+            horizontalAlignment: Text.AlignHCenter
 
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: Theme.fontSizeHuge
             color: Theme.primaryColor
@@ -73,7 +77,9 @@ CoverBackground {
             lineHeight: 0.7
             textFormat: Text.PlainText
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
 
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: Theme.fontSizeSmall
             color: Theme.primaryColor
