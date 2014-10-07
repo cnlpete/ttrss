@@ -90,7 +90,10 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/copyright \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog
+    qtc_packaging/debian_harmattan/changelog \
+    $$files(qml/ttrss/sailfish/*.qml) \
+    $$files(qml/ttrss/sailfish/pages/*.qml) \
+    $$files(qml/ttrss/sailfish/items/*.qml)
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
