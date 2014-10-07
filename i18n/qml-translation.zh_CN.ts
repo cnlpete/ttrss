@@ -495,9 +495,9 @@
     </message>
 </context>
 <context>
-    <name>GenericCover</name>
+    <name>GenericUpdateCover</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/cover/GenericCover.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/cover/GenericUpdateCover.qml" line="75"/>
         <source>Unread Items</source>
         <translation>未读项目</translation>
     </message>
@@ -587,17 +587,17 @@
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="129"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="134"/>
         <source>Theme</source>
         <translation>主题风格</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="136"/>
         <source>Dark</source>
         <translation>暗</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="136"/>
         <source>White</source>
         <translation>亮</translation>
     </message>
@@ -620,7 +620,7 @@
         <translation>优先历史</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="135"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="140"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="153"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
@@ -632,7 +632,7 @@
         <translation>自动标记为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="120"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="130"/>
         <source>Show Icons</source>
         <translation>显示图标</translation>
@@ -687,18 +687,19 @@
         <translation>项目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="111"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="124"/>
         <source>Icons</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="125"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="146"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
         <translation type="unfinished"/>
@@ -729,19 +730,19 @@
         <translation>非常大</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="147"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="152"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="186"/>
         <source>Images</source>
         <translation>图片</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="153"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="193"/>
         <source>Display images</source>
         <translation>显示图片</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="159"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="164"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="199"/>
         <source>Strip invisible images</source>
         <translation>屏蔽不可见图片</translation>

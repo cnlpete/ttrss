@@ -495,9 +495,9 @@
     </message>
 </context>
 <context>
-    <name>GenericCover</name>
+    <name>GenericUpdateCover</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/cover/GenericCover.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/cover/GenericUpdateCover.qml" line="75"/>
         <source>Unread Items</source>
         <translation>Ungelesene Nachrichten</translation>
     </message>
@@ -587,17 +587,17 @@
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="129"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="134"/>
         <source>Theme</source>
         <translation>Design</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="136"/>
         <source>Dark</source>
         <translation>Dunkel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="136"/>
         <source>White</source>
         <translation>Hell</translation>
     </message>
@@ -620,7 +620,7 @@
         <translation>Ältere zuerst</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="135"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="140"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="153"/>
         <source>Font Size</source>
         <translation>Schrift Größe</translation>
@@ -632,7 +632,7 @@
         <translation>Automatisch als gelesen markieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="120"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="130"/>
         <source>Show Icons</source>
         <translation>Zeige Icons</translation>
@@ -687,18 +687,19 @@
         <translation>Nachrichten</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="111"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="124"/>
         <source>Icons</source>
         <translation>Icons</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="125"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="146"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
         <translation>Zeige Labels in der Nachrichten-Liste</translation>
@@ -729,19 +730,19 @@
         <translation>Riesig</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="147"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="152"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="186"/>
         <source>Images</source>
         <translation>Bilder</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="153"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="193"/>
         <source>Display images</source>
         <translation>Zeige Bilder</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="159"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="164"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="199"/>
         <source>Strip invisible images</source>
         <translation>Verstecke unsichtbare Bilder</translation>
