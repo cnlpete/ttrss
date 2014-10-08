@@ -536,7 +536,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="168"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="46"/>
         <source>No Account Yet?</source>
-        <translation>Noch kein Benuterkonto?</translation>
+        <translation>Noch kein Benutzerkonto?</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
