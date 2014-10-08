@@ -173,7 +173,7 @@
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="35"/>
         <source>Starred articles</source>
-        <translation>Bewertete Artikel</translation>
+        <translation>Markierte Artikel</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="36"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="39"/>
         <source>Recently read</source>
-        <translation>Zuletzt gelesene Artikel</translation>
+        <translation>Kürzlich gelesen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="41"/>
@@ -213,7 +213,7 @@
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="44"/>
         <source>Uncategorized</source>
-        <translation>Unkategorisierte Feeds</translation>
+        <translation>Unkategorisiert</translation>
     </message>
 </context>
 <context>
@@ -278,17 +278,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="130"/>
         <source>Unstar</source>
-        <translation>Bewertung entfernen</translation>
+        <translation>Markierung entfernen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="130"/>
         <source>Star</source>
-        <translation>Bewerten</translation>
+        <translation>Markieren</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="136"/>
         <source>Unpublish</source>
-        <translation>Nicht veröffentlichen</translation>
+        <translation>Veröffentlichung zurückziehen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="136"/>
@@ -356,17 +356,17 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="148"/>
         <source>Unstar</source>
-        <translation>Bewertung entfernen</translation>
+        <translation>Markierung entfernen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="148"/>
         <source>Star</source>
-        <translation>Bewerten</translation>
+        <translation>Markieren</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="153"/>
         <source>Unpublish</source>
-        <translation>Nicht veröffentlichen</translation>
+        <translation>Veröffentlichung zurückziehen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="153"/>
@@ -481,7 +481,7 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="195"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="142"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation>Ein Fehler ist beim abonnieren des Feeds aufgetreten</translation>
+        <translation>Ein Fehler ist beim Abonnieren des Feeds aufgetreten</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="48"/>
@@ -536,7 +536,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="168"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="46"/>
         <source>No Account Yet?</source>
-        <translation>Noch keinen Zugang?</translation>
+        <translation>Noch kein Benuterkonto?</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
@@ -558,7 +558,7 @@
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="79"/>
         <source>Server address</source>
-        <translation>Server Adresse</translation>
+        <translation>Serveradresse</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="90"/>
@@ -617,13 +617,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="97"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="102"/>
         <source>Oldest First</source>
-        <translation>Ältere zuerst</translation>
+        <translation>Älteste zuerst</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="140"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="153"/>
         <source>Font Size</source>
-        <translation>Schrift Größe</translation>
+        <translation>Schriftgröße</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
@@ -739,7 +739,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="193"/>
         <source>Display images</source>
-        <translation>Zeige Bilder</translation>
+        <translation>Bilder anzeigen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="164"/>
