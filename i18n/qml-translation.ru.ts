@@ -63,7 +63,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="44"/>
         <source>Full License</source>
-        <translation type="unfinished"/>
+        <translation>Полная лицензия</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
@@ -73,12 +73,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
         <source>Contributors</source>
-        <translation type="unfinished"/>
+        <translation>Участники</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
         <source>Feature Requests &amp; Bugs</source>
-        <translation type="unfinished"/>
+        <translation>Пожелания &amp; ошибки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
@@ -88,12 +88,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
         <source>Legal Notice</source>
-        <translation type="unfinished"/>
+        <translation>Правовая информация</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
         <source>The source code is available at %1.</source>
-        <translation type="unfinished"/>
+        <translation>Исходный код доступен на %1.</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
         <location filename="../qml/ttrss/components/AddSubscription.qml" line="83"/>
         <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="87"/>
         <source>Category:</source>
-        <translation type="unfinished"/>
+        <translation>Категория:</translation>
     </message>
 </context>
 <context>
@@ -155,12 +155,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="38"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Выход</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="46"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Обновить</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить все как прочитанное</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
         <source>Unsubcribing</source>
-        <translation type="unfinished"/>
+        <translation>Удаление</translation>
     </message>
 </context>
 <context>
@@ -392,12 +392,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="47"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить все как прочитанное</translation>
     </message>
 </context>
 <context>
@@ -451,47 +451,47 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="160"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="119"/>
         <source>Already subscribed to Feed</source>
-        <translation type="unfinished"/>
+        <translation>Такая подписка уже есть</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="175"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="130"/>
         <source>URL content is HTML, no feeds available</source>
-        <translation type="unfinished"/>
+        <translation>Содержание ссылки это HTML, подписок нет</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="180"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="133"/>
         <source>URL content is HTML which contains multiple feeds</source>
-        <translation type="unfinished"/>
+        <translation>Содержание ссылки это HTML с несколькими подписками</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="185"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="136"/>
         <source>Couldn&apos;t download the URL content</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно загрузить содержание ссылки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="190"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="139"/>
         <source>Content is an invalid XML</source>
-        <translation type="unfinished"/>
+        <translation>XML недействителен</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="195"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="142"/>
         <source>An error occured while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка добавления подписки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="48"/>
         <source>Logout</source>
-        <translation type="unfinished"/>
+        <translation>Выдод</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="56"/>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Обновить</translation>
     </message>
 </context>
 <context>
@@ -499,7 +499,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/cover/GenericUpdateCover.qml" line="75"/>
         <source>Unread Items</source>
-        <translation type="unfinished"/>
+        <translation>Непрочитанные</translation>
     </message>
 </context>
 <context>
@@ -558,7 +558,7 @@
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="79"/>
         <source>Server address</source>
-        <translation type="unfinished"/>
+        <translation>Адрес сервера</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="90"/>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="121"/>
         <source>Restore</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить</translation>
     </message>
 </context>
 <context>
@@ -667,7 +667,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="55"/>
         <source>Save</source>
-        <translation type="unfinished"/>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="56"/>
@@ -678,31 +678,31 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="64"/>
         <source>Startup</source>
-        <translation type="unfinished"/>
+        <translation>Запуск</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="91"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="86"/>
         <source>Items</source>
-        <translation type="unfinished"/>
+        <translation>Новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="124"/>
         <source>Icons</source>
-        <translation type="unfinished"/>
+        <translation>Иконки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="146"/>
         <source>Text</source>
-        <translation type="unfinished"/>
+        <translation>Текст</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
-        <translation type="unfinished"/>
+        <translation>Отображать ярлыки в списке новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="161"/>
@@ -733,19 +733,19 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="152"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="186"/>
         <source>Images</source>
-        <translation type="unfinished"/>
+        <translation>Изображения</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="158"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="193"/>
         <source>Display images</source>
-        <translation type="unfinished"/>
+        <translation>Отображать картинки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="164"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="199"/>
         <source>Strip invisible images</source>
-        <translation type="unfinished"/>
+        <translation>Обрезать невидимые изображения</translation>
     </message>
 </context>
 <context>
