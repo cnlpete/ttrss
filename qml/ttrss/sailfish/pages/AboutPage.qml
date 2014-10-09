@@ -40,7 +40,7 @@ Page {
                     var params = {
                         title: qsTr("License"),
                         data: [
-                            ["", License.short],
+                            ["", License.brief],
                             [qsTr("Full License"), License.full]
                         ]
                     }
