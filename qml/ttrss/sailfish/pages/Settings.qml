@@ -57,12 +57,8 @@ Dialog {
             }
 
             // -- Startup --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
+            SectionHeader {
                 text: qsTr("Startup")
-                font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
@@ -79,12 +75,8 @@ Dialog {
             }
 
             // -- Feeds --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
+            SectionHeader {
                 text: qsTr("Feeds")
-                font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
@@ -101,12 +93,8 @@ Dialog {
             }
 
             // -- Item List --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
+            SectionHeader {
                 text: qsTr("Item List")
-                font.pixelSize: Theme.fontSizeSmall;
             }
 
             ComboBox {
@@ -156,12 +144,8 @@ Dialog {
             }
 
             // -- Items --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
+            SectionHeader {
                 text: qsTr("Items")
-                font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
