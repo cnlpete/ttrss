@@ -40,8 +40,3 @@ License
     with TTRss; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
     http://www.gnu.org/licenses/.
-
-Exception:
-
-    The file `Bubble.qml` in `qml/ttrss/sailfish/items/` is licensed
-    under the GNU General Public License version 2 only.
