@@ -47,7 +47,7 @@ ListItem {
     }
     Bubble {
         id: bubble
-        value: model.unreadcount
+        text: model.unreadcount
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: Theme.paddingMedium
