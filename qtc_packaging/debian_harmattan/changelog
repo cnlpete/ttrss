@@ -1,3 +1,12 @@
+ttrss (0.4.4) unstable; urgency=low
+  * Updated translations
+  * Added 'Display Labels in Item List' option
+  * Added category selection for feed subscription
+  * UI improvements
+  * Added romanian translation
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sun, 12 Oct 2014 18:19:19 +0200
+
 ttrss (0.4.3) unstable; urgency=low
   * updated translations
 
