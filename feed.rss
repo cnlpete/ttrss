@@ -2,13 +2,38 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>Tiny Tiny RSS Reader for Meego</title>
-    <description>ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 smart phone, written using Qt/QML.</description>
+    <description>ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 and Jolla smartphone, written using Qt/QML.</description>
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
     <copyright>Hauke Schade, cnlpete@cnlpete.de</copyright>
     <pubDate>Sat, 21 Jun 2014 15:32:03 +0200</pubDate>
     <lastBuildDate>Sat, 21 Jun 2014 15:32:03 +0200</lastBuildDate>
 
+    <item>
+      <title>Version 0.4.4</title>
+      <pubDate>Sun, 12 Oct 2014 18:19:19 +0200</pubDate>
+      <description>
+        <![CDATA[
+[core]
+   * Updated translations
+   * Added 'Display Labels in Item List' option
+   * Added option to hide images
+   * UI improvements
+   * Added romanian translation
+[sailfish]
+   * Added feed subscription
+   * Added RemorseItem for Mark-all-read
+   * Added PushUpMenu for FeedItemList
+   * Showing Labels
+[harmattan]
+   * Added category selection for feed subscription
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss044</guid>
+      <link>http://schad.es/ttrss044</link>
+    </item>
+    
     <item>
       <title>Version 0.4.3</title>
       <pubDate>Sat, 21 Jun 2014 15:32:03 +0200</pubDate>

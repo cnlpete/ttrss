@@ -1,0 +1,27 @@
+Format: 1.8
+Date: Sun, 12 Oct 2014 18:19:19 +0200
+Source: ttrss
+Binary: ttrss
+Architecture: armel
+Version: 0.4.4
+Distribution: unstable
+Urgency: low
+Maintainer: Hauke Schade <cnlpete@cnlpete.de>
+Changed-By: Hauke Schade <cnlpete@cnlpete.de>
+Description: 
+ ttrss      - The Tiny Tiny RSS Reader for Meego
+Changes: 
+ ttrss (0.4.4) unstable; urgency=low
+ .
+   * Updated translations
+   * Added 'Display Labels in Item List' option
+   * Added category selection for feed subscription
+   * UI improvements
+   * Added romanian translation
+Checksums-Sha1: 
+ 5562286b80a07ef481f7e3fb3bb46459db2a54ee 143130 ttrss_0.4.4_armel.deb
+Checksums-Sha256: 
+ 9ebc09b76b7d2be85929fee9815fcca45dec38652ecda0caf20561f971301734 143130 ttrss_0.4.4_armel.deb
+Files: 
+ 52c4c22983e578b01712ed3f5d63f853 143130 user/internet optional ttrss_0.4.4_armel.deb
+Maemo-Display-Name: Tiny Tiny RSS Reader
