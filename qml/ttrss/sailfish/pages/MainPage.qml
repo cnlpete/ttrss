@@ -1,26 +1,46 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../items"
 
-Page {
+Dialog {
+    id: dialog
+    canAccept: !network.loading && server.text.length > 0
+
+    property bool doAutoLogin: true
+
     SilicaFlickable {
         contentHeight: contentcontainer.height
         contentWidth: parent.width
         anchors.fill: parent
 
         PullDownMenu {
-            AboutItem {}
+            MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("AboutPage.qml"));
+                }
+            }
             SettingsItem {}
             MenuItem {
                 text: qsTr("No Account Yet?")
@@ -30,109 +50,104 @@ Page {
             }
         }
 
-        Rectangle {
-            width: parent.width
-            anchors.margins: Theme.paddingLarge
-            Column {
-                id: contentcontainer
-                width: parent.width - 2 * Theme.paddingLarge
+        Column {
+            id: contentcontainer
+            anchors {
+                leftMargin: Theme.paddingLarge
+                rightMargin: Theme.paddingLarge
+            }
+            spacing: Theme.paddingMedium
+
+            DialogHeader {
+                width: dialog.width
+                title: qsTr("Tiny Tiny RSS")
+                acceptText: qsTr("Login")
+                cancelText: qsTr("Clear")
+            }
+
+            Image {
+                width: 256
+                height: 256
                 anchors.horizontalCenter: parent.horizontalCenter
+                source: "../../resources/ttrss256.png"
+            }
 
-                Image {
-                    width: 256
-                    height: 256
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    source: "../../resources/ttrss256.png"
-
-                    anchors.bottomMargin: Theme.paddingLarge
+            TextField {
+                id: server
+                text: ""
+                placeholderText: qsTr("Server address")
+                label: qsTr("Server address")
+                width: parent.width
+                enabled: !network.loading
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhUrlCharactersOnly
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: username.focus = true
+            }
+            TextField {
+                id: username
+                text: ""
+                placeholderText: qsTr("Username")
+                label: qsTr("Username")
+                width: parent.width
+                enabled: !network.loading
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: password.focus = true
+            }
+            TextField {
+                id: password
+                placeholderText: qsTr("Password")
+                label: qsTr("Password")
+                echoMode: TextInput.Password
+                width: parent.width
+                enabled: !network.loading
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.onClicked: {
+                    focus = false
+                    prepareLogin()
                 }
-
-                Label {
-                    id: serverLabel
-                    text: qsTr("Server:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: server
-                    text: ""
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                Label {
-                    id: usernameLabel
-                    text: qsTr("Username:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: username
-                    text: ""
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                Label {
-                    id: passwordLabel
-                    text: qsTr("Password:")
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
-                }
-                TextField {
-                    id: password
-                    echoMode: TextInput.Password
-                    width: parent.width
-                    enabled: !network.loading
-                }
-                TextSwitch {
-                    text: qsTr('Ignore SSL Errors')
-                    visible: server.text.substring(0, 5) === "https"
-                    checked: settings.ignoreSSLErrors
-                    onCheckedChanged: settings.ignoreSSLErrors = checked
-                }
-                Row {
-                    width: parent.width
-                    Button {
-                        id: clearButton
-                        text: qsTr("Clear")
-                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                        onClicked: {
-                            server.text = ''
-                            username.text = ''
-                            password.text = ''
-
-                            settings.httpauthusername = ''
-                            settings.httpauthpassword = ''
-                            settings.servername = server.text
-                            settings.username = username.text
-                            settings.password = password.text
-                        }
-                        enabled: !network.loading
+            }
+            TextSwitch {
+                id: ignoreSSLErrors
+                text: qsTr('Ignore SSL Errors')
+                visible: server.text.substring(0, 5) === "https"
+                checked: false
+            }
+            Row {
+                width: parent.width
+                Button {
+                    text: qsTr("Restore")
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                    onClicked: {
+                        server.text = settings.servername
+                        username.text = settings.username
+                        password.text = settings.password
+                        ignoreSSLErrors.checked = settings.ignoreSSLErrors
                     }
-                    Button {
-                        id: loginButton
-                        text: qsTr("Login")
-                        width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                        onClicked: {
-                            // check the servername for httpauth data and set/extract those
-                            var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
-                            var servername = server.text
-                            var regexres = servername.match(httpauthregex)
-                            if (regexres !== null) {
-                                server.text = (regexres[1]?regexres[1]:'') + regexres[4]
-                                settings.httpauthusername = regexres[2]
-                                settings.httpauthpassword = regexres[3]
-                            }
-
-                            settings.servername = server.text
-                            settings.username = username.text
-                            settings.password = password.text
-
-                            startLogin();
-                        }
-                        enabled: !network.loading
-                    }
+                    enabled: !network.loading && (
+                                 server.text !== settings.servername
+                                 || username.text !== settings.username
+                                 || password.text !== settings.password
+                                 || ignoreSSLErrors.checked !== settings.ignoreSSLErrors
+                             )
                 }
-
+                Button {
+                    text: qsTr("Clear")
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                    onClicked: {
+                        server.text = ''
+                        username.text = ''
+                        password.text = ''
+                        ignoreSSLErrors.checked = false
+                    }
+                    enabled: !network.loading && (
+                                 server.text.length > 0
+                                 || username.text.length > 0
+                                 || password.text.length > 0
+                                 || ignoreSSLErrors.checked)
+                }
             }
         }
     }
@@ -151,6 +166,28 @@ Page {
         if(focus) {
             password.forceActiveFocus();
         }
+    }
+
+    function prepareLogin() {
+        // check the servername for httpauth data and set/extract those
+        var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
+        var servername = server.text
+        var regexres = servername.match(httpauthregex)
+        if (regexres !== null) {
+            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+            settings.httpauthusername = regexres[2]
+            settings.httpauthpassword = regexres[3]
+        } else {
+            settings.httpauthusername = ''
+            settings.httpauthpassword = ''
+        }
+
+        settings.servername = server.text
+        settings.username = username.text
+        settings.password = password.text
+        settings.ignoreSSLErrors = ignoreSSLErrors.checked
+
+        startLogin();
     }
 
     function startLogin() {
@@ -175,6 +212,7 @@ Page {
             //Let the user know
 //            loginErrorDialog.text = text;
 //            loginErrorDialog.open();
+            dialog.reject()
         }
         else {
             //Login succeeded, auto login next Time
@@ -194,13 +232,14 @@ Page {
             //Now show the categories View
             if (settings.useAllFeedsOnStartup) {
                 var ttrss = rootWindow.getTTRSS()
-                pageStack.replace("Feeds.qml", {
-                                        category: {
-                                            categoryId: ttrss.constants['categories']['ALL'],
-                                            title: constant.allFeeds,
-                                            unreadcount: 0
-                                        }
-                                    })
+                var params = {
+                    category: {
+                        categoryId: ttrss.constants['categories']['ALL'],
+                        title: constant.allFeeds,
+                        unreadcount: 0
+                    }
+                }
+                pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
             }
             else
                 pageStack.replace(Qt.resolvedUrl('Categories.qml'))
@@ -211,8 +250,11 @@ Page {
         server.text = settings.servername
         username.text = settings.username
         password.text = settings.password
+        ignoreSSLErrors.checked = settings.ignoreSSLErrors
 
-        if(settings.autologin && settings.useAutologin)
+        if(settings.autologin && settings.useAutologin && doAutoLogin)
             startLogin();
     }
+
+    onAccepted: prepareLogin()
 }

@@ -1,40 +1,36 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../../resources/gplv2.js" as License
+import "../../resources/privacypolicy.js" as PrivacyPolicy
+import "../items"
 
 Page {
     id: aboutPage
-    property alias iconSource: icon.source
-    property alias title: title.title
-    property alias slogan: slogan.text
-
-    property alias donatetext: donatetext.text
-    property alias donatebutton: donatebutton.text
-    property string donateurl: donate.text
-
-    property alias homepagebutton: homepagebutton.text
-    property string homepageurl: ''
-
-    property alias text: content.text
-
-    property alias issuetrackerbutton: issuetrackerbutton.text
-    property alias issuetrackertext: issuetrackertext.text
-    property string issuetrackerurl: ''
-
 
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: aboutContainer.height + 10
+        contentHeight: aboutColumn.height
         contentWidth: parent.width
 
         PullDownMenu {
@@ -43,21 +39,12 @@ Page {
                 onClicked: {
                     var params = {
                         title: qsTr("License"),
-                        iconSource: iconSource,
-                        text: "This program is free software; you can redistribute it and/or modify
-                            it under the terms of the GNU General Public License as published by
-                            the Free Software Foundation; either version 2 of the License, or
-                            (at your option) any later version.<br>
-                            <br>
-                            This program is distributed in the hope that it will be useful,
-                            but WITHOUT ANY WARRANTY; without even the implied warranty of
-                            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-                            GNU General Public License for more details.<br>
-                            <br>
-                            You should have received a copy of the GNU General Public License
-                            along with this program. If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>."
+                        data: [
+                            ["", License.brief],
+                            [qsTr("Full License"), License.full]
+                        ]
                     }
-                    pageStack.push("TextPage.qml", params)
+                    pageStack.push(Qt.resolvedUrl("TextPage.qml"), params);
                 }
             }
             MenuItem {
@@ -65,111 +52,130 @@ Page {
                 onClicked: {
                     var params = {
                         title: qsTr("Privacy Policy"),
-                        iconSource: iconSource,
-                        text: "ttrss will collect the login information you give at startup and nothing more.
-                            Your login data is stored in a configuration file on your device and nowhere else.
-                            ttrss will only use it to establish connections to the available services and/or servers.
-                            The login data is not given to any third party and is not used for any other purpose than the functions of ttrss.
-                            <br><br>
-                            If you have any questions, concerns, or comments about our privacy policy you may contact us via:<br>
-                            <a href='mailto:cnlpete@cnlpete.de'>cnlpete@cnlpete.de</a>"
+                        data: [
+                            ["", PrivacyPolicy.sec1],
+                            ["", PrivacyPolicy.sec2]
+                        ]
                     }
-                    pageStack.push("TextPage.qml", params)
+                    pageStack.push(Qt.resolvedUrl("TextPage.qml"), params)
                 }
             }
         }
 
-        Item {
-            id: aboutContainer
+        Column {
+            id: aboutColumn
             width: parent.width
-            height: aboutColumn.height
 
-            Column {
-                id: aboutColumn
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingMedium
+            }
+            spacing: Theme.paddingMedium
 
-                anchors {
-                    left: parent.left
-                    top: parent.top
-                    right: parent.right
-                    margins: 10
-                }
+            PageHeader {
+                id: title
+                title: 'ttrss ' + APP_VERSION
+            }
 
-                spacing: 10
+            Image {
+                id: icon
+                source: Qt.resolvedUrl("/usr/share/icons/hicolor/86x86/"
+                                       + "apps/harbour-ttrss-cnlpete.png")
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
 
-                PageHeader {
-                    id: title
-                }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeSmall
+                text: "<b>Copyright © 2012–2014 Hauke Schade</b>"
+            }
 
-                Image {
-                    id: icon
-                    source: ''
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    id: slogan
-                    text: ''
-                    visible: text !== ''
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    id: donatetext
-                    text: ''
-                    visible: text !== ''
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            Row {
+                width: parent.width
                 Button {
-                    id: donatebutton
-                    width: parent.width
-                    text: qsTr("Donate")
-                    visible: donateurl !== ''
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
+                    text: qsTr("Buy me a beer")
                     onClicked: {
-                        Qt.openUrlExternally(donateurl)
+                        Qt.openUrlExternally(constant.donateUrl)
                     }
                 }
-
                 Button {
-                    id: homepagebutton
-                    width: parent.width
+                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
                     text: qsTr("Homepage")
-                    visible: homepageurl !== ''
                     onClicked: {
-                        Qt.openUrlExternally(homepageurl)
+                        Qt.openUrlExternally(constant.website)
                     }
                 }
+            }
 
-                Item {
-                    width: 1
-                    height: 50
-                }
-                Label {
-                    id: content
-                    text: ''
-                    width: aboutPage.width
-                    wrapMode: Text.WordWrap
-                }
-                Item {
-                    width: 1
-                    height: 50
-                }
+            // -- Contributors --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Contributors")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+            Label {
+                width: parent.width
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeSmall
+                text: "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, "
+                      + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl"
+            }
 
-                Label {
-                    id: issuetrackertext
-                    text: ''
-                    visible: text !== ''
-                    width: aboutPage.width
-                    wrapMode: Text.WordWrap
+            // -- Feature Requests & Bugs --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Feature Requests & Bugs")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+            Label {
+                width: parent.width
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                text: qsTr("If you encounter bugs or have feature requests, "
+                           + "please visit the Issue Tracker")
+            }
+            Button {
+                id: issuetrackerbutton
+                width: parent.width / 2 - Theme.paddingMedium
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Issuetracker")
+                visible: constant.issueTrackerUrl !== ''
+                onClicked: {
+                    Qt.openUrlExternally(constant.issueTrackerUrl)
                 }
-                Button {
-                    id: issuetrackerbutton
-                    width: parent.width
-                    text: qsTr("Issuetracker")
-                    visible: issuetrackerurl !== ''
-                    onClicked: {
-                        Qt.openUrlExternally(issuetrackerurl)
-                    }
-                }
+            }
+
+            // -- Legal Notice --
+            Label {
+                width: parent.width
+                horizontalAlignment: Text.AlignRight
+                color: Theme.highlightColor
+                text: qsTr("Legal Notice")
+                font.pixelSize: Theme.fontSizeSmall;
+            }
+            Label {
+                width: parent.width
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeSmall
+                text: "TTRss comes with ABSOLUTELY NO WARRANTY. "
+                      + "TTRss is free software, and you are welcome to "
+                      + "redistribute it under certain conditions. "
+                      + "See the License for details."
+            }
+            Label {
+                width: parent.width
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeSmall
+                text: qsTr("The source code is available at %1.").arg(
+                          "<a href=\"" + constant.sourceRepoSite + "\">"
+                          + constant.sourceRepoSite + "</a>")
             }
         }
     }

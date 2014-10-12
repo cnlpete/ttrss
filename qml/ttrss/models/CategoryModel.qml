@@ -1,13 +1,23 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 1.1 // harmattan
 //import QtQuick 2.0 // sailfish
@@ -16,6 +26,7 @@ ListModel {
     id: root
 
     property int selectedIndex: -1
+    signal updateFinished()
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
@@ -50,20 +61,25 @@ ListModel {
 
                 root.append({
                                 title:       title,
-                                unreadcount: parseInt(categories[category].unread),
-                                categoryId:  parseInt(categories[category].id)
+                                name:        title,
+                                categoryId:  parseInt(categories[category].id),
+                                value:       parseInt(categories[category].id),
+                                unreadcount: parseInt(categories[category].unread)
                             });
             }
 
             if(totalUnreadCount > 0 || showAll) {
                 //Add the "All" category
                 root.insert(0, {
-                                title: constant.allFeeds,
-                                categoryId: parseInt(ttrss.constants['categories']['ALL']),
-                                unreadcount: totalUnreadCount,
+                                title:          constant.allFeeds,
+                                name:           constant.allFeeds,
+                                categoryId:     parseInt(ttrss.constants['categories']['ALL']),
+                                value:          parseInt(ttrss.constants['categories']['ALL']),
+                                unreadcount:    totalUnreadCount
                             });
             }
         }
+        updateFinished()
     }
 
     function getTotalUnreadItems() {
@@ -90,7 +106,7 @@ ListModel {
     function updateUnreadCountForId(id, op) {
         for(var category = 0; category < root.count; category++) {
             var m = root.get(category)
-            if (m.categoryId == id) {
+            if (m.categoryId === id) {
                 root.setProperty(category, "unreadcount", op(m.unreadcount))
                 break
             }

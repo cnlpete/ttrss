@@ -1,13 +1,23 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
@@ -109,6 +119,15 @@ Page {
             console.log("URL: " + url + " isImage: " + isImage)
             var attachmentLabel = ""
             if (isImage) {
+                if (!settings.displayImages) {
+                    // Do not attach images if they should not be displayed.
+                    continue
+                }
+                var re = new RegExp("<img\\s[^>]*src=\"" + url + "\"", "i")
+                if (data.content.match(re)) {
+                    // Do not attach images which are part of the content.
+                    continue
+                }
                 attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
@@ -126,6 +145,20 @@ Page {
             var attachmentsCode = computeAttachmentsCode(data)
 
             var content = data.content.replace('target="_blank"', '')
+
+            if (!settings.displayImages) {
+                // remove images
+                var image_regex = /<img\s[^>]*>/gi;
+                content = content.replace(image_regex, "")
+            } else if (settings.stripInvisibleImg) {
+                // remove images with a height or width of 0 or 1
+                var height_regex = /<img\s[^>]*height="[01]"[^>]*>/gi;
+                content = content.replace(height_regex, "")
+
+                var width_regex = /<img\s[^>]*width="[01]"[^>]*>/gi;
+                content = content.replace(width_regex, "")
+            }
+
             if (!content.match(/<body>/gi)) {
                 // not yet html, detect urls
                 console.log('doing link detection on ' + content)

@@ -1,4 +1,23 @@
-VERSION = 0.4.3-noshare
+# This file is part of TTRss, a Tiny Tiny RSS Reader App
+# for MeeGo Harmattan and Sailfish OS.
+# Copyright (C) 2012–2014  Hauke Schade
+#
+# TTRss is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# TTRss is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with TTRss; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+# http://www.gnu.org/licenses/.
+
+VERSION = 0.4.4-noshare
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # Add more folders to ship with the application, here
@@ -71,7 +90,10 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/copyright \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog
+    qtc_packaging/debian_harmattan/changelog \
+    $$files(qml/ttrss/sailfish/*.qml) \
+    $$files(qml/ttrss/sailfish/pages/*.qml) \
+    $$files(qml/ttrss/sailfish/items/*.qml)
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
@@ -100,6 +122,7 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.es.ts \
     i18n/qml-translation.fr.ts \
     i18n/qml-translation.ru.ts \
+    i18n/qml-translation.ro.ts \
     i18n/qml-translation.zh_CN.ts
 
 contains(MEEGO_EDITION,harmattan) {

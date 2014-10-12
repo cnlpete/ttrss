@@ -1,13 +1,23 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
@@ -23,8 +33,22 @@ Page {
         model: categories
 
         PullDownMenu {
-            AboutItem {}
             SettingsItem {}
+            MenuItem {
+                text: qsTr("Logout")
+                visible: pageStack.depth === 1
+                onClicked: {
+                    pageStack.replace(Qt.resolvedUrl("MainPage.qml"),
+                                      { doAutoLogin: false })
+                }
+            }
+            MenuItem {
+                text: qsTr("Update")
+                enabled: !network.loading
+                onClicked: {
+                    categories.update()
+                }
+            }
             ToggleShowAllItem {
                 onUpdateView: {
                     categories.update()
@@ -46,7 +70,9 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
+                      (rootWindow.showAll ?
+                           qsTr("No categories to display") :
+                           qsTr("No categories have unread items"))
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
@@ -58,16 +84,14 @@ Page {
     }
 
     function showCategory(categoryModel) {
-        if(categoryModel != null) {
-            pageStack.push("Feeds.qml", {
-                                    category: categoryModel
-                                })
+        if(categoryModel !== null) {
+            pageStack.push(Qt.resolvedUrl("Feeds.qml"),
+                           { category: categoryModel })
         }
     }
 
     onVisibleChanged: {
         if (visible) {
-            console.log("now replacing with CategoriesCover")
             cover = Qt.resolvedUrl("../cover/CategoriesCover.qml")
         }
     }

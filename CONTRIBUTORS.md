@@ -7,3 +7,5 @@ CONTRIBUTORS
 - Alberto Mardegan (mardy)
 - gwmgdemj
 - equeim
+- Silviu Vulcan (silviuvulcan)
+- Michael Käufl (michael-k)

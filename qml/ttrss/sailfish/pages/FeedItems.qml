@@ -1,13 +1,23 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
@@ -15,7 +25,7 @@ import "../items"
 
 Page {
     id: feeditemsPage
-    property variant feed
+    property var feed
 
     Component.onCompleted: {
         feedItems.feed = feeditemsPage.feed
@@ -25,14 +35,24 @@ Page {
         feedItems.update()
     }
 
+    RemorsePopup { id: remorse }
+
     SilicaListView {
         id: listView
         anchors.fill: parent
         model: feedItems
 
         PullDownMenu {
-//            AboutItem {}
-//            SettingsItem {}
+            MenuItem {
+                text: qsTr("Update")
+                enabled: !network.loading
+                onClicked: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = false
+                    feedItems.clear()
+                    feedItems.update()
+                }
+            }
             ToggleShowAllItem {
                 onUpdateView: {
                     feedItems.continuation = 0
@@ -43,8 +63,21 @@ Page {
             }
             MenuItem {
                 text: qsTr('Mark all read')
-                onClicked: {
-                    feedItems.catchUp()
+                onClicked: markAllRead()
+            }
+        }
+
+        PushUpMenu {
+            MenuItem {
+                text: qsTr('Mark all read')
+                onClicked: markAllRead()
+            }
+            ToggleShowAllItem {
+                onUpdateView: {
+                    feedItems.continuation = 0
+                    feedItems.hasMoreItems = false
+                    feedItems.clear()
+                    feedItems.update()
                 }
             }
         }
@@ -61,7 +94,8 @@ Page {
         delegate: FeedItemDelegate {
             onClicked: {
                 feedItems.selectedIndex = index
-                pageStack.push("FeedItem.qml", { isCat: feed.isCat })
+                pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
+                               { isCat: feed.isCat })
             }
         }
 
@@ -93,17 +127,22 @@ Page {
     }
 
     function showFeed(feedModel) {
-        if(feedModel != null) {
-            pageStack.push("FeedItems.qml", {
-                                    feed: feedModel
-                                })
+        if(feedModel !== null) {
+            pageStack.push(Qt.resolvedUrl("FeedItems.qml"),
+                           { feed: feedModel })
         }
     }
 
     onVisibleChanged: {
         if (visible) {
-            console.log("now repalcing with FeedItemsCover")
             cover = Qt.resolvedUrl("../cover/FeedItemsCover.qml")
         }
+    }
+
+    function markAllRead() {
+        remorse.execute(qsTr("Marking all read"),
+                        function() {
+                            feedItems.catchUp()
+                        })
     }
 }

@@ -1,13 +1,23 @@
-//Copyright Hauke Schade, 2012-2013
-//
-//This file is part of TTRss.
-//
-//TTRss is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the
-//Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-//TTRss is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License along with TTRss (on a Maemo/Meego system there is a copy
-//in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
@@ -24,12 +34,13 @@ Page {
     property bool   previousId:     false
     property bool   nextId:         false
     property bool   isCat:          false
-    property variant labels
+    property var    labels
 
     anchors.margins: 0
 
     SilicaFlickable {
         id: flick
+        contentWidth: parent.width
         contentHeight: content.height
         interactive: true
         clip: true
@@ -39,8 +50,6 @@ Page {
         }
 
         PullDownMenu {
-//            AboutItem {}
-//            SettingsItem {}
             MenuItem {
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
@@ -53,49 +62,28 @@ Page {
             }
         }
 
-//        PushUpMenu {
-//            MenuItem {
-//                text: qsTr("Scroll to top")
-//                onClicked: flick.scrollToTop()
-//                visible: flick.contentHeight >= flick.height
-//            }
-//            MenuItem {
-//                text: qsTr("Open Dock")
-//                visible: !panel.open
-//                onClicked: panel.show()
-//            }
-//        }
-
         Column {
             id: content
-            width: parent.width
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingLarge
+            }
             spacing: Theme.paddingSmall
-//            Row {
-//                id: labelsrepeater
-//                spacing: constant.paddingMedium
-//                Repeater {
-//                    model: root.labels
-//                    LabelLabel {
-//                        label: root.labels.get(index)
-//                    }
-//                }
-//            }
+
             PageHeader {
                 id: pageHeader
             }
+
             Row {
                 id: headerRow
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: Theme.paddingLarge
-                    rightMargin: Theme.paddingLarge
-                }
-                spacing: 5
+                width: parent.width
+                spacing: Theme.paddingSmall
 
                 Label {
                     id: subtitleLabel
                     width: parent.width - starImage.width - rssImage.width
+                           - 2*parent.spacing
                     text: ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     textFormat: Text.RichText
@@ -122,6 +110,7 @@ Page {
                     Behavior on opacity { FadeAnimation{} }
                 }
             }
+
             Label {
                 text: date
                 font.pixelSize: Theme.fontSizeSmall
@@ -129,31 +118,31 @@ Page {
                 textFormat: Text.PlainText
                 anchors {
                     right: parent.right
-                    rightMargin: Theme.paddingLarge
                 }
-
                 color: Theme.secondaryColor
             }
+
             RescalingRichText {
                 id: itemView
                 text: body
                 fontSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    leftMargin: Theme.paddingLarge
-                    rightMargin: Theme.paddingLarge
-                }
+                width: parent.width
                 onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
+            }
+
+            Grid {
+                spacing: Theme.paddingMedium
+                width: parent.width
+                Repeater {
+                    model: labels.count
+                    LabelLabel {
+                        label: labels.get(index)
+                    }
+                }
             }
         }
         VerticalScrollDecorator { }
-// TODO make the FancyScroller work with SilicaFlickable aswell
-//        FancyScroller {
-//            flickable: flick
-//            anchors.fill: parent
-//        }
     }
     BusyIndicator {
         visible: network.loading
@@ -179,7 +168,8 @@ Page {
                 enabled: previousId !== false
                 onClicked: {
                     feedItems.selectPrevious()
-                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
                     //showFeedItem()
                 }
             }
@@ -215,7 +205,8 @@ Page {
                 enabled: nextId !== false
                 onClicked: {
                     feedItems.selectNext()
-                    pageStack.replace("FeedItem.qml", { isCat: root.isCat })
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
                     //showFeedItem()
                 }
             }
@@ -238,6 +229,15 @@ Page {
             console.log("URL: " + url + " isImage: " + isImage)
             var attachmentLabel = ""
             if (isImage) {
+                if (!settings.displayImages) {
+                    // Do not attach images if they should not be displayed.
+                    continue
+                }
+                var re = new RegExp("<img\\s[^>]*src=\"" + url + "\"", "i")
+                if (data.content.match(re)) {
+                    // Do not attach images which are part of the content.
+                    continue
+                }
                 attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
@@ -255,6 +255,20 @@ Page {
             var attachmentsCode = computeAttachmentsCode(data)
 
             var content = data.content.replace('target="_blank"', '')
+
+            if (!settings.displayImages) {
+                // remove images
+                var image_regex = /<img\s[^>]*>/gi;
+                content = content.replace(image_regex, "")
+            } else if (settings.stripInvisibleImg) {
+                // remove images with a height or width of 0 or 1
+                var height_regex = /<img\s[^>]*height="[01]"[^>]*>/gi;
+                content = content.replace(height_regex, "")
+
+                var width_regex = /<img\s[^>]*width="[01]"[^>]*>/gi;
+                content = content.replace(width_regex, "")
+            }
+
             if (!content.match(/<body>/gi)) {
                 // not yet html, detect urls
                 console.log('doing link detection on ' + content)
@@ -265,8 +279,8 @@ Page {
                 }
             } else {
                 if (attachmentsCode) {
-                    var regex =/(<\/body>)/gi
-                    content = content.replace(regex, attachmentsCode + "$1")
+                    var body_regex =/(<\/body>)/gi
+                    content = content.replace(body_regex, attachmentsCode + "$1")
                 }
             }
 
@@ -303,13 +317,4 @@ Page {
         itemView.fontSize = settings.webviewFontSize
         showFeedItem();
     }
-
-
-//            MenuItem {
-//                text: qsTr("Share")
-//                enabled: url && (url != "")
-//                onClicked: QMLUtils.share(url, pageTitle);
-//            }
-//            SettingsItem {}
-//            AboutItem {}
 }

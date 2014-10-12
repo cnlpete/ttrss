@@ -1,14 +1,16 @@
 Name: harbour-ttrss-cnlpete
-Summary: The Tiny Tiny RSS Reader for Sailfish
-Version: 0.4.3
+Summary: Tiny Tiny RSS Reader
+Version: 0.4.4
 Release: 1
-Group: Qt/Qt
-URL: http://example.org/
-License: LICENSE
+Group: Applications/Internet
+URL: http://ttrss.cnlpete.de/
+License: GPLv2+
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |-
-  ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 and the Jolla  smartphone, written using Qt/QML. It uses the Tiny Tiny RSS JSON API.
+  ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 and the Jolla
+  smartphone, written using Qt/QML. It uses the Tiny Tiny RSS JSON
+  API.
 Configure: none
 Builder: qtc5
 PkgConfigBR:

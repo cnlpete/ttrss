@@ -1,3 +1,24 @@
+/*
+ * This file is part of TTRss, a Tiny Tiny RSS Reader App
+ * for MeeGo Harmattan and Sailfish OS.
+ * Copyright (C) 2012–2014  Hauke Schade
+ *
+ * TTRss is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * TTRss is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with TTRss; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
+ * http://www.gnu.org/licenses/.
+ */
+
 #ifndef SETTINGS_HH
 #define SETTINGS_HH
 
@@ -29,6 +50,9 @@ class Settings : public QObject
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
     Q_PROPERTY(bool whiteBackgroundOnIcons READ whiteBackgroundOnIcons WRITE setWhiteBackgroundOnIcons NOTIFY whiteBackgroundOnIconsChanged)
     Q_PROPERTY(bool showAll READ showAll WRITE setShowAll NOTIFY showAllChanged)
+    Q_PROPERTY(bool displayImages READ displayImages WRITE setDisplayImages NOTIFY displayImagesChanged)
+    Q_PROPERTY(bool stripInvisibleImg READ stripInvisibleImg WRITE setStripInvisibleImg NOTIFY stripInvisibleImgChanged)
+    Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
 public:
     static Settings *instance();
 
@@ -112,6 +136,21 @@ public:
     }
     void setShowAll(bool showAll);
 
+    bool displayImages() const {
+        return this->_displayImages;
+    }
+    void setDisplayImages(bool displayImages);
+
+    bool stripInvisibleImg() const {
+        return this->_stripInvisibleImg;
+    }
+    void setStripInvisibleImg(bool stripInvisibleImg);
+
+    bool displayLabels() const {
+        return this->_displayLabels;
+    }
+    void setDisplayLabels(bool displayLabels);
+
 signals:
     void servernameChanged();
     void usernameChanged();
@@ -131,6 +170,9 @@ signals:
     void useAllFeedsOnStartupChanged();
     void whiteBackgroundOnIconsChanged();
     void showAllChanged();
+    void displayImagesChanged();
+    void stripInvisibleImgChanged();
+    void displayLabelsChanged();
 
 private:
     static QScopedPointer<Settings> m_instance;
@@ -158,5 +200,8 @@ private:
     bool _useAllFeedsOnStartup;
     bool _whiteBackgroundOnIcons;
     bool _showAll;
+    bool _displayImages;
+    bool _stripInvisibleImg;
+    bool _displayLabels;
 };
 #endif // SETTINGS_HH

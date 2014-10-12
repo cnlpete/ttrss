@@ -19,15 +19,27 @@
  * http://www.gnu.org/licenses/.
  */
 
-import QtQuick 1.1
-import com.nokia.meego 1.1 // for Style
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-Style {
+Rectangle {
+    property var label
 
-    property int headerHeight: inPortrait ? 72 : 56
-    property int headerLogoHeight: inPortrait ? 56 : 40
+    visible: label !== null
 
-    property color textColor: MyTheme.primaryColor
+    width: text.width + 2*Theme.paddingSmall
+    height: text.height
+    color: label !== null ? label.bgcolor : Theme.secondaryColor
+    radius: Theme.paddingSmall
 
-    property string backgroundImage: "image://theme/color15-meegotouch-view-header-fixed"
+    Text {
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+        id: text
+        text: label !== null ? label.text : ""
+        color: label !== null ? label.fgcolor : Theme.highlightColor
+        font.pixelSize: Theme.fontSizeExtraSmall
+    }
 }
