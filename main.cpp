@@ -37,6 +37,8 @@
 
 #include <QTranslator>
 #include <QLocale>
+#include <QFile>
+#include <QDir>
 
 #include "settings.hh"
 #include "qmlutils.hh"
@@ -56,8 +58,25 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     app->setApplicationVersion(APP_VERSION);
-    app->setApplicationName("ttrss");
-    app->setOrganizationName("Hauke Schade");
+    app->setApplicationName(TARGET);
+    //app->setOrganizationName("Hauke Schade");
+
+#if defined(Q_OS_SAILFISH)
+    // check for the old settings file, try to move it to new location
+    QFileInfo settingsfileInfo(".config/Hauke Schade/ttrss.conf");
+    QFile settingsfile(settingsfileInfo.absoluteFilePath());
+    if (settingsfile.exists()) {
+        if (!QDir(".config/" + QString(TARGET)).exists())
+            QDir(".config/").mkdir(TARGET);
+        QFileInfo newSettingsfileInfo(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
+        QFile newSettingsfile(newSettingsfileInfo.absoluteFilePath());
+        if (newSettingsfile.exists())
+            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".old.conf");
+        else
+            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
+    }
+#else
+#endif
 
     QString locale = QLocale::system().name();
     qDebug() << "detected locale is " << locale;
