@@ -57,7 +57,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName("ttrss");
-    app->setOrganizationName("Hauke Schade");
+    app->setOrganizationName("harbour-ttrss-cnlpete");
 
     QString locale = QLocale::system().name();
     qDebug() << "detected locale is " << locale;
