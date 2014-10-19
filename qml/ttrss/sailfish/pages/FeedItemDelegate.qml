@@ -85,7 +85,8 @@ ListItem {
                 color: model.unread > 0 ?
                            (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
-                maximumLineCount: 2
+                // 'maximumLineCount: 0' means 'no limit'
+                maximumLineCount: settings.lengthOfTitle
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 truncationMode: TruncationMode.Fade
                 textFormat: Text.StyledText
@@ -98,13 +99,13 @@ ListItem {
                 color: model.unread > 0 ?
                            (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
-                maximumLineCount: 2
+                maximumLineCount: settings.lengthOfExcerpt
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 truncationMode: TruncationMode.Fade
                 textFormat: Text.StyledText
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
-                visible: text != ""
+                visible: settings.showExcerpt && text != ""
             }
             Grid  {
                 spacing: Theme.paddingSmall

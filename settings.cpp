@@ -32,6 +32,7 @@ Settings *Settings::instance() {
     return m_instance.data();
 }
 
+// Login Credentials
 void Settings::setServername(QString servername) {
     if (_servername != servername) {
         _servername = servername;
@@ -72,6 +73,15 @@ void Settings::setHttpauthPassword(QString password) {
     }
 }
 
+void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
+    if (_ignoreSSLErrors != ignoreSSLErrors) {
+        _ignoreSSLErrors = ignoreSSLErrors;
+        m_settings->setValue("ignoreSSLErrors", _ignoreSSLErrors);
+        emit ignoreSSLErrorsChanged();
+    }
+}
+
+// Startup
 void Settings::setAutologin(bool autologin) {
     if (_autologin != autologin) {
         _autologin = autologin;
@@ -88,59 +98,20 @@ void Settings::setUseAutologin(bool useAutologin) {
     }
 }
 
-void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
-    if (_ignoreSSLErrors != ignoreSSLErrors) {
-        _ignoreSSLErrors = ignoreSSLErrors;
-        m_settings->setValue("ignoreSSLErrors", _ignoreSSLErrors);
-        emit ignoreSSLErrorsChanged();
-    }
-}
-
-void Settings::setWhiteTheme(bool whiteTheme) {
-    if (_whiteTheme != whiteTheme) {
-        _whiteTheme = whiteTheme;
-        m_settings->setValue("whiteTheme", _whiteTheme);
-        emit whiteThemeChanged();
-    }
-}
-
-void Settings::setFeeditemsOrder(int feeditemsOrder) {
-    if (_feeditemsOrder != feeditemsOrder) {
-        _feeditemsOrder = feeditemsOrder;
-        m_settings->setValue("feeditemsOrder", _feeditemsOrder);
-        emit feeditemsOrderChanged();
-    }
-}
-
-void Settings::setDisplayIcons(bool displayIcons) {
-    if (_displayIcons != displayIcons) {
-        _displayIcons = displayIcons;
-        m_settings->setValue("displayIcons", _displayIcons);
-        emit displayIconsChanged();
-    }
-}
-
-void Settings::setWebviewFontSize(int webviewFontSize) {
-    if (_webviewFontSize != webviewFontSize) {
-        _webviewFontSize = webviewFontSize;
-        m_settings->setValue("webviewFontSize", _webviewFontSize);
-        emit webviewFontSizeChanged();
-    }
-}
-
-void Settings::setAutoMarkRead(bool autoMarkRead) {
-    if (_autoMarkRead != autoMarkRead) {
-        _autoMarkRead = autoMarkRead;
-        m_settings->setValue("autoMarkRead", _autoMarkRead);
-        emit autoMarkReadChanged();
-    }
-}
-
 void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
     if (_useAllFeedsOnStartup != useAllFeedsOnStartup) {
         _useAllFeedsOnStartup = useAllFeedsOnStartup;
         m_settings->setValue("useAllFeedsOnStartup", _useAllFeedsOnStartup);
         emit useAllFeedsOnStartupChanged();
+    }
+}
+
+// Feeds
+void Settings::setDisplayIcons(bool displayIcons) {
+    if (_displayIcons != displayIcons) {
+        _displayIcons = displayIcons;
+        m_settings->setValue("displayIcons", _displayIcons);
+        emit displayIconsChanged();
     }
 }
 
@@ -152,11 +123,53 @@ void Settings::setWhiteBackgroundOnIcons(bool whiteBackgroundOnIcons) {
     }
 }
 
-void Settings::setShowAll(bool showAll) {
-    if (_showAll != showAll) {
-        _showAll = showAll;
-        m_settings->setValue("showAll", _showAll);
-        emit showAllChanged();
+// Item List
+void Settings::setFeeditemsOrder(int feeditemsOrder) {
+    if (_feeditemsOrder != feeditemsOrder) {
+        _feeditemsOrder = feeditemsOrder;
+        m_settings->setValue("feeditemsOrder", _feeditemsOrder);
+        emit feeditemsOrderChanged();
+    }
+}
+
+void Settings::setLengthOfTitle(int lengthOfTitle) {
+    if (_lengthOfTitle != lengthOfTitle) {
+        _lengthOfTitle = lengthOfTitle;
+        m_settings->setValue("lengthOfTitle", _lengthOfTitle);
+        emit lengthOfTitleChanged();
+    }
+}
+
+void Settings::setShowExcerpt(bool showExcerpt) {
+    if (_showExcerpt != showExcerpt) {
+        _showExcerpt = showExcerpt;
+        m_settings->setValue("showExcerpt", _showExcerpt);
+        emit showExcerptChanged();
+    }
+}
+
+void Settings::setLengthOfExcerpt(int lengthOfExcerpt) {
+    if (_lengthOfExcerpt != lengthOfExcerpt) {
+        _lengthOfExcerpt = lengthOfExcerpt;
+        m_settings->setValue("lengthOfExcerpt", _lengthOfExcerpt);
+        emit lengthOfExcerptChanged();
+    }
+}
+
+void Settings::setDisplayLabels(bool displayLabels) {
+    if (_displayLabels != displayLabels) {
+        _displayLabels = displayLabels;
+        m_settings->setValue("displayLabels", _displayLabels);
+        emit displayLabelsChanged();
+    }
+}
+
+// Items
+void Settings::setAutoMarkRead(bool autoMarkRead) {
+    if (_autoMarkRead != autoMarkRead) {
+        _autoMarkRead = autoMarkRead;
+        m_settings->setValue("autoMarkRead", _autoMarkRead);
+        emit autoMarkReadChanged();
     }
 }
 
@@ -176,34 +189,66 @@ void Settings::setStripInvisibleImg(bool stripInvisibleImg) {
     }
 }
 
-void Settings::setDisplayLabels(bool displayLabels) {
-    if (_displayLabels != displayLabels) {
-        _displayLabels = displayLabels;
-        m_settings->setValue("displayLabels", _displayLabels);
-        emit displayLabelsChanged();
+void Settings::setWebviewFontSize(int webviewFontSize) {
+    if (_webviewFontSize != webviewFontSize) {
+        _webviewFontSize = webviewFontSize;
+        m_settings->setValue("webviewFontSize", _webviewFontSize);
+        emit webviewFontSizeChanged();
+    }
+}
+
+// Harmattan
+void Settings::setWhiteTheme(bool whiteTheme) {
+    if (_whiteTheme != whiteTheme) {
+        _whiteTheme = whiteTheme;
+        m_settings->setValue("whiteTheme", _whiteTheme);
+        emit whiteThemeChanged();
+    }
+}
+
+// Other
+void Settings::setShowAll(bool showAll) {
+    if (_showAll != showAll) {
+        _showAll = showAll;
+        m_settings->setValue("showAll", _showAll);
+        emit showAllChanged();
     }
 }
 
 Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
+    // Login Credentials
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();
     _password = m_settings->value("password", "").toString();
-    _autologin = m_settings->value("autologin", false).toBool();
-    _useAutologin = m_settings->value("useAutologin", true).toBool();
-    _ignoreSSLErrors = m_settings->value("ignoreSSLErrors", false).toBool();
-
     _httpauthuser = m_settings->value("httpauthusername", "").toString();
     _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();
+    _ignoreSSLErrors = m_settings->value("ignoreSSLErrors", false).toBool();
 
-    _whiteTheme = m_settings->value("whiteTheme", true).toBool();
-    _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
-    _displayIcons = m_settings->value("displayIcons", true).toBool();
-    _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
-    _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
+    // Startup
+    _autologin = m_settings->value("autologin", false).toBool();
+    _useAutologin = m_settings->value("useAutologin", true).toBool();
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
+
+    // Feeds
+    _displayIcons = m_settings->value("displayIcons", true).toBool();
     _whiteBackgroundOnIcons = m_settings->value("whiteBackgroundOnIcons", true).toBool();
-    _showAll = m_settings->value("showAll", false).toBool();
+
+    // Item List
+    _feeditemsOrder = m_settings->value("feeditemsOrder", 0).toInt();
+    _lengthOfTitle = m_settings->value("lengthOfTitle", 2).toInt();
+    _showExcerpt = m_settings->value("showExcerpt", true).toBool();
+    _lengthOfExcerpt = m_settings->value("lengthOfExcerpt", 2).toInt();
+    _displayLabels = m_settings->value("displayLabels", true).toBool();
+
+    // Items
+    _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
     _displayImages = m_settings->value("displayImages", true).toBool();
     _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
-    _displayLabels = m_settings->value("displayLabels", true).toBool();
+    _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
+
+    // Harmattan
+    _whiteTheme = m_settings->value("whiteTheme", true).toBool();
+
+    // Other
+    _showAll = m_settings->value("showAll", false).toBool();
 }

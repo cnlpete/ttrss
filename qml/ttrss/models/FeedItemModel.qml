@@ -58,8 +58,6 @@ ListModel {
                 subtitle = subtitle.replace(/\n/gi, " ")
                 subtitle = subtitle.replace(/<[\/]?[a-zA-Z][^>]*>/gi, "")
                 subtitle = unescape(subtitle.replace(/<!--.*-->/gi, ""))
-                if (subtitle.length > 102)
-                    subtitle = subtitle.substring(0,100) + "..."
                 subtitle = "<body>" + subtitle + "</body>"
 
                 var title = feeditems[feeditem].title
