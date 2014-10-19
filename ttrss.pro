@@ -19,6 +19,7 @@
 
 VERSION = 0.4.4
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += TARGET=\\\"$$TARGET\\\"
 
 # Add more folders to ship with the application, here
 folder_01.source = qml/ttrss/models

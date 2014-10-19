@@ -59,9 +59,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName(TARGET);
-    //app->setOrganizationName("Hauke Schade");
+    app->setOrganizationName(TARGET);
 
-#if defined(Q_OS_SAILFISH)
     // check for the old settings file, try to move it to new location
     QFileInfo settingsfileInfo(".config/Hauke Schade/ttrss.conf");
     QFile settingsfile(settingsfileInfo.absoluteFilePath());
@@ -75,11 +74,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         else
             settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
     }
-#else
-#endif
 
     QString locale = QLocale::system().name();
-    qDebug() << "detected locale is " << locale;
     QTranslator translator;
     /* the ":/" is a special directory Qt uses to
     * distinguish resources;
