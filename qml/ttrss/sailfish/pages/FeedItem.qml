@@ -148,6 +148,8 @@ Page {
             Grid {
                 spacing: Theme.paddingMedium
                 width: parent.width
+                visible: labels !== null && labels.count > 0
+
                 Repeater {
                     model: labels.count
                     LabelLabel {
