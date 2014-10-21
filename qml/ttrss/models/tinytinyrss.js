@@ -91,16 +91,6 @@ function initState() {
     };
 }
 
-function isEmpty(obj) {
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop)) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 function trace(level, text) {
     if(level <= state['tracelevel']) {
         console.log(text + '\n');
