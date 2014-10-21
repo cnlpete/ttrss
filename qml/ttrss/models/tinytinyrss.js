@@ -49,7 +49,6 @@ var state = {
 };
 
 var requestsPending = {
-    'token':          false,
     'categories':     false,
     'feeds':          false,
     'feeditems':      false,
@@ -802,16 +801,12 @@ function processPendingRequests(callback) {
     trace(4, 'In function processPendingRequests()');
     var foundWork = false;
 
-    if(requestsPending['token']) {
-        trace(4, 'token request pending');
-        foundWork = true;
-        if(responsesPending['token']) {
-            return foundWork;
-        } else {
-            // Start the login process
-            login(callback);
-        }
-    } else if (requestsPending['categories']) {
+    if(responsesPending['token']) {
+        trace(4, 'token response pending');
+        return true;
+    }
+
+    if (requestsPending['categories']) {
         trace(4, 'categories request pending');
         foundWork = true;
         if(responsesPending['categories']) {
