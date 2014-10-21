@@ -281,8 +281,8 @@ function process_getConfig(callback, httpreq) {
             state['icons_url'] = responseObject.content['icons_url'];
             successful = true
 
-        } else if(responseObject.content.error) {
-            errorText = "Get Config failed: " + responseObject.content.error;
+        } else if(responseObject.content.error && callback) {
+            callback(30, "Get Config failed: " + responseObject.content.error)
         }
 
     } else {
