@@ -305,14 +305,10 @@ function process_updateConfig(callback, httpreq) {
 
     responsesPending['config'] = false;
 
-    if(state['icons_dir']) {
-        if(!processPendingRequests(callback)) {
-            // This action is complete (as there's no other requests to do)
-            // Fire callback saying all ok
-            if(callback) {
-                callback(0);
-            }
-        }
+    if(state['icons_dir'] && !processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(0);
     }
 }
 
@@ -367,14 +363,10 @@ function process_updateCategories(callback, httpreq) {
 
     responsesPending['categories'] = false;
 
-    if(state['categorycache']) {
-        if(!processPendingRequests(callback)) {
-            // This action is complete (as there's no other requests to do)
-            // Fire callback saying all ok
-            if(callback) {
-                callback(0);
-            }
-        }
+    if(state['categorycache'] && !processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(0);
     }
 }
 
@@ -435,14 +427,10 @@ function process_updateFeeds(callback, httpreq) {
 
     responsesPending['feeds'] = false;
 
-    if(state['categoryfeeds'][catId]) {
-        if(!processPendingRequests(callback)) {
-            // This action is complete (as there's no other requests to do)
-            // Fire callback saying all ok
-            if(callback) {
-                callback(0);
-            }
-        }
+    if(state['categoryfeeds'][catId] && !processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(0);
     }
 }
 
@@ -512,14 +500,10 @@ function process_updateFeedItems(callback, httpreq) {
 
     responsesPending['feeditems'] = false;
 
-    if(state['feeditems'][feedId]) {
-        if(!processPendingRequests(callback)) {
-            // This action is complete (as there's no other requests to do)
-            // Fire callback saying all ok
-            if(callback) {
-                callback(0);
-            }
-        }
+    if(state['feeditems'][feedId] && !processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(0);
     }
 }
 
@@ -639,10 +623,8 @@ function catchUp(feedId, isCat, callback) {
 
     networkCall(params, function(http) {
         responsesPending['catchup'] = false;
-        if(!processPendingRequests(callback)) {
-            if(callback) {
-                callback(0);
-            }
+        if(!processPendingRequests(callback) && callback) {
+            callback(0);
         }
     });
 }
@@ -725,7 +707,7 @@ function unsubscribe(feedId, callback) {
     networkCall(params, function(http) {
         responsesPending['unsubscribe'] = false;
         if(!processPendingRequests(callback) && callback) {
-                callback(0)
+            callback(0)
         }
     })
 }
