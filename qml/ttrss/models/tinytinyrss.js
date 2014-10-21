@@ -25,7 +25,7 @@ if(Qt) {
 }
 
 var state={
-    'proxy':        '',
+    'imageProxy':   '',
     'url':          null,
     'shorturl':     null,
     'username':     null,
@@ -140,8 +140,8 @@ function dateSortInverse(a, b) {
     }
 }
 
-function setProxy(proxy) {
-    state['proxy'] = proxy
+function setImageProxy(imageProxy) {
+    state['imageProxy'] = imageProxy
 }
 
 function setLoginDetails(username, password, url) {
@@ -798,7 +798,7 @@ function getIconUrl(feedId) {
     case constants['feeds']['published']:
         return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
     default:
-        return state['proxy'] + state['shorturl'] + state['icons_url'] + '/'
+        return state['imageProxy'] + state['shorturl'] + state['icons_url'] + '/'
                 + feedId + '.ico'
     }
 }
