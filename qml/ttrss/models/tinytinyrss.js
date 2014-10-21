@@ -325,8 +325,9 @@ function process_updateCategories(callback, httpreq) {
 
             // TODO sort
 
-        } else if(responseObject.content.error) {
-            errorText = "Update Categories failed: " + responseObject.content.error;
+        } else if(responseObject.content.error && callback) {
+            callback(30, "Update Categories failed: "
+                     + responseObject.content.error);
         }
 
     } else {
@@ -390,8 +391,8 @@ function process_updateFeeds(callback, httpreq) {
                 state['feedcache'][feedid] = responseObject.content[i];
             }
 
-        } else if(responseObject.content.error) {
-            errorText = "Update Feeds failed: " + responseObject.content.error;
+        } else if(responseObject.content.error && callback) {
+            callback(40, "Update Feeds failed: " + responseObject.content.error);
         }
 
     } else {
@@ -465,8 +466,8 @@ function process_updateFeedItems(callback, httpreq) {
                 state['feeditems'][feedId][i] = feeditemid;
                 state['feeditemcache'][feeditemid] = responseObject.content[i];
             }
-        } else if(responseObject.content.error) {
-            errorText = "Update Feeds failed: " + responseObject.content.error;
+        } else if(responseObject.content.error && callback) {
+            callback(50, "Update Feeds failed: " + responseObject.content.error);
         }
     } else {
         trace(1, "Update Feeds Error: received http code: " + httpreq.status
