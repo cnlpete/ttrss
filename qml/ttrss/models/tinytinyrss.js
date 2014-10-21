@@ -512,100 +512,6 @@ function process_updateFeedItems(callback, httpreq) {
     }
 }
 
-/** @private */
-function processPendingRequests(callback) {
-    trace(4, 'In function processPendingRequests()');
-    var foundWork = false;
-
-    if(requestsPending['token']) {
-        trace(4, 'token request pending');
-        foundWork = true;
-        if(responsesPending['token']) {
-            return foundWork;
-        } else {
-            // Start the login process
-            login(callback);
-        }
-    } else if (requestsPending['categories']) {
-        trace(4, 'categories request pending');
-        foundWork = true;
-        if(responsesPending['categories']) {
-            return foundWork;
-        } else if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateCategories(callback);
-        }
-    } else if (requestsPending['feeds']) {
-        trace(4, 'feeds request pending');
-        foundWork = true;
-        if(responsesPending['feeds']) {
-            return foundWork;
-        } else if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateFeeds(state['lastcategory']['id'], callback);
-        }
-    } else if (requestsPending['feeditems']) {
-        trace(4, 'feeditems request pending');
-        foundWork = true;
-        if(responsesPending['feeditems']) {
-            return foundWork;
-        } if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateFeedItems(state['lastfeed']['id'],
-                            state['lastfeed']['isCat'],
-                            state['lastfeed']['continuation'],
-                            callback);
-        }
-    } else if (requestsPending['feeditemstar']) {
-        trace(4, 'feeditemstar request pending');
-        foundWork = true;
-        if(responsesPending['feeditemstar']) {
-            return foundWork;
-        } else if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateFeedStar(state['lastfeeditem']['articleId'],
-                           state['lastfeeditem']['value'],
-                           callback);
-        }
-    } else if (requestsPending['feeditemunread']) {
-        trace(4, 'feeditemunread request pending');
-        foundWork = true;
-        if(responsesPending['feeditemunread']) {
-            return foundWork;
-        } else if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateFeedUnread(state['lastfeeditemunread']['articleId'],
-                             state['lastfeeditemunread']['value'],
-                             callback);
-        }
-    } else if (requestsPending['feeditemrss']) {
-        trace(4, 'feeditemrss request pending');
-        foundWork = true;
-        if(responsesPending['feeditemrss']) {
-            return foundWork;
-        } else if(!state['token']) {
-            //Get the auth token
-            login(callback);
-        } else {
-            updateFeedRSS(state['lastfeeditemrss']['articleId'],
-                          state['lastfeeditemrss']['value'],
-                          callback);
-        }
-    }
-
-    return foundWork;
-}
-
 function catchUp(feedId, isCat, callback) {
     if(responsesPending['catchup']) {
         return;
@@ -895,4 +801,98 @@ function getIconUrl(feedId) {
         return state['proxy'] + state['shorturl'] + state['icons_url'] + '/'
                 + feedId + '.ico'
     }
+}
+
+/** @private */
+function processPendingRequests(callback) {
+    trace(4, 'In function processPendingRequests()');
+    var foundWork = false;
+
+    if(requestsPending['token']) {
+        trace(4, 'token request pending');
+        foundWork = true;
+        if(responsesPending['token']) {
+            return foundWork;
+        } else {
+            // Start the login process
+            login(callback);
+        }
+    } else if (requestsPending['categories']) {
+        trace(4, 'categories request pending');
+        foundWork = true;
+        if(responsesPending['categories']) {
+            return foundWork;
+        } else if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateCategories(callback);
+        }
+    } else if (requestsPending['feeds']) {
+        trace(4, 'feeds request pending');
+        foundWork = true;
+        if(responsesPending['feeds']) {
+            return foundWork;
+        } else if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateFeeds(state['lastcategory']['id'], callback);
+        }
+    } else if (requestsPending['feeditems']) {
+        trace(4, 'feeditems request pending');
+        foundWork = true;
+        if(responsesPending['feeditems']) {
+            return foundWork;
+        } if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateFeedItems(state['lastfeed']['id'],
+                            state['lastfeed']['isCat'],
+                            state['lastfeed']['continuation'],
+                            callback);
+        }
+    } else if (requestsPending['feeditemstar']) {
+        trace(4, 'feeditemstar request pending');
+        foundWork = true;
+        if(responsesPending['feeditemstar']) {
+            return foundWork;
+        } else if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateFeedStar(state['lastfeeditem']['articleId'],
+                           state['lastfeeditem']['value'],
+                           callback);
+        }
+    } else if (requestsPending['feeditemunread']) {
+        trace(4, 'feeditemunread request pending');
+        foundWork = true;
+        if(responsesPending['feeditemunread']) {
+            return foundWork;
+        } else if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateFeedUnread(state['lastfeeditemunread']['articleId'],
+                             state['lastfeeditemunread']['value'],
+                             callback);
+        }
+    } else if (requestsPending['feeditemrss']) {
+        trace(4, 'feeditemrss request pending');
+        foundWork = true;
+        if(responsesPending['feeditemrss']) {
+            return foundWork;
+        } else if(!state['token']) {
+            //Get the auth token
+            login(callback);
+        } else {
+            updateFeedRSS(state['lastfeeditemrss']['articleId'],
+                          state['lastfeeditemrss']['value'],
+                          callback);
+        }
+    }
+
+    return foundWork;
 }
