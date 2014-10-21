@@ -103,7 +103,7 @@ function isEmpty(obj) {
 
 function trace(level, text) {
     if(level <= state['tracelevel']) {
-        console.log(text+'\n');
+        console.log(text + '\n');
     }
 }
 
@@ -341,6 +341,7 @@ function process_updateCategories(callback, httpreq) {
             }
 
             // TODO sort
+
         } else if(responseObject.content.error) {
             errorText = "Update Categories failed: " + responseObject.content.error;
         }
@@ -810,6 +811,7 @@ function processPendingRequests(callback) {
         } else {
             updateCategories(callback);
         }
+
     } else if (requestsPending['feeds']) {
         trace(4, 'feeds request pending');
         foundWork = true;
@@ -821,6 +823,7 @@ function processPendingRequests(callback) {
         } else {
             updateFeeds(state['lastcategory']['id'], callback);
         }
+
     } else if (requestsPending['feeditems']) {
         trace(4, 'feeditems request pending');
         foundWork = true;
@@ -835,6 +838,7 @@ function processPendingRequests(callback) {
                             state['lastfeed']['continuation'],
                             callback);
         }
+
     } else if (requestsPending['feeditemstar']) {
         trace(4, 'feeditemstar request pending');
         foundWork = true;
@@ -848,6 +852,7 @@ function processPendingRequests(callback) {
                            state['lastfeeditem']['value'],
                            callback);
         }
+
     } else if (requestsPending['feeditemunread']) {
         trace(4, 'feeditemunread request pending');
         foundWork = true;
@@ -861,6 +866,7 @@ function processPendingRequests(callback) {
                              state['lastfeeditemunread']['value'],
                              callback);
         }
+
     } else if (requestsPending['feeditemrss']) {
         trace(4, 'feeditemrss request pending');
         foundWork = true;
