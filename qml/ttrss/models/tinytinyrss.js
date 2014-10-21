@@ -881,13 +881,10 @@ function getIconUrl(feedId) {
     case constants['feeds']['archived']:
     case constants['feeds']['recently']:
         return ''
-        break;
     case constants['feeds']['starred']:
         return "file:///opt/ttrss/qml/resources/ic_star_enabled.png"
-        break;
     case constants['feeds']['published']:
         return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
-        break;
     default:
         return state['proxy'] + state['shorturl'] + state['icons_url'] + '/'
                 + feedId + '.ico'
