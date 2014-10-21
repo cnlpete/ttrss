@@ -173,8 +173,9 @@ Dialog {
         var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
         var servername = server.text
         var regexres = servername.match(httpauthregex)
+
         if (regexres !== null) {
-            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+            server.text = (regexres[1] ? regexres[1] : '') + regexres[4]
             settings.httpauthusername = regexres[2]
             settings.httpauthpassword = regexres[3]
         } else {
@@ -194,9 +195,13 @@ Dialog {
         var ttrss = rootWindow.getTTRSS();
         ttrss.clearState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
-        // BUGFIX since somehow the silica QML Image can not display images coming from a secure line
-        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https")
+
+        // BUGFIX somehow the silica QML Image can not display images
+        // coming from a secure line
+        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https") {
             ttrss.setImageProxy("http://proxy.cnlpete.de/proxy.php?url=")
+        }
+
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
             console.log('doing http basic auth with username ' + settings.httpauthusername)
@@ -206,16 +211,15 @@ Dialog {
 
     function loginSuccessfull(retcode, text) {
         if(retcode) {
-            //login failed....don't autlogin
+            // login failed....don't autlogin
             settings.autologin = false
 
-            //Let the user know
-//            loginErrorDialog.text = text;
-//            loginErrorDialog.open();
+            // Let the user know
+            //loginErrorDialog.text = text;
+            //loginErrorDialog.open();
             dialog.reject()
-        }
-        else {
-            //Login succeeded, auto login next Time
+        } else {
+            // Login succeeded, auto login next Time
             settings.autologin = true
             rootWindow.getTTRSS().updateConfig(configSuccessfull);
         }
@@ -223,13 +227,12 @@ Dialog {
 
     function configSuccessfull(retcode, text) {
         if(retcode) {
-            //Let the user know
-//            loginErrorDialog.text = text;
-//            loginErrorDialog.open();
-        }
-        else {
+            // Let the user know
+            //loginErrorDialog.text = text;
+            //loginErrorDialog.open();
+        } else {
             categories.update()
-            //Now show the categories View
+            // Now show the categories View
             if (settings.useAllFeedsOnStartup) {
                 var ttrss = rootWindow.getTTRSS()
                 var params = {
@@ -240,9 +243,9 @@ Dialog {
                     }
                 }
                 pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
-            }
-            else
+            } else {
                 pageStack.replace(Qt.resolvedUrl('Categories.qml'))
+            }
         }
     }
 
@@ -252,8 +255,9 @@ Dialog {
         password.text = settings.password
         ignoreSSLErrors.checked = settings.ignoreSSLErrors
 
-        if(settings.autologin && settings.useAutologin && doAutoLogin)
+        if(settings.autologin && settings.useAutologin && doAutoLogin) {
             startLogin();
+        }
     }
 
     onAccepted: prepareLogin()

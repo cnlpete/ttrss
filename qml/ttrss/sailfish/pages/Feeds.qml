@@ -110,38 +110,35 @@ Page {
 
         dialog.accepted.connect(function() {
             var ttrss = rootWindow.getTTRSS()
-            ttrss.subscribe(
-                        dialog.selectedId,
-                        dialog.src,
-                        function(result) {
-                            switch (result) {
-                            case 0:
-                                notification.show(qsTr('Already subscribed to Feed'))
-                                break
-                            case 1:
-                                //notification.show(qsTr('Feed added'))
-                                feeds.update()
-                                categories.update()
-                                break
-                            case 2:
-                                notification.show(qsTr('Invalid URL'))
-                                break
-                            case 3:
-                                notification.show(qsTr('URL content is HTML, no feeds available'))
-                                break
-                            case 4:
-                                notification.show(qsTr('URL content is HTML which contains multiple feeds'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Couldn\'t download the URL content'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Content is an invalid XML'))
-                                break
-                            default:
-                                notification.show(qsTr('An error occured while subscribing to the feed'))
-                            }
-                        })
+            ttrss.subscribe(dialog.selectedId, dialog.src, function(result) {
+                switch (result) {
+                case 0:
+                    notification.show(qsTr('Already subscribed to Feed'))
+                    break
+                case 1:
+                    //notification.show(qsTr('Feed added'))
+                    feeds.update()
+                    categories.update()
+                    break
+                case 2:
+                    notification.show(qsTr('Invalid URL'))
+                    break
+                case 3:
+                    notification.show(qsTr('URL content is HTML, no feeds available'))
+                    break
+                case 4:
+                    notification.show(qsTr('URL content is HTML which contains multiple feeds'))
+                    break
+                case 5:
+                    notification.show(qsTr('Couldn\'t download the URL content'))
+                    break
+                case 5:
+                    notification.show(qsTr('Content is an invalid XML'))
+                    break
+                default:
+                    notification.show(qsTr('An error occured while subscribing to the feed'))
+                }
+            })
         })
     }
 }

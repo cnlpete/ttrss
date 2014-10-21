@@ -32,8 +32,7 @@ MouseArea {
     clip: true
     visible: box.y > -height
 
-    function show(message)
-    {
+    function show(message) {
         label.text = message;
         box.y = 0;
         notificationTimer.restart();

@@ -37,27 +37,34 @@ ListModel {
 
     function load() {
         var ttrss = rootWindow.getTTRSS()
+
         var showAll = ttrss.getShowAll()
         rootWindow.showAll = showAll
+
         var categories = ttrss.getCategories()
+
         root.clear()
+
         if(categories && categories.length) {
             var totalUnreadCount = 0
 
             //first add all the categories with unread itens
             for(var category = 0; category < categories.length; category++) {
-                if (categories[category].id >= 0)
+                if (categories[category].id >= 0) {
                     totalUnreadCount += parseInt(categories[category].unread);
+                }
 
                 var title = ttrss.html_entity_decode(categories[category].title,'ENT_QUOTES')
-                if (categories[category].id == ttrss.constants['categories']['ALL'])
+
+                if (categories[category].id == ttrss.constants['categories']['ALL']) {
                     title = constant.allFeeds
-                if (categories[category].id == ttrss.constants['categories']['LABELS'])
+                } else if (categories[category].id == ttrss.constants['categories']['LABELS']) {
                     title = constant.labelsCategory
-                if (categories[category].id == ttrss.constants['categories']['SPECIAL'])
+                } else if (categories[category].id == ttrss.constants['categories']['SPECIAL']) {
                     title = constant.specialCategory
-                if (categories[category].id == ttrss.constants['categories']['UNCATEGORIZED'])
+                } else if (categories[category].id == ttrss.constants['categories']['UNCATEGORIZED']) {
                     title = constant.uncategorizedCategory
+                }
 
                 root.append({
                                 title:       title,
@@ -71,11 +78,11 @@ ListModel {
             if(totalUnreadCount > 0 || showAll) {
                 //Add the "All" category
                 root.insert(0, {
-                                title:          constant.allFeeds,
-                                name:           constant.allFeeds,
-                                categoryId:     parseInt(ttrss.constants['categories']['ALL']),
-                                value:          parseInt(ttrss.constants['categories']['ALL']),
-                                unreadcount:    totalUnreadCount
+                                title:       constant.allFeeds,
+                                name:        constant.allFeeds,
+                                categoryId:  parseInt(ttrss.constants['categories']['ALL']),
+                                value:       parseInt(ttrss.constants['categories']['ALL']),
+                                unreadcount: totalUnreadCount
                             });
             }
         }
@@ -83,17 +90,18 @@ ListModel {
     }
 
     function getTotalUnreadItems() {
-        if (root.count <= 0)
+        if (root.count <= 0) {
             return 0
-        else {
+        } else {
             var m = root.get(0)
             return m.unreadcount
         }
     }
 
     function getSelectedItem() {
-        if (root.selectedIndex === -1)
+        if (root.selectedIndex === -1) {
             return null;
+        }
 
         return root.get(root.selectedIndex)
     }

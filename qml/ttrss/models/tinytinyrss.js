@@ -24,7 +24,7 @@ if(Qt) {
     Qt.include("htmlentities.js");
 }
 
-var state={
+var state = {
     'imageProxy':   '',
     'url':          null,
     'shorturl':     null,
@@ -48,7 +48,7 @@ var state={
     'lastfeeditemrss':   { 'feedId': null, 'articleId': null },
 };
 
-var requestsPending={
+var requestsPending = {
     'token':          false,
     'config':         false,
     'categories':     false,
@@ -59,7 +59,7 @@ var requestsPending={
     'feeditemrss':    false,
 };
 
-var responsesPending={
+var responsesPending = {
     'token':          false,
     'config':         false,
     'categories':     false,
@@ -70,7 +70,7 @@ var responsesPending={
     'feeditemrss':    false,
 };
 
-var constants={
+var constants = {
     'categories': {
         'ALL':          -3,
         'LABELS':       -2,

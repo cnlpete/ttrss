@@ -228,17 +228,22 @@ Page {
 
             console.log("URL: " + url + " isImage: " + isImage)
             var attachmentLabel = ""
+
             if (isImage) {
                 if (!settings.displayImages) {
                     // Do not attach images if they should not be displayed.
                     continue
                 }
+
                 var re = new RegExp("<img\\s[^>]*src=\"" + url + "\"", "i")
                 if (data.content.match(re)) {
                     // Do not attach images which are part of the content.
                     continue
                 }
-                attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
+
+                attachmentLabel = "<img src=\"" + url
+                        + "\" style=\"max-width: 100%; height: auto\"/>"
+
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
             }
@@ -260,6 +265,7 @@ Page {
                 // remove images
                 var image_regex = /<img\s[^>]*>/gi;
                 content = content.replace(image_regex, "")
+
             } else if (settings.stripInvisibleImg) {
                 // remove images with a height or width of 0 or 1
                 var height_regex = /<img\s[^>]*height="[01]"[^>]*>/gi;
@@ -272,16 +278,17 @@ Page {
             if (!content.match(/<body>/gi)) {
                 // not yet html, detect urls
                 console.log('doing link detection on ' + content)
+
                 var regex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi;
                 content = content.replace(regex, "<a href='$1'>$1</a> ")
+
                 if (attachmentsCode) {
                     content += attachmentsCode
                 }
-            } else {
-                if (attachmentsCode) {
-                    var body_regex =/(<\/body>)/gi
-                    content = content.replace(body_regex, attachmentsCode + "$1")
-                }
+
+            } else if (attachmentsCode) {
+                var body_regex =/(<\/body>)/gi
+                content = content.replace(body_regex, attachmentsCode + "$1")
             }
 
             itemView.text = content
