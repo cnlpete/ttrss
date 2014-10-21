@@ -25,65 +25,65 @@ if(Qt) {
 }
 
 var state={
-    'shorturl':         null,
-    'url':              null,
-    'username':         null,
-    'password':         null,
-    'httpauth':         { 'dobasicauth' : false },
-    'proxy':            '',
-    'token':            null,
-    'apilevel':         0,
-    'showall':          false,      //boolean should all items be shown (or only those with unread stuff?)
-    'closeIfEmpty':     false,      //Should pages close if they have no content to display
-    'tracelevel':       1,          //1 = errors, 2 = key info, 3 = network traffic, 4 info, 5 high detail
-
-    'categorycache':    {},
-    'feedcache':        {},
-    'categoryfeeds':    {},
-    'feeditems':        {},
-    'lastcategory':     { 'id': null },
-    'lastfeed':         { 'id': null, 'continuation': 0 },
-    'lastfeeditem':     { 'feedId': null, 'articleId': null },
+    'proxy':        '',
+    'url':          null,
+    'shorturl':     null,
+    'username':     null,
+    'password':     null,
+    'httpauth':     { 'dobasicauth' : false },
+    'token':        null,
+    'apilevel':     0,
+    'showall':      false, // boolean; show all items vs only those unread
+    'closeIfEmpty': false, // Should pages close if they have no content to display
+    'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
+                               // 4 = info, 5 = high detail
+    'categorycache':     {},
+    'feedcache':         {},
+    'categoryfeeds':     {},
+    'feeditems':         {},
+    'lastcategory':      { 'id': null },
+    'lastfeed':          { 'id': null, 'continuation': 0 },
+    'lastfeeditem':      { 'feedId': null, 'articleId': null },
     'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
-    'lastfeeditemrss':  { 'feedId': null, 'articleId': null },
+    'lastfeeditemrss':   { 'feedId': null, 'articleId': null },
 };
 
 var requestsPending={
-    'token'       : false,
-    'config'      : false,
-    'categories'  : false,
-    'feeds'       : false,
-    'feeditems'   : false,
-    'feeditemstar': false,
+    'token':          false,
+    'config':         false,
+    'categories':     false,
+    'feeds':          false,
+    'feeditems':      false,
+    'feeditemstar':   false,
     'feeditemunread': false,
-    'feeditemrss' : false,
+    'feeditemrss':    false,
 };
 
 var responsesPending={
-    'token'       : false,
-    'config'      : false,
-    'categories'  : false,
-    'feeds'       : false,
-    'feeditems'   : false,
-    'feeditemstar': false,
+    'token':          false,
+    'config':         false,
+    'categories':     false,
+    'feeds':          false,
+    'feeditems':      false,
+    'feeditemstar':   false,
     'feeditemunread': false,
-    'feeditemrss' : false,
+    'feeditemrss':    false,
 };
 
 var constants={
-    "categories":{
-        "ALL":          -3,
-        "LABELS":       -2,
-        "SPECIAL":      -1,
-        "UNCATEGORIZED": 0
+    'categories': {
+        'ALL':          -3,
+        'LABELS':       -2,
+        'SPECIAL':      -1,
+        'UNCATEGORIZED': 0
     },
-    "feeds": {
-        'archived':     0,
-        'starred':      -1,
-        'published':    -2,
-        'fresh':        -3,
-        'all':          -4,
-        'recently':     -6
+    'feeds': {
+        'archived':   0,
+        'starred':   -1,
+        'published': -2,
+        'fresh':     -3,
+        'all':       -4,
+        'recently':  -6
     }
 }
 
@@ -91,41 +91,6 @@ var constants={
 var initial_state            = JSON.parse(JSON.stringify(state));
 var initial_requestsPending  = JSON.parse(JSON.stringify(requestsPending));
 var initial_responsesPending = JSON.parse(JSON.stringify(responsesPending));
-
-function isEmpty(obj) {
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop))
-            return false;
-    }
-
-    return true;
-}
-
-function trace(level, text) {
-    if(level <= state['tracelevel'])
-        console.log(text+'\n');
-}
-
-function categorySort(a, b) {
-    if (a.order_id === undefined || b.order_id === undefined)
-        return a.id - b.id
-    else
-        return a.order_id - b.order_id
-}
-
-function dateSortInverse(a, b) {
-    if (a.updated === undefined || b.updated === undefined)
-        return a.id - b.id
-    else
-        return a.updated - b.updated
-}
-
-function dateSort(a, b) {
-    if (a.updated === undefined || b.updated === undefined)
-        return b.id - a.id
-    else
-        return b.updated - a.updated
-}
 
 function clearState() {
     state            = JSON.parse(JSON.stringify(initial_state));
@@ -135,6 +100,46 @@ function clearState() {
     trace(2, "State Cleared");
 }
 
+function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function trace(level, text) {
+    if(level <= state['tracelevel']) {
+        console.log(text+'\n');
+    }
+}
+
+function categorySort(a, b) {
+    if (a.order_id === undefined || b.order_id === undefined) {
+        return a.id - b.id
+    } else {
+        return a.order_id - b.order_id
+    }
+}
+
+function dateSort(a, b) {
+    if (a.updated === undefined || b.updated === undefined) {
+        return b.id - a.id
+    } else {
+        return b.updated - a.updated
+    }
+}
+
+function dateSortInverse(a, b) {
+    if (a.updated === undefined || b.updated === undefined) {
+        return a.id - b.id
+    } else {
+        return a.updated - b.updated
+    }
+}
+
 function setProxy(proxy) {
     state['proxy'] = proxy
 }
@@ -142,21 +147,26 @@ function setProxy(proxy) {
 function setLoginDetails(username, password, url) {
     state['username'] = username
     state['password'] = password
-    if (url.substring(url.length-1) !== "/")
+
+    if (url.substring(url.length-1) !== "/") {
         url += "/"
-    if (url.substring(url.length-4) !== "api/")
+    }
+    if (url.substring(url.length-4) !== "api/") {
         url += "api/"
-    if (url.substring(0,1) !== "h")
+    }
+    if (url.substring(0,1) !== "h") {
         url = "http://" + url
+    }
+
     state['url'] = url
     state['shorturl'] = url.substring(0, url.length-4)
 
-    trace(2, "api url is " + url)
+    trace(2, "api url is " + state['url'])
 }
 
 function setHttpAuthInfo(username, password) {
-    state['httpauth']['username'] = username
-    state['httpauth']['password'] = password
+    state['httpauth']['username']    = username
+    state['httpauth']['password']    = password
     state['httpauth']['dobasicauth'] = true
 }
 
@@ -165,26 +175,32 @@ function networkCall(params, callback) {
 
     trace(3, dump(params))
 
-    if (state['httpauth']['dobasicauth'])
-        http.open("POST", state['url'], true, state['httpauth']['username'], state['httpauth']['password'])
-    else
+    if (state['httpauth']['dobasicauth']) {
+        http.open("POST", state['url'], true,
+                  state['httpauth']['username'], state['httpauth']['password'])
+    } else {
         http.open("POST", state['url'], true)
+    }
 
     http.setRequestHeader('Content-type','application/json; charset=utf-8')
+
     http.onreadystatechange = function() {
         if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
             trace(3, "Response Headers -->")
             trace(3, http.getAllResponseHeaders())
-        }
-        else if (http.readyState === XMLHttpRequest.DONE)
+        } else if (http.readyState === XMLHttpRequest.DONE) {
             callback(http)
+        }
     }
+
     http.send(JSON.stringify(params))
 }
 
 function login(callback) {
-    if(responsesPending['token'])
+    if(responsesPending['token']) {
         return;
+    }
+
     responsesPending['token'] = true
     state['token'] = null
 
@@ -198,44 +214,53 @@ function login(callback) {
 
 function process_login(callback, http) {
     var errorText;
-    if( http.responseText.length > 2 && http.status === 200 )  {
+    if (http.responseText.length > 2 && http.status === 200)  {
         var responseObject = JSON.parse(http.responseText);
+
         if(responseObject.status === 0) {
+            trace(5, "sucessfull login with sid " + state['token']);
+
             state['token'] = responseObject.content.session_id;
             state['apilevel'] = responseObject.content.api_level;
-            trace(5,"sucessfull login with sid "+state['token']);
-        }
-        else {
-            trace(1, "Login failed "+http.responseText+" http status: "+http.status);
 
-            if(responseObject.content.error)
-                errorText = "Login failed: "+responseObject.content.error;
-            else
-                errorText = "Login failed (received http code: "+http.status+")";
-        }
-    }
-    else {
-        trace(1, "Login Error: received http code: "+http.status+" full text: "+http.responseText);
+        } else {
+            trace(1, "Login failed " + http.responseText
+                  + " http status: " + http.status);
 
-        if(http.responseText)
-            errorText = "Login Error: "+http.responseText+" (received http code: "+http.status+")";
-        else
-            errorText = "Login failed (received http code: "+http.status+")";
+            if(responseObject.content.error) {
+                errorText = "Login failed: " + responseObject.content.error;
+            } else {
+                errorText = "Login failed (received http code: " + http.status + ")";
+            }
+        }
+    } else {
+        trace(1, "Login Error: received http code: " + http.status
+              + " full text: " + http.responseText);
+
+        if(http.responseText) {
+            errorText = "Login Error: " + http.responseText
+                    + " (received http code: " + http.status + ")";
+        } else {
+            errorText = "Login failed (received http code: " + http.status + ")";
+        }
     }
 
     responsesPending['token'] = false;
+
     if (state['token']) {
-        if(!processPendingRequests(callback))
+        if(!processPendingRequests(callback)) {
             //No other things to do, this action is done, fire callback saying ok
             callback(0);
-    }
-    else
+        }
+    } else {
         callback(10, errorText);
+    }
 }
 
 function updateConfig(callback) {
-    if(responsesPending['config'])
+    if(responsesPending['config']) {
         return;
+    }
 
     // needs to be logged in
     if(!state['token']) {
@@ -256,36 +281,45 @@ function updateConfig(callback) {
 
 function process_updateConfig(callback, httpreq) {
     if(httpreq.status === 200)  {
-        var responseObject=JSON.parse(httpreq.responseText);
+        var responseObject = JSON.parse(httpreq.responseText);
+
         if (responseObject.status === 0) {
             state['icons_dir'] = responseObject.content['icons_dir'];
             state['icons_url'] = responseObject.content['icons_url'];
             state['num_feeds'] = responseObject.content['num_feeds'];
             state['daemon_is_running'] = responseObject.content['daemon_is_running'];
+
+        } else if(responseObject.content.error) {
+            errorText = "Get Config failed: " + responseObject.content.error;
         }
-        else {
-            if(responseObject.content.error)
-                errorText = "Get Config failed: "+responseObject.content.error;
+
+    } else {
+        trace(1, "Get Config Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+
+        if(callback) {
+            callback(30, "Get Config Error: received http code: " + httpreq.status
+                     + " full text: " + httpreq.responseText);
         }
-    }
-    else {
-        trace(1, "Get Config Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
-        if(callback)
-            callback(30, "Get Config Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
     }
 
     responsesPending['config'] = false;
 
-    if(state['icons_dir'])
-        if(!processPendingRequests(callback))
-            //This action is complete (as there's no other requests to do, fire callback saying all ok
-            if(callback)
+    if(state['icons_dir']) {
+        if(!processPendingRequests(callback)) {
+            // This action is complete (as there's no other requests to do)
+            // Fire callback saying all ok
+            if(callback) {
                 callback(0);
+            }
+        }
+    }
 }
 
 function updateCategories(callback) {
-    if(responsesPending['categories'])
+    if(responsesPending['categories']) {
         return;
+    }
 
     // needs to be logged in
     if(!state['token']) {
@@ -307,7 +341,8 @@ function updateCategories(callback) {
 
 function process_updateCategories(callback, httpreq) {
     if(httpreq.status === 200)  {
-        var responseObject=JSON.parse(httpreq.responseText);
+        var responseObject = JSON.parse(httpreq.responseText);
+
         if (responseObject.status === 0) {
             state['categorycache'] = {};
 
@@ -315,31 +350,38 @@ function process_updateCategories(callback, httpreq) {
                 var catid = responseObject.content[i].id;
                 state['categorycache'][catid] = responseObject.content[i];
             }
+
             // TODO sort
+        } else if(responseObject.content.error) {
+            errorText = "Update Categories failed: " + responseObject.content.error;
         }
-        else {
-            if(responseObject.content.error)
-                errorText = "Update Categories failed: "+responseObject.content.error;
+
+    } else {
+        trace(1, "Update Categories Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+        if(callback) {
+            callback(30, "Update Categories Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
         }
-    }
-    else {
-        trace(1, "Update Categories Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
-        if(callback)
-            callback(30, "Update Categories Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
     }
 
     responsesPending['categories'] = false;
 
-    if(state['categorycache'])
-        if(!processPendingRequests(callback))
-            //This action is complete (as there's no other requests to do, fire callback saying all ok
-            if(callback)
+    if(state['categorycache']) {
+        if(!processPendingRequests(callback)) {
+            // This action is complete (as there's no other requests to do)
+            // Fire callback saying all ok
+            if(callback) {
                 callback(0);
+            }
+        }
+    }
 }
 
 function updateFeeds(catId, callback) {
-    if(responsesPending['feeds'])
+    if(responsesPending['feeds']) {
         return
+    }
 
     state['lastcategory']['id'] = catId
 
@@ -366,7 +408,8 @@ function process_updateFeeds(callback, httpreq) {
     var catId = state['lastcategory']['id']
 
     if(httpreq.status === 200)  {
-        var responseObject=JSON.parse(httpreq.responseText);
+        var responseObject = JSON.parse(httpreq.responseText);
+
         if (responseObject.status === 0) {
             state['feedcache'] = {};
             state['categoryfeeds'][catId] = [];
@@ -376,30 +419,37 @@ function process_updateFeeds(callback, httpreq) {
                 state['categoryfeeds'][catId][i] = feedid;
                 state['feedcache'][feedid] = responseObject.content[i];
             }
+
+        } else if(responseObject.content.error) {
+            errorText = "Update Feeds failed: " + responseObject.content.error;
         }
-        else {
-            if(responseObject.content.error)
-                errorText = "Update Feeds failed: "+responseObject.content.error;
+
+    } else {
+        trace(1, "Update Feeds Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+        if(callback) {
+            callback(40, "Update Feeds Error: received http code: " + httpreq.status
+                     + " full text: " + httpreq.responseText);
         }
-    }
-    else {
-        trace(1, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
-        if(callback)
-            callback(40, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
     }
 
     responsesPending['feeds'] = false;
 
-    if(state['categoryfeeds'][catId])
-        if(!processPendingRequests(callback))
-            //This action is complete (as there's no other requests to do, fire callback saying all ok
-            if(callback)
+    if(state['categoryfeeds'][catId]) {
+        if(!processPendingRequests(callback)) {
+            // This action is complete (as there's no other requests to do)
+            // Fire callback saying all ok
+            if(callback) {
                 callback(0);
+            }
+        }
+    }
 }
 
 function updateFeedItems(feedId, isCat, continuation, callback) {
-    if(responsesPending['feeditems'])
+    if(responsesPending['feeditems']) {
         return;
+    }
 
     if (state['lastfeed']['id'] !== feedId) {
         state['lastfeed']['id'] = feedId;
@@ -423,7 +473,8 @@ function updateFeedItems(feedId, isCat, continuation, callback) {
         'is_cat': isCat,
         'include_attachments': true,
         'show_excerpt': false,
-        'show_content': true, // we want the content, so we do not have to load every article for itself
+        'show_content': true, // we want the content, so we do not have to load
+                              // every article for itself
         'view_mode': (state['showall'] ? 'all_articles' : 'unread'),
         'skip': continuation
     }
@@ -435,7 +486,8 @@ function process_updateFeedItems(callback, httpreq) {
     var feedId = state['lastfeed']['id']
 
     if(httpreq.status === 200)  {
-        var responseObject=JSON.parse(httpreq.responseText);
+        var responseObject = JSON.parse(httpreq.responseText);
+
         if (responseObject.status === 0) {
             state['feeditemcache'] = {};
             state['feeditems'][feedId] = [];
@@ -446,118 +498,128 @@ function process_updateFeedItems(callback, httpreq) {
                 state['feeditems'][feedId][i] = feeditemid;
                 state['feeditemcache'][feeditemid] = responseObject.content[i];
             }
+        } else if(responseObject.content.error) {
+            errorText = "Update Feeds failed: " + responseObject.content.error;
         }
-        else {
-            if(responseObject.content.error)
-                errorText = "Update Feeds failed: "+responseObject.content.error;
+    } else {
+        trace(1, "Update Feeds Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+        if(callback) {
+            callback(50, "Update Feeds Error: received http code: " + httpreq.status
+                     + " full text: " + httpreq.responseText);
         }
-    }
-    else {
-        trace(1, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
-        if(callback)
-            callback(50, "Update Feeds Error: received http code: "+httpreq.status+" full text: "+httpreq.responseText);
     }
 
     responsesPending['feeditems'] = false;
 
-    if(state['feeditems'][feedId])
-        if(!processPendingRequests(callback))
-            //This action is complete (as there's no other requests to do, fire callback saying all ok
-            if(callback)
+    if(state['feeditems'][feedId]) {
+        if(!processPendingRequests(callback)) {
+            // This action is complete (as there's no other requests to do)
+            // Fire callback saying all ok
+            if(callback) {
                 callback(0);
+            }
+        }
+    }
 }
 
 function processPendingRequests(callback) {
-    trace(4, 'In pPR');
+    trace(4, 'In function processPendingRequests()');
     var foundWork = false;
 
     if(requestsPending['token']) {
         trace(4, 'token request pending');
         foundWork = true;
-        if(responsesPending['token'])
+        if(responsesPending['token']) {
             return foundWork;
-        //Start the login process
-        login(callback);
-    }
-    else if (requestsPending['categories']) {
+        } else {
+            // Start the login process
+            login(callback);
+        }
+    } else if (requestsPending['categories']) {
         trace(4, 'categories request pending');
         foundWork = true;
-        if(responsesPending['categories'])
+        if(responsesPending['categories']) {
             return foundWork;
-        if(!state['token'])
+        } else if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
+        } else {
             updateCategories(callback);
-    }
-    else if (requestsPending['feeds']) {
+        }
+    } else if (requestsPending['feeds']) {
         trace(4, 'feeds request pending');
         foundWork = true;
-        if(responsesPending['feeds'])
+        if(responsesPending['feeds']) {
             return foundWork;
-        if(!state['token'])
+        } else if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
+        } else {
             updateFeeds(state['lastcategory']['id'], callback);
-    }
-    else if (requestsPending['feeditems']) {
+        }
+    } else if (requestsPending['feeditems']) {
         trace(4, 'feeditems request pending');
         foundWork = true;
-        if(responsesPending['feeditems'])
+        if(responsesPending['feeditems']) {
             return foundWork;
-        if(!state['token'])
+        } if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
-            updateFeedItems(state['lastfeed']['id'], state['lastfeed']['isCat'], state['lastfeed']['continuation'], callback);
-    }
-    else if (requestsPending['feeditemstar']) {
+        } else {
+            updateFeedItems(state['lastfeed']['id'],
+                            state['lastfeed']['isCat'],
+                            state['lastfeed']['continuation'],
+                            callback);
+        }
+    } else if (requestsPending['feeditemstar']) {
         trace(4, 'feeditemstar request pending');
         foundWork = true;
-        if(responsesPending['feeditemstar'])
+        if(responsesPending['feeditemstar']) {
             return foundWork;
-        if(!state['token'])
+        } else if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
+        } else {
             updateFeedStar(state['lastfeeditem']['articleId'],
                            state['lastfeeditem']['value'],
                            callback);
-    }
-    else if (requestsPending['feeditemunread']) {
+        }
+    } else if (requestsPending['feeditemunread']) {
         trace(4, 'feeditemunread request pending');
         foundWork = true;
-        if(responsesPending['feeditemunread'])
+        if(responsesPending['feeditemunread']) {
             return foundWork;
-        if(!state['token'])
+        } else if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
+        } else {
             updateFeedUnread(state['lastfeeditemunread']['articleId'],
                              state['lastfeeditemunread']['value'],
                              callback);
-    }
-    else if (requestsPending['feeditemrss']) {
+        }
+    } else if (requestsPending['feeditemrss']) {
         trace(4, 'feeditemrss request pending');
         foundWork = true;
-        if(responsesPending['feeditemrss'])
+        if(responsesPending['feeditemrss']) {
             return foundWork;
-        if(!state['token'])
+        } else if(!state['token']) {
             //Get the auth token
             login(callback);
-        else
+        } else {
             updateFeedRSS(state['lastfeeditemrss']['articleId'],
-                            state['lastfeeditemrss']['value'],
-                            callback);
+                          state['lastfeeditemrss']['value'],
+                          callback);
+        }
     }
 
     return foundWork;
 }
 
 function catchUp(feedId, isCat, callback) {
-    if(responsesPending['catchup'])
+    if(responsesPending['catchup']) {
         return;
+    }
 
     // needs to be logged in
     if(!state['token']) {
@@ -576,10 +638,13 @@ function catchUp(feedId, isCat, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['catchup'] = false;
-                    if(!processPendingRequests(callback))
-                        if(callback)
-                            callback(0); });
+        responsesPending['catchup'] = false;
+        if(!processPendingRequests(callback)) {
+            if(callback) {
+                callback(0);
+            }
+        }
+    });
 }
 
 /**
@@ -592,8 +657,9 @@ function catchUp(feedId, isCat, callback) {
 * 6 - Content is an invalid XML.
 */
 function subscribe(catId, url, callback) {
-    if(responsesPending['subscribe'])
+    if(responsesPending['subscribe']) {
         return;
+    }
 
     // needs to be logged in
     if(!state['token']) {
@@ -603,10 +669,9 @@ function subscribe(catId, url, callback) {
         return;
     }
 
-    if (state['apilevel'] < 5)
-        if(!processPendingRequests(callback))
-            if(callback)
-                callback(0)
+    if (state['apilevel'] < 5 && !processPendingRequests(callback) && callback) {
+        callback(0)
+    }
 
     responsesPending['subscribe'] = true
 
@@ -618,26 +683,25 @@ function subscribe(catId, url, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['subscribe'] = false
+        responsesPending['subscribe'] = false
 
-                    if(http.status === 200)  {
-                        var responseObject = JSON.parse(http.responseText);
-                        if (responseObject.status === 0) {
-                            if(!processPendingRequests(callback))
-                                if(callback)
-                                    callback(responseObject.content.status.code)
-                        }
-                    }
-                    else
-                        if(!processPendingRequests(callback))
-                            if(callback)
-                                callback(-1)
-                })
+        if(http.status === 200)  {
+            var responseObject = JSON.parse(http.responseText);
+            if (responseObject.status === 0
+                    && !processPendingRequests(callback)
+                    && callback) {
+                callback(responseObject.content.status.code)
+            }
+        } else if(!processPendingRequests(callback) && callback) {
+            callback(-1)
+        }
+    })
 }
 
 function unsubscribe(feedId, callback) {
-    if(responsesPending['unsubscribe'])
+    if(responsesPending['unsubscribe']) {
         return
+    }
 
     // needs to be logged in
     if(!state['token']) {
@@ -646,10 +710,9 @@ function unsubscribe(feedId, callback) {
         return
     }
 
-    if (state['apilevel'] < 5)
-        if(!processPendingRequests(callback))
-            if(callback)
-                callback(0)
+    if (state['apilevel'] < 5 && !processPendingRequests(callback) && callback) {
+        callback(0)
+    }
 
     responsesPending['unsubscribe'] = true
 
@@ -660,16 +723,17 @@ function unsubscribe(feedId, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['unsubscribe'] = false;
-                    if(!processPendingRequests(callback))
-                        if(callback)
-                            callback(0)
-                })
+        responsesPending['unsubscribe'] = false;
+        if(!processPendingRequests(callback) && callback) {
+                callback(0)
+        }
+    })
 }
 
 function updateFeedStar(articleId, starred, callback) {
-    if(responsesPending['feeditemstar'])
+    if(responsesPending['feeditemstar']) {
         return;
+    }
 
     if (state['lastfeeditem']['articleId'] !== articleId) {
         state['lastfeeditem']['articleId'] = articleId;
@@ -694,17 +758,18 @@ function updateFeedStar(articleId, starred, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['feeditemstar'] = false;
-                    if(!processPendingRequests(callback))
-                        if(callback)
-                            callback(0)
-                });
+        responsesPending['feeditemstar'] = false;
+        if(!processPendingRequests(callback) && callback) {
+            callback(0)
+        }
+    });
 
 }
 
 function updateFeedRSS(articleId, rss, callback) {
-    if(responsesPending['feeditemrss'])
+    if(responsesPending['feeditemrss']) {
         return;
+    }
 
     if (state['lastfeeditemrss']['articleId'] !== articleId) {
         state['lastfeeditemrss']['articleId'] = articleId;
@@ -729,15 +794,17 @@ function updateFeedRSS(articleId, rss, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['feeditemrss'] = false;
-                    if(!processPendingRequests(callback))
-                        if(callback)
-                            callback(0); });
+        responsesPending['feeditemrss'] = false;
+        if(!processPendingRequests(callback) && callback) {
+                callback(0);
+        }
+    });
 }
 
 function updateFeedUnread(articleId, unread, callback) {
-    if(responsesPending['feeditemunread'])
+    if(responsesPending['feeditemunread']) {
         return;
+    }
 
     if (state['lastfeeditemunread']['articleId'] !== articleId) {
         state['lastfeeditemunread']['articleId'] = articleId;
@@ -762,11 +829,11 @@ function updateFeedUnread(articleId, unread, callback) {
     }
 
     networkCall(params, function(http) {
-                    responsesPending['feeditemunread'] = false;
-                    if(!processPendingRequests(callback))
-                        if(callback)
-                            callback(0)
-                });
+        responsesPending['feeditemunread'] = false;
+        if(!processPendingRequests(callback) && callback) {
+                callback(0)
+        }
+    });
 }
 
 //Indicates whether only unread items should be shown
@@ -818,10 +885,11 @@ function getFeedItems(feedId) {
 }
 
 function getFeedItem(feedId, articleId) {
-    if (state['feeditemcache'][articleId])
+    if (state['feeditemcache'][articleId]) {
         return state['feeditemcache'][articleId]
-    else
+    } else {
         trace(2, "no cache found")
+    }
 }
 
 function getIconUrl(feedId) {
@@ -839,6 +907,7 @@ function getIconUrl(feedId) {
         return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
         break;
     default:
-        return state['proxy'] + state['shorturl'] + state['icons_url'] + '/' + feedId + '.ico'
+        return state['proxy'] + state['shorturl'] + state['icons_url'] + '/'
+                + feedId + '.ico'
     }
 }
