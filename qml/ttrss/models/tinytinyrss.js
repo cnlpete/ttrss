@@ -212,6 +212,7 @@ function login(callback) {
     networkCall(params, function(http) { process_login(callback, http) })
 }
 
+/** @private */
 function process_login(callback, http) {
     var errorText;
     if (http.responseText.length > 2 && http.status === 200)  {
@@ -279,6 +280,7 @@ function updateConfig(callback) {
     networkCall(params, function(http) { process_updateConfig(callback, http) });
 }
 
+/** @private */
 function process_updateConfig(callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject = JSON.parse(httpreq.responseText);
@@ -335,6 +337,7 @@ function updateCategories(callback) {
     networkCall(params, function(http) { process_updateCategories(callback, http) });
 }
 
+/** @private */
 function process_updateCategories(callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject = JSON.parse(httpreq.responseText);
@@ -396,6 +399,7 @@ function updateFeeds(catId, callback) {
     networkCall(params, function(http) { process_updateFeeds(callback, http) });
 }
 
+/** @private */
 function process_updateFeeds(callback, httpreq) {
     var catId = state['lastcategory']['id']
 
@@ -470,6 +474,7 @@ function updateFeedItems(feedId, isCat, continuation, callback) {
     networkCall(params, function(http) { process_updateFeedItems(callback, http) });
 }
 
+/** @private */
 function process_updateFeedItems(callback, httpreq) {
     var feedId = state['lastfeed']['id']
 
@@ -507,6 +512,7 @@ function process_updateFeedItems(callback, httpreq) {
     }
 }
 
+/** @private */
 function processPendingRequests(callback) {
     trace(4, 'In function processPendingRequests()');
     var foundWork = false;
