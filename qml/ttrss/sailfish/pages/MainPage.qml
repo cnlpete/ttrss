@@ -221,7 +221,7 @@ Dialog {
         } else {
             // Login succeeded, auto login next Time
             settings.autologin = true
-            rootWindow.getTTRSS().updateConfig(configSuccessfull);
+            rootWindow.getTTRSS().getConfig(configSuccessfull);
         }
     }
 

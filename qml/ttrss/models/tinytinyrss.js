@@ -249,7 +249,7 @@ function process_login(callback, http) {
     }
 }
 
-function updateConfig(callback) {
+function getConfig(callback) {
     if(responsesPending['config']) {
         return;
     }
@@ -267,11 +267,11 @@ function updateConfig(callback) {
         'sid': state['token']
     }
 
-    networkCall(params, function(http) { process_updateConfig(callback, http) });
+    networkCall(params, function(http) { process_getConfig(callback, http) });
 }
 
 /** @private */
-function process_updateConfig(callback, httpreq) {
+function process_getConfig(callback, httpreq) {
     if(httpreq.status === 200)  {
         var responseObject = JSON.parse(httpreq.responseText);
 
