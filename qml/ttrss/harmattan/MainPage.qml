@@ -187,7 +187,7 @@ Page {
             myMenu.close()
 
         var ttrss = rootWindow.getTTRSS();
-        ttrss.clearState();
+        ttrss.initState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);

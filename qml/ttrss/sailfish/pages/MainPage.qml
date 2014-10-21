@@ -193,7 +193,7 @@ Dialog {
 
     function startLogin() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.clearState();
+        ttrss.initState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
 
         // BUGFIX somehow the silica QML Image can not display images

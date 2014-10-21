@@ -24,50 +24,6 @@ if(Qt) {
     Qt.include("htmlentities.js");
 }
 
-var state = {
-    'imageProxy':   '',
-    'url':          null,
-    'shorturl':     null,
-    'username':     null,
-    'password':     null,
-    'httpauth':     { 'dobasicauth' : false },
-    'token':        null,
-    'apilevel':     0,
-    'showall':      false, // boolean; show all items vs only those unread
-    'closeIfEmpty': false, // Should pages close if they have no content to display
-    'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
-                               // 4 = info, 5 = high detail
-    'categorycache':     {},
-    'feedcache':         {},
-    'categoryfeeds':     {},
-    'feeditems':         {},
-    'lastcategory':      { 'id': null },
-    'lastfeed':          { 'id': null, 'continuation': 0 },
-    'lastfeeditem':      { 'feedId': null, 'articleId': null },
-    'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
-    'lastfeeditemrss':   { 'feedId': null, 'articleId': null },
-};
-
-var requestsPending = {
-    'categories':     false,
-    'feeds':          false,
-    'feeditems':      false,
-    'feeditemstar':   false,
-    'feeditemunread': false,
-    'feeditemrss':    false,
-};
-
-var responsesPending = {
-    'token':          false,
-    'config':         false,
-    'categories':     false,
-    'feeds':          false,
-    'feeditems':      false,
-    'feeditemstar':   false,
-    'feeditemunread': false,
-    'feeditemrss':    false,
-};
-
 var constants = {
     'categories': {
         'ALL':          -3,
@@ -85,17 +41,54 @@ var constants = {
     }
 }
 
-//Clone the initial state so we can clear the state by recloning...
-var initial_state            = JSON.parse(JSON.stringify(state));
-var initial_requestsPending  = JSON.parse(JSON.stringify(requestsPending));
-var initial_responsesPending = JSON.parse(JSON.stringify(responsesPending));
+var state = {}
+var requestsPending = {}
+var responsesPending = {}
 
-function clearState() {
-    state            = JSON.parse(JSON.stringify(initial_state));
-    requestsPending  = JSON.parse(JSON.stringify(initial_requestsPending));
-    responsesPending = JSON.parse(JSON.stringify(initial_responsesPending));
+function initState() {
+    state = {
+        'imageProxy':   '',
+        'url':          null,
+        'shorturl':     null,
+        'username':     null,
+        'password':     null,
+        'httpauth':     { 'dobasicauth' : false },
+        'token':        null,
+        'apilevel':     0,
+        'showall':      false, // boolean; show all items vs only those unread
+        'closeIfEmpty': false, // Should pages close if they have no content to display
+        'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
+                               // 4 = info, 5 = high detail
+        'categorycache':     {},
+        'feedcache':         {},
+        'categoryfeeds':     {},
+        'feeditems':         {},
+        'lastcategory':      { 'id': null },
+        'lastfeed':          { 'id': null, 'continuation': 0 },
+        'lastfeeditem':      { 'feedId': null, 'articleId': null },
+        'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
+        'lastfeeditemrss':   { 'feedId': null, 'articleId': null },
+    };
 
-    trace(2, "State Cleared");
+    requestsPending = {
+        'categories':     false,
+        'feeds':          false,
+        'feeditems':      false,
+        'feeditemstar':   false,
+        'feeditemunread': false,
+        'feeditemrss':    false,
+    };
+
+    responsesPending = {
+        'token':          false,
+        'config':         false,
+        'categories':     false,
+        'feeds':          false,
+        'feeditems':      false,
+        'feeditemstar':   false,
+        'feeditemunread': false,
+        'feeditemrss':    false,
+    };
 }
 
 function isEmpty(obj) {
