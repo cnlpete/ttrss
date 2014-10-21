@@ -781,14 +781,6 @@ function dateSort(a, b) {
     }
 }
 
-function getFeedItem(feedId, articleId) {
-    if (state['feeditemcache'][articleId]) {
-        return state['feeditemcache'][articleId]
-    } else {
-        trace(2, "no cache found")
-    }
-}
-
 /**
  * @param {int} Id of the feed.
  * @return {string} The url to the feed's icon.
