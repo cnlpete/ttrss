@@ -113,14 +113,6 @@ function dateSort(a, b) {
     }
 }
 
-function dateSortInverse(a, b) {
-    if (a.updated === undefined || b.updated === undefined) {
-        return a.id - b.id
-    } else {
-        return a.updated - b.updated
-    }
-}
-
 function setImageProxy(imageProxy) {
     state['imageProxy'] = imageProxy
 }
