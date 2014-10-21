@@ -272,14 +272,14 @@ function getConfig(callback) {
 
 /** @private */
 function process_getConfig(callback, httpreq) {
+    var successful = false;
+
     if(httpreq.status === 200)  {
         var responseObject = JSON.parse(httpreq.responseText);
 
         if (responseObject.status === 0) {
-            state['icons_dir'] = responseObject.content['icons_dir'];
             state['icons_url'] = responseObject.content['icons_url'];
-            state['num_feeds'] = responseObject.content['num_feeds'];
-            state['daemon_is_running'] = responseObject.content['daemon_is_running'];
+            successful = true
 
         } else if(responseObject.content.error) {
             errorText = "Get Config failed: " + responseObject.content.error;
@@ -297,7 +297,7 @@ function process_getConfig(callback, httpreq) {
 
     responsesPending['config'] = false;
 
-    if(state['icons_dir'] && !processPendingRequests(callback) && callback) {
+    if(successful && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(0);
