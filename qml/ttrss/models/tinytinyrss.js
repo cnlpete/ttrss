@@ -24,6 +24,7 @@ if(Qt) {
     Qt.include("htmlentities.js");
 }
 
+/** @public */
 var constants = {
     'categories': {
         'ALL':          -3,
@@ -41,10 +42,19 @@ var constants = {
     }
 }
 
+/** @private */
 var state = {}
+
+/** @private */
 var requestsPending = {}
+
+/** @private */
 var responsesPending = {}
 
+/**
+ * Sets the initial values of variables state, requestsPending, and
+ * responsesPending.  This deletes any former values.
+ */
 function initState() {
     state = {
         'imageProxy':   '',
@@ -91,6 +101,12 @@ function initState() {
     };
 }
 
+/**
+ * Logs all messages with a log level less or equal than the defined trace level.
+ * @private
+ * @param {int} Log level of the message.
+ * @param {string} Message to log.
+ */
 function trace(level, text) {
     if(level <= state['tracelevel']) {
         console.log(text + '\n');
@@ -127,6 +143,7 @@ function setHttpAuthInfo(username, password) {
     state['httpauth']['dobasicauth'] = true
 }
 
+/** @private */
 function networkCall(params, callback) {
     var http = new XMLHttpRequest()
 
@@ -683,16 +700,23 @@ function updateFeedUnread(articleId, unread, callback) {
     });
 }
 
-//Indicates whether only unread items should be shown
+/**
+ * @return {boolean} Whether only unread items should be shown.
+ */
 function getShowAll() {
     return state['showall'];
 }
 
-//Sets whether only unread items should be shown
+/**
+ * @param {boolean} Whether only unread items should be shown.
+ */
 function setShowAll(showAll) {
     state['showall'] = !!showAll;
 }
 
+/**
+ * @return {array} Sorted array of categories.
+ */
 function getCategories() {
     var retVal = []
     var i = 0
@@ -705,6 +729,10 @@ function getCategories() {
     return retVal
 }
 
+/**
+ * @param {int} Id of the category.
+ * @return {array} Sorted array of feeds.
+ */
 function getFeeds(catId) {
     var retVal = []
     var i = 0
@@ -727,6 +755,10 @@ function categorySort(a, b) {
     }
 }
 
+/**
+ * @param {int} Id of the feed.
+ * @return {array} Sorted array of feed items.
+ */
 function getFeedItems(feedId) {
     var retVal = []
     var i = 0
@@ -757,6 +789,10 @@ function getFeedItem(feedId, articleId) {
     }
 }
 
+/**
+ * @param {int} Id of the feed.
+ * @return {string} The url to the feed's icon.
+ */
 function getIconUrl(feedId) {
     switch (feedId) {
     case constants['feeds']['all']:
@@ -774,7 +810,10 @@ function getIconUrl(feedId) {
     }
 }
 
-/** @private */
+/**
+ * @private
+ * @return {boolean} Wheater some pending stuff was found.
+ */
 function processPendingRequests(callback) {
     trace(4, 'In function processPendingRequests()');
     var foundWork = false;
