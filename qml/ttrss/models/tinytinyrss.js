@@ -50,7 +50,6 @@ var state = {
 
 var requestsPending = {
     'token':          false,
-    'config':         false,
     'categories':     false,
     'feeds':          false,
     'feeditems':      false,
@@ -265,7 +264,6 @@ function updateConfig(callback) {
 
     // needs to be logged in
     if(!state['token']) {
-        requestsPending['config'] = true;
         processPendingRequests(callback);
         return;
     }
@@ -519,7 +517,6 @@ function catchUp(feedId, isCat, callback) {
 
     // needs to be logged in
     if(!state['token']) {
-        requestsPending['catchup'] = true;
         processPendingRequests(callback);
         return;
     }
@@ -557,8 +554,6 @@ function subscribe(catId, url, callback) {
 
     // needs to be logged in
     if(!state['token']) {
-        requestsPending['subscribe'] = true;
-        state['subscribeurl'] = url
         processPendingRequests(callback)
         return;
     }
@@ -599,7 +594,6 @@ function unsubscribe(feedId, callback) {
 
     // needs to be logged in
     if(!state['token']) {
-        requestsPending['unsubscribe'] = true
         processPendingRequests(callback)
         return
     }
