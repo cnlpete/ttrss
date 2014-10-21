@@ -97,22 +97,6 @@ function trace(level, text) {
     }
 }
 
-function categorySort(a, b) {
-    if (a.order_id === undefined || b.order_id === undefined) {
-        return a.id - b.id
-    } else {
-        return a.order_id - b.order_id
-    }
-}
-
-function dateSort(a, b) {
-    if (a.updated === undefined || b.updated === undefined) {
-        return b.id - a.id
-    } else {
-        return b.updated - a.updated
-    }
-}
-
 function setImageProxy(imageProxy) {
     state['imageProxy'] = imageProxy
 }
@@ -734,6 +718,15 @@ function getFeeds(catId) {
     return retVal
 }
 
+/** @private */
+function categorySort(a, b) {
+    if (a.order_id === undefined || b.order_id === undefined) {
+        return a.id - b.id
+    } else {
+        return a.order_id - b.order_id
+    }
+}
+
 function getFeedItems(feedId) {
     var retVal = []
     var i = 0
@@ -745,6 +738,15 @@ function getFeedItems(feedId) {
     }
     retVal.sort(dateSort)
     return retVal
+}
+
+/** @private */
+function dateSort(a, b) {
+    if (a.updated === undefined || b.updated === undefined) {
+        return b.id - a.id
+    } else {
+        return b.updated - a.updated
+    }
 }
 
 function getFeedItem(feedId, articleId) {
