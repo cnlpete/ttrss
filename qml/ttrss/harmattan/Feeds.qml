@@ -135,7 +135,11 @@ Page {
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
+                    ttrss.unsubscribe(feedMenu.feedId,
+                                      function(successful, errorMessage) {
+                                          feeds.update()
+                                          // TODO make use of parameters
+                                      })
                 } }
         }
     }

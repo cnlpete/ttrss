@@ -655,6 +655,12 @@ function process_subscribe(callback, httpreq) {
     }
 }
 
+/**
+ * Unsubscribe from a feed.
+ * @param {int} The id of the feed to unsubcribe from.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function unsubscribe(feedId, callback) {
     if(responsesPending['unsubscribe']) {
         return
@@ -678,14 +684,34 @@ function unsubscribe(feedId, callback) {
         'feed_id': feedId
     }
 
-    networkCall(params, function(http) { process_unsubscribe(callback) });
+    networkCall(params, function(http) { process_unsubscribe(callback, http) });
 }
 
 /** @private */
-function process_unsubscribe(callback) {
+function process_unsubscribe(callback, httpreq) {
+    var successful = false
+
+    if(httpreq.status === 200)  {
+        var responseObject = JSON.parse(httpreq.responseText);
+
+        if (responseObject.status === 0) {
+            successful = true
+        } else if(responseObject.content.error && callback) {
+            callback(false, "Unsubscribing failed: "
+                     + responseObject.content.error);
+        }
+    } else {
+        trace(1, "Unsubscribing Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+        if(callback) {
+            callback(false, "Unsubscribing Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
+        }
+    }
+
     responsesPending['unsubscribe'] = false;
-    if(!processPendingRequests(callback) && callback) {
-        callback(0)
+    if(successful && !processPendingRequests(callback) && callback) {
+        callback(true);
     }
 }
 

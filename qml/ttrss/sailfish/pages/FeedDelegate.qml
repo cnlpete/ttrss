@@ -123,7 +123,10 @@ ListItem {
                         function() {
                             var ttrss = rootWindow.getTTRSS()
                             ttrss.unsubscribe(model.feedId,
-                                              function() { feedModel.update() })
+                                              function(successful, errorMessage) {
+                                                  feedModel.update()
+                                                  // TODO make use of parameters
+                                              })
                         })
     }
 }
