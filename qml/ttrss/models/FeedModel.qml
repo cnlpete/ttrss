@@ -33,9 +33,16 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeeds(root.category.categoryId, function() {
-            root.load()
-        })
+        var catId = root.category.categoryId;
+
+        ttrss.updateFeeds(catId, function(successful, errorMessage) {
+            if (successful) {
+                root.load()
+            }
+
+            // TODO Add a callback to update() which can be used to display
+            // errorMessage.
+        });
     }
 
     function load() {

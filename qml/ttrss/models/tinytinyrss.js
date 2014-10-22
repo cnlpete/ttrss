@@ -380,6 +380,12 @@ function process_updateCategories(callback, httpreq) {
     }
 }
 
+/**
+ * Update the feeds of a category.
+ * @param {int} The id of the category whose feeds should be updated.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateFeeds(catId, callback) {
     if(responsesPending['feeds']) {
         return
@@ -424,15 +430,16 @@ function process_updateFeeds(callback, httpreq) {
             }
 
         } else if(responseObject.content.error && callback) {
-            callback(40, "Update Feeds failed: " + responseObject.content.error);
+            callback(false, "Update Feeds failed: "
+                     + responseObject.content.error);
         }
 
     } else {
         trace(1, "Update Feeds Error: received http code: " + httpreq.status
               + " full text: " + httpreq.responseText);
         if(callback) {
-            callback(40, "Update Feeds Error: received http code: " + httpreq.status
-                     + " full text: " + httpreq.responseText);
+            callback(false, "Update Feeds Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
         }
     }
 
@@ -441,7 +448,7 @@ function process_updateFeeds(callback, httpreq) {
     if(state['categoryfeeds'][catId] && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
-        callback(0);
+        callback(true);
     }
 }
 
