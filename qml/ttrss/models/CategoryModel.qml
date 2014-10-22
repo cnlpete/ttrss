@@ -40,6 +40,7 @@ ListModel {
         })
     }
 
+    /** @private */
     function load() {
         var ttrss = rootWindow.getTTRSS()
 

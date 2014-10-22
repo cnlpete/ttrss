@@ -45,6 +45,7 @@ ListModel {
         });
     }
 
+    /** @private */
     function load() {
         var ttrss = rootWindow.getTTRSS()
         var feeds = ttrss.getFeeds(category.categoryId)
