@@ -136,7 +136,7 @@ Page {
                     notification.show(qsTr('Content is an invalid XML'))
                     break
                 default:
-                    notification.show(qsTr('An error occured while subscribing to the feed'))
+                    notification.show(qsTr('An error occurred while subscribing to the feed'))
                 }
             })
         })

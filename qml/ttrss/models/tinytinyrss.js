@@ -594,14 +594,22 @@ function process_catchUp(callback, httpreq) {
 }
 
 /**
-* 0 - OK, Feed already exists
-* 1 - OK, Feed added
-* 2 - Invalid URL
-* 3 - URL content is HTML, no feeds available
-* 4 - URL content is HTML which contains multiple feeds.
-* 5 - Couldn't download the URL content.
-* 6 - Content is an invalid XML.
-*/
+ * Subcribe to a new feed
+ * @param {int} The id of the category the feed should be placed in.
+ * @param {string} The url of the feed to subcribe to.
+ * @param {function} A callback function with parameter int, which is used for
+ *     the status code returned by the operation:
+ *     <ul>
+ *     <li> -1: ERROR, the communication with the tt-rss server wasn't successful.
+ *     <li>  0: OK, the Feed already exists.
+ *     <li>  1: OK, the Feed was added.
+ *     <li>  2: ERROR, the URL is invalid.
+ *     <li>  3: ERROR, the URL content is HTML without any feeds available.
+ *     <li>  4: ERROR, the URL content is HTML which contains multiple feeds.
+ *     <li>  5: ERROR, the URL content couldn't be downloaded.
+ *     <li>  6: ERROR, the URL content is invalid XML.
+ *     </ul>
+ */
 function subscribe(catId, url, callback) {
     if(responsesPending['subscribe']) {
         return;

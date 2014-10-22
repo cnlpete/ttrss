@@ -192,7 +192,7 @@ Page {
                                     addsubsriptionsheet.open()
                                     break
                                 default:
-                                    infoBanner.text = qsTr('An error occured while subscribing to the feed')
+                                    infoBanner.text = qsTr('An error occurred while subscribing to the feed')
                                     infoBanner.show()
                                     addsubsriptionsheet.open()
                                 }
