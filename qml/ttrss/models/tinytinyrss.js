@@ -113,10 +113,21 @@ function trace(level, text) {
     }
 }
 
+/**
+ * Sets the proxy used for retrieving images as the silica QML Image currently
+ * cannot display images coming from a secure line.
+ * @param {string} The proxy used to retrieve images.
+ */
 function setImageProxy(imageProxy) {
     state['imageProxy'] = imageProxy
 }
 
+/**
+ * Adds the account login credentials to the state.
+ * @param {string} The account's username.
+ * @param {string} The account's password.
+ * @param {string} The url to the tt-rss server.
+ */
 function setLoginDetails(username, password, url) {
     state['username'] = username
     state['password'] = password
@@ -137,6 +148,12 @@ function setLoginDetails(username, password, url) {
     trace(2, "api url is " + state['url'])
 }
 
+/**
+ * Adds the authentication credentials for http basic authentication (RFC 2617)
+ * to the state.
+ * @param {string} The username for the basic authentication.
+ * @param {string} The password for the basic authentication.
+ */
 function setHttpAuthInfo(username, password) {
     state['httpauth']['username']    = username
     state['httpauth']['password']    = password
