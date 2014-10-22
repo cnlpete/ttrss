@@ -118,10 +118,15 @@ ListModel {
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
         var m = root.getSelectedItem()
-        ttrss.catchUp(m.feedId, m.isCat, function() {
-            var oldAmount = m.unreadcount
-            root.setProperty(selectedIndex, "unreadcount", 0)
-            root.feedUnreadChanged(m, oldAmount)
+        ttrss.catchUp(m.feedId, m.isCat, function(successful, errorMessage) {
+            if (successful) {
+                var oldAmount = m.unreadcount
+                root.setProperty(selectedIndex, "unreadcount", 0)
+                root.feedUnreadChanged(m, oldAmount)
+            }
+
+            // TODO Add a callback to catchUp() which can be used to display
+            // errorMessage.
         })
     }
 

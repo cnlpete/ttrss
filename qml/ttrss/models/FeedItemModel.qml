@@ -176,14 +176,19 @@ ListModel {
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        ttrss.catchUp(feed.feedId, feed.isCat, function() {
-            for(var feeditem = 0; feeditem < root.count; feeditem++) {
-                var item = root.get(feeditem)
-                if (item.unread) {
-                    root.setProperty(feeditem, "unread", false)
-                    root.itemUnreadChanged(item)
+        ttrss.catchUp(feed.feedId, feed.isCat, function(successful, errorMessage) {
+            if (successful) {
+                for(var index = 0; index < root.count; index++) {
+                    var feedItem = root.get(index)
+                    if (feedItem.unread) {
+                        root.setProperty(index, "unread", false)
+                        root.itemUnreadChanged(feedItem)
+                    }
                 }
             }
+
+            // TODO Add a callback to catchUp() which can be used to display
+            // errorMessage.
         })
     }
 

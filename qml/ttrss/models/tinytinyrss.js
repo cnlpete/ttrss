@@ -535,6 +535,13 @@ function process_updateFeedItems(callback, httpreq) {
     }
 }
 
+/**
+ * Mark specified feed as read.
+ * @param {int} The id of the feed which should be marked as read.
+ * @param {boolean} Indicating if the feed is a category instead.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function catchUp(feedId, isCat, callback) {
     if(responsesPending['catchup']) {
         return;
@@ -555,14 +562,34 @@ function catchUp(feedId, isCat, callback) {
         'is_cat': isCat
     }
 
-    networkCall(params, function(http) { process_catchUp(callback) });
+    networkCall(params, function(http) { process_catchUp(callback, http) });
 }
 
 /** @private */
-function process_catchUp(callback) {
+function process_catchUp(callback, httpreq) {
+    var successful = false
+
+    if(httpreq.status === 200)  {
+        var responseObject = JSON.parse(httpreq.responseText);
+
+        if (responseObject.status === 0) {
+            successful = true
+        } else if(responseObject.content.error && callback) {
+            callback(false, "'Marking all read' failed: "
+                     + responseObject.content.error);
+        }
+    } else {
+        trace(1, "'Marking all read' Error: received http code: " + httpreq.status
+              + " full text: " + httpreq.responseText);
+        if(callback) {
+            callback(false, "'Marking all read' Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
+        }
+    }
+
     responsesPending['catchup'] = false;
-    if(!processPendingRequests(callback) && callback) {
-        callback(0);
+    if(successful && !processPendingRequests(callback) && callback) {
+        callback(true);
     }
 }
 
