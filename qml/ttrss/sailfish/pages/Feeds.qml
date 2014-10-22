@@ -118,7 +118,7 @@ Page {
                 case 1:
                     //notification.show(qsTr('Feed added'))
                     feeds.update()
-                    categories.update()
+                    categoryModel.update()
                     break
                 case 2:
                     notification.show(qsTr('Invalid URL'))

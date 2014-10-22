@@ -30,7 +30,7 @@ Page {
         id: listView
         anchors.fill: parent
 
-        model: categories
+        model: categoryModel
 
         PullDownMenu {
             SettingsItem {}
@@ -46,20 +46,20 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    categories.update()
+                    categoryModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    categories.update()
+                    categoryModel.update()
                 }
             }
         }
 
         delegate: CategoryDelegate {
             onClicked: {
-                categories.selectedIndex = index
-                showCategory(categories.getSelectedItem())
+                categoryModel.selectedIndex = index
+                showCategory(categoryModel.getSelectedItem())
             }
         }
 

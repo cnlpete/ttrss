@@ -45,16 +45,16 @@ ApplicationWindow {
     }
 
     CategoryModel {
-        id: categories
+        id: categoryModel
     }
 
     FeedModel {
         id: feeds
-        categories: categories
+        categories: categoryModel
     }
 
     FeedItemModel {
         id: feedItems
-        categories: categories
+        categories: categoryModel
     }
 }

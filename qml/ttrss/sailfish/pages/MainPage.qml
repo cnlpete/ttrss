@@ -234,7 +234,7 @@ Dialog {
             return;
         }
 
-        categories.update()
+        categoryModel.update()
         // Now show the categories View
         if (settings.useAllFeedsOnStartup) {
             var ttrss = rootWindow.getTTRSS()

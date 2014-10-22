@@ -23,7 +23,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 GenericUpdateCover {
-    headline: categories.getSelectedItem().title
+    headline: categoryModel.getSelectedItem().title
     unreadCount: feeds.getTotalUnreadItems()
     onUpdateTriggered: {
         feeds.update()

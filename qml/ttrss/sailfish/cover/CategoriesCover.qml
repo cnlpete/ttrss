@@ -24,8 +24,8 @@ import Sailfish.Silica 1.0
 
 GenericUpdateCover {
     headline: ''
-    unreadCount: categories.getTotalUnreadItems()
+    unreadCount: categoryModel.getTotalUnreadItems()
     onUpdateTriggered: {
-        categories.update()
+        categoryModel.update()
     }
 }
