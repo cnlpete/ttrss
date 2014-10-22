@@ -28,15 +28,15 @@ Page {
     property var category
 
     Component.onCompleted: {
-        feeds.category = feedsPage.category
-        feeds.clear()
-        feeds.update()
+        feedModel.category = feedsPage.category
+        feedModel.clear()
+        feedModel.update()
     }
 
     SilicaListView {
         id: listView
         anchors.fill: parent
-        model: feeds
+        model: feedModel
 
         PullDownMenu {
             SettingsItem {}
@@ -56,19 +56,19 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
         }
 
         delegate: FeedDelegate {
             onClicked: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
                 showFeed(model)
             }
         }
@@ -117,7 +117,7 @@ Page {
                     break
                 case 1:
                     //notification.show(qsTr('Feed added'))
-                    feeds.update()
+                    feedModel.update()
                     categoryModel.update()
                     break
                 case 2:

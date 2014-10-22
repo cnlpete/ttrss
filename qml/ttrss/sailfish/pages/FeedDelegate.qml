@@ -44,7 +44,7 @@ ListItem {
         source: model.icon
         onStatusChanged: {
             if (status === Image.Error)
-                feeds.unsetIcon(index)
+                feedModel.unsetIcon(index)
         }
 
         visible: settings.displayIcons && model.icon !== ''
@@ -102,7 +102,7 @@ ListItem {
                 onClicked: listItem.unsubcribe()
             }
             Component.onCompleted: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
             }
         }
     }
@@ -113,7 +113,7 @@ ListItem {
         remorse.execute(listItem,
                         qsTr("Marking all read"),
                         function() {
-                            feeds.catchUp()
+                            feedModel.catchUp()
                         })
     }
 
@@ -123,7 +123,7 @@ ListItem {
                         function() {
                             var ttrss = rootWindow.getTTRSS()
                             ttrss.unsubscribe(model.feedId,
-                                              function() { feeds.update() })
+                                              function() { feedModel.update() })
                         })
     }
 }

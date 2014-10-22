@@ -49,7 +49,7 @@ ApplicationWindow {
     }
 
     FeedModel {
-        id: feeds
+        id: feedModel
         categories: categoryModel
     }
 

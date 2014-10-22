@@ -203,7 +203,7 @@ ListModel {
                     function(x) { return x - 1 }
 
         // update the feed's category
-        feeds.updateUnreadCountForId(item.feedId, op)
+        feedModel.updateUnreadCountForId(item.feedId, op)
 
         // update special for all feeditems category
         categories.updateUnreadCountForId(
