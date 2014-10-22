@@ -195,46 +195,47 @@ Page {
             infoBanner.show()
             console.log('doing http basic auth with username ' + settings.httpauthusername)
         }
-        ttrss.login(loginSuccessfull);
+        ttrss.login(loginDone);
     }
 
-    function loginSuccessfull(retcode, text) {
-        if(retcode) {
+    function loginDone(successful, errorMessage) {
+        if(!successful) {
             //login failed....don't autlogin
             settings.autologin = false
 
             //Let the user know
-            loginErrorDialog.text = text;
+            loginErrorDialog.text = errorMessage;
             loginErrorDialog.open();
+            return;
         }
-        else {
-            //Login succeeded, auto login next Time
-            settings.autologin = true
-            rootWindow.getTTRSS().getConfig(configSuccessfull);
-        }
+
+        //Login succeeded, auto login next Time
+        settings.autologin = true
+        rootWindow.getTTRSS().getConfig(configDone);
     }
 
-    function configSuccessfull(retcode, text) {
-        if(retcode) {
-            //Let the user know
-            loginErrorDialog.text = text;
+    function configDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            loginErrorDialog.text = errorMessage;
             loginErrorDialog.open();
+            return;
         }
-        else {
-            categories.update()
-            //Now show the categories View
-            if (settings.useAllFeedsOnStartup) {
-                var ttrss = rootWindow.getTTRSS()
-                rootWindow.openFile("Feeds.qml", {
-                                        category: {
-                                            categoryId: ttrss.constants['categories']['ALL'],
-                                            title: constant.allFeeds,
-                                            unreadcount: 0
-                                        }
-                                    })
+
+        categories.update()
+        //Now show the categories View
+        if (settings.useAllFeedsOnStartup) {
+            var ttrss = rootWindow.getTTRSS()
+            var params = {
+                category: {
+                    categoryId: ttrss.constants['categories']['ALL'],
+                    title: constant.allFeeds,
+                    unreadcount: 0
+                }
             }
-            else
-                rootWindow.openFile('Categories.qml')
+            rootWindow.openFile("Feeds.qml", params)
+        } else {
+            rootWindow.openFile("Categories.qml")
         }
     }
 

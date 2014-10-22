@@ -170,6 +170,11 @@ function networkCall(params, callback) {
     http.send(JSON.stringify(params))
 }
 
+/**
+ * Login to ttrss server.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function login(callback) {
     if(responsesPending['token']) {
         return;
@@ -225,13 +230,18 @@ function process_login(callback, http) {
     if (state['token']) {
         if(!processPendingRequests(callback)) {
             //No other things to do, this action is done, fire callback saying ok
-            callback(0);
+            callback(true);
         }
     } else {
-        callback(10, errorText);
+        callback(false, errorText);
     }
 }
 
+/**
+ * Get config from server.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function getConfig(callback) {
     if(responsesPending['config']) {
         return;
@@ -265,7 +275,7 @@ function process_getConfig(callback, httpreq) {
             successful = true
 
         } else if(responseObject.content.error && callback) {
-            callback(30, "Get Config failed: " + responseObject.content.error)
+            callback(false, "Get Config failed: " + responseObject.content.error)
         }
 
     } else {
@@ -273,8 +283,8 @@ function process_getConfig(callback, httpreq) {
               + " full text: " + httpreq.responseText);
 
         if(callback) {
-            callback(30, "Get Config Error: received http code: " + httpreq.status
-                     + " full text: " + httpreq.responseText);
+            callback(false, "Get Config Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
         }
     }
 
@@ -283,7 +293,7 @@ function process_getConfig(callback, httpreq) {
     if(successful && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
-        callback(0);
+        callback(true);
     }
 }
 

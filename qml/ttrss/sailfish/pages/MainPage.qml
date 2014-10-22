@@ -206,46 +206,48 @@ Dialog {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
             console.log('doing http basic auth with username ' + settings.httpauthusername)
         }
-        ttrss.login(loginSuccessfull);
+        ttrss.login(loginDone);
     }
 
-    function loginSuccessfull(retcode, text) {
-        if(retcode) {
+    function loginDone(successful, errorMessage) {
+        if(!successful) {
             // login failed....don't autlogin
             settings.autologin = false
 
             // Let the user know
-            //loginErrorDialog.text = text;
+            //loginErrorDialog.text = errorMessage;
             //loginErrorDialog.open();
             dialog.reject()
-        } else {
-            // Login succeeded, auto login next Time
-            settings.autologin = true
-            rootWindow.getTTRSS().getConfig(configSuccessfull);
+            return;
         }
+
+        // Login succeeded, auto login next Time
+        settings.autologin = true
+        rootWindow.getTTRSS().getConfig(configDone);
     }
 
-    function configSuccessfull(retcode, text) {
-        if(retcode) {
+    function configDone(successful, errorMessage) {
+        if(!successful) {
             // Let the user know
-            //loginErrorDialog.text = text;
+            //loginErrorDialog.text = errorMessage;
             //loginErrorDialog.open();
-        } else {
-            categories.update()
-            // Now show the categories View
-            if (settings.useAllFeedsOnStartup) {
-                var ttrss = rootWindow.getTTRSS()
-                var params = {
-                    category: {
-                        categoryId: ttrss.constants['categories']['ALL'],
-                        title: constant.allFeeds,
-                        unreadcount: 0
-                    }
+            return;
+        }
+
+        categories.update()
+        // Now show the categories View
+        if (settings.useAllFeedsOnStartup) {
+            var ttrss = rootWindow.getTTRSS()
+            var params = {
+                category: {
+                    categoryId: ttrss.constants['categories']['ALL'],
+                    title: constant.allFeeds,
+                    unreadcount: 0
                 }
-                pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
-            } else {
-                pageStack.replace(Qt.resolvedUrl('Categories.qml'))
             }
+            pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
+        } else {
+            pageStack.replace(Qt.resolvedUrl("Categories.qml"))
         }
     }
 
