@@ -24,6 +24,14 @@ if(Qt) {
     Qt.include("htmlentities.js");
 }
 
+/**
+ * NOTE
+ * The ordering in this file is as follows:
+ * - Variables
+ * - Functions without any network traffic
+ * - Functions with network traffic (beginning with login())
+ */
+
 /** @public */
 var constants = {
     'categories': {
@@ -160,31 +168,106 @@ function setHttpAuthInfo(username, password) {
     state['httpauth']['dobasicauth'] = true
 }
 
-/** @private */
-function networkCall(params, callback) {
-    var http = new XMLHttpRequest()
+/**
+ * @return {boolean} Whether only unread items should be shown.
+ */
+function getShowAll() {
+    return state['showall'];
+}
 
-    trace(3, dump(params))
+/**
+ * @param {boolean} Whether only unread items should be shown.
+ */
+function setShowAll(showAll) {
+    state['showall'] = !!showAll;
+}
 
-    if (state['httpauth']['dobasicauth']) {
-        http.open("POST", state['url'], true,
-                  state['httpauth']['username'], state['httpauth']['password'])
-    } else {
-        http.open("POST", state['url'], true)
+/**
+ * @return {array} Sorted array of categories.
+ */
+function getCategories() {
+    var retVal = []
+    var i = 0
+    for (var cat in state['categorycache']) {
+        retVal[i] = state['categorycache'][cat]
+        i++
     }
+    retVal.sort(categorySort)
 
-    http.setRequestHeader('Content-type','application/json; charset=utf-8')
+    return retVal
+}
 
-    http.onreadystatechange = function() {
-        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-            trace(3, "Response Headers -->")
-            trace(3, http.getAllResponseHeaders())
-        } else if (http.readyState === XMLHttpRequest.DONE) {
-            callback(http)
+/**
+ * @param {int} Id of the category.
+ * @return {array} Sorted array of feeds.
+ */
+function getFeeds(catId) {
+    var retVal = []
+    var i = 0
+    if (state['categoryfeeds'][catId]) {
+        for (var feed = 0; feed < state['categoryfeeds'][catId].length; feed++) {
+            retVal[i] = state['feedcache'][state['categoryfeeds'][catId][feed]]
+            i++
         }
     }
+    retVal.sort(categorySort)
+    return retVal
+}
 
-    http.send(JSON.stringify(params))
+/** @private */
+function categorySort(a, b) {
+    if (a.order_id === undefined || b.order_id === undefined) {
+        return a.id - b.id
+    } else {
+        return a.order_id - b.order_id
+    }
+}
+
+/**
+ * @param {int} Id of the feed.
+ * @return {array} Sorted array of feed items.
+ */
+function getFeedItems(feedId) {
+    var retVal = []
+    var i = 0
+    if (state['feeditems'][feedId]) {
+        for (var feed = 0; feed < state['feeditems'][feedId].length; feed++) {
+            retVal[i] = state['feeditemcache'][state['feeditems'][feedId][feed]]
+            i++
+        }
+    }
+    retVal.sort(dateSort)
+    return retVal
+}
+
+/** @private */
+function dateSort(a, b) {
+    if (a.updated === undefined || b.updated === undefined) {
+        return b.id - a.id
+    } else {
+        return b.updated - a.updated
+    }
+}
+
+/**
+ * @param {int} Id of the feed.
+ * @return {string} The url to the feed's icon.
+ */
+function getIconUrl(feedId) {
+    switch (feedId) {
+    case constants['feeds']['all']:
+    case constants['feeds']['fresh']:
+    case constants['feeds']['archived']:
+    case constants['feeds']['recently']:
+        return ''
+    case constants['feeds']['starred']:
+        return "file:///opt/ttrss/qml/resources/ic_star_enabled.png"
+    case constants['feeds']['published']:
+        return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
+    default:
+        return state['imageProxy'] + state['shorturl'] + state['icons_url'] + '/'
+                + feedId + '.ico'
+    }
 }
 
 /**
@@ -831,108 +914,6 @@ function process_updateFeedUnread(callback) {
 }
 
 /**
- * @return {boolean} Whether only unread items should be shown.
- */
-function getShowAll() {
-    return state['showall'];
-}
-
-/**
- * @param {boolean} Whether only unread items should be shown.
- */
-function setShowAll(showAll) {
-    state['showall'] = !!showAll;
-}
-
-/**
- * @return {array} Sorted array of categories.
- */
-function getCategories() {
-    var retVal = []
-    var i = 0
-    for (var cat in state['categorycache']) {
-        retVal[i] = state['categorycache'][cat]
-        i++
-    }
-    retVal.sort(categorySort)
-
-    return retVal
-}
-
-/**
- * @param {int} Id of the category.
- * @return {array} Sorted array of feeds.
- */
-function getFeeds(catId) {
-    var retVal = []
-    var i = 0
-    if (state['categoryfeeds'][catId]) {
-        for (var feed = 0; feed < state['categoryfeeds'][catId].length; feed++) {
-            retVal[i] = state['feedcache'][state['categoryfeeds'][catId][feed]]
-            i++
-        }
-    }
-    retVal.sort(categorySort)
-    return retVal
-}
-
-/** @private */
-function categorySort(a, b) {
-    if (a.order_id === undefined || b.order_id === undefined) {
-        return a.id - b.id
-    } else {
-        return a.order_id - b.order_id
-    }
-}
-
-/**
- * @param {int} Id of the feed.
- * @return {array} Sorted array of feed items.
- */
-function getFeedItems(feedId) {
-    var retVal = []
-    var i = 0
-    if (state['feeditems'][feedId]) {
-        for (var feed = 0; feed < state['feeditems'][feedId].length; feed++) {
-            retVal[i] = state['feeditemcache'][state['feeditems'][feedId][feed]]
-            i++
-        }
-    }
-    retVal.sort(dateSort)
-    return retVal
-}
-
-/** @private */
-function dateSort(a, b) {
-    if (a.updated === undefined || b.updated === undefined) {
-        return b.id - a.id
-    } else {
-        return b.updated - a.updated
-    }
-}
-
-/**
- * @param {int} Id of the feed.
- * @return {string} The url to the feed's icon.
- */
-function getIconUrl(feedId) {
-    switch (feedId) {
-    case constants['feeds']['all']:
-    case constants['feeds']['fresh']:
-    case constants['feeds']['archived']:
-    case constants['feeds']['recently']:
-        return ''
-    case constants['feeds']['starred']:
-        return "file:///opt/ttrss/qml/resources/ic_star_enabled.png"
-    case constants['feeds']['published']:
-        return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
-    default:
-        return state['imageProxy'] + state['shorturl'] + state['icons_url'] + '/'
-                + feedId + '.ico'
-    }
-}
-
-/**
  * @private
  * @return {boolean} Wheater some pending stuff was found.
  */
@@ -1028,4 +1009,31 @@ function processPendingRequests(callback) {
     }
 
     return foundWork;
+}
+
+/** @private */
+function networkCall(params, callback) {
+    var http = new XMLHttpRequest()
+
+    trace(3, dump(params))
+
+    if (state['httpauth']['dobasicauth']) {
+        http.open("POST", state['url'], true,
+                  state['httpauth']['username'], state['httpauth']['password'])
+    } else {
+        http.open("POST", state['url'], true)
+    }
+
+    http.setRequestHeader('Content-type','application/json; charset=utf-8')
+
+    http.onreadystatechange = function() {
+        if (http.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+            trace(3, "Response Headers -->")
+            trace(3, http.getAllResponseHeaders())
+        } else if (http.readyState === XMLHttpRequest.DONE) {
+            callback(http)
+        }
+    }
+
+    http.send(JSON.stringify(params))
 }
