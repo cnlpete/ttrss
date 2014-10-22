@@ -38,9 +38,15 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation, function() {
-            root.load()
-        })
+        ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation,
+                              function(successful, errorMessage) {
+                                  if (successful) {
+                                      root.load()
+                                  }
+
+                                  // TODO Add a callback to update() which can
+                                  // be used to display errorMessage.
+                              });
     }
 
     function load() {

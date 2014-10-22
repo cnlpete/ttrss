@@ -452,6 +452,14 @@ function process_updateFeeds(callback, httpreq) {
     }
 }
 
+/**
+ * Update the items of a feed.
+ * @param {int} The id of the feed whose items should be updated.
+ * @param {boolean} Indicating if the feed is a category instead.
+ * @param {int} Skip this amount of items.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateFeedItems(feedId, isCat, continuation, callback) {
     if(responsesPending['feeditems']) {
         return;
@@ -506,14 +514,15 @@ function process_updateFeedItems(callback, httpreq) {
                 state['feeditemcache'][feeditemid] = responseObject.content[i];
             }
         } else if(responseObject.content.error && callback) {
-            callback(50, "Update Feeds failed: " + responseObject.content.error);
+            callback(false, "Update Feeds failed: "
+                     + responseObject.content.error);
         }
     } else {
         trace(1, "Update Feeds Error: received http code: " + httpreq.status
               + " full text: " + httpreq.responseText);
         if(callback) {
-            callback(50, "Update Feeds Error: received http code: " + httpreq.status
-                     + " full text: " + httpreq.responseText);
+            callback(false, "Update Feeds Error: received http code: "
+                     + httpreq.status + " full text: " + httpreq.responseText);
         }
     }
 
@@ -522,7 +531,7 @@ function process_updateFeedItems(callback, httpreq) {
     if(state['feeditems'][feedId] && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
-        callback(0);
+        callback(true);
     }
 }
 
