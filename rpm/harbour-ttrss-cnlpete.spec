@@ -21,6 +21,7 @@ URL:        http://ttrss.cnlpete.de/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-ttrss-cnlpete.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   qt5-plugin-imageformat-ico
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Core)
