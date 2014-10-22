@@ -30,8 +30,13 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateCategories(function() {
-            root.load()
+        ttrss.updateCategories(function(successful, errorMessage) {
+            if (successful) {
+                root.load()
+            }
+
+            // TODO Add a callback to update() which can be used to display
+            // errorMessage.
         })
     }
 

@@ -297,6 +297,11 @@ function process_getConfig(callback, httpreq) {
     }
 }
 
+/**
+ * Update categories from server.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateCategories(callback) {
     if(responsesPending['categories']) {
         return;
@@ -336,7 +341,7 @@ function process_updateCategories(callback, httpreq) {
             // TODO sort
 
         } else if(responseObject.content.error && callback) {
-            callback(30, "Update Categories failed: "
+            callback(false, "Update Categories failed: "
                      + responseObject.content.error);
         }
 
@@ -344,7 +349,7 @@ function process_updateCategories(callback, httpreq) {
         trace(1, "Update Categories Error: received http code: " + httpreq.status
               + " full text: " + httpreq.responseText);
         if(callback) {
-            callback(30, "Update Categories Error: received http code: "
+            callback(false, "Update Categories Error: received http code: "
                      + httpreq.status + " full text: " + httpreq.responseText);
         }
     }
@@ -354,7 +359,7 @@ function process_updateCategories(callback, httpreq) {
     if(state['categorycache'] && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
-        callback(0);
+        callback(true);
     }
 }
 
