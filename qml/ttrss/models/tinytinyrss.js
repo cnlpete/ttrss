@@ -507,12 +507,15 @@ function catchUp(feedId, isCat, callback) {
         'is_cat': isCat
     }
 
-    networkCall(params, function(http) {
-        responsesPending['catchup'] = false;
-        if(!processPendingRequests(callback) && callback) {
-            callback(0);
-        }
-    });
+    networkCall(params, function(http) { process_catchUp(callback) });
+}
+
+/** @private */
+function process_catchUp(callback) {
+    responsesPending['catchup'] = false;
+    if(!processPendingRequests(callback) && callback) {
+        callback(0);
+    }
 }
 
 /**
@@ -548,20 +551,25 @@ function subscribe(catId, url, callback) {
         'feed_url': url
     }
 
-    networkCall(params, function(http) {
-        responsesPending['subscribe'] = false
+    networkCall(params, function(http) { process_subscribe(callback, http) });
+}
 
-        if(http.status === 200)  {
-            var responseObject = JSON.parse(http.responseText);
-            if (responseObject.status === 0
-                    && !processPendingRequests(callback)
-                    && callback) {
-                callback(responseObject.content.status.code)
-            }
-        } else if(!processPendingRequests(callback) && callback) {
-            callback(-1)
+/** @private */
+function process_subscribe(callback, httpreq) {
+    responsesPending['subscribe'] = false
+
+    if(httpreq.status === 200)  {
+        var responseObject = JSON.parse(httpreq.responseText);
+
+        if (responseObject.status === 0
+                && !processPendingRequests(callback)
+                && callback) {
+            callback(responseObject.content.status.code)
         }
-    })
+
+    } else if(!processPendingRequests(callback) && callback) {
+        callback(-1)
+    }
 }
 
 function unsubscribe(feedId, callback) {
@@ -587,12 +595,15 @@ function unsubscribe(feedId, callback) {
         'feed_id': feedId
     }
 
-    networkCall(params, function(http) {
-        responsesPending['unsubscribe'] = false;
-        if(!processPendingRequests(callback) && callback) {
-            callback(0)
-        }
-    })
+    networkCall(params, function(http) { process_unsubscribe(callback) });
+}
+
+/** @private */
+function process_unsubscribe(callback) {
+    responsesPending['unsubscribe'] = false;
+    if(!processPendingRequests(callback) && callback) {
+        callback(0)
+    }
 }
 
 function updateFeedStar(articleId, starred, callback) {
@@ -622,13 +633,16 @@ function updateFeedStar(articleId, starred, callback) {
         'mode': (starred ? 1 : 0)
     }
 
-    networkCall(params, function(http) {
-        responsesPending['feeditemstar'] = false;
-        if(!processPendingRequests(callback) && callback) {
-            callback(0)
-        }
-    });
+    networkCall(params, function(http) { process_updateFeedStar(callback) });
 
+}
+
+/** @private */
+function process_updateFeedStar(callback) {
+    responsesPending['feeditemstar'] = false;
+    if(!processPendingRequests(callback) && callback) {
+        callback(0)
+    }
 }
 
 function updateFeedRSS(articleId, rss, callback) {
@@ -658,12 +672,15 @@ function updateFeedRSS(articleId, rss, callback) {
         'mode': (rss ? 1 : 0)
     }
 
-    networkCall(params, function(http) {
-        responsesPending['feeditemrss'] = false;
-        if(!processPendingRequests(callback) && callback) {
-                callback(0);
-        }
-    });
+    networkCall(params, function(http) { process_updateFeedRSS(callback) });
+}
+
+/** @private */
+function process_updateFeedRSS(callback) {
+    responsesPending['feeditemrss'] = false;
+    if(!processPendingRequests(callback) && callback) {
+        callback(0);
+    }
 }
 
 function updateFeedUnread(articleId, unread, callback) {
@@ -693,12 +710,15 @@ function updateFeedUnread(articleId, unread, callback) {
         'mode': (unread ? 1 : 0)
     }
 
-    networkCall(params, function(http) {
-        responsesPending['feeditemunread'] = false;
-        if(!processPendingRequests(callback) && callback) {
-                callback(0)
-        }
-    });
+    networkCall(params, function(http) { process_updateFeedUnread(callback) });
+}
+
+/** @private */
+function process_updateFeedUnread(callback) {
+    responsesPending['feeditemunread'] = false;
+    if(!processPendingRequests(callback) && callback) {
+        callback(0)
+    }
 }
 
 /**
