@@ -130,31 +130,31 @@ ListItem {
                 id: toggleStarMenuItem
                 text: model.marked ? qsTr("Unstar") : qsTr("Star")
                 onClicked: {
-                    feedItems.toggleStar()
+                    feedItemModel.toggleStar()
                 } }
             MenuItem {
                 id: togglePublishedMenuItem
                 text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
                 onClicked: {
-                    feedItems.togglePublished()
+                    feedItemModel.togglePublished()
                 } }
             MenuItem {
                 id: toggleReadMenuItem
                 text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
                 onClicked: {
-                    feedItems.toggleRead()
+                    feedItemModel.toggleRead()
                 } }
             MenuItem {
                 id: openInBrowserMenuItem
                 text: qsTr("Open in Web Browser")
                 visible: model.url && model.url !== ""
                 onClicked: {
-                    var item = feedItems.getSelectedItem()
+                    var item = feedItemModel.getSelectedItem()
                     Qt.openUrlExternally(item.url)
                 }
             }
             Component.onCompleted: {
-                feedItems.selectedIndex = index
+                feedItemModel.selectedIndex = index
             }
         }
     }

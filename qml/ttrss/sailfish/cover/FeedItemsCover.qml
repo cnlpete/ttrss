@@ -26,6 +26,6 @@ GenericUpdateCover {
     headline: feeds.getSelectedItem().title
     unreadCount: feeds.getSelectedItem().unreadcount
     onUpdateTriggered: {
-        feedItems.update()
+        feedItemModel.update()
     }
 }

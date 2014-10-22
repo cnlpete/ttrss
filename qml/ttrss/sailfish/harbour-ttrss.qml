@@ -54,7 +54,7 @@ ApplicationWindow {
     }
 
     FeedItemModel {
-        id: feedItems
+        id: feedItemModel
         categories: categoryModel
     }
 }

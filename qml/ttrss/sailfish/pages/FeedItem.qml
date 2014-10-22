@@ -167,7 +167,7 @@ Page {
                 icon.source: "image://theme/icon-m-previous"
                 enabled: previousId !== false
                 onClicked: {
-                    feedItems.selectPrevious()
+                    feedItemModel.selectPrevious()
                     pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
                                       { isCat: root.isCat })
                     //showFeedItem()
@@ -178,7 +178,7 @@ Page {
                 icon.source: "../../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
                 //checked: rss
                 onClicked: {
-                    feedItems.togglePublished()
+                    feedItemModel.togglePublished()
                     rss = !rss
                 }
             }
@@ -187,7 +187,7 @@ Page {
                 icon.source: "../../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
                 //checked: marked
                 onClicked: {
-                    feedItems.toggleStar()
+                    feedItemModel.toggleStar()
                     marked = !marked
                 }
             }
@@ -196,7 +196,7 @@ Page {
                 icon.source: "../../resources/ic_"+(unread?"unread":"read")+".png"
                 //checked: unread
                 onClicked: {
-                    feedItems.toggleRead()
+                    feedItemModel.toggleRead()
                     unread = !unread
                 }
             }
@@ -204,7 +204,7 @@ Page {
                 icon.source: "image://theme/icon-m-next"
                 enabled: nextId !== false
                 onClicked: {
-                    feedItems.selectNext()
+                    feedItemModel.selectNext()
                     pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
                                       { isCat: root.isCat })
                     //showFeedItem()
@@ -254,7 +254,7 @@ Page {
     }
 
     function showFeedItem() {
-        var data = feedItems.getSelectedItem()
+        var data = feedItemModel.getSelectedItem()
 
         if (data) {
             var attachmentsCode = computeAttachmentsCode(data)
@@ -304,11 +304,11 @@ Page {
             rss         = data.rss
             //rssSwitch.checked = rss
 
-            previousId  = feedItems.hasPrevious()
-            nextId      = feedItems.hasNext()
+            previousId  = feedItemModel.hasPrevious()
+            nextId      = feedItemModel.hasNext()
 
             if (settings.autoMarkRead && unread) {
-                feedItems.toggleRead()
+                feedItemModel.toggleRead()
                 unread = !unread
             }
         }
