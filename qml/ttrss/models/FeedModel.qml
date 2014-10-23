@@ -33,11 +33,19 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeeds(root.category.categoryId, function() {
-            root.load()
-        })
+        var catId = root.category.categoryId;
+
+        ttrss.updateFeeds(catId, function(successful, errorMessage) {
+            if (successful) {
+                root.load()
+            }
+
+            // TODO Add a callback to update() which can be used to display
+            // errorMessage.
+        });
     }
 
+    /** @private */
     function load() {
         var ttrss = rootWindow.getTTRSS()
         var feeds = ttrss.getFeeds(category.categoryId)
@@ -47,58 +55,63 @@ ListModel {
         if(feeds && feeds.length) {
             //First add feed with unread items
             var totalUnreadCount = 0
+
             for(var feed = 0; feed < feeds.length; feed++) {
                 if (feeds[feed]) {
                     var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
-                    if (feeds[feed].id == ttrss.constants['feeds']['archived'])
-                        title = constant.archivedArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['starred'])
-                        title = constant.starredArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['published'])
-                        title = constant.publishedArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
-                        title = constant.freshArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['all'])
-                        title = constant.allArticles
-                    if (feeds[feed].id == ttrss.constants['feeds']['recently'])
-                        title = constant.recentlyArticles
 
-                    // note: cat_id is infact the id the feed originally was in, not the special id of All Feeds or similar
+                    if (feeds[feed].id == ttrss.constants['feeds']['archived']) {
+                        title = constant.archivedArticles
+                    } else if (feeds[feed].id == ttrss.constants['feeds']['starred']) {
+                        title = constant.starredArticles
+                    } else if (feeds[feed].id == ttrss.constants['feeds']['published']) {
+                        title = constant.publishedArticles
+                    } else if (feeds[feed].id == ttrss.constants['feeds']['fresh']) {
+                        title = constant.freshArticles
+                    } else if (feeds[feed].id == ttrss.constants['feeds']['all']) {
+                        title = constant.allArticles
+                    } else if (feeds[feed].id == ttrss.constants['feeds']['recently']) {
+                        title = constant.recentlyArticles
+                    }
+
+                    // Note: cat_id is infact the id the feed originally was in,
+                    // not the special id of All Feeds or similar
                     root.append({
-                                    title:        title,
-                                    unreadcount:  parseInt(feeds[feed].unread),
-                                    feedId:       parseInt(feeds[feed].id),
-                                    categoryId:   parseInt(feeds[feed].cat_id),
-                                    isCat:        false,
-                                    icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
+                                    title:       title,
+                                    unreadcount: parseInt(feeds[feed].unread),
+                                    feedId:      parseInt(feeds[feed].id),
+                                    categoryId:  parseInt(feeds[feed].cat_id),
+                                    isCat:       false,
+                                    icon:        settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
                                 })
                     totalUnreadCount += parseInt(feeds[feed].unread)
                 }
             }
-            if (root.count >= 2 && root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
+            if (root.count >= 2&& root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
                 root.insert(0, {
-                                title:        constant.allArticles,
-                                unreadcount:  totalUnreadCount,
-                                feedId:       parseInt(root.category.categoryId),
-                                categoryId:   parseInt(root.category.categoryId),
-                                isCat:        true,
-                                icon:         ''
+                                title:       constant.allArticles,
+                                unreadcount: totalUnreadCount,
+                                feedId:      parseInt(root.category.categoryId),
+                                categoryId:  parseInt(root.category.categoryId),
+                                isCat:       true,
+                                icon:        ''
                             })
         }
     }
 
     function getTotalUnreadItems() {
-        if (root.count <= 0)
+        if (root.count <= 0) {
             return 0
-        else {
+        } else {
             var m = root.get(0)
             return m.unreadcount
         }
     }
 
     function getSelectedItem() {
-        if (root.selectedIndex === -1)
+        if (root.selectedIndex === -1) {
             return null;
+        }
 
         return root.get(root.selectedIndex)
     }
@@ -106,16 +119,22 @@ ListModel {
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
         var m = root.getSelectedItem()
-        ttrss.catchUp(m.feedId, m.isCat, function() {
-                          var oldAmount = m.unreadcount
-                          root.setProperty(selectedIndex, "unreadcount", 0)
-                          root.feedUnreadChanged(m, oldAmount)
-                      })
+        ttrss.catchUp(m.feedId, m.isCat, function(successful, errorMessage) {
+            if (successful) {
+                var oldAmount = m.unreadcount
+                root.setProperty(selectedIndex, "unreadcount", 0)
+                root.feedUnreadChanged(m, oldAmount)
+            }
+
+            // TODO Add a callback to catchUp() which can be used to display
+            // errorMessage.
+        })
     }
 
     function unsetIcon(index) {
         root.setProperty(index, "icon", '')
     }
+
     function updateSelectedUnreadCount(op) {
         var sel = root.selectedIndex
         var m = root.getSelectedItem()
@@ -123,6 +142,7 @@ ListModel {
         root.setProperty(sel, "unreadcount", op(m.unreadcount))
         root.feedUnreadChanged(m, newUnreadCount)
     }
+
     function updateUnreadCountForId(id, op) {
         for(var feed = 0; feed < root.count; feed++) {
             var m = root.get(feed)
@@ -157,8 +177,7 @@ ListModel {
                     for (var i = 1; i < root.count; i++) {
                         root.setProperty(i, "unreadcount", 0)
                     }
-                }
-                else {
+                } else {
                     root.setProperty(0, "unreadcount", op(m.unreadcount))
                 }
             }

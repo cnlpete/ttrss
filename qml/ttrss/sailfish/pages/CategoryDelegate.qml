@@ -26,7 +26,7 @@ import "../items"
 ListItem {
     id: listItem
 
-    contentHeight: categories.count > 8 ? Theme.itemSizeSmall : Theme.itemSizeMedium
+    contentHeight: categoryModel.count > 8 ? Theme.itemSizeSmall : Theme.itemSizeMedium
     width: parent.width
 
     Label {

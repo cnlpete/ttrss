@@ -82,7 +82,7 @@ Item {
         textFormat: Text.RichText
         smooth: true
 
-//        text: _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
+        //text: _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
 
         onLinkActivated: {
             root.linkActivated(link)
@@ -99,7 +99,7 @@ Item {
             console.log("scaling: " + scaling)
 
             // force reflow
-//            contentText.text = contentText.text + " "
+            //contentText.text = contentText.text + " "
             contentText.text = _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
 
         }
