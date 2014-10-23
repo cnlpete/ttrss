@@ -734,6 +734,13 @@ function process_unsubscribe(callback, httpreq) {
     }
 }
 
+/**
+ * Star or unstar an article.
+ * @param {int} The id of the article.
+ * @param {boolean} True if article should be starred, false if not.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateFeedStar(articleId, starred, callback) {
     if(responsesPending['feeditemstar']) {
         return;
@@ -761,18 +768,38 @@ function updateFeedStar(articleId, starred, callback) {
         'mode': (starred ? 1 : 0)
     }
 
-    networkCall(params, function(http) { process_updateFeedStar(callback) });
+    networkCall(params, function(http) { process_updateFeedStar(callback, http) });
 
 }
 
 /** @private */
-function process_updateFeedStar(callback) {
+function process_updateFeedStar(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
     responsesPending['feeditemstar'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update feeditem star: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
     if(!processPendingRequests(callback) && callback) {
-        callback(0)
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
     }
 }
 
+/**
+ * Publish or unpublish an article.
+ * @param {int} The id of the article.
+ * @param {boolean} True if article should be published, false if unpublished.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateFeedRSS(articleId, rss, callback) {
     if(responsesPending['feeditemrss']) {
         return;
@@ -800,17 +827,37 @@ function updateFeedRSS(articleId, rss, callback) {
         'mode': (rss ? 1 : 0)
     }
 
-    networkCall(params, function(http) { process_updateFeedRSS(callback) });
+    networkCall(params, function(http) { process_updateFeedRSS(callback, http) });
 }
 
 /** @private */
-function process_updateFeedRSS(callback) {
+function process_updateFeedRSS(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
     responsesPending['feeditemrss'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update feeditem rss: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
     if(!processPendingRequests(callback) && callback) {
-        callback(0);
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
     }
 }
 
+/**
+ * Mark an article as read or unread.
+ * @param {int} The id of the article.
+ * @param {boolean} True if article should be marked read, false if unread.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
 function updateFeedUnread(articleId, unread, callback) {
     if(responsesPending['feeditemunread']) {
         return;
@@ -838,14 +885,27 @@ function updateFeedUnread(articleId, unread, callback) {
         'mode': (unread ? 1 : 0)
     }
 
-    networkCall(params, function(http) { process_updateFeedUnread(callback) });
+    networkCall(params, function(http) { process_updateFeedUnread(callback, http) });
 }
 
 /** @private */
-function process_updateFeedUnread(callback) {
+function process_updateFeedUnread(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
     responsesPending['feeditemunread'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update feeditem unread: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
     if(!processPendingRequests(callback) && callback) {
-        callback(0)
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
     }
 }
 

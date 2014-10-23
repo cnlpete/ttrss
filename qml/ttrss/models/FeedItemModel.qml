@@ -145,13 +145,18 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedUnread(m.id, !m.unread, function() {
-            var newState = !m.unread
-            root.setProperty(sel, "unread", newState)
-            if (!rootWindow.showAll) {
-                root.continuation += newState ? +1 : -1
+        ttrss.updateFeedUnread(m.id, !m.unread, function(successful, errorMessage) {
+            if (successful) {
+                var newState = !m.unread
+                root.setProperty(sel, "unread", newState)
+                if (!rootWindow.showAll) {
+                    root.continuation += newState ? +1 : -1
+                }
+                root.itemUnreadChanged(m)
             }
-            root.itemUnreadChanged(m)
+
+            // TODO Add a callback to toogleRead() which can be used to display
+            // errorMessage.
         })
     }
 
@@ -159,9 +164,14 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedStar(m.id, !m.marked, function() {
-            root.setProperty(sel, "marked", !m.marked)
-            root.itemStarChanged(m)
+        ttrss.updateFeedStar(m.id, !m.marked, function(successful, errorMessage) {
+            if (successful) {
+                root.setProperty(sel, "marked", !m.marked)
+                root.itemStarChanged(m)
+            }
+
+            // TODO Add a callback to toogleStar() which can be used to display
+            // errorMessage.
         })
     }
 
@@ -169,9 +179,14 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedRSS(m.id, !m.rss, function() {
-            root.setProperty(sel, "rss", !m.rss)
-            root.itemPublishedChanged(m)
+        ttrss.updateFeedRSS(m.id, !m.rss, function(successful, errorMessage) {
+            if (successful) {
+                root.setProperty(sel, "rss", !m.rss)
+                root.itemPublishedChanged(m)
+            }
+
+            // TODO Add a callback to tooglePublished() which can be used to display
+            // errorMessage.
         })
     }
 
@@ -196,13 +211,16 @@ ListModel {
     function hasPrevious() {
         return root.selectedIndex > 0
     }
+
     function selectPrevious() {
         root.selectedIndex = Math.max(root.selectedIndex - 1, 0)
         return root.selectedIndex
     }
+
     function hasNext() {
         return root.selectedIndex < root.count - 1
     }
+
     function selectNext() {
         root.selectedIndex = Math.min(root.selectedIndex + 1, root.count - 1)
         return root.selectedIndex
