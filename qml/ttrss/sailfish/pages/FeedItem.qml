@@ -28,6 +28,7 @@ Page {
     property alias  subTitle:       pageHeader.title
     property string url:            ""
     property string date:           ""
+    property string note:           ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -129,6 +130,19 @@ Page {
                 color: Theme.primaryColor
                 width: parent.width
                 onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
+            }
+
+            Label {
+                id: noteView
+                width: parent.width
+                text: qsTr("Note: ") + note
+                color: Theme.primaryColor
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.PlainText
+                font.weight: Font.Light
+                font.italic: true
+                font.pixelSize: Theme.fontSizeTiny
+                visible: note !== ""
             }
 
             Grid {
@@ -290,6 +304,7 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
+            note        = data.note
             marked      = data.marked
             //markedSwitch.checked = marked
             unread      = data.unread

@@ -143,6 +143,24 @@ Dialog {
                 checked: settings.displayLabels
             }
 
+            TextSwitch {
+                id: displayNoteSetting
+                text: qsTr("Show Note")
+                checked: settings.showNote
+            }
+
+            Slider {
+                id: lengthOfNoteSetting
+                width: parent.width
+                label: qsTr("Max. Length of Note (in Lines)")
+                minimumValue: 0
+                maximumValue: 10
+                stepSize: 1
+                value: settings.lengthOfNote
+                valueText: value == 0 ? qsTr("No Limit") : value
+                enabled: showExcerptSetting.checked
+            }
+
             // -- Items --
             SectionHeader {
                 text: qsTr("Items")
@@ -208,15 +226,20 @@ Dialog {
         // Startup
         settings.useAutologin = autoLoginSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+
         // Feeds
         settings.displayIcons = showIconsSetting.checked
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
+
         // Item List
         settings.feeditemsOrder = orderSetting.currentIndex
         settings.lengthOfTitle = lengthOfTitleSetting.value
         settings.showExcerpt = showExcerptSetting.checked
         settings.lengthOfExcerpt = lengthOfExcerptSetting.value
         settings.displayLabels = displayLabelsSetting.checked
+        settings.showNote = displayNoteSetting.checked
+        settings.lengthOfNote = lengthOfNoteSetting.value
+
         // Items
         settings.autoMarkRead = autoMarkReadSetting.checked
         settings.displayImages = displayImagesSetting.checked
