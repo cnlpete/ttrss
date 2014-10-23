@@ -292,48 +292,28 @@ function login(callback) {
 }
 
 /** @private */
-function process_login(callback, http) {
-    var errorText;
-    if (http.responseText.length > 2 && http.status === 200)  {
-        var responseObject = JSON.parse(http.responseText);
-
-        if(responseObject.status === 0) {
-            trace(5, "sucessfull login with sid " + state['token']);
-
-            state['token'] = responseObject.content.session_id;
-            state['apilevel'] = responseObject.content.api_level;
-
-        } else {
-            trace(1, "Login failed " + http.responseText
-                  + " http status: " + http.status);
-
-            if(responseObject.content.error) {
-                errorText = "Login failed: " + responseObject.content.error;
-            } else {
-                errorText = "Login failed (received http code: " + http.status + ")";
-            }
-        }
-    } else {
-        trace(1, "Login Error: received http code: " + http.status
-              + " full text: " + http.responseText);
-
-        if(http.responseText) {
-            errorText = "Login Error: " + http.responseText
-                    + " (received http code: " + http.status + ")";
-        } else {
-            errorText = "Login failed (received http code: " + http.status + ")";
-        }
-    }
+function process_login(callback, httpreq) {
+    var response = process_readyState(httpreq);
 
     responsesPending['token'] = false;
 
-    if (state['token']) {
-        if(!processPendingRequests(callback)) {
-            //No other things to do, this action is done, fire callback saying ok
-            callback(true);
+    if (!response.successful) {
+        trace(1, "Login: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
         }
-    } else {
-        callback(false, errorText);
+        return;
+    }
+
+    state['token'] = response.content.session_id;
+    state['apilevel'] = response.content.api_level;
+
+    trace(5, "sucessfull login with sid " + state['token']);
+
+    if(state['token'] && !processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
     }
 }
 
@@ -365,32 +345,21 @@ function getConfig(callback) {
 
 /** @private */
 function process_getConfig(callback, httpreq) {
-    var successful = false;
-
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            state['icons_url'] = responseObject.content['icons_url'];
-            successful = true
-
-        } else if(responseObject.content.error && callback) {
-            callback(false, "Get Config failed: " + responseObject.content.error)
-        }
-
-    } else {
-        trace(1, "Get Config Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-
-        if(callback) {
-            callback(false, "Get Config Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['config'] = false;
 
-    if(successful && !processPendingRequests(callback) && callback) {
+    if (!response.successful) {
+        trace(1, "Get config: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    state['icons_url'] = response.content['icons_url'];
+
+    if(!processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(true);
@@ -427,34 +396,26 @@ function updateCategories(callback) {
 
 /** @private */
 function process_updateCategories(callback, httpreq) {
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            state['categorycache'] = {};
-
-            for(var i = 0; i < responseObject.content.length; i++) {
-                var catid = responseObject.content[i].id;
-                state['categorycache'][catid] = responseObject.content[i];
-            }
-
-            // TODO sort
-
-        } else if(responseObject.content.error && callback) {
-            callback(false, "Update Categories failed: "
-                     + responseObject.content.error);
-        }
-
-    } else {
-        trace(1, "Update Categories Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-        if(callback) {
-            callback(false, "Update Categories Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['categories'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update categories: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    state['categorycache'] = {};
+
+    for(var i = 0; i < response.content.length; i++) {
+        var catid = response.content[i].id;
+        state['categorycache'][catid] = response.content[i];
+    }
+
+    // TODO sort
 
     if(state['categorycache'] && !processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
@@ -497,38 +458,31 @@ function updateFeeds(catId, callback) {
 
 /** @private */
 function process_updateFeeds(callback, httpreq) {
-    var catId = state['lastcategory']['id']
-
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            state['feedcache'] = {};
-            state['categoryfeeds'][catId] = [];
-
-            for(var i = 0; i < responseObject.content.length; i++) {
-                var feedid = responseObject.content[i].id;
-                state['categoryfeeds'][catId][i] = feedid;
-                state['feedcache'][feedid] = responseObject.content[i];
-            }
-
-        } else if(responseObject.content.error && callback) {
-            callback(false, "Update Feeds failed: "
-                     + responseObject.content.error);
-        }
-
-    } else {
-        trace(1, "Update Feeds Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-        if(callback) {
-            callback(false, "Update Feeds Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['feeds'] = false;
 
-    if(state['categoryfeeds'][catId] && !processPendingRequests(callback) && callback) {
+    if (!response.successful) {
+        trace(1, "Update feeds: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    var catId = state['lastcategory']['id']
+
+    state['categoryfeeds'][catId] = [];
+    state['feedcache'] = {};
+
+    for(var i = 0; i < response.content.length; i++) {
+        var feedid = response.content[i].id;
+        state['categoryfeeds'][catId][i] = feedid;
+        state['feedcache'][feedid] = response.content[i];
+    }
+
+    if(state['categoryfeeds'][catId] && !processPendingRequests(callback)
+            && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(true);
@@ -581,37 +535,32 @@ function updateFeedItems(feedId, isCat, continuation, callback) {
 
 /** @private */
 function process_updateFeedItems(callback, httpreq) {
-    var feedId = state['lastfeed']['id']
-
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            state['feeditemcache'] = {};
-            state['feeditems'][feedId] = [];
-            state['lastfeed']['continuation'] += responseObject.content.length;
-
-            for(var i = 0; i < responseObject.content.length; i++) {
-                var feeditemid = responseObject.content[i].id;
-                state['feeditems'][feedId][i] = feeditemid;
-                state['feeditemcache'][feeditemid] = responseObject.content[i];
-            }
-        } else if(responseObject.content.error && callback) {
-            callback(false, "Update Feeds failed: "
-                     + responseObject.content.error);
-        }
-    } else {
-        trace(1, "Update Feeds Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-        if(callback) {
-            callback(false, "Update Feeds Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['feeditems'] = false;
 
-    if(state['feeditems'][feedId] && !processPendingRequests(callback) && callback) {
+    if (!response.successful) {
+        trace(1, "Update feed items: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    var feedId = state['lastfeed']['id']
+
+    state['feeditemcache'] = {};
+    state['feeditems'][feedId] = [];
+    state['lastfeed']['continuation'] += response.content.length;
+
+    for(var i = 0; i < response.content.length; i++) {
+        var feeditemid = response.content[i].id;
+        state['feeditems'][feedId][i] = feeditemid;
+        state['feeditemcache'][feeditemid] = response.content[i];
+    }
+
+    if(state['feeditems'][feedId] && !processPendingRequests(callback)
+            && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(true);
@@ -650,28 +599,21 @@ function catchUp(feedId, isCat, callback) {
 
 /** @private */
 function process_catchUp(callback, httpreq) {
-    var successful = false
-
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            successful = true
-        } else if(responseObject.content.error && callback) {
-            callback(false, "'Marking all read' failed: "
-                     + responseObject.content.error);
-        }
-    } else {
-        trace(1, "'Marking all read' Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-        if(callback) {
-            callback(false, "'Marking all read' Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['catchup'] = false;
-    if(successful && !processPendingRequests(callback) && callback) {
+
+    if (!response.successful) {
+        trace(1, "Catch up: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
         callback(true);
     }
 }
@@ -722,19 +664,20 @@ function subscribe(catId, url, callback) {
 
 /** @private */
 function process_subscribe(callback, httpreq) {
-    responsesPending['subscribe'] = false
+    var response = process_readyState(httpreq);
 
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
+    responsesPending['subscribe'] = false;
 
-        if (responseObject.status === 0
-                && !processPendingRequests(callback)
-                && callback) {
-            callback(responseObject.content.status.code)
+    if (!response.successful) {
+        trace(1, "Subscribe: " + response.errorMessage);
+        if (callback) {
+            callback(-1);
         }
+        return;
+    }
 
-    } else if(!processPendingRequests(callback) && callback) {
-        callback(-1)
+    if(!processPendingRequests(callback) && callback) {
+        callback(response.content.status.code);
     }
 }
 
@@ -772,28 +715,21 @@ function unsubscribe(feedId, callback) {
 
 /** @private */
 function process_unsubscribe(callback, httpreq) {
-    var successful = false
-
-    if(httpreq.status === 200)  {
-        var responseObject = JSON.parse(httpreq.responseText);
-
-        if (responseObject.status === 0) {
-            successful = true
-        } else if(responseObject.content.error && callback) {
-            callback(false, "Unsubscribing failed: "
-                     + responseObject.content.error);
-        }
-    } else {
-        trace(1, "Unsubscribing Error: received http code: " + httpreq.status
-              + " full text: " + httpreq.responseText);
-        if(callback) {
-            callback(false, "Unsubscribing Error: received http code: "
-                     + httpreq.status + " full text: " + httpreq.responseText);
-        }
-    }
+    var response = process_readyState(httpreq);
 
     responsesPending['unsubscribe'] = false;
-    if(successful && !processPendingRequests(callback) && callback) {
+
+    if (!response.successful) {
+        trace(1, "Unsubscribing: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
         callback(true);
     }
 }
@@ -1036,4 +972,38 @@ function networkCall(params, callback) {
     }
 
     http.send(JSON.stringify(params))
+}
+
+/** @private */
+function process_readyState(httpreq) {
+    var successful = false
+    var errorMessage = null
+    var responseObject = null
+
+    if(httpreq.status === 200 && httpreq.responseText
+            && httpreq.responseText.length > 2)  {
+
+        responseObject = JSON.parse(httpreq.responseText);
+
+        if (responseObject.status === 0) {
+            successful = true
+        } else if(responseObject.content.error) {
+            errorMessage = "Error: " + responseObject.content.error;
+        } else {
+            errorMessage = "Error (tt-rss status " + responseObject.status + ")"
+        }
+
+    } else {
+        errorMessage =  "Error (http status " + httpreq.status + ")"
+
+        if (httpreq.responseText) {
+            errorMessage += ": " + httpreq.responseText
+        }
+    }
+
+    return {
+        successful: successful,
+        errorMessage: successful ? null : errorMessage,
+        content: successful ? responseObject.content : null
+    };
 }
