@@ -55,6 +55,8 @@ class Settings : public QObject
     Q_PROPERTY(bool showExcerpt READ showExcerpt WRITE setShowExcerpt NOTIFY showExcerptChanged)
     Q_PROPERTY(int lengthOfExcerpt READ lengthOfExcerpt WRITE setLengthOfExcerpt NOTIFY lengthOfExcerptChanged)
     Q_PROPERTY(bool displayLabels READ displayLabels WRITE setDisplayLabels NOTIFY displayLabelsChanged)
+    Q_PROPERTY(bool showNote READ showNote WRITE setShowNote NOTIFY showNoteChanged)
+    Q_PROPERTY(int lengthOfNote READ lengthOfNote WRITE setLengthOfNote NOTIFY lengthOfNoteChanged)
 
     // Items
     Q_PROPERTY(bool autoMarkRead READ autoMarkRead WRITE setAutoMarkRead NOTIFY autoMarkReadChanged)
@@ -155,6 +157,16 @@ public:
     }
     void setDisplayLabels(bool displayLabels);
 
+    bool showNote() const {
+        return this->_showNote;
+    }
+    void setShowNote(bool showNote);
+
+    int lengthOfNote() const {
+        return this->_lengthOfNote;
+    }
+    void setLengthOfNote(int lengthOfNote);
+
     // Items
     bool autoMarkRead() const {
         return this->_autoMarkRead;
@@ -212,6 +224,8 @@ signals:
     void showExcerptChanged();
     void lengthOfExcerptChanged();
     void displayLabelsChanged();
+    void showNoteChanged();
+    void lengthOfNoteChanged();
 
     // Items
     void autoMarkReadChanged();
@@ -256,6 +270,8 @@ private:
     bool _showExcerpt;
     int _lengthOfExcerpt;
     bool _displayLabels;
+    bool _showNote;
+    int _lengthOfNote;
 
     // Items
     bool _autoMarkRead;
