@@ -57,12 +57,8 @@ Dialog {
             }
 
             // -- Startup --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
+            SectionHeader {
                 text: qsTr("Startup")
-                font.pixelSize: Theme.fontSizeSmall;
             }
 
             TextSwitch {
@@ -73,78 +69,104 @@ Dialog {
 
             TextSwitch {
                 id: useAllFeedsOnStartupSetting
-                text: qsTr('Use All Feeds on Startup')
+                text: qsTr('Show "All Feeds"')
                 description: qsTr('You need to restart the App for this to take effect.')
                 checked: settings.useAllFeedsOnStartup
             }
 
-            // -- Items --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Items")
-                font.pixelSize: Theme.fontSizeSmall;
-            }
-
-            ComboBoxList {
-                id: orderSetting
-                label: qsTr("Order")
-                model: orderItems
-                initialValue: settings.feeditemsOrder
-
-                ListModel {
-                    id: orderItems
-                    ListElement { name: ""; value: 0 }
-                    ListElement { name: ""; value: 1 }
-                    Component.onCompleted: {
-                        orderItems.get(0).name = qsTr("Newest First")
-                        orderItems.get(1).name = qsTr("Oldest First")
-                    }
-                }
-            }
-
-            TextSwitch {
-                id: autoMarkReadSetting
-                text: qsTr('Automatically Mark Items as Read')
-                checked: settings.autoMarkRead
-            }
-
-            TextSwitch {
-                id: displayLabelsSetting
-                text: qsTr('Display Labels in Item List')
-                checked: settings.displayLabels
-            }
-
-            // -- Icons --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Icons")
-                font.pixelSize: Theme.fontSizeSmall;
+            // -- Feeds --
+            SectionHeader {
+                text: qsTr("Feeds")
             }
 
             TextSwitch {
                 id: showIconsSetting
-                text: qsTr('Show Icons')
+                text: qsTr("Show Icons")
                 checked: settings.displayIcons
             }
 
             TextSwitch {
                 id: showWhiteBackgroundSetting
                 enabled: showIconsSetting.checked
-                text: qsTr('Show a White Background on Icons')
+                text: qsTr("White Background on Icons")
                 checked: settings.whiteBackgroundOnIcons
             }
 
-            // -- Text --
-            Label {
+            // -- Item List --
+            SectionHeader {
+                text: qsTr("Item List")
+            }
+
+            ComboBox {
+                id: orderSetting
+                label: qsTr("Order")
+                currentIndex: settings.feeditemsOrder
+
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("Newest First") }
+                    MenuItem { text: qsTr("Oldest First") }
+                }
+            }
+
+            Slider {
+                id: lengthOfTitleSetting
                 width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Text")
-                font.pixelSize: Theme.fontSizeSmall;
+                label: qsTr("Max. Length of Title (in Lines)")
+                minimumValue: 0
+                maximumValue: 5
+                stepSize: 1
+                value: settings.lengthOfTitle
+                valueText: value == 0 ? qsTr("No Limit") : value
+            }
+
+            TextSwitch {
+                id: showExcerptSetting
+                text: qsTr("Show Excerpt")
+                checked: settings.showExcerpt
+            }
+
+            Slider {
+                id: lengthOfExcerptSetting
+                width: parent.width
+                label: qsTr("Max. Length of Excerpt (in Lines)")
+                minimumValue: 0
+                maximumValue: 10
+                stepSize: 1
+                value: settings.lengthOfExcerpt
+                valueText: value == 0 ? qsTr("No Limit") : value
+                enabled: showExcerptSetting.checked
+            }
+
+            TextSwitch {
+                id: displayLabelsSetting
+                text: qsTr("Show Labels")
+                checked: settings.displayLabels
+            }
+
+            // -- Items --
+            SectionHeader {
+                text: qsTr("Items")
+            }
+
+            TextSwitch {
+                id: autoMarkReadSetting
+                text: qsTr("Automatically Mark as Read")
+                checked: settings.autoMarkRead
+            }
+
+            TextSwitch {
+                id: displayImagesSetting
+                width: parent.width
+                text: qsTr("Show Images")
+                checked: settings.displayImages
+            }
+
+            TextSwitch {
+                id: stripInvisibleImgSetting
+                text: qsTr("Strip invisible Images")
+                description: qsTr("height or width < 2")
+                checked: settings.stripInvisibleImg
+                enabled: displayImagesSetting.checked
             }
 
             Slider {
@@ -178,46 +200,27 @@ Dialog {
                 }
             }
 
-            // -- Images --
-            Label {
-                width: parent.width
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                text: qsTr("Images")
-                font.pixelSize: Theme.fontSizeSmall;
-            }
-
-            TextSwitch {
-                id: displayImagesSetting
-                width: parent.width
-                text: qsTr('Display images')
-                checked: settings.displayImages
-            }
-
-            TextSwitch {
-                id: stripInvisibleImgSetting
-                text: qsTr('Strip invisible images')
-                checked: settings.stripInvisibleImg
-                enabled: displayImagesSetting.checked
-            }
         }
         VerticalScrollDecorator {}
     }
 
     onAccepted: {
+        // Startup
         settings.useAutologin = autoLoginSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
-
-        settings.feeditemsOrder = orderSetting.currentIndex
-        settings.autoMarkRead = autoMarkReadSetting.checked
-        settings.displayLabels = displayLabelsSetting.checked
-
+        // Feeds
         settings.displayIcons = showIconsSetting.checked
         settings.whiteBackgroundOnIcons = showWhiteBackgroundSetting.checked
-
-        settings.webviewFontSize = fontSizeSetting.value
-
+        // Item List
+        settings.feeditemsOrder = orderSetting.currentIndex
+        settings.lengthOfTitle = lengthOfTitleSetting.value
+        settings.showExcerpt = showExcerptSetting.checked
+        settings.lengthOfExcerpt = lengthOfExcerptSetting.value
+        settings.displayLabels = displayLabelsSetting.checked
+        // Items
+        settings.autoMarkRead = autoMarkReadSetting.checked
         settings.displayImages = displayImagesSetting.checked
         settings.stripInvisibleImg = stripInvisibleImgSetting.checked
+        settings.webviewFontSize = fontSizeSetting.value
     }
 }
