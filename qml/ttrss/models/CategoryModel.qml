@@ -98,6 +98,16 @@ ListModel {
         return root.get(root.selectedIndex)
     }
 
+    function getItemForId(id) {
+        for (var index = 0; index < root.count; ++index) {
+            var category = root.get(index)
+            if (category.categoryId === id) {
+                return category
+            }
+        }
+        return null;
+    }
+
     function updateSelectedUnreadCount(op) {
         var m = root.getSelectedItem()
         root.setProperty(root.selectedIndex, "unreadcount", op(m.unreadcount))
