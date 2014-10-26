@@ -1,6 +1,10 @@
 *~
 *.bak
 *.autosave
+*.o
 *.pro.user*
 *.qm
 *.lock
+Makefile
+moc_*
+qrc_*
