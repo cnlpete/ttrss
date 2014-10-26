@@ -74,7 +74,7 @@ Page {
         }
 
         header: PageHeader {
-           title: category.title
+            title: category ? category.title : ""
         }
         ViewPlaceholder {
             enabled: listView.count == 0
@@ -120,7 +120,24 @@ Page {
                                 break
                             case 1:
                                 //notification.show(qsTr('Feed added'))
-                                feeds.update()
+
+                                // During categories.update() the elements in
+                                // categories will be removed and therefore
+                                // feedsPage.category and feeds.category become
+                                // null.
+                                //
+                                // The following code sets both
+                                // feedsPage.category and feeds.category
+                                // back to its previous value.
+                                var catId = feedsPage.category.categoryId;
+                                function tmp() {
+                                    feedsPage.category = categories.getItemForId(catId);
+                                    feeds.category = feedsPage.category
+                                    feeds.update()
+                                    categories.updateFinished.disconnect(tmp)
+                                }
+                                categories.updateFinished.connect(tmp)
+
                                 categories.update()
                                 break
                             case 2:
