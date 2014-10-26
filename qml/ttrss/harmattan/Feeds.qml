@@ -135,7 +135,11 @@ Page {
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
+                    ttrss.unsubscribe(feedMenu.feedId,
+                                      function(successful, errorMessage) {
+                                          feeds.update()
+                                          // TODO make use of parameters
+                                      })
                 } }
         }
     }
@@ -192,7 +196,7 @@ Page {
                                     addsubsriptionsheet.open()
                                     break
                                 default:
-                                    infoBanner.text = qsTr('An error occured while subscribing to the feed')
+                                    infoBanner.text = qsTr('An error occurred while subscribing to the feed')
                                     infoBanner.show()
                                     addsubsriptionsheet.open()
                                 }

@@ -28,11 +28,11 @@ Page {
     property var feed
 
     Component.onCompleted: {
-        feedItems.feed = feeditemsPage.feed
-        feedItems.hasMoreItems = false
-        feedItems.continuation = 0
-        feedItems.clear()
-        feedItems.update()
+        feedItemModel.feed = feeditemsPage.feed
+        feedItemModel.hasMoreItems = false
+        feedItemModel.continuation = 0
+        feedItemModel.clear()
+        feedItemModel.update()
     }
 
     RemorsePopup { id: remorse }
@@ -40,25 +40,25 @@ Page {
     SilicaListView {
         id: listView
         anchors.fill: parent
-        model: feedItems
+        model: feedItemModel
 
         PullDownMenu {
             MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    feedItemModel.continuation = 0
+                    feedItemModel.hasMoreItems = false
+                    feedItemModel.clear()
+                    feedItemModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    feedItemModel.continuation = 0
+                    feedItemModel.hasMoreItems = false
+                    feedItemModel.clear()
+                    feedItemModel.update()
                 }
             }
             MenuItem {
@@ -74,10 +74,10 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    feedItemModel.continuation = 0
+                    feedItemModel.hasMoreItems = false
+                    feedItemModel.clear()
+                    feedItemModel.update()
                 }
             }
         }
@@ -93,7 +93,7 @@ Page {
 
         delegate: FeedItemDelegate {
             onClicked: {
-                feedItems.selectedIndex = index
+                feedItemModel.selectedIndex = index
                 pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
                                { isCat: feed.isCat })
             }
@@ -102,10 +102,10 @@ Page {
         footer: Button {
             id: foot
             text: qsTr("Load more")
-            visible: settings.feeditemsOrder === 0 && feedItems.hasMoreItems
-            height: settings.feeditemsOrder === 0 && feedItems.hasMoreItems ? 51 : 0
+            visible: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems
+            height: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems ? 51 : 0
             width: parent.width
-            onClicked: feedItems.update()
+            onClicked: feedItemModel.update()
         }
 
         header: PageHeader {
@@ -142,7 +142,7 @@ Page {
     function markAllRead() {
         remorse.execute(qsTr("Marking all read"),
                         function() {
-                            feedItems.catchUp()
+                            feedItemModel.catchUp()
                         })
     }
 }

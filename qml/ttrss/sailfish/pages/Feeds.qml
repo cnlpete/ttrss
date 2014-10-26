@@ -28,15 +28,15 @@ Page {
     property var category
 
     Component.onCompleted: {
-        feeds.category = feedsPage.category
-        feeds.clear()
-        feeds.update()
+        feedModel.category = feedsPage.category
+        feedModel.clear()
+        feedModel.update()
     }
 
     SilicaListView {
         id: listView
         anchors.fill: parent
-        model: feeds
+        model: feedModel
 
         PullDownMenu {
             SettingsItem {}
@@ -56,19 +56,19 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
         }
 
         delegate: FeedDelegate {
             onClicked: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
                 showFeed(model)
             }
         }
@@ -110,55 +110,53 @@ Page {
 
         dialog.accepted.connect(function() {
             var ttrss = rootWindow.getTTRSS()
-            ttrss.subscribe(
-                        dialog.selectedId,
-                        dialog.src,
-                        function(result) {
-                            switch (result) {
-                            case 0:
-                                notification.show(qsTr('Already subscribed to Feed'))
-                                break
-                            case 1:
-                                //notification.show(qsTr('Feed added'))
 
-                                // During categories.update() the elements in
-                                // categories will be removed and therefore
-                                // feedsPage.category and feeds.category become
-                                // null.
-                                //
-                                // The following code sets both
-                                // feedsPage.category and feeds.category
-                                // back to its previous value.
-                                var catId = feedsPage.category.categoryId;
-                                function tmp() {
-                                    feedsPage.category = categories.getItemForId(catId);
-                                    feeds.category = feedsPage.category
-                                    feeds.update()
-                                    categories.updateFinished.disconnect(tmp)
-                                }
-                                categories.updateFinished.connect(tmp)
+            ttrss.subscribe(dialog.selectedId, dialog.src, function(result) {
+                switch (result) {
+                case 0:
+                    notification.show(qsTr('Already subscribed to Feed'))
+                    break
+                case 1:
+                    //notification.show(qsTr('Feed added'))
 
-                                categories.update()
-                                break
-                            case 2:
-                                notification.show(qsTr('Invalid URL'))
-                                break
-                            case 3:
-                                notification.show(qsTr('URL content is HTML, no feeds available'))
-                                break
-                            case 4:
-                                notification.show(qsTr('URL content is HTML which contains multiple feeds'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Couldn\'t download the URL content'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Content is an invalid XML'))
-                                break
-                            default:
-                                notification.show(qsTr('An error occured while subscribing to the feed'))
-                            }
-                        })
+                    // During categories.update() the elements in
+                    // categories will be removed and therefore
+                    // feedsPage.category and feeds.category become
+                    // null.
+                    //
+                    // The following code sets both
+                    // feedsPage.category and feeds.category
+                    // back to its previous value.
+                    var catId = feedsPage.category.categoryId;
+                    function tmp() {
+                        feedsPage.category = categories.getItemForId(catId);
+                        feedModel.category = feedsPage.category
+                        feedModel.update()
+                        categories.updateFinished.disconnect(tmp)
+                    }
+                    categories.updateFinished.connect(tmp)
+
+                    categoryModel.update()
+                    break
+                case 2:
+                    notification.show(qsTr('Invalid URL'))
+                    break
+                case 3:
+                    notification.show(qsTr('URL content is HTML, no feeds available'))
+                    break
+                case 4:
+                    notification.show(qsTr('URL content is HTML which contains multiple feeds'))
+                    break
+                case 5:
+                    notification.show(qsTr('Couldn\'t download the URL content'))
+                    break
+                case 5:
+                    notification.show(qsTr('Content is an invalid XML'))
+                    break
+                default:
+                    notification.show(qsTr('An error occurred while subscribing to the feed'))
+                }
+            })
         })
     }
 }

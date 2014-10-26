@@ -38,22 +38,34 @@ ListModel {
 
     function update() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation, function() {
-            root.load()
-        })
+        ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation,
+                              function(successful, errorMessage) {
+                                  if (successful) {
+                                      root.load()
+                                  }
+
+                                  // TODO Add a callback to update() which can
+                                  // be used to display errorMessage.
+                              });
     }
 
+    /** @private */
     function load() {
         var ttrss = rootWindow.getTTRSS();
         var feeditems = ttrss.getFeedItems(feed.feedId);
+
         var showAll = ttrss.getShowAll();
         rootWindow.showAll = showAll;
-//        root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
+
+        //root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
+
         var now = new Date();
 
         if (feeditems && feeditems.length) {
             root.continuation += feeditems.length
+
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
+
                 var subtitle = feeditems[feeditem].content || ""
                 subtitle = subtitle.replace(/\n/gi, " ")
                 subtitle = subtitle.replace(/<[\/]?[a-zA-Z][^>]*>/gi, "")
@@ -66,8 +78,11 @@ ListModel {
 
                 var d = new Date(feeditems[feeditem].updated * 1000)
                 var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
-                if (d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear())
+                if (d.getDate() === now.getDate()
+                        && d.getMonth() === now.getMonth()
+                        && d.getFullYear() === now.getFullYear()) {
                     formatedDate = qsTr('Today')
+                }
 
                 var url = feeditems[feeditem].link
                 url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
@@ -101,22 +116,28 @@ ListModel {
                     icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : ''
                 }
 
-                if (settings.feeditemsOrder === 0)
+                if (settings.feeditemsOrder === 0) {
                     root.append(modelEntry)
-                else
+                } else {
                     root.insert(0, modelEntry)
+                }
             }
-            // QUICKFIX FIXME the ttrss api will always query exactly 200 elements so if we get a different amount there are none left
-            if (feeditems.length === 200)
+
+            // QUICKFIX FIXME the ttrss api will always query exactly 200 elements
+            // so if we get a different amount there are none left
+            // This holds for API level 6 or later; before the limit was 60
+            if (feeditems.length === 200) {
                 hasMoreItems = true
-        }
-        else
+            }
+        } else {
             hasMoreItems = false
+        }
     }
 
     function getSelectedItem() {
-        if (root.selectedIndex === -1)
+        if (root.selectedIndex === -1) {
             return null;
+        }
 
         return root.get(root.selectedIndex)
     }
@@ -125,64 +146,82 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedUnread(m.id,
-                               !m.unread,
-                               function() {
-                                   var newState = !m.unread
-                                   root.setProperty(sel, "unread", newState)
-                                   if (!rootWindow.showAll)
-                                       root.continuation += newState ? +1 : -1
-                                   root.itemUnreadChanged(m)
-                               })
+        ttrss.updateFeedUnread(m.id, !m.unread, function(successful, errorMessage) {
+            if (successful) {
+                var newState = !m.unread
+                root.setProperty(sel, "unread", newState)
+                if (!rootWindow.showAll) {
+                    root.continuation += newState ? +1 : -1
+                }
+                root.itemUnreadChanged(m)
+            }
+
+            // TODO Add a callback to toogleRead() which can be used to display
+            // errorMessage.
+        })
     }
 
     function toggleStar() {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedStar(m.id,
-                             !m.marked,
-                             function() {
-                                 root.setProperty(sel, "marked", !m.marked)
-                                 root.itemStarChanged(m)
-                             })
+        ttrss.updateFeedStar(m.id, !m.marked, function(successful, errorMessage) {
+            if (successful) {
+                root.setProperty(sel, "marked", !m.marked)
+                root.itemStarChanged(m)
+            }
+
+            // TODO Add a callback to toogleStar() which can be used to display
+            // errorMessage.
+        })
     }
 
     function togglePublished() {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
         var m = getSelectedItem()
-        ttrss.updateFeedRSS(m.id,
-                            !m.rss,
-                            function() {
-                                root.setProperty(sel, "rss", !m.rss)
-                                root.itemPublishedChanged(m)
-                            })
+        ttrss.updateFeedRSS(m.id, !m.rss, function(successful, errorMessage) {
+            if (successful) {
+                root.setProperty(sel, "rss", !m.rss)
+                root.itemPublishedChanged(m)
+            }
+
+            // TODO Add a callback to tooglePublished() which can be used to display
+            // errorMessage.
+        })
     }
 
     function catchUp() {
         var ttrss = rootWindow.getTTRSS()
-        ttrss.catchUp(feed.feedId, feed.isCat, function() {
-                          for(var feeditem = 0; feeditem < root.count; feeditem++) {
-                              var item = root.get(feeditem)
-                              if (item.unread) {
-                                  root.setProperty(feeditem, "unread", false)
-                                  root.itemUnreadChanged(item)
-                              }
-                          }
-                      })
+        ttrss.catchUp(feed.feedId, feed.isCat, function(successful, errorMessage) {
+            if (successful) {
+                for(var index = 0; index < root.count; index++) {
+                    var feedItem = root.get(index)
+                    if (feedItem.unread) {
+                        root.setProperty(index, "unread", false)
+                        root.itemUnreadChanged(feedItem)
+                    }
+                }
+            }
+
+            // TODO Add a callback to catchUp() which can be used to display
+            // errorMessage.
+        })
     }
 
     function hasPrevious() {
         return root.selectedIndex > 0
     }
+
     function selectPrevious() {
         root.selectedIndex = Math.max(root.selectedIndex - 1, 0)
         return root.selectedIndex
     }
+
     function hasNext() {
         return root.selectedIndex < root.count - 1
     }
+
     function selectNext() {
         root.selectedIndex = Math.min(root.selectedIndex + 1, root.count - 1)
         return root.selectedIndex
@@ -195,7 +234,7 @@ ListModel {
                     function(x) { return x - 1 }
 
         // update the feed's category
-        feeds.updateUnreadCountForId(item.feedId, op)
+        feedModel.updateUnreadCountForId(item.feedId, op)
 
         // update special for all feeditems category
         categories.updateUnreadCountForId(
@@ -204,20 +243,24 @@ ListModel {
 
         // if the item is new, update 'special feeds' for 'fresh articles'
         // TODO
-        if (item.unread && false)
+        if (item.unread && false) {
             categories.updateUnreadCountForId(
                         ttrss.constants['categories']['SPECIAL'],
                         op)
+        }
 
         // if item was is starred/published, update special feeds aswell
-        if (item.rss)
+        if (item.rss) {
             categories.updateUnreadCountForId(
                         ttrss.constants['categories']['SPECIAL'],
                         op)
-        if (item.marked)
+        }
+
+        if (item.marked) {
             categories.updateUnreadCountForId(
                         ttrss.constants['categories']['SPECIAL'],
                         op)
+        }
 
         // maybe check if currently viewing special feeds and update published
         // not nesseccary because this is updated by mark unread
@@ -230,10 +273,11 @@ ListModel {
                     function(x) { return x - 1 }
 
         // if the item is unread, update 'special feeds'
-        if (item.unread)
+        if (item.unread) {
             categories.updateUnreadCountForId(
                         ttrss.constants['categories']['SPECIAL'],
                         op)
+        }
 
         // maybe check if currently viewing special feeds and update published
         // not nesseccary because this is updated by mark unread
@@ -246,10 +290,11 @@ ListModel {
                     function(x) { return x - 1 }
 
         // if the item is unread, update 'special feeds'
-        if (item.unread)
+        if (item.unread) {
             categories.updateUnreadCountForId(
                         ttrss.constants['categories']['SPECIAL'],
                         op)
+        }
 
         // maybe check if currently viewing special feeds and update starred
         // not nesseccary because this is updated by mark unread

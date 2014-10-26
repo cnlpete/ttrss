@@ -37,8 +37,9 @@ MenuItem {
 
     onShowAllChanged: {
         // send the signal only if this is not the initial assignment
-        if (notInitialAssignment)
+        if (notInitialAssignment) {
             updateView(showAll)
+        }
     }
 
     Component.onCompleted: {
