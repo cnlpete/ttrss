@@ -109,7 +109,7 @@ ListItem {
             }
             Label {
                 width: parent.width
-                text: qsTr("Note: ") + model.note
+                text: qsTr("Note: %1").arg(model.note !== undefined ? model.note : "")
                 color: model.unread > 0 ?
                            (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
@@ -120,7 +120,7 @@ ListItem {
                 font.weight: Font.Light
                 font.italic: true
                 font.pixelSize: Theme.fontSizeExtraSmall
-                visible: settings.showNote && model.note !== ""
+                visible: settings.showNote && model.note !== undefined && model.note !== ""
             }
 
             Grid  {

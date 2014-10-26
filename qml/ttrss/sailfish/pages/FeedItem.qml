@@ -135,7 +135,7 @@ Page {
             Label {
                 id: noteView
                 width: parent.width
-                text: qsTr("Note: ") + note
+                text: qsTr("Note: %1").arg(note)
                 color: Theme.primaryColor
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 textFormat: Text.PlainText
@@ -304,7 +304,7 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
-            note        = data.note
+            note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             //markedSwitch.checked = marked
             unread      = data.unread
