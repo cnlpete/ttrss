@@ -67,7 +67,7 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: icon.visible ? icon.right : parent.left
         anchors.margins: Theme.paddingMedium
-        width: parent.width - (icon.visible ? icon.width : 0) - bubble.width - Theme.paddingMedium
+        anchors.right: bubble.left
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         // todo: check for performance issues,
         // was StyledText before, which might be better

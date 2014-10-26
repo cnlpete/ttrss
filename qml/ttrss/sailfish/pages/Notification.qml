@@ -41,7 +41,7 @@ MouseArea {
 
     Rectangle {
         id: box
-        y: -width
+        y: -height
         width: parent.width
         height: parent.height
         color: Theme.highlightBackgroundColor
