@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="ic_all.png">qml/ttrss/resources/ic_all.png</file>
+        <file alias="ic_archived.png">qml/ttrss/resources/ic_archive.png</file>
+        <file alias="ic_fresh.png">qml/ttrss/resources/ic_fresh.png</file>
+        <file alias="ic_read.png">qml/ttrss/resources/ic_read.png</file>
+        <file alias="ic_recently.png">qml/ttrss/resources/ic_recently.png</file>
+        <file alias="ic_rss_disabled.png">qml/ttrss/resources/ic_rss_disabled.png</file>
+        <file alias="ic_rss_enabled.png">qml/ttrss/resources/ic_rss_enabled.png</file>
+        <file alias="ic_star_disabled.png">qml/ttrss/resources/ic_star_disabled.png</file>
+        <file alias="ic_star_enabled.png">qml/ttrss/resources/ic_star_enabled.png</file>
+        <file alias="ic_unread.png">qml/ttrss/resources/ic_unread.png</file>
+    </qresource>
+</RCC>

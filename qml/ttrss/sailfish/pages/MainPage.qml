@@ -192,9 +192,9 @@ Dialog {
     }
 
     function startLogin() {
-        var ttrss = rootWindow.getTTRSS();
-        ttrss.initState();
-        ttrss.setLoginDetails(username.text, password.text, server.text);
+        var ttrss = rootWindow.getTTRSS()
+        ttrss.initState()
+        ttrss.setLoginDetails(username.text, password.text, server.text)
 
         // BUGFIX somehow the silica QML Image can not display images
         // coming from a secure line
@@ -203,10 +203,10 @@ Dialog {
         }
 
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
-            ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
+            ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword)
             console.log('doing http basic auth with username ' + settings.httpauthusername)
         }
-        ttrss.login(loginDone);
+        ttrss.login(loginDone)
     }
 
     function loginDone(successful, errorMessage) {

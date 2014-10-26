@@ -97,7 +97,7 @@ Page {
                     height: 32
                     sourceSize.width: 32
                     sourceSize.height: 32
-                    source: "../../resources/ic_star_enabled.png"
+                    source: "qrc:///images/ic_star_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
                 Image {
@@ -107,7 +107,7 @@ Page {
                     height: 32
                     sourceSize.width: 32
                     sourceSize.height: 32
-                    source: "../../resources/ic_rss_enabled.png"
+                    source: "qrc:///images/ic_rss_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
             }
@@ -189,7 +189,7 @@ Page {
             }
             IconButton {
                 id: rssSwitch
-                icon.source: "../../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+                icon.source: "qrc:///images/ic_rss_"+(rss?"enabled":"disabled")+".png"
                 //checked: rss
                 onClicked: {
                     feedItemModel.togglePublished()
@@ -198,7 +198,7 @@ Page {
             }
             IconButton {
                 id: markedSwitch
-                icon.source: "../../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+                icon.source: "qrc:///images/ic_star_"+(marked?"enabled":"disabled")+".png"
                 //checked: marked
                 onClicked: {
                     feedItemModel.toggleStar()
@@ -207,7 +207,7 @@ Page {
             }
             IconButton {
                 id: unreadSwitch
-                icon.source: "../../resources/ic_"+(unread?"unread":"read")+".png"
+                icon.source: "qrc:///images/ic_"+(unread?"unread":"read")+".png"
                 //checked: unread
                 onClicked: {
                     feedItemModel.toggleRead()

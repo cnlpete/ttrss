@@ -256,14 +256,17 @@ function dateSort(a, b) {
 function getIconUrl(feedId) {
     switch (feedId) {
     case constants['feeds']['all']:
+        return "qrc:///images/ic_all.png"
     case constants['feeds']['fresh']:
+        return "qrc:///images/ic_fresh.png"
     case constants['feeds']['archived']:
+        return "qrc:///images/ic_archived.png"
     case constants['feeds']['recently']:
-        return ''
+        return "qrc:///images/ic_recently.png"
     case constants['feeds']['starred']:
-        return "file:///opt/ttrss/qml/resources/ic_star_enabled.png"
+        return "qrc:///images/ic_star_enabled.png"
     case constants['feeds']['published']:
-        return "file:///opt/ttrss/qml/resources/ic_rss_enabled.png"
+        return "qrc:///images/ic_rss_enabled.png"
     default:
         return state['imageProxy'] + state['shorturl'] + state['icons_url'] + '/'
                 + feedId + '.ico'
