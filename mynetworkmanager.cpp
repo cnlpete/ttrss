@@ -21,7 +21,11 @@
 
 #include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#include <QStandardPaths>
+#else
 #include <QDesktopServices>
+#endif
 #include <QDebug>
 #include "settings.hh"
 
@@ -45,7 +49,12 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
 
 #if !defined(Q_OS_SAILFISH)
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
-    diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+#else
+    QString cachePath = QDesktopServices::storageLocation(QDesktopServices::CacheLocation);
+#endif
+    diskCache->setCacheDirectory(cachePath);
     diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
     nam->setCache(diskCache);
 #endif
@@ -90,6 +99,7 @@ void MyNetworkManager::onStarted() {
 }
 
 void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {
+    Q_UNUSED(reply);
     this->decNumRequests();
 }
 

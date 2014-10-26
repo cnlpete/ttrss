@@ -19,14 +19,17 @@
  * http://www.gnu.org/licenses/.
  */
 
-#if defined(Q_OS_SAILFISH)
+#include <QtGlobal>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     #include <QGuiApplication>
-    #include <sailfishapp.h>
     #include <QQuickView>
     #include <QQmlEngine>
     #include <QQmlContext>
     #ifdef QT_QML_DEBUG
         #include <QtQuick>
+    #endif
+    #if defined(Q_OS_SAILFISH)
+        #include <sailfishapp.h>
     #endif
 #else
     #include <QtGui/QApplication>
@@ -44,8 +47,8 @@
 #include "qmlutils.hh"
 #include "mynetworkmanager.hh"
 
-#if defined(Q_OS_SAILFISH)
-#else
+#if defined(Q_OS_HARMATTAN)
+    #define USE_THEME
     #include "theme.hh"
 #endif
 
@@ -53,6 +56,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #if defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
+#elif (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #else
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 #endif
@@ -90,6 +95,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if defined(Q_OS_SAILFISH)
     QQuickView* viewer = SailfishApp::createView();
+#elif (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QScopedPointer<QQuickView> viewer(new QQuickView);
+    viewer->setResizeMode(QQuickView::SizeRootObjectToView);
 #else
     QmlApplicationViewer *viewer = new QmlApplicationViewer();
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
@@ -104,8 +112,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
     viewer->rootContext()->setContextProperty("settings", Settings::instance());
 
-#if defined(Q_OS_SAILFISH)
-#else
+#ifdef USE_THEME
     viewer->rootContext()->setContextProperty("MyTheme", Theme::instance());
 #endif
 
@@ -115,7 +122,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
 #endif
 
-#if defined(Q_OS_SAILFISH)
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     viewer->show();
 #else
     viewer->showExpanded();

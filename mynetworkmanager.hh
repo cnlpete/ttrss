@@ -22,7 +22,8 @@
 #ifndef MYNETWORKMANAGER_HH
 #define MYNETWORKMANAGER_HH
 
-#if defined(Q_OS_SAILFISH)
+#include <QtGlobal>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     #include <QQmlNetworkAccessManagerFactory>
 #else
     #include <qdeclarativenetworkaccessmanagerfactory.h>
@@ -33,7 +34,7 @@
 #include <QMutex>
 #include <QDebug>
 
-#if defined(Q_OS_SAILFISH)
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 class MyNetworkManager : public QObject, public QQmlNetworkAccessManagerFactory
 #else
 class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManagerFactory
