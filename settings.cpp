@@ -164,6 +164,22 @@ void Settings::setDisplayLabels(bool displayLabels) {
     }
 }
 
+void Settings::setShowNote(bool showNote) {
+    if (_showNote != showNote) {
+        _showNote = showNote;
+        m_settings->setValue("showNote", _showNote);
+        emit showNoteChanged();
+    }
+}
+
+void Settings::setLengthOfNote(int lengthOfNote) {
+    if (_lengthOfNote != lengthOfNote) {
+        _lengthOfNote = lengthOfNote;
+        m_settings->setValue("lengthOfNote", _lengthOfNote);
+        emit lengthOfNoteChanged();
+    }
+}
+
 // Items
 void Settings::setAutoMarkRead(bool autoMarkRead) {
     if (_autoMarkRead != autoMarkRead) {
@@ -239,6 +255,8 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _showExcerpt = m_settings->value("showExcerpt", true).toBool();
     _lengthOfExcerpt = m_settings->value("lengthOfExcerpt", 2).toInt();
     _displayLabels = m_settings->value("displayLabels", true).toBool();
+    _showNote = m_settings->value("showNote", true).toBool();
+    _lengthOfNote = m_settings->value("lengthOfNote", 2).toInt();
 
     // Items
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();

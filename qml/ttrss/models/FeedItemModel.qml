@@ -94,6 +94,7 @@ ListModel {
                     url:        url,
                     date:       formatedDate,
                     attachments:feeditems[feeditem].attachments,
+                    note:       feeditems[feeditem].note,
                     feedId:     parseInt(feeditems[feeditem].feed_id),
                     feedTitle:  ttrss.html_entity_decode(feeditems[feeditem].feed_title, 'ENT_QUOTES'),
                     labels:     labels,

@@ -107,6 +107,22 @@ ListItem {
                 font.pixelSize: Theme.fontSizeSmall
                 visible: settings.showExcerpt && text != ""
             }
+            Label {
+                width: parent.width
+                text: qsTr("Note: ") + model.note
+                color: model.unread > 0 ?
+                           (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                           (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
+                maximumLineCount: settings.lengthOfNote
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                truncationMode: TruncationMode.Elide
+                textFormat: Text.PlainText
+                font.weight: Font.Light
+                font.italic: true
+                font.pixelSize: Theme.fontSizeExtraSmall
+                visible: settings.showNote && model.note !== ""
+            }
+
             Grid  {
                 spacing: Theme.paddingSmall
                 width: parent.width
