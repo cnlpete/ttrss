@@ -36,6 +36,7 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
+    property int    itemId
 
     anchors.margins: 0
 
@@ -320,6 +321,7 @@ Page {
             //unreadSwitch.checked = unread
             rss         = data.rss
             //rssSwitch.checked = rss
+            itemId      = data.id
 
             previousId  = feedItemModel.hasPrevious()
             nextId      = feedItemModel.hasNext()
