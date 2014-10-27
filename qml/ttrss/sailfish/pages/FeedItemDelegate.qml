@@ -143,22 +143,25 @@ ListItem {
     menu: Component {
         ContextMenu {
             MenuItem {
-                id: toggleStarMenuItem
                 text: model.marked ? qsTr("Unstar") : qsTr("Star")
                 onClicked: {
                     feedItemModel.toggleStar()
                 } }
             MenuItem {
-                id: togglePublishedMenuItem
                 text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
                 onClicked: {
                     feedItemModel.togglePublished()
                 } }
             MenuItem {
-                id: toggleReadMenuItem
                 text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
                 onClicked: {
                     feedItemModel.toggleRead()
+                } }
+            MenuItem {
+                text: qsTr("Mark all above read")
+                enabled: index > 0
+                onClicked: {
+                    feedItemModel.markAllAboveAsRead()
                 } }
             MenuItem {
                 id: openInBrowserMenuItem

@@ -857,7 +857,7 @@ function process_updateFeedRSS(callback, httpreq) {
 /**
  * Mark an article as read or unread.
  * @param {int} The id of the article.
- * @param {boolean} True if article should be marked read, false if unread.
+ * @param {boolean} True if article should be marked unread, false if read.
  * @param {function} A callback function with parameters boolean (indicating
  *     success) and string (an optional error message).
  */
@@ -914,7 +914,7 @@ function process_updateFeedUnread(callback, httpreq) {
 
 /**
  * @private
- * @return {boolean} Wheater some pending stuff was found.
+ * @return {boolean} Whether some pending stuff was found.
  */
 function processPendingRequests(callback) {
     trace(4, 'In function processPendingRequests()');

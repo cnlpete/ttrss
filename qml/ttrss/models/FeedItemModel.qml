@@ -142,6 +142,37 @@ ListModel {
         return root.get(root.selectedIndex)
     }
 
+    function markAllAboveAsRead() {
+        var ttrss = rootWindow.getTTRSS()
+        var sel = root.selectedIndex
+
+        var ids = ""
+        for (var i = 0; i < sel; i++) {
+            var m = root.get(i)
+            ids += m.id + ","
+        }
+        // trim of last ,
+        ids = ids.slice(0,-1)
+
+        ttrss.updateFeedUnread(ids, false, function(successful, errorMessage) {
+            if (successful) {
+                for (var i = 0; i < sel; i++) {
+                    var m = root.get(i)
+                    if (m.unread) {
+                        root.setProperty(i, "unread", false)
+                        if (!rootWindow.showAll) {
+                            root.continuation += 1
+                        }
+                        root.itemUnreadChanged(m)
+                    }
+                }
+            }
+
+            // TODO Add a callback to toogleRead() which can be used to display
+            // errorMessage.
+        })
+    }
+
     function toggleRead() {
         var ttrss = rootWindow.getTTRSS()
         var sel = root.selectedIndex
