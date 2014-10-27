@@ -29,7 +29,7 @@ Rectangle {
 
     width: text.width + MyTheme.paddingSmall + MyTheme.paddingSmall
     height: text.height + MyTheme.paddingSmall
-    color: root.label.bgcolor
+    color: root.label.bg_color
     radius: MyTheme.paddingSmall
     anchors.margins: MyTheme.paddingSmall
     Text {
@@ -38,8 +38,8 @@ Rectangle {
             horizontalCenter: root.horizontalCenter
         }
         id: text
-        text: root.label.text
-        color: root.label.fgcolor
+        text: root.label.caption
+        color: root.label.fg_color
         font.pixelSize: MyTheme.fontSizeExtraSmall
     }
     MouseArea {
