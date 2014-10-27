@@ -236,6 +236,8 @@ Dialog {
 
         categoryModel.update()
         // Now show the categories View
+
+        var pages = [Qt.resolvedUrl("Categories.qml")]
         if (settings.useAllFeedsOnStartup) {
             var ttrss = rootWindow.getTTRSS()
             var params = {
@@ -245,10 +247,32 @@ Dialog {
                     unreadcount: 0
                 }
             }
-            pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
-        } else {
-            pageStack.replace(Qt.resolvedUrl("Categories.qml"))
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
         }
+        else/* if (settings.useSpecialFeedOnStartup) {
+            var ttrss = rootWindow.getTTRSS()
+            var params = {
+                category: {
+                    categoryId: ttrss.constants['categories']['SPECIAL'],
+                    title: constant.specialCategory,
+                    name: constant.specialCategory,
+                    unreadcount: 0
+                }
+            }
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
+            params = {
+                feed: {
+                    feedId:     ttrss.constants['feeds']['fresh'],
+                    categoryId: ttrss.constants['categories']['SPECIAL'],
+                    title:      constant.freshArticles,
+                    unreadcount: 0,
+                    isCat:       false,
+                    icon:        settings.displayIcons ? ttrss.getIconUrl(ttrss.constants['feeds']['fresh']) : ''
+                }
+            }
+            pages.push({page: Qt.resolvedUrl("FeedItems.qml"), properties: params })
+        }*/
+        pageStack.replace(pages)
     }
 
     Component.onCompleted: {
