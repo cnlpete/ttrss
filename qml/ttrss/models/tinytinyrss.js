@@ -913,6 +913,118 @@ function process_updateFeedUnread(callback, httpreq) {
 }
 
 /**
+ * Get the list of configured labels with a flag if a label is assigned to a
+ * specific article.
+ * @param {int} The id of the article.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success), string (an optional error message), and array (the labels as
+ *     objects).
+ */
+function getLabels(articleId, callback) {
+    if(responsesPending['getlabel'])
+        return;
+
+    if(!state['token']) {
+        requestsPending['getlabel'] = true;
+        processPendingRequests(callback)
+        return;
+    }
+
+    if (state['apilevel'] < 1) {
+        callback(false, "Retrieving labels isn't supported by API");
+        return;
+    }
+
+    responsesPending['getlabel'] = true
+
+    var params = {
+        'op': 'getLabels',
+        'sid': state['token'],
+        'article_id': articleId
+    }
+
+    networkCall(params, function(http) { process_getLabels(callback, http) });
+}
+
+/** @private */
+function process_getLabels(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['getlabel'] = false;
+
+    if (!response.successful) {
+        trace(1, "Get labels: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true, "", response.content);
+    }
+}
+
+/**
+ * Assign an article to a label or remove article from it.
+ * @param {int} The id of the article.
+ * @param {int} The id of the label.
+ * @param {boolean} Assign to or remove from label.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
+function setLabel(articleId, labelId, assign, callback) {
+    if(responsesPending['setlabel'])
+        return;
+
+    if(!state['token']) {
+        requestsPending['setlabel'] = true;
+        processPendingRequests(callback)
+        return;
+    }
+
+    if (state['apilevel'] < 1) {
+        callback(false, "Assigning labels isn't supported by API");
+        return;
+    }
+
+    responsesPending['setlabel'] = true
+
+    var params = {
+        'op': 'setArticleLabel',
+        'sid': state['token'],
+        'article_ids': articleId,
+        'label_id': labelId,
+        'assign': assign
+    }
+
+    networkCall(params, function(http) { process_setLabel(callback, http) });
+}
+
+/** @private */
+function process_setLabel(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['setlabel'] = false;
+
+    if (!response.successful) {
+        trace(1, "Set label: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
+    }
+}
+
+/**
  * @private
  * @return {boolean} Wheater some pending stuff was found.
  */
