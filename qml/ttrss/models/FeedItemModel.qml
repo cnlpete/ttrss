@@ -92,9 +92,9 @@ ListModel {
                 for (var l = 0; l < labelcount; l++) {
                     labels[l] = {
                         'id': parseInt(feeditems[feeditem].labels[l][0]),
-                        'fgcolor': (feeditems[feeditem].labels[l][2] == "" ? "black" : feeditems[feeditem].labels[l][2]),
-                        'bgcolor': (feeditems[feeditem].labels[l][3] == "" ? "white" : feeditems[feeditem].labels[l][3]),
-                        'text': feeditems[feeditem].labels[l][1]
+                        'caption': feeditems[feeditem].labels[l][1],
+                        'fg_color': (feeditems[feeditem].labels[l][2] === "" ? "black" : feeditems[feeditem].labels[l][2]),
+                        'bg_color': (feeditems[feeditem].labels[l][3] === "" ? "white" : feeditems[feeditem].labels[l][3])
                     }
                 }
 

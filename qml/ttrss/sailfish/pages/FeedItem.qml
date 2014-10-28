@@ -36,6 +36,7 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
+    property int    itemId
 
     anchors.margins: 0
 
@@ -60,6 +61,25 @@ Page {
                 text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
                 enabled: !panel.moving
                 onClicked: panel.open ? panel.hide() : panel.show()
+            }
+            MenuItem {
+                text: qsTr("Assign Labels")
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS();
+                    ttrss.getLabels(itemId, function(successful, errorMessage,
+                                                     labels) {
+                        if (successful) {
+                            var params = {
+                                articleId: root.itemId,
+                                labels: labels,
+                                headline: root.pageTitle,
+                                feedItemPage: root
+                            }
+                            pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"),
+                                           params);
+                        }
+                    })
+                }
             }
         }
 
@@ -148,6 +168,8 @@ Page {
             Grid {
                 spacing: Theme.paddingMedium
                 width: parent.width
+                visible: labels !== null && labels.count > 0
+
                 Repeater {
                     model: labels.count
                     LabelLabel {
@@ -318,6 +340,7 @@ Page {
             //unreadSwitch.checked = unread
             rss         = data.rss
             //rssSwitch.checked = rss
+            itemId      = data.id
 
             previousId  = feedItemModel.hasPrevious()
             nextId      = feedItemModel.hasNext()
@@ -327,6 +350,39 @@ Page {
                 unread = !unread
             }
         }
+    }
+
+    function updateLabels() {
+        var ttrss = rootWindow.getTTRSS();
+        ttrss.getLabels(itemId, function(successful, errorMessage, labels) {
+            if (!successful) {
+                // TODO do something with errorMessage
+                return
+            }
+
+            var item = feedItemModel.getSelectedItem()
+            if (!item || !item.labels) {
+                return
+            }
+
+            item.labels.clear()
+
+            var newLabels = []
+            for (var index = 0; index < labels.length; ++index) {
+                if (!labels[index].checked) {
+                    continue
+                }
+
+                item.labels.append({
+                    'id': parseInt(labels[index].id),
+                    'caption': labels[index].caption,
+                    'fg_color': (labels[index].fg_color === "" ? "black" : labels[index].fg_color),
+                    'bg_color': (labels[index].bg_color === "" ? "white" : labels[index].bg_color)
+                })
+            }
+
+            root.labels = item.labels
+        })
     }
 
     Binding {

@@ -29,7 +29,7 @@ Rectangle {
 
     width: text.width + 2*Theme.paddingSmall
     height: text.height
-    color: label !== null ? label.bgcolor : Theme.secondaryColor
+    color: label !== null ? label.bg_color : Theme.secondaryColor
     radius: Theme.paddingSmall
 
     Text {
@@ -38,8 +38,8 @@ Rectangle {
             horizontalCenter: parent.horizontalCenter
         }
         id: text
-        text: label !== null ? label.text : ""
-        color: label !== null ? label.fgcolor : Theme.highlightColor
+        text: label !== null ? label.caption : ""
+        color: label !== null ? label.fg_color : Theme.highlightColor
         font.pixelSize: Theme.fontSizeExtraSmall
     }
 }
