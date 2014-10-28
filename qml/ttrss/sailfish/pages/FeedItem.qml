@@ -36,7 +36,6 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
-    property int    itemId
 
     anchors.margins: 0
 
@@ -61,6 +60,24 @@ Page {
                 text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
                 enabled: !panel.moving
                 onClicked: panel.open ? panel.hide() : panel.show()
+            }
+            MenuItem {
+                text: qsTr("Assign Labels")
+                onClicked: {
+                    feedItemModel.getLabels(function(successful, errorMessage,
+                                                     labels) {
+                        if (successful) {
+                            var params = {
+                                labels: labels,
+                                headline: root.pageTitle,
+                                feedItemPage: root
+                            }
+                            pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"),
+                                           params);
+                        }
+                        // TODO make use of errorMessage
+                    })
+                }
             }
         }
 
@@ -321,7 +338,6 @@ Page {
             //unreadSwitch.checked = unread
             rss         = data.rss
             //rssSwitch.checked = rss
-            itemId      = data.id
 
             previousId  = feedItemModel.hasPrevious()
             nextId      = feedItemModel.hasNext()
@@ -331,6 +347,16 @@ Page {
                 unread = !unread
             }
         }
+    }
+
+    function updateLabels() {
+        feedItemModel.updateLabels(function(successful, errorMessage, labels) {
+            if (successful) {
+                root.labels = labels
+            }
+
+            // TODO make use of errorMessage
+        })
     }
 
     Binding {

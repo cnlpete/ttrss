@@ -156,7 +156,7 @@ ListModel {
                 root.itemUnreadChanged(m)
             }
 
-            // TODO Add a callback to toogleRead() which can be used to display
+            // TODO Add a callback to toggleRead() which can be used to display
             // errorMessage.
         })
     }
@@ -171,7 +171,7 @@ ListModel {
                 root.itemStarChanged(m)
             }
 
-            // TODO Add a callback to toogleStar() which can be used to display
+            // TODO Add a callback to toggleStar() which can be used to display
             // errorMessage.
         })
     }
@@ -186,8 +186,56 @@ ListModel {
                 root.itemPublishedChanged(m)
             }
 
-            // TODO Add a callback to tooglePublished() which can be used to display
-            // errorMessage.
+            // TODO Add a callback to togglePublished() which can be used to
+            // display errorMessage.
+        })
+    }
+
+    function getLabels(callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.getLabels(item.id, function(successful, errorMessage, labels) {
+            callback(successful, errorMessage, labels)
+        })
+    }
+
+    function setLabel(labelId, assign, callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.setLabel(item.id, labelId, assign,
+                       function(successful, errorMessage) {
+                           callback(successful, errorMessage);
+                       })
+    }
+
+    function updateLabels(callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.getLabels(item.id, function(successful, errorMessage, labels) {
+            if (!successful) {
+                callback(false, errorMessage)
+                return
+            }
+
+            item.labels.clear()
+
+            for (var i = 0; i < labels.length; ++i) {
+                if (!labels[i].checked) {
+                    continue
+                }
+
+                item.labels.append({
+                    'id': parseInt(labels[i].id),
+                    'caption': labels[i].caption,
+                    'fg_color': (labels[i].fg_color === "" ? "black" : labels[i].fg_color),
+                    'bg_color': (labels[i].bg_color === "" ? "white" : labels[i].bg_color)
+                })
+            }
+
+            callback(true, "", item.labels)
         })
     }
 
