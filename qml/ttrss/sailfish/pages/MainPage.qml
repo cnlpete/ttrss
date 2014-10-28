@@ -249,7 +249,7 @@ Dialog {
             }
             pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
         }
-        else/* if (settings.useSpecialFeedOnStartup) {
+        /*else if (settings.useSpecialFeedOnStartup) {
             var ttrss = rootWindow.getTTRSS()
             var params = {
                 category: {
