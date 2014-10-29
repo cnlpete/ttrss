@@ -196,7 +196,33 @@ ListModel {
         var item = getSelectedItem()
 
         ttrss.getLabels(item.id, function(successful, errorMessage, labels) {
-            callback(successful, errorMessage, labels)
+            if (!successful) {
+                callback(false, errorMessage)
+                return
+            }
+            if (!labels || labels.length === 0) {
+                callback(true, "", [])
+                return
+            }
+
+            var i
+            var j
+
+            // This is in O(nm) where n is the number of labels defined and
+            // m the number of labels checked. It's unefficient, but it should
+            // be fast enough for us.
+            for (i = 0; i < labels.length; ++i) {
+                labels[i].checked = false
+
+                for (j = 0; j < item.labels.count; ++j) {
+                    if(labels[i].id === item.labels.get(j).id) {
+                        labels[i].checked = true
+                        break
+                    }
+                }
+            }
+
+            callback(true, "", labels)
         })
     }
 
@@ -214,7 +240,7 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
         var item = getSelectedItem()
 
-        ttrss.getLabels(item.id, function(successful, errorMessage, labels) {
+        ttrss.updateLabels(item.id, function(successful, errorMessage, labels) {
             if (!successful) {
                 callback(false, errorMessage)
                 return
