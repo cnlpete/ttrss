@@ -63,6 +63,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("Assign Labels")
+                enabled: !network.loading
                 onClicked: {
                     feedItemModel.getLabels(function(successful, errorMessage,
                                                      labels) {

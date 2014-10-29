@@ -64,13 +64,14 @@ Page {
 
         delegate: ListItem {
             id: item
-
             width: parent.width
+
             property var label: page.labels[index]
 
             Switch {
                 id: checkbox
                 checked: item.label.checked
+                enabled: !network.loading
                 anchors.verticalCenter: parent.verticalCenter
 
                 property bool noAPIcall: false
