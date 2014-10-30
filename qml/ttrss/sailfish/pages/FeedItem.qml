@@ -196,13 +196,17 @@ Page {
                     rss = !rss
                 }
             }
+
             IconButton {
                 id: markedSwitch
-                icon.source: "qrc:///images/ic_star_"+(marked?"enabled":"disabled")+".png"
-                //checked: marked
+                icon.source: "qrc:///images/ic_star_"
+                             + (marked ? "enabled" : "disabled") + ".png"
                 onClicked: {
-                    feedItemModel.toggleStar()
-                    marked = !marked
+                    feedItemModel.toggleStar(function(successful, errorMessage,
+                                                      state) {
+                        marked = state
+                        // TODO make use of errorMessage
+                    })
                 }
             }
 
@@ -318,7 +322,6 @@ Page {
             root.labels = data.labels
             note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
-            //markedSwitch.checked = marked
             unread      = data.unread
             rss         = data.rss
             //rssSwitch.checked = rss

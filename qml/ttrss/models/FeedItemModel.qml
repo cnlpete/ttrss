@@ -200,18 +200,26 @@ ListModel {
         })
     }
 
-    function toggleStar() {
+    /**
+     * Toggle starred/unstarred of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     starred; false if unstarred).
+     */
+    function toggleStar(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedStar(m.id, !m.marked, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.marked
+
+        ttrss.updateFeedStar(item.id, newState, function(successful,
+                                                         errorMessage) {
             if (successful) {
-                root.setProperty(sel, "marked", !m.marked)
-                root.itemStarChanged(m)
+                root.setProperty(index, "marked", newState)
+                root.itemStarChanged(item)
             }
 
-            // TODO Add a callback to toogleStar() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.marked)
         })
     }
 

@@ -215,12 +215,19 @@ Page {
                 feedItems.selectPrevious()
                 showFeedItem()
             } }
+
         ToolIcon {
-            iconSource: "../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_star_"
+                        + (marked ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.toggleStar()
-                marked = !marked
-            } }
+                feedItems.toggleStar(function(successful, errorMessage,
+                                              state) {
+                    marked = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
             iconSource: "../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
             onClicked: {
