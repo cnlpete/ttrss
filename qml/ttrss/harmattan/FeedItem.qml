@@ -227,12 +227,18 @@ Page {
                 feedItems.togglePublished()
                 rss = !rss
             } }
+
         ToolIcon {
-            iconSource: "../resources/ic_"+(unread?"unread":"read")+".png"
+            iconSource: "../resources/ic_"
+                        + (unread ? "unread" : "read") + ".png"
             onClicked: {
-                feedItems.toggleRead()
-                unread = !unread
-            } }
+                feedItems.toggleRead(function(successful, errorMessage, state) {
+                    unread = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
             iconId: "toolbar-next"
             visible: nextId !== false

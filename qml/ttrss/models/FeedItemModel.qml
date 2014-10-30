@@ -173,22 +173,30 @@ ListModel {
         })
     }
 
-    function toggleRead() {
+    /**
+     * Toggle unread/read of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     unread; false if read).
+     */
+    function toggleRead(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedUnread(m.id, !m.unread, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.unread
+
+        ttrss.updateFeedUnread(item.id, newState, function(successful,
+                                                           errorMessage) {
             if (successful) {
-                var newState = !m.unread
-                root.setProperty(sel, "unread", newState)
                 if (!rootWindow.showAll) {
                     root.continuation += newState ? +1 : -1
                 }
-                root.itemUnreadChanged(m)
+
+                root.setProperty(index, "unread", newState)
+                root.itemUnreadChanged(item)
             }
 
-            // TODO Add a callback to toogleRead() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.unread)
         })
     }
 
