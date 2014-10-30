@@ -229,11 +229,16 @@ Page {
         }
 
         ToolIcon {
-            iconSource: "../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_rss_"
+                        + (rss ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.togglePublished()
-                rss = !rss
-            } }
+                feedItems.togglePublished(function(successful, errorMessage,
+                                                   state) {
+                    rss = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
 
         ToolIcon {
             iconSource: "../resources/ic_"

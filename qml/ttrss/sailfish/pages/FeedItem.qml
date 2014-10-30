@@ -187,13 +187,18 @@ Page {
                     //showFeedItem()
                 }
             }
+
             IconButton {
                 id: rssSwitch
-                icon.source: "qrc:///images/ic_rss_"+(rss?"enabled":"disabled")+".png"
-                //checked: rss
+                icon.source: "qrc:///images/ic_rss_"
+                             + (rss ? "enabled" : "disabled") + ".png"
                 onClicked: {
-                    feedItemModel.togglePublished()
-                    rss = !rss
+                    feedItemModel.togglePublished(function(successful,
+                                                           errorMessage,
+                                                           state) {
+                        rss = state
+                        // TODO make use of errorMessage
+                    })
                 }
             }
 

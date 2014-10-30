@@ -223,18 +223,26 @@ ListModel {
         })
     }
 
-    function togglePublished() {
+    /**
+     * Toggle published/unpublished of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     published; false if unpublished).
+     */
+    function togglePublished(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedRSS(m.id, !m.rss, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.rss
+
+        ttrss.updateFeedRSS(item.id, newState, function(successful,
+                                                         errorMessage) {
             if (successful) {
-                root.setProperty(sel, "rss", !m.rss)
-                root.itemPublishedChanged(m)
+                root.setProperty(index, "rss", newState)
+                root.itemPublishedChanged(item)
             }
 
-            // TODO Add a callback to tooglePublished() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.rss)
         })
     }
 
