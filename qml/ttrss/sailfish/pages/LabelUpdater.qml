@@ -50,10 +50,7 @@ Page {
             }
             Label {
                 id: info
-                text: page.labels && page.labels.length > 0 ?
-                          (page.headline !== null ? page.headline : "") :
-                          qsTr("You have no label defined. You can create " +
-                               "them in the webview")
+                text: page.headline !== null ? page.headline : ""
                 width: parent.width
                 font.weight: Font.Bold
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -107,6 +104,14 @@ Page {
                     verticalCenter: parent.verticalCenter
                 }
             }
+        }
+
+        ViewPlaceholder {
+            enabled: listView.count === 0
+            text: network.loading ?
+                      qsTr("Loading") :
+                      qsTr("You have no label defined. You can create them " +
+                           "in the webview.")
         }
     }
 
