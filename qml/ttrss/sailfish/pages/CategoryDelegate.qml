@@ -34,7 +34,9 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.margins: Theme.paddingMedium
-        width: parent.width - bubble.width - Theme.paddingMedium
+        width: parent.width - anchors.margins // left margin
+               - Theme.paddingMedium // spacing between label and bubble
+               - bubble.width - bubble.anchors.margins // right margin
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         // todo: check for performance issues,
         // was StyledText before, which might be better
