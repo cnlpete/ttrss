@@ -77,7 +77,9 @@ ListItem {
 
         Column {
             id: content
-            width: icon.visible ? (parent.width - icon.width) : parent.width
+            width: icon.visible ?
+                       (parent.width - icon.width - contentRow.spacing) :
+                       parent.width
 
             Label {
                 width: parent.width
