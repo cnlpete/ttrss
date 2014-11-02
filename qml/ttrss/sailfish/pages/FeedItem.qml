@@ -187,33 +187,47 @@ Page {
                     //showFeedItem()
                 }
             }
+
             IconButton {
                 id: rssSwitch
-                icon.source: "qrc:///images/ic_rss_"+(rss?"enabled":"disabled")+".png"
-                //checked: rss
+                icon.source: "qrc:///images/ic_rss_"
+                             + (rss ? "enabled" : "disabled") + ".png"
                 onClicked: {
-                    feedItemModel.togglePublished()
-                    rss = !rss
+                    feedItemModel.togglePublished(function(successful,
+                                                           errorMessage,
+                                                           state) {
+                        rss = state
+                        // TODO make use of errorMessage
+                    })
                 }
             }
+
             IconButton {
                 id: markedSwitch
-                icon.source: "qrc:///images/ic_star_"+(marked?"enabled":"disabled")+".png"
-                //checked: marked
+                icon.source: "qrc:///images/ic_star_"
+                             + (marked ? "enabled" : "disabled") + ".png"
                 onClicked: {
-                    feedItemModel.toggleStar()
-                    marked = !marked
+                    feedItemModel.toggleStar(function(successful, errorMessage,
+                                                      state) {
+                        marked = state
+                        // TODO make use of errorMessage
+                    })
                 }
             }
+
             IconButton {
                 id: unreadSwitch
-                icon.source: "qrc:///images/ic_"+(unread?"unread":"read")+".png"
-                //checked: unread
+                icon.source: "qrc:///images/ic_"
+                             + (unread ? "unread" : "read") + ".png"
                 onClicked: {
-                    feedItemModel.toggleRead()
-                    unread = !unread
+                    feedItemModel.toggleRead(function(successful, errorMessage,
+                                                      state) {
+                        unread = state
+                        // TODO make use of errorMessage
+                    })
                 }
             }
+
             IconButton {
                 icon.source: "image://theme/icon-m-next"
                 enabled: nextId !== false
@@ -313,9 +327,7 @@ Page {
             root.labels = data.labels
             note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
-            //markedSwitch.checked = marked
             unread      = data.unread
-            //unreadSwitch.checked = unread
             rss         = data.rss
             //rssSwitch.checked = rss
 
@@ -323,8 +335,11 @@ Page {
             nextId      = feedItemModel.hasNext()
 
             if (settings.autoMarkRead && unread) {
-                feedItemModel.toggleRead()
-                unread = !unread
+                feedItemModel.toggleRead(function(successful, errorMessage,
+                                                  state) {
+                    unread = state
+                    // TODO make use of errorMessage
+                })
             }
         }
     }

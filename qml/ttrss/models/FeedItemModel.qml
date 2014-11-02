@@ -173,52 +173,76 @@ ListModel {
         })
     }
 
-    function toggleRead() {
+    /**
+     * Toggle unread/read of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     unread; false if read).
+     */
+    function toggleRead(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedUnread(m.id, !m.unread, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.unread
+
+        ttrss.updateFeedUnread(item.id, newState, function(successful,
+                                                           errorMessage) {
             if (successful) {
-                var newState = !m.unread
-                root.setProperty(sel, "unread", newState)
                 if (!rootWindow.showAll) {
                     root.continuation += newState ? +1 : -1
                 }
-                root.itemUnreadChanged(m)
+
+                root.setProperty(index, "unread", newState)
+                root.itemUnreadChanged(item)
             }
 
-            // TODO Add a callback to toogleRead() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.unread)
         })
     }
 
-    function toggleStar() {
+    /**
+     * Toggle starred/unstarred of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     starred; false if unstarred).
+     */
+    function toggleStar(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedStar(m.id, !m.marked, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.marked
+
+        ttrss.updateFeedStar(item.id, newState, function(successful,
+                                                         errorMessage) {
             if (successful) {
-                root.setProperty(sel, "marked", !m.marked)
-                root.itemStarChanged(m)
+                root.setProperty(index, "marked", newState)
+                root.itemStarChanged(item)
             }
 
-            // TODO Add a callback to toogleStar() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.marked)
         })
     }
 
-    function togglePublished() {
+    /**
+     * Toggle published/unpublished of currently selected item.
+     * @param {function} A callback function with parameters boolean (indicating
+     *     success), string (an optional error message) and boolean (true if
+     *     published; false if unpublished).
+     */
+    function togglePublished(callback) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
-        var m = getSelectedItem()
-        ttrss.updateFeedRSS(m.id, !m.rss, function(successful, errorMessage) {
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+        var newState = !item.rss
+
+        ttrss.updateFeedRSS(item.id, newState, function(successful,
+                                                         errorMessage) {
             if (successful) {
-                root.setProperty(sel, "rss", !m.rss)
-                root.itemPublishedChanged(m)
+                root.setProperty(index, "rss", newState)
+                root.itemPublishedChanged(item)
             }
 
-            // TODO Add a callback to tooglePublished() which can be used to display
-            // errorMessage.
+            callback(successful, errorMessage, item.rss)
         })
     }
 

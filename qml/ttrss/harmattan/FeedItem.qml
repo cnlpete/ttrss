@@ -215,24 +215,42 @@ Page {
                 feedItems.selectPrevious()
                 showFeedItem()
             } }
+
         ToolIcon {
-            iconSource: "../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_star_"
+                        + (marked ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.toggleStar()
-                marked = !marked
-            } }
+                feedItems.toggleStar(function(successful, errorMessage,
+                                              state) {
+                    marked = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
-            iconSource: "../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+            iconSource: "../resources/ic_rss_"
+                        + (rss ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.togglePublished()
-                rss = !rss
-            } }
+                feedItems.togglePublished(function(successful, errorMessage,
+                                                   state) {
+                    rss = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
-            iconSource: "../resources/ic_"+(unread?"unread":"read")+".png"
+            iconSource: "../resources/ic_"
+                        + (unread ? "unread" : "read") + ".png"
             onClicked: {
-                feedItems.toggleRead()
-                unread = !unread
-            } }
+                feedItems.toggleRead(function(successful, errorMessage, state) {
+                    unread = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
             iconId: "toolbar-next"
             visible: nextId !== false
