@@ -38,6 +38,7 @@ Page {
     property var    labels
 
     anchors.margins: 0
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape
 
     SilicaFlickable {
         id: flick
@@ -188,6 +189,13 @@ Page {
         size: BusyIndicatorSize.Large
     }
 
+    onOrientationChanged: {
+        // hide the panel in landscape mode
+        if (orientation === Orientation.Landscape && panel.open) {
+            panel.hide()
+        }
+    }
+
     DockedPanel {
         id: panel
 
@@ -212,7 +220,6 @@ Page {
             }
 
             IconButton {
-                id: rssSwitch
                 icon.source: "qrc:///images/ic_rss_"
                              + (rss ? "enabled" : "disabled") + ".png"
                 onClicked: {
@@ -226,7 +233,6 @@ Page {
             }
 
             IconButton {
-                id: markedSwitch
                 icon.source: "qrc:///images/ic_star_"
                              + (marked ? "enabled" : "disabled") + ".png"
                 onClicked: {
@@ -239,7 +245,6 @@ Page {
             }
 
             IconButton {
-                id: unreadSwitch
                 icon.source: "qrc:///images/ic_"
                              + (unread ? "unread" : "read") + ".png"
                 onClicked: {
