@@ -188,8 +188,11 @@ Page {
             nextId      = feedItems.hasNext()
 
             if (settings.autoMarkRead && unread) {
-                feedItems.toggleRead()
-                unread = !unread
+                feedItems.toggleRead(function(successful, errorMessage, state) {
+                    // FIXME only update state when this is still the same item
+                    unread = state
+                    // TODO make use of errorMessage
+                })
             }
         }
     }
@@ -222,6 +225,7 @@ Page {
             onClicked: {
                 feedItems.toggleStar(function(successful, errorMessage,
                                               state) {
+                    // FIXME only update state when this is still the same item
                     marked = state
                     // TODO make use of errorMessage
                 })
@@ -234,6 +238,7 @@ Page {
             onClicked: {
                 feedItems.togglePublished(function(successful, errorMessage,
                                                    state) {
+                    // FIXME only update state when this is still the same item
                     rss = state
                     // TODO make use of errorMessage
                 })
@@ -245,6 +250,7 @@ Page {
                         + (unread ? "unread" : "read") + ".png"
             onClicked: {
                 feedItems.toggleRead(function(successful, errorMessage, state) {
+                    // FIXME only update state when this is still the same item
                     unread = state
                     // TODO make use of errorMessage
                 })
