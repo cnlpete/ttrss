@@ -92,9 +92,9 @@ ListModel {
                 for (var l = 0; l < labelcount; l++) {
                     labels[l] = {
                         'id': parseInt(feeditems[feeditem].labels[l][0]),
-                        'fgcolor': (feeditems[feeditem].labels[l][2] == "" ? "black" : feeditems[feeditem].labels[l][2]),
-                        'bgcolor': (feeditems[feeditem].labels[l][3] == "" ? "white" : feeditems[feeditem].labels[l][3]),
-                        'text': feeditems[feeditem].labels[l][1]
+                        'caption': feeditems[feeditem].labels[l][1],
+                        'fg_color': (feeditems[feeditem].labels[l][2] === "" ? "black" : feeditems[feeditem].labels[l][2]),
+                        'bg_color': (feeditems[feeditem].labels[l][3] === "" ? "white" : feeditems[feeditem].labels[l][3])
                     }
                 }
 
@@ -243,6 +243,80 @@ ListModel {
             }
 
             callback(successful, errorMessage, item.rss)
+        })
+    }
+
+    function getLabels(callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.getLabels(item.id, function(successful, errorMessage, labels) {
+            if (!successful) {
+                callback(false, errorMessage)
+                return
+            }
+            if (!labels || labels.length === 0) {
+                callback(true, "", [])
+                return
+            }
+
+            var i
+            var j
+
+            // This is in O(nm) where n is the number of labels defined and
+            // m the number of labels checked. It's unefficient, but it should
+            // be fast enough for us.
+            for (i = 0; i < labels.length; ++i) {
+                labels[i].checked = false
+
+                for (j = 0; j < item.labels.count; ++j) {
+                    if(labels[i].id === item.labels.get(j).id) {
+                        labels[i].checked = true
+                        break
+                    }
+                }
+            }
+
+            callback(true, "", labels)
+        })
+    }
+
+    function setLabel(labelId, assign, callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.setLabel(item.id, labelId, assign,
+                       function(successful, errorMessage) {
+                           callback(successful, errorMessage);
+                       })
+    }
+
+    function updateLabels(callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var item = getSelectedItem()
+
+        ttrss.updateLabels(item.id, function(successful, errorMessage, labels) {
+            if (!successful) {
+                callback(false, errorMessage)
+                return
+            }
+
+            item.labels.clear()
+
+            for (var i = 0; i < labels.length; ++i) {
+                if (!labels[i].checked) {
+                    continue
+                }
+
+                item.labels.append({
+                    'id': parseInt(labels[i].id),
+                    'caption': labels[i].caption,
+                    'fg_color': (labels[i].fg_color === "" ? "black" : labels[i].fg_color),
+                    'bg_color': (labels[i].bg_color === "" ? "white" : labels[i].bg_color)
+                })
+            }
+
+            callback(true, "", item.labels)
         })
     }
 

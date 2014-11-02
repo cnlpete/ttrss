@@ -61,6 +61,27 @@ Page {
                 enabled: !panel.moving
                 onClicked: panel.open ? panel.hide() : panel.show()
             }
+            MenuItem {
+                text: qsTr("Assign Labels")
+
+                enabled: !network.loading
+                onClicked: {
+                    feedItemModel.getLabels(function(successful, errorMessage,
+                                                     labels) {
+                        if (successful) {
+                            var params = {
+                                labels: labels,
+                                headline: root.pageTitle,
+                                feedItemPage: root
+                            }
+                            pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"),
+                                           params);
+                        }
+
+                        // TODO make use of errorMessage
+                    })
+                }
+            }
         }
 
         Column {
@@ -148,6 +169,8 @@ Page {
             Grid {
                 spacing: Theme.paddingMedium
                 width: parent.width
+                visible: labels !== null && labels.count > 0
+
                 Repeater {
                     model: labels.count
                     LabelLabel {
@@ -342,6 +365,16 @@ Page {
                 })
             }
         }
+    }
+
+    function updateLabels() {
+        feedItemModel.updateLabels(function(successful, errorMessage, labels) {
+            if (successful) {
+                root.labels = labels
+            }
+
+            // TODO make use of errorMessage
+        })
     }
 
     Binding {
