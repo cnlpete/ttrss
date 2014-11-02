@@ -119,22 +119,22 @@ Page {
                 case 1:
                     //notification.show(qsTr('Feed added'))
 
-                    // During categories.update() the elements in
-                    // categories will be removed and therefore
+                    // During categoryModel.update() the elements in
+                    // categoryModel will be removed and therefore
                     // feedsPage.category and feeds.category become
                     // null.
                     //
                     // The following code sets both
-                    // feedsPage.category and feeds.category
+                    // feedsPage.category and feedModel.category
                     // back to its previous value.
                     var catId = feedsPage.category.categoryId;
                     function tmp() {
-                        feedsPage.category = categories.getItemForId(catId);
+                        feedsPage.category = categoryModel.getItemForId(catId);
                         feedModel.category = feedsPage.category
                         feedModel.update()
-                        categories.updateFinished.disconnect(tmp)
+                        categoryModel.updateFinished.disconnect(tmp)
                     }
-                    categories.updateFinished.connect(tmp)
+                    categoryModel.updateFinished.connect(tmp)
 
                     categoryModel.update()
                     break
