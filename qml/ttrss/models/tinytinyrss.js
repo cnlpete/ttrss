@@ -86,6 +86,7 @@ function initState() {
         'lastfeeditem':      { 'feedId': null, 'articleId': null },
         'lastfeeditemunread':{ 'feedId': null, 'articleId': null },
         'lastfeeditemrss':   { 'feedId': null, 'articleId': null },
+        'labelscache':       null,
     };
 
     requestsPending = {
@@ -913,6 +914,22 @@ function process_updateFeedUnread(callback, httpreq) {
 }
 
 /**
+ * Get the list of configured labels.
+ * @param {int} The id of an arbitrary article.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success), string (an optional error message), and array (the labels as
+ *     objects).
+ */
+function getLabels(articleId, callback) {
+    if (state['labelscache']) {
+        callback(true, "", state['labelscache'])
+        return
+    }
+
+    updateLabels(articleId, callback)
+}
+
+/**
  * Get the list of configured labels with a flag if a label is assigned to a
  * specific article.
  * @param {int} The id of the article.
@@ -920,7 +937,7 @@ function process_updateFeedUnread(callback, httpreq) {
  *     success), string (an optional error message), and array (the labels as
  *     objects).
  */
-function getLabels(articleId, callback) {
+function updateLabels(articleId, callback) {
     if(responsesPending['getlabel'])
         return;
 
@@ -943,11 +960,11 @@ function getLabels(articleId, callback) {
         'article_id': articleId
     }
 
-    networkCall(params, function(http) { process_getLabels(callback, http) });
+    networkCall(params, function(http) { process_updateLabels(callback, http) });
 }
 
 /** @private */
-function process_getLabels(callback, httpreq) {
+function process_updateLabels(callback, httpreq) {
     var response = process_readyState(httpreq);
 
     responsesPending['getlabel'] = false;
@@ -959,6 +976,8 @@ function process_getLabels(callback, httpreq) {
         }
         return;
     }
+
+    state['labelscache'] = response.content
 
     if(!processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)

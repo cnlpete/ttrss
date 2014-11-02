@@ -25,7 +25,6 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
-    property int articleId
     property string headline
     property var labels
     property var feedItemPage
@@ -62,13 +61,14 @@ Page {
 
         delegate: ListItem {
             id: item
-
             width: parent.width
+
             property var label: page.labels[index]
 
             Switch {
                 id: checkbox
                 checked: item.label.checked
+                enabled: !network.loading
                 anchors.verticalCenter: parent.verticalCenter
 
                 property bool noAPIcall: false
@@ -85,17 +85,15 @@ Page {
                     page.labelsChanged = true
                     checkbox.busy = true
 
-                    var ttrss = rootWindow.getTTRSS();
-                    ttrss.setLabel(page.articleId, item.label.id,
-                                   checkbox.checked,
-                                   function(successful, errorMessage) {
-                                       checkbox.busy = false
-                                       if (!successful) {
-                                           checkbox.noAPIcall = true
-                                           checkbox.checked = !checkbox.checked
-                                           // TODO display errorMessage
-                                       }
-                                   })
+                    feedItemModel.setLabel(item.label.id, checkbox.checked,
+                                           function(successful, errorMessage) {
+                                               checkbox.busy = false
+                                               if (!successful) {
+                                                   checkbox.noAPIcall = true
+                                                   checkbox.checked = !checkbox.checked
+                                                   // TODO display errorMessage
+                                               }
+                                           })
                 }
             }
 
@@ -106,6 +104,13 @@ Page {
                     verticalCenter: parent.verticalCenter
                 }
             }
+        }
+
+        ViewPlaceholder {
+            enabled: listView.count === 0
+            text: network.loading ?
+                      qsTr("Loading") :
+                      qsTr("You have no label defined. You can create them in the webview.")
         }
     }
 

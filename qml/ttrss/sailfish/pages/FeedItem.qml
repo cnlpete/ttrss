@@ -36,7 +36,6 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
-    property int    itemId
 
     anchors.margins: 0
 
@@ -64,13 +63,13 @@ Page {
             }
             MenuItem {
                 text: qsTr("Assign Labels")
+
+                enabled: !network.loading
                 onClicked: {
-                    var ttrss = rootWindow.getTTRSS();
-                    ttrss.getLabels(itemId, function(successful, errorMessage,
+                    feedItemModel.getLabels(function(successful, errorMessage,
                                                      labels) {
                         if (successful) {
                             var params = {
-                                articleId: root.itemId,
                                 labels: labels,
                                 headline: root.pageTitle,
                                 feedItemPage: root
@@ -78,6 +77,8 @@ Page {
                             pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"),
                                            params);
                         }
+
+                        // TODO make use of errorMessage
                     })
                 }
             }
@@ -340,7 +341,6 @@ Page {
             //unreadSwitch.checked = unread
             rss         = data.rss
             //rssSwitch.checked = rss
-            itemId      = data.id
 
             previousId  = feedItemModel.hasPrevious()
             nextId      = feedItemModel.hasNext()
@@ -353,35 +353,12 @@ Page {
     }
 
     function updateLabels() {
-        var ttrss = rootWindow.getTTRSS();
-        ttrss.getLabels(itemId, function(successful, errorMessage, labels) {
-            if (!successful) {
-                // TODO do something with errorMessage
-                return
+        feedItemModel.updateLabels(function(successful, errorMessage, labels) {
+            if (successful) {
+                root.labels = labels
             }
 
-            var item = feedItemModel.getSelectedItem()
-            if (!item || !item.labels) {
-                return
-            }
-
-            item.labels.clear()
-
-            var newLabels = []
-            for (var index = 0; index < labels.length; ++index) {
-                if (!labels[index].checked) {
-                    continue
-                }
-
-                item.labels.append({
-                    'id': parseInt(labels[index].id),
-                    'caption': labels[index].caption,
-                    'fg_color': (labels[index].fg_color === "" ? "black" : labels[index].fg_color),
-                    'bg_color': (labels[index].bg_color === "" ? "white" : labels[index].bg_color)
-                })
-            }
-
-            root.labels = item.labels
+            // TODO make use of errorMessage
         })
     }
 
