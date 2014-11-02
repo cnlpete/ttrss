@@ -40,6 +40,8 @@ qml_1.files = qml/ttrss/sailfish
 qml_1.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
 qml_2.files = qml/ttrss/models
 qml_2.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
+qml_3.files = qml/ttrss/resources
+qml_3.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
 INSTALLS += qml_1 qml_2
 
 icon.files = images/$${TARGET}.png

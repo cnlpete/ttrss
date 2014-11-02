@@ -69,7 +69,7 @@ Dialog {
                 width: 256
                 height: 256
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "../../resources/ttrss256.png"
+                source: "qrc:///images/ttrss256.png"
             }
 
             TextField {
