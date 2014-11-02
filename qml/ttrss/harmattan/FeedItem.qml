@@ -220,7 +220,7 @@ Page {
             } }
 
         ToolIcon {
-            iconSource: "../resources/ic_star_"
+            iconSource: "qrc:///images/ic_star_"
                         + (marked ? "enabled" : "disabled") + ".png"
             onClicked: {
                 feedItems.toggleStar(function(successful, errorMessage,
@@ -233,7 +233,7 @@ Page {
         }
 
         ToolIcon {
-            iconSource: "../resources/ic_rss_"
+            iconSource: "qrc:///images/ic_rss_"
                         + (rss ? "enabled" : "disabled") + ".png"
             onClicked: {
                 feedItems.togglePublished(function(successful, errorMessage,
@@ -246,7 +246,7 @@ Page {
         }
 
         ToolIcon {
-            iconSource: "../resources/ic_"
+            iconSource: "qrc:///images/ic_"
                         + (unread ? "unread" : "read") + ".png"
             onClicked: {
                 feedItems.toggleRead(function(successful, errorMessage, state) {

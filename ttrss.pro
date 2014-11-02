@@ -76,7 +76,8 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 RESOURCES += \
-    harmattan.qrc
+    images.qrc \
+    i18n.qrc
 
 HEADERS += \
     settings.hh \

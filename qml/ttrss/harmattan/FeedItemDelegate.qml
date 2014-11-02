@@ -47,13 +47,13 @@ Item {
         anchors.fill: parent
         anchors.leftMargin: icon.visible ? icon.width + MyTheme.paddingMedium : 0
         Image {
-            source: "../resources/ic_star_enabled.png"
+            source: "qrc:///images/ic_star_enabled.png"
             visible: model.marked
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
         }
         Image {
-            source: "../resources/ic_rss_enabled.png"
+            source: "qrc:///images/ic_rss_enabled.png"
             visible: model.rss
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
