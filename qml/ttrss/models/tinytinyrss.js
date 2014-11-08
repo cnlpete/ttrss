@@ -914,6 +914,59 @@ function process_updateFeedUnread(callback, httpreq) {
 }
 
 /**
+ * Update articles' notes.
+ * @param {int} The ids of the articles.
+ * @param {string} The note.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
+function updateFeedNote(articleIds, note, callback) {
+    if(responsesPending['feeditemnote']) {
+        return;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['feeditemnote'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['feeditemnote'] = true;
+
+    var params = {
+        'op': 'updateArticle',
+        'sid': state['token'],
+        'article_ids': articleIds,
+        'field': 3,
+        'data': note
+    }
+
+    networkCall(params, function(http) { process_updateFeedNote(callback, http) });
+}
+
+/** @private */
+function process_updateFeedNote(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['feeditemnote'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update feeditem note: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
+    }
+}
+
+/**
  * Get the list of configured labels.
  * @param {int} The id of an arbitrary article.
  * @param {function} A callback function with parameters boolean (indicating

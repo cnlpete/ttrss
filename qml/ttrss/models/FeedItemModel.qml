@@ -246,6 +246,20 @@ ListModel {
         })
     }
 
+    function updateNote(note, callback) {
+        var ttrss = rootWindow.getTTRSS()
+        var index = root.selectedIndex
+        var item = getSelectedItem()
+
+        ttrss.updateFeedNote(item.id, note, function(successful, errorMessage) {
+            if (successful) {
+                root.setProperty(index, "note", note)
+            }
+
+            callback(successful, errorMessage)
+        })
+    }
+
     function getLabels(callback) {
         var ttrss = rootWindow.getTTRSS()
         var item = getSelectedItem()
