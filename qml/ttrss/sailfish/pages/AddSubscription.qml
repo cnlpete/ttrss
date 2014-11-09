@@ -33,22 +33,41 @@ Dialog {
     canAccept: feedAddress.text && allCategories.count > 0 && root.selectedId >= 0
     acceptDestinationAction: PageStackAction.Pop
 
-    CategoryModel {
+    ListModel {
         id: allCategories
 
-        onUpdateFinished: {
-            // we need to use the timer as the repeater might not have filled
-            // the contextmenu of the combobox yet
+        function load(categories) {
+            if (!categories || !categories.length) {
+                return
+            }
+
+            var ttrss = rootWindow.getTTRSS()
+
+            for(var i = 0; i < categories.length; ++i) {
+                var title = ttrss.html_entity_decode(categories[i].title, 'ENT_QUOTES')
+
+                if (categories[i].id === ttrss.constants['categories']['UNCATEGORIZED']) {
+                    title = constant.uncategorizedCategory
+                }
+
+                allCategories.append({
+                                         name:  title,
+                                         value: parseInt(categories[i].id),
+                            });
+            }
             categoryChooser.startTimer()
         }
     }
 
     Component.onCompleted: {
-        var oldShowAll = settings.showAll
-        var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(true)
-        allCategories.update()
-        ttrss.setShowAll(oldShowAll)
+        categoryModel.getAllCategories(function(successful, errorMessage,
+                                                categories) {
+            if (successful) {
+                allCategories.load(categories)
+                categoryChooser.startTimer()
+            }
+            // TODO make use of errorMessage
+        })
     }
 
     BusyIndicator {
@@ -86,10 +105,10 @@ Dialog {
             }
             label: qsTr("Category:")
             model: allCategories
-            initialValue: root.categoryId
+            initialId: root.categoryId
 
             onCurrentIndexChanged: {
-                root.selectedId = allCategories.get(categoryChooser.currentIndex).categoryId
+                root.selectedId = model.get(categoryChooser.currentIndex).id
             }
         }
     }

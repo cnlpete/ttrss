@@ -24,12 +24,14 @@ import Sailfish.Silica 1.0
 
 
 ComboBox {
-    property int initialValue
+    id: box
+
+    property int initialId
     property alias model: repeater.model
 
-    function getInitialValue() {
+    function getInitialId() {
         for (var i = 0; i < model.count; i++) {
-            if (repeater.model.get(i).value === initialValue) {
+            if (repeater.model.get(i).id === initialId) {
                 box.currentIndex = i
                 break
             }
@@ -40,7 +42,6 @@ ComboBox {
         timer.start()
     }
 
-    id: box
     menu: ContextMenu {
         Repeater {
             id: repeater
@@ -55,6 +56,6 @@ ComboBox {
         interval: 500
         repeat: false
         triggeredOnStart: false
-        onTriggered: getInitialValue()
+        onTriggered: getInitialId()
     }
 }
