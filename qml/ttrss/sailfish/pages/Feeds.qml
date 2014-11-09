@@ -105,13 +105,16 @@ Page {
     }
 
     function add_subscription() {
+        var params = {
+            initial: feedsPage.category.categoryId
+        }
         var dialog = pageStack.push(Qt.resolvedUrl("AddSubscription.qml"),
-                                    { categoryId: feedsPage.category.categoryId })
+                                    params)
 
         dialog.accepted.connect(function() {
             var ttrss = rootWindow.getTTRSS()
 
-            ttrss.subscribe(dialog.selectedId, dialog.src, function(result) {
+            ttrss.subscribe(dialog.selected, dialog.src, function(result) {
                 switch (result) {
                 case 0:
                     notification.show(qsTr('Already subscribed to Feed'))
