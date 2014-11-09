@@ -429,6 +429,70 @@ function process_updateCategories(callback, httpreq) {
 }
 
 /**
+ * Get all categories from server. Excludes special categories except for
+ * `Uncategorized`.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success), string (an optional error message), and array (the categories
+ *     as objects).
+ */
+function getAllCategories(callback) {
+    if(responsesPending['allcategories']) {
+        return;
+    }
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['allcategories'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['allcategories'] = true;
+
+    var params = {
+        'op': 'getCategories',
+        'sid': state['token'],
+        'unread_only': false
+    }
+
+    networkCall(params, function(http) { process_getAllCategories(callback, http) });
+}
+
+/** @private */
+function process_getAllCategories(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['allcategories'] = false;
+
+    if (!response.successful) {
+        trace(1, "Get all categories: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    var categories = []
+
+    for(var i = 0; i < response.content.length; i++) {
+        var cat = response.content[i];
+
+        if (cat.id < 0) {
+            // Exclude special categories
+            continue;
+        }
+
+        categories.push(cat);
+    }
+
+    if(!processPendingRequests(callback) && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true, "", categories);
+    }
+}
+
+/**
  * Update the feeds of a category.
  * @param {int} The id of the category whose feeds should be updated.
  * @param {function} A callback function with parameters boolean (indicating

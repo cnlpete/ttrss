@@ -95,6 +95,13 @@ ListModel {
         updateFinished()
     }
 
+    function getAllCategories(callback) {
+        var ttrss = rootWindow.getTTRSS();
+        ttrss.getAllCategories(function(successful, errorMessage, categories) {
+            callback(successful, errorMessage, categories)
+        })
+    }
+
     function getTotalUnreadItems() {
         if (root.count <= 0) {
             return 0
