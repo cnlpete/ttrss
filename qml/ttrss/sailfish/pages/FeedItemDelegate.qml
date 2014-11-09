@@ -24,6 +24,7 @@ import Sailfish.Silica 1.0
 
 ListItem {
     id: listItem
+    signal remorseRunning(bool running)
 
     contentHeight: content.height + contentRow.anchors.topMargin
                    + contentRow.anchors.bottomMargin
@@ -163,8 +164,7 @@ ListItem {
                 text: qsTr("Mark all above read")
                 enabled: index > 0
                 onClicked: {
-                    var index = feedItemModel.selectedIndex
-                    feedItemModel.markAllAboveAsRead(index)
+                    markAllAboveAsRead()
                 } }
             MenuItem {
                 id: openInBrowserMenuItem
@@ -179,5 +179,24 @@ ListItem {
                 feedItemModel.selectedIndex = index
             }
         }
+    }
+
+    RemorseItem {
+        id: remorse
+        onCanceled: {
+            listItem.remorseRunning(false)
+        }
+        onTriggered: {
+            listItem.remorseRunning(false)
+        }
+    }
+
+    function markAllAboveAsRead() {
+        listItem.remorseRunning(true)
+        remorse.execute(listItem,
+                        qsTr("Marking all above as read"),
+                        function() {
+                            feedItemModel.markAllAboveAsRead(index)
+                        })
     }
 }
