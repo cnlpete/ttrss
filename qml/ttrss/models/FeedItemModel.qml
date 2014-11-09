@@ -149,8 +149,17 @@ ListModel {
         var ids = ""
         for (var i = 0; i < sel; i++) {
             var item = root.get(i)
-            ids += item.id + ","
+            // Only include items that are unread.
+            if (item.unread) {
+                ids += item.id + ","
+            }
         }
+
+        if (ids === "") {
+            // All regarding items are already marked as read.
+            return
+        }
+
         // trim of last ,
         ids = ids.slice(0,-1)
 
