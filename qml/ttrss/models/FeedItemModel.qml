@@ -186,6 +186,10 @@ ListModel {
         })
     }
 
+    function markAllLoadedAsRead() {
+        markAllAboveAsRead(root.count)
+    }
+
     /**
      * Toggle unread/read of currently selected item.
      * @param {function} A callback function with parameters boolean (indicating

@@ -70,16 +70,16 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
         }
 
         PushUpMenu {
             id: pushmenu
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
             ToggleShowAllItem {
                 onUpdateView: {
@@ -155,10 +155,10 @@ Page {
         }
     }
 
-    function markAllRead() {
-        remorse.execute(qsTr("Marking all read"),
+    function markAllLoadedAsRead() {
+        remorse.execute(qsTr("Marking all loaded as read"),
                         function() {
-                            feedItemModel.catchUp()
+                            feedItemModel.markAllLoadedAsRead()
                         })
     }
 }
