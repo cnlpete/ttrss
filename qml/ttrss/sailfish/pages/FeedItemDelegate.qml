@@ -163,7 +163,8 @@ ListItem {
                 text: qsTr("Mark all above read")
                 enabled: index > 0
                 onClicked: {
-                    feedItemModel.markAllAboveAsRead()
+                    var index = feedItemModel.selectedIndex
+                    feedItemModel.markAllAboveAsRead(index)
                 } }
             MenuItem {
                 id: openInBrowserMenuItem

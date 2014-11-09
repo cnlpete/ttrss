@@ -142,12 +142,16 @@ ListModel {
         return root.get(root.selectedIndex)
     }
 
-    function markAllAboveAsRead() {
+    /**
+     * Mark all items above an index as read, i.e. item with an index less than
+     * the given index.
+     * @param {int} The index above which items should be marked read.
+     */
+    function markAllAboveAsRead(index) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
 
         var ids = ""
-        for (var i = 0; i < sel; i++) {
+        for (var i = 0; i < index; i++) {
             var item = root.get(i)
             // Only include items that are unread.
             if (item.unread) {
@@ -165,7 +169,7 @@ ListModel {
 
         ttrss.updateFeedUnread(ids, false, function(successful, errorMessage) {
             if (successful) {
-                for (var i = 0; i < sel; i++) {
+                for (var i = 0; i < index; i++) {
                     var item = root.get(i)
                     if (item.unread) {
                         root.setProperty(i, "unread", false)
