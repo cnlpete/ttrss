@@ -23,37 +23,21 @@ import QtQuick 1.1
 import com.nokia.meego 1.0
 
 MenuItem {
-    id: toggleUnread
-
-    property bool showAll
-    property bool notInitialAssignment: false
     signal updateView
 
-    text: showAll ? qsTr("Show Unread Only") : qsTr("Show All")
+    text: settings.showAll ? qsTr("Show Unread Only") : qsTr("Show All")
+
     onClicked: {
+        var newValue = !settings.showAll
+
+        // update backend
         var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(!showAll)
-        showAll = !showAll
+        ttrss.setShowAll(newValue)
+
+        // update settings
         settings.showAll = showAll
-    }
 
-    onShowAllChanged: {
-        // send the signal only if this is not the initial assignment
-        if (notInitialAssignment)
-            updateView()
-    }
-
-    Component.onCompleted: {
-        showAll = settings.showAll
-        var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(showAll)
-        notInitialAssignment = true
-    }
-
-    onVisibleChanged: {
-        if (visible && notInitialAssignment) {
-            var ttrss = rootWindow.getTTRSS()
-            showAll = ttrss.getShowAll()
-        }
+        // inform about change
+        updateView()
     }
 }
