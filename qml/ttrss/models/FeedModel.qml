@@ -49,7 +49,7 @@ ListModel {
     function load() {
         var ttrss = rootWindow.getTTRSS()
         var feeds = ttrss.getFeeds(category.categoryId)
-        rootWindow.showAll = ttrss.getShowAll()
+        settings.showAll = ttrss.getShowAll()
         root.clear()
 
         if(feeds && feeds.length) {

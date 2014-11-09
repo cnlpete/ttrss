@@ -70,7 +70,7 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      (rootWindow.showAll ?
+                      (settings.showAll ?
                            qsTr("No categories to display") :
                            qsTr("No categories have unread items"))
         }

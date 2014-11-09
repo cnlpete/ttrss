@@ -65,7 +65,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+                      settings.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
             anchors.fill: parent
             visible: feeds.count == 0
         }

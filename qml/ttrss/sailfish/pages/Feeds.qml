@@ -80,7 +80,7 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+                      settings.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
