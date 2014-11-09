@@ -25,7 +25,7 @@ import Sailfish.Silica 1.0
 MenuItem {
     property bool showAll
     property bool notInitialAssignment: false
-    signal updateView(bool showAll)
+    signal updateView
 
     text: showAll ? qsTr("Show Unread Only") : qsTr("Show All")
     onClicked: {
@@ -38,7 +38,7 @@ MenuItem {
     onShowAllChanged: {
         // send the signal only if this is not the initial assignment
         if (notInitialAssignment) {
-            updateView(showAll)
+            updateView()
         }
     }
 
