@@ -148,8 +148,8 @@ ListModel {
 
         var ids = ""
         for (var i = 0; i < sel; i++) {
-            var m = root.get(i)
-            ids += m.id + ","
+            var item = root.get(i)
+            ids += item.id + ","
         }
         // trim of last ,
         ids = ids.slice(0,-1)
@@ -157,19 +157,19 @@ ListModel {
         ttrss.updateFeedUnread(ids, false, function(successful, errorMessage) {
             if (successful) {
                 for (var i = 0; i < sel; i++) {
-                    var m = root.get(i)
-                    if (m.unread) {
+                    var item = root.get(i)
+                    if (item.unread) {
                         root.setProperty(i, "unread", false)
                         if (!rootWindow.showAll) {
                             root.continuation += 1
                         }
-                        root.itemUnreadChanged(m)
+                        root.itemUnreadChanged(item)
                     }
                 }
             }
 
-            // TODO Add a callback to toogleRead() which can be used to display
-            // errorMessage.
+            // TODO Add a callback to markAllAboveAsRead() which can be used to
+            // display errorMessage.
         })
     }
 
