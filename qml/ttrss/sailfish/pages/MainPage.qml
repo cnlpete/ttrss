@@ -230,6 +230,7 @@ Dialog {
         else {
             categories.update()
             //Now show the categories View
+            var pages = [Qt.resolvedUrl("Categories.qml")]
             if (settings.useAllFeedsOnStartup) {
                 var ttrss = rootWindow.getTTRSS()
                 var params = {
@@ -239,10 +240,9 @@ Dialog {
                         unreadcount: 0
                     }
                 }
-                pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
+                pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
             }
-            else
-                pageStack.replace(Qt.resolvedUrl('Categories.qml'))
+            pageStack.replace(pages)
         }
     }
 
