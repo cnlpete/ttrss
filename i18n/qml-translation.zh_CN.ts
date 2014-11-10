@@ -63,7 +63,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="44"/>
         <source>Full License</source>
-        <translation type="unfinished"/>
+        <translation>许可协议全文</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
@@ -73,12 +73,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
         <source>Contributors</source>
-        <translation type="unfinished"/>
+        <translation>贡献者</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
         <source>Feature Requests &amp; Bugs</source>
-        <translation type="unfinished"/>
+        <translation>功能建议及bug反馈</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
@@ -88,12 +88,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
         <source>Legal Notice</source>
-        <translation type="unfinished"/>
+        <translation>法律声明</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
         <source>The source code is available at %1.</source>
-        <translation type="unfinished"/>
+        <translation>可在 %1 获取源代码</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>正在标记所有文章为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
         <source>Unsubcribing</source>
-        <translation type="unfinished"/>
+        <translation>正在退订</translation>
     </message>
 </context>
 <context>
@@ -397,7 +397,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
         <source>Marking all read</source>
-        <translation type="unfinished"/>
+        <translation>正在标记所有文章为已读</translation>
     </message>
 </context>
 <context>
@@ -702,7 +702,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Display Labels in Item List</source>
-        <translation type="unfinished"/>
+        <translation>在条目列表中显示标签</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="161"/>
