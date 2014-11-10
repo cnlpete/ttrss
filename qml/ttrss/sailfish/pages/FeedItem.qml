@@ -57,14 +57,27 @@ Page {
                 enabled: url && (url != "")
                 onClicked: Qt.openUrlExternally(url)
             }
+
             MenuItem {
                 text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
                 enabled: !panel.moving
                 onClicked: panel.open ? panel.hide() : panel.show()
             }
+
+            MenuItem {
+                text: qsTr("Edit Note")
+                enabled: !network.loading
+                onClicked: {
+                    var params = {
+                        previousNote: root.note,
+                        feedItemPage: root
+                    }
+                    pageStack.push(Qt.resolvedUrl("NoteEditor.qml"), params)
+                }
+            }
+
             MenuItem {
                 text: qsTr("Assign Labels")
-
                 enabled: !network.loading
                 onClicked: {
                     feedItemModel.getLabels(function(successful, errorMessage,
@@ -76,7 +89,7 @@ Page {
                                 feedItemPage: root
                             }
                             pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"),
-                                           params);
+                                           params)
                         }
 
                         // TODO make use of errorMessage
@@ -376,6 +389,16 @@ Page {
         feedItemModel.updateLabels(function(successful, errorMessage, labels) {
             if (successful) {
                 root.labels = labels
+            }
+
+            // TODO make use of errorMessage
+        })
+    }
+
+    function updateNote(note) {
+        feedItemModel.updateNote(note, function(successful, errorMessage) {
+            if (successful) {
+                root.note = note
             }
 
             // TODO make use of errorMessage
