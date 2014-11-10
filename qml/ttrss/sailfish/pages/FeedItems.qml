@@ -100,7 +100,6 @@ Page {
         }
 
         footer: Button {
-            id: foot
             text: qsTr("Load more")
             visible: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems
             height: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems ? 51 : 0
@@ -108,9 +107,23 @@ Page {
             onClicked: feedItemModel.update()
         }
 
-        header: PageHeader {
-           title: feed.title
+        header: Column {
+            width: listView.width
+            height: header.height + info.height
+            PageHeader {
+                id: header
+                title: feed.title
+            }
+            Button {
+                id: info
+                text: qsTr("Load more")
+                visible: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems
+                height: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems ? 51 : 0
+                width: parent.width
+                onClicked: feedItemModel.update()
+            }
         }
+
         ViewPlaceholder {
             enabled: listView.count == 0
             text: network.loading ?
