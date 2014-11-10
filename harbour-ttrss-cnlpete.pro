@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
 # http://www.gnu.org/licenses/.
 
-VERSION = 0.4.5
+VERSION = 0.4.6
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_SAILFISH
