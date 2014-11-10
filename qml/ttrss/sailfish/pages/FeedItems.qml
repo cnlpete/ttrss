@@ -27,6 +27,13 @@ Page {
     id: feeditemsPage
     property var feed
 
+    property int remorseCounter: 0
+    onRemorseCounterChanged: {
+        // Disallow model changes while a RemorseItem is running.
+        pullmenu.visible = remorseCounter === 0
+        pushmenu.visible = remorseCounter === 0
+    }
+
     Component.onCompleted: {
         feedItemModel.feed = feeditemsPage.feed
         feedItemModel.hasMoreItems = false
@@ -43,6 +50,7 @@ Page {
         model: feedItemModel
 
         PullDownMenu {
+            id: pullmenu
             MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
@@ -62,15 +70,16 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
         }
 
         PushUpMenu {
+            id: pushmenu
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
             ToggleShowAllItem {
                 onUpdateView: {
@@ -96,6 +105,13 @@ Page {
                 feedItemModel.selectedIndex = index
                 pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
                                { isCat: feed.isCat })
+            }
+            onRemorseRunning: {
+                if (running) {
+                    ++feeditemsPage.remorseCounter
+                } else {
+                    --feeditemsPage.remorseCounter
+                }
             }
         }
 
@@ -152,10 +168,10 @@ Page {
         }
     }
 
-    function markAllRead() {
-        remorse.execute(qsTr("Marking all read"),
+    function markAllLoadedAsRead() {
+        remorse.execute(qsTr("Marking all loaded as read"),
                         function() {
-                            feedItemModel.catchUp()
+                            feedItemModel.markAllLoadedAsRead()
                         })
     }
 }

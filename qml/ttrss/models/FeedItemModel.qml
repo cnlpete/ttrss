@@ -142,35 +142,52 @@ ListModel {
         return root.get(root.selectedIndex)
     }
 
-    function markAllAboveAsRead() {
+    /**
+     * Mark all items above an index as read, i.e. item with an index less than
+     * the given index.
+     * @param {int} The index above which items should be marked read.
+     */
+    function markAllAboveAsRead(index) {
         var ttrss = rootWindow.getTTRSS()
-        var sel = root.selectedIndex
 
         var ids = ""
-        for (var i = 0; i < sel; i++) {
-            var m = root.get(i)
-            ids += m.id + ","
+        for (var i = 0; i < index; i++) {
+            var item = root.get(i)
+            // Only include items that are unread.
+            if (item.unread) {
+                ids += item.id + ","
+            }
         }
+
+        if (ids === "") {
+            // All regarding items are already marked as read.
+            return
+        }
+
         // trim of last ,
         ids = ids.slice(0,-1)
 
         ttrss.updateFeedUnread(ids, false, function(successful, errorMessage) {
             if (successful) {
-                for (var i = 0; i < sel; i++) {
-                    var m = root.get(i)
-                    if (m.unread) {
+                for (var i = 0; i < index; i++) {
+                    var item = root.get(i)
+                    if (item.unread) {
                         root.setProperty(i, "unread", false)
                         if (!rootWindow.showAll) {
                             root.continuation += 1
                         }
-                        root.itemUnreadChanged(m)
+                        root.itemUnreadChanged(item)
                     }
                 }
             }
 
-            // TODO Add a callback to toogleRead() which can be used to display
-            // errorMessage.
+            // TODO Add a callback to markAllAboveAsRead() which can be used to
+            // display errorMessage.
         })
+    }
+
+    function markAllLoadedAsRead() {
+        markAllAboveAsRead(root.count)
     }
 
     /**
