@@ -161,7 +161,7 @@ ListModel {
                     if (m.unread) {
                         root.setProperty(i, "unread", false)
                         if (!rootWindow.showAll) {
-                            root.continuation += 1
+                            root.continuation -= 1
                         }
                         root.itemUnreadChanged(m)
                     }
