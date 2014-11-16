@@ -78,7 +78,7 @@ Dialog {
                 id: minimumSSLVersionSetting
                 label: qsTr("Minimum Ssl Version")
                 currentIndex: settings.minSSLVersion
-                description: qsTr('Specify a minimum protocol version for your SSL connection. This might be neseccary when your server does not allow connections with older (insecure) protocols.')
+                description: qsTr('Specify a minimum protocol version for your SSL connection. This might be necessary when your server does not allow connections with older (insecure) protocols.')
 
                 menu: ContextMenu {
                     MenuItem { text: qsTr("Any") }
