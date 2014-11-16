@@ -160,6 +160,12 @@ Page {
                     feedItems.toggleRead()
                 } }
             MenuItem {
+                text: qsTr("Mark all above read")
+                enabled: feedItems.selectedIndex > 0
+                onClicked: {
+                    feedItems.markAllAboveAsRead(feedItems.selectedIndex)
+                } }
+            MenuItem {
                 text: qsTr("Open in Web Browser")
                 enabled: feeditemMenu.feedItem !== undefined &&
                          feeditemMenu.feedItem.url &&
