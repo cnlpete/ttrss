@@ -100,6 +100,7 @@ QSsl::SslProtocol Settings::getMinSSLVersion() const {
     case 2:
         minSSLVersionProtocol = QSsl::SslV3;
         break;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     case 3:
         minSSLVersionProtocol = QSsl::TlsV1_0;
         break;
@@ -109,6 +110,11 @@ QSsl::SslProtocol Settings::getMinSSLVersion() const {
     case 5:
         minSSLVersionProtocol = QSsl::TlsV1_2;
         break;
+#else
+    case 3:
+        minSSLVersionProtocol = QSsl::TlsV1;
+        break;
+#endif
     }
     return minSSLVersionProtocol;
 }
@@ -119,19 +125,28 @@ bool Settings::isMinSSlVersionGreaterThan(QSsl::SslProtocol otherVersion) const 
     switch (otherVersion) {
     case QSsl::SslV2:
         result = currentVersion == QSsl::SslV3 ||
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
                 currentVersion == QSsl::TlsV1_0 ||
                 currentVersion == QSsl::TlsV1_1 ||
                 currentVersion == QSsl::TlsV1_2
+#else
+                currentVersion == QSsl::TlsV1
+#endif
                 ;
         break;
     case QSsl::SslV3:
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     case QSsl::TlsV1SslV3:
     case QSsl::SecureProtocols:
         result = currentVersion == QSsl::TlsV1_0 ||
                 currentVersion == QSsl::TlsV1_1 ||
                 currentVersion == QSsl::TlsV1_2
+#else
+        result = currentVersion == QSsl::TlsV1
+#endif
                 ;
         break;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     case QSsl::TlsV1_0:
         result = currentVersion == QSsl::TlsV1_1 ||
                 currentVersion == QSsl::TlsV1_2
@@ -142,6 +157,9 @@ bool Settings::isMinSSlVersionGreaterThan(QSsl::SslProtocol otherVersion) const 
                 ;
         break;
     case QSsl::TlsV1_2:
+#else
+    case QSsl::TlsV1:
+#endif
     case QSsl::UnknownProtocol:
         result = false;
         break;

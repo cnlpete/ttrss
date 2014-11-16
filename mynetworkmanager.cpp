@@ -26,7 +26,7 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 #include <QtCore/QStandardPaths>
 #else
-#include <QtCore/QDesktopServices>
+#include <QtGui/QDesktopServices>
 #endif
 
 #include "mynetworkmanager.hh"

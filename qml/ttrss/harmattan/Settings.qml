@@ -54,7 +54,7 @@ Page {
         Column {
             id: settingsColumn
             anchors {
-                top: pageHeader.bottom
+                top: parent.top
                 topMargin: MyTheme.paddingMedium
                 left: parent.left
                 leftMargin: MyTheme.paddingMedium
@@ -81,6 +81,39 @@ Page {
                 text: qsTr('Use All Feeds on Startup')
                 checked: settings.useAllFeedsOnStartup
                 onCheckedChanged: settings.useAllFeedsOnStartup = checked
+            }
+
+            Label {
+                width: parent.width
+                text: qsTr("Minimum Ssl Version")
+                font.pixelSize: MyTheme.fontSizeMedium
+            }
+            Label {
+                width: parent.width
+                text: qsTr("Specify a minimum protocol version for your SSL connection. This might be necessary when your server does not allow connections with older (insecure) protocols. However, your server might not support the newest protocol.")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+
+            ListModel {
+                id: possibleProtocols
+                ListElement { value: 0; name: "" }
+                ListElement { value: 1; name: "" }
+                ListElement { value: 2; name: "" }
+                ListElement { value: 3; name: "" }
+                Component.onCompleted: {
+                    possibleProtocols.setProperty(0, "name", qsTr("Any"))
+                    possibleProtocols.setProperty(1, "name", qsTr("SslV2"))
+                    possibleProtocols.setProperty(2, "name", qsTr("SslV3"))
+                    possibleProtocols.setProperty(3, "name", qsTr("TlsV1"))
+                }
+            }
+
+            ComboBoxList {
+                id: minimumSSLVersionSetting
+                initialValue: settings.minSSLVersion
+                model: possibleProtocols
+                onCurrentIndexChanged: settings.minSSLVersion = currentIndex
+                title: qsTr("Minimum Ssl Version")
             }
 
             // -- Items --
