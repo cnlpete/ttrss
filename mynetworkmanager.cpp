@@ -19,14 +19,17 @@
  * http://www.gnu.org/licenses/.
  */
 
-#include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
+#include <QtNetwork/QSslConfiguration>
+#include <QtCore/QDebug>
+
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-#include <QStandardPaths>
+#include <QtCore/QStandardPaths>
 #else
-#include <QDesktopServices>
+#include <QtCore/QDesktopServices>
 #endif
-#include <QDebug>
+
+#include "mynetworkmanager.hh"
 #include "settings.hh"
 
 QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
@@ -36,6 +39,7 @@ MyNetworkManager *MyNetworkManager::instance() {
         m_instance.reset(new MyNetworkManager);
 
     m_instance->_numRequests = 0;
+    m_instance->_gotSSLError = false;
     return m_instance.data();
 }
 
@@ -86,6 +90,12 @@ void MyNetworkManager::onError() {
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
+    bool alreadyGotSSLError = this->gotSSLError();
+    this->_gotSSLError = true;
+    if (alreadyGotSSLError != this->_gotSSLError) {
+        emit this->gotSSLErrorChanged();
+    }
+
     if (Settings::instance()->ignoreSSLErrors()) {
         qDebug("onSslErrors");
         reply->ignoreSslErrors(errors);

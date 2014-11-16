@@ -91,7 +91,7 @@ Page {
         }
         TextSwitch {
             text: qsTr('Ignore SSL Errors')
-            visible: server.text.substring(0, 5) === "https"
+            visible: server.text.substring(0, 5) === "https" && (settings.ignoreSSLErrors || network.gotSSLError)
             checked: settings.ignoreSSLErrors
             onCheckedChanged: settings.ignoreSSLErrors = checked
             enabled: !network.loading

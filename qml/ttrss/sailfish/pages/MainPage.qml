@@ -112,7 +112,7 @@ Dialog {
             TextSwitch {
                 id: ignoreSSLErrors
                 text: qsTr('Ignore SSL Errors')
-                visible: server.text.substring(0, 5) === "https"
+                visible: server.text.substring(0, 5) === "https" && (settings.ignoreSSLErrors || network.gotSSLError)
                 checked: false
             }
             Row {
