@@ -78,12 +78,14 @@ Dialog {
                 id: minimumSSLVersionSetting
                 label: qsTr("Minimum Ssl Version")
                 currentIndex: settings.minSSLVersion
-                description: qsTr('Specify a minimum protocol version for your SSL connection. This might be necessary when your server does not allow connections with older (insecure) protocols.')
+                description: qsTr('Specify a minimum protocol version for your SSL connection. This might be necessary when your server does not allow connections with older (insecure) protocols. However, your server might not support the newest protocol.')
 
                 menu: ContextMenu {
                     MenuItem { text: qsTr("Any") }
-                    MenuItem { text: qsTr("SslV2") }
-                    MenuItem { text: qsTr("SslV3") }
+                    MenuItem { text: qsTr("SslV2")
+                        color: down || highlighted ? Theme.secondaryColor : Theme.secondaryHighlightColor }
+                    MenuItem { text: qsTr("SslV3")
+                        color: down || highlighted ? Theme.secondaryColor : Theme.secondaryHighlightColor }
                     MenuItem { text: qsTr("TlsV1.0") }
                     MenuItem { text: qsTr("TlsV1.1") }
                     MenuItem { text: qsTr("TlsV1.2") }
