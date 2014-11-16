@@ -224,6 +224,7 @@ Page {
 
         categories.update()
         //Now show the categories View
+        var pages = [Qt.resolvedUrl("Categories.qml")]
         if (settings.useAllFeedsOnStartup) {
             var ttrss = rootWindow.getTTRSS()
             var params = {
@@ -233,10 +234,9 @@ Page {
                     unreadcount: 0
                 }
             }
-            rootWindow.openFile("Feeds.qml", params)
-        } else {
-            rootWindow.openFile("Categories.qml")
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
         }
+        pageStack.push(pages)
     }
 
     //Dialog for login errors
