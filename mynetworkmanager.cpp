@@ -71,9 +71,21 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
-    if (Settings::instance()->ignoreSSLErrors()) {
+
+    QSslConfiguration sslConfig = request.sslConfiguration();
+    QSsl::SslProtocol protocol = sslConfig.protocol();
+
+    Settings* settings = Settings::instance();
+    if (settings->isMinSSlVersionGreaterThan(protocol)) {
+        sslConfig.setProtocol(settings->getMinSSLVersion());
+        qDebug() << "ssl protocol is now " << sslConfig.protocol();
+    }
+    request.setSslConfiguration(sslConfig);
+
+    if (settings->ignoreSSLErrors()) {
         reply->ignoreSslErrors();
     }
+
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
     return reply;
 }

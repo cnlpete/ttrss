@@ -81,6 +81,79 @@ void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
     }
 }
 
+void Settings::setMinSSLVersion(int minSSLVersion) {
+    if (_minSSLVersion != minSSLVersion) {
+        _minSSLVersion = minSSLVersion;
+        m_settings->setValue("minSSLVersion", _minSSLVersion);
+        emit minSSLVersionChanged();
+    }
+}
+QSsl::SslProtocol Settings::getMinSSLVersion() const {
+    QSsl::SslProtocol minSSLVersionProtocol;
+    switch (_minSSLVersion) {
+    default:
+    case 0:
+        minSSLVersionProtocol = QSsl::AnyProtocol;
+        break;
+    case 1:
+        minSSLVersionProtocol = QSsl::SslV2;
+        break;
+    case 2:
+        minSSLVersionProtocol = QSsl::SslV3;
+        break;
+    case 3:
+        minSSLVersionProtocol = QSsl::TlsV1_0;
+        break;
+    case 4:
+        minSSLVersionProtocol = QSsl::TlsV1_1;
+        break;
+    case 5:
+        minSSLVersionProtocol = QSsl::TlsV1_2;
+        break;
+    }
+    return minSSLVersionProtocol;
+}
+bool Settings::isMinSSlVersionGreaterThan(QSsl::SslProtocol otherVersion) const {
+    QSsl::SslProtocol currentVersion = this->getMinSSLVersion();
+
+    bool result = false;
+    switch (otherVersion) {
+    case QSsl::SslV2:
+        result = currentVersion == QSsl::SslV3 ||
+                currentVersion == QSsl::TlsV1_0 ||
+                currentVersion == QSsl::TlsV1_1 ||
+                currentVersion == QSsl::TlsV1_2
+                ;
+        break;
+    case QSsl::SslV3:
+    case QSsl::TlsV1SslV3:
+    case QSsl::SecureProtocols:
+        result = currentVersion == QSsl::TlsV1_0 ||
+                currentVersion == QSsl::TlsV1_1 ||
+                currentVersion == QSsl::TlsV1_2
+                ;
+        break;
+    case QSsl::TlsV1_0:
+        result = currentVersion == QSsl::TlsV1_1 ||
+                currentVersion == QSsl::TlsV1_2
+                ;
+        break;
+    case QSsl::TlsV1_1:
+        result = currentVersion == QSsl::TlsV1_2
+                ;
+        break;
+    case QSsl::TlsV1_2:
+    case QSsl::UnknownProtocol:
+        result = false;
+        break;
+    case QSsl::AnyProtocol:
+        result = currentVersion != QSsl::AnyProtocol;
+        break;
+    }
+
+    return result;
+}
+
 // Startup
 void Settings::setAutologin(bool autologin) {
     if (_autologin != autologin) {
@@ -239,6 +312,7 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _httpauthuser = m_settings->value("httpauthusername", "").toString();
     _httpauthpasswd = m_settings->value("httpauthpassword", "").toString();
     _ignoreSSLErrors = m_settings->value("ignoreSSLErrors", false).toBool();
+    _minSSLVersion = m_settings->value("minSSLVersion", 0).toInt();
 
     // Startup
     _autologin = m_settings->value("autologin", false).toBool();

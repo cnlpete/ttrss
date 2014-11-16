@@ -25,6 +25,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
 #include <QtCore/qstring.h>
+#include <QtNetwork/QSsl>
 
 class QSettings;
 
@@ -39,6 +40,7 @@ class Settings : public QObject
     Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
     Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
     Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
+    Q_PROPERTY(int minSSLVersion READ minSSLVersion WRITE setMinSSLVersion NOTIFY minSSLVersionChanged)
 
     // Startup
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
@@ -103,6 +105,13 @@ public:
         return this->_ignoreSSLErrors;
     }
     void setIgnoreSSLErrors(bool ignoreSSLErrors);
+
+    int minSSLVersion() const {
+        return this->_minSSLVersion;
+    }
+    void setMinSSLVersion(int minSSLVersion);
+    QSsl::SslProtocol getMinSSLVersion() const;
+    bool isMinSSlVersionGreaterThan(QSsl::SslProtocol otherVersion) const;
 
     // Startup
     bool hasAutologin() const {
@@ -208,6 +217,7 @@ signals:
     void httpauthUsernameChanged();
     void httpauthPasswordChanged();
     void ignoreSSLErrorsChanged();
+    void minSSLVersionChanged();
 
     // Startup
     void autologinChanged();
@@ -254,6 +264,7 @@ private:
     QString _httpauthuser;
     QString _httpauthpasswd;
     bool _ignoreSSLErrors;
+    int _minSSLVersion;
 
     // Startup
     bool _autologin;

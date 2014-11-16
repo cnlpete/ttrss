@@ -74,6 +74,22 @@ Dialog {
                 checked: settings.useAllFeedsOnStartup
             }
 
+            ComboBox {
+                id: minimumSSLVersionSetting
+                label: qsTr("Minimum Ssl Version")
+                currentIndex: settings.minSSLVersion
+                description: qsTr('Specify a minimum protocol version for your SSL connection. This might be neseccary when your server does not allow connections with older (insecure) protocols.')
+
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("Any") }
+                    MenuItem { text: qsTr("SslV2") }
+                    MenuItem { text: qsTr("SslV3") }
+                    MenuItem { text: qsTr("TlsV1.0") }
+                    MenuItem { text: qsTr("TlsV1.1") }
+                    MenuItem { text: qsTr("TlsV1.2") }
+                }
+            }
+
             // -- Feeds --
             SectionHeader {
                 text: qsTr("Feeds")
@@ -226,6 +242,7 @@ Dialog {
         // Startup
         settings.useAutologin = autoLoginSetting.checked
         settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+        settings.minSSLVersion = minimumSSLVersionSetting.currentIndex
 
         // Feeds
         settings.displayIcons = showIconsSetting.checked
