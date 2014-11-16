@@ -174,7 +174,7 @@ Dialog {
                 stepSize: 1
                 value: settings.lengthOfNote
                 valueText: value == 0 ? qsTr("No Limit") : value
-                enabled: showExcerptSetting.checked
+                enabled: displayNoteSetting.checked
             }
 
             // -- Items --
