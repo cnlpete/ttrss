@@ -27,6 +27,7 @@ Button {
     property alias model: comboboxDialog.model
     property bool withTimer: true
     property alias currentIndex: comboboxDialog.selectedIndex
+    property alias title: comboboxDialog.titleText
 
     signal currentIndexChanged()
 
@@ -52,8 +53,8 @@ Button {
             timer.start()
     }
 
-    text: comboboxDialog.model.get(0).text
-    onClicked: comboboxDialog.open();
+    text: comboboxDialog.model.get(0).name
+    onClicked: comboboxDialog.open()
 
     ToolIcon {
         id: filterImage
