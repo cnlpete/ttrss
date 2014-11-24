@@ -26,6 +26,14 @@ import "../components" 1.0
 Page {
     id: categoriesPage
     tools: categoriesTools
+    property bool needsUpdate: false
+
+    onVisibleChanged: {
+        if (visible && categoriesPage.needsUpdate) {
+            categoriesPage.needsUpdate = false
+            categories.update()
+        }
+    }
 
     Item {
         anchors {
@@ -92,7 +100,11 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
-                    categories.update()
+                    if (categoriesPage.visible) {
+                        categories.update()
+                    } else {
+                        categoriesPage.needsUpdate = true
+                    }
                 }
             }
             SettingsItem {}

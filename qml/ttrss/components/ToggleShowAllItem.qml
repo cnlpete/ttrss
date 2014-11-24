@@ -35,9 +35,15 @@ MenuItem {
         ttrss.setShowAll(newValue)
 
         // update settings
-        settings.showAll = showAll
+        settings.showAll = newValue
+    }
 
-        // inform about change
-        updateView()
+    Connections {
+        target: settings
+        onShowAllChanged: {
+            // Inform view as soon as settings.showAll changes,
+            // regardless of whoever changed it.
+            updateView()
+        }
     }
 }

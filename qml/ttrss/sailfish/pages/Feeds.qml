@@ -26,6 +26,7 @@ import "../items"
 Page {
     id: feedsPage
     property var category
+    property bool needsUpdate: false
 
     Component.onCompleted: {
         feedModel.category = feedsPage.category
@@ -61,7 +62,11 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedModel.update()
+                    if (feedsPage.visible) {
+                        feedModel.update()
+                    } else {
+                        feedsPage.needsUpdate = true
+                    }
                 }
             }
         }
@@ -101,6 +106,10 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedsCover.qml")
+            if (feedsPage.needsUpdate) {
+                feedsPage.needsUpdate = false
+                feedModel.update()
+            }
         }
     }
 
