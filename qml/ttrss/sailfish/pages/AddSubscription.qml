@@ -26,29 +26,79 @@ import "../../models" 1.0
 Dialog {
     id: root
 
-    property int categoryId
-    property int selectedId
-    property alias src: feedAddress.text
+    property int initial
+    property int selected: initial
+    property alias src: feed.text
 
-    canAccept: feedAddress.text && allCategories.count > 0 && root.selectedId >= 0
-    acceptDestinationAction: PageStackAction.Pop
+    canAccept: feed.text && allCategories.count > 0 && root.selected >= 0
 
-    CategoryModel {
-        id: allCategories
+    SilicaFlickable {
+        contentHeight: content.height
+        contentWidth: parent.width
+        anchors.fill: parent
 
-        onUpdateFinished: {
-            // we need to use the timer as the repeater might not have filled
-            // the contextmenu of the combobox yet
-            categoryChooser.startTimer()
+        Column {
+            id: content
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingMedium
+            }
+            spacing: Theme.paddingMedium
+
+            DialogHeader {
+                acceptText: qsTr("Add subscription")
+            }
+
+            TextField {
+                id: feed
+                label: qsTr("Feed address")
+                placeholderText: label
+                focus: true
+                width: parent.width
+
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhUrlCharactersOnly
+                EnterKey.enabled: text || inputMethodComposing
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.onClicked: root.accept()
+            }
+
+            ComboBox {
+                id: categoryChooser
+                label: qsTr("Category")
+
+                menu: ContextMenu {
+                    Repeater {
+                        model: allCategories
+                        MenuItem {
+                            text: model.name
+                        }
+                    }
+                }
+
+                onCurrentIndexChanged: {
+                    var index = categoryChooser.currentIndex
+                    root.selected = allCategories.get(index).value
+                }
+
+                function setInitialIndex() {
+                    timer.start()
+                }
+
+                Timer {
+                    id: timer
+                    interval: 200
+                    onTriggered: {
+                        for (var i = 0; i < allCategories.count; i++) {
+                            if (allCategories.get(i).value === root.initial) {
+                                categoryChooser.currentIndex = i
+                                break
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    Component.onCompleted: {
-        var oldShowAll = settings.showAll
-        var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(true)
-        allCategories.update()
-        ttrss.setShowAll(oldShowAll)
     }
 
     BusyIndicator {
@@ -58,39 +108,40 @@ Dialog {
         size: BusyIndicatorSize.Large
     }
 
-    Column {
-        width: parent.width
+    ListModel {
+        id: allCategories
 
-        DialogHeader {
-            acceptText: qsTr("Add subscription")
+        Component.onCompleted: {
+            categoryModel.getAllCategories(function(successful, errorMessage,
+                                                    categories) {
+                if (successful) {
+                    allCategories.load(categories)
+                }
+                // TODO make use of errorMessage
+            })
         }
-        TextField {
-            id: feedAddress
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            focus: true
-            label: qsTr("Feed address:")
-            placeholderText: label
-            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhUrlCharactersOnly
-            EnterKey.enabled: text || inputMethodComposing
-            EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-            EnterKey.onClicked: root.accept()
-        }
-        ComboBoxList {
-            id: categoryChooser
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            label: qsTr("Category:")
-            model: allCategories
-            initialValue: root.categoryId
 
-            onCurrentIndexChanged: {
-                root.selectedId = allCategories.get(categoryChooser.currentIndex).categoryId
+        function load(categories) {
+            if (!categories || !categories.length) {
+                return
             }
+
+            var ttrss = rootWindow.getTTRSS()
+
+            for(var i = 0; i < categories.length; ++i) {
+                var title = ttrss.html_entity_decode(categories[i].title,
+                                                     'ENT_QUOTES')
+
+                if (categories[i].id === ttrss.constants['categories']['UNCATEGORIZED']) {
+                    title = constant.uncategorizedCategory
+                }
+
+                allCategories.append({
+                                         name:  title,
+                                         value: parseInt(categories[i].id),
+                                     });
+            }
+            categoryChooser.setInitialIndex()
         }
     }
 }

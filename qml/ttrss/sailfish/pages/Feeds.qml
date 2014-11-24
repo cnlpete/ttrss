@@ -105,58 +105,62 @@ Page {
     }
 
     function add_subscription() {
+        var params = {
+            initial: feedsPage.category.categoryId
+        }
         var dialog = pageStack.push(Qt.resolvedUrl("AddSubscription.qml"),
-                                    { categoryId: feedsPage.category.categoryId })
+                                    params)
 
         dialog.accepted.connect(function() {
             var ttrss = rootWindow.getTTRSS()
-
-            ttrss.subscribe(dialog.selectedId, dialog.src, function(result) {
-                switch (result) {
-                case 0:
-                    notification.show(qsTr('Already subscribed to Feed'))
-                    break
-                case 1:
-                    //notification.show(qsTr('Feed added'))
-
-                    // During categoryModel.update() the elements in
-                    // categoryModel will be removed and therefore
-                    // feedsPage.category and feeds.category become
-                    // null.
-                    //
-                    // The following code sets both
-                    // feedsPage.category and feedModel.category
-                    // back to its previous value.
-                    var catId = feedsPage.category.categoryId;
-                    function tmp() {
-                        feedsPage.category = categoryModel.getItemForId(catId);
-                        feedModel.category = feedsPage.category
-                        feedModel.update()
-                        categoryModel.updateFinished.disconnect(tmp)
-                    }
-                    categoryModel.updateFinished.connect(tmp)
-
-                    categoryModel.update()
-                    break
-                case 2:
-                    notification.show(qsTr('Invalid URL'))
-                    break
-                case 3:
-                    notification.show(qsTr('URL content is HTML, no feeds available'))
-                    break
-                case 4:
-                    notification.show(qsTr('URL content is HTML which contains multiple feeds'))
-                    break
-                case 5:
-                    notification.show(qsTr('Couldn\'t download the URL content'))
-                    break
-                case 5:
-                    notification.show(qsTr('Content is an invalid XML'))
-                    break
-                default:
-                    notification.show(qsTr('An error occurred while subscribing to the feed'))
-                }
-            })
+            ttrss.subscribe(dialog.selected, dialog.src, subscribed)
         })
+
+        function subscribed(result) {
+            switch (result) {
+            case 0:
+                notification.show(qsTr('Already subscribed to Feed'))
+                break
+            case 1:
+                //notification.show(qsTr('Feed added'))
+
+                // During categoryModel.update() the elements in
+                // categoryModel will be removed and therefore
+                // feedsPage.category and feeds.category become
+                // null.
+                //
+                // The following code sets both
+                // feedsPage.category and feedModel.category
+                // back to its previous value.
+                var catId = feedsPage.category.categoryId;
+                function tmp() {
+                    feedsPage.category = categoryModel.getItemForId(catId);
+                    feedModel.category = feedsPage.category
+                    feedModel.update()
+                    categoryModel.updateFinished.disconnect(tmp)
+                }
+                categoryModel.updateFinished.connect(tmp)
+
+                categoryModel.update()
+                break
+            case 2:
+                notification.show(qsTr('Invalid URL'))
+                break
+            case 3:
+                notification.show(qsTr('URL content is HTML, no feeds available'))
+                break
+            case 4:
+                notification.show(qsTr('URL content is HTML which contains multiple feeds'))
+                break
+            case 5:
+                notification.show(qsTr('Couldn\'t download the URL content'))
+                break
+            case 5:
+                notification.show(qsTr('Content is an invalid XML'))
+                break
+            default:
+                notification.show(qsTr('An error occurred while subscribing to the feed'))
+            }
+        }
     }
 }
