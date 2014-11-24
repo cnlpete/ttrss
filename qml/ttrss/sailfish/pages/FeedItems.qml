@@ -37,10 +37,7 @@ Page {
 
     Component.onCompleted: {
         feedItemModel.feed = feeditemsPage.feed
-        feedItemModel.hasMoreItems = false
-        feedItemModel.continuation = 0
-        feedItemModel.clear()
-        feedItemModel.update()
+        feeditemsPage.update()
     }
 
     RemorsePopup { id: remorse }
@@ -56,19 +53,13 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    feeditemsPage.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
                     if (feeditemsPage.visible) {
-                        feedItemModel.continuation = 0
-                        feedItemModel.hasMoreItems = false
-                        feedItemModel.clear()
-                        feedItemModel.update()
+                        feeditemsPage.update()
                     } else {
                         feeditemsPage.needsUpdate = true
                     }
@@ -89,10 +80,7 @@ Page {
             ToggleShowAllItem {
                 onUpdateView: {
                     if (feeditemsPage.visible) {
-                        feedItemModel.continuation = 0
-                        feedItemModel.hasMoreItems = false
-                        feedItemModel.clear()
-                        feedItemModel.update()
+                        feeditemsPage.update()
                     } else {
                         feeditemsPage.needsUpdate = true
                     }
