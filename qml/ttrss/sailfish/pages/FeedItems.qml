@@ -26,6 +26,7 @@ import "../items"
 Page {
     id: feeditemsPage
     property var feed
+    property bool needsUpdate: false
 
     property int remorseCounter: 0
     onRemorseCounterChanged: {
@@ -63,10 +64,14 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    if (feeditemsPage.visible) {
+                        feedItemModel.continuation = 0
+                        feedItemModel.hasMoreItems = false
+                        feedItemModel.clear()
+                        feedItemModel.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
             MenuItem {
@@ -83,10 +88,14 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    if (feeditemsPage.visible) {
+                        feedItemModel.continuation = 0
+                        feedItemModel.hasMoreItems = false
+                        feedItemModel.clear()
+                        feedItemModel.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
         }
@@ -165,6 +174,10 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedItemsCover.qml")
+            if (feeditemsPage.needsUpdate) {
+                feeditemsPage.needsUpdate = false
+                feeditemsPage.update()
+            }
         }
     }
 
@@ -173,5 +186,12 @@ Page {
                         function() {
                             feedItemModel.markAllLoadedAsRead()
                         })
+    }
+
+    function update() {
+        feedItemModel.continuation = 0
+        feedItemModel.hasMoreItems = false
+        feedItemModel.clear()
+        feedItemModel.update()
     }
 }

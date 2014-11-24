@@ -25,6 +25,7 @@ import "../items"
 
 Page {
     id: categoriesPage
+    property bool needsUpdate: false
 
     SilicaListView {
         id: listView
@@ -51,7 +52,11 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    categoryModel.update()
+                    if (categoriesPage.visible) {
+                        categoryModel.update()
+                    } else {
+                        categoriesPage.needsUpdate = true
+                    }
                 }
             }
         }
@@ -93,6 +98,10 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/CategoriesCover.qml")
+            if (categoriesPage.needsUpdate) {
+                categoriesPage.needsUpdate = false
+                categoryModel.update()
+            }
         }
     }
 }

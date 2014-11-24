@@ -27,11 +27,19 @@ Page {
     id: feedsPage
     tools: feedsTools
     property variant category
+    property bool needsUpdate: false
 
     Component.onCompleted: {
         feeds.category = feedsPage.category
         feeds.clear()
         feeds.update()
+    }
+
+    onVisibleChanged: {
+        if (visible && feedsPage.needsUpdate) {
+            feedsPage.needsUpdate = false
+            feedModel.update()
+        }
     }
 
     Item {
@@ -110,7 +118,11 @@ Page {
                 } }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    if (feedsPage.visible) {
+                        feeds.update()
+                    } else {
+                        feedsPage.needsUpdate = true
+                    }
                 }
             }
             SettingsItem {}
