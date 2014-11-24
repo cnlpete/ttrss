@@ -35,7 +35,7 @@ MenuItem {
         ttrss.setShowAll(newValue)
 
         // update settings
-        settings.showAll = showAll
+        settings.showAll = newValue
 
         // inform about change
         updateView()
