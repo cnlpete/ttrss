@@ -45,8 +45,6 @@ PageStackWindow {
         return TTRss;
     }
 
-    property bool showAll: false
-
     Binding {
         target: theme
         property: "inverted"

@@ -88,7 +88,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+                      settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
             anchors.margins: MyTheme.paddingLarge
             visible: feedItems.count == 0

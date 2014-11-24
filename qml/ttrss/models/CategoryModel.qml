@@ -45,7 +45,7 @@ ListModel {
         var ttrss = rootWindow.getTTRSS()
 
         var showAll = ttrss.getShowAll()
-        rootWindow.showAll = showAll
+        settings.showAll = showAll
 
         var categories = ttrss.getCategories()
 

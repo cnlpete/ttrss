@@ -34,8 +34,6 @@ ApplicationWindow {
         return TTRss;
     }
 
-    property bool showAll: false
-
     Constants {
         id: constant
     }

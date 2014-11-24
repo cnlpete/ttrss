@@ -62,8 +62,9 @@ var responsesPending = {}
 /**
  * Sets the initial values of variables state, requestsPending, and
  * responsesPending.  This deletes any former values.
+ * @param {boolean} Initial value of showAll.
  */
-function initState() {
+function initState(showAll) {
     state = {
         'imageProxy':   '',
         'url':          null,
@@ -73,7 +74,7 @@ function initState() {
         'httpauth':     { 'dobasicauth' : false },
         'token':        null,
         'apilevel':     0,
-        'showall':      false, // boolean; show all items vs only those unread
+        'showall':      false, // see getter/setter for documentation
         'closeIfEmpty': false, // Should pages close if they have no content to display
         'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
                                // 4 = info, 5 = high detail
@@ -108,6 +109,9 @@ function initState() {
         'feeditemunread': false,
         'feeditemrss':    false,
     };
+
+    // Set default values given as parameters
+    setShowAll(showAll)
 }
 
 /**

@@ -54,7 +54,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
+                      settings.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
             anchors.fill: parent
             visible: categories.count == 0
         }

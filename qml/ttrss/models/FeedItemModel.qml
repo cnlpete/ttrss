@@ -55,7 +55,7 @@ ListModel {
         var feeditems = ttrss.getFeedItems(feed.feedId);
 
         var showAll = ttrss.getShowAll();
-        rootWindow.showAll = showAll;
+        settings.showAll = showAll;
 
         //root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
 
@@ -173,7 +173,7 @@ ListModel {
                     var item = root.get(i)
                     if (item.unread) {
                         root.setProperty(i, "unread", false)
-                        if (!rootWindow.showAll) {
+                        if (!settings.showAll) {
                             root.continuation += 1
                         }
                         root.itemUnreadChanged(item)
@@ -205,7 +205,7 @@ ListModel {
         ttrss.updateFeedUnread(item.id, newState, function(successful,
                                                            errorMessage) {
             if (successful) {
-                if (!rootWindow.showAll) {
+                if (!settings.showAll) {
                     root.continuation += newState ? +1 : -1
                 }
 
