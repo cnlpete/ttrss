@@ -34,7 +34,8 @@
 #include <QMutex>
 #include <QDebug>
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+//#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if defined(Q_OS_SAILFISH)
 class MyNetworkManager : public QObject, public QQmlNetworkAccessManagerFactory
 #else
 class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManagerFactory
