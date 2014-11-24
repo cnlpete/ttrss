@@ -174,6 +174,7 @@ ListModel {
                     if (item.unread) {
                         root.setProperty(i, "unread", false)
                         if (!settings.showAll) {
+                            // see toggleRead() newstate == false
                             root.continuation -= 1
                         }
                         root.itemUnreadChanged(item)
