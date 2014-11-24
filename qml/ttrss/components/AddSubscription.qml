@@ -49,11 +49,7 @@ Sheet {
     }
 
     Component.onCompleted: {
-        var oldShowAll = settings.showAll
-        var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(true)
-        allCategories.update()
-        ttrss.setShowAll(oldShowAll)
+        allCategories.getAllCategories()
     }
 
     content: Flickable {

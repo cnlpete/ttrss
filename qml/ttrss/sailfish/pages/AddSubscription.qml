@@ -108,39 +108,11 @@ Dialog {
         size: BusyIndicatorSize.Large
     }
 
-    ListModel {
+    CategoryModel {
         id: allCategories
 
         Component.onCompleted: {
-            categoryModel.getAllCategories(function(successful, errorMessage,
-                                                    categories) {
-                if (successful) {
-                    allCategories.load(categories)
-                }
-                // TODO make use of errorMessage
-            })
-        }
-
-        function load(categories) {
-            if (!categories || !categories.length) {
-                return
-            }
-
-            var ttrss = rootWindow.getTTRSS()
-
-            for(var i = 0; i < categories.length; ++i) {
-                var title = ttrss.html_entity_decode(categories[i].title,
-                                                     'ENT_QUOTES')
-
-                if (categories[i].id === ttrss.constants['categories']['UNCATEGORIZED']) {
-                    title = constant.uncategorizedCategory
-                }
-
-                allCategories.append({
-                                         name:  title,
-                                         value: parseInt(categories[i].id),
-                                     });
-            }
+            allCategories.getAllCategories()
             categoryChooser.setInitialIndex()
         }
     }

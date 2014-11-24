@@ -194,8 +194,28 @@ function getCategories() {
     var retVal = []
     var i = 0
     for (var cat in state['categorycache']) {
-        retVal[i] = state['categorycache'][cat]
-        i++
+        var include = false;
+        if (state['showall'] || state['categorycache'][cat]['unread'] > 0) {
+            retVal[i] = state['categorycache'][cat]
+            i++
+        }
+    }
+    retVal.sort(categorySort)
+
+    return retVal
+}
+
+/**
+ * @return {array} Sorted array of categories.
+ */
+function getAllCategoriesWoSpecial() {
+    var retVal = []
+    var i = 0
+    for (var cat in state['categorycache']) {
+        if (state['categorycache'][cat]['id'] >= 0) {
+            retVal[i] = state['categorycache'][cat]
+            i++
+        }
     }
     retVal.sort(categorySort)
 
@@ -396,7 +416,7 @@ function updateCategories(callback) {
     var params = {
         'op': 'getCategories',
         'sid': state['token'],
-        'unread_only': !state['showall']
+        'unread_only': false //!state['showall']
     }
 
     networkCall(params, function(http) { process_updateCategories(callback, http) });
@@ -429,70 +449,6 @@ function process_updateCategories(callback, httpreq) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(true);
-    }
-}
-
-/**
- * Get all categories from server. Excludes special categories except for
- * `Uncategorized`.
- * @param {function} A callback function with parameters boolean (indicating
- *     success), string (an optional error message), and array (the categories
- *     as objects).
- */
-function getAllCategories(callback) {
-    if(responsesPending['allcategories']) {
-        return;
-    }
-
-    // needs to be logged in
-    if(!state['token']) {
-        requestsPending['allcategories'] = true;
-        processPendingRequests(callback);
-        return;
-    }
-
-    responsesPending['allcategories'] = true;
-
-    var params = {
-        'op': 'getCategories',
-        'sid': state['token'],
-        'unread_only': false
-    }
-
-    networkCall(params, function(http) { process_getAllCategories(callback, http) });
-}
-
-/** @private */
-function process_getAllCategories(callback, httpreq) {
-    var response = process_readyState(httpreq);
-
-    responsesPending['allcategories'] = false;
-
-    if (!response.successful) {
-        trace(1, "Get all categories: " + response.errorMessage);
-        if (callback) {
-            callback(false, response.errorMessage);
-        }
-        return;
-    }
-
-    var categories = []
-
-    for(var i = 0; i < response.content.length; i++) {
-        var cat = response.content[i];
-
-        if (cat.id < 0) {
-            // Exclude special categories
-            continue;
-        }
-
-        categories.push(cat);
-    }
-
-    if(!processPendingRequests(callback) && callback) {
-        // This action is complete (as there's no other requests to do)
-        // Fire callback saying all ok
-        callback(true, "", categories);
     }
 }
 
