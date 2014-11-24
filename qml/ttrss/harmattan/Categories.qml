@@ -31,7 +31,7 @@ Page {
     onVisibleChanged: {
         if (visible && categoriesPage.needsUpdate) {
             categoriesPage.needsUpdate = false
-            categories.update()
+            categories.load(false)
         }
     }
 
@@ -101,7 +101,7 @@ Page {
             ToggleShowAllItem {
                 onUpdateView: {
                     if (categoriesPage.visible) {
-                        categories.update()
+                        categories.load(false)
                     } else {
                         categoriesPage.needsUpdate = true
                     }

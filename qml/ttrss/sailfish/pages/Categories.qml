@@ -53,7 +53,7 @@ Page {
             ToggleShowAllItem {
                 onUpdateView: {
                     if (categoriesPage.visible) {
-                        categoryModel.update()
+                        categoryModel.load(false)
                     } else {
                         categoriesPage.needsUpdate = true
                     }
@@ -100,7 +100,7 @@ Page {
             cover = Qt.resolvedUrl("../cover/CategoriesCover.qml")
             if (categoriesPage.needsUpdate) {
                 categoriesPage.needsUpdate = false
-                categoryModel.update()
+                categoryModel.load(false)
             }
         }
     }
