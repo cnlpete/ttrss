@@ -165,21 +165,15 @@ signals:
     void servernameChanged();
     void usernameChanged();
     void passwordChanged();
-<<<<<<< HEAD
-=======
+
     void httpauthUsernameChanged();
     void httpauthPasswordChanged();
     void ignoreSSLErrorsChanged();
     void minSSLVersionChanged();
 
     // Startup
->>>>>>> ddc766e... [sailfish] added a minSSLVersion option, regards #117
     void autologinChanged();
     void useAutologinChanged();
-    void ignoreSSLErrorsChanged();
-
-    void httpauthUsernameChanged();
-    void httpauthPasswordChanged();
 
     void whiteThemeChanged();
     void feeditemsOrderChanged();
@@ -204,21 +198,14 @@ private:
     QString _servername;
     QString _username;
     QString _password;
-<<<<<<< HEAD
-=======
+
     QString _httpauthuser;
     QString _httpauthpasswd;
     bool _ignoreSSLErrors;
     int _minSSLVersion;
 
-    // Startup
->>>>>>> ddc766e... [sailfish] added a minSSLVersion option, regards #117
     bool _autologin;
     bool _useAutologin;
-    bool _ignoreSSLErrors;
-
-    QString _httpauthuser;
-    QString _httpauthpasswd;
 
     bool _whiteTheme;
     int _feeditemsOrder;

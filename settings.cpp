@@ -188,14 +188,6 @@ void Settings::setUseAutologin(bool useAutologin) {
     }
 }
 
-void Settings::setIgnoreSSLErrors(bool ignoreSSLErrors) {
-    if (_ignoreSSLErrors != ignoreSSLErrors) {
-        _ignoreSSLErrors = ignoreSSLErrors;
-        m_settings->setValue("ignoreSSLErrors", _ignoreSSLErrors);
-        emit ignoreSSLErrorsChanged();
-    }
-}
-
 void Settings::setWhiteTheme(bool whiteTheme) {
     if (_whiteTheme != whiteTheme) {
         _whiteTheme = whiteTheme;

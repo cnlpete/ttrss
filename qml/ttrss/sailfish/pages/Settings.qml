@@ -85,6 +85,7 @@ Dialog {
                 color: Theme.highlightColor
                 text: qsTr("Items")
                 font.pixelSize: Theme.fontSizeSmall;
+            }
             ComboBox {
                 id: minimumSSLVersionSetting
                 label: qsTr("Minimum Ssl Version")
