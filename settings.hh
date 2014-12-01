@@ -25,6 +25,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
 #include <QtCore/qstring.h>
+#include <QtNetwork/QSsl>
 
 class QSettings;
 
@@ -35,12 +36,14 @@ class Settings : public QObject
     Q_PROPERTY(QString servername READ servername WRITE setServername NOTIFY servernameChanged)
     Q_PROPERTY(QString username READ username WRITE setUsername NOTIFY usernameChanged)
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
-    Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
-    Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
-    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
 
     Q_PROPERTY(QString httpauthusername READ httpauthUsername WRITE setHttpauthUsername NOTIFY httpauthUsernameChanged)
     Q_PROPERTY(QString httpauthpassword READ httpauthPassword WRITE setHttpauthPassword NOTIFY httpauthPasswordChanged)
+    Q_PROPERTY(bool ignoreSSLErrors READ ignoreSSLErrors WRITE setIgnoreSSLErrors NOTIFY ignoreSSLErrorsChanged)
+    Q_PROPERTY(int minSSLVersion READ minSSLVersion WRITE setMinSSLVersion NOTIFY minSSLVersionChanged)
+
+    Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
+    Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
 
     Q_PROPERTY(bool whiteTheme READ isWhiteTheme WRITE setWhiteTheme NOTIFY whiteThemeChanged)
     Q_PROPERTY(int feeditemsOrder READ feeditemsOrder WRITE setFeeditemsOrder NOTIFY feeditemsOrderChanged)
@@ -71,21 +74,6 @@ public:
     }
     void setPassword(QString password);
 
-    bool hasAutologin() const {
-        return this->_autologin;
-    }
-    void setAutologin(bool autologin);
-
-    bool hasUseAutologin() const {
-        return this->_useAutologin;
-    }
-    void setUseAutologin(bool useAutologin);
-
-    bool ignoreSSLErrors() const {
-        return this->_ignoreSSLErrors;
-    }
-    void setIgnoreSSLErrors(bool ignoreSSLErrors);
-
     QString httpauthUsername() const {
         return this->_httpauthuser;
     }
@@ -95,6 +83,28 @@ public:
         return this->_httpauthpasswd;
     }
     void setHttpauthPassword(QString password);
+
+    bool ignoreSSLErrors() const {
+        return this->_ignoreSSLErrors;
+    }
+    void setIgnoreSSLErrors(bool ignoreSSLErrors);
+
+    int minSSLVersion() const {
+        return this->_minSSLVersion;
+    }
+    void setMinSSLVersion(int minSSLVersion);
+    QSsl::SslProtocol getMinSSLVersion() const;
+    bool isMinSSlVersionGreaterThan(QSsl::SslProtocol otherVersion) const;
+
+    bool hasAutologin() const {
+        return this->_autologin;
+    }
+    void setAutologin(bool autologin);
+
+    bool hasUseAutologin() const {
+        return this->_useAutologin;
+    }
+    void setUseAutologin(bool useAutologin);
 
     bool isWhiteTheme() const {
         return this->_whiteTheme;
@@ -155,6 +165,15 @@ signals:
     void servernameChanged();
     void usernameChanged();
     void passwordChanged();
+<<<<<<< HEAD
+=======
+    void httpauthUsernameChanged();
+    void httpauthPasswordChanged();
+    void ignoreSSLErrorsChanged();
+    void minSSLVersionChanged();
+
+    // Startup
+>>>>>>> ddc766e... [sailfish] added a minSSLVersion option, regards #117
     void autologinChanged();
     void useAutologinChanged();
     void ignoreSSLErrorsChanged();
@@ -185,6 +204,15 @@ private:
     QString _servername;
     QString _username;
     QString _password;
+<<<<<<< HEAD
+=======
+    QString _httpauthuser;
+    QString _httpauthpasswd;
+    bool _ignoreSSLErrors;
+    int _minSSLVersion;
+
+    // Startup
+>>>>>>> ddc766e... [sailfish] added a minSSLVersion option, regards #117
     bool _autologin;
     bool _useAutologin;
     bool _ignoreSSLErrors;

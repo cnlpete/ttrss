@@ -42,6 +42,7 @@ class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManager
     Q_OBJECT
 
     Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
+    Q_PROPERTY(bool gotSSLError READ gotSSLError NOTIFY gotSSLErrorChanged)
 
 public: // QDeclarativeNetworkAccessManagerFactory
     QNetworkAccessManager *create(QObject *parent);
@@ -51,8 +52,13 @@ public: // QDeclarativeNetworkAccessManagerFactory
         return this->_numRequests > 0;
     }
 
+    bool gotSSLError() const {
+        return this->_gotSSLError;
+    }
+
 signals:
     void loadingChanged();
+    void gotSSLErrorChanged();
 
 private slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
@@ -63,6 +69,7 @@ private slots:
 private:
     static QScopedPointer<MyNetworkManager> m_instance;
     int _numRequests;
+    bool _gotSSLError;
     QMutex _mutex;
 
     void incNumRequests() {

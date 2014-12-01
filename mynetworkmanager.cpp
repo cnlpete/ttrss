@@ -19,10 +19,17 @@
  * http://www.gnu.org/licenses/.
  */
 
-#include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
-#include <QDesktopServices>
-#include <QDebug>
+#include <QtNetwork/QSslConfiguration>
+#include <QtCore/QDebug>
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#include <QtCore/QStandardPaths>
+#else
+#include <QtCore/QDesktopServices>
+#endif
+
+#include "mynetworkmanager.hh"
 #include "settings.hh"
 
 QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
@@ -32,6 +39,7 @@ MyNetworkManager *MyNetworkManager::instance() {
         m_instance.reset(new MyNetworkManager);
 
     m_instance->_numRequests = 0;
+    m_instance->_gotSSLError = false;
     return m_instance.data();
 }
 
@@ -58,9 +66,21 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
-    if (Settings::instance()->ignoreSSLErrors()) {
+
+    QSslConfiguration sslConfig = request.sslConfiguration();
+    QSsl::SslProtocol protocol = sslConfig.protocol();
+
+    Settings* settings = Settings::instance();
+    if (settings->isMinSSlVersionGreaterThan(protocol)) {
+        sslConfig.setProtocol(settings->getMinSSLVersion());
+        qDebug() << "ssl protocol is now " << sslConfig.protocol();
+    }
+    request.setSslConfiguration(sslConfig);
+
+    if (settings->ignoreSSLErrors()) {
         reply->ignoreSslErrors();
     }
+
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
     return reply;
 }
@@ -77,6 +97,12 @@ void MyNetworkManager::onError() {
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
+    bool alreadyGotSSLError = this->gotSSLError();
+    this->_gotSSLError = true;
+    if (alreadyGotSSLError != this->_gotSSLError) {
+        emit this->gotSSLErrorChanged();
+    }
+
     if (Settings::instance()->ignoreSSLErrors()) {
         qDebug("onSslErrors");
         reply->ignoreSslErrors(errors);
