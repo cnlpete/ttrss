@@ -1,3 +1,18 @@
+ttrss (0.4.7) unstable; urgency=low
+  * ADded hotfix for minSSLVersion chooser
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 01 Dec 2014 21:51:51 +0100
+
+ttrss (0.4.6) unstable; urgency=low
+  * no harmattan changes
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 01 Dec 2014 21:51:51 +0100
+
+ttrss (0.4.5) unstable; urgency=low
+  * proper config path
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sun, 19 Oct 2014 19:12:43 +0100
+
 ttrss (0.4.4) unstable; urgency=low
   * Updated translations
   * Added 'Display Labels in Item List' option
