@@ -283,17 +283,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="68"/>
         <source>Edit Note</source>
-        <translation type="unfinished"/>
+        <translation>编辑注释</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="80"/>
         <source>Assign Labels</source>
-        <translation type="unfinished"/>
+        <translation>指定标签</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="173"/>
         <source>Note: %1</source>
-        <translation type="unfinished"/>
+        <translation>注释:%1</translation>
     </message>
 </context>
 <context>
@@ -301,7 +301,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="117"/>
         <source>Note: %1</source>
-        <translation type="unfinished"/>
+        <translation>注释:%1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="151"/>
@@ -336,7 +336,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="166"/>
         <source>Mark all above read</source>
-        <translation type="unfinished"/>
+        <translation>标记上述内容为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="173"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="199"/>
         <source>Marking all above as read</source>
-        <translation type="unfinished"/>
+        <translation>正在标记为已读</translation>
     </message>
 </context>
 <context>
@@ -423,7 +423,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="178"/>
         <source>Mark all above read</source>
-        <translation type="unfinished"/>
+        <translation>标记上述内容为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="184"/>
@@ -440,12 +440,12 @@
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
-        <translation type="unfinished"/>
+        <translation>标记所有已加载内容为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="173"/>
         <source>Marking all loaded as read</source>
-        <translation type="unfinished"/>
+        <translation>正在标记为已读</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="211"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="171"/>
         <source>An error occurred while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>订阅源时发生错误</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="49"/>
@@ -555,7 +555,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="49"/>
         <source>Update Labels</source>
-        <translation type="unfinished"/>
+        <translation>更新标签</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="112"/>
@@ -565,7 +565,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="113"/>
         <source>You have no label defined. You can create them in the webview.</source>
-        <translation type="unfinished"/>
+        <translation>无已定义标签,请在web中创建.</translation>
     </message>
 </context>
 <context>
@@ -649,17 +649,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished"/>
+        <translation>重置</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Edit Note</source>
-        <translation type="unfinished"/>
+        <translation>编辑注释</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
         <source>Save Note</source>
-        <translation type="unfinished"/>
+        <translation>保存注释</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
@@ -680,36 +680,36 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Minimum Ssl Version</source>
-        <translation type="unfinished"/>
+        <translation>最低Ssl版本</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="93"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Specify a minimum protocol version for your SSL connection. This might be necessary when your server does not allow connections with older (insecure) protocols. However, your server might not support the newest protocol.</source>
-        <translation type="unfinished"/>
+        <translation>由于有的服务器不支持最新或者比较旧的安全加密协议(Ssl),所以您需要指定最低Ssl版本连接协议.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="104"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="84"/>
         <source>Any</source>
-        <translation type="unfinished"/>
+        <translation>任意</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="105"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="85"/>
         <source>SslV2</source>
-        <translation type="unfinished"/>
+        <translation>SslV2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
         <source>SslV3</source>
-        <translation type="unfinished"/>
+        <translation>SslV3</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="107"/>
         <source>TlsV1</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="167"/>
@@ -822,84 +822,84 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"/>
+        <translation>显示&quot;所有订阅&quot;</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="89"/>
         <source>TlsV1.0</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.0</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="90"/>
         <source>TlsV1.1</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="91"/>
         <source>TlsV1.2</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>订阅源</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="109"/>
         <source>White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation>白底图标</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="115"/>
         <source>Item List</source>
-        <translation type="unfinished"/>
+        <translation>项目列表</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="132"/>
         <source>Max. Length of Title (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>标题最大长度(行)</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="137"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="154"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="178"/>
         <source>No Limit</source>
-        <translation type="unfinished"/>
+        <translation>无限制</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="142"/>
         <source>Show Excerpt</source>
-        <translation type="unfinished"/>
+        <translation>显示摘要</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="149"/>
         <source>Max. Length of Excerpt (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>摘要最大长度(行)</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="160"/>
         <source>Show Labels</source>
-        <translation type="unfinished"/>
+        <translation>显示标签</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="166"/>
         <source>Show Note</source>
-        <translation type="unfinished"/>
+        <translation>显示注释</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="173"/>
         <source>Max. Length of Note (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>注释最大长度(行)</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="189"/>
         <source>Automatically Mark as Read</source>
-        <translation type="unfinished"/>
+        <translation>自动标记为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="196"/>
         <source>Show Images</source>
-        <translation type="unfinished"/>
+        <translation>显示图片</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="202"/>
@@ -909,7 +909,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="203"/>
         <source>height or width &lt; 2</source>
-        <translation type="unfinished"/>
+        <translation>高度或宽度小于2个像素</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="219"/>

@@ -336,7 +336,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="166"/>
         <source>Mark all above read</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все выше как &quot;Прочитанное&quot;</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="173"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="199"/>
         <source>Marking all above as read</source>
-        <translation type="unfinished"/>
+        <translation>Отмечаю все выше как &quot;Прочитанное&quot;</translation>
     </message>
 </context>
 <context>
@@ -423,7 +423,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="178"/>
         <source>Mark all above read</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все выше как &quot;Прочитанное&quot;</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="184"/>
@@ -894,7 +894,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="189"/>
         <source>Automatically Mark as Read</source>
-        <translation type="unfinished"/>
+        <translation>Автоматически помечать новости как прочитанные</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="196"/>

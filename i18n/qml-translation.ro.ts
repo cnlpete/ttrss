@@ -560,7 +560,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="112"/>
         <source>Loading</source>
-        <translation type="unfinished"/>
+        <translation>Incarca</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="113"/>
@@ -894,7 +894,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="189"/>
         <source>Automatically Mark as Read</source>
-        <translation type="unfinished"/>
+        <translation>Auto-marcheaza elementele ca citite</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="196"/>
