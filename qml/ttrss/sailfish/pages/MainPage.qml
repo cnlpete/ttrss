@@ -214,9 +214,17 @@ Dialog {
             // login failed....don't autlogin
             settings.autologin = false
 
+            // translate the error message
+            if (errorMessage == 'API_DISABLED' || errorMessage == 'Error: API_DISABLED') {
+                errorMessage = qsTr('The API is disabled. You have to enable it in the webinterface.')
+            }
+            else if (errorMessage == 'LOGIN_ERROR' || errorMessage == 'Error: LOGIN_ERROR') {
+                errorMessage = qsTr('The supplied login credentials did not work.')
+            }
+
             // Let the user know
-            //loginErrorDialog.text = errorMessage;
-            //loginErrorDialog.open();
+            notification.show(errorMessage)
+
             dialog.reject()
             return;
         }
@@ -229,8 +237,7 @@ Dialog {
     function configDone(successful, errorMessage) {
         if(!successful) {
             // Let the user know
-            //loginErrorDialog.text = errorMessage;
-            //loginErrorDialog.open();
+            notification.show(errorMessage)
             return;
         }
 

@@ -313,7 +313,7 @@ function login(callback) {
 
     var params = {
         'op': 'login',
-        'user': encodeURIComponent(state['username']),
+        'user': escape(state['username']),
         'password': state['password']
     }
     networkCall(params, function(http) { process_login(callback, http) })
