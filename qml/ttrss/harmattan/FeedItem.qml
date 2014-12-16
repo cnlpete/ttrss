@@ -239,7 +239,7 @@ Page {
             visible: previousId !== false
             onClicked: {
                 feedItems.selectPrevious()
-                showFeedItem()
+                rootWindow.pageStackReplace("FeedItem.qml", { isCat: root.isCat })
             } }
 
         ToolIcon {
@@ -285,7 +285,7 @@ Page {
             visible: nextId !== false
             onClicked: {
                 feedItems.selectNext()
-                showFeedItem()
+                rootWindow.pageStackReplace("FeedItem.qml", { isCat: root.isCat })
             } }
         ToolIcon {
             iconId: "toolbar-view-menu" ;
