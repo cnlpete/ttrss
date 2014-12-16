@@ -27,10 +27,11 @@ import "../components" 1.0
 Page {
     id: root
     tools: itemTools
-    property string pageTitle:      ""
+    property alias  pageTitle:      pageHeader.text
     property string subTitle:       ""
     property string url:            ""
     property string date:           ""
+    property string note:           ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -94,7 +95,19 @@ Page {
                         Qt.openUrlExternally(link);
                     }
                 }
-                color: theme.inverted ? MyTheme.primaryColorInverted: MyTheme.primaryColor
+                color: theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor
+            }
+            Text {
+                id: noteView
+                width: parent.width
+                text: qsTr("Note: %1").arg(note)
+                color: theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.PlainText
+                font.weight: Font.Light
+                font.italic: true
+                font.pixelSize: MyTheme.fontSizeTiny
+                visible: note != ""
             }
         }
     }
@@ -180,6 +193,7 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
+            note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             unread      = data.unread
             rss         = data.rss
@@ -197,13 +211,22 @@ Page {
         }
     }
 
+    function updateNote(note) {
+        feedItems.updateNote(note, function(successful, errorMessage) {
+            if (successful) {
+                root.note = note
+            }
+
+            // TODO make use of errorMessage
+        })
+    }
+
     Component.onCompleted: {
         showFeedItem();
     }
 
     PageHeader {
         id: pageHeader
-        text: pageTitle
         subtext: root.isCat ? root.subTitle : ""
     }
 
@@ -290,8 +313,21 @@ Page {
                 enabled: url && (url != "")
                 onClicked: QMLUtils.share(url, pageTitle);
             }
+            MenuItem {
+                text: qsTr("Edit Note")
+                enabled: !network.loading
+                onClicked: {
+                    noteEditor.previousNote = root.note
+                    noteEditor.feedItemPage = root
+                    noteEditor.open()
+                }
+            }
             SettingsItem {}
             AboutItem {}
         }
+    }
+
+    NoteEditor {
+        id: noteEditor
     }
 }
