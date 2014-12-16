@@ -23,36 +23,27 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 MenuItem {
-    property bool showAll
-    property bool notInitialAssignment: false
-    signal updateView(bool showAll)
+    signal updateView
 
-    text: showAll ? qsTr("Show Unread Only") : qsTr("Show All")
+    text: settings.showAll ? qsTr("Show Unread Only") : qsTr("Show All")
+
     onClicked: {
+        var newValue = !settings.showAll
+
+        // update backend
         var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(!showAll)
-        showAll = !showAll
-        settings.showAll = showAll
+        ttrss.setShowAll(newValue)
+
+        // update settings
+        settings.showAll = newValue
     }
 
-    onShowAllChanged: {
-        // send the signal only if this is not the initial assignment
-        if (notInitialAssignment) {
-            updateView(showAll)
-        }
-    }
-
-    Component.onCompleted: {
-        showAll = settings.showAll
-        var ttrss = rootWindow.getTTRSS()
-        ttrss.setShowAll(showAll)
-        notInitialAssignment = true
-    }
-
-    onVisibleChanged: {
-        if (visible && notInitialAssignment) {
-            var ttrss = rootWindow.getTTRSS()
-            showAll = ttrss.getShowAll()
+    Connections {
+        target: settings
+        onShowAllChanged: {
+            // Inform view as soon as settings.showAll changes,
+            // regardless of whoever changed it.
+            updateView()
         }
     }
 }

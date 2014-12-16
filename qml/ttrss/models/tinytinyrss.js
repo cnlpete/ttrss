@@ -62,8 +62,9 @@ var responsesPending = {}
 /**
  * Sets the initial values of variables state, requestsPending, and
  * responsesPending.  This deletes any former values.
+ * @param {boolean} Initial value of showAll.
  */
-function initState() {
+function initState(showAll) {
     state = {
         'imageProxy':   '',
         'url':          null,
@@ -73,7 +74,7 @@ function initState() {
         'httpauth':     { 'dobasicauth' : false },
         'token':        null,
         'apilevel':     0,
-        'showall':      false, // boolean; show all items vs only those unread
+        'showall':      false, // see getter/setter for documentation
         'closeIfEmpty': false, // Should pages close if they have no content to display
         'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
                                // 4 = info, 5 = high detail
@@ -108,6 +109,9 @@ function initState() {
         'feeditemunread': false,
         'feeditemrss':    false,
     };
+
+    // Set default values given as parameters
+    setShowAll(showAll)
 }
 
 /**
@@ -190,8 +194,28 @@ function getCategories() {
     var retVal = []
     var i = 0
     for (var cat in state['categorycache']) {
-        retVal[i] = state['categorycache'][cat]
-        i++
+        var include = false;
+        if (state['showall'] || state['categorycache'][cat]['unread'] > 0) {
+            retVal[i] = state['categorycache'][cat]
+            i++
+        }
+    }
+    retVal.sort(categorySort)
+
+    return retVal
+}
+
+/**
+ * @return {array} Sorted array of categories.
+ */
+function getAllCategoriesWoSpecial() {
+    var retVal = []
+    var i = 0
+    for (var cat in state['categorycache']) {
+        if (state['categorycache'][cat]['id'] >= 0) {
+            retVal[i] = state['categorycache'][cat]
+            i++
+        }
     }
     retVal.sort(categorySort)
 
@@ -289,7 +313,7 @@ function login(callback) {
 
     var params = {
         'op': 'login',
-        'user': encodeURIComponent(state['username']),
+        'user': escape(state['username']),
         'password': state['password']
     }
     networkCall(params, function(http) { process_login(callback, http) })
@@ -392,7 +416,7 @@ function updateCategories(callback) {
     var params = {
         'op': 'getCategories',
         'sid': state['token'],
-        'unread_only': !state['showall']
+        'unread_only': false //!state['showall']
     }
 
     networkCall(params, function(http) { process_updateCategories(callback, http) });

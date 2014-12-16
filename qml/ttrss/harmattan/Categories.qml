@@ -26,6 +26,14 @@ import "../components" 1.0
 Page {
     id: categoriesPage
     tools: categoriesTools
+    property bool needsUpdate: false
+
+    onVisibleChanged: {
+        if (visible && categoriesPage.needsUpdate) {
+            categoriesPage.needsUpdate = false
+            categories.load(false)
+        }
+    }
 
     Item {
         anchors {
@@ -54,7 +62,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
+                      settings.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
             anchors.fill: parent
             visible: categories.count == 0
         }
@@ -92,7 +100,11 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
-                    categories.update()
+                    if (categoriesPage.visible) {
+                        categories.load(false)
+                    } else {
+                        categoriesPage.needsUpdate = true
+                    }
                 }
             }
             SettingsItem {}

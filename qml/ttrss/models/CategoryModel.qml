@@ -32,7 +32,7 @@ ListModel {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateCategories(function(successful, errorMessage) {
             if (successful) {
-                root.load()
+                root.load(false)
             }
 
             // TODO Add a callback to update() which can be used to display
@@ -41,13 +41,16 @@ ListModel {
     }
 
     /** @private */
-    function load() {
+    function load(woSpecialCategories) {
         var ttrss = rootWindow.getTTRSS()
 
-        var showAll = ttrss.getShowAll()
-        rootWindow.showAll = showAll
-
-        var categories = ttrss.getCategories()
+        var categories
+        if (woSpecialCategories) {
+            categories = ttrss.getAllCategoriesWoSpecial()
+        }
+        else {
+            categories = ttrss.getCategories()
+        }
 
         root.clear()
 
@@ -93,6 +96,10 @@ ListModel {
             }
         }
         updateFinished()
+    }
+
+    function getAllCategories() {
+        root.load(true)
     }
 
     function getTotalUnreadItems() {

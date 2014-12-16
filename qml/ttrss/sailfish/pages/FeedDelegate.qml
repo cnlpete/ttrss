@@ -26,7 +26,7 @@ import "../items"
 ListItem {
     id: listItem
 
-    contentHeight: Theme.itemSizeSmall
+    contentHeight: Math.max(Theme.itemSizeSmall, titleLabel.height)
     width: parent.width
     menu: contextMenu
 
@@ -63,15 +63,14 @@ ListItem {
     }
 
     Label {
+        id: titleLabel
         text: model.title
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: icon.visible ? icon.right : parent.left
         anchors.margins: Theme.paddingMedium
         anchors.right: bubble.left
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        // todo: check for performance issues,
-        // was StyledText before, which might be better
-        textFormat: Text.RichText
+        textFormat: Text.StyledText
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
         color: model.unreadcount > 0 ?

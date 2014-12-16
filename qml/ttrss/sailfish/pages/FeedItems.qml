@@ -26,6 +26,7 @@ import "../items"
 Page {
     id: feeditemsPage
     property var feed
+    property bool needsUpdate: false
 
     property int remorseCounter: 0
     onRemorseCounterChanged: {
@@ -36,10 +37,7 @@ Page {
 
     Component.onCompleted: {
         feedItemModel.feed = feeditemsPage.feed
-        feedItemModel.hasMoreItems = false
-        feedItemModel.continuation = 0
-        feedItemModel.clear()
-        feedItemModel.update()
+        feeditemsPage.update()
     }
 
     RemorsePopup { id: remorse }
@@ -55,18 +53,16 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    feeditemsPage.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    if (feeditemsPage.visible) {
+                        feeditemsPage.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
             MenuItem {
@@ -83,10 +79,11 @@ Page {
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItemModel.continuation = 0
-                    feedItemModel.hasMoreItems = false
-                    feedItemModel.clear()
-                    feedItemModel.update()
+                    if (feeditemsPage.visible) {
+                        feeditemsPage.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
         }
@@ -144,7 +141,7 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+                      settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
@@ -165,6 +162,10 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedItemsCover.qml")
+            if (feeditemsPage.needsUpdate) {
+                feeditemsPage.needsUpdate = false
+                feeditemsPage.update()
+            }
         }
     }
 
@@ -173,5 +174,12 @@ Page {
                         function() {
                             feedItemModel.markAllLoadedAsRead()
                         })
+    }
+
+    function update() {
+        feedItemModel.continuation = 0
+        feedItemModel.hasMoreItems = false
+        feedItemModel.clear()
+        feedItemModel.update()
     }
 }
