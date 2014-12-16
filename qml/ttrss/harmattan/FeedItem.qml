@@ -211,6 +211,16 @@ Page {
         }
     }
 
+    function updateLabels() {
+        feedItems.updateLabels(function(successful, errorMessage, labels) {
+            if (successful) {
+                root.labels = labels
+            }
+
+            // TODO make use of errorMessage
+        })
+    }
+
     function updateNote(note) {
         feedItems.updateNote(note, function(successful, errorMessage) {
             if (successful) {
@@ -320,6 +330,24 @@ Page {
                     noteEditor.previousNote = root.note
                     noteEditor.feedItemPage = root
                     noteEditor.open()
+                }
+            }
+            MenuItem {
+                text: qsTr("Assign Labels")
+                enabled: !network.loading
+                onClicked: {
+                    feedItems.getLabels(function(successful, errorMessage, labels) {
+                        if (successful) {
+                            var params = {
+                                labels: labels,
+                                headline: root.pageTitle,
+                                feedItemPage: root
+                            }
+                            pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"), params)
+                        }
+
+                        // TODO make use of errorMessage
+                    })
                 }
             }
             SettingsItem {}

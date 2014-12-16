@@ -27,9 +27,11 @@ Rectangle {
     id: root
     property variant label
 
+    visible: label !== undefined
+
     width: text.width + MyTheme.paddingSmall + MyTheme.paddingSmall
     height: text.height + MyTheme.paddingSmall
-    color: root.label.bg_color
+    color: root.label !== undefined ? root.label.bg_color : MyTheme.secondaryColor
     radius: MyTheme.paddingSmall
     anchors.margins: MyTheme.paddingSmall
     Text {
@@ -38,8 +40,8 @@ Rectangle {
             horizontalCenter: root.horizontalCenter
         }
         id: text
-        text: root.label.caption
-        color: root.label.fg_color
+        text: root.label !== undefined ? root.label.caption : ""
+        color: root.label !== undefined ? root.label.fg_color : MyTheme.primaryColor
         font.pixelSize: MyTheme.fontSizeExtraSmall
     }
     MouseArea {

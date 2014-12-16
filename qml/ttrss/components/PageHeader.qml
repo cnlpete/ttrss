@@ -39,6 +39,7 @@ Item{
     height: Math.max(platformStyle.headerHeight, textColumn.height)
     width: parent.width
     visible: text !== ""
+    z: 100
 
     Image {
         id: background
