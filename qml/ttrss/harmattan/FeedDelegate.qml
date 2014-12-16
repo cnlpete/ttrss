@@ -30,7 +30,7 @@ Item {
     signal pressAndHold
     property alias pressed: mouseArea.pressed
 
-    height: 80
+    height: Math.max(80, mainText.height)
     width: parent.width
 
     BorderImage {
