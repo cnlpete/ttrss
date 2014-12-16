@@ -40,6 +40,17 @@ PageStackWindow {
             console.log("Error loading component:", component.errorString());
         }
     }
+    function pageStackReplace(file, params) {
+        var component = Qt.createComponent(file)
+        if (component.status === Component.Ready) {
+            if (params !== undefined)
+                pageStack.replace(component, params);
+            else
+                pageStack.replace(component);
+        } else {
+            console.log("Error loading component:", component.errorString());
+        }
+    }
 
     function getTTRSS() {
         return TTRss;
