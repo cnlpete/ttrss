@@ -49,7 +49,7 @@ Item {
                     id: serverLabel
                     text: qsTr("Server:")
                     width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
+                    fontSize: "small"
                 }
                 TextField {
                     id: server
@@ -69,7 +69,7 @@ Item {
                     id: usernameLabel
                     text: qsTr("Username:")
                     width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
+                    fontSize: "small"
                 }
                 TextField {
                     id: username
@@ -90,7 +90,7 @@ Item {
                     id: passwordLabel
                     text: qsTr("Password:")
                     width: parent.width
-                    font.pixelSize: Theme.fontSizeMedium
+                    fontSize: "small"
                 }
                 TextField {
                     id: password
@@ -183,7 +183,7 @@ Item {
 
     function startLogin() {
         var ttrss = rootWindow.getTTRSS();
-        ttrss.clearState();
+        ttrss.initState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
         // BUGFIX since somehow the silica QML Image can not display images coming from a secure line
         if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https")
@@ -195,45 +195,44 @@ Item {
         ttrss.login(loginSuccessfull);
     }
 
-    function loginSuccessfull(retcode, text) {
-        if(retcode) {
+    function loginSuccessfull(successful, errorMessage) {
+        if(!successful) {
             //login failed....don't autlogin
             settings.autologin = false
 
             //Let the user know
-//            loginErrorDialog.text = text;
+//            loginErrorDialog.text = errorMessage;
 //            loginErrorDialog.open();
         }
         else {
             //Login succeeded, auto login next Time
             settings.autologin = true
-            rootWindow.getTTRSS().updateConfig(configSuccessfull);
+            rootWindow.getTTRSS().getConfig(configDone);
         }
     }
 
-    function configSuccessfull(retcode, text) {
-        if(retcode) {
+    function configDone(successful, errorMessage) {
+        if(!successful) {
             //Let the user know
 //            loginErrorDialog.text = text;
 //            loginErrorDialog.open();
+            return
         }
-        else {
-            categories.update()
-            pageStack.clear()
-            //Now show the categories View
-            if (settings.useAllFeedsOnStartup) {
-                var ttrss = rootWindow.getTTRSS()
-                pageStack.push("Feeds.qml", {
-                    category: {
-                        categoryId: ttrss.constants['categories']['ALL'],
-                        title: constant.allFeeds,
-                        unreadcount: 0
-                    }
-                })
-            }
-            else
-                pageStack.push(Qt.resolvedUrl('Categories.qml'))
+        categories.update()
+        pageStack.clear()
+        //Now show the categories View
+        if (settings.useAllFeedsOnStartup) {
+            var ttrss = rootWindow.getTTRSS()
+            pageStack.push("Feeds.qml", {
+                category: {
+                    categoryId: ttrss.constants['categories']['ALL'],
+                    title: constant.allFeeds,
+                    unreadcount: 0
+                }
+            })
         }
+        else
+            pageStack.push(Qt.resolvedUrl('Categories.qml'))
     }
 
     Component.onCompleted: {

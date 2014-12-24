@@ -8,7 +8,10 @@ DEFINES += TARGET=\\\"it.mardy.ttrss\\\"
 
 QT += quick qml
 
-target.path = /usr/bin
+CLICK_DIR = $${OUT_PWD}/click
+CLICK_ARCH = $$system("dpkg-architecture -qDEB_BUILD_ARCH")
+
+target.path = $${CLICK_DIR}
 INSTALLS += target
 
 CONFIG += link_pkgconfig
@@ -16,22 +19,35 @@ CONFIG += link_pkgconfig
 OTHER_FILES += \
     $$files(qml/ttrss/ubuntu-touch/*.qml)
 
+qml_1.files = qml/ttrss/ubuntu-touch
+qml_1.path = $${CLICK_DIR}/qml
 qml_2.files = qml/ttrss/models
-qml_2.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
+qml_2.path = $${CLICK_DIR}/qml
 qml_3.files = qml/ttrss/resources
-qml_3.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
-INSTALLS += qml_2 qml_3
+qml_3.path = $${CLICK_DIR}/qml
+INSTALLS += qml_1 qml_2 qml_3
 
-icon.files = images/$${TARGET}.png
-icon.path = /usr/share/icons/hicolor/86x86/apps
+resources.files = images/resources
+resources.path = $${CLICK_DIR}/qml
+INSTALLS += resources
+
+icon.files = images/ttrss.svg
+icon.path = $${CLICK_DIR}
 INSTALLS += icon
 
-desktop.files = $${TARGET}.desktop
-desktop.path = /usr/share/applications
+QMAKE_SUBSTITUTES += ubuntu/ttrss.desktop.in
+desktop.files = ubuntu/ttrss.desktop
+desktop.path = $${CLICK_DIR}
 INSTALLS += desktop
 
-RESOURCES += \
-    harmattan.qrc
+apparmor.files = ubuntu/ttrss.json
+apparmor.path = $${CLICK_DIR}
+INSTALLS += apparmor
+
+QMAKE_SUBSTITUTES += ubuntu/manifest.json.in
+manifest.files = ubuntu/manifest.json
+manifest.path = $${CLICK_DIR}
+INSTALLS += manifest
 
 HEADERS += \
     settings.hh \
@@ -42,11 +58,6 @@ SOURCES += main.cpp \
     settings.cpp \
     mynetworkmanager.cpp \
     qmlutils.cpp
-
-OTHER_FILES += rpm/$${TARGET}.spec \
-    rpm/$${TARGET}.yaml \
-    $$files(rpm/*) \
-    $$files(qml/ttrss/harmattan/*)
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
