@@ -10,6 +10,9 @@ import "../models" 1.0
 MainView {
     id: rootWindow
     applicationName: "ttrss"
+    /* Disabled until QTBUG-43555 is fixed
+    automaticOrientation: true
+    */
  
     width: units.gu(45)
     height: units.gu(75)

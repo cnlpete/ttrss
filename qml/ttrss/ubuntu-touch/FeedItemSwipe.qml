@@ -58,8 +58,8 @@ Page {
             attachments: model.attachments
             content: model.content
 
-            width: listView.width
-            height: listView.height
+            width: ListView.view.width
+            height: ListView.view.height
         }
 
         onCurrentIndexChanged: {
