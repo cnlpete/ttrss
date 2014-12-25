@@ -94,3 +94,8 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.ro.ts \
     i18n/qml-translation.ru.ts \
     i18n/qml-translation.zh_CN.ts
+
+click.target = click
+click.depends = install
+click.commands = "click build click"
+QMAKE_EXTRA_TARGETS += click
