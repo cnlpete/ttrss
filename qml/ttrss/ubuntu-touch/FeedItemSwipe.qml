@@ -44,9 +44,8 @@ Page {
         anchors.fill: parent
         orientation: ListView.Horizontal
         snapMode: ListView.SnapOneItem
-        highlightFollowsCurrentItem: true
+        highlightFollowsCurrentItem: false
         highlightRangeMode: ListView.StrictlyEnforceRange
-        cacheBuffer: 0
 
         delegate: FeedItem {
             title: model.title
@@ -73,7 +72,10 @@ Page {
     }
 
     Component.onCompleted: {
+        /* For some reason, unless this is done here, the ListView would
+         * instantiate all the delegates when the page is first shown. */
         listView.model = root.model
         listView.currentIndex = root.currentIndex
+        listView.highlightFollowsCurrentItem = true
     }
 }
