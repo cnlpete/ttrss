@@ -86,15 +86,13 @@ Item {
                     right: parent.right
                     rightMargin: Theme.paddingLarge
                 }
-
-                color: Theme.secondaryColor
             }
             RescalingRichText {
                 id: itemView
                 width: parent.width
                 text: parseContent(root.content, root.attachments)
                 fontSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
+                color: Theme.palette.selected.baseText
                 onLinkActivated: Qt.openUrlExternally(link)
             }
         }
