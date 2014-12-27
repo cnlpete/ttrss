@@ -68,6 +68,7 @@ Page {
                 console.log("marking item as read")
                 feedItems.toggleRead()
             }
+            panel.close()
         }
     }
 
@@ -77,5 +78,30 @@ Page {
         listView.model = root.model
         listView.currentIndex = root.currentIndex
         listView.highlightFollowsCurrentItem = true
+    }
+
+    Panel {
+        id: panel
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: units.gu(8)
+
+        Rectangle {
+            anchors.fill: parent
+            color: Theme.palette.normal.overlay
+            ToolbarItems {
+                anchors.fill: parent
+                ToolbarButton {
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    iconName: "external-link"
+                    text: qsTr("Open in Browser")
+                    onTriggered: Qt.openUrlExternally(currentItem.url)
+                }
+            }
+        }
     }
 }
