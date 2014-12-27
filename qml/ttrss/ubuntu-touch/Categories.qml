@@ -16,6 +16,22 @@ Page {
     id: categoriesPage
     title: qsTr("Tiny Tiny RSS Reader")
 
+    head {
+        sections {
+            model: [ qsTr("Unread"), qsTr("All") ]
+            selectedIndex: settings.showAll ? 1 : 0
+            onSelectedIndexChanged: {
+                var ttrss = rootWindow.getTTRSS()
+                var showAll = (categoriesPage.head.sections.selectedIndex == 1)
+                if (showAll != settings.showAll) {
+                    ttrss.setShowAll(showAll)
+                    settings.showAll = showAll
+                    categories.update()
+                }
+            }
+        }
+    }
+
     UbuntuListView {
         id: listView
         anchors.fill: parent
