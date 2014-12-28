@@ -91,7 +91,7 @@ Item {
                 id: itemView
                 width: parent.width
                 text: parseContent(root.content, root.attachments)
-                fontSize: Theme.fontSizeSmall
+                fontSize: settings.webviewFontSize
                 color: Theme.palette.selected.baseText
                 onLinkActivated: Qt.openUrlExternally(link)
             }

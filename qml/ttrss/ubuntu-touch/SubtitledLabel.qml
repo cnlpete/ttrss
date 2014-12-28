@@ -18,12 +18,21 @@ Item {
     property alias text: titleLabel.text
     property alias subText: subLabel.text
     property alias iconSource: icon.source
+    property alias iconColor: backgroundShape.color
     property bool bold: false
 
     anchors.top: parent.top
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     anchors.right: parent.right
+
+    /* FIXME This duplicate UbuntuShape is a workaround for
+     https://launchpad.net/bugs/1396104 */
+    UbuntuShape {
+        id: backgroundShape
+        anchors.fill: iconShape
+        visible: iconShape.visible
+    }
 
     UbuntuShape {
         id: iconShape

@@ -27,6 +27,13 @@ Page {
     }
 
     head {
+        actions: [
+            Action {
+                iconName: "settings"
+                onTriggered: pageStack.push(Qt.resolvedUrl("Settings.qml"))
+            }
+        ]
+
         sections {
             model: [ qsTr("Unread"), qsTr("All") ]
             selectedIndex: settings.showAll ? 1 : 0

@@ -32,7 +32,7 @@ Item {
 
     property string text
     property alias color: contentText.color
-    property real fontSize: Theme.fontSizeSmall
+    property real fontSize: 10
 
     property string _RICHTEXT_STYLESHEET_PREAMBLE: "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>a { text-decoration: none; color: 'blue' }</style></head><body>";
     property string _RICHTEXT_STYLESHEET_APPENDIX: "</body></html>";
@@ -71,7 +71,7 @@ Item {
         scale: scaling
 
         transformOrigin: Item.TopLeft
-        font.pixelSize: parent.fontSize / scaling
+        font.pixelSize: parent.fontSize * units.gu(1) / scaling
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         textFormat: Text.RichText
         smooth: true

@@ -22,6 +22,7 @@ ListItem.Empty {
         anchors.leftMargin: units.gu(1)
         anchors.right: countLabel.left
         iconSource: model.icon
+        iconColor: settings.whiteBackgroundOnIcons ? "white" : undefined
         bold: model.unreadcount > 0
         text: model.title
     }

@@ -17,6 +17,13 @@ Page {
     title: qsTr("Tiny Tiny RSS Reader")
 
     head {
+        actions: [
+            Action {
+                iconName: "settings"
+                onTriggered: pageStack.push(Qt.resolvedUrl("Settings.qml"))
+            }
+        ]
+
         sections {
             model: [ qsTr("Unread"), qsTr("All") ]
             selectedIndex: settings.showAll ? 1 : 0
@@ -41,24 +48,11 @@ Page {
         /* TODO
         PullDownMenu {
             //AboutItem {}
-            SettingsItem {}
             MenuItem {
                 text: qsTr("Logout")
                 visible: pageStack.depth == 1
                 onClicked: {
                     pageStack.replace(Qt.resolvedUrl("MainPage.qml"), { doAutoLogin: false })
-                }
-            }
-            MenuItem {
-                text: qsTr("Update")
-                enabled: !network.loading
-                onClicked: {
-                    categories.update()
-                }
-            }
-            ToggleShowAllItem {
-                onUpdateView: {
-                    categories.update()
                 }
             }
         }
