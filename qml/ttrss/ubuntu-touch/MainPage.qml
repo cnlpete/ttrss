@@ -223,7 +223,7 @@ Item {
         //Now show the categories View
         if (settings.useAllFeedsOnStartup) {
             var ttrss = rootWindow.getTTRSS()
-            pageStack.push("Feeds.qml", {
+            pageStack.push(Qt.resolvedUrl("Feeds.qml"), {
                 category: {
                     categoryId: ttrss.constants['categories']['ALL'],
                     title: constant.allFeeds,
