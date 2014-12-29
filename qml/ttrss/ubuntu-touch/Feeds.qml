@@ -24,6 +24,8 @@ Page {
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(settings.showAll)
         feeds.update()
+        // FIXME workaround for https://bugs.launchpad.net/bugs/1404884
+        pullToRefresh.enabled = true
     }
 
     head {
@@ -55,7 +57,8 @@ Page {
         model: feeds
 
         PullToRefresh {
-            enabled: true
+            id: pullToRefresh
+            enabled: false
             onRefresh: feeds.update()
             refreshing: network.loading
         }
