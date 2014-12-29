@@ -32,7 +32,7 @@ Item {
 
     property string text
     property alias color: contentText.color
-    property real fontSize: 10
+    property real fontSize: 2
 
     property string _RICHTEXT_STYLESHEET_PREAMBLE: "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>a { text-decoration: none; color: 'blue' }</style></head><body>";
     property string _RICHTEXT_STYLESHEET_APPENDIX: "</body></html>";

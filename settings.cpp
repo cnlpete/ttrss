@@ -354,7 +354,11 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _autoMarkRead = m_settings->value("autoMarkRead", true).toBool();
     _displayImages = m_settings->value("displayImages", true).toBool();
     _stripInvisibleImg = m_settings->value("stripInvisibleImg", false).toBool();
+#if defined(Q_OS_UBUNTU_TOUCH)
+    _webviewFontSize = m_settings->value("webviewFontSize", 2).toInt();
+#else
     _webviewFontSize = m_settings->value("webviewFontSize", 22).toInt();
+#endif
 
     // Harmattan
     _whiteTheme = m_settings->value("whiteTheme", true).toBool();
