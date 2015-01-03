@@ -103,7 +103,7 @@ ListModel {
                                     feedId:      parseInt(feeds[feed].id),
                                     categoryId:  parseInt(feeds[feed].cat_id),
                                     isCat:       false,
-                                    icon:        settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
+                                    icon:        settings.displayIcons ? feeds[feed].icon_url : '',
                                     lastUpdated: formatedDate
                                 })
                     totalUnreadCount += parseInt(feeds[feed].unread)

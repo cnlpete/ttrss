@@ -572,6 +572,17 @@ function process_updateFeeds(callback, httpreq) {
         var feedid = response.content[i].id;
         state['categoryfeeds'][catId][i] = feedid;
         state['feedcache'][feedid] = response.content[i];
+        // render the icon url
+        state['feedcache'][feedid]['icon_url'] = getIconUrl(feedid)
+        if (state['feedcache'][feedid]['has_icon'] !== undefined) {
+            if (!state['feedcache'][feedid]['has_icon']) {
+                var localstring = "qrc:///images"
+                var iconurl = state['feedcache'][feedid]['icon_url']
+                if (iconurl.substring(localstring.length) !== localstring) {
+                    state['feedcache'][feedid]['icon_url'] = ''
+                }
+            }
+        }
     }
 
     if(state['categoryfeeds'][catId] && !processPendingRequests(callback)
