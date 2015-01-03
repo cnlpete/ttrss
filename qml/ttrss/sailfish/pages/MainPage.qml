@@ -254,7 +254,7 @@ Dialog {
             notification.show(errorMessage)
             return;
         }
-        console.log('configDone')
+
         categoryModel.update()
         // Now show the categories View
 
