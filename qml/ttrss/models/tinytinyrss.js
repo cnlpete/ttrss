@@ -337,6 +337,9 @@ function process_login(callback, httpreq) {
 
     responsesPending['token'] = false;
 
+    trace(4, "process_login");
+    trace(4, dump(response));
+
     if (!response.successful) {
         trace(1, "Login: " + response.errorMessage);
         if (callback) {
@@ -366,14 +369,20 @@ function getConfig(callback) {
     if(responsesPending['config']) {
         return;
     }
+    responsesPending['config'] = true;
 
     // needs to be logged in
     if(!state['token']) {
-        processPendingRequests(callback);
+        login(function(successfull, errorMessage) {
+            if (successfull) {
+                getConfig(callback)
+            }
+            else {
+                callback(successfull, errorMessage)
+            }
+        })
         return;
     }
-
-    responsesPending['config'] = true;
 
     var params = {
         'op': 'getConfig',
@@ -389,6 +398,9 @@ function process_getConfig(callback, httpreq) {
 
     responsesPending['config'] = false;
 
+    trace(4, "process_getConfig");
+    trace(4, dump(response));
+
     if (!response.successful) {
         trace(1, "Get config: " + response.errorMessage);
         if (callback) {
@@ -399,9 +411,11 @@ function process_getConfig(callback, httpreq) {
 
     state['icons_url'] = response.content['icons_url'];
 
-    if(!processPendingRequests(callback) && callback) {
-        // This action is complete (as there's no other requests to do)
-        // Fire callback saying all ok
+    if(callback) {
+        callback(true);
+    }
+}
+
 /**
  * Get config from server.
  * @param {function} A callback function with parameters boolean (indicating
@@ -493,6 +507,9 @@ function process_updateCategories(callback, httpreq) {
 
     responsesPending['categories'] = false;
 
+    trace(4, "process_updateCategories");
+    trace(4, dump(response));
+
     if (!response.successful) {
         trace(1, "Update categories: " + response.errorMessage);
         if (callback) {
@@ -554,6 +571,9 @@ function process_updateFeeds(callback, httpreq) {
     var response = process_readyState(httpreq);
 
     responsesPending['feeds'] = false;
+
+    trace(4, "process_updateFeeds");
+    trace(4, dump(response));
 
     if (!response.successful) {
         trace(1, "Update feeds: " + response.errorMessage);
