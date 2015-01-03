@@ -231,7 +231,21 @@ Dialog {
 
         // Login succeeded, auto login next Time
         settings.autologin = true
-        rootWindow.getTTRSS().getConfig(configDone);
+        var ttrss = rootWindow.getTTRSS()
+
+        // get the category preference
+        ttrss.getPreference(ttrss.constants['prefKeys']['categories'], catPrefDone)
+    }
+
+    function catPrefDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            notification.show(errorMessage)
+            return;
+        }
+
+        // get the config
+        rootWindow.getTTRSS().getConfig(configDone)
     }
 
     function configDone(successful, errorMessage) {
@@ -240,13 +254,20 @@ Dialog {
             notification.show(errorMessage)
             return;
         }
-
+        console.log('configDone')
         categoryModel.update()
         // Now show the categories View
 
-        var pages = [Qt.resolvedUrl("Categories.qml")]
-        if (settings.useAllFeedsOnStartup) {
-            var ttrss = rootWindow.getTTRSS()
+        var ttrss = rootWindow.getTTRSS()
+
+        var pages = []
+
+        var hasCategoriesEnabled = ttrss.getPref(ttrss.constants['prefKeys']['categories'])
+        if (hasCategoriesEnabled === true || hasCategoriesEnabled === undefined) {
+            pages.push(Qt.resolvedUrl("Categories.qml"))
+        }
+
+        if (settings.useAllFeedsOnStartup || pages.count === 0) {
             var params = {
                 category: {
                     categoryId: ttrss.constants['categories']['ALL'],

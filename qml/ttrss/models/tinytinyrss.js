@@ -47,6 +47,9 @@ var constants = {
         'fresh':     -3,
         'all':       -4,
         'recently':  -6
+    },
+    'prefKeys': {
+        'categories': 'ENABLE_FEED_CATS'
     }
 }
 
@@ -74,6 +77,7 @@ function initState(showAll) {
         'httpauth':     { 'dobasicauth' : false },
         'token':        null,
         'apilevel':     0,
+        'pref':         { },
         'showall':      false, // see getter/setter for documentation
         'closeIfEmpty': false, // Should pages close if they have no content to display
         'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
@@ -171,6 +175,14 @@ function setHttpAuthInfo(username, password) {
     state['httpauth']['username']    = username
     state['httpauth']['password']    = password
     state['httpauth']['dobasicauth'] = true
+}
+
+/**
+ * @param {string} Preference key.
+ * @return {variant} Stored value.
+ */
+function getPref(key) {
+    return state['pref'][key]
 }
 
 /**
@@ -390,6 +402,59 @@ function process_getConfig(callback, httpreq) {
     if(!processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
+/**
+ * Get config from server.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
+function getPreference(key, callback) {
+    if(responsesPending['preference']) {
+        return;
+    }
+    responsesPending['preference'] = true;
+
+    // needs to be logged in
+    if(!state['token']) {
+        login(function(successfull, errorMessage) {
+            if (successfull) {
+                getPreference(key, callback)
+            }
+            else {
+                callback(successfull, errorMessage)
+            }
+        })
+        return;
+    }
+
+    var params = {
+        'op': 'getPref',
+        'pref_name': key,
+        'sid': state['token']
+    }
+
+    networkCall(params, function(http) { process_getPreference(callback, http, key) });
+}
+
+/** @private */
+function process_getPreference(callback, httpreq, key) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['preference'] = false;
+
+    trace(4, "process_getPreference - " + key);
+    trace(4, dump(response));
+
+    if (!response.successful) {
+        trace(1, "getPreference: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    state['pref'][key] = response.content['value'];
+
+    if(callback) {
         callback(true);
     }
 }
