@@ -19,7 +19,7 @@
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="35"/>
         <source>Thanks to:</source>
-        <translation>Соучастники:</translation>
+        <translation>Участники:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutItem.qml" line="38"/>
@@ -283,7 +283,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="68"/>
         <source>Edit Note</source>
-        <translation type="unfinished"/>
+        <translation>Править заметку</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="80"/>
@@ -440,12 +440,12 @@
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
-        <translation type="unfinished"/>
+        <translation>Отметить все загруженное прочитанным</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="173"/>
         <source>Marking all loaded as read</source>
-        <translation type="unfinished"/>
+        <translation>Отмечаю все загруженное прочитанным</translation>
     </message>
 </context>
 <context>
@@ -654,12 +654,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Edit Note</source>
-        <translation type="unfinished"/>
+        <translation>Редактировать заметку</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
         <source>Save Note</source>
-        <translation type="unfinished"/>
+        <translation>Сохранить заметку</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
@@ -884,7 +884,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="166"/>
         <source>Show Note</source>
-        <translation type="unfinished"/>
+        <translation>Показать заметки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="173"/>
@@ -899,7 +899,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="196"/>
         <source>Show Images</source>
-        <translation type="unfinished"/>
+        <translation>Показать рисунки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="202"/>
