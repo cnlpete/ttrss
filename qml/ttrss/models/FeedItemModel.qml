@@ -51,15 +51,15 @@ ListModel {
 
     /** @private */
     function load() {
-        var ttrss = rootWindow.getTTRSS();
-        var feeditems = ttrss.getFeedItems(feed.feedId);
+        var ttrss = rootWindow.getTTRSS()
+        var feeditems = ttrss.getFeedItems(feed.feedId)
 
-        var showAll = ttrss.getShowAll();
-        settings.showAll = showAll;
+        var showAll = ttrss.getShowAll()
+        settings.showAll = showAll
 
         //root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
 
-        var now = new Date();
+        var now = new Date()
 
         if (feeditems && feeditems.length) {
             root.continuation += feeditems.length

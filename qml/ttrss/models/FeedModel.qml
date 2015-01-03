@@ -56,6 +56,12 @@ ListModel {
             //First add feed with unread items
             var totalUnreadCount = 0
 
+            var now = new Date()
+            var secsUnix = now.getTime() / 1000
+            var lessThanAnHourAgo = secsUnix - 3600
+            var today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+            var todayUnix = today.getTime() / 1000
+
             for(var feed = 0; feed < feeds.length; feed++) {
                 if (feeds[feed]) {
                     var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
@@ -74,6 +80,21 @@ ListModel {
                         title = constant.recentlyArticles
                     }
 
+                    var formatedDate = ''
+                    if (feeds[feed].last_updated !== undefined) {
+                        var lastUpdated = feeds[feed].last_updated
+                        if (lastUpdated > lessThanAnHourAgo) {
+                            formatedDate = qsTr('Less than an hour ago')
+                        }
+                        else if (lastUpdated > todayUnix) {
+                            formatedDate = qsTr('Today')
+                        }
+                        else {
+                            var d = new Date(feeds[feed].last_updated * 1000)
+                            formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
+                        }
+                    }
+
                     // Note: cat_id is infact the id the feed originally was in,
                     // not the special id of All Feeds or similar
                     root.append({
@@ -83,6 +104,7 @@ ListModel {
                                     categoryId:  parseInt(feeds[feed].cat_id),
                                     isCat:       false,
                                     icon:        settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
+                                    lastUpdated: formatedDate
                                 })
                     totalUnreadCount += parseInt(feeds[feed].unread)
                 }
