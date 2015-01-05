@@ -448,7 +448,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="140"/>
         <source>Last updated: %1</source>
-        <translation type="unfinished"/>
+        <translation>Dernière MAJ : %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="179"/>
@@ -461,7 +461,7 @@
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
         <source>Less than an hour ago</source>
-        <translation type="unfinished"/>
+        <translation>Moins d&apos;1h</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
@@ -671,12 +671,12 @@ Vous pouvez les créer dans le menu.</translation>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="219"/>
         <source>The API is disabled. You have to enable it in the webinterface.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;API est désactivée, activez la dans l&apos;interface web svp.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
         <source>The supplied login credentials did not work.</source>
-        <translation type="unfinished"/>
+        <translation>Les informations d&apos;identifications ne fonctionnent pas. </translation>
     </message>
 </context>
 <context>
