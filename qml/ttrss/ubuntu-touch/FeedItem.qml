@@ -192,7 +192,7 @@ Item {
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
             }
-            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a>"
+            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a><br/>"
         }
 
         return attachmentsCode
