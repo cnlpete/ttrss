@@ -184,6 +184,10 @@ Item {
             console.log("URL: " + url + " isImage: " + isImage)
             var attachmentLabel = ""
             if (isImage) {
+                if (!settings.displayImages) {
+                    // Do not attach images if they should not be displayed.
+                    continue
+                }
                 attachmentLabel = "<img src=\"" + url + "\" style=\"max-width: 100%; height: auto\"/>"
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
