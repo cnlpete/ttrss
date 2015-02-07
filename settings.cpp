@@ -197,6 +197,14 @@ void Settings::setUseAllFeedsOnStartup(bool useAllFeedsOnStartup) {
     }
 }
 
+void Settings::setStartpage(int index) {
+    if (_startpage != index) {
+        _startpage = index;
+        m_settings->setValue("startpage", _startpage);
+        emit startpageChanged();
+    }
+}
+
 // Feeds
 void Settings::setDisplayIcons(bool displayIcons) {
     if (_displayIcons != displayIcons) {
@@ -336,6 +344,7 @@ Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(
     _autologin = m_settings->value("autologin", false).toBool();
     _useAutologin = m_settings->value("useAutologin", true).toBool();
     _useAllFeedsOnStartup = m_settings->value("useAllFeedsOnStartup", false).toBool();
+    _startpage = m_settings->value("startpage", _useAllFeedsOnStartup ? 1 : 0).toInt();
 
     // Feeds
     _displayIcons = m_settings->value("displayIcons", true).toBool();
