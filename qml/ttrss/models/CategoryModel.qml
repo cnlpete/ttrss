@@ -98,6 +98,42 @@ ListModel {
         updateFinished()
     }
 
+    function getAllFeedsCategory() {
+        var ttrss = rootWindow.getTTRSS()
+        var allfeedsparams = {
+            category: {
+                categoryId: ttrss.constants['categories']['ALL'],
+                title: constant.allFeeds,
+                unreadcount: 0
+            }
+        }
+        return allfeedsparams
+    }
+
+    function getSpecialCategory() {
+        var ttrss = rootWindow.getTTRSS()
+        var specialparams = {
+            category: {
+                categoryId: ttrss.constants['categories']['SPECIAL'],
+                title: constant.specialCategory,
+                unreadcount: 0
+            }
+        }
+        return specialparams
+    }
+
+    function getLabelsCategory() {
+        var ttrss = rootWindow.getTTRSS()
+        var labelsparams = {
+            category: {
+                categoryId: ttrss.constants['categories']['LABELS'],
+                title: constant.labelsCategory,
+                unreadcount: 0
+            }
+        }
+        return labelsparams
+    }
+
     function getAllCategories() {
         root.load(true)
     }

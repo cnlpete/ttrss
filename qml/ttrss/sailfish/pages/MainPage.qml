@@ -265,26 +265,12 @@ Dialog {
             break
         case 1:
             // all feeds
-            var allfeedsparams = {
-                category: {
-                    categoryId: ttrss.constants['categories']['ALL'],
-                    title: constant.allFeeds,
-                    unreadcount: 0
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: allfeedsparams })
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getAllFeedsCategory()})
             break
         case 2:
         case 3:
             // Special
-            var specialparams = {
-                category: {
-                    categoryId: ttrss.constants['categories']['SPECIAL'],
-                    title: constant.specialCategory,
-                    unreadcount: 0
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: specialparams })
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getSpecialCategory()})
 
             if (index == 3) {
                 var freshparams = {
@@ -303,14 +289,7 @@ Dialog {
             break
         case 4:
             // Labels
-            var labelsparams = {
-                category: {
-                    categoryId: ttrss.constants['categories']['LABELS'],
-                    title: constant.labelsCategory,
-                    unreadcount: 0
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: labelsparams })
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getLabelsCategory()})
             break
         }
 
