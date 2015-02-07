@@ -84,7 +84,7 @@ ListModel {
                             });
             }
 
-            if(totalUnreadCount > 0 || showAll) {
+            if(!woSpecialCategories && (totalUnreadCount > 0 || showAll)) {
                 //Add the "All" category
                 root.insert(0, {
                                 title:       constant.allFeeds,
