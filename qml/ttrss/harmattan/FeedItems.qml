@@ -142,9 +142,9 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr('Mark all read')
+                text: qsTr('Mark all loaded read')
                 onClicked: {
-                    feedItems.catchUp()
+                    feedItems.markAllLoadedAsRead()()
                 }
             }
             SettingsItem {}
