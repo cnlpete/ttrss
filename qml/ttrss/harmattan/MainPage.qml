@@ -231,12 +231,12 @@ Page {
             break
         case 1:
             // all feeds
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getAllFeedsCategory()})
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categories.getAllFeedsCategory()})
             break
         case 2:
         case 3:
             // Special
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getSpecialCategory()})
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categories.getSpecialCategory()})
 
             if (index == 3) {
                 var freshparams = {
@@ -255,7 +255,7 @@ Page {
             break
         case 4:
             // Labels
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getLabelsCategory()})
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categories.getLabelsCategory()})
             break
         }
 
