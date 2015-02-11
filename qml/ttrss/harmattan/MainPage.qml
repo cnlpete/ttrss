@@ -211,7 +211,20 @@ Page {
 
         //Login succeeded, auto login next Time
         settings.autologin = true
-        rootWindow.getTTRSS().getConfig(configDone);
+
+        // get the category preference
+        ttrss.getPreference(ttrss.constants['prefKeys']['categories'], catPrefDone)
+    }
+
+    function catPrefDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            notification.show(errorMessage)
+            return;
+        }
+
+        // get the config
+        rootWindow.getTTRSS().getConfig(configDone)
     }
 
     function buildPages(index) {
