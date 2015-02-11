@@ -1,0 +1,29 @@
+Format: 1.8
+Date: Wed, 11 Feb 2015 23:01:53 +0100
+Source: ttrss
+Binary: ttrss
+Architecture: armel
+Version: 0.5.0
+Distribution: unstable
+Urgency: low
+Maintainer: Hauke Schade <cnlpete@cnlpete.de>
+Changed-By: Hauke Schade <cnlpete@cnlpete.de>
+Description: 
+ ttrss      - The Tiny Tiny RSS Reader for Meego
+Changes: 
+ ttrss (0.5.0) unstable; urgency=low
+ .
+   * updated translations from transifex
+   * added an "mark all above read" option for feed items
+   * [bugfix] allow special chars for usernames
+   * only load the categories page if the user has categories enabled
+   * added Notes support
+   * added Label Assignments
+   * various UI fixes
+Checksums-Sha1: 
+ fe6244e96e99d32c58f23a2ba79574e4a7f0d694 163084 ttrss_0.5.0_armel.deb
+Checksums-Sha256: 
+ 93e6bd11afb022d4654c4ae3887d026bce1eb46fe48dba1a23788a4bc2716edf 163084 ttrss_0.5.0_armel.deb
+Files: 
+ a922b0ad912b6d2ba7ed2684371cfac8 163084 user/internet optional ttrss_0.5.0_armel.deb
+Maemo-Display-Name: Tiny Tiny RSS Reader

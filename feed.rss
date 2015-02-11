@@ -10,6 +10,25 @@
     <lastBuildDate>Mon, 01 Dec 2014 21:51:51 +0100</lastBuildDate>
 
     <item>
+      <title>Version 0.5.0</title>
+      <pubDate>Wed, 11 Feb 2015 23:01:53 +0100</pubDate>
+      <description>
+        <![CDATA[
+   * updated translations from transifex
+   * added an "mark all above read" option for feed items
+   * [bugfix] allow special chars for usernames
+   * only load the categories page if the user has categories enabled
+   * added Notes support
+   * added Label Assignments
+   * various UI fixes
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss050</guid>
+      <link>http://schad.es/ttrss050</link>
+    </item>
+    
+    <item>
       <title>Version 0.4.7</title>
       <pubDate>Mon, 01 Dec 2014 21:51:51 +0100</pubDate>
       <description>
@@ -22,7 +41,7 @@
       <link>http://schad.es/ttrss047</link>
     </item>
     
-        <item>
+    <item>
       <title>Version 0.4.4</title>
       <pubDate>Sun, 12 Oct 2014 18:19:19 +0200</pubDate>
       <description>
