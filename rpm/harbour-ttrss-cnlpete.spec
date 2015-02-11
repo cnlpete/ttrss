@@ -13,7 +13,7 @@ Name:       harbour-ttrss-cnlpete
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Tiny Tiny RSS Reader
-Version:    0.4.6
+Version:    0.5.0
 Release:    1
 Group:      Applications/Internet
 License:    GPLv2+

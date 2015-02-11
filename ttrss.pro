@@ -18,6 +18,7 @@
 # http://www.gnu.org/licenses/.
 
 VERSION = 0.5.0
+
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += TARGET=\\\"$$TARGET\\\"
 

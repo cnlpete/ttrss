@@ -144,7 +144,7 @@ Page {
             MenuItem {
                 text: qsTr('Mark all loaded read')
                 onClicked: {
-                    feedItems.markAllLoadedAsRead()()
+                    feedItems.markAllLoadedAsRead()
                 }
             }
             SettingsItem {}
