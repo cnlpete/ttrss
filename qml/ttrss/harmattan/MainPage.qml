@@ -213,6 +213,7 @@ Page {
         settings.autologin = true
 
         // get the category preference
+        var ttrss = rootWindow.getTTRSS()
         ttrss.getPreference(ttrss.constants['prefKeys']['categories'], catPrefDone)
     }
 
