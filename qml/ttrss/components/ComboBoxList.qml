@@ -65,7 +65,7 @@ Button {
 
     SelectionDialog {
         id: comboboxDialog
-        titleText: "Category"
+        titleText: qsTr("Category")
         onAccepted: {
             comboboxButton.text = comboboxDialog.model.get(comboboxDialog.selectedIndex).name
             comboboxButton.currentIndexChanged()

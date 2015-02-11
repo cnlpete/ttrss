@@ -1,5 +1,16 @@
+ttrss (0.5.0) unstable; urgency=low
+  * updated translations from transifex
+  * added an "mark all above read" option for feed items
+  * [bugfix] allow special chars for usernames
+  * only load the categories page if the user has categories enabled
+  * added Notes support
+  * added Label Assignments
+  * various UI fixes
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Wed, 11 Feb 2015 23:01:53 +0100
+
 ttrss (0.4.7) unstable; urgency=low
-  * ADded hotfix for minSSLVersion chooser
+  * Added hotfix for minSSLVersion chooser
 
  -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 01 Dec 2014 21:51:51 +0100
 
