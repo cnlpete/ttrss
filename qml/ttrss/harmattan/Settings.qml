@@ -82,6 +82,33 @@ Page {
                 checked: settings.useAllFeedsOnStartup
                 onCheckedChanged: settings.useAllFeedsOnStartup = checked
             }
+            Label {
+                width: parent.width
+                text: qsTr("Navigate to special page after login")
+                font.pixelSize: MyTheme.fontSizeSmall
+            }
+            ListModel {
+                id: possibleStartpages
+                ListElement { value: 0; name: "" }
+                ListElement { value: 1; name: "" }
+                ListElement { value: 2; name: "" }
+                ListElement { value: 3; name: "" }
+                ListElement { value: 4; name: "" }
+                Component.onCompleted: {
+                    possibleStartpages.setProperty(0, "name", qsTr("Standard"))
+                    possibleStartpages.setProperty(1, "name", qsTr("All Feeds"))
+                    possibleStartpages.setProperty(2, "name", qsTr("Special"))
+                    possibleStartpages.setProperty(3, "name", qsTr("Special/Fresh Articles"))
+                    possibleStartpages.setProperty(4, "name", qsTr("Labels"))
+                }
+            }
+            ComboBoxList {
+                id: startPage
+                initialValue: settings.startpage
+                model: possibleStartpages
+                onCurrentIndexChanged: settings.startpage = currentIndex
+                title: qsTr("Navigate to special page after login")
+            }
 
             Label {
                 width: parent.width

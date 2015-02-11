@@ -67,11 +67,19 @@ Dialog {
                 checked: settings.useAutologin
             }
 
-            TextSwitch {
-                id: useAllFeedsOnStartupSetting
-                text: qsTr('Show "All Feeds"')
+            ComboBox {
+                id: startPage
+                label: qsTr("Navigate to special page after login")
+                currentIndex: settings.startpage
                 description: qsTr('You need to restart the App for this to take effect.')
-                checked: settings.useAllFeedsOnStartup
+
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("Standard") }
+                    MenuItem { text: qsTr("All Feeds") }
+                    MenuItem { text: qsTr("Special") }
+                    MenuItem { text: qsTr("Special/Fresh Articles") }
+                    MenuItem { text: qsTr("Labels") }
+                }
             }
 
             ComboBox {
@@ -243,7 +251,8 @@ Dialog {
     onAccepted: {
         // Startup
         settings.useAutologin = autoLoginSetting.checked
-        settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+        //settings.useAllFeedsOnStartup = useAllFeedsOnStartupSetting.checked
+        settings.startpage = startPage.currentIndex
         settings.minSSLVersion = minimumSSLVersionSetting.currentIndex
 
         // Feeds

@@ -122,7 +122,7 @@ Page {
 
         header: Column {
             width: listView.width
-            height: header.height + info.height
+            height: header.height + info.height + lastUpdated.height
             PageHeader {
                 id: header
                 title: feed.title
@@ -134,6 +134,12 @@ Page {
                 height: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems ? 51 : 0
                 width: parent.width
                 onClicked: feedItemModel.update()
+            }
+            SectionHeader {
+                id: lastUpdated
+                text: feed.lastUpdated !== "" ? qsTr("Last updated: %1").arg(feed.lastUpdated) : ""
+                visible: text !== ""
+                height: Theme.itemSizeExtraSmall
             }
         }
 

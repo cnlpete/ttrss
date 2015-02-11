@@ -235,22 +235,22 @@
 <context>
     <name>FeedDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="96"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="95"/>
         <source>Mark all read</source>
         <translation>标记所有为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="100"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="99"/>
         <source>Unsubscribe</source>
         <translation>退订</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="114"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="113"/>
         <source>Marking all read</source>
         <translation>正在标记所有文章为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="122"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="121"/>
         <source>Unsubcribing</source>
         <translation>正在退订</translation>
     </message>
@@ -258,15 +258,15 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="92"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="280"/>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="283"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="93"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="313"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="316"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="56"/>
         <source>Open in Web Browser</source>
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="289"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="322"/>
         <source>Share</source>
         <translation>分享</translation>
     </message>
@@ -281,16 +281,19 @@
         <translation>显示Dock</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="327"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="68"/>
         <source>Edit Note</source>
         <translation>编辑注释</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="336"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="80"/>
         <source>Assign Labels</source>
         <translation>指定标签</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="173"/>
         <source>Note: %1</source>
         <translation>注释:%1</translation>
@@ -369,19 +372,19 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="144"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
         <source>No items in feed</source>
         <translation>订阅源中无条目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="144"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
         <source>No unread items in feed</source>
         <translation>订阅源中无未读条目</translation>
     </message>
@@ -443,9 +446,27 @@
         <translation>标记所有已加载内容为已读</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="173"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="140"/>
+        <source>Last updated: %1</source>
+        <translation>上次更新：%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="179"/>
         <source>Marking all loaded as read</source>
         <translation>正在标记为已读</translation>
+    </message>
+</context>
+<context>
+    <name>FeedModel</name>
+    <message>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
+        <source>Less than an hour ago</source>
+        <translation>一小时以内</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
+        <source>Today</source>
+        <translation>今天</translation>
     </message>
 </context>
 <context>
@@ -553,16 +574,19 @@
 <context>
     <name>LabelUpdater</name>
     <message>
+        <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="39"/>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="49"/>
         <source>Update Labels</source>
         <translation>更新标签</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="105"/>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="112"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="106"/>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="113"/>
         <source>You have no label defined. You can create them in the webview.</source>
         <translation>无已定义标签,请在web中创建.</translation>
@@ -596,7 +620,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
         <source>Login</source>
-        <translation>登陆</translation>
+        <translation>登录</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="168"/>
@@ -643,6 +667,16 @@
         <source>Restore</source>
         <translation>还原</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="219"/>
+        <source>The API is disabled. You have to enable it in the webinterface.</source>
+        <translation>API被禁用。你需要在网页界面上将其启用。</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
+        <source>The supplied login credentials did not work.</source>
+        <translation>登录信息无效</translation>
+    </message>
 </context>
 <context>
     <name>NoteEditor</name>
@@ -652,16 +686,19 @@
         <translation>重置</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="46"/>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Edit Note</source>
         <translation>编辑注释</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="30"/>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
         <source>Save Note</source>
         <translation>保存注释</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="31"/>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
         <source>Cancel</source>
         <translation>取消</translation>

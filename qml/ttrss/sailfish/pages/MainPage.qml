@@ -231,7 +231,69 @@ Dialog {
 
         // Login succeeded, auto login next Time
         settings.autologin = true
-        rootWindow.getTTRSS().getConfig(configDone);
+        var ttrss = rootWindow.getTTRSS()
+
+        // get the category preference
+        ttrss.getPreference(ttrss.constants['prefKeys']['categories'], catPrefDone)
+    }
+
+    function catPrefDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            notification.show(errorMessage)
+            return;
+        }
+
+        // get the config
+        rootWindow.getTTRSS().getConfig(configDone)
+    }
+
+    function buildPages(index) {
+        var ttrss = rootWindow.getTTRSS()
+        var pages = []
+
+        // add root categories page if enabled
+        var hasCategoriesEnabled = ttrss.getPref(ttrss.constants['prefKeys']['categories'])
+        if (hasCategoriesEnabled === true || hasCategoriesEnabled === undefined) {
+            pages.push(Qt.resolvedUrl("Categories.qml"))
+        }
+
+        switch (index) {
+        default:
+        case 0:
+            // categories is already added
+            break
+        case 1:
+            // all feeds
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getAllFeedsCategory()})
+            break
+        case 2:
+        case 3:
+            // Special
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getSpecialCategory()})
+
+            if (index == 3) {
+                var freshparams = {
+                    feed: {
+                        feedId:     ttrss.constants['feeds']['fresh'],
+                        categoryId: ttrss.constants['categories']['SPECIAL'],
+                        title:      constant.freshArticles,
+                        unreadcount: 0,
+                        isCat:       false,
+                        icon:        settings.displayIcons ? ttrss.getIconUrl(ttrss.constants['feeds']['fresh']) : '',
+                        lastUpdated: ''
+                    }
+                }
+                pages.push({page: Qt.resolvedUrl("FeedItems.qml"), properties: freshparams })
+            }
+            break
+        case 4:
+            // Labels
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getLabelsCategory()})
+            break
+        }
+
+        return pages.length === 0 ? buildPages(1) : pages;
     }
 
     function configDone(successful, errorMessage) {
@@ -244,41 +306,9 @@ Dialog {
         categoryModel.update()
         // Now show the categories View
 
-        var pages = [Qt.resolvedUrl("Categories.qml")]
-        if (settings.useAllFeedsOnStartup) {
-            var ttrss = rootWindow.getTTRSS()
-            var params = {
-                category: {
-                    categoryId: ttrss.constants['categories']['ALL'],
-                    title: constant.allFeeds,
-                    unreadcount: 0
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
-        }
-        /*else if (settings.useSpecialFeedOnStartup) {
-            var ttrss = rootWindow.getTTRSS()
-            var params = {
-                category: {
-                    categoryId: ttrss.constants['categories']['SPECIAL'],
-                    title: constant.specialCategory,
-                    name: constant.specialCategory,
-                    unreadcount: 0
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: params })
-            params = {
-                feed: {
-                    feedId:     ttrss.constants['feeds']['fresh'],
-                    categoryId: ttrss.constants['categories']['SPECIAL'],
-                    title:      constant.freshArticles,
-                    unreadcount: 0,
-                    isCat:       false,
-                    icon:        settings.displayIcons ? ttrss.getIconUrl(ttrss.constants['feeds']['fresh']) : ''
-                }
-            }
-            pages.push({page: Qt.resolvedUrl("FeedItems.qml"), properties: params })
-        }*/
+        var ttrss = rootWindow.getTTRSS()
+
+        var pages = buildPages(settings.startpage)
         pageStack.replace(pages)
     }
 

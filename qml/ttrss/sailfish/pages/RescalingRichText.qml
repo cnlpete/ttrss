@@ -60,7 +60,7 @@ Item {
         visible: false
         width: parent.width
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        textFormat: Text.RichText
+        textFormat: Text.AutoText
 
         text: "<style>* { font-size: 1px }</style>" + parent.text
 

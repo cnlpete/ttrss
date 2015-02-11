@@ -45,6 +45,7 @@ class Settings : public QObject
     // Startup
     Q_PROPERTY(bool autologin READ hasAutologin WRITE setAutologin NOTIFY autologinChanged)
     Q_PROPERTY(bool useAutologin READ hasUseAutologin WRITE setUseAutologin NOTIFY useAutologinChanged)
+    Q_PROPERTY(int startpage READ startpage WRITE setStartpage NOTIFY startpageChanged)
     Q_PROPERTY(bool useAllFeedsOnStartup READ useAllFeedsOnStartup WRITE setUseAllFeedsOnStartup NOTIFY useAllFeedsOnStartupChanged)
 
     // Feeds
@@ -128,6 +129,11 @@ public:
         return this->_useAllFeedsOnStartup;
     }
     void setUseAllFeedsOnStartup(bool useAllFeedsOnStartup);
+
+    int startpage() const {
+        return this->_startpage;
+    }
+    void setStartpage(int index);
 
     // Feeds
     bool displayIcons() const {
@@ -222,6 +228,7 @@ signals:
     // Startup
     void autologinChanged();
     void useAutologinChanged();
+    void startpageChanged();
     void useAllFeedsOnStartupChanged();
 
     // Feeds
@@ -270,6 +277,7 @@ private:
     bool _autologin;
     bool _useAutologin;
     bool _useAllFeedsOnStartup;
+    int _startpage;
 
     // Feeds
     bool _displayIcons;
