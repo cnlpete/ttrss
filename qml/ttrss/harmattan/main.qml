@@ -93,20 +93,20 @@ PageStackWindow {
             categories.updateUnreadCountForId(ttrss.constants['categories']['ALL'], op)
 
             // if there is an 'all feed items' update that aswell
-            if (root.count > 1) {
-                var m = root.get(0)
+            if (feeds.count > 1) {
+                var m = feeds.get(0)
 
                 if (m.isCat) { // just check to be sure
 
                     if (feed.isCat && m.feedId === feed.feedId && feed.unreadcount === 0) {
                         // we can not determine where to substract,
                         // but when all is 0, we can update accordingly
-                        for (var i = 1; i < root.count; i++) {
-                            root.setProperty(i, "unreadcount", 0)
+                        for (var i = 1; i < feeds.count; i++) {
+                            feeds.setProperty(i, "unreadcount", 0)
                         }
                     }
                     else {
-                        root.setProperty(0, "unreadcount", op(m.unreadcount))
+                        feeds.setProperty(0, "unreadcount", op(m.unreadcount))
                     }
                 }
             }
