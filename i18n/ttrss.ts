@@ -461,12 +461,12 @@
 <context>
     <name>FeedModel</name>
     <message>
-        <location filename="../qml/ttrss/models/FeedModel.qml" line="86"/>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
         <source>Less than an hour ago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/FeedModel.qml" line="89"/>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
