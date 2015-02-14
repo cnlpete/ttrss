@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="fr">
 <context>
     <name>AboutItem</name>
     <message>
@@ -169,6 +171,14 @@
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="47"/>
         <source>Update</source>
         <translation>Mise à jour</translation>
+    </message>
+</context>
+<context>
+    <name>ComboBoxList</name>
+    <message>
+        <location filename="../qml/ttrss/components/ComboBoxList.qml" line="68"/>
+        <source>Category</source>
+        <translation>Catégorie</translation>
     </message>
 </context>
 <context>
@@ -389,11 +399,6 @@
         <translation>Pas d&apos;article non-lu dans le flux</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <source>Mark all read</source>
-        <translation>Tout marquer comme lu</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="163"/>
         <source>Unstar</source>
         <translation>Ne pas étoiler</translation>
@@ -440,6 +445,7 @@
         <translation>Mise à jour</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
