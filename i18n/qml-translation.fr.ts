@@ -718,37 +718,37 @@ Vous pouvez les créer dans le menu.</translation>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>Navigate to special page after login</source>
-        <translation type="unfinished"/>
+        <translation>page après authentification</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
         <source>All Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Tous les flux</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Special</source>
-        <translation type="unfinished"/>
+        <translation>Spécial</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
         <source>Special/Fresh Articles</source>
-        <translation type="unfinished"/>
+        <translation>Articles récents/spéciaux</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiquettes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>

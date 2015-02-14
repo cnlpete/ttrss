@@ -729,13 +729,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
         <source>All Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Všechny kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Special</source>
-        <translation type="unfinished"/>
+        <translation>Speciální</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
@@ -747,7 +747,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Štítky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
