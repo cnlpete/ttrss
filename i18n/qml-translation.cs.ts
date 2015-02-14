@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="cs">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -723,13 +721,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>Navigate to special page after login</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
@@ -747,7 +745,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
         <source>Special/Fresh Articles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
