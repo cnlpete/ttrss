@@ -9,3 +9,4 @@ CONTRIBUTORS
 - equeim
 - Silviu Vulcan (silviuvulcan)
 - Michael Käufl (michael-k)
+- Patrik Nilsson (AsavarTzeth)
