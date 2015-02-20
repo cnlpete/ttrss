@@ -123,7 +123,8 @@ Page {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeSmall
                 text: "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, "
-                      + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, Patrik Nilsson"
+                      + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, "
+                      + "Patrik Nilsson, Alexey, clovis86"
             }
 
             // -- Feature Requests & Bugs --
