@@ -127,6 +127,7 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.fr.ts \
     i18n/qml-translation.ru.ts \
     i18n/qml-translation.ro.ts \
+    i18n/qml-translation.sv.ts \
     i18n/qml-translation.zh_CN.ts
 
 contains(MEEGO_EDITION,harmattan) {
