@@ -27,81 +27,59 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 /* Pretty fancy element for displaying rich text fitting the width.
- *
- * Images are scaled down to fit the width, or, technically speaking, the
- * rich text content is actually scaled down so the images fit, while the
- * font size is scaled up to keep the original font size.
- */
-
+*
+* Images are scaled down to fit the width, or, technically speaking, the
+* rich text content is actually scaled down so the images fit, while the
+* font size is scaled up to keep the original font size.
+*/
 Item {
     id: root
-
     property string text
-    property alias color: contentText.color
+    property color color
     property real fontSize: Theme.fontSizeSmall
-
-    property string _RICHTEXT_STYLESHEET_PREAMBLE: "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>a { text-decoration: none; color: '" + Theme.highlightColor + "' }</style></head><body>";
-    property string _RICHTEXT_STYLESHEET_APPENDIX: "</body></html>";
-
+    property bool showSource: false
     property real scaling: 1
-
+    property string _style: "<style> a:link { color:" + Theme.highlightColor + " } </style>"
     signal linkActivated(string link)
-
-    height: contentText.height * scaling
+    height: contentLabel.sourceComponent !== null ? contentLabel.height * scaling : 0
     clip: true
-
-    onWidthChanged: {
-        rescaleTimer.restart()
-    }
-
-    Text {
-        id: layoutText
-
+    onWidthChanged: { rescaleTimer.restart() }
+    onTextChanged: { rescaleTimer.restart() }
+    Label {
+        id: layoutLabel
         visible: false
         width: parent.width
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        textFormat: Text.AutoText
-
-        text: "<style>* { font-size: 1px }</style>" + parent.text
-
-        onContentWidthChanged: {
-            console.log("contentWidth: " + contentWidth)
-            rescaleTimer.restart()
-        }
-    }
-
-    Text {
-        id: contentText
-
-        width: Math.max(1, parent.width) / scaling
-        scale: scaling
-
-        transformOrigin: Item.TopLeft
-        font.pixelSize: parent.fontSize / scaling
-        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         textFormat: Text.RichText
-        smooth: true
-
-        //text: _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
-
-        onLinkActivated: {
-            root.linkActivated(link)
+        // tiny font so that only images are relevant
+        text: "<style>* { font-size: 1px }</style>" + parent.text
+        onContentWidthChanged: { rescaleTimer.restart() }
+    }
+    Loader {
+        id: contentLabel
+        sourceComponent: rescaleTimer.running ? null : labelComponent
+    }
+    Component {
+        id: labelComponent
+        Label {
+            width: root.width / scaling
+            scale: scaling
+            transformOrigin: Item.TopLeft
+            color: root.color
+            font.pixelSize: root.fontSize / scaling
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            textFormat: root.showSource ? Text.PlainText : Text.RichText
+            smooth: true
+            text: _style + root.text
+            onLinkActivated: { root.linkActivated(link) }
         }
     }
-
     Timer {
         id: rescaleTimer
         interval: 100
-
         onTriggered: {
-            var contentWidth = Math.floor(layoutText.contentWidth + 0.0)
-            scaling = Math.min(1, parent.width / contentWidth)
-            console.log("scaling: " + scaling)
-
-            // force reflow
-            //contentText.text = contentText.text + " "
-            contentText.text = _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
-
+            var contentWidth = Math.floor(layoutLabel.contentWidth)
+            scaling = Math.min(1, parent.width / (contentWidth + 0.0))
         }
     }
 }
