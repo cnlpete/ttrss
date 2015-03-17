@@ -12,3 +12,4 @@ CONTRIBUTORS
 - Patrik Nilsson (AsavarTzeth)
 - Alexey (lewa)
 - clovis86
+- Heimen Stoffels (Vistaus)

@@ -33,7 +33,7 @@ MenuItem {
             donateurl: constant.donateUrl,
             text: qsTr("Author: %1").arg("Hauke Schade 2012-2014") + "<br/>"
                    + qsTr("Thanks to:") + " "
-                    + "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, Patrik Nilsson, Alexey, clovis86",
+                    + "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, Patrik Nilsson, Alexey, clovis86, Heimen Stoffels",
             homepageurl: constant.website,
             issuetrackertext: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker"),
             issuetrackerurl: constant.issueTrackerUrl

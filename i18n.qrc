@@ -29,5 +29,6 @@ http://www.gnu.org/licenses/.
         <file>i18n/qml-translation.ru.qm</file>
         <file>i18n/qml-translation.ro.qm</file>
         <file>i18n/qml-translation.sv.qm</file>
+        <file>i18n/qml-translation.nl_NL.qm</file>
     </qresource>
 </RCC>
