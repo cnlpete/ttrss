@@ -38,8 +38,8 @@ Page {
                 text: qsTr("License")
                 onClicked: {
                     var params = {
-                        title: qsTr("License"),
-                        data: [
+                        mytitle: qsTr("License"),
+                        mydata: [
                             ["", License.brief],
                             [qsTr("Full License"), License.full]
                         ]
@@ -51,11 +51,8 @@ Page {
                 text: qsTr("Privacy Policy")
                 onClicked: {
                     var params = {
-                        title: qsTr("Privacy Policy"),
-                        data: [
-                            ["", PrivacyPolicy.sec1],
-                            ["", PrivacyPolicy.sec2]
-                        ]
+                        mytitle: qsTr("Privacy Policy"),
+                        mydata: [ ["", PrivacyPolicy.sec1], ["", PrivacyPolicy.sec2] ]
                     }
                     pageStack.push(Qt.resolvedUrl("TextPage.qml"), params)
                 }

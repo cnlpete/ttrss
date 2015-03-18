@@ -23,8 +23,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    property alias title: title.title
-    property alias data: rep.model
+    property alias mytitle: title.title
+    property alias mydata: rep.model
 
     SilicaFlickable {
         anchors.fill: parent
@@ -48,8 +48,8 @@ Page {
 
             Repeater {
                 id: rep
-                Column {
-                    spacing: Theme.paddingMedium
+                //Column {
+                    //spacing: Theme.paddingMedium
                     Label {
                         width: textContainer.width
                         color: Theme.highlightColor
@@ -67,7 +67,7 @@ Page {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         textFormat: Text.RichText
                     }
-                }
+                //}
             }
         }
         VerticalScrollDecorator { }
