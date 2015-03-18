@@ -1,3 +1,9 @@
+* Wed Mar 18 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.1-1
+- updated translations from transifex
+- added dutch and svedish translations
+- Fixed a bug which prevented PrivacyPolicy and License to show correctly
+- Updated the RescalingRichText Component from Tidings
+
 * Sun Feb 08 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.0-1
 - updated translations from transifex
 - added an "mark all above read" option for feed items
