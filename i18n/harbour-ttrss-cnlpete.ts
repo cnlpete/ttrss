@@ -38,13 +38,13 @@
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="109"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="103"/>
         <source>Homepage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="146"/>
         <source>Issuetracker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -68,32 +68,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="96"/>
         <source>Buy me a beer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="115"/>
         <source>Contributors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="132"/>
         <source>Feature Requests &amp; Bugs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="139"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="158"/>
         <source>Legal Notice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="174"/>
         <source>The source code is available at %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -617,20 +617,20 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="114"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="144"/>
         <source>Ignore SSL Errors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="116"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="137"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="95"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="167"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="133"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="94"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
@@ -646,40 +646,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="54"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="57"/>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="60"/>
+        <source>Full License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="68"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="71"/>
+        <source>Privacy Policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="93"/>
         <source>Tiny Tiny RSS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="79"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="108"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="109"/>
         <source>Server address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="90"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="91"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="120"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="121"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="100"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="101"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="130"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="131"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="121"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="151"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="219"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="249"/>
         <source>The API is disabled. You have to enable it in the webinterface.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="252"/>
         <source>The supplied login credentials did not work.</source>
         <translation type="unfinished"></translation>
     </message>
