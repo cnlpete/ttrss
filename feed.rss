@@ -6,8 +6,22 @@
     <language>en_EN</language>
     <link>http://ttrss.cnlpete.de</link>
     <copyright>Hauke Schade, cnlpete@cnlpete.de</copyright>
-    <pubDate>Mon, 01 Dec 2014 21:51:51 +0100</pubDate>
-    <lastBuildDate>Mon, 01 Dec 2014 21:51:51 +0100</lastBuildDate>
+    <pubDate>Wed, 18 Mar 2015 22:44:53 +0100</pubDate>
+    <lastBuildDate>Wed, 18 Mar 2015 22:44:53 +0100</lastBuildDate>
+
+    <item>
+      <title>Version 0.5.1</title>
+      <pubDate>Wed, 18 Mar 2015 22:44:53 +0100</pubDate>
+      <description>
+        <![CDATA[
+   * updated translations from transifex
+   * added svedish and dutch translations
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss051</guid>
+      <link>http://schad.es/ttrss051</link>
+    </item>
 
     <item>
       <title>Version 0.5.0</title>
@@ -27,7 +41,7 @@
       <guid isPermaLink="true">http://schad.es/ttrss050</guid>
       <link>http://schad.es/ttrss050</link>
     </item>
-    
+
     <item>
       <title>Version 0.4.7</title>
       <pubDate>Mon, 01 Dec 2014 21:51:51 +0100</pubDate>
@@ -40,7 +54,7 @@
       <guid isPermaLink="true">http://schad.es/ttrss047</guid>
       <link>http://schad.es/ttrss047</link>
     </item>
-    
+
     <item>
       <title>Version 0.4.4</title>
       <pubDate>Sun, 12 Oct 2014 18:19:19 +0200</pubDate>
@@ -65,7 +79,7 @@
       <guid isPermaLink="true">http://schad.es/ttrss044</guid>
       <link>http://schad.es/ttrss044</link>
     </item>
-    
+
     <item>
       <title>Version 0.4.3</title>
       <pubDate>Sat, 21 Jun 2014 15:32:03 +0200</pubDate>
