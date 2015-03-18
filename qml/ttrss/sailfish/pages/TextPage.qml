@@ -66,6 +66,8 @@ Page {
                         visible: text != ''
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         textFormat: Text.RichText
+                        horizontalAlignment: Text.AlignJustify
+                        onLinkActivated: Qt.openUrlExternally(link)
                     }
                 //}
             }
