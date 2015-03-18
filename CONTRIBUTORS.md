@@ -9,3 +9,7 @@ CONTRIBUTORS
 - equeim
 - Silviu Vulcan (silviuvulcan)
 - Michael Käufl (michael-k)
+- Patrik Nilsson (AsavarTzeth)
+- Alexey (lewa)
+- clovis86
+- Heimen Stoffels (Vistaus)

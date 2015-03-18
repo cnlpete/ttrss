@@ -172,6 +172,14 @@
     </message>
 </context>
 <context>
+    <name>ComboBoxList</name>
+    <message>
+        <location filename="../qml/ttrss/components/ComboBoxList.qml" line="68"/>
+        <source>Category</source>
+        <translation>类别</translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="34"/>
@@ -389,11 +397,6 @@
         <translation>订阅源中无未读条目</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <source>Mark all read</source>
-        <translation>标记所有为已读</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="163"/>
         <source>Unstar</source>
         <translation>取消星标</translation>
@@ -440,6 +443,7 @@
         <translation>更新</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
@@ -729,13 +733,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
         <source>All Feeds</source>
-        <translation type="unfinished"/>
+        <translation>所有订阅</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Special</source>
-        <translation type="unfinished"/>
+        <translation>特殊文章</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
@@ -747,7 +751,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>标签</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>

@@ -172,6 +172,14 @@
     </message>
 </context>
 <context>
+    <name>ComboBoxList</name>
+    <message>
+        <location filename="../qml/ttrss/components/ComboBoxList.qml" line="68"/>
+        <source>Category</source>
+        <translation>Categorie</translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="34"/>
@@ -389,11 +397,6 @@
         <translation>Nu sunt elemente necitite in surse</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <source>Mark all read</source>
-        <translation>Marcheaza toate ca citite</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="163"/>
         <source>Unstar</source>
         <translation>De-marcheaza</translation>
@@ -440,6 +443,7 @@
         <translation>Actualizeaza</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
@@ -729,13 +733,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
         <source>All Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Toate sursele</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Special</source>
-        <translation type="unfinished"/>
+        <translation>Special</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
@@ -747,7 +751,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etichete</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>

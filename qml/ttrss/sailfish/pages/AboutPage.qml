@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,8 +38,8 @@ Page {
                 text: qsTr("License")
                 onClicked: {
                     var params = {
-                        title: qsTr("License"),
-                        data: [
+                        mytitle: qsTr("License"),
+                        mydata: [
                             ["", License.brief],
                             [qsTr("Full License"), License.full]
                         ]
@@ -51,11 +51,8 @@ Page {
                 text: qsTr("Privacy Policy")
                 onClicked: {
                     var params = {
-                        title: qsTr("Privacy Policy"),
-                        data: [
-                            ["", PrivacyPolicy.sec1],
-                            ["", PrivacyPolicy.sec2]
-                        ]
+                        mytitle: qsTr("Privacy Policy"),
+                        mydata: [ ["", PrivacyPolicy.sec1], ["", PrivacyPolicy.sec2] ]
                     }
                     pageStack.push(Qt.resolvedUrl("TextPage.qml"), params)
                 }
@@ -89,7 +86,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeSmall
-                text: "<b>Copyright © 2012–2014 Hauke Schade</b>"
+                text: "<b>Copyright © 2012–2015 Hauke Schade</b>"
             }
 
             Row {
@@ -123,7 +120,8 @@ Page {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeSmall
                 text: "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, "
-                      + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl"
+                      + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, "
+                      + "Patrik Nilsson, Alexey, clovis86, Heimen Stoffels"
             }
 
             // -- Feature Requests & Bugs --

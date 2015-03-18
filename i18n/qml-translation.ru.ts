@@ -172,6 +172,14 @@
     </message>
 </context>
 <context>
+    <name>ComboBoxList</name>
+    <message>
+        <location filename="../qml/ttrss/components/ComboBoxList.qml" line="68"/>
+        <source>Category</source>
+        <translation>Категория</translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="34"/>
@@ -296,7 +304,7 @@
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="173"/>
         <source>Note: %1</source>
-        <translation type="unfinished"/>
+        <translation>Заметка: %1</translation>
     </message>
 </context>
 <context>
@@ -304,7 +312,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="117"/>
         <source>Note: %1</source>
-        <translation type="unfinished"/>
+        <translation>Заметка: %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="151"/>
@@ -389,11 +397,6 @@
         <translation>Нет непрочитанных новостей</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <source>Mark all read</source>
-        <translation>Пометить все как прочитанное</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="163"/>
         <source>Unstar</source>
         <translation>Убрать из избранного</translation>
@@ -440,6 +443,7 @@
         <translation>Обновить</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
@@ -675,7 +679,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
         <source>The supplied login credentials did not work.</source>
-        <translation type="unfinished"/>
+        <translation>Поставляемые учетные данные не работают.</translation>
     </message>
 </context>
 <context>
@@ -683,7 +687,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished"/>
+        <translation>Сброс</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="46"/>
@@ -729,13 +733,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
         <source>All Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Все подписки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
         <source>Special</source>
-        <translation type="unfinished"/>
+        <translation>Special</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
@@ -747,7 +751,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Labels</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>

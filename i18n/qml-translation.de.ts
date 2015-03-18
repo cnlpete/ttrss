@@ -172,6 +172,14 @@
     </message>
 </context>
 <context>
+    <name>ComboBoxList</name>
+    <message>
+        <location filename="../qml/ttrss/components/ComboBoxList.qml" line="68"/>
+        <source>Category</source>
+        <translation>Kategorie</translation>
+    </message>
+</context>
+<context>
     <name>Constants</name>
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="34"/>
@@ -389,11 +397,6 @@
         <translation>Keine ungelesenen Nachrichten</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <source>Mark all read</source>
-        <translation>Alle als gelesen markieren</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="163"/>
         <source>Unstar</source>
         <translation>Markierung entfernen</translation>
@@ -440,6 +443,7 @@
         <translation>Aktualisieren</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
         <source>Mark all loaded read</source>
