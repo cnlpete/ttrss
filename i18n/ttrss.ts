@@ -38,13 +38,13 @@
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="109"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="103"/>
         <source>Homepage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="146"/>
         <source>Issuetracker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -68,32 +68,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="96"/>
         <source>Buy me a beer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="115"/>
         <source>Contributors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="132"/>
         <source>Feature Requests &amp; Bugs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="139"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="158"/>
         <source>Legal Notice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="174"/>
         <source>The source code is available at %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,12 +465,12 @@
 <context>
     <name>FeedModel</name>
     <message>
-        <location filename="../qml/ttrss/models/FeedModel.qml" line="86"/>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
         <source>Less than an hour ago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/models/FeedModel.qml" line="89"/>
+        <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
