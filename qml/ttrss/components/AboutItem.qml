@@ -31,7 +31,7 @@ MenuItem {
 //            slogan : '',
             donatebutton: qsTr("Buy me a beer"),
             donateurl: constant.donateUrl,
-            text: qsTr("Author: %1").arg("Hauke Schade 2012-2014") + "<br/>"
+            text: qsTr("Author: %1").arg("Hauke Schade 2012-2015") + "<br/>"
                    + qsTr("Thanks to:") + " "
                     + "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, Patrik Nilsson, Alexey, clovis86, Heimen Stoffels",
             homepageurl: constant.website,
