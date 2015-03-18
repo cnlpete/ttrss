@@ -24,7 +24,7 @@ Translations are managed at [Transifex](https://www.transifex.com/). Feel free t
 License
 ----------
 
-    Copyright (C) Hauke Schade, 2012-2014
+    Copyright (C) Hauke Schade, 2012-2015
 
     TTRss is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
