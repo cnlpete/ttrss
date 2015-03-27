@@ -448,7 +448,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="140"/>
         <source>Last updated: %1</source>
-        <translation type="unfinished"/>
+        <translation>上次更新：%1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="179"/>
@@ -461,7 +461,7 @@
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
         <source>Less than an hour ago</source>
-        <translation type="unfinished"/>
+        <translation>一小时以内</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
@@ -620,7 +620,7 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
         <source>Login</source>
-        <translation>登陆</translation>
+        <translation>登录</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="168"/>
@@ -670,12 +670,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="219"/>
         <source>The API is disabled. You have to enable it in the webinterface.</source>
-        <translation type="unfinished"/>
+        <translation>API被禁用。你需要在网页界面上将其启用。</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
         <source>The supplied login credentials did not work.</source>
-        <translation type="unfinished"/>
+        <translation>登录信息无效</translation>
     </message>
 </context>
 <context>

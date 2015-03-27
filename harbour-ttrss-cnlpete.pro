@@ -68,6 +68,7 @@ SOURCES += main.cpp \
 
 OTHER_FILES += rpm/$${TARGET}.spec \
     rpm/$${TARGET}.yaml \
+    rpm/$${TARGET}.changes \
     $$files(rpm/*) \
     $$files(qml/ttrss/harmattan/*) \
     $$files(qml/ttrss/components/*)

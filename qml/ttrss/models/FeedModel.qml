@@ -116,7 +116,8 @@ ListModel {
                                 feedId:      parseInt(root.category.categoryId),
                                 categoryId:  parseInt(root.category.categoryId),
                                 isCat:       true,
-                                icon:        ''
+                                icon:        '',
+                                lastUpdated: ''
                             })
         }
     }
