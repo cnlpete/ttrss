@@ -9,7 +9,8 @@ DEFINES += TARGET=\\\"it.mardy.ttrss\\\"
 QT += quick qml
 
 CLICK_DIR = $${OUT_PWD}/click
-CLICK_ARCH = $$system("dpkg-architecture -qDEB_BUILD_ARCH")
+CLICK_ARCH = $$system("dpkg-architecture -qDEB_HOST_ARCH")
+BUILD_ARCH = $$system("dpkg-architecture -qDEB_BUILD_ARCH")
 
 target.path = $${CLICK_DIR}
 INSTALLS += target
@@ -73,12 +74,17 @@ for(dir, TRANSLATION_SOURCE_CANDIDATES) {
 update_translations.target = update_translations
 update_translations.commands += mkdir -p translations && lupdate $${TRANSLATION_SOURCES} -ts $${TS_FILE}
 QMAKE_EXTRA_TARGETS += update_translations
-PRE_TARGETDEPS += update_translations
 
 build_translations.target = build_translations
 build_translations.commands += lrelease $${_PRO_FILE_}
 QMAKE_EXTRA_TARGETS += build_translations
-POST_TARGETDEPS += build_translations
+
+equals(CLICK_ARCH, $${BUILD_ARCH}) {
+    PRE_TARGETDEPS += update_translations
+    POST_TARGETDEPS += build_translations
+} else {
+    message("Cross compiling: disabling building of translations")
+}
 
 #qm.files = $$replace(TRANSLATIONS, .ts, .qm)
 #qm.path = /usr/share/$${TARGET}/translations
