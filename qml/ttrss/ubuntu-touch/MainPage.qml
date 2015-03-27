@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import Ubuntu.Components.ListItems 1.0 as ListItem
 import Ubuntu.Keyboard 0.1
 
 Item {
@@ -102,11 +103,14 @@ Item {
                     InputMethod.extensions: { "enterKeyText": qsTr("Login") }
                 }
             }
-            CheckBox {
+
+            ListItem.Standard {
                 text: qsTr('Ignore SSL Errors')
                 visible: server.text.substring(0, 5) === "https"
-                checked: settings.ignoreSSLErrors
-                onCheckedChanged: settings.ignoreSSLErrors = checked
+                control: CheckBox {
+                    checked: settings.ignoreSSLErrors
+                    onCheckedChanged: settings.ignoreSSLErrors = checked
+                }
             }
 
             Item {
@@ -185,9 +189,6 @@ Item {
         var ttrss = rootWindow.getTTRSS();
         ttrss.initState();
         ttrss.setLoginDetails(username.text, password.text, server.text);
-        // BUGFIX since somehow the silica QML Image can not display images coming from a secure line
-        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https")
-            ttrss.setProxy("http://proxy.cnlpete.de/proxy.php?url=")
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
             ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
             console.log('doing http basic auth with username ' + settings.httpauthusername)
