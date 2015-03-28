@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
 # http://www.gnu.org/licenses/.
 
-VERSION = 0.5.1
+VERSION = 0.5.1-noshare
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += TARGET=\\\"$$TARGET\\\"
@@ -58,9 +58,9 @@ CONFIG += qdeclarative-boostable
 
 contains(MEEGO_EDITION,harmattan) {
     # disable to make builds for use with meecolay
-    CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
+    #CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
     DEFINES += Q_OS_HARMATTAN
-    DEFINES += SHAREUI
+    DEFINES += USE_THEME
 }
 
 # Add dependency to Symbian components

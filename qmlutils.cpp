@@ -21,7 +21,7 @@
 
 #include "qmlutils.hh"
 
-#ifdef Q_OS_HARMATTAN
+#if defined(SHAREUI)
 #include <MDataUri>
 #include <maemo-meegotouch-interfaces/shareuiinterface.h>
 #endif
@@ -39,7 +39,7 @@ QMLUtils *QMLUtils::instance() {
 }
 
 void QMLUtils::share(const QString &link, const QString &title) {
-#ifdef Q_OS_HARMATTAN
+#if defined(SHAREUI)
     MDataUri uri;
     uri.setMimeType("text/x-url");
 
@@ -62,7 +62,7 @@ void QMLUtils::share(const QString &link, const QString &title) {
 
     shareIf.share(QStringList() << uri.toString());
 #else
-    qWarning("QMLUtils::shareLink(): This function only available on Harmattan");
+    qWarning("QMLUtils::shareLink(): This function only available on Harmattan with ShareUI enabled");
     Q_UNUSED(title)
     Q_UNUSED(link)
 #endif

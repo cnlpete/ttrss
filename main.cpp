@@ -49,6 +49,8 @@
 
 #if defined(Q_OS_HARMATTAN)
     #define USE_THEME
+#endif
+#if defined(USE_THEME)
     #include "theme.hh"
 #endif
 
