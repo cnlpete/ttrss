@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ Button {
     property alias model: comboboxDialog.model
     property bool withTimer: true
     property alias currentIndex: comboboxDialog.selectedIndex
+    property alias title: comboboxDialog.titleText
 
     signal currentIndexChanged()
 
@@ -52,8 +53,8 @@ Button {
             timer.start()
     }
 
-    text: comboboxDialog.model.get(0).text
-    onClicked: comboboxDialog.open();
+    text: comboboxDialog.model.get(0).name
+    onClicked: comboboxDialog.open()
 
     ToolIcon {
         id: filterImage
@@ -64,7 +65,7 @@ Button {
 
     SelectionDialog {
         id: comboboxDialog
-        titleText: "Category"
+        titleText: qsTr("Category")
         onAccepted: {
             comboboxButton.text = comboboxDialog.model.get(comboboxDialog.selectedIndex).name
             comboboxButton.currentIndexChanged()

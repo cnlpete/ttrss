@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ Dialog {
                 width: 256
                 height: 256
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "../../resources/ttrss256.png"
+                source: "qrc:///images/ttrss256.png"
             }
 
             TextField {
@@ -112,7 +112,7 @@ Dialog {
             TextSwitch {
                 id: ignoreSSLErrors
                 text: qsTr('Ignore SSL Errors')
-                visible: server.text.substring(0, 5) === "https"
+                visible: server.text.substring(0, 5) === "https" && (settings.ignoreSSLErrors || network.gotSSLError)
                 checked: false
             }
             Row {
@@ -173,8 +173,9 @@ Dialog {
         var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
         var servername = server.text
         var regexres = servername.match(httpauthregex)
+
         if (regexres !== null) {
-            server.text = (regexres[1]?regexres[1]:'') + regexres[4]
+            server.text = (regexres[1] ? regexres[1] : '') + regexres[4]
             settings.httpauthusername = regexres[2]
             settings.httpauthpassword = regexres[3]
         } else {
@@ -191,59 +192,124 @@ Dialog {
     }
 
     function startLogin() {
-        var ttrss = rootWindow.getTTRSS();
-        ttrss.clearState();
-        ttrss.setLoginDetails(username.text, password.text, server.text);
-        // BUGFIX since somehow the silica QML Image can not display images coming from a secure line
-        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https")
-            ttrss.setProxy("http://proxy.cnlpete.de/proxy.php?url=")
+        var ttrss = rootWindow.getTTRSS()
+        ttrss.initState(settings.showAll)
+        ttrss.setLoginDetails(username.text, password.text, server.text)
+
+        // BUGFIX somehow the silica QML Image can not display images
+        // coming from a secure line
+        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https") {
+            ttrss.setImageProxy("http://proxy.cnlpete.de/proxy.php?url=")
+        }
+
         if (settings.httpauthusername != '' && settings.httpauthpassword != '') {
-            ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword);
+            ttrss.setHttpAuthInfo(settings.httpauthusername, settings.httpauthpassword)
             console.log('doing http basic auth with username ' + settings.httpauthusername)
         }
-        ttrss.login(loginSuccessfull);
+        ttrss.login(loginDone)
     }
 
-    function loginSuccessfull(retcode, text) {
-        if(retcode) {
-            //login failed....don't autlogin
+    function loginDone(successful, errorMessage) {
+        if(!successful) {
+            // login failed....don't autlogin
             settings.autologin = false
 
-            //Let the user know
-//            loginErrorDialog.text = text;
-//            loginErrorDialog.open();
+            // translate the error message
+            if (errorMessage == 'API_DISABLED' || errorMessage == 'Error: API_DISABLED') {
+                errorMessage = qsTr('The API is disabled. You have to enable it in the webinterface.')
+            }
+            else if (errorMessage == 'LOGIN_ERROR' || errorMessage == 'Error: LOGIN_ERROR') {
+                errorMessage = qsTr('The supplied login credentials did not work.')
+            }
+
+            // Let the user know
+            notification.show(errorMessage)
+
             dialog.reject()
+            return;
         }
-        else {
-            //Login succeeded, auto login next Time
-            settings.autologin = true
-            rootWindow.getTTRSS().updateConfig(configSuccessfull);
-        }
+
+        // Login succeeded, auto login next Time
+        settings.autologin = true
+        var ttrss = rootWindow.getTTRSS()
+
+        // get the category preference
+        ttrss.getPreference(ttrss.constants['prefKeys']['categories'], catPrefDone)
     }
 
-    function configSuccessfull(retcode, text) {
-        if(retcode) {
-            //Let the user know
-//            loginErrorDialog.text = text;
-//            loginErrorDialog.open();
+    function catPrefDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            notification.show(errorMessage)
+            return;
         }
-        else {
-            categories.update()
-            //Now show the categories View
-            if (settings.useAllFeedsOnStartup) {
-                var ttrss = rootWindow.getTTRSS()
-                var params = {
-                    category: {
-                        categoryId: ttrss.constants['categories']['ALL'],
-                        title: constant.allFeeds,
-                        unreadcount: 0
+
+        // get the config
+        rootWindow.getTTRSS().getConfig(configDone)
+    }
+
+    function buildPages(index) {
+        var ttrss = rootWindow.getTTRSS()
+        var pages = []
+
+        // add root categories page if enabled
+        var hasCategoriesEnabled = ttrss.getPref(ttrss.constants['prefKeys']['categories'])
+        if (hasCategoriesEnabled === true || hasCategoriesEnabled === undefined) {
+            pages.push(Qt.resolvedUrl("Categories.qml"))
+        }
+
+        switch (index) {
+        default:
+        case 0:
+            // categories is already added
+            break
+        case 1:
+            // all feeds
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getAllFeedsCategory()})
+            break
+        case 2:
+        case 3:
+            // Special
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getSpecialCategory()})
+
+            if (index == 3) {
+                var freshparams = {
+                    feed: {
+                        feedId:     ttrss.constants['feeds']['fresh'],
+                        categoryId: ttrss.constants['categories']['SPECIAL'],
+                        title:      constant.freshArticles,
+                        unreadcount: 0,
+                        isCat:       false,
+                        icon:        settings.displayIcons ? ttrss.getIconUrl(ttrss.constants['feeds']['fresh']) : '',
+                        lastUpdated: ''
                     }
                 }
-                pageStack.replace(Qt.resolvedUrl("Feeds.qml"), params)
+                pages.push({page: Qt.resolvedUrl("FeedItems.qml"), properties: freshparams })
             }
-            else
-                pageStack.replace(Qt.resolvedUrl('Categories.qml'))
+            break
+        case 4:
+            // Labels
+            pages.push({page: Qt.resolvedUrl("Feeds.qml"), properties: categoryModel.getLabelsCategory()})
+            break
         }
+
+        return pages.length === 0 ? buildPages(1) : pages;
+    }
+
+    function configDone(successful, errorMessage) {
+        if(!successful) {
+            // Let the user know
+            notification.show(errorMessage)
+            return;
+        }
+
+        categoryModel.update()
+        // Now show the categories View
+
+        var ttrss = rootWindow.getTTRSS()
+
+        var pages = buildPages(settings.startpage)
+        pageStack.replace(pages)
     }
 
     Component.onCompleted: {
@@ -252,8 +318,9 @@ Dialog {
         password.text = settings.password
         ignoreSSLErrors.checked = settings.ignoreSSLErrors
 
-        if(settings.autologin && settings.useAutologin && doAutoLogin)
+        if(settings.autologin && settings.useAutologin && doAutoLogin) {
             startLogin();
+        }
     }
 
     onAccepted: prepareLogin()

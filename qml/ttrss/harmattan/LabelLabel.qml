@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,9 +27,11 @@ Rectangle {
     id: root
     property variant label
 
+    visible: label !== undefined
+
     width: text.width + MyTheme.paddingSmall + MyTheme.paddingSmall
     height: text.height + MyTheme.paddingSmall
-    color: root.label.bgcolor
+    color: root.label !== undefined ? root.label.bg_color : MyTheme.secondaryColor
     radius: MyTheme.paddingSmall
     anchors.margins: MyTheme.paddingSmall
     Text {
@@ -38,8 +40,8 @@ Rectangle {
             horizontalCenter: root.horizontalCenter
         }
         id: text
-        text: root.label.text
-        color: root.label.fgcolor
+        text: root.label !== undefined ? root.label.caption : ""
+        color: root.label !== undefined ? root.label.fg_color : MyTheme.primaryColor
         font.pixelSize: MyTheme.fontSizeExtraSmall
     }
     MouseArea {

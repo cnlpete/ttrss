@@ -32,8 +32,7 @@ MouseArea {
     clip: true
     visible: box.y > -height
 
-    function show(message)
-    {
+    function show(message) {
         label.text = message;
         box.y = 0;
         notificationTimer.restart();
@@ -41,7 +40,7 @@ MouseArea {
 
     Rectangle {
         id: box
-        y: -width
+        y: -height
         width: parent.width
         height: parent.height
         color: Theme.highlightBackgroundColor

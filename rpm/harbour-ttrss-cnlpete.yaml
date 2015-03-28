@@ -1,6 +1,6 @@
 Name: harbour-ttrss-cnlpete
 Summary: Tiny Tiny RSS Reader
-Version: 0.4.4
+Version: 0.5.1
 Release: 1
 Group: Applications/Internet
 URL: http://ttrss.cnlpete.de/
@@ -20,6 +20,7 @@ PkgConfigBR:
 - sailfishapp >= 0.0.10
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
+- qt5-plugin-imageformat-ico
 Files:
 - '%{_bindir}'
 - '%{_datadir}/%{name}/qml'

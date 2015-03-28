@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,17 +26,18 @@ import "../items"
 Page {
     id: feedsPage
     property var category
+    property bool needsUpdate: false
 
     Component.onCompleted: {
-        feeds.category = feedsPage.category
-        feeds.clear()
-        feeds.update()
+        feedModel.category = feedsPage.category
+        feedModel.clear()
+        feedModel.update()
     }
 
     SilicaListView {
         id: listView
         anchors.fill: parent
-        model: feeds
+        model: feedModel
 
         PullDownMenu {
             SettingsItem {}
@@ -56,31 +57,35 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    if (feedsPage.visible) {
+                        feedModel.update()
+                    } else {
+                        feedsPage.needsUpdate = true
+                    }
                 }
             }
         }
 
         delegate: FeedDelegate {
             onClicked: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
                 showFeed(model)
             }
         }
 
         header: PageHeader {
-           title: category.title
+            title: category ? category.title : ""
         }
         ViewPlaceholder {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+                      settings.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
@@ -101,47 +106,70 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedsCover.qml")
+            if (feedsPage.needsUpdate) {
+                feedsPage.needsUpdate = false
+                feedModel.update()
+            }
         }
     }
 
     function add_subscription() {
+        var params = {
+            initial: feedsPage.category.categoryId
+        }
         var dialog = pageStack.push(Qt.resolvedUrl("AddSubscription.qml"),
-                                    { categoryId: feedsPage.category.categoryId })
+                                    params)
 
         dialog.accepted.connect(function() {
             var ttrss = rootWindow.getTTRSS()
-            ttrss.subscribe(
-                        dialog.selectedId,
-                        dialog.src,
-                        function(result) {
-                            switch (result) {
-                            case 0:
-                                notification.show(qsTr('Already subscribed to Feed'))
-                                break
-                            case 1:
-                                //notification.show(qsTr('Feed added'))
-                                feeds.update()
-                                categories.update()
-                                break
-                            case 2:
-                                notification.show(qsTr('Invalid URL'))
-                                break
-                            case 3:
-                                notification.show(qsTr('URL content is HTML, no feeds available'))
-                                break
-                            case 4:
-                                notification.show(qsTr('URL content is HTML which contains multiple feeds'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Couldn\'t download the URL content'))
-                                break
-                            case 5:
-                                notification.show(qsTr('Content is an invalid XML'))
-                                break
-                            default:
-                                notification.show(qsTr('An error occured while subscribing to the feed'))
-                            }
-                        })
+            ttrss.subscribe(dialog.selected, dialog.src, subscribed)
         })
+
+        function subscribed(result) {
+            switch (result) {
+            case 0:
+                notification.show(qsTr('Already subscribed to Feed'))
+                break
+            case 1:
+                //notification.show(qsTr('Feed added'))
+
+                // During categoryModel.update() the elements in
+                // categoryModel will be removed and therefore
+                // feedsPage.category and feeds.category become
+                // null.
+                //
+                // The following code sets both
+                // feedsPage.category and feedModel.category
+                // back to its previous value.
+                var catId = feedsPage.category.categoryId;
+                function tmp() {
+                    feedsPage.category = categoryModel.getItemForId(catId);
+                    feedModel.category = feedsPage.category
+                    feedModel.update()
+                    categoryModel.updateFinished.disconnect(tmp)
+                }
+                categoryModel.updateFinished.connect(tmp)
+
+                categoryModel.update()
+                break
+            case 2:
+                notification.show(qsTr('Invalid URL'))
+                break
+            case 3:
+                notification.show(qsTr('URL content is HTML, no feeds available'))
+                break
+            case 4:
+                notification.show(qsTr('URL content is HTML which contains multiple feeds'))
+                break
+            case 5:
+                notification.show(qsTr('Couldn\'t download the URL content'))
+                break
+            case 5:
+                notification.show(qsTr('Content is an invalid XML'))
+                break
+            default:
+                notification.show(qsTr('An error occurred while subscribing to the feed'))
+            }
+        }
     }
 }

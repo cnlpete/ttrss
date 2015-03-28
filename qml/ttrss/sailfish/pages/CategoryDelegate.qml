@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import "../items"
 ListItem {
     id: listItem
 
-    contentHeight: categories.count > 8 ? Theme.itemSizeSmall : Theme.itemSizeMedium
+    contentHeight: categoryModel.count > 8 ? Theme.itemSizeSmall : Theme.itemSizeMedium
     width: parent.width
 
     Label {
@@ -34,7 +34,9 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.margins: Theme.paddingMedium
-        width: parent.width - bubble.width - Theme.paddingMedium
+        width: parent.width - anchors.margins // left margin
+               - Theme.paddingMedium // spacing between label and bubble
+               - bubble.width - bubble.anchors.margins // right margin
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         // todo: check for performance issues,
         // was StyledText before, which might be better

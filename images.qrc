@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="ic_all.png">images/resources/ic_all.png</file>
+        <file alias="ic_archived.png">images/resources/ic_archive.png</file>
+        <file alias="ic_fresh.png">images/resources/ic_fresh.png</file>
+        <file alias="ic_read.png">images/resources/ic_read.png</file>
+        <file alias="ic_recently.png">images/resources/ic_recently.png</file>
+        <file alias="ic_rss_disabled.png">images/resources/ic_rss_disabled.png</file>
+        <file alias="ic_rss_enabled.png">images/resources/ic_rss_enabled.png</file>
+        <file alias="ic_star_disabled.png">images/resources/ic_star_disabled.png</file>
+        <file alias="ic_star_enabled.png">images/resources/ic_star_enabled.png</file>
+        <file alias="ic_unread.png">images/resources/ic_unread.png</file>
+        <file alias="ttrss256.png">images/resources/ttrss256.png</file>
+    </qresource>
+</RCC>

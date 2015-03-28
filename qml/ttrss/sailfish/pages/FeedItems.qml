@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,13 +26,18 @@ import "../items"
 Page {
     id: feeditemsPage
     property var feed
+    property bool needsUpdate: false
+
+    property int remorseCounter: 0
+    onRemorseCounterChanged: {
+        // Disallow model changes while a RemorseItem is running.
+        pullmenu.visible = remorseCounter === 0
+        pushmenu.visible = remorseCounter === 0
+    }
 
     Component.onCompleted: {
-        feedItems.feed = feeditemsPage.feed
-        feedItems.hasMoreItems = false
-        feedItems.continuation = 0
-        feedItems.clear()
-        feedItems.update()
+        feedItemModel.feed = feeditemsPage.feed
+        feeditemsPage.update()
     }
 
     RemorsePopup { id: remorse }
@@ -40,44 +45,45 @@ Page {
     SilicaListView {
         id: listView
         anchors.fill: parent
-        model: feedItems
+        model: feedItemModel
 
         PullDownMenu {
+            id: pullmenu
             MenuItem {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    feeditemsPage.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    if (feeditemsPage.visible) {
+                        feeditemsPage.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
         }
 
         PushUpMenu {
+            id: pushmenu
             MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: markAllRead()
+                text: qsTr('Mark all loaded read')
+                onClicked: markAllLoadedAsRead()
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    if (feeditemsPage.visible) {
+                        feeditemsPage.update()
+                    } else {
+                        feeditemsPage.needsUpdate = true
+                    }
                 }
             }
         }
@@ -93,29 +99,55 @@ Page {
 
         delegate: FeedItemDelegate {
             onClicked: {
-                feedItems.selectedIndex = index
+                feedItemModel.selectedIndex = index
                 pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
                                { isCat: feed.isCat })
+            }
+            onRemorseRunning: {
+                if (running) {
+                    ++feeditemsPage.remorseCounter
+                } else {
+                    --feeditemsPage.remorseCounter
+                }
             }
         }
 
         footer: Button {
-            id: foot
             text: qsTr("Load more")
-            visible: settings.feeditemsOrder === 0 && feedItems.hasMoreItems
-            height: settings.feeditemsOrder === 0 && feedItems.hasMoreItems ? 51 : 0
+            visible: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems
+            height: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems ? 51 : 0
             width: parent.width
-            onClicked: feedItems.update()
+            onClicked: feedItemModel.update()
         }
 
-        header: PageHeader {
-           title: feed.title
+        header: Column {
+            width: listView.width
+            height: header.height + info.height + lastUpdated.height
+            PageHeader {
+                id: header
+                title: feed.title
+            }
+            Button {
+                id: info
+                text: qsTr("Load more")
+                visible: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems
+                height: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems ? 51 : 0
+                width: parent.width
+                onClicked: feedItemModel.update()
+            }
+            SectionHeader {
+                id: lastUpdated
+                text: feed.lastUpdated !== "" ? qsTr("Last updated: %1").arg(feed.lastUpdated) : ""
+                visible: text !== ""
+                height: Theme.itemSizeExtraSmall
+            }
         }
+
         ViewPlaceholder {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+                      settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
         }
         BusyIndicator {
             visible: listView.count != 0 && network.loading
@@ -136,13 +168,24 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/FeedItemsCover.qml")
+            if (feeditemsPage.needsUpdate) {
+                feeditemsPage.needsUpdate = false
+                feeditemsPage.update()
+            }
         }
     }
 
-    function markAllRead() {
-        remorse.execute(qsTr("Marking all read"),
+    function markAllLoadedAsRead() {
+        remorse.execute(qsTr("Marking all loaded as read"),
                         function() {
-                            feedItems.catchUp()
+                            feedItemModel.markAllLoadedAsRead()
                         })
+    }
+
+    function update() {
+        feedItemModel.continuation = 0
+        feedItemModel.hasMoreItems = false
+        feedItemModel.clear()
+        feedItemModel.update()
     }
 }

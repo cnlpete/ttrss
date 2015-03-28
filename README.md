@@ -2,7 +2,7 @@ ttrss
 ==========
 
 ttrss is a [Tiny Tiny RSS](http://tt-rss.org) Reader App for the
-Nokia N9 smart phone, written using Qt/QML.
+Nokia N9 smart phone and Jolla Sailfish phone, written using Qt/QML.
 It uses the [Tiny Tiny RSS API](http://tt-rss.org/redmine/projects/tt-rss/wiki/JsonApiReference).
 
 If you want to support me or this app, [buy me a beer](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUWGSGAK8K7ZN) (in &euro;).
@@ -24,7 +24,7 @@ Translations are managed at [Transifex](https://www.transifex.com/). Feel free t
 License
 ----------
 
-    Copyright (C) Hauke Schade, 2012-2014
+    Copyright (C) Hauke Schade, 2012-2015
 
     TTRss is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

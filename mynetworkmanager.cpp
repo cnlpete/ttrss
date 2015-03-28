@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,10 +19,17 @@
  * http://www.gnu.org/licenses/.
  */
 
-#include "mynetworkmanager.hh"
 #include <QtNetwork/QNetworkDiskCache>
-#include <QDesktopServices>
-#include <QDebug>
+#include <QtNetwork/QSslConfiguration>
+#include <QtCore/QDebug>
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#include <QtCore/QStandardPaths>
+#else
+#include <QtGui/QDesktopServices>
+#endif
+
+#include "mynetworkmanager.hh"
 #include "settings.hh"
 
 QScopedPointer<MyNetworkManager> MyNetworkManager::m_instance(0);
@@ -32,6 +39,7 @@ MyNetworkManager *MyNetworkManager::instance() {
         m_instance.reset(new MyNetworkManager);
 
     m_instance->_numRequests = 0;
+    m_instance->_gotSSLError = false;
     return m_instance.data();
 }
 
@@ -45,7 +53,12 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
 
 #if !defined(Q_OS_SAILFISH)
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
-    diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+#else
+    QString cachePath = QDesktopServices::storageLocation(QDesktopServices::CacheLocation);
+#endif
+    diskCache->setCacheDirectory(cachePath);
     diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
     nam->setCache(diskCache);
 #endif
@@ -58,9 +71,21 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     QNetworkRequest request(req);
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
-    if (Settings::instance()->ignoreSSLErrors()) {
+
+    QSslConfiguration sslConfig = request.sslConfiguration();
+    QSsl::SslProtocol protocol = sslConfig.protocol();
+
+    Settings* settings = Settings::instance();
+    if (settings->isMinSSlVersionGreaterThan(protocol)) {
+        sslConfig.setProtocol(settings->getMinSSLVersion());
+        qDebug() << "ssl protocol is now " << sslConfig.protocol();
+    }
+    request.setSslConfiguration(sslConfig);
+
+    if (settings->ignoreSSLErrors()) {
         reply->ignoreSslErrors();
     }
+
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
     return reply;
 }
@@ -77,6 +102,12 @@ void MyNetworkManager::onError() {
 }
 
 void MyNetworkManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors) {
+    bool alreadyGotSSLError = this->gotSSLError();
+    this->_gotSSLError = true;
+    if (alreadyGotSSLError != this->_gotSSLError) {
+        emit this->gotSSLErrorChanged();
+    }
+
     if (Settings::instance()->ignoreSSLErrors()) {
         qDebug("onSslErrors");
         reply->ignoreSslErrors(errors);
@@ -90,6 +121,7 @@ void MyNetworkManager::onStarted() {
 }
 
 void MyNetworkManager::onReplyFinished(QNetworkReply *reply) {
+    Q_UNUSED(reply);
     this->decNumRequests();
 }
 

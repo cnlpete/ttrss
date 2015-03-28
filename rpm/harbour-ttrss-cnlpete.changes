@@ -1,0 +1,54 @@
+* Wed Mar 18 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.1-1
+- updated translations from transifex
+- added dutch and svedish translations
+- Fixed a bug which prevented PrivacyPolicy and License to show correctly
+- Updated the RescalingRichText Component from Tidings
+
+* Sun Feb 08 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.0-1
+- updated translations from transifex
+- added an "mark all above read" option for feed items
+- [bugfix] allow special chars for usernames
+- only load the categories page if the user has categories enabled
+
+* Mon Nov 10 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.7-1
+- Hotfix to allow minimum SSLVersion setting (for servers that have SSLV3 disabled)
+
+* Mon Nov 10 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.6-1
+- bugfixes
+- updated translations
+- added ui for assigning labels thanks to Michael Käufl
+- added support for notes
+- lots of refactoring and small UI changes
+
+* Sun Oct 19 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.5-1
+- proper config-path
+
+* Sun Oct 12 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.4-1
+- Updated translations
+- Added 'Display Labels in Item List' option
+- Added feed subscription
+- UI improvements
+- Added a logout action from pulley menu
+- added various options in the settings page for hiding images
+- show assigned labels for feed items
+- Added romanian translation
+
+* Sat Jun 21 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.3-1
+- updated translations
+- added loading indicators for icons
+- removed the FancyScroller since the OS now provides one
+
+* Sat May 27 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.2-1
+- updated translations
+- small UI improvements
+- added the FancyScroller
+
+* Fri Apr 18 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.1-1
+- now using the RescalingRichText by Martin Grimme instead of WebView
+- added Ignore SSL cert option to login MainView
+- remember the ShowAll option
+- UI improvements
+- various bugfixes
+
+* Tue Feb 18 2014 Hauke Schade <cnlpete@cnlpete.de> 0.3.5-1
+- initial sailfish version

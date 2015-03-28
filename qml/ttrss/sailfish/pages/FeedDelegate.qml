@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import "../items"
 ListItem {
     id: listItem
 
-    contentHeight: Theme.itemSizeSmall
+    contentHeight: Math.max(Theme.itemSizeSmall, titleLabel.height)
     width: parent.width
     menu: contextMenu
 
@@ -44,7 +44,7 @@ ListItem {
         source: model.icon
         onStatusChanged: {
             if (status === Image.Error)
-                feeds.unsetIcon(index)
+                feedModel.unsetIcon(index)
         }
 
         visible: settings.displayIcons && model.icon !== ''
@@ -63,15 +63,14 @@ ListItem {
     }
 
     Label {
+        id: titleLabel
         text: model.title
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: icon.visible ? icon.right : parent.left
         anchors.margins: Theme.paddingMedium
-        width: parent.width - (icon.visible ? icon.width : 0) - bubble.width - Theme.paddingMedium
+        anchors.right: bubble.left
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        // todo: check for performance issues,
-        // was StyledText before, which might be better
-        textFormat: Text.RichText
+        textFormat: Text.StyledText
         font.weight: Font.Bold
         font.pixelSize: Theme.fontSizeMedium
         color: model.unreadcount > 0 ?
@@ -102,7 +101,7 @@ ListItem {
                 onClicked: listItem.unsubcribe()
             }
             Component.onCompleted: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
             }
         }
     }
@@ -113,7 +112,7 @@ ListItem {
         remorse.execute(listItem,
                         qsTr("Marking all read"),
                         function() {
-                            feeds.catchUp()
+                            feedModel.catchUp()
                         })
     }
 
@@ -123,7 +122,10 @@ ListItem {
                         function() {
                             var ttrss = rootWindow.getTTRSS()
                             ttrss.unsubscribe(model.feedId,
-                                              function() { feeds.update() })
+                                              function(successful, errorMessage) {
+                                                  feedModel.update()
+                                                  // TODO make use of parameters
+                                              })
                         })
     }
 }

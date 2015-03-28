@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,12 +25,13 @@ import "../items"
 
 Page {
     id: categoriesPage
+    property bool needsUpdate: false
 
     SilicaListView {
         id: listView
         anchors.fill: parent
 
-        model: categories
+        model: categoryModel
 
         PullDownMenu {
             SettingsItem {}
@@ -46,20 +47,24 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    categories.update()
+                    categoryModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    categories.update()
+                    if (categoriesPage.visible) {
+                        categoryModel.load(false)
+                    } else {
+                        categoriesPage.needsUpdate = true
+                    }
                 }
             }
         }
 
         delegate: CategoryDelegate {
             onClicked: {
-                categories.selectedIndex = index
-                showCategory(categories.getSelectedItem())
+                categoryModel.selectedIndex = index
+                showCategory(categoryModel.getSelectedItem())
             }
         }
 
@@ -70,7 +75,7 @@ Page {
             enabled: listView.count == 0
             text: network.loading ?
                       qsTr("Loading") :
-                      (rootWindow.showAll ?
+                      (settings.showAll ?
                            qsTr("No categories to display") :
                            qsTr("No categories have unread items"))
         }
@@ -93,6 +98,10 @@ Page {
     onVisibleChanged: {
         if (visible) {
             cover = Qt.resolvedUrl("../cover/CategoriesCover.qml")
+            if (categoriesPage.needsUpdate) {
+                categoriesPage.needsUpdate = false
+                categoryModel.load(false)
+            }
         }
     }
 }

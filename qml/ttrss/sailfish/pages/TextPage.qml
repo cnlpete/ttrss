@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    property alias title: title.title
-    property alias data: rep.model
+    property alias mytitle: title.title
+    property alias mydata: rep.model
 
     SilicaFlickable {
         anchors.fill: parent
@@ -48,8 +48,8 @@ Page {
 
             Repeater {
                 id: rep
-                Column {
-                    spacing: Theme.paddingMedium
+                //Column {
+                    //spacing: Theme.paddingMedium
                     Label {
                         width: textContainer.width
                         color: Theme.highlightColor
@@ -66,8 +66,10 @@ Page {
                         visible: text != ''
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         textFormat: Text.RichText
+                        horizontalAlignment: Text.AlignJustify
+                        onLinkActivated: Qt.openUrlExternally(link)
                     }
-                }
+                //}
             }
         }
         VerticalScrollDecorator { }

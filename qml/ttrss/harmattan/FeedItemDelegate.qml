@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,13 +47,13 @@ Item {
         anchors.fill: parent
         anchors.leftMargin: icon.visible ? icon.width + MyTheme.paddingMedium : 0
         Image {
-            source: "../resources/ic_star_enabled.png"
+            source: "qrc:///images/ic_star_enabled.png"
             visible: model.marked
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
         }
         Image {
-            source: "../resources/ic_rss_enabled.png"
+            source: "qrc:///images/ic_rss_enabled.png"
             visible: model.rss
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5

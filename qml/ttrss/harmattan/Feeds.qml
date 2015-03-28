@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,11 +27,19 @@ Page {
     id: feedsPage
     tools: feedsTools
     property variant category
+    property bool needsUpdate: false
 
     Component.onCompleted: {
         feeds.category = feedsPage.category
         feeds.clear()
         feeds.update()
+    }
+
+    onVisibleChanged: {
+        if (visible && feedsPage.needsUpdate) {
+            feedsPage.needsUpdate = false
+            feedModel.update()
+        }
     }
 
     Item {
@@ -65,7 +73,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+                      settings.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
             anchors.fill: parent
             visible: feeds.count == 0
         }
@@ -110,7 +118,11 @@ Page {
                 } }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    if (feedsPage.visible) {
+                        feeds.update()
+                    } else {
+                        feedsPage.needsUpdate = true
+                    }
                 }
             }
             SettingsItem {}
@@ -135,7 +147,11 @@ Page {
                 enabled: feedMenu.feedId >= 0
                 onClicked: {
                     var ttrss = rootWindow.getTTRSS()
-                    ttrss.unsubscribe(feedMenu.feedId, function() { feeds.update() })
+                    ttrss.unsubscribe(feedMenu.feedId,
+                                      function(successful, errorMessage) {
+                                          feeds.update()
+                                          // TODO make use of parameters
+                                      })
                 } }
         }
     }
@@ -192,7 +208,7 @@ Page {
                                     addsubsriptionsheet.open()
                                     break
                                 default:
-                                    infoBanner.text = qsTr('An error occured while subscribing to the feed')
+                                    infoBanner.text = qsTr('An error occurred while subscribing to the feed')
                                     infoBanner.show()
                                     addsubsriptionsheet.open()
                                 }

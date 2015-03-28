@@ -1,3 +1,35 @@
+ttrss (0.5.1) unstable; urgency=low
+  * added svedish and dutch translations
+  * updated translations from transifex
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Wed, 18 Mar 2015 22:36:31 +0100
+
+ttrss (0.5.0) unstable; urgency=low
+  * updated translations from transifex
+  * added an "mark all above read" option for feed items
+  * [bugfix] allow special chars for usernames
+  * only load the categories page if the user has categories enabled
+  * added Notes support
+  * added Label Assignments
+  * various UI fixes
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Wed, 11 Feb 2015 23:01:53 +0100
+
+ttrss (0.4.7) unstable; urgency=low
+  * Added hotfix for minSSLVersion chooser
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 01 Dec 2014 21:51:51 +0100
+
+ttrss (0.4.6) unstable; urgency=low
+  * no harmattan changes
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Mon, 01 Dec 2014 21:51:51 +0100
+
+ttrss (0.4.5) unstable; urgency=low
+  * proper config path
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sun, 19 Oct 2014 19:12:43 +0100
+
 ttrss (0.4.4) unstable; urgency=low
   * Updated translations
   * Added 'Display Labels in Item List' option

@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,10 +27,11 @@ import "../components" 1.0
 Page {
     id: root
     tools: itemTools
-    property string pageTitle:      ""
+    property alias  pageTitle:      pageHeader.text
     property string subTitle:       ""
     property string url:            ""
     property string date:           ""
+    property string note:           ""
     property bool   marked:         false
     property bool   unread:         true
     property bool   rss:            false
@@ -94,7 +95,19 @@ Page {
                         Qt.openUrlExternally(link);
                     }
                 }
-                color: theme.inverted ? MyTheme.primaryColorInverted: MyTheme.primaryColor
+                color: theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor
+            }
+            Text {
+                id: noteView
+                width: parent.width
+                text: qsTr("Note: %1").arg(note)
+                color: theme.inverted ? MyTheme.primaryColorInverted : MyTheme.primaryColor
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.PlainText
+                font.weight: Font.Light
+                font.italic: true
+                font.pixelSize: MyTheme.fontSizeTiny
+                visible: note != ""
             }
         }
     }
@@ -180,6 +193,7 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
+            note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             unread      = data.unread
             rss         = data.rss
@@ -188,10 +202,33 @@ Page {
             nextId      = feedItems.hasNext()
 
             if (settings.autoMarkRead && unread) {
-                feedItems.toggleRead()
-                unread = !unread
+                feedItems.toggleRead(function(successful, errorMessage, state) {
+                    // FIXME only update state when this is still the same item
+                    unread = state
+                    // TODO make use of errorMessage
+                })
             }
         }
+    }
+
+    function updateLabels() {
+        feedItems.updateLabels(function(successful, errorMessage, labels) {
+            if (successful) {
+                root.labels = labels
+            }
+
+            // TODO make use of errorMessage
+        })
+    }
+
+    function updateNote(note) {
+        feedItems.updateNote(note, function(successful, errorMessage) {
+            if (successful) {
+                root.note = note
+            }
+
+            // TODO make use of errorMessage
+        })
     }
 
     Component.onCompleted: {
@@ -200,7 +237,6 @@ Page {
 
     PageHeader {
         id: pageHeader
-        text: pageTitle
         subtext: root.isCat ? root.subTitle : ""
     }
 
@@ -213,32 +249,53 @@ Page {
             visible: previousId !== false
             onClicked: {
                 feedItems.selectPrevious()
-                showFeedItem()
+                rootWindow.pageStackReplace("FeedItem.qml", { isCat: root.isCat })
             } }
+
         ToolIcon {
-            iconSource: "../resources/ic_star_"+(marked?"enabled":"disabled")+".png"
+            iconSource: "qrc:///images/ic_star_"
+                        + (marked ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.toggleStar()
-                marked = !marked
-            } }
+                feedItems.toggleStar(function(successful, errorMessage,
+                                              state) {
+                    // FIXME only update state when this is still the same item
+                    marked = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
-            iconSource: "../resources/ic_rss_"+(rss?"enabled":"disabled")+".png"
+            iconSource: "qrc:///images/ic_rss_"
+                        + (rss ? "enabled" : "disabled") + ".png"
             onClicked: {
-                feedItems.togglePublished()
-                rss = !rss
-            } }
+                feedItems.togglePublished(function(successful, errorMessage,
+                                                   state) {
+                    // FIXME only update state when this is still the same item
+                    rss = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
-            iconSource: "../resources/ic_"+(unread?"unread":"read")+".png"
+            iconSource: "qrc:///images/ic_"
+                        + (unread ? "unread" : "read") + ".png"
             onClicked: {
-                feedItems.toggleRead()
-                unread = !unread
-            } }
+                feedItems.toggleRead(function(successful, errorMessage, state) {
+                    // FIXME only update state when this is still the same item
+                    unread = state
+                    // TODO make use of errorMessage
+                })
+            }
+        }
+
         ToolIcon {
             iconId: "toolbar-next"
             visible: nextId !== false
             onClicked: {
                 feedItems.selectNext()
-                showFeedItem()
+                rootWindow.pageStackReplace("FeedItem.qml", { isCat: root.isCat })
             } }
         ToolIcon {
             iconId: "toolbar-view-menu" ;
@@ -261,8 +318,39 @@ Page {
                     Qt.openUrlExternally(url);
                 }
             }
+            MenuItem {
+                text: qsTr("Edit Note")
+                enabled: !network.loading
+                onClicked: {
+                    noteEditor.previousNote = root.note
+                    noteEditor.feedItemPage = root
+                    noteEditor.open()
+                }
+            }
+            MenuItem {
+                text: qsTr("Assign Labels")
+                enabled: !network.loading
+                onClicked: {
+                    feedItems.getLabels(function(successful, errorMessage, labels) {
+                        if (successful) {
+                            var params = {
+                                labels: labels,
+                                headline: root.pageTitle,
+                                feedItemPage: root
+                            }
+                            pageStack.push(Qt.resolvedUrl("LabelUpdater.qml"), params)
+                        }
+
+                        // TODO make use of errorMessage
+                    })
+                }
+            }
             SettingsItem {}
             AboutItem {}
         }
+    }
+
+    NoteEditor {
+        id: noteEditor
     }
 }

@@ -1,6 +1,6 @@
 # This file is part of TTRss, a Tiny Tiny RSS Reader App
 # for MeeGo Harmattan and Sailfish OS.
-# Copyright (C) 2012–2014  Hauke Schade
+# Copyright (C) 2012–2015  Hauke Schade
 #
 # TTRss is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,12 +17,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
 # http://www.gnu.org/licenses/.
 
-VERSION = 0.4.4
+VERSION = 0.5.1
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_SAILFISH
 
 TARGET = harbour-ttrss-cnlpete
+DEFINES += TARGET=\\\"$$TARGET\\\"
 
 ##CONFIG += sailfishapp
 
@@ -52,7 +53,8 @@ desktop.path = /usr/share/applications
 INSTALLS += desktop
 
 RESOURCES += \
-    harmattan.qrc
+    images.qrc \
+    i18n.qrc
 
 HEADERS += \
     settings.hh \
@@ -66,9 +68,11 @@ SOURCES += main.cpp \
 
 OTHER_FILES += rpm/$${TARGET}.spec \
     rpm/$${TARGET}.yaml \
+    rpm/$${TARGET}.changes \
     $$files(rpm/*) \
     $$files(qml/ttrss/harmattan/*) \
-    $$files(qml/ttrss/components/*)
+    $$files(qml/ttrss/components/*) \
+    *.md
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
@@ -102,6 +106,8 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.en.ts \
     i18n/qml-translation.es.ts \
     i18n/qml-translation.fr.ts \
+    i18n/qml-translation.nl_NL.ts \
     i18n/qml-translation.ru.ts \
     i18n/qml-translation.ro.ts \
+    i18n/qml-translation.sv.ts \
     i18n/qml-translation.zh_CN.ts

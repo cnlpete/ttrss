@@ -1,6 +1,6 @@
 # This file is part of TTRss, a Tiny Tiny RSS Reader App
 # for MeeGo Harmattan and Sailfish OS.
-# Copyright (C) 2012–2014  Hauke Schade
+# Copyright (C) 2012–2015  Hauke Schade
 #
 # TTRss is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,8 +17,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
 # http://www.gnu.org/licenses/.
 
-VERSION = 0.4.4-noshare
+VERSION = 0.5.1-noshare
+
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += TARGET=\\\"$$TARGET\\\"
 
 # Add more folders to ship with the application, here
 folder_01.source = qml/ttrss/models
@@ -75,7 +77,8 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 RESOURCES += \
-    harmattan.qrc
+    images.qrc \
+    i18n.qrc
 
 HEADERS += \
     settings.hh \
@@ -121,8 +124,10 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.en.ts \
     i18n/qml-translation.es.ts \
     i18n/qml-translation.fr.ts \
+    i18n/qml-translation.nl_NL.ts \
     i18n/qml-translation.ru.ts \
     i18n/qml-translation.ro.ts \
+    i18n/qml-translation.sv.ts \
     i18n/qml-translation.zh_CN.ts
 
 contains(MEEGO_EDITION,harmattan) {

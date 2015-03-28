@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +19,17 @@
  * http://www.gnu.org/licenses/.
  */
 
-#if defined(Q_OS_SAILFISH)
+#include <QtGlobal>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     #include <QGuiApplication>
-    #include <sailfishapp.h>
     #include <QQuickView>
     #include <QQmlEngine>
     #include <QQmlContext>
     #ifdef QT_QML_DEBUG
         #include <QtQuick>
+    #endif
+    #if defined(Q_OS_SAILFISH)
+        #include <sailfishapp.h>
     #endif
 #else
     #include <QtGui/QApplication>
@@ -37,13 +40,15 @@
 
 #include <QTranslator>
 #include <QLocale>
+#include <QFile>
+#include <QDir>
 
 #include "settings.hh"
 #include "qmlutils.hh"
 #include "mynetworkmanager.hh"
 
-#if defined(Q_OS_SAILFISH)
-#else
+#if defined(Q_OS_HARMATTAN)
+    #define USE_THEME
     #include "theme.hh"
 #endif
 
@@ -51,16 +56,31 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #if defined(Q_OS_SAILFISH)
     QGuiApplication *app = SailfishApp::application(argc, argv);
+#elif (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #else
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 #endif
 
     app->setApplicationVersion(APP_VERSION);
-    app->setApplicationName("ttrss");
-    app->setOrganizationName("Hauke Schade");
+    app->setApplicationName(TARGET);
+    app->setOrganizationName(TARGET);
+
+    // check for the old settings file, try to move it to new location
+    QFileInfo settingsfileInfo(".config/Hauke Schade/ttrss.conf");
+    QFile settingsfile(settingsfileInfo.absoluteFilePath());
+    if (settingsfile.exists()) {
+        if (!QDir(".config/" + QString(TARGET)).exists())
+            QDir(".config/").mkdir(TARGET);
+        QFileInfo newSettingsfileInfo(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
+        QFile newSettingsfile(newSettingsfileInfo.absoluteFilePath());
+        if (newSettingsfile.exists())
+            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".old.conf");
+        else
+            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
+    }
 
     QString locale = QLocale::system().name();
-    qDebug() << "detected locale is " << locale;
     QTranslator translator;
     /* the ":/" is a special directory Qt uses to
     * distinguish resources;
@@ -75,6 +95,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if defined(Q_OS_SAILFISH)
     QQuickView* viewer = SailfishApp::createView();
+#elif (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+    QScopedPointer<QQuickView> viewer(new QQuickView);
+    viewer->setResizeMode(QQuickView::SizeRootObjectToView);
 #else
     QmlApplicationViewer *viewer = new QmlApplicationViewer();
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
@@ -89,8 +112,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->rootContext()->setContextProperty("QMLUtils", QMLUtils::instance());
     viewer->rootContext()->setContextProperty("settings", Settings::instance());
 
-#if defined(Q_OS_SAILFISH)
-#else
+#ifdef USE_THEME
     viewer->rootContext()->setContextProperty("MyTheme", Theme::instance());
 #endif
 
@@ -100,7 +122,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
 #endif
 
-#if defined(Q_OS_SAILFISH)
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     viewer->show();
 #else
     viewer->showExpanded();

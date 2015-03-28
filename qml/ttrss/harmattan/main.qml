@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,12 +40,21 @@ PageStackWindow {
             console.log("Error loading component:", component.errorString());
         }
     }
+    function pageStackReplace(file, params) {
+        var component = Qt.createComponent(file)
+        if (component.status === Component.Ready) {
+            if (params !== undefined)
+                pageStack.replace(component, params);
+            else
+                pageStack.replace(component);
+        } else {
+            console.log("Error loading component:", component.errorString());
+        }
+    }
 
     function getTTRSS() {
         return TTRss;
     }
-
-    property bool showAll: false
 
     Binding {
         target: theme
@@ -84,20 +93,20 @@ PageStackWindow {
             categories.updateUnreadCountForId(ttrss.constants['categories']['ALL'], op)
 
             // if there is an 'all feed items' update that aswell
-            if (root.count > 1) {
-                var m = root.get(0)
+            if (feeds.count > 1) {
+                var m = feeds.get(0)
 
                 if (m.isCat) { // just check to be sure
 
                     if (feed.isCat && m.feedId === feed.feedId && feed.unreadcount === 0) {
                         // we can not determine where to substract,
                         // but when all is 0, we can update accordingly
-                        for (var i = 1; i < root.count; i++) {
-                            root.setProperty(i, "unreadcount", 0)
+                        for (var i = 1; i < feeds.count; i++) {
+                            feeds.setProperty(i, "unreadcount", 0)
                         }
                     }
                     else {
-                        root.setProperty(0, "unreadcount", op(m.unreadcount))
+                        feeds.setProperty(0, "unreadcount", op(m.unreadcount))
                     }
                 }
             }
@@ -123,20 +132,24 @@ PageStackWindow {
 
             // if the item is new, update 'special feeds' for 'fresh articles'
             // TODO
-            if (item.unread && false)
+            if (item.unread && false) {
                 categories.updateUnreadCountForId(
                             ttrss.constants['categories']['SPECIAL'],
                             op)
+            }
 
             // if item was is starred/published, update special feeds aswell
-            if (item.rss)
+            if (item.rss) {
                 categories.updateUnreadCountForId(
                             ttrss.constants['categories']['SPECIAL'],
                             op)
-            if (item.marked)
+            }
+
+            if (item.marked) {
                 categories.updateUnreadCountForId(
                             ttrss.constants['categories']['SPECIAL'],
                             op)
+            }
 
             // maybe check if currently viewing special feeds and update published
             // not nesseccary because this is updated by mark unread
@@ -149,10 +162,11 @@ PageStackWindow {
                         function(x) { return x - 1 }
 
             // if the item is unread, update 'special feeds'
-            if (item.unread)
+            if (item.unread) {
                 categories.updateUnreadCountForId(
                             ttrss.constants['categories']['SPECIAL'],
                             op)
+            }
 
             // maybe check if currently viewing special feeds and update published
             // not nesseccary because this is updated by mark unread
@@ -165,10 +179,11 @@ PageStackWindow {
                         function(x) { return x - 1 }
 
             // if the item is unread, update 'special feeds'
-            if (item.unread)
+            if (item.unread) {
                 categories.updateUnreadCountForId(
                             ttrss.constants['categories']['SPECIAL'],
                             op)
+            }
 
             // maybe check if currently viewing special feeds and update starred
             // not nesseccary because this is updated by mark unread

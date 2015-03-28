@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@
 #ifndef MYNETWORKMANAGER_HH
 #define MYNETWORKMANAGER_HH
 
-#if defined(Q_OS_SAILFISH)
+#include <QtGlobal>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     #include <QQmlNetworkAccessManagerFactory>
 #else
     #include <qdeclarativenetworkaccessmanagerfactory.h>
@@ -33,6 +34,7 @@
 #include <QMutex>
 #include <QDebug>
 
+//#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 #if defined(Q_OS_SAILFISH)
 class MyNetworkManager : public QObject, public QQmlNetworkAccessManagerFactory
 #else
@@ -42,6 +44,7 @@ class MyNetworkManager : public QObject, public QDeclarativeNetworkAccessManager
     Q_OBJECT
 
     Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
+    Q_PROPERTY(bool gotSSLError READ gotSSLError NOTIFY gotSSLErrorChanged)
 
 public: // QDeclarativeNetworkAccessManagerFactory
     QNetworkAccessManager *create(QObject *parent);
@@ -51,8 +54,13 @@ public: // QDeclarativeNetworkAccessManagerFactory
         return this->_numRequests > 0;
     }
 
+    bool gotSSLError() const {
+        return this->_gotSSLError;
+    }
+
 signals:
     void loadingChanged();
+    void gotSSLErrorChanged();
 
 private slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
@@ -63,6 +71,7 @@ private slots:
 private:
     static QScopedPointer<MyNetworkManager> m_instance;
     int _numRequests;
+    bool _gotSSLError;
     QMutex _mutex;
 
     void incNumRequests() {

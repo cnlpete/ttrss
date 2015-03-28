@@ -13,7 +13,7 @@ Name:       harbour-ttrss-cnlpete
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Tiny Tiny RSS Reader
-Version:    0.4.4
+Version:    0.5.1
 Release:    1
 Group:      Applications/Internet
 License:    GPLv2+
@@ -21,6 +21,7 @@ URL:        http://ttrss.cnlpete.de/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-ttrss-cnlpete.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   qt5-plugin-imageformat-ico
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Core)

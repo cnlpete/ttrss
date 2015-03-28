@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@ import Sailfish.Silica 1.0
 
 ListItem {
     id: listItem
+    signal remorseRunning(bool running)
 
     contentHeight: content.height + contentRow.anchors.topMargin
                    + contentRow.anchors.bottomMargin
@@ -35,13 +36,13 @@ ListItem {
         anchors.fill: parent
         anchors.leftMargin: (icon.visible ? icon.width : 0) + Theme.paddingMedium
         Image {
-            source: "../../resources/ic_star_enabled.png"
+            source: "qrc:///images/ic_star_enabled.png"
             visible: model.marked
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
         }
         Image {
-            source: "../../resources/ic_rss_enabled.png"
+            source: "qrc:///images/ic_rss_enabled.png"
             visible: model.rss
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
@@ -77,7 +78,9 @@ ListItem {
 
         Column {
             id: content
-            width: icon.visible ? (parent.width - icon.width) : parent.width
+            width: icon.visible ?
+                       (parent.width - icon.width - contentRow.spacing) :
+                       parent.width
 
             Label {
                 width: parent.width
@@ -85,7 +88,8 @@ ListItem {
                 color: model.unread > 0 ?
                            (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
-                maximumLineCount: 2
+                // 'maximumLineCount: 0' means 'no limit'
+                maximumLineCount: settings.lengthOfTitle
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 truncationMode: TruncationMode.Fade
                 textFormat: Text.StyledText
@@ -98,14 +102,32 @@ ListItem {
                 color: model.unread > 0 ?
                            (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
                            (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
-                maximumLineCount: 2
+                maximumLineCount: settings.lengthOfExcerpt
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 truncationMode: TruncationMode.Fade
                 textFormat: Text.StyledText
                 font.weight: Font.Light
                 font.pixelSize: Theme.fontSizeSmall
-                visible: text != ""
+                visible: settings.showExcerpt && text != ""
             }
+            Label {
+                width: parent.width
+                text: model.note === undefined || model.note === "" ?
+                          "" :
+                          qsTr("Note: %1").arg(model.note)
+                color: model.unread > 0 ?
+                           (listItem.highlighted ? Theme.highlightColor : Theme.primaryColor) :
+                           (listItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor)
+                maximumLineCount: settings.lengthOfNote
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                truncationMode: TruncationMode.Elide
+                textFormat: Text.PlainText
+                font.weight: Font.Light
+                font.italic: true
+                font.pixelSize: Theme.fontSizeExtraSmall
+                visible: settings.showNote && text !== ""
+            }
+
             Grid  {
                 spacing: Theme.paddingSmall
                 width: parent.width
@@ -126,35 +148,57 @@ ListItem {
     menu: Component {
         ContextMenu {
             MenuItem {
-                id: toggleStarMenuItem
                 text: model.marked ? qsTr("Unstar") : qsTr("Star")
                 onClicked: {
-                    feedItems.toggleStar()
+                    feedItemModel.toggleStar()
                 } }
             MenuItem {
-                id: togglePublishedMenuItem
                 text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
                 onClicked: {
-                    feedItems.togglePublished()
+                    feedItemModel.togglePublished()
                 } }
             MenuItem {
-                id: toggleReadMenuItem
                 text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
                 onClicked: {
-                    feedItems.toggleRead()
+                    feedItemModel.toggleRead()
+                } }
+            MenuItem {
+                text: qsTr("Mark all above read")
+                enabled: index > 0
+                onClicked: {
+                    markAllAboveAsRead()
                 } }
             MenuItem {
                 id: openInBrowserMenuItem
                 text: qsTr("Open in Web Browser")
                 visible: model.url && model.url !== ""
                 onClicked: {
-                    var item = feedItems.getSelectedItem()
+                    var item = feedItemModel.getSelectedItem()
                     Qt.openUrlExternally(item.url)
                 }
             }
             Component.onCompleted: {
-                feedItems.selectedIndex = index
+                feedItemModel.selectedIndex = index
             }
         }
+    }
+
+    RemorseItem {
+        id: remorse
+        onCanceled: {
+            listItem.remorseRunning(false)
+        }
+        onTriggered: {
+            listItem.remorseRunning(false)
+        }
+    }
+
+    function markAllAboveAsRead() {
+        listItem.remorseRunning(true)
+        remorse.execute(listItem,
+                        qsTr("Marking all above as read"),
+                        function() {
+                            feedItemModel.markAllAboveAsRead(index)
+                        })
     }
 }

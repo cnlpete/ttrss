@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2014  Hauke Schade
+ * Copyright (C) 2012–2015  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ Page {
     id: itemListPage
     tools: feedItemsTools
     property variant feed
+    property bool needsUpdate: false
 
     Component.onCompleted: {
         feedItems.feed = itemListPage.feed
@@ -34,6 +35,16 @@ Page {
         feedItems.continuation = 0
         feedItems.clear()
         feedItems.update()
+    }
+
+    onVisibleChanged: {
+        if (visible && itemListPage.needsUpdate) {
+            itemListPage.needsUpdate = false
+            feedItems.continuation = 0
+            feedItems.hasMoreItems = false
+            feedItems.clear()
+            feedItems.update()
+        }
     }
 
     Item {
@@ -88,7 +99,7 @@ Page {
         EmptyListInfoLabel {
             text: network.loading ?
                       qsTr("Loading") :
-                      rootWindow.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+                      settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
             anchors.fill: parent
             anchors.margins: MyTheme.paddingLarge
             visible: feedItems.count == 0
@@ -120,16 +131,20 @@ Page {
         MenuLayout {
             ToggleShowAllItem {
                 onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    if (itemListPage.visible) {
+                        feedItems.continuation = 0
+                        feedItems.hasMoreItems = false
+                        feedItems.clear()
+                        feedItems.update()
+                    } else {
+                        itemListPage.needsUpdate = true
+                    }
                 }
             }
             MenuItem {
-                text: qsTr('Mark all read')
+                text: qsTr('Mark all loaded read')
                 onClicked: {
-                    feedItems.catchUp()
+                    feedItems.markAllLoadedAsRead()
                 }
             }
             SettingsItem {}
@@ -158,6 +173,12 @@ Page {
                 text: (feeditemMenu.feedItem !== undefined && feeditemMenu.feedItem.unread?qsTr("Mark read"):qsTr("Mark Unread"))
                 onClicked: {
                     feedItems.toggleRead()
+                } }
+            MenuItem {
+                text: qsTr("Mark all above read")
+                enabled: feedItems.selectedIndex > 0
+                onClicked: {
+                    feedItems.markAllAboveAsRead(feedItems.selectedIndex)
                 } }
             MenuItem {
                 text: qsTr("Open in Web Browser")
