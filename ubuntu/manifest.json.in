@@ -1,0 +1,15 @@
+{
+	\"description\": \"Tiny Tiny RSS client\",
+	\"framework\": \"ubuntu-sdk-14.10-qml\",
+	\"hooks\": {
+		\"ttrss\": {
+			\"apparmor\": \"ttrss.json\",
+			\"desktop\": \"ttrss.desktop\"
+		}
+	},
+	\"architecture\": \"$${CLICK_ARCH}\",
+	\"maintainer\": \"Alberto Mardegan <info@mardy.it>\",
+	\"name\": \"it.mardy.ttrss\",
+	\"title\": \"Tiny Tiny RSS\",
+	\"version\": \"$${VERSION}-0\"
+}
