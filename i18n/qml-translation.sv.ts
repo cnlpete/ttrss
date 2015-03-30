@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="sv">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.0">
 <context>
     <name>AboutItem</name>
     <message>
@@ -179,12 +177,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>Unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -489,12 +487,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>Unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -609,12 +607,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>Unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -742,7 +740,7 @@
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="84"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1117,7 +1115,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
