@@ -23,7 +23,6 @@ Page {
         feedItems.feed = feeditemsPage.feed
         feedItems.hasMoreItems = false
         feedItems.continuation = 0
-        feedItems.clear()
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(settings.showAll)
         feedItems.update()

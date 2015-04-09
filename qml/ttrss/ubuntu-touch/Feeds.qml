@@ -151,6 +151,7 @@ Page {
 
     function showFeed(feedModel) {
         if (feedModel != null) {
+            feedItems.clear()
             pageStack.push(Qt.resolvedUrl("FeedItems.qml"), {
                 feed: feedModel
             })
