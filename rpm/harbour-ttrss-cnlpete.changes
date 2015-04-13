@@ -1,3 +1,7 @@
+* Mon Apr 13 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.2-1-dev
+- updated translations from transifex
+- added reloading of server feed when update returns without new items
+
 * Wed Mar 18 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.1-1
 - updated translations from transifex
 - added dutch and svedish translations
