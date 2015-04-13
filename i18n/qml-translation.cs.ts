@@ -177,12 +177,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Nepřečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Všechny</translation>
     </message>
 </context>
 <context>
@@ -487,12 +487,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Nepřečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Všechny</translation>
     </message>
 </context>
 <context>
@@ -607,12 +607,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Nepřečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Všechny</translation>
     </message>
 </context>
 <context>
@@ -740,7 +740,7 @@
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="84"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Další</translation>
     </message>
 </context>
 <context>
@@ -783,13 +783,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>Navigate to special page after login</source>
-        <translation type="unfinished"/>
+        <translation>Stránka po přihlášení</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>Běžná</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
@@ -807,7 +807,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
         <source>Special/Fresh Articles</source>
-        <translation type="unfinished"/>
+        <translation>Speciální/Nové články</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
@@ -1115,7 +1115,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Ukázat &quot;Všechny kanály&quot;</translation>
     </message>
 </context>
 <context>

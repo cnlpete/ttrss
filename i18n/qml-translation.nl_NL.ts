@@ -177,12 +177,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Ongelezen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Alles</translation>
     </message>
 </context>
 <context>
@@ -487,12 +487,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Ongelezen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Alles</translation>
     </message>
 </context>
 <context>
@@ -607,12 +607,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>Ongelezen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Alles</translation>
     </message>
 </context>
 <context>
@@ -740,7 +740,7 @@
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="84"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Volgende</translation>
     </message>
 </context>
 <context>
@@ -1115,7 +1115,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"/>
+        <translation>&apos;Alle feeds&apos; weergeven</translation>
     </message>
 </context>
 <context>
