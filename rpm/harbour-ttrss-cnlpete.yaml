@@ -1,6 +1,6 @@
 Name: harbour-ttrss-cnlpete
 Summary: Tiny Tiny RSS Reader
-Version: 0.5.1
+Version: 0.5.2
 Release: 1
 Group: Applications/Internet
 URL: http://ttrss.cnlpete.de/
@@ -13,6 +13,9 @@ Description: |-
   API.
 Configure: none
 Builder: qtc5
+QMakeOptions:
+- VERSION=%{version}
+- RELEASE=%{release}
 PkgConfigBR:
 - Qt5Quick
 - Qt5Qml
