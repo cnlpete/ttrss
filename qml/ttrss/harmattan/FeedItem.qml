@@ -145,7 +145,7 @@ Page {
             } else {
                 attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
             }
-            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a>"
+            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a><br/>"
         }
 
         return attachmentsCode
@@ -322,6 +322,7 @@ Page {
                 text: qsTr("Edit Note")
                 enabled: !network.loading
                 onClicked: {
+                    var noteEditor = noteEditorComponent.createObject(root)
                     noteEditor.previousNote = root.note
                     noteEditor.feedItemPage = root
                     noteEditor.open()
@@ -350,7 +351,8 @@ Page {
         }
     }
 
-    NoteEditor {
-        id: noteEditor
+    Component {
+        id: noteEditorComponent
+        NoteEditor { }
     }
 }

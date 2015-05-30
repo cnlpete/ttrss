@@ -51,7 +51,6 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     connect(nam, SIGNAL(started()), this, SLOT(onStarted()));
     connect(nam, SIGNAL(error()), this, SLOT(onError()));
 
-#if !defined(Q_OS_SAILFISH)
     QNetworkDiskCache* diskCache = new QNetworkDiskCache(parent);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
@@ -61,7 +60,6 @@ QNetworkAccessManager* MyNetworkManager::create(QObject *parent) {
     diskCache->setCacheDirectory(cachePath);
     diskCache->setMaximumCacheSize(5*1024*1024); // 5Mo
     nam->setCache(diskCache);
-#endif
 
     return nam;
 }
@@ -78,7 +76,7 @@ QNetworkReply *MyNetworkAccessManager::createRequest( QNetworkAccessManager::Ope
     Settings* settings = Settings::instance();
     if (settings->isMinSSlVersionGreaterThan(protocol)) {
         sslConfig.setProtocol(settings->getMinSSLVersion());
-        qDebug() << "ssl protocol is now " << sslConfig.protocol();
+        //qDebug() << "ssl protocol is now " << sslConfig.protocol();
     }
     request.setSslConfiguration(sslConfig);
 

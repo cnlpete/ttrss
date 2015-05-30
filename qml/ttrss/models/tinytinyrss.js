@@ -80,7 +80,7 @@ function initState(showAll) {
         'pref':         { },
         'showall':      false, // see getter/setter for documentation
         'closeIfEmpty': false, // Should pages close if they have no content to display
-        'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
+        'tracelevel':   2,     // 1 = errors, 2 = key info, 3 = network traffic,
                                // 4 = info, 5 = high detail
         'categorycache':     {},
         'feedcache':         {},
@@ -101,6 +101,7 @@ function initState(showAll) {
         'feeditemstar':   false,
         'feeditemunread': false,
         'feeditemrss':    false,
+        'updatefeed':     false,
     };
 
     responsesPending = {
@@ -112,6 +113,7 @@ function initState(showAll) {
         'feeditemstar':   false,
         'feeditemunread': false,
         'feeditemrss':    false,
+        'updatefeed':     false,
     };
 
     // Set default values given as parameters
@@ -126,7 +128,7 @@ function initState(showAll) {
  */
 function trace(level, text) {
     if(level <= state['tracelevel']) {
-        console.log(text + '\n');
+        console.log(level + '\t - ' + text);
     }
 }
 
@@ -685,6 +687,57 @@ function process_updateFeedItems(callback, httpreq) {
 
     if(state['feeditems'][feedId] && !processPendingRequests(callback)
             && callback) {
+        // This action is complete (as there's no other requests to do)
+        // Fire callback saying all ok
+        callback(true);
+    }
+}
+
+/**
+ * Update the feed on the server.
+ * @param {int} The id of the feed whose items should be updated.
+ * @param {function} A callback function with parameters boolean (indicating
+ *     success) and string (an optional error message).
+ */
+function updateFeed(feedId, callback) {
+    trace(2, "Update feed: " + feedId);
+    if (responsesPending['updatefeed']) {
+        return;
+    }
+
+    // needs to be logged in
+    if (!state['token']) {
+        requestsPending['updatefeed'] = true;
+        processPendingRequests(callback);
+        return;
+    }
+
+    responsesPending['updatefeed'] = true;
+
+    var params = {
+        'op': 'updateFeed',
+        'sid': state['token'],
+        'feed_id': feedId
+    }
+
+    networkCall(params, function(http) { process_updateFeed(callback, http) });
+}
+
+/** @private */
+function process_updateFeed(callback, httpreq) {
+    var response = process_readyState(httpreq);
+
+    responsesPending['updatefeed'] = false;
+
+    if (!response.successful) {
+        trace(1, "Update feed: " + response.errorMessage);
+        if (callback) {
+            callback(false, response.errorMessage);
+        }
+        return;
+    }
+
+    if (!processPendingRequests(callback) && callback) {
         // This action is complete (as there's no other requests to do)
         // Fire callback saying all ok
         callback(true);
