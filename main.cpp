@@ -120,6 +120,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if defined(Q_OS_SAILFISH)
     viewer->setSource(SailfishApp::pathTo("qml/sailfish/harbour-ttrss.qml"));
+#elif defined(Q_OS_UBUNTU_TOUCH)
+    viewer->setSource(QStringLiteral("qml/ubuntu-touch/main.qml"));
 #else
     viewer->setMainQmlFile(QLatin1String("qml/harmattan/main.qml"));
 #endif

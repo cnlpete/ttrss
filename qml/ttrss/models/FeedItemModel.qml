@@ -29,6 +29,7 @@ ListModel {
     property variant feed
     property int continuation: 0
     property bool hasMoreItems: false
+    property bool requestServerUpdate: false
 
     property variant categories
 
@@ -36,7 +37,26 @@ ListModel {
     signal itemPublishedChanged(variant item)
     signal itemStarChanged(variant item)
 
+    onFeedChanged: requestServerUpdate = false
+
     function update() {
+        if (requestServerUpdate) {
+            var ttrss = rootWindow.getTTRSS();
+            ttrss.trace(2, "requesting the server to update the feed " + feed.feedId);
+            ttrss.updateFeed(feed.feedId,
+                             function(successful, errorMessage) {
+                                 if (successful) {
+                                     requestServerUpdate = false;
+                                 }
+                                 doUpdate();
+                             });
+        } else {
+            doUpdate();
+        }
+    }
+
+    /** @private */
+    function doUpdate() {
         var ttrss = rootWindow.getTTRSS();
         ttrss.updateFeedItems(feed.feedId, feed.isCat, continuation,
                               function(successful, errorMessage) {
@@ -131,6 +151,10 @@ ListModel {
             }
         } else {
             hasMoreItems = false
+        }
+
+        if (!hasMoreItems) {
+            requestServerUpdate = true
         }
     }
 

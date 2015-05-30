@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Tiny Tiny RSS
+Exec=./$${TARGET}
+Icon=ttrss.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

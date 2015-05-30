@@ -36,13 +36,13 @@
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="109"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="103"/>
         <source>Homepage</source>
         <translation>主页</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="146"/>
         <source>Issuetracker</source>
         <translation>话题跟踪</translation>
     </message>
@@ -66,32 +66,32 @@
         <translation>许可协议全文</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="99"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="96"/>
         <source>Buy me a beer</source>
         <translation>捐赠</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="115"/>
         <source>Contributors</source>
         <translation>贡献者</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="132"/>
         <source>Feature Requests &amp; Bugs</source>
         <translation>功能建议及bug反馈</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="139"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation>如果发现bugs或有任何建议,请访问 &lt;b&gt;Issue Tracker&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="158"/>
         <source>Legal Notice</source>
         <translation>法律声明</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="174"/>
         <source>The source code is available at %1.</source>
         <translation>可在 %1 获取源代码</translation>
     </message>
@@ -139,24 +139,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="64"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="77"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="77"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
         <source>No categories have unread items</source>
         <translation>无未阅读条目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
         <source>No categories to display</source>
         <translation>无条目可显示</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="81"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="72"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="17"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Tiny Tiny RSS 阅读器</translation>
     </message>
@@ -169,6 +173,16 @@
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="47"/>
         <source>Update</source>
         <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <source>Unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <source>All</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -369,6 +383,14 @@
     </message>
 </context>
 <context>
+    <name>FeedItemSwipe</name>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="101"/>
+        <source>Open in Browser</source>
+        <translation>在浏览器中打开</translation>
+    </message>
+</context>
+<context>
     <name>FeedItems</name>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
@@ -381,18 +403,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="118"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
         <source>No items in feed</source>
         <translation>订阅源中无条目</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
         <source>No unread items in feed</source>
         <translation>订阅源中无未读条目</translation>
     </message>
@@ -459,6 +484,16 @@
         <source>Marking all loaded as read</source>
         <translation>正在标记为已读</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <source>Unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <source>All</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedModel</name>
@@ -478,18 +513,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="87"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="144"/>
         <source>Loading</source>
         <translation>读取中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
         <source>No feeds in category</source>
         <translation>无订阅类别</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
         <source>Category has no unread items</source>
         <translation>此类订阅无任何未读条目</translation>
     </message>
@@ -566,6 +604,16 @@
         <source>Update</source>
         <translation>更新</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
+        <source>Unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
+        <source>All</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GenericUpdateCover</name>
@@ -600,16 +648,19 @@
     <name>MainPage</name>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="54"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="51"/>
         <source>Server:</source>
         <translation>服务器:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="68"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="71"/>
         <source>Username:</source>
         <translation>用户名:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="82"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="92"/>
         <source>Password:</source>
         <translation>密码:</translation>
     </message>
@@ -617,12 +668,15 @@
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="137"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="121"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="103"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="139"/>
         <source>Login</source>
         <translation>登录</translation>
     </message>
@@ -635,6 +689,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="114"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="108"/>
         <source>Ignore SSL Errors</source>
         <translation>忽略SSL错误</translation>
     </message>
@@ -681,6 +736,12 @@
         <source>The supplied login credentials did not work.</source>
         <translation>登录信息无效</translation>
     </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="84"/>
+        <source>Next</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>NoteEditor</name>
@@ -713,6 +774,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="40"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="54"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="28"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -757,6 +819,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="143"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="78"/>
         <source>Minimum Ssl Version</source>
         <translation>最低Ssl版本</translation>
     </message>
@@ -769,18 +832,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="92"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="83"/>
         <source>Any</source>
         <translation>任意</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="132"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="84"/>
         <source>SslV2</source>
         <translation>SslV2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="95"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="85"/>
         <source>SslV3</source>
         <translation>SslV3</translation>
     </message>
@@ -807,24 +873,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="155"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="128"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="127"/>
         <source>Order</source>
         <translation>排列顺序</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="157"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="132"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="131"/>
         <source>Newest First</source>
         <translation>优先新闻</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="157"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="133"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="132"/>
         <source>Oldest First</source>
         <translation>优先历史</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="200"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="219"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="172"/>
         <source>Font Size</source>
         <translation>字体大小</translation>
     </message>
@@ -836,6 +906,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="180"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="110"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="101"/>
         <source>Show Icons</source>
         <translation>显示图标</translation>
     </message>
@@ -847,6 +918,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="66"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="60"/>
         <source>Automatically Login</source>
         <translation>启动自动登录</translation>
     </message>
@@ -873,12 +945,14 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="61"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="56"/>
         <source>Startup</source>
         <translation>自启动</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="151"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="192"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="141"/>
         <source>Items</source>
         <translation>项目</translation>
     </message>
@@ -899,31 +973,37 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="86"/>
         <source>TlsV1.0</source>
         <translation>TlsV1.0</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="98"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="87"/>
         <source>TlsV1.1</source>
         <translation>TlsV1.1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="88"/>
         <source>TlsV1.2</source>
         <translation>TlsV1.2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="97"/>
         <source>Feeds</source>
         <translation>订阅源</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="117"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="110"/>
         <source>White Background on Icons</source>
         <translation>白底图标</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="123"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="122"/>
         <source>Item List</source>
         <translation>项目列表</translation>
     </message>
@@ -966,16 +1046,19 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="197"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="145"/>
         <source>Automatically Mark as Read</source>
         <translation>自动标记为已读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="204"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="153"/>
         <source>Show Images</source>
         <translation>显示图片</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="210"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="161"/>
         <source>Strip invisible Images</source>
         <translation>屏蔽不可见图片</translation>
     </message>
@@ -986,26 +1069,31 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="227"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="175"/>
         <source>Tiny</source>
         <translation>非常小</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="230"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="176"/>
         <source>Small</source>
         <translation>小</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="233"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="177"/>
         <source>Medium</source>
         <translation>一般</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="236"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="178"/>
         <source>Large</source>
         <translation>大</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="239"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="179"/>
         <source>Huge</source>
         <translation>非常大</translation>
     </message>
@@ -1023,6 +1111,11 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="224"/>
         <source>Strip invisible images</source>
         <translation>屏蔽不可见图片</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
+        <source>Show &quot;All Feeds&quot;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
