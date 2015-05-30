@@ -10,6 +10,21 @@
     <lastBuildDate>Wed, 18 Mar 2015 22:44:53 +0100</lastBuildDate>
 
     <item>
+      <title>Version 0.5.2</title>
+      <pubDate>Sat, 30 May 2015 11:40:42 +0200</pubDate>
+      <description>
+        <![CDATA[
+   * updated translations from transifex
+   * added reloading of server feed when update returns without new items
+   * bugfix for app crashing after window switch
+        ]]>
+      </description>
+      <dc:creator>Hauke Schade</dc:creator>
+      <guid isPermaLink="true">http://schad.es/ttrss052</guid>
+      <link>http://schad.es/ttrss052</link>
+    </item>
+
+    <item>
       <title>Version 0.5.1</title>
       <pubDate>Wed, 18 Mar 2015 22:44:53 +0100</pubDate>
       <description>
