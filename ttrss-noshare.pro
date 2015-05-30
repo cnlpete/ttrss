@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
 # http://www.gnu.org/licenses/.
 
-VERSION = 0.5.1-noshare
+VERSION = 0.5.2-noshare
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += TARGET=\\\"$$TARGET\\\"
@@ -97,7 +97,8 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/changelog \
     $$files(qml/ttrss/sailfish/*.qml) \
     $$files(qml/ttrss/sailfish/pages/*.qml) \
-    $$files(qml/ttrss/sailfish/items/*.qml)
+    $$files(qml/ttrss/sailfish/items/*.qml) \
+    *.desktop
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
@@ -139,4 +140,8 @@ contains(MEEGO_EDITION,harmattan) {
     splash.files = images/ttrss-splash-portrait.jpg images/ttrss-splash-landscape.jpg
     splash.path = /opt/$${TARGET}/splash
     INSTALLS += splash
+
+    desktopfile.files = ttrss_harmattan.desktop
+    desktopfile.path = /usr/share/applications
+    INSTALLS += desktopfile
 }
