@@ -37,7 +37,7 @@ ListModel {
     signal itemPublishedChanged(variant item)
     signal itemStarChanged(variant item)
 
-    onFeedChanged: requestServerUpdate = false
+    //onFeedChanged: requestServerUpdate = false
 
     function update() {
         if (requestServerUpdate) {
@@ -153,9 +153,9 @@ ListModel {
             hasMoreItems = false
         }
 
-        if (!hasMoreItems) {
-            requestServerUpdate = true
-        }
+        //if (!hasMoreItems) {
+        //    requestServerUpdate = true
+        //}
     }
 
     function getSelectedItem() {
