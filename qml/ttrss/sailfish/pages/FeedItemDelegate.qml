@@ -92,7 +92,7 @@ ListItem {
                 maximumLineCount: settings.lengthOfTitle
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 truncationMode: TruncationMode.Fade
-                textFormat: Text.StyledText
+                textFormat: Text.RichText
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeMedium
             }
