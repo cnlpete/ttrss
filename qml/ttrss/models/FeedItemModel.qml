@@ -42,6 +42,7 @@ ListModel {
     function update() {
         if (requestServerUpdate) {
             var ttrss = rootWindow.getTTRSS();
+            ttrss.trace(2, "requesting the server to update the feed " + feed.feedId);
             ttrss.updateFeed(feed.feedId,
                              function(successful, errorMessage) {
                                  if (successful) {

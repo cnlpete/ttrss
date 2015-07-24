@@ -387,7 +387,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="101"/>
         <source>Open in Browser</source>
-        <translation type="unfinished"/>
+        <translation>Deschide in browser web</translation>
     </message>
 </context>
 <context>

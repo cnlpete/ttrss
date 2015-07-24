@@ -109,7 +109,7 @@ ListModel {
                     totalUnreadCount += parseInt(feeds[feed].unread)
                 }
             }
-            if (root.count >= 2&& root.category.categoryId !== ttrss.constants['categories']['SPECIAL'])
+            if (root.count >= 2 && root.category.categoryId !== ttrss.constants['categories']['SPECIAL']) {
                 root.insert(0, {
                                 title:       constant.allArticles,
                                 unreadcount: totalUnreadCount,
@@ -119,6 +119,7 @@ ListModel {
                                 icon:        '',
                                 lastUpdated: ''
                             })
+            }
         }
     }
 

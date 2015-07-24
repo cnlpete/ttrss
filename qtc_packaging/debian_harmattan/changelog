@@ -1,3 +1,9 @@
+ttrss (0.5.2) unstable; urgency=low
+  * updated translations from transifex
+  * added reloading of server feed when update returns without new items
+
+ -- Hauke Schade <cnlpete@cnlpete.de>  Sat, 30 May 2015 11:40:42 +0200
+
 ttrss (0.5.1) unstable; urgency=low
   * added svedish and dutch translations
   * updated translations from transifex

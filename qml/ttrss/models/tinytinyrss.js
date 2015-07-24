@@ -80,7 +80,7 @@ function initState(showAll) {
         'pref':         { },
         'showall':      false, // see getter/setter for documentation
         'closeIfEmpty': false, // Should pages close if they have no content to display
-        'tracelevel':   1,     // 1 = errors, 2 = key info, 3 = network traffic,
+        'tracelevel':   2,     // 1 = errors, 2 = key info, 3 = network traffic,
                                // 4 = info, 5 = high detail
         'categorycache':     {},
         'feedcache':         {},
@@ -128,7 +128,7 @@ function initState(showAll) {
  */
 function trace(level, text) {
     if(level <= state['tracelevel']) {
-        console.log(text + '\n');
+        console.log(level + '\t - ' + text);
     }
 }
 
