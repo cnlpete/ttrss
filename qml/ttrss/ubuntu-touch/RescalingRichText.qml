@@ -18,7 +18,7 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-import QtQuick 2.0
+import QtQuick 2.3
 
 /* Pretty fancy element for displaying rich text fitting the width.
  *
@@ -40,6 +40,7 @@ Item {
     property real scaling: 1
 
     signal linkActivated(string link)
+    signal pressAndHold(string link)
 
     height: contentText.height * scaling
     clip: true
@@ -78,8 +79,16 @@ Item {
 
 //        text: _RICHTEXT_STYLESHEET_PREAMBLE + parent.text + _RICHTEXT_STYLESHEET_APPENDIX
 
-        onLinkActivated: {
-            root.linkActivated(link)
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                var url = contentText.linkAt(mouse.x, mouse.y)
+                if (url) root.linkActivated(url)
+            }
+            onPressAndHold: {
+                var url = contentText.linkAt(mouse.x, mouse.y)
+                root.pressAndHold(url)
+            }
         }
     }
 

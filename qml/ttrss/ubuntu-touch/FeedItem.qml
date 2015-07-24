@@ -11,6 +11,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 
 Item {
     id: root
@@ -87,6 +88,7 @@ Item {
                     rightMargin: Theme.paddingLarge
                 }
             }
+
             RescalingRichText {
                 id: itemView
                 width: parent.width
@@ -94,6 +96,15 @@ Item {
                 fontSize: settings.webviewFontSize
                 color: Theme.palette.selected.baseText
                 onLinkActivated: Qt.openUrlExternally(link)
+                onPressAndHold: {
+                    var url = link ? link : root.url
+                    var isImage = (/jpe?g$/i.test(url) || /png$/i.test(url))
+                    PopupUtils.open(Qt.resolvedUrl("ContextMenu.qml"), root, {
+                        "isImage": isImage,
+                        "url": url,
+                        "target": itemView,
+                    })
+                }
             }
         }
     }
