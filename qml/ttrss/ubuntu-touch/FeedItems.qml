@@ -20,12 +20,12 @@ Page {
     title: feed.title
 
     Component.onCompleted: {
-        feedItems.feed = feeditemsPage.feed
-        feedItems.hasMoreItems = false
-        feedItems.continuation = 0
+        feedItemModel.feed = feeditemsPage.feed
+        feedItemModel.hasMoreItems = false
+        feedItemModel.continuation = 0
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(settings.showAll)
-        feedItems.update()
+        feedItemModel.update()
         // FIXME workaround for https://bugs.launchpad.net/bugs/1404884
         pullToRefresh.enabled = true
     }
@@ -40,10 +40,10 @@ Page {
                 if (showAll != settings.showAll) {
                     ttrss.setShowAll(showAll)
                     settings.showAll = showAll
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
+                    feedItemModel.continuation = 0
+                    feedItemModel.hasMoreItems = false
+                    feedItemModel.clear()
+                    feedItemModel.update()
                 }
             }
         }
@@ -52,12 +52,12 @@ Page {
     ListView {
         id: listView
         anchors.fill: parent
-        model: feedItems
+        model: feedItemModel
 
         PullToRefresh {
             id: pullToRefresh
             enabled: false
-            onRefresh: feedItems.update()
+            onRefresh: feedItemModel.update()
             refreshing: network.loading
         }
 
@@ -102,9 +102,9 @@ Page {
 
         delegate: FeedItemDelegate {
             onClicked: {
-                feedItems.selectedIndex = index
+                feedItemModel.selectedIndex = index
                 pageStack.push(Qt.resolvedUrl("FeedItemSwipe.qml"), {
-                    model: feedItems,
+                    model: feedItemModel,
                     currentIndex: index,
                     isCat: feed.isCat
                 })

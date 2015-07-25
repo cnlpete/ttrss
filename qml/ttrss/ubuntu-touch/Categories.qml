@@ -16,6 +16,8 @@ Page {
     id: categoriesPage
     title: qsTr("Tiny Tiny RSS Reader")
 
+    property var categories
+
     head {
         actions: [
             Action {

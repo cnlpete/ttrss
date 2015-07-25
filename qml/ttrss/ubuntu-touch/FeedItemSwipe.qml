@@ -28,13 +28,13 @@ Page {
         Action {
             iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
             onTriggered: {
-                feedItems.toggleStar()
+                model.toggleStar()
             }
         },
         Action {
             iconSource: "../resources/ic_"+(currentItem.unread?"unread":"read")+".png"
             onTriggered: {
-                feedItems.toggleRead()
+                model.toggleRead()
             }
         }
     ]
@@ -63,10 +63,10 @@ Page {
         }
 
         onCurrentIndexChanged: {
-            feedItems.selectedIndex = currentIndex
+            model.selectedIndex = currentIndex
             if (currentItem && settings.autoMarkRead && currentItem.unread) {
                 console.log("marking item as read")
-                feedItems.toggleRead()
+                model.toggleRead()
             }
             panel.close()
         }

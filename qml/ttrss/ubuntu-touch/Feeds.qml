@@ -14,16 +14,16 @@ import Ubuntu.Components 1.1
 
 Page {
     id: feedsPage
-    property variant category
+    property var category
 
     title: category.title
 
     Component.onCompleted: {
-        feeds.category = feedsPage.category
-        feeds.clear()
+        feedModel.category = feedsPage.category
+        feedModel.clear()
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(settings.showAll)
-        feeds.update()
+        feedModel.update()
         // FIXME workaround for https://bugs.launchpad.net/bugs/1404884
         pullToRefresh.enabled = true
     }
@@ -45,7 +45,7 @@ Page {
                 if (showAll != settings.showAll) {
                     ttrss.setShowAll(showAll)
                     settings.showAll = showAll
-                    feeds.update()
+                    feedModel.update()
                 }
             }
         }
@@ -54,12 +54,12 @@ Page {
     ListView {
         id: listView
         anchors.fill: parent
-        model: feeds
+        model: feedModel
 
         PullToRefresh {
             id: pullToRefresh
             enabled: false
-            onRefresh: feeds.update()
+            onRefresh: feedModel.update()
             refreshing: network.loading
         }
 
@@ -84,7 +84,7 @@ Page {
                                                 break
                                             case 1:
                                                 //notification.show(qsTr('Feed added'))
-                                                feeds.update()
+                                                feedModel.update()
                                                 categories.update()
                                                 break
                                             case 2:
@@ -120,12 +120,12 @@ Page {
                 text: qsTr("Update")
                 enabled: !network.loading
                 onClicked: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
             ToggleShowAllItem {
                 onUpdateView: {
-                    feeds.update()
+                    feedModel.update()
                 }
             }
         }
@@ -133,7 +133,7 @@ Page {
 
         delegate: FeedDelegate {
             onClicked: {
-                feeds.selectedIndex = index
+                feedModel.selectedIndex = index
                 showFeed(model)
             }
         }
@@ -151,7 +151,7 @@ Page {
 
     function showFeed(feedModel) {
         if (feedModel != null) {
-            feedItems.clear()
+            feedItemModel.clear()
             pageStack.push(Qt.resolvedUrl("FeedItems.qml"), {
                 feed: feedModel
             })
