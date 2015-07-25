@@ -47,6 +47,14 @@ Page {
                 }
             }
         }
+
+        actions: [
+            Action {
+                text: qsTr('Mark all read')
+                iconName: "tick"
+                onTriggered: feedItemModel.catchUp()
+            }
+        ]
     }
 
     ListView {
@@ -60,37 +68,6 @@ Page {
             onRefresh: feedItemModel.update()
             refreshing: network.loading
         }
-
-        /* TODO
-        PullDownMenu {
-//            AboutItem {}
-//            SettingsItem {}
-            MenuItem {
-                text: qsTr("Update")
-                enabled: !network.loading
-                onClicked: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
-                }
-            }
-            ToggleShowAllItem {
-                onUpdateView: {
-                    feedItems.continuation = 0
-                    feedItems.hasMoreItems = false
-                    feedItems.clear()
-                    feedItems.update()
-                }
-            }
-            MenuItem {
-                text: qsTr('Mark all read')
-                onClicked: {
-                    feedItems.catchUp()
-                }
-            }
-        }
-        */
 
         section {
             property: 'date'
