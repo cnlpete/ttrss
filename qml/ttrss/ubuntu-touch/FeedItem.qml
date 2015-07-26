@@ -32,6 +32,8 @@ Item {
         anchors.fill: parent
         contentHeight: content.height
         interactive: true
+        flickableDirection: Flickable.VerticalFlick
+        topMargin: pageStack.currentPage.header.height
         clip: true
 
         /* TODO
