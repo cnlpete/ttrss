@@ -238,7 +238,9 @@ ListModel {
                 root.itemUnreadChanged(item)
             }
 
-            callback(successful, errorMessage, item.unread)
+            if (callback) {
+                callback(successful, errorMessage, item.unread)
+            }
         })
     }
 
@@ -261,7 +263,9 @@ ListModel {
                 root.itemStarChanged(item)
             }
 
-            callback(successful, errorMessage, item.marked)
+            if (callback) {
+                callback(successful, errorMessage, item.marked)
+            }
         })
     }
 
@@ -284,7 +288,9 @@ ListModel {
                 root.itemPublishedChanged(item)
             }
 
-            callback(successful, errorMessage, item.rss)
+            if (callback) {
+                callback(successful, errorMessage, item.rss)
+            }
         })
     }
 
@@ -298,7 +304,9 @@ ListModel {
                 root.setProperty(index, "note", note)
             }
 
-            callback(successful, errorMessage)
+            if (callback) {
+                callback(successful, errorMessage)
+            }
         })
     }
 
