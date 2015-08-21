@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import Ubuntu.Components.ListItems 1.0 as ListItem
-//import Ubuntu.Keyboard 0.1
+import Ubuntu.Keyboard 0.1
 
 Item {
     id: root
@@ -60,7 +60,7 @@ Item {
                     inputMethodHints: Qt.ImhUrlCharactersOnly + Qt.ImhNoPredictiveText
                     KeyNavigation.tab: username
                     Keys.onReturnPressed: username.forceActiveFocus()
-                    //InputMethod.extensions: { "enterKeyText": qsTr("Next") }
+                    InputMethod.extensions: { "enterKeyText": qsTr("Next") }
                 }
             }
 
@@ -81,7 +81,7 @@ Item {
                     KeyNavigation.tab: password
                     KeyNavigation.backtab: server
                     Keys.onReturnPressed: password.forceActiveFocus()
-                    //InputMethod.extensions: { "enterKeyText": qsTr("Next") }
+                    InputMethod.extensions: { "enterKeyText": qsTr("Next") }
                 }
             }
 
@@ -100,7 +100,7 @@ Item {
                     enabled: !network.loading
                     KeyNavigation.backtab: username
                     Keys.onReturnPressed: root.submit()
-                    //InputMethod.extensions: { "enterKeyText": qsTr("Login") }
+                    InputMethod.extensions: { "enterKeyText": qsTr("Login") }
                 }
             }
 
