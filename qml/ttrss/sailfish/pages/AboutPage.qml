@@ -90,7 +90,9 @@ Page {
             }
 
             Row {
-                width: parent.width
+                width: parent.width - 2 * Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingMedium
                 Button {
                     width: Math.floor(parent.width / 2) - Theme.paddingMedium
                     text: qsTr("Buy me a beer")

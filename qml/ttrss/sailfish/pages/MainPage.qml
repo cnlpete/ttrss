@@ -116,7 +116,9 @@ Dialog {
                 checked: false
             }
             Row {
-                width: parent.width
+                width: parent.width - 2 * Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingMedium
                 Button {
                     text: qsTr("Restore")
                     width: Math.floor(parent.width / 2) - Theme.paddingMedium
