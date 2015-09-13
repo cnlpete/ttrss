@@ -16,10 +16,8 @@ import Ubuntu.Components.ListItems 0.1 as ListItem
 ListItem.Empty {
     id: listItem
 
-
-    onClicked: root.clicked()
-
     SubtitledLabel {
+        anchors { leftMargin: units.gu(1); rightMargin: units.gu(1) }
         text: model.title
         subText: model.subtitle
         iconSource: (settings.displayIcons && feed.isCat) ? model.icon : ''

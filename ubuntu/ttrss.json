@@ -1,5 +1,7 @@
 {
 	"policy_groups": [
+		"content_exchange",
+		"content_exchange_source",
 		"networking"
 		],
 	"policy_version": 1.2

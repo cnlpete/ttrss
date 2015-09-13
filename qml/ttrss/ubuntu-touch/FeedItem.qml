@@ -11,6 +11,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 
 Item {
     id: root
@@ -31,6 +32,8 @@ Item {
         anchors.fill: parent
         contentHeight: content.height
         interactive: true
+        flickableDirection: Flickable.VerticalFlick
+        topMargin: pageStack.currentPage.header.height
         clip: true
 
         /* TODO
@@ -65,7 +68,7 @@ Item {
 
         Column {
             id: content
-            width: parent.width
+            anchors { left: parent.left; right: parent.right; margins: units.gu(1) }
             spacing: 2
 
             Label {
@@ -87,6 +90,7 @@ Item {
                     rightMargin: Theme.paddingLarge
                 }
             }
+
             RescalingRichText {
                 id: itemView
                 width: parent.width
@@ -94,6 +98,15 @@ Item {
                 fontSize: settings.webviewFontSize
                 color: Theme.palette.selected.baseText
                 onLinkActivated: Qt.openUrlExternally(link)
+                onPressAndHold: {
+                    var url = link ? link : root.url
+                    var isImage = (/jpe?g$/i.test(url) || /png$/i.test(url))
+                    PopupUtils.open(Qt.resolvedUrl("ContextMenu.qml"), root, {
+                        "isImage": isImage,
+                        "url": url,
+                        "target": itemView,
+                    })
+                }
             }
         }
     }

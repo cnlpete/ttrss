@@ -11,5 +11,5 @@
 	\"maintainer\": \"Alberto Mardegan <info@mardy.it>\",
 	\"name\": \"it.mardy.ttrss\",
 	\"title\": \"Tiny Tiny RSS\",
-	\"version\": \"$${VERSION}-0\"
+	\"version\": \"$${VERSION}-$${UBUNTU_REVISION}\"
 }

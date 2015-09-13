@@ -219,7 +219,7 @@ Item {
 //            loginErrorDialog.open();
             return
         }
-        categories.update()
+        categoryModel.update()
         pageStack.clear()
         //Now show the categories View
         if (settings.useAllFeedsOnStartup) {
@@ -229,11 +229,14 @@ Item {
                     categoryId: ttrss.constants['categories']['ALL'],
                     title: constant.allFeeds,
                     unreadcount: 0
-                }
+                },
             })
         }
-        else
-            pageStack.push(Qt.resolvedUrl('Categories.qml'))
+        else {
+            pageStack.push(Qt.resolvedUrl('Categories.qml'), {
+                categories: categoryModel,
+            })
+        }
     }
 
     Component.onCompleted: {
