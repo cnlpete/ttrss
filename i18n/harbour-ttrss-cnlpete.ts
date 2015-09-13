@@ -141,21 +141,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="64"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="77"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="77"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="79"/>
         <source>Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
         <source>No categories to display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
         <source>No categories have unread items</source>
         <translation type="unfinished"></translation>
     </message>
@@ -177,12 +177,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
         <source>Unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -245,6 +245,19 @@
     <message>
         <location filename="../qml/ttrss/models/Constants.qml" line="44"/>
         <source>Uncategorized</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ContextMenu</name>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="32"/>
+        <source>Open in Web Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="36"/>
+        <source>Save image</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -405,21 +418,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="118"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -487,13 +500,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
         <source>Unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
         <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="53"/>
+        <source>Mark all read</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -614,6 +632,14 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
         <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FileSaver</name>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FileSaver.qml" line="25"/>
+        <source>Save to</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
