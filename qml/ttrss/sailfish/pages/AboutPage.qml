@@ -86,7 +86,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeSmall
-                text: "<b>Copyright © 2012–2015 Hauke Schade</b>"
+                text: "<b>Copyright © 2012–2016 Hauke Schade</b>"
             }
 
             Row {
