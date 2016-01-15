@@ -25,6 +25,10 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
     signal remorseRunning(bool running)
+    property bool selected: model.selected
+
+
+    highlighted: down || menuOpen || selected
 
     contentHeight: content.height + contentRow.anchors.topMargin
                    + contentRow.anchors.bottomMargin
