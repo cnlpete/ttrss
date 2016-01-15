@@ -27,6 +27,7 @@ ListItem {
     signal remorseRunning(bool running)
     property bool selected: model.selected
 
+    showMenuOnPressAndHold: false
 
     highlighted: down || menuOpen || selected
 
@@ -146,54 +147,6 @@ ListItem {
                     }
                 }
             }
-        }
-    }
-
-    menu: Component {
-        ContextMenu {
-            MenuItem {
-                text: model.marked ? qsTr("Unstar") : qsTr("Star")
-                onClicked: {
-                    feedItemModel.toggleStar()
-                } }
-            MenuItem {
-                text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
-                onClicked: {
-                    feedItemModel.togglePublished()
-                } }
-            MenuItem {
-                text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
-                onClicked: {
-                    feedItemModel.toggleRead()
-                } }
-            MenuItem {
-                text: qsTr("Mark all above read")
-                enabled: index > 0
-                onClicked: {
-                    markAllAboveAsRead()
-                } }
-            MenuItem {
-                id: openInBrowserMenuItem
-                text: qsTr("Open in Web Browser")
-                visible: model.url && model.url !== ""
-                onClicked: {
-                    var item = feedItemModel.getSelectedItem()
-                    Qt.openUrlExternally(item.url)
-                }
-            }
-            Component.onCompleted: {
-                feedItemModel.selectedIndex = index
-            }
-        }
-    }
-
-    RemorseItem {
-        id: remorse
-        onCanceled: {
-            listItem.remorseRunning(false)
-        }
-        onTriggered: {
-            listItem.remorseRunning(false)
         }
     }
 
