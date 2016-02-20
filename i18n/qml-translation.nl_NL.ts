@@ -256,7 +256,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="36"/>
         <source>Save image</source>
-        <translation type="unfinished"/>
+        <translation>Afbeelding opslaan</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="80"/>
         <source>%1 selected</source>
-        <translation type="unfinished"/>
+        <translation>%1 geselecteerd</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="219"/>
@@ -603,7 +603,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FileSaver.qml" line="25"/>
         <source>Save to</source>
-        <translation type="unfinished"/>
+        <translation>Opslaan in</translation>
     </message>
 </context>
 <context>
