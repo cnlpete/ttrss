@@ -42,13 +42,14 @@ Page {
 
     SilicaFlickable {
         id: flick
-        contentWidth: parent.width
+        contentWidth: parent.width - (orientation === Orientation.Portrait ? 0 : Theme.itemSizeMedium)
         contentHeight: content.height
         interactive: true
         clip: true
         anchors {
             fill: parent
-            bottomMargin: panel.open ? panel.height : 0
+            bottomMargin: orientation === Orientation.Portrait ? panel.height : 0
+            rightMargin: orientation === Orientation.Portrait ? 0 : panel.width
         }
 
         PullDownMenu {
@@ -58,11 +59,11 @@ Page {
                 onClicked: Qt.openUrlExternally(url)
             }
 
-            MenuItem {
-                text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
-                enabled: !panel.moving
-                onClicked: panel.open ? panel.hide() : panel.show()
-            }
+//            MenuItem {
+//                text: panel.open ? qsTr("Hide Dock") : qsTr("Open Dock")
+//                enabled: !panel.moving
+//                onClicked: panel.open ? panel.hide() : panel.show()
+//            }
 
             MenuItem {
                 text: qsTr("Edit Note")
@@ -111,20 +112,21 @@ Page {
                 id: pageHeader
             }
 
+            Label {
+                id: subtitleLabel
+                width: parent.width
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.RichText
+                color: Theme.highlightColor
+            }
+
             Row {
                 id: headerRow
-                width: parent.width
+                anchors {
+                    right: parent.right
+                }
                 spacing: Theme.paddingSmall
 
-                Label {
-                    id: subtitleLabel
-                    width: parent.width - starImage.width - rssImage.width
-                           - 2*parent.spacing
-                    text: ""
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    textFormat: Text.RichText
-                    color: Theme.highlightColor
-                }
                 Image {
                     id: starImage
                     opacity: marked ? 1 : 0
@@ -145,17 +147,13 @@ Page {
                     source: "qrc:///images/ic_rss_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
-            }
-
-            Label {
-                text: date
-                font.pixelSize: Theme.fontSizeSmall
-                font.weight: Font.Light
-                textFormat: Text.PlainText
-                anchors {
-                    right: parent.right
+                Label {
+                    text: date
+                    font.pixelSize: Theme.fontSizeSmall
+                    font.weight: Font.Light
+                    textFormat: Text.PlainText
+                    color: Theme.secondaryColor
                 }
-                color: Theme.secondaryColor
             }
 
             RescalingRichText {
@@ -163,7 +161,7 @@ Page {
                 text: body
                 fontSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
-                width: parent.width
+                width: parent.width - Theme.paddingLarge
                 onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
             }
 
@@ -202,24 +200,83 @@ Page {
         size: BusyIndicatorSize.Large
     }
 
-    onOrientationChanged: {
-        // hide the panel in landscape mode
-        if (orientation === Orientation.Landscape && panel.open) {
-            panel.hide()
-        }
-    }
-
     DockedPanel {
         id: panel
 
-        width: parent.width
-        height: Theme.itemSizeMedium
+        width: orientation === Orientation.Portrait ? parent.width : Theme.itemSizeMedium
+        height: orientation === Orientation.Portrait ? Theme.itemSizeMedium : parent.height
         open: true
 
-        dock: Dock.Bottom
+        dock: orientation === Orientation.Portrait ? Dock.Bottom : Dock.Right
+
+        Column {
+            visible: !panelRow.visible
+            anchors.centerIn: parent
+
+            IconButton {
+                icon.source: "image://theme/icon-m-previous"
+                enabled: previousId !== false
+                onClicked: {
+                    feedItemModel.selectPrevious()
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
+                    //showFeedItem()
+                }
+            }
+
+            IconButton {
+                icon.source: "qrc:///images/ic_rss_"
+                             + (rss ? "enabled" : "disabled") + ".png"
+                onClicked: {
+                    feedItemModel.togglePublished(function(successful,
+                                                           errorMessage,
+                                                           state) {
+                        rss = state
+                        // TODO make use of errorMessage
+                    })
+                }
+            }
+
+            IconButton {
+                icon.source: "qrc:///images/ic_star_"
+                             + (marked ? "enabled" : "disabled") + ".png"
+                onClicked: {
+                    feedItemModel.toggleStar(function(successful, errorMessage,
+                                                      state) {
+                        marked = state
+                        // TODO make use of errorMessage
+                    })
+                }
+            }
+
+            IconButton {
+                icon.source: "qrc:///images/ic_"
+                             + (unread ? "unread" : "read") + ".png"
+                onClicked: {
+                    feedItemModel.toggleRead(function(successful, errorMessage,
+                                                      state) {
+                        unread = state
+                        // TODO make use of errorMessage
+                    })
+                }
+            }
+
+            IconButton {
+                icon.source: "image://theme/icon-m-next"
+                enabled: nextId !== false
+                onClicked: {
+                    feedItemModel.selectNext()
+                    pageStack.replace(Qt.resolvedUrl("FeedItem.qml"),
+                                      { isCat: root.isCat })
+                    //showFeedItem()
+                }
+            }
+        }
 
         Row {
+            id: panelRow
             anchors.centerIn: parent
+            visible: orientation === Orientation.Portrait
 
             IconButton {
                 icon.source: "image://theme/icon-m-previous"
