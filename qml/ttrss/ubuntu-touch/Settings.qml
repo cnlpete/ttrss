@@ -20,12 +20,16 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 1.1
-import Ubuntu.Components.ListItems 1.0 as ListItem
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItem
 
 Page {
     id: settingsPage
-    title: qsTr("Settings")
+
+    header: PageHeader {
+        title: qsTr("Settings")
+        flickable: flickable
+    }
 
     Flickable {
         id: flickable

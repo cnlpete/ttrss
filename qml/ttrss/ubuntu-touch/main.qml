@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Ubuntu.Components 0.1
+import Ubuntu.Components 1.3
 import "../models/tinytinyrss.js" as TTRss
 import "../models" 1.0
  
@@ -16,7 +16,6 @@ MainView {
  
     width: units.gu(45)
     height: units.gu(75)
-    useDeprecatedToolbar: false
  
     PageStack {
         id: pageStack
