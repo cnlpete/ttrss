@@ -10,23 +10,25 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 2.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.3
 
 Page {
     id: categoriesPage
-    title: qsTr("Tiny Tiny RSS Reader")
 
     property var categories
 
-    head {
-        actions: [
+    header: PageHeader {
+        title: qsTr("Tiny Tiny RSS Reader")
+        flickable: listView
+        trailingActionBar.actions: [
             Action {
                 iconName: "settings"
                 onTriggered: pageStack.push(Qt.resolvedUrl("Settings.qml"))
             }
         ]
 
-        sections {
+        extension: Sections {
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
             model: [ qsTr("Unread"), qsTr("All") ]
             selectedIndex: settings.showAll ? 1 : 0
             onSelectedIndexChanged: {

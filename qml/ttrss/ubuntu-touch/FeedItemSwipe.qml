@@ -10,7 +10,7 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 2.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.3
 
 Page {
     id: root
@@ -21,23 +21,25 @@ Page {
     property alias currentItem: listView.currentItem
 
     anchors.fill: parent
-    title: currentItem ? currentItem.title : ""
-    flickable: currentItem ? currentItem.flickable : null
 
-    head.actions: [
-        Action {
-            iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
-            onTriggered: {
-                model.toggleStar()
+    header: PageHeader {
+        title: currentItem ? currentItem.title : ""
+        flickable: currentItem ? currentItem.flickable : null
+        trailingActionBar.actions: [
+            Action {
+                iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
+                onTriggered: {
+                    model.toggleStar()
+                }
+            },
+            Action {
+                iconSource: "../resources/ic_"+(currentItem.unread?"unread":"read")+".png"
+                onTriggered: {
+                    model.toggleRead()
+                }
             }
-        },
-        Action {
-            iconSource: "../resources/ic_"+(currentItem.unread?"unread":"read")+".png"
-            onTriggered: {
-                model.toggleRead()
-            }
-        }
-    ]
+        ]
+    }
 
     ListView {
         id: listView

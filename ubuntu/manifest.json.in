@@ -1,6 +1,6 @@
 {
 	\"description\": \"Tiny Tiny RSS client\",
-	\"framework\": \"ubuntu-sdk-14.10-qml\",
+	\"framework\": \"ubuntu-sdk-15.04.1-qml\",
 	\"hooks\": {
 		\"ttrss\": {
 			\"apparmor\": \"ttrss.json\",

@@ -10,14 +10,12 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 2.0
-import Ubuntu.Components 1.1
-import Ubuntu.Components.ListItems 1.0 as ListItem
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItem
 
 Page {
     id: feeditemsPage
     property variant feed
-
-    title: feed.title
 
     Component.onCompleted: {
         feedItemModel.feed = feeditemsPage.feed
@@ -30,8 +28,18 @@ Page {
         pullToRefresh.enabled = true
     }
 
-    head {
-        sections {
+    header: PageHeader {
+        title: feed.title
+        flickable: listView
+        trailingActionBar.actions: [
+            Action {
+                text: qsTr('Mark all read')
+                iconName: "tick"
+                onTriggered: feedItemModel.catchUp()
+            }
+        ]
+        extension: Sections {
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
             model: [ qsTr("Unread"), qsTr("All") ]
             selectedIndex: settings.showAll ? 1 : 0
             onSelectedIndexChanged: {
@@ -47,14 +55,6 @@ Page {
                 }
             }
         }
-
-        actions: [
-            Action {
-                text: qsTr('Mark all read')
-                iconName: "tick"
-                onTriggered: feedItemModel.catchUp()
-            }
-        ]
     }
 
     ListView {
