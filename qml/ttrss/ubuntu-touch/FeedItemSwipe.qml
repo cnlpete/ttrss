@@ -93,7 +93,7 @@ Page {
 
         Rectangle {
             anchors.fill: parent
-            color: Theme.palette.normal.overlay
+            color: theme.palette.normal.overlay
             ToolbarItems {
                 anchors.fill: parent
                 ToolbarButton {
