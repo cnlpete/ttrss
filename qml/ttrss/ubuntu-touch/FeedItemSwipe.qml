@@ -24,7 +24,6 @@ Page {
 
     header: PageHeader {
         title: currentItem ? currentItem.title : ""
-        flickable: currentItem ? currentItem.flickable : null
         trailingActionBar.actions: [
             Action {
                 iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
