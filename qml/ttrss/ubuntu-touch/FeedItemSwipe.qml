@@ -16,7 +16,7 @@ Page {
     id: root
 
     property bool isCat: false
-    property var model
+    property alias model: listView.model
     property int currentIndex: -1
     property alias currentItem: listView.currentItem
 
@@ -45,7 +45,7 @@ Page {
         anchors.fill: parent
         orientation: ListView.Horizontal
         snapMode: ListView.SnapOneItem
-        highlightFollowsCurrentItem: false
+        highlightFollowsCurrentItem: true
         highlightRangeMode: ListView.StrictlyEnforceRange
 
         delegate: FeedItem {
@@ -73,11 +73,9 @@ Page {
     }
 
     Component.onCompleted: {
-        /* For some reason, unless this is done here, the ListView would
-         * instantiate all the delegates when the page is first shown. */
-        listView.model = root.model
+        /* We don't use an alias on the current index, in order to perform the
+         * autoread action when the index changes. */
         listView.currentIndex = root.currentIndex
-        listView.highlightFollowsCurrentItem = true
     }
 
     Timer {
