@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2015  Hauke Schade
+ * Copyright (C) 2012–2016  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,11 @@ import Sailfish.Silica 1.0
 ListItem {
     id: listItem
     signal remorseRunning(bool running)
+    property bool selected: model.selected
+
+    showMenuOnPressAndHold: false
+
+    highlighted: down || menuOpen || selected
 
     contentHeight: content.height + contentRow.anchors.topMargin
                    + contentRow.anchors.bottomMargin
@@ -142,54 +147,6 @@ ListItem {
                     }
                 }
             }
-        }
-    }
-
-    menu: Component {
-        ContextMenu {
-            MenuItem {
-                text: model.marked ? qsTr("Unstar") : qsTr("Star")
-                onClicked: {
-                    feedItemModel.toggleStar()
-                } }
-            MenuItem {
-                text: model.rss ? qsTr("Unpublish") : qsTr("Publish")
-                onClicked: {
-                    feedItemModel.togglePublished()
-                } }
-            MenuItem {
-                text: model.unread ? qsTr("Mark read") : qsTr("Mark Unread")
-                onClicked: {
-                    feedItemModel.toggleRead()
-                } }
-            MenuItem {
-                text: qsTr("Mark all above read")
-                enabled: index > 0
-                onClicked: {
-                    markAllAboveAsRead()
-                } }
-            MenuItem {
-                id: openInBrowserMenuItem
-                text: qsTr("Open in Web Browser")
-                visible: model.url && model.url !== ""
-                onClicked: {
-                    var item = feedItemModel.getSelectedItem()
-                    Qt.openUrlExternally(item.url)
-                }
-            }
-            Component.onCompleted: {
-                feedItemModel.selectedIndex = index
-            }
-        }
-    }
-
-    RemorseItem {
-        id: remorse
-        onCanceled: {
-            listItem.remorseRunning(false)
-        }
-        onTriggered: {
-            listItem.remorseRunning(false)
         }
     }
 

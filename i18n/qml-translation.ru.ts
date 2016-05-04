@@ -36,13 +36,13 @@
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="109"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="103"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="105"/>
         <source>Homepage</source>
         <translation>Сайт</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="146"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="148"/>
         <source>Issuetracker</source>
         <translation>Issuetracker</translation>
     </message>
@@ -66,32 +66,32 @@
         <translation>Полная лицензия</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="96"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="98"/>
         <source>Buy me a beer</source>
         <translation>Оплатите мне пиво</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="115"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="117"/>
         <source>Contributors</source>
         <translation>Участники</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
         <source>Feature Requests &amp; Bugs</source>
         <translation>Пожелания &amp; ошибки</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="139"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation>Если вы обнаружили ошибку, или у вас есть предложения по функциональности, пожалуйста, посетите Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="158"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
         <source>Legal Notice</source>
         <translation>Правовая информация</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="174"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
         <source>The source code is available at %1.</source>
         <translation>Исходный код доступен на %1.</translation>
     </message>
@@ -139,21 +139,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="64"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="77"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="77"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="79"/>
         <source>Loading</source>
         <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
         <source>No categories have unread items</source>
         <translation>Нет категорий с непрочитанными сообщениями</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="78"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
         <source>No categories to display</source>
         <translation>Нет категорий</translation>
     </message>
@@ -175,12 +175,12 @@
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
         <source>Unread</source>
         <translation>Непрочитанные</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="28"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
         <source>All</source>
         <translation>Все</translation>
     </message>
@@ -247,6 +247,19 @@
     </message>
 </context>
 <context>
+    <name>ContextMenu</name>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="32"/>
+        <source>Open in Web Browser</source>
+        <translation>Открыть в веб-браузере</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="36"/>
+        <source>Save image</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ErrorDialog</name>
     <message>
         <location filename="../qml/ttrss/components/ErrorDialog.qml" line="54"/>
@@ -309,7 +322,7 @@
         <translation>Править заметку</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="336"/>
+        <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="337"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="80"/>
         <source>Assign Labels</source>
         <translation type="unfinished"/>
@@ -324,52 +337,12 @@
 <context>
     <name>FeedItemDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="117"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
         <source>Note: %1</source>
         <translation>Заметка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="151"/>
-        <source>Unstar</source>
-        <translation>Убрать из избранного</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="151"/>
-        <source>Star</source>
-        <translation>Добавить в избранное</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="156"/>
-        <source>Unpublish</source>
-        <translation>Unpublish</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="156"/>
-        <source>Publish</source>
-        <translation>Publish</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="161"/>
-        <source>Mark read</source>
-        <translation>Пометить как прочитанное</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="161"/>
-        <source>Mark Unread</source>
-        <translation>Пометить как непрочитанное</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="166"/>
-        <source>Mark all above read</source>
-        <translation>Отметить все выше как &quot;Прочитанное&quot;</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="173"/>
-        <source>Open in Web Browser</source>
-        <translation>Открыть в веб-браузере</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="199"/>
         <source>Marking all above as read</source>
         <translation>Отмечаю все выше как &quot;Прочитанное&quot;</translation>
     </message>
@@ -377,7 +350,7 @@
 <context>
     <name>FeedItemModel</name>
     <message>
-        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="84"/>
+        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="110"/>
         <source>Today</source>
         <translation>Сегодня</translation>
     </message>
@@ -395,29 +368,29 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="87"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="116"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="132"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="195"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="211"/>
         <source>Load more</source>
         <translation>Загрузить следующие</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="118"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="228"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="229"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation>Нет новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="119"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="229"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation>Нет непрочитанных новостей</translation>
     </message>
@@ -463,36 +436,46 @@
         <translation>Открыть в веб-браузере</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="53"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="127"/>
         <source>Update</source>
         <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="69"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="77"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="141"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
         <source>Mark all loaded read</source>
         <translation>Отметить все загруженное прочитанным</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="140"/>
-        <source>Last updated: %1</source>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="80"/>
+        <source>%1 selected</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="179"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="219"/>
+        <source>Last updated: %1</source>
+        <translation>Последнее обновление: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="259"/>
         <source>Marking all loaded as read</source>
         <translation>Отмечаю все загруженное прочитанным</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
         <source>Unread</source>
         <translation>Непрочитанные</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
         <source>All</source>
         <translation>Все</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="53"/>
+        <source>Mark all read</source>
+        <translation>Пометить все как прочитанное</translation>
     </message>
 </context>
 <context>
@@ -500,7 +483,7 @@
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="87"/>
         <source>Less than an hour ago</source>
-        <translation type="unfinished"/>
+        <translation>Меньше, чем час назад</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/models/FeedModel.qml" line="90"/>
@@ -592,7 +575,7 @@
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="211"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="171"/>
         <source>An error occurred while subscribing to the feed</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка добавления подписки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="49"/>
@@ -616,6 +599,14 @@
     </message>
 </context>
 <context>
+    <name>FileSaver</name>
+    <message>
+        <location filename="../qml/ttrss/ubuntu-touch/FileSaver.qml" line="25"/>
+        <source>Save to</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>GenericUpdateCover</name>
     <message>
         <location filename="../qml/ttrss/sailfish/cover/GenericUpdateCover.qml" line="75"/>
@@ -629,7 +620,7 @@
         <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="39"/>
         <location filename="../qml/ttrss/sailfish/pages/LabelUpdater.qml" line="49"/>
         <source>Update Labels</source>
-        <translation type="unfinished"/>
+        <translation>Обновить метки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="105"/>
@@ -667,7 +658,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="116"/>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="137"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="139"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="121"/>
         <source>Clear</source>
         <translation>Очистить</translation>
@@ -722,17 +713,17 @@
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="121"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="123"/>
         <source>Restore</source>
         <translation>Восстановить</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="219"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="221"/>
         <source>The API is disabled. You have to enable it in the webinterface.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="222"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="224"/>
         <source>The supplied login credentials did not work.</source>
         <translation>Поставляемые учетные данные не работают.</translation>
     </message>
@@ -807,7 +798,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
         <source>Special/Fresh Articles</source>
-        <translation type="unfinished"/>
+        <translation>Специальные/свежие новости</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
@@ -841,19 +832,19 @@
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="84"/>
         <source>SslV2</source>
-        <translation type="unfinished"/>
+        <translation>SslV2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="95"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="85"/>
         <source>SslV3</source>
-        <translation type="unfinished"/>
+        <translation>SslV3</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="134"/>
         <source>TlsV1</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="194"/>
@@ -975,64 +966,64 @@
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="86"/>
         <source>TlsV1.0</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.0</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="98"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="87"/>
         <source>TlsV1.1</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="88"/>
         <source>TlsV1.2</source>
-        <translation type="unfinished"/>
+        <translation>TlsV1.2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="97"/>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Подписки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="117"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="110"/>
         <source>White Background on Icons</source>
-        <translation type="unfinished"/>
+        <translation>Белый фон на иконках</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="123"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="122"/>
         <source>Item List</source>
-        <translation type="unfinished"/>
+        <translation>Список новостей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="140"/>
         <source>Max. Length of Title (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>Макс. длина заголовка</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="145"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="162"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="186"/>
         <source>No Limit</source>
-        <translation type="unfinished"/>
+        <translation>Без ограничений</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
         <source>Show Excerpt</source>
-        <translation type="unfinished"/>
+        <translation>Показать выдержки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="157"/>
         <source>Max. Length of Excerpt (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>Макс. длина выдержек</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="168"/>
         <source>Show Labels</source>
-        <translation type="unfinished"/>
+        <translation>Показать метки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="174"/>
@@ -1042,7 +1033,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="181"/>
         <source>Max. Length of Note (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>Макс. длина заметки</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="197"/>
@@ -1065,7 +1056,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="211"/>
         <source>height or width &lt; 2</source>
-        <translation type="unfinished"/>
+        <translation>Высота или ширина менее 2 пикселей</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="227"/>
@@ -1115,7 +1106,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Показать все подписки</translation>
     </message>
 </context>
 <context>

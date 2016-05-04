@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2015  Hauke Schade
+ * Copyright (C) 2012–2016  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,13 +27,7 @@ Page {
     id: feeditemsPage
     property var feed
     property bool needsUpdate: false
-
-    property int remorseCounter: 0
-    onRemorseCounterChanged: {
-        // Disallow model changes while a RemorseItem is running.
-        pullmenu.visible = remorseCounter === 0
-        pushmenu.visible = remorseCounter === 0
-    }
+    property bool selectionModeActive: false
 
     Component.onCompleted: {
         feedItemModel.feed = feeditemsPage.feed
@@ -42,120 +36,206 @@ Page {
 
     RemorsePopup { id: remorse }
 
-    SilicaListView {
-        id: listView
+    Drawer {
+        id: drawer
         anchors.fill: parent
-        model: feedItemModel
+        dock: Dock.Bottom
+        backgroundSize: drawerView.contentHeight
 
-        PullDownMenu {
-            id: pullmenu
-            MenuItem {
-                text: qsTr("Update")
-                enabled: !network.loading
+        open: selectionModeActive
+
+        background: SilicaFlickable {
+            id: drawerView
+            anchors.fill: parent
+            contentHeight: selectionModeActive ? 250 : Theme.itemSizeSmall
+            clip: true
+
+            Column {
+                visible: selectionModeActive
+                width: parent.width
+                height: parent.height - Theme.itemSizeSmall
+
+                Separator {
+                    width: parent.width
+                    horizontalAlignment: Qt.AlignHCenter
+                    color: Theme.highlightColor
+                }
+
+                IconButton {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    icon.source: "image://theme/icon-m-close"
+
+                    onClicked: {
+                        feedItemModel.unselectAll();
+                        selectionModeActive = false;
+                    }
+                }
+
+                Label {
+                    id: selectedLabel
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: Theme.highlightColor
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: Theme.fontSizeExtraLarge
+                    text: qsTr("%1 selected").arg(feedItemModel.selectedItems)
+                }
+
+                Row {
+                    visible: selectionModeActive
+                    height: Theme.itemSizeSmall
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    IconButton {
+                        enabled: feedItemModel.selectedItems > 0
+                        icon.source: "qrc:///images/ic_rss_"
+                                     + (feedItemModel.allPublished ? "enabled" : "disabled") + ".png"
+                        onClicked: {
+                            feedItemModel.setAllSelectedRSSState(!feedItemModel.allPublished)
+                        }
+                    }
+
+                    IconButton {
+                        enabled: feedItemModel.selectedItems > 0
+                        icon.source: "qrc:///images/ic_star_"
+                                     + (feedItemModel.allStarred ? "enabled" : "disabled") + ".png"
+                        onClicked: {
+                            feedItemModel.setAllSelectedMarkedState(!feedItemModel.allStarred)
+                        }
+                    }
+
+                    IconButton {
+                        enabled: feedItemModel.selectedItems > 0
+                        icon.source: "qrc:///images/ic_"
+                                     + (feedItemModel.allUnread ? "unread" : "read") + ".png"
+                        onClicked: {
+                            feedItemModel.setAllSelectedReadState(feedItemModel.allUnread)
+                        }
+                    }
+                }
+            }
+        }
+
+
+        SilicaListView {
+            id: listView
+            anchors.fill: parent
+            model: feedItemModel
+
+            PullDownMenu {
+                id: pullmenu
+                MenuItem {
+                    text: qsTr("Update")
+                    enabled: !network.loading
+                    onClicked: feeditemsPage.update()
+                }
+                ToggleShowAllItem {
+                    onUpdateView: {
+                        if (feeditemsPage.visible) {
+                            feeditemsPage.update()
+                        } else {
+                            feeditemsPage.needsUpdate = true
+                        }
+                    }
+                }
+                MenuItem {
+                    text: qsTr('Mark all loaded read')
+                    onClicked: markAllLoadedAsRead()
+                }
+            }
+
+            PushUpMenu {
+                id: pushmenu
+                MenuItem {
+                    text: qsTr('Mark all loaded read')
+                    onClicked: markAllLoadedAsRead()
+                }
+                ToggleShowAllItem {
+                    onUpdateView: {
+                        if (feeditemsPage.visible) {
+                            feeditemsPage.update()
+                        } else {
+                            feeditemsPage.needsUpdate = true
+                        }
+                    }
+                }
+            }
+
+            section {
+                property: 'date'
+
+                delegate: SectionHeader {
+                    text: section
+                    height: Theme.itemSizeExtraSmall
+                }
+            }
+
+            delegate: FeedItemDelegate {
                 onClicked: {
-                    feeditemsPage.update()
+                    if (selectionModeActive) {
+                        feedItemModel.select(index)
+                    }
+                    else {
+                        feedItemModel.selectedIndex = index
+                        pageStack.push(Qt.resolvedUrl("FeedItem.qml"), { isCat: feed.isCat })
+                    }
                 }
-            }
-            ToggleShowAllItem {
-                onUpdateView: {
-                    if (feeditemsPage.visible) {
-                        feeditemsPage.update()
-                    } else {
-                        feeditemsPage.needsUpdate = true
+                onPressAndHold: {
+                    if (selectionModeActive) {
+                        feedItemModel.selectedIndex = index
+                        pageStack.push(Qt.resolvedUrl("FeedItem.qml"), { isCat: feed.isCat })
+                    }
+                    else {
+                        feedItemModel.select(index)
+                        selectionModeActive = true;
                     }
                 }
             }
-            MenuItem {
-                text: qsTr('Mark all loaded read')
-                onClicked: markAllLoadedAsRead()
-            }
-        }
 
-        PushUpMenu {
-            id: pushmenu
-            MenuItem {
-                text: qsTr('Mark all loaded read')
-                onClicked: markAllLoadedAsRead()
-            }
-            ToggleShowAllItem {
-                onUpdateView: {
-                    if (feeditemsPage.visible) {
-                        feeditemsPage.update()
-                    } else {
-                        feeditemsPage.needsUpdate = true
-                    }
-                }
-            }
-        }
-
-        section {
-            property: 'date'
-
-            delegate: SectionHeader {
-                text: section
-                height: Theme.itemSizeExtraSmall
-            }
-        }
-
-        delegate: FeedItemDelegate {
-            onClicked: {
-                feedItemModel.selectedIndex = index
-                pageStack.push(Qt.resolvedUrl("FeedItem.qml"),
-                               { isCat: feed.isCat })
-            }
-            onRemorseRunning: {
-                if (running) {
-                    ++feeditemsPage.remorseCounter
-                } else {
-                    --feeditemsPage.remorseCounter
-                }
-            }
-        }
-
-        footer: Button {
-            text: qsTr("Load more")
-            visible: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems
-            height: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems ? 51 : 0
-            width: parent.width
-            onClicked: feedItemModel.update()
-        }
-
-        header: Column {
-            width: listView.width
-            height: header.height + info.height + lastUpdated.height
-            PageHeader {
-                id: header
-                title: feed.title
-            }
-            Button {
-                id: info
+            footer: Button {
                 text: qsTr("Load more")
-                visible: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems
-                height: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems ? 51 : 0
+                visible: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems
+                height: settings.feeditemsOrder === 0 && feedItemModel.hasMoreItems ? 51 : 0
                 width: parent.width
                 onClicked: feedItemModel.update()
             }
-            SectionHeader {
-                id: lastUpdated
-                text: feed.lastUpdated !== "" ? qsTr("Last updated: %1").arg(feed.lastUpdated) : ""
-                visible: text !== ""
-                height: Theme.itemSizeExtraSmall
-            }
-        }
 
-        ViewPlaceholder {
-            enabled: listView.count == 0
-            text: network.loading ?
-                      qsTr("Loading") :
-                      settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+            header: Column {
+                width: listView.width
+                height: header.height + info.height + lastUpdated.height
+                PageHeader {
+                    id: header
+                    title: feed.title
+                }
+                Button {
+                    id: info
+                    text: qsTr("Load more")
+                    visible: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems
+                    height: settings.feeditemsOrder === 1 && feedItemModel.hasMoreItems ? 51 : 0
+                    width: parent.width
+                    onClicked: feedItemModel.update()
+                }
+                SectionHeader {
+                    id: lastUpdated
+                    text: feed.lastUpdated !== "" ? qsTr("Last updated: %1").arg(feed.lastUpdated) : ""
+                    visible: text !== ""
+                    height: Theme.itemSizeExtraSmall
+                }
+            }
+
+            ViewPlaceholder {
+                enabled: listView.count == 0
+                text: network.loading ?
+                          qsTr("Loading") :
+                          settings.showAll ? qsTr("No items in feed") : qsTr("No unread items in feed")
+            }
+            BusyIndicator {
+                visible: listView.count != 0 && network.loading
+                running: visible
+                anchors.centerIn: parent
+                size: BusyIndicatorSize.Large
+            }
+            VerticalScrollDecorator { }
         }
-        BusyIndicator {
-            visible: listView.count != 0 && network.loading
-            running: visible
-            anchors.centerIn: parent
-            size: BusyIndicatorSize.Large
-        }
-        VerticalScrollDecorator { }
     }
 
     function showFeed(feedModel) {
@@ -186,6 +266,7 @@ Page {
         feedItemModel.continuation = 0
         feedItemModel.hasMoreItems = false
         feedItemModel.clear()
+        feedItemModel.selectedItems = 0
         feedItemModel.update()
     }
 }

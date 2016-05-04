@@ -1,3 +1,11 @@
+* Fri Jan 15 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.0-1-dev
+- allow multiselection in FeedItems view
+
+* Sun Sep 13 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.3-1-dev
+- updated translations from transifex
+- bugfix for displaying the title with special chars
+- UI fixes for Sailfish 2.0
+
 * Sat May 02 2015 Hauke Schade <cnlpete@cnlpete.de> 0.5.2-1-dev
 - updated translations from transifex
 - added reloading of server feed when update returns without new items

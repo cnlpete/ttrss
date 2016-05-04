@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2015  Hauke Schade
+ * Copyright (C) 2012–2016  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,8 +30,14 @@ ListModel {
     property int continuation: 0
     property bool hasMoreItems: false
     property bool requestServerUpdate: false
+    property int selectedItems: 0
 
     property var categories
+
+    // keep track of status of selected Items, will be calculated upon select
+    property bool allUnread: false
+    property bool allPublished: false
+    property bool allStarred: false
 
     signal itemUnreadChanged(variant item)
     signal itemPublishedChanged(variant item)
@@ -133,7 +139,8 @@ ListModel {
                     feedId:     parseInt(feeditems[feeditem].feed_id),
                     feedTitle:  ttrss.html_entity_decode(feeditems[feeditem].feed_title, 'ENT_QUOTES'),
                     labels:     labels,
-                    icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : ''
+                    icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : '',
+                    selected:   false
                 }
 
                 if (settings.feeditemsOrder === 0) {
@@ -164,6 +171,166 @@ ListModel {
         }
 
         return root.get(root.selectedIndex)
+    }
+
+    /** @private */
+    function getSelectedItems() {
+        var ids = ""
+        for (var i = 0; i < root.count; i++) {
+            var item = root.get(i)
+            // Only include items that are selected.
+            if (item.selected) {
+                ids += item.id + ","
+            }
+        }
+
+        if (ids === "") {
+            // None selected
+            return ids
+        }
+
+        // trim of last ,
+        ids = ids.slice(0,-1)
+
+        return ids
+    }
+
+    /**
+     * Select or unselect an item at a given index, The action will always toggle
+     * @param {int} The item to select/unselect
+     */
+    function select(index) {
+        var item = root.get(index);
+        // Only include items that are unread.
+        if (!item.selected) {
+            item.selected = true;
+            selectedItems++;
+        }
+        else {
+            item.selected = false;
+            selectedItems--;
+        }
+
+        // update the flags
+        var tmpAllUnread = true;
+        var tmpAllStarred = true;
+        var tmpAllPublished = true;
+        var performanceCounter = selectedItems;
+        for (var i = 0; i < root.count; i++) {
+            var itemI = root.get(i);
+            if (itemI.selected) {
+                tmpAllUnread = tmpAllUnread && itemI.unread;
+                tmpAllStarred = tmpAllStarred && itemI.marked;
+                tmpAllPublished = tmpAllPublished && itemI.rss;
+
+                if (!(tmpAllUnread || tmpAllStarred || tmpAllPublished)) {
+                    break;
+                }
+                if (performanceCounter == 0) {
+                    break;
+                }
+                performanceCounter--;
+            }
+        }
+        root.allUnread = tmpAllUnread
+        root.allStarred = tmpAllStarred
+        root.allPublished = tmpAllPublished
+    }
+
+    /**
+     * Unselect all items
+     */
+    function unselectAll() {
+        for (var i = 0; i < root.count; i++) {
+            var item = root.get(i);
+            // Only include items that are unread.
+            if (item.selected) {
+                item.selected = false;
+            }
+        }
+        selectedItems = 0;
+    }
+
+    /**
+     * Mark all selected items as (unr)read
+     * @param {bool} Whether mark as read (true) or unread (false)
+     */
+    function setAllSelectedReadState(readState) {
+        var ttrss = rootWindow.getTTRSS()
+        var ids = getSelectedItems()
+        if (ids === "") {
+            // None selected
+            return
+        }
+
+        ttrss.updateFeedUnread(ids, !readState, function(successful, errorMessage) {
+            if (successful) {
+                for (var i = 0; i < root.count; i++) {
+                    var item = root.get(i)
+                    if (item.selected && item.unread === readState) {
+                        root.setProperty(i, "unread", !readState)
+                        if (!settings.showAll) {
+                            // see toggleRead() newstate == false
+                            root.continuation += !readState ? +1 : -1
+                        }
+                        root.itemUnreadChanged(item)
+                    }
+                }
+                allUnread = !readState
+            }
+        })
+    }
+
+    /**
+     * Mark all selected items as (un)starred
+     * @param {bool} Whether mark as starred (true) or unstarred (false)
+     */
+    function setAllSelectedMarkedState(markedState) {
+        var ttrss = rootWindow.getTTRSS()
+        var ids = getSelectedItems()
+        if (ids === "") {
+            // None selected
+            return
+        }
+
+        ttrss.updateFeedStar(ids, markedState, function(successful, errorMessage) {
+            if (successful) {
+                for (var i = 0; i < root.count; i++) {
+                    var item = root.get(i)
+                    if (item.selected && item.marked === !markedState) {
+                        root.setProperty(i, "marked", markedState)
+                        root.itemStarChanged(item)
+                    }
+                }
+                allStarred = markedState
+            }
+        })
+    }
+
+    /**
+     * Mark all selected items as (un)starred
+     * @param {bool} Whether mark as starred (true) or unstarred (false)
+     */
+    function setAllSelectedRSSState(rssState) {
+        var ttrss = rootWindow.getTTRSS()
+        var ids = getSelectedItems()
+        if (ids === "") {
+            // None selected
+            return
+        }
+
+        ttrss.updateFeedRSS(ids, rssState, function(successful, errorMessage) {
+            if (successful) {
+                for (var i = 0; i < root.count; i++) {
+                    var item = root.get(i)
+                    if (item.selected && item.rss === !rssState) {
+                        root.setProperty(i, "rss", rssState)
+                        root.itemPublishedChanged(item)
+                    }
+                }
+                allPublished = rssState
+            }
+        })
     }
 
     /**
@@ -211,6 +378,9 @@ ListModel {
         })
     }
 
+    /**
+     * Mark all loaded items as read.
+     */
     function markAllLoadedAsRead() {
         markAllAboveAsRead(root.count)
     }

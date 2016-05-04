@@ -1,7 +1,7 @@
 /*
  * This file is part of TTRss, a Tiny Tiny RSS Reader App
  * for MeeGo Harmattan and Sailfish OS.
- * Copyright (C) 2012–2015  Hauke Schade
+ * Copyright (C) 2012–2016  Hauke Schade
  *
  * TTRss is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,11 +86,13 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeSmall
-                text: "<b>Copyright © 2012–2015 Hauke Schade</b>"
+                text: "<b>Copyright © 2012–2016 Hauke Schade</b>"
             }
 
             Row {
-                width: parent.width
+                width: parent.width - 2 * Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingMedium
                 Button {
                     width: Math.floor(parent.width / 2) - Theme.paddingMedium
                     text: qsTr("Buy me a beer")
