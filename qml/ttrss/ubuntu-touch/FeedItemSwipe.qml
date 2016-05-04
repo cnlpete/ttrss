@@ -65,9 +65,8 @@ Page {
 
         onCurrentIndexChanged: {
             model.selectedIndex = currentIndex
-            if (currentItem && settings.autoMarkRead && currentItem.unread) {
-                console.log("marking item as read")
-                model.toggleRead()
+            if (settings.autoMarkRead) {
+                readTimer.restart()
             }
             panel.close()
         }
@@ -79,6 +78,16 @@ Page {
         listView.model = root.model
         listView.currentIndex = root.currentIndex
         listView.highlightFollowsCurrentItem = true
+    }
+
+    Timer {
+        id: readTimer
+        interval: 500
+        repeat: false
+        onTriggered: if (currentItem && currentItem.unread) {
+            console.log("marking item as read")
+            model.toggleRead()
+        }
     }
 
     Panel {
