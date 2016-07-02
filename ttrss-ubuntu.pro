@@ -33,7 +33,7 @@ resources.files = images/resources
 resources.path = $${CLICK_DIR}/qml
 INSTALLS += resources
 
-icon.files = ubuntu/ttrss.svg
+icon.files = ubuntu/ttrss_icon_256.png
 icon.path = $${CLICK_DIR}
 INSTALLS += icon
 
