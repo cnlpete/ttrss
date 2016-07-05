@@ -47,7 +47,9 @@ Page {
         background: SilicaFlickable {
             id: drawerView
             anchors.fill: parent
-            contentHeight: selectionModeActive ? 250 : Theme.itemSizeSmall
+            contentHeight: selectionModeActive
+                           ? Theme.itemSizeSmall + Theme.itemSizeMedium + Theme.itemSizeExtraSmall
+                           : Theme.itemSizeSmall
             clip: true
 
             Column {
@@ -76,7 +78,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: Theme.highlightColor
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: Theme.fontSizeExtraLarge
+                    font.pixelSize: Theme.fontSizeLarge
                     text: qsTr("%1 selected").arg(feedItemModel.selectedItems)
                 }
 
