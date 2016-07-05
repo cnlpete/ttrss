@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.1">
 <context>
     <name>AboutItem</name>
     <message>
@@ -47,14 +47,14 @@
         <translation>Hlášení chyb</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/components/AboutPage.qml" line="178"/>
+        <location filename="../qml/ttrss/components/AboutPage.qml" line="195"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="38"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="41"/>
         <source>License</source>
         <translation>Licence</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/components/AboutPage.qml" line="184"/>
+        <location filename="../qml/ttrss/components/AboutPage.qml" line="201"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="51"/>
         <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="54"/>
         <source>Privacy Policy</source>
@@ -139,28 +139,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="64"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="77"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="79"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
         <source>Loading</source>
         <translation>Načítání</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="82"/>
         <source>No categories have unread items</source>
         <translation>Žádné nepřečtené kategorie</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="82"/>
         <source>No categories to display</source>
         <translation>Žádné kategorie</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="81"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="72"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="17"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="21"/>
         <source>Tiny Tiny RSS Reader</source>
         <translation>Čtečka Tiny Tiny RSS</translation>
     </message>
@@ -175,12 +175,12 @@
         <translation>Obnovit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="32"/>
         <source>Unread</source>
         <translation>Nepřečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="30"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="32"/>
         <source>All</source>
         <translation>Všechny</translation>
     </message>
@@ -296,7 +296,7 @@
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="93"/>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="313"/>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="316"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="57"/>
         <source>Open in Web Browser</source>
         <translation>Otevřít v prohlížeči</translation>
     </message>
@@ -306,30 +306,28 @@
         <translation>Sdílet</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="62"/>
         <source>Hide Dock</source>
-        <translation>Skrýt panel</translation>
+        <translation type="vanished">Skrýt panel</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="62"/>
         <source>Open Dock</source>
-        <translation>Ukázat panel</translation>
+        <translation type="vanished">Ukázat panel</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="327"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="68"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="69"/>
         <source>Edit Note</source>
         <translation>Upravit poznámku</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="337"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="80"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="81"/>
         <source>Assign Labels</source>
         <translation>Přiřadit štítky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="173"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="171"/>
         <source>Note: %1</source>
         <translation>Poznámka: %1</translation>
     </message>
@@ -358,7 +356,7 @@
 <context>
     <name>FeedItemSwipe</name>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="101"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="103"/>
         <source>Open in Browser</source>
         <translation>Otevřít v prohlížeči</translation>
     </message>
@@ -368,28 +366,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="87"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="195"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="211"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="197"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="213"/>
         <source>Load more</source>
         <translation>Načíst více</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="228"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="230"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation>Načítání</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="229"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="231"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation>Žádné články v tomto kanálu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="229"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="231"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation>Nic nepřečteného v tomto kanálu</translation>
@@ -436,44 +434,44 @@
         <translation>Otevřít v prohlížeči</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="127"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="129"/>
         <source>Update</source>
         <translation>Obnovit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="149"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="151"/>
         <source>Mark all loaded read</source>
         <translation>Označit vše načtené jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="80"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="82"/>
         <source>%1 selected</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="219"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="221"/>
         <source>Last updated: %1</source>
         <translation>Naposledy aktualizováno: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="259"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="261"/>
         <source>Marking all loaded as read</source>
         <translation>Označovat všechny načtené jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="43"/>
         <source>Unread</source>
         <translation>Nepřečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="35"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="43"/>
         <source>All</source>
         <translation>Všechny</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="53"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
         <source>Mark all read</source>
         <translation>Označit vše jako přečtené</translation>
     </message>
@@ -496,21 +494,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="87"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="144"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
         <source>Loading</source>
         <translation>Načítání</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="146"/>
         <source>No feeds in category</source>
         <translation>Žádné kanály v této kategorii</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="146"/>
         <source>Category has no unread items</source>
         <translation>Tato kategorie nemá žádné nepřečtené kanály</translation>
     </message>
@@ -588,12 +586,12 @@
         <translation>Obnovit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
         <source>Unread</source>
         <translation>Nepřečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="40"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
         <source>All</source>
         <translation>Všechny</translation>
     </message>
@@ -765,7 +763,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="40"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="54"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="28"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="30"/>
         <source>Settings</source>
         <translation>Nastavení</translation>
     </message>
@@ -810,7 +808,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="143"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="87"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="78"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="82"/>
         <source>Minimum Ssl Version</source>
         <translation>Minimální verze SSL</translation>
     </message>
@@ -823,21 +821,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="131"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="92"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="83"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="87"/>
         <source>Any</source>
         <translation>Jakékoli</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="132"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="93"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="84"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="88"/>
         <source>SslV2</source>
         <translation>SslV2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="133"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="95"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="85"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="89"/>
         <source>SslV3</source>
         <translation>SslV3</translation>
     </message>
@@ -864,28 +862,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="155"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="128"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="127"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="131"/>
         <source>Order</source>
         <translation>Seřazení</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="157"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="132"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="131"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="135"/>
         <source>Newest First</source>
         <translation>Nejprve nové</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="157"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="133"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="132"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="136"/>
         <source>Oldest First</source>
         <translation>Nejprve staré</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="200"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="219"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="172"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="176"/>
         <source>Font Size</source>
         <translation>Velikost písma</translation>
     </message>
@@ -897,7 +895,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="180"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="110"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="101"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="105"/>
         <source>Show Icons</source>
         <translation>Zobrazit ikony</translation>
     </message>
@@ -909,7 +907,7 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="66"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="60"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="64"/>
         <source>Automatically Login</source>
         <translation>Automaticky přihlásit při spuštění</translation>
     </message>
@@ -936,14 +934,14 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="61"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="56"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="60"/>
         <source>Startup</source>
         <translation>Po spuštění</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="151"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="192"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="141"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="145"/>
         <source>Items</source>
         <translation>Položky</translation>
     </message>
@@ -964,37 +962,37 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="86"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="90"/>
         <source>TlsV1.0</source>
         <translation>TlsV1.0</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="98"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="87"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="91"/>
         <source>TlsV1.1</source>
         <translation>TlsV1.1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="99"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="88"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="92"/>
         <source>TlsV1.2</source>
         <translation>TlsV1.2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="105"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="97"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="101"/>
         <source>Feeds</source>
         <translation>Kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="117"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="110"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="114"/>
         <source>White Background on Icons</source>
         <translation>Bílé pozadí pod ikonami</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="123"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="122"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="126"/>
         <source>Item List</source>
         <translation>Seznam položek</translation>
     </message>
@@ -1037,19 +1035,19 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="197"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="145"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="149"/>
         <source>Automatically Mark as Read</source>
         <translation>Automaticky označovat položky jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="204"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="153"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="157"/>
         <source>Show Images</source>
         <translation>Ukázat obrázky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="210"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="161"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="165"/>
         <source>Strip invisible Images</source>
         <translation>Odstranit neviditelné obrázky</translation>
     </message>
@@ -1060,31 +1058,31 @@
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="227"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="175"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="179"/>
         <source>Tiny</source>
         <translation>Drobné</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="230"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="176"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="180"/>
         <source>Small</source>
         <translation>Malé</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="233"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="177"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="181"/>
         <source>Medium</source>
         <translation>Střední</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="236"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="178"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="182"/>
         <source>Large</source>
         <translation>Velké</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="239"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="179"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="183"/>
         <source>Huge</source>
         <translation>Obří</translation>
     </message>
@@ -1104,7 +1102,7 @@
         <translation>Odstranit neviditelné obrázky</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="68"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="72"/>
         <source>Show &quot;All Feeds&quot;</source>
         <translation>Ukázat &quot;Všechny kanály&quot;</translation>
     </message>
