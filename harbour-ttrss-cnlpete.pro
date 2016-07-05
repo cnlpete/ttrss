@@ -106,6 +106,7 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.es.ts \
     i18n/qml-translation.fr.ts \
     i18n/qml-translation.nl_NL.ts \
+    i18n/qml-translation.pl.ts \
     i18n/qml-translation.ru.ts \
     i18n/qml-translation.ro.ts \
     i18n/qml-translation.sv.ts \

@@ -123,7 +123,7 @@ Page {
                 font.pixelSize: Theme.fontSizeSmall
                 text: "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, "
                       + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, "
-                      + "Patrik Nilsson, Alexey, clovis86, Heimen Stoffels"
+                      + "Patrik Nilsson, Alexey, clovis86, Heimen Stoffels, mp107"
             }
 
             // -- Feature Requests & Bugs --
