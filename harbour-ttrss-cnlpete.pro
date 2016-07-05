@@ -43,9 +43,20 @@ qml_3.files = qml/ttrss/resources
 qml_3.path = $$INSTALL_ROOT/usr/share/$$TARGET/qml
 INSTALLS += qml_1 qml_2 qml_3
 
-icon.files = images/$${TARGET}.png
-icon.path = /usr/share/icons/hicolor/86x86/apps
-INSTALLS += icon
+icon86.files += images/icons/86x86/$${TARGET}.png
+icon86.path = /usr/share/icons/hicolor/86x86/apps
+INSTALLS += icon86
+icon108.files += images/icons/108x108/$${TARGET}.png
+icon108.path = /usr/share/icons/hicolor/108x108/apps
+INSTALLS += icon108
+icon128.files += images/icons/128x128/$${TARGET}.png
+icon128.path = /usr/share/icons/hicolor/128x128/apps
+INSTALLS += icon128
+icon256.files += images/icons/256x256/$${TARGET}.png
+icon256.path = /usr/share/icons/hicolor/256x256/apps
+INSTALLS += icon256
+#iconsvg.files += images/icons/scalable/$${TARGET}.svgz
+#iconsvg.path = /usr/share/icons/hicolor/scalable/apps
 
 desktop.files = $${TARGET}.desktop
 desktop.path = /usr/share/applications
