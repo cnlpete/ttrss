@@ -871,14 +871,14 @@
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="132"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="135"/>
         <source>Newest First</source>
-        <translation>Najpierw najnowsze</translation>
+        <translation>Od najnowszych</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="157"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="133"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="136"/>
         <source>Oldest First</source>
-        <translation>Najpierw najstarsze</translation>
+        <translation>Od najstarszych</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="200"/>
@@ -999,7 +999,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="140"/>
         <source>Max. Length of Title (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>Maks. długość tytułu (w liniach)</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="145"/>
@@ -1011,12 +1011,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="150"/>
         <source>Show Excerpt</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż fragment</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="157"/>
         <source>Max. Length of Excerpt (in Lines)</source>
-        <translation type="unfinished"/>
+        <translation>Maks. długość fragmentu (w liniach)</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="168"/>
