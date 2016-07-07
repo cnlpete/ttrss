@@ -469,12 +469,6 @@ Page {
     }
 
     Component.onCompleted: {
-        if (settings.webviewFontSize < Theme.fontSizeTiny || settings.webviewFontSize > Theme.fontSizeExtraLarge) {
-            settings.webviewFontSize = Theme.fontSizeSmall;
-        }
-    }
-
-    Component.onCompleted: {
         // go for default if out of range
         if (settings.webviewFontSize < Theme.fontSizeTiny || settings.webviewFontSize > Theme.fontSizeExtraLarge) {
             settings.webviewFontSize = Theme.fontSizeSmall;
