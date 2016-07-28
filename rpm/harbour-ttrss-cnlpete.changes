@@ -1,3 +1,15 @@
+* Tue Jul 7 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.3-1-dev
+- Quickfix for a MergeArtifact that preventet FeedItem page from loading
+- updated polish translation
+
+* Tue Jul 5 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.2-1-dev
+- polish translation
+- UI fix for tablet version
+
+* Sat Feb 20 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.1-1-dev
+- added a vertical dock for landscape mode
+- updated translations from transifex
+
 * Fri Jan 15 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.0-1-dev
 - allow multiselection in FeedItems view
 
