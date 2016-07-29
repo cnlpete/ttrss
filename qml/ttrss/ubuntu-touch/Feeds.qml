@@ -22,8 +22,6 @@ Page {
         var ttrss = rootWindow.getTTRSS()
         ttrss.setShowAll(settings.showAll)
         feedModel.update()
-        // FIXME workaround for https://bugs.launchpad.net/bugs/1404884
-        pullToRefresh.enabled = true
     }
 
     header: PageHeader {
@@ -57,11 +55,10 @@ Page {
         anchors.fill: parent
         model: feedModel
 
-        PullToRefresh {
+        MyPullToRefresh {
             id: pullToRefresh
-            enabled: false
             onRefresh: feedModel.update()
-            refreshing: network.loading
+            updating: network.loading
         }
 
         /* TODO
@@ -144,6 +141,10 @@ Page {
             text: network.loading ?
                       qsTr("Loading") :
                       rootWindow.showAll ? qsTr("No feeds in category") : qsTr("Category has no unread items")
+        }
+        ActivityIndicator {
+            running: network.loading && !pullToRefresh.refreshing
+            anchors.centerIn: parent
         }
         Scrollbar {
             flickableItem: listView

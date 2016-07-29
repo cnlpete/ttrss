@@ -43,7 +43,7 @@ Page {
         }
     }
 
-    UbuntuListView {
+    ListView {
         id: listView
         anchors.fill: parent
 
@@ -62,10 +62,9 @@ Page {
         }
         */
 
-        pullToRefresh {
-            enabled: true
-            onRefresh: categories.update()
-            refreshing: network.loading
+        MyPullToRefresh {
+            id: pullToRefresh
+            updating: network.loading
         }
 
         delegate: CategoryDelegate {
@@ -82,7 +81,7 @@ Page {
                       rootWindow.showAll ? qsTr("No categories to display") : qsTr("No categories have unread items")
         }
         ActivityIndicator {
-            running: listView.count != 0 && network.loading
+            running: network.loading && !pullToRefresh.refreshing
             anchors.centerIn: parent
         }
         Scrollbar {
