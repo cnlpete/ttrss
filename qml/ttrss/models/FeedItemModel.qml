@@ -511,6 +511,8 @@ ListModel {
                 }
             }
 
+            labels.sort(function (left, right) { return left.caption.localeCompare(right.caption); });
+
             callback(true, "", labels)
         })
     }
