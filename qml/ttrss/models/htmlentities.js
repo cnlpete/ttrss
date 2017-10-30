@@ -136,6 +136,8 @@ function get_html_translation_table (table, quote_style) {
         entities['253'] = '&yacute;';
         entities['254'] = '&thorn;';
         entities['255'] = '&yuml;';
+        entities['352'] = '&Scaron;';
+        entities['353'] = '&scaron;';
     }
     if (useQuoteStyle !== 'ENT_NOQUOTES') {
         entities['34'] = '&quot;';
@@ -190,6 +192,10 @@ function html_entity_decode (string, quote_style) {
         tmp_str = tmp_str.split(entity).join(symbol);
     }
     tmp_str = tmp_str.split('&#039;').join("'");
-
+    //decode numeric html entities
+    tmp_str = tmp_str.replace(/&#([0-9]{1,3});/gi, function(match, numStr) {
+        var num = parseInt(numStr, 10);
+        return String.fromCharCode(num);
+    });
     return tmp_str;
 }
