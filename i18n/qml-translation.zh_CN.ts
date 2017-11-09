@@ -177,12 +177,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="32"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>未读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="32"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>全部</translation>
     </message>
 </context>
 <context>
@@ -256,7 +256,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/ContextMenu.qml" line="36"/>
         <source>Save image</source>
-        <translation type="unfinished"/>
+        <translation>保存图片</translation>
     </message>
 </context>
 <context>
@@ -448,7 +448,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="82"/>
         <source>%1 selected</source>
-        <translation type="unfinished"/>
+        <translation>%1 已选中</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="221"/>
@@ -463,12 +463,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="43"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>未读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="43"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>全部</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="36"/>
@@ -588,12 +588,12 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
         <source>Unread</source>
-        <translation type="unfinished"/>
+        <translation>未读</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>全部</translation>
     </message>
 </context>
 <context>
@@ -601,7 +601,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/FileSaver.qml" line="25"/>
         <source>Save to</source>
-        <translation type="unfinished"/>
+        <translation>保存到</translation>
     </message>
 </context>
 <context>
@@ -729,7 +729,7 @@
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="84"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>下一个</translation>
     </message>
 </context>
 <context>
@@ -772,13 +772,13 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
         <source>Navigate to special page after login</source>
-        <translation type="unfinished"/>
+        <translation>登录后的页面</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>标准</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
@@ -796,7 +796,7 @@
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
         <source>Special/Fresh Articles</source>
-        <translation type="unfinished"/>
+        <translation>特殊/新文章</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
@@ -1104,7 +1104,7 @@
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="72"/>
         <source>Show &quot;All Feeds&quot;</source>
-        <translation type="unfinished"/>
+        <translation>显示&quot;所有订阅&quot;</translation>
     </message>
 </context>
 <context>
