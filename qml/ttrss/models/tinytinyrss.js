@@ -1399,25 +1399,48 @@ function process_readyState(httpreq) {
     var successful = false
     var errorMessage = null
     var responseObject = null
+    var responseContentType = httpreq.getResponseHeader('Content-Type')
 
-    if(httpreq.status === 200 && httpreq.responseText
-            && httpreq.responseText.length > 2)  {
+    if (httpreq.status === 200 &&
+            responseContentType.match(/json/) &&
+            httpreq.responseText &&
+            httpreq.responseText.length > 2)  {
+        console.log(httpreq.responseText);
 
-        responseObject = JSON.parse(httpreq.responseText);
+        try {
+            responseObject = JSON.parse(httpreq.responseText);
 
-        if (responseObject.status === 0) {
-            successful = true
-        } else if(responseObject.content.error) {
-            errorMessage = "Error: " + responseObject.content.error;
-        } else {
-            errorMessage = "Error (tt-rss status " + responseObject.status + ")"
+            if (responseObject.status === 0) {
+                successful = true
+            } else if(responseObject.content.error) {
+                errorMessage = "Error: " + responseObject.content.error
+            } else {
+                errorMessage = "Error (tt-rss status " + responseObject.status + ")"
+            }
         }
-
+        catch (e) {
+            console.log(e, httpreq.responseText)
+            errorMessage = "Error (http status " + httpreq.status + ")"
+            errorMessage = "\n" + e
+        }
     } else {
-        errorMessage =  "Error (http status " + httpreq.status + ")"
+        if (responseContentType.match(/html/)) {
+            var title = httpreq.responseText.match(/<title>(.*)<\/title>/);
+            var body = httpreq.responseText.match(/<body>[^]*<p>([^]*)<\/p>[^]*<\/body>/);
 
-        if (httpreq.responseText) {
-            errorMessage += ": " + httpreq.responseText
+            if (title && title.length === 2) {
+                errorMessage = "Error (" + title[1] + ")"
+            }
+            if (body && body.length === 2) {
+                errorMessage += "\n" + body[1]
+            }
+        }
+        else {
+            errorMessage = "Error (http status " + httpreq.status + ")"
+
+            if (httpreq.responseText) {
+                errorMessage += "\n" + httpreq.responseText
+            }
         }
     }
 
