@@ -96,7 +96,7 @@ Item {
                 width: parent.width
                 text: parseContent(root.content, root.attachments)
                 fontSize: settings.webviewFontSize
-                color: Theme.palette.selected.baseText
+                color: theme.palette.normal.foregroundText
                 onLinkActivated: Qt.openUrlExternally(link)
                 onPressAndHold: {
                     var url = link ? link : root.url

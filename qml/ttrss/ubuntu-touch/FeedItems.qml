@@ -44,7 +44,7 @@ Page {
             selectedIndex: settings.showAll ? 1 : 0
             onSelectedIndexChanged: {
                 var ttrss = rootWindow.getTTRSS()
-                var showAll = (feeditemsPage.head.sections.selectedIndex == 1)
+                var showAll = (selectedIndex == 1)
                 if (showAll != settings.showAll) {
                     ttrss.setShowAll(showAll)
                     settings.showAll = showAll

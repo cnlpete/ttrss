@@ -16,7 +16,7 @@ Page {
     id: root
 
     property bool isCat: false
-    property var model
+    property alias model: listView.model
     property int currentIndex: -1
     property alias currentItem: listView.currentItem
 
@@ -24,7 +24,6 @@ Page {
 
     header: PageHeader {
         title: currentItem ? currentItem.title : ""
-        flickable: currentItem ? currentItem.flickable : null
         trailingActionBar.actions: [
             Action {
                 iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
@@ -46,7 +45,7 @@ Page {
         anchors.fill: parent
         orientation: ListView.Horizontal
         snapMode: ListView.SnapOneItem
-        highlightFollowsCurrentItem: false
+        highlightFollowsCurrentItem: true
         highlightRangeMode: ListView.StrictlyEnforceRange
 
         delegate: FeedItem {
@@ -66,20 +65,27 @@ Page {
 
         onCurrentIndexChanged: {
             model.selectedIndex = currentIndex
-            if (currentItem && settings.autoMarkRead && currentItem.unread) {
-                console.log("marking item as read")
-                model.toggleRead()
+            if (settings.autoMarkRead) {
+                readTimer.restart()
             }
             panel.close()
         }
     }
 
     Component.onCompleted: {
-        /* For some reason, unless this is done here, the ListView would
-         * instantiate all the delegates when the page is first shown. */
-        listView.model = root.model
+        /* We don't use an alias on the current index, in order to perform the
+         * autoread action when the index changes. */
         listView.currentIndex = root.currentIndex
-        listView.highlightFollowsCurrentItem = true
+    }
+
+    Timer {
+        id: readTimer
+        interval: 500
+        repeat: false
+        onTriggered: if (currentItem && currentItem.unread) {
+            console.log("marking item as read")
+            model.toggleRead()
+        }
     }
 
     Panel {
@@ -93,7 +99,7 @@ Page {
 
         Rectangle {
             anchors.fill: parent
-            color: Theme.palette.normal.overlay
+            color: theme.palette.normal.overlay
             ToolbarItems {
                 anchors.fill: parent
                 ToolbarButton {

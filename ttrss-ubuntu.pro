@@ -1,5 +1,5 @@
-VERSION = 0.5.2
-UBUNTU_REVISION = 2
+VERSION = 0.6.2
+UBUNTU_REVISION = 0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 DEFINES += Q_OS_UBUNTU_TOUCH
@@ -33,7 +33,7 @@ resources.files = images/resources
 resources.path = $${CLICK_DIR}/qml
 INSTALLS += resources
 
-icon.files = ubuntu/ttrss.svg
+icon.files = ubuntu/ttrss_icon_256.png
 icon.path = $${CLICK_DIR}
 INSTALLS += icon
 
