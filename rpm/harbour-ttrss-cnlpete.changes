@@ -1,3 +1,9 @@
+* Tue Nov 14 2017 Hauke Schade <cnlpete@cnlpete.de> 0.6.4-1-dev
+- sort labels alphabetically
+- support latvian special chars thanks to ajya
+- show error message, when api results are not parseable
+- updated chinese translation
+
 * Tue Jul 7 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.3-1-dev
 - Quickfix for a MergeArtifact that preventet FeedItem page from loading
 - updated polish translation
