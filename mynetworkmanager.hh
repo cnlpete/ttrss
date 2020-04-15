@@ -22,17 +22,17 @@
 #ifndef MYNETWORKMANAGER_HH
 #define MYNETWORKMANAGER_HH
 
-#include <QtGlobal>
+#include <QtCore/QtGlobal>
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-    #include <QQmlNetworkAccessManagerFactory>
+    #include <QtQml/QQmlNetworkAccessManagerFactory>
 #else
     #include <qdeclarativenetworkaccessmanagerfactory.h>
 #endif
 
-#include <QtNetwork/qnetworkreply.h>
+#include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkAccessManager>
-#include <QMutex>
-#include <QDebug>
+#include <QtCore/QMutex>
+#include <QtCore/QDebug>
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 class MyNetworkManager : public QObject, public QQmlNetworkAccessManagerFactory

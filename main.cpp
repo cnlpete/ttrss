@@ -19,12 +19,12 @@
  * http://www.gnu.org/licenses/.
  */
 
-#include <QtGlobal>
+#include <QtCore/QtGlobal>
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-    #include <QGuiApplication>
-    #include <QQuickView>
-    #include <QQmlEngine>
-    #include <QQmlContext>
+    #include <QtGui/QGuiApplication>
+    #include <QtQuick/QQuickView>
+    #include <QtQml/QQmlEngine>
+    #include <QtQml/QQmlContext>
     #ifdef QT_QML_DEBUG
         #include <QtQuick>
     #endif
@@ -38,10 +38,10 @@
     #include <QDeclarativeEngine>
 #endif
 
-#include <QTranslator>
-#include <QLocale>
-#include <QFile>
-#include <QDir>
+#include <QtCore/QTranslator>
+#include <QtCore/QLocale>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
 
 #include "settings.hh"
 #include "qmlutils.hh"

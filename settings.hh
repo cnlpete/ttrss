@@ -24,7 +24,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
-#include <QtCore/qstring.h>
+#include <QtCore/QString>
 #include <QtNetwork/QSsl>
 
 class QSettings;
