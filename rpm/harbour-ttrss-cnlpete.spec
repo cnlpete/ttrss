@@ -78,6 +78,8 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/hicolor/108x108/apps
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/icons/hicolor/128x128/apps
+%{_datadir}/icons/hicolor/172x172/apps/%{name}.png
+%{_datadir}/icons/hicolor/172x172/apps
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 %{_datadir}/icons/hicolor/256x256/apps
 # >> files
