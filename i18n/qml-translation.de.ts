@@ -99,17 +99,17 @@
 <context>
     <name>AddSubscription</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="50"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="52"/>
         <source>Add subscription</source>
         <translation>Abonnement hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="55"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="57"/>
         <source>Feed address</source>
         <translation>Feed Adresse</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="68"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="70"/>
         <source>Category</source>
         <translation>Kategorie</translation>
     </message>
@@ -135,25 +135,94 @@
     </message>
 </context>
 <context>
+    <name>ApiSettings</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="39"/>
+        <source>No Account Yet?</source>
+        <translation>Noch kein Benutzerkonto?</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="57"/>
+        <source>Login Details</source>
+        <translation>Login Daten</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="58"/>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="59"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="155"/>
+        <source>Clear</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="72"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="73"/>
+        <source>Server address</source>
+        <translation>Serveradresse</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="83"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="84"/>
+        <source>Username</source>
+        <translation>Benutzername</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="92"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="93"/>
+        <source>Password</source>
+        <translation>Passwort</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="102"/>
+        <source>Ignore SSL Errors</source>
+        <translation>Ignoriere SSL Fehler</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="109"/>
+        <source>Additional HTTP Auth?</source>
+        <translation>Zusätzliche HTTP Authentifizierung?</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="117"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="118"/>
+        <source>HTTP Auth Username</source>
+        <translation>HTTP Auth Benutzername</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="130"/>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="131"/>
+        <source>HTTP Auth Password</source>
+        <translation>HTTP Auth Passwort</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="143"/>
+        <source>Restore</source>
+        <translation>Zurücksetzen</translation>
+    </message>
+</context>
+<context>
     <name>Categories</name>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="64"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="77"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="80"/>
         <source>Loading</source>
         <translation>Lade</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="82"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
         <source>No categories have unread items</source>
         <translation>Keine Kategorien mit neuen Einträgen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="82"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
         <source>No categories to display</source>
         <translation>Keine Kategorien</translation>
     </message>
@@ -356,7 +425,7 @@
 <context>
     <name>FeedItemSwipe</name>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="103"/>
+        <location filename="../qml/ttrss/ubuntu-touch/FeedItemSwipe.qml" line="109"/>
         <source>Open in Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
@@ -494,21 +563,21 @@
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="75"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="87"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="145"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="142"/>
         <source>Loading</source>
         <translation>Lade</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="146"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="143"/>
         <source>No feeds in category</source>
         <translation>Keine Feeds</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Feeds.qml" line="76"/>
         <location filename="../qml/ttrss/sailfish/pages/Feeds.qml" line="88"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="146"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="143"/>
         <source>Category has no unread items</source>
         <translation>Keine ungelesenen Einträge</translation>
     </message>
@@ -586,12 +655,12 @@
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="39"/>
         <source>Unread</source>
         <translation>Ungelesene</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="41"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Feeds.qml" line="39"/>
         <source>All</source>
         <translation>Alle</translation>
     </message>
@@ -655,15 +724,13 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="116"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="139"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="121"/>
         <source>Clear</source>
         <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="133"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="64"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="104"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="103"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="139"/>
         <source>Login</source>
@@ -671,57 +738,64 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="168"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="46"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="45"/>
         <source>No Account Yet?</source>
         <translation>Noch kein Benutzerkonto?</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="114"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="108"/>
         <source>Ignore SSL Errors</source>
         <translation>Ignoriere SSL Fehler</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="39"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="38"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="63"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="62"/>
         <source>Tiny Tiny RSS</source>
         <translation>Tiny Tiny RSS</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="78"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="79"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="74"/>
+        <source>Change Login Details</source>
+        <translation>Login Daten Ändern</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
+        <source>%1 @ %2</source>
+        <translation>%1 @ %2</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
+        <source>with httpauth (%1)</source>
+        <translation>mit HTTP Authentifizierung (%1)</translation>
+    </message>
+    <message>
         <source>Server address</source>
-        <translation>Serveradresse</translation>
+        <translation type="vanished">Serveradresse</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="90"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="91"/>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="vanished">Benutzername</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="100"/>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="101"/>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="vanished">Passwort</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="123"/>
         <source>Restore</source>
-        <translation>Zurücksetzen</translation>
+        <translation type="vanished">Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="221"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="150"/>
         <source>The API is disabled. You have to enable it in the webinterface.</source>
         <translation>Die API ist deaktiviert. Du musst sie in der Webapp aktivieren.</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="224"/>
+        <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="153"/>
         <source>The supplied login credentials did not work.</source>
         <translation>Die angegebenen Login-Daten waren nicht gültig.</translation>
     </message>
@@ -735,25 +809,25 @@
 <context>
     <name>NoteEditor</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="45"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="42"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="46"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="54"/>
         <source>Edit Note</source>
         <translation>Notiz bearbeiten</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="30"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="55"/>
         <source>Save Note</source>
         <translation>Notiz speichern</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="31"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
