@@ -1,10 +1,14 @@
+* Thu Apr 16 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.0-1-dev
+- updated translations
+- split main page and login page into seperate screens (and fixing the dialog login bug)
+
 * Tue Nov 14 2017 Hauke Schade <cnlpete@cnlpete.de> 0.6.4-1-dev
 - sort labels alphabetically
 - support latvian special chars thanks to ajya
 - show error message, when api results are not parseable
 - updated chinese translation
 
-* Tue Jul 7 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.3-1-dev
+* Thu Jul 7 2016 Hauke Schade <cnlpete@cnlpete.de> 0.6.3-1-dev
 - Quickfix for a MergeArtifact that preventet FeedItem page from loading
 - updated polish translation
 
@@ -69,7 +73,7 @@
 - added loading indicators for icons
 - removed the FancyScroller since the OS now provides one
 
-* Sat May 27 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.2-1
+* Tue May 27 2014 Hauke Schade <cnlpete@cnlpete.de> 0.4.2-1
 - updated translations
 - small UI improvements
 - added the FancyScroller

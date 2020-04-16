@@ -101,17 +101,17 @@
 <context>
     <name>AddSubscription</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="52"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="50"/>
         <source>Add subscription</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="57"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="55"/>
         <source>Feed address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="68"/>
         <source>Category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -787,25 +787,25 @@
 <context>
     <name>NoteEditor</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="42"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="45"/>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="46"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="54"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Edit Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="30"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="55"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
         <source>Save Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="31"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
