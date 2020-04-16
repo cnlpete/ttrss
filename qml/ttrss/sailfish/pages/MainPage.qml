@@ -23,9 +23,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../items"
 
-Dialog {
+Page {
     id: dialog
-    canAccept: !network.loading && server.text.length > 0
 
     property bool doAutoLogin: true
 
@@ -56,13 +55,11 @@ Dialog {
                 leftMargin: Theme.paddingLarge
                 rightMargin: Theme.paddingLarge
             }
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingLarge
 
-            DialogHeader {
+            PageHeader {
                 width: dialog.width
                 title: qsTr("Tiny Tiny RSS")
-                acceptText: qsTr("Login")
-                cancelText: qsTr("Clear")
             }
 
             Image {
@@ -72,84 +69,45 @@ Dialog {
                 source: "qrc:///images/ttrss256.png"
             }
 
-            TextField {
-                id: server
-                text: ""
-                placeholderText: qsTr("Server address")
-                label: qsTr("Server address")
-                width: parent.width
-                enabled: !network.loading
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhUrlCharactersOnly
-                EnterKey.enabled: text.length > 0
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: username.focus = true
-            }
-            TextField {
-                id: username
-                text: ""
-                placeholderText: qsTr("Username")
-                label: qsTr("Username")
-                width: parent.width
-                enabled: !network.loading
-                EnterKey.enabled: text.length > 0
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: password.focus = true
-            }
-            TextField {
-                id: password
-                placeholderText: qsTr("Password")
-                label: qsTr("Password")
-                echoMode: TextInput.Password
-                width: parent.width
-                enabled: !network.loading
-                EnterKey.enabled: text.length > 0
-                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-                EnterKey.onClicked: {
-                    focus = false
-                    prepareLogin()
-                }
-            }
-            TextSwitch {
-                id: ignoreSSLErrors
-                text: qsTr('Ignore SSL Errors')
-                visible: server.text.substring(0, 5) === "https" && (settings.ignoreSSLErrors || network.gotSSLError)
-                checked: false
-            }
-            Row {
-                width: parent.width - 2 * Theme.paddingLarge
+            Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                spacing: Theme.paddingMedium
-                Button {
-                    text: qsTr("Restore")
-                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                    onClicked: {
-                        server.text = settings.servername
-                        username.text = settings.username
-                        password.text = settings.password
-                        ignoreSSLErrors.checked = settings.ignoreSSLErrors
-                    }
-                    enabled: !network.loading && (
-                                 server.text !== settings.servername
-                                 || username.text !== settings.username
-                                 || password.text !== settings.password
-                                 || ignoreSSLErrors.checked !== settings.ignoreSSLErrors
-                             )
+                text: qsTr("Change Login Details")
+                width: Math.floor(parent.width / 2)
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ApiSettings.qml"));
                 }
-                Button {
-                    text: qsTr("Clear")
-                    width: Math.floor(parent.width / 2) - Theme.paddingMedium
-                    onClicked: {
-                        server.text = ''
-                        username.text = ''
-                        password.text = ''
-                        ignoreSSLErrors.checked = false
-                    }
-                    enabled: !network.loading && (
-                                 server.text.length > 0
-                                 || username.text.length > 0
-                                 || password.text.length > 0
-                                 || ignoreSSLErrors.checked)
-                }
+                enabled: !network.loading
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeMedium
+                text: qsTr("%1 @ %2").arg(settings.username).arg(settings.servername)
+                visible: settings.username.length > 0 && settings.servername.length > 0
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeSmall
+                text: qsTr("with httpauth (%1)").arg(settings.httpauthusername)
+                visible: settings.httpauthusername.length > 0
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Login")
+                width: Math.floor(parent.width / 2)
+                onClicked: startLogin()
+                enabled: !network.loading &&
+                         settings.username.length > 0 &&
+                         settings.password.length > 0 &&
+                         settings.servername.length > 0
             }
         }
     }
@@ -164,43 +122,14 @@ Dialog {
         size: BusyIndicatorSize.Large
     }
 
-    function enableLoginBox(focus) {
-        if(focus) {
-            password.forceActiveFocus();
-        }
-    }
-
-    function prepareLogin() {
-        // check the servername for httpauth data and set/extract those
-        var httpauthregex = /(https?:\/\/)?(\w+):(\w+)@(\w.+)/
-        var servername = server.text
-        var regexres = servername.match(httpauthregex)
-
-        if (regexres !== null) {
-            server.text = (regexres[1] ? regexres[1] : '') + regexres[4]
-            settings.httpauthusername = regexres[2]
-            settings.httpauthpassword = regexres[3]
-        } else {
-            settings.httpauthusername = ''
-            settings.httpauthpassword = ''
-        }
-
-        settings.servername = server.text
-        settings.username = username.text
-        settings.password = password.text
-        settings.ignoreSSLErrors = ignoreSSLErrors.checked
-
-        startLogin();
-    }
-
     function startLogin() {
         var ttrss = rootWindow.getTTRSS()
         ttrss.initState(settings.showAll)
-        ttrss.setLoginDetails(username.text, password.text, server.text)
+        ttrss.setLoginDetails(settings.username, settings.password, settings.servername)
 
         // BUGFIX somehow the silica QML Image can not display images
         // coming from a secure line
-        if (settings.ignoreSSLErrors && server.text.substring(0, 5) === "https") {
+        if (settings.ignoreSSLErrors && settings.servername.substring(0, 5) === "https") {
             ttrss.setImageProxy("http://proxy.cnlpete.de/proxy.php?url=")
         }
 
@@ -227,7 +156,6 @@ Dialog {
             // Let the user know
             notification.show(errorMessage)
 
-            dialog.reject()
             return;
         }
 
@@ -315,15 +243,8 @@ Dialog {
     }
 
     Component.onCompleted: {
-        server.text = settings.servername
-        username.text = settings.username
-        password.text = settings.password
-        ignoreSSLErrors.checked = settings.ignoreSSLErrors
-
         if(settings.autologin && settings.useAutologin && doAutoLogin) {
             startLogin();
         }
     }
-
-    onAccepted: prepareLogin()
 }
