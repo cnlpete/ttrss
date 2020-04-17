@@ -91,6 +91,7 @@ Page {
                         enabled: feedItemModel.selectedItems > 0
                         icon.source: "qrc:///images/ic_rss_"
                                      + (feedItemModel.allPublished ? "enabled" : "disabled") + ".png"
+                        icon.color: undefined
                         onClicked: {
                             feedItemModel.setAllSelectedRSSState(!feedItemModel.allPublished)
                         }
@@ -100,6 +101,7 @@ Page {
                         enabled: feedItemModel.selectedItems > 0
                         icon.source: "qrc:///images/ic_star_"
                                      + (feedItemModel.allStarred ? "enabled" : "disabled") + ".png"
+                        icon.color: undefined
                         onClicked: {
                             feedItemModel.setAllSelectedMarkedState(!feedItemModel.allStarred)
                         }
@@ -109,6 +111,7 @@ Page {
                         enabled: feedItemModel.selectedItems > 0
                         icon.source: "qrc:///images/ic_"
                                      + (feedItemModel.allUnread ? "unread" : "read") + ".png"
+                        icon.color: undefined
                         onClicked: {
                             feedItemModel.setAllSelectedReadState(feedItemModel.allUnread)
                         }

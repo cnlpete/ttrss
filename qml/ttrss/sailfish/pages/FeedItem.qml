@@ -227,6 +227,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_rss_"
                              + (rss ? "enabled" : "disabled") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.togglePublished(function(successful,
                                                            errorMessage,
@@ -240,6 +241,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_star_"
                              + (marked ? "enabled" : "disabled") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.toggleStar(function(successful, errorMessage,
                                                       state) {
@@ -252,6 +254,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_"
                              + (unread ? "unread" : "read") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.toggleRead(function(successful, errorMessage,
                                                       state) {
@@ -292,6 +295,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_rss_"
                              + (rss ? "enabled" : "disabled") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.togglePublished(function(successful,
                                                            errorMessage,
@@ -305,6 +309,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_star_"
                              + (marked ? "enabled" : "disabled") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.toggleStar(function(successful, errorMessage,
                                                       state) {
@@ -317,6 +322,7 @@ Page {
             IconButton {
                 icon.source: "qrc:///images/ic_"
                              + (unread ? "unread" : "read") + ".png"
+                icon.color: undefined
                 onClicked: {
                     feedItemModel.toggleRead(function(successful, errorMessage,
                                                       state) {
