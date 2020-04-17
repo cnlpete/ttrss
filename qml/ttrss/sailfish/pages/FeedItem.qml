@@ -54,6 +54,18 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("Mark all above as read")
+                onClicked: {
+                    if (feedItemModel.selectedIndex !== -1) {
+                        remorse.execute(qsTr("Marked all above as read"),
+                                        function() {
+                                            feedItemModel.markAllAboveAsRead(feedItemModel.selectedIndex)
+                                        })
+                    }
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Open in Web Browser")
                 enabled: url && (url != "")
                 onClicked: Qt.openUrlExternally(url)
@@ -98,6 +110,8 @@ Page {
                 }
             }
         }
+
+        RemorsePopup { id: remorse }
 
         Column {
             id: content
