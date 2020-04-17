@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="57"/>
         <source>Login Details</source>
-        <translation type="unfinished"/>
+        <translation>登录详情</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="58"/>
@@ -183,20 +183,20 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="109"/>
         <source>Additional HTTP Auth?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
+        <translation/>附加 HTTP Auth？</translation>
+</message>
+ <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="117"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="118"/>
         <source>HTTP Auth Username</source>
-        <translation type="unfinished"/>
+        <translation/>HTTP Auth 用户名</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="131"/>
         <source>HTTP Auth Password</source>
-        <translation type="unfinished"/>
-    </message>
+        <translation/>HTTp Auth 密码</translation>
+</message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="143"/>
         <source>Restore</source>
@@ -761,18 +761,18 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="74"/>
         <source>Change Login Details</source>
-        <translation type="unfinished"/>
+        <translation/>修改登录详情<translation/>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>%1 @ %2</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
+        <translation/>%1 @ %2</source>
+ </message>
+ <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
         <source>with httpauth (%1)</source>
-        <translation type="unfinished"/>
-    </message>
+        <translation/>附带 httpauth (%1) <translation/>
+</message>
     <message>
         <source>Server address</source>
         <translation type="vanished">服务器地址</translation>
