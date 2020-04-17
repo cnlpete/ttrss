@@ -183,19 +183,19 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="109"/>
         <source>Additional HTTP Auth?</source>
-        <translation/>附加 HTTP Auth？</translation>
+        <translation>附加 HTTP Auth?</translation>
 </message>
  <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="117"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="118"/>
         <source>HTTP Auth Username</source>
-        <translation/>HTTP Auth 用户名</translation>
+        <translation>HTTP Auth 用户名</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="131"/>
         <source>HTTP Auth Password</source>
-        <translation/>HTTp Auth 密码</translation>
+        <translation>HTTP Auth 密码</translation>
 </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="143"/>
@@ -761,17 +761,17 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="74"/>
         <source>Change Login Details</source>
-        <translation/>修改登录详情<translation/>
+        <translation>修改登录详情</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>%1 @ %2</source>
-        <translation/>%1 @ %2</source>
+        <translation>%1 @ %2</translation>
  </message>
  <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
         <source>with httpauth (%1)</source>
-        <translation/>附带 httpauth (%1) <translation/>
+        <translation>附带 httpauth (%1)</translation>
 </message>
     <message>
         <source>Server address</source>

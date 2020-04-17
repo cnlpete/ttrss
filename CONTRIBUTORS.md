@@ -15,3 +15,4 @@ CONTRIBUTORS
 - Heimen Stoffels (Vistaus)
 - mp107
 - ajya
+- dashinfantry
