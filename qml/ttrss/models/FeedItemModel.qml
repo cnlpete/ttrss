@@ -140,15 +140,29 @@ ListModel {
         function imgReplacer(match, offset, string) {
             var srcRegex = /src=\"([^"]*)\"/i;
             var altRegex = /alt=\"([^"]*)\"/i;
+            var titleRegex = /title=\"([^"]*)\"/i;
 
             var src = srcRegex.exec(match);
             var alt = altRegex.exec(match);
+            var title = titleRegex.exec(match);
             if (alt === null) {
-                alt = src;
+                alt = title;
             }
             images.push(match)
 
-            return "<a href=\"#" + src[1] + "\">" + (alt[1] || src[1]) + "</a>"
+            var url = src[1];
+            var t;
+            if (alt !== null) {
+                t = alt[1];
+            }
+            else if (title !== null) {
+                t = title[1];
+            }
+            else {
+                t = url.substring(url.lastIndexOf('/')+1);
+            }
+
+            return "<a href=\"|||" + url + "|||" + t + "|||\">" + t + "</a> "
         }
 
         var image_regex = /<img\s*[^>]*src=\"([^"]+)\"[^>]*>/gi;

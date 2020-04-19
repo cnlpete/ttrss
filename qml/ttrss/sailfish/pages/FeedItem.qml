@@ -176,7 +176,16 @@ Page {
                 fontSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
                 width: parent.width - Theme.paddingLarge
-                onLinkActivated: pageStack.push(Qt.openUrlExternally(link))
+                onLinkActivated: {
+                    if (link.substring(0,3) === '|||') {
+                        var curstomLinkRegex = /\|\|\|([^\|]*)\|\|\|([^\|]*)\|\|\|/i;
+                        var curstomLinkContent = curstomLinkRegex.exec(link);
+                        pageStack.push(Qt.resolvedUrl("ImageViewer.qml"), { imgUrl: curstomLinkContent[1], strHpTitle: curstomLinkContent[2] })
+                    }
+                    else {
+                        pageStack.push(Qt.openUrlExternally(link))
+                    }
+                }
             }
 
             Label {
