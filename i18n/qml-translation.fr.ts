@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="57"/>
         <source>Login Details</source>
-        <translation type="unfinished"/>
+        <translation>Données d&apos;authentification</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="58"/>
@@ -762,17 +762,17 @@ Vous pouvez les créer dans le menu.</translation>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="74"/>
         <source>Change Login Details</source>
-        <translation type="unfinished"/>
+        <translation>Changer les données d&apos;authentification</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="86"/>
         <source>%1 @ %2</source>
-        <translation type="unfinished"/>
+        <translation>%1 @ %2</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
         <source>with httpauth (%1)</source>
-        <translation type="unfinished"/>
+        <translation>avec httpauth (%1)</translation>
     </message>
     <message>
         <source>Server address</source>
@@ -798,7 +798,7 @@ Vous pouvez les créer dans le menu.</translation>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="153"/>
         <source>The supplied login credentials did not work.</source>
-        <translation>Les informations d&apos;identifications ne fonctionnent pas. </translation>
+        <translation>Les informations d&apos;identification ne fonctionnent pas. </translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="63"/>
