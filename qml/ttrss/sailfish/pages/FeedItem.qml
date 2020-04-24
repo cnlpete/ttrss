@@ -36,6 +36,7 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
+    property var    images
 
     anchors.margins: 0
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
@@ -210,6 +211,29 @@ Page {
                     model: labels.count
                     LabelLabel {
                         label: labels.get(index)
+                    }
+                }
+            }
+            ListView {
+                model: images
+                width: parent.width
+                height: model.count * Theme.itemSizeSmall
+
+                delegate: ListItem {
+                    width: parent.width
+                    height: Theme.itemSizeSmall
+
+                    Label {
+                        text: title
+                        width: parent.width
+                        height: Theme.itemSizeSmall
+                        color: Theme.highlightColor
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: pageStack.push(Qt.resolvedUrl("ImageViewer.qml"), { imgUrl: url, strHpTitle: title })
                     }
                 }
             }
@@ -452,6 +476,7 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
+            root.images = data.images
             note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             unread      = data.unread

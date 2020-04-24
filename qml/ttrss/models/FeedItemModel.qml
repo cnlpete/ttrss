@@ -148,19 +148,20 @@ ListModel {
             if (alt === null) {
                 alt = title;
             }
-            images.push(match)
 
             var url = src[1];
             var t;
-            if (alt !== null) {
+            if (alt !== null && alt[1] !== "") {
                 t = alt[1];
             }
-            else if (title !== null) {
+            else if (title !== null && title[1] !== "") {
                 t = title[1];
             }
             else {
                 t = url.substring(url.lastIndexOf('/')+1);
             }
+
+            images.push({'title': t, 'url': url});
 
             return "<a href=\"|||" + url + "|||" + t + "|||\">" + t + "</a> "
         }
