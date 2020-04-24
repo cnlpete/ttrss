@@ -37,6 +37,7 @@ Page {
     property bool   isCat:          false
     property var    labels
     property var    images
+    property var    attachments
 
     anchors.margins: 0
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
@@ -237,6 +238,39 @@ Page {
                     }
                 }
             }
+            ListView {
+                model: attachments
+                width: parent.width
+                height: model.count * Theme.itemSizeSmall
+
+                delegate: ListItem {
+                    width: parent.width
+                    height: Theme.itemSizeSmall
+
+                    Label {
+                        text: title ? title : content_url.replace(/^.*[\/]/g, '')
+                        width: parent.width
+                        height: Theme.itemSizeSmall
+                        color: Theme.highlightColor
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var url = content_url
+                            var isImage = (content_type.indexOf("image") === 0 ||
+                                           /(jpe?g|png)$/i.test(url))
+                            if (isImage) {
+                                pageStack.push(Qt.resolvedUrl("ImageViewer.qml"), { imgUrl: url, strHpTitle: title })
+                            }
+                            else {
+                                pageStack.push(Qt.openUrlExternally(url))
+                            }
+                        }
+                    }
+                }
+            }
         }
         VerticalScrollDecorator { }
     }
@@ -392,52 +426,10 @@ Page {
         }
     }
 
-    function computeAttachmentsCode(data) {
-        var attachments = data.attachments
-        if (attachments.count === 0) return ""
-
-        var attachmentsCode = ""
-
-        for (var i = 0; i < attachments.count; i++) {
-            var a = attachments.get(i)
-            var url = a.content_url
-            var isImage = (a.content_type.indexOf("image") === 0 ||
-                           /jpe?g$/i.test(url) ||
-                           /png$/i.test(url))
-
-            console.log("URL: " + url + " isImage: " + isImage)
-            var attachmentLabel = ""
-
-            if (isImage) {
-                if (!settings.displayImages) {
-                    // Do not attach images if they should not be displayed.
-                    continue
-                }
-
-                var re = new RegExp("<img\\s[^>]*src=\"" + url + "\"", "i")
-                if (data.content.match(re)) {
-                    // Do not attach images which are part of the content.
-                    continue
-                }
-
-                attachmentLabel = "<img src=\"" + url
-                        + "\" style=\"max-width: 100%; height: auto\"/>"
-
-            } else {
-                attachmentLabel = a.title ? a.title : url.replace(/^.*[\/]/g, '')
-            }
-            attachmentsCode += "<a href=\"" + url + "\">" + attachmentLabel + "</a><br/>"
-        }
-
-        return attachmentsCode
-    }
-
     function showFeedItem() {
         var data = feedItemModel.getSelectedItem()
 
         if (data) {
-            var attachmentsCode = computeAttachmentsCode(data)
-
             var content = data.content.replace('target="_blank"', '')
 
             if (!settings.displayImages) {
@@ -461,13 +453,6 @@ Page {
                 var regex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi;
                 content = content.replace(regex, "<a href='$1'>$1</a> ")
 
-                if (attachmentsCode) {
-                    content += attachmentsCode
-                }
-
-            } else if (attachmentsCode) {
-                var body_regex =/(<\/body>)/gi
-                content = content.replace(body_regex, attachmentsCode + "$1")
             }
 
             itemView.text = content
@@ -477,6 +462,7 @@ Page {
             date        = data.date
             root.labels = data.labels
             root.images = data.images
+            root.attachments = data.attachments
             note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             unread      = data.unread
