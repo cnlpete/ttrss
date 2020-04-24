@@ -36,8 +36,6 @@ Page {
     property bool   nextId:         false
     property bool   isCat:          false
     property var    labels
-    property var    images
-    property var    attachments
 
     anchors.margins: 0
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
@@ -215,8 +213,15 @@ Page {
                     }
                 }
             }
+
+            Separator {
+                width: parent.width
+                horizontalAlignment: Qt.AlignHCenter
+                color: Theme.highlightColor
+                visible: images.model.count > 0
+            }
             ListView {
-                model: images
+                id: images
                 width: parent.width
                 height: model.count * Theme.itemSizeSmall
 
@@ -238,8 +243,15 @@ Page {
                     }
                 }
             }
+
+            Separator {
+                width: parent.width
+                horizontalAlignment: Qt.AlignHCenter
+                color: Theme.highlightColor
+                visible: attachments.model.count > 0
+            }
             ListView {
-                model: attachments
+                id: attachments
                 width: parent.width
                 height: model.count * Theme.itemSizeSmall
 
@@ -461,8 +473,8 @@ Page {
             subTitle    = data.feedTitle
             date        = data.date
             root.labels = data.labels
-            root.images = data.images
-            root.attachments = data.attachments
+            images.model = data.images
+            attachments.model = data.attachments
             note        = data.note !== undefined ? data.note : ""
             marked      = data.marked
             unread      = data.unread
