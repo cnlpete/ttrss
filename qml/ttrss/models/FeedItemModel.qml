@@ -85,63 +85,11 @@ ListModel {
 
         //root.clear(); clearing is done by caller instead, so this is more like an 'append' and can be used by loadMore aswell
 
-        var now = new Date()
-
         if (feeditems && feeditems.length) {
             root.continuation += feeditems.length
 
             for(var feeditem = 0; feeditem < feeditems.length; feeditem++) {
-
-                var subtitle = feeditems[feeditem].content || ""
-                subtitle = subtitle.replace(/\n/gi, " ")
-                subtitle = subtitle.replace(/<[\/]?[a-zA-Z][^>]*>/gi, "")
-                subtitle = unescape(subtitle.replace(/<!--.*-->/gi, ""))
-                subtitle = "<body>" + subtitle + "</body>"
-
-                var title = feeditems[feeditem].title
-                title = title.replace(/<br.*>/gi, "")
-                title = "<body>" + unescape(title.replace(/\n/gi, "")) + "</body>"
-
-                var d = new Date(feeditems[feeditem].updated * 1000)
-                var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
-                if (d.getDate() === now.getDate()
-                        && d.getMonth() === now.getMonth()
-                        && d.getFullYear() === now.getFullYear()) {
-                    formatedDate = qsTr('Today')
-                }
-
-                var url = feeditems[feeditem].link
-                url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
-
-                var labels = []
-                var labelcount = feeditems[feeditem].labels ? feeditems[feeditem].labels.length : 0
-                for (var l = 0; l < labelcount; l++) {
-                    labels[l] = {
-                        'id': parseInt(feeditems[feeditem].labels[l][0]),
-                        'caption': feeditems[feeditem].labels[l][1],
-                        'fg_color': (feeditems[feeditem].labels[l][2] === "" ? "black" : feeditems[feeditem].labels[l][2]),
-                        'bg_color': (feeditems[feeditem].labels[l][3] === "" ? "white" : feeditems[feeditem].labels[l][3])
-                    }
-                }
-
-                var modelEntry = {
-                    title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
-                    content:    feeditems[feeditem].content,
-                    subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
-                    id:         parseInt(feeditems[feeditem].id),
-                    unread:     !!feeditems[feeditem].unread,
-                    marked:     !!feeditems[feeditem].marked,
-                    rss:        feeditems[feeditem].published,
-                    url:        url,
-                    date:       formatedDate,
-                    attachments:feeditems[feeditem].attachments,
-                    note:       feeditems[feeditem].note,
-                    feedId:     parseInt(feeditems[feeditem].feed_id),
-                    feedTitle:  ttrss.html_entity_decode(feeditems[feeditem].feed_title, 'ENT_QUOTES'),
-                    labels:     labels,
-                    icon:       settings.displayIcons ? ttrss.getIconUrl(feeditems[feeditem].feed_id) : '',
-                    selected:   false
-                }
+                var modelEntry = buildEntry(feeditems[feeditem])
 
                 if (settings.feeditemsOrder === 0) {
                     root.append(modelEntry)
@@ -171,6 +119,114 @@ ListModel {
         }
 
         return root.get(root.selectedIndex)
+    }
+
+    /** @private */
+    function buildEntry(feedItem) {
+        var subtitle = feedItem.content || ""
+        subtitle = subtitle.replace(/\n/gi, " ")
+        subtitle = subtitle.replace(/<[\/]?[a-zA-Z][^>]*>/gi, "")
+        subtitle = unescape(subtitle.replace(/<!--.*-->/gi, ""))
+        subtitle = "<body>" + subtitle + "</body>"
+
+        var title = feedItem.title
+        title = title.replace(/<br.*>/gi, "")
+        title = "<body>" + unescape(title.replace(/\n/gi, "")) + "</body>"
+
+
+        var images = []
+
+        // strip images and replace with "fancy links", store the images in an extra array
+        function imgReplacer(match, offset, string) {
+            var srcRegex = /src=\"([^"]*)\"/i;
+            var altRegex = /alt=\"([^"]*)\"/i;
+            var titleRegex = /title=\"([^"]*)\"/i;
+
+            var src = srcRegex.exec(match);
+            var alt = altRegex.exec(match);
+            var title = titleRegex.exec(match);
+            if (alt === null) {
+                alt = title;
+            }
+
+            var url = src[1];
+            var t;
+            if (alt !== null && alt[1] !== "") {
+                t = alt[1];
+            }
+            else if (title !== null && title[1] !== "") {
+                t = title[1];
+            }
+            else {
+                t = url.substring(url.lastIndexOf('/')+1);
+            }
+
+            if (settings.stripInvisibleImg) {
+                // remove images with a height or width of 0 or 1
+                var width_height_regex = /<img\s[^>]*((height|width)="[01]"[^>]*)+>/gi;
+                if (width_height_regex.test(match)) {
+                    return ""
+                }
+            }
+
+            images.push({'title': t, 'url': url});
+
+            if (settings.displayImages) {
+                return "<a href=\"|||" + url + "|||" + t + "|||\">" + match + "</a> "
+            }
+            else {
+                return "<a href=\"|||" + url + "|||" + t + "|||\">" + t + "</a> "
+            }
+        }
+
+        var image_regex = /<img\s*[^>]*src=\"([^"]+)\"[^>]*>/gi;
+        var content = feedItem.content || ""
+        content = content.replace(image_regex, imgReplacer)
+
+        var d = new Date(feedItem.updated * 1000)
+        var formatedDate = Qt.formatDate(d, Qt.DefaultLocaleShortDate)
+        var now = new Date()
+        if (d.getDate() === now.getDate()
+                && d.getMonth() === now.getMonth()
+                && d.getFullYear() === now.getFullYear()) {
+            formatedDate = qsTr('Today')
+        }
+
+        var url = feedItem.link
+        url = url.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
+
+        var labels = []
+        var labelcount = feedItem.labels ? feedItem.labels.length : 0
+        for (var l = 0; l < labelcount; l++) {
+            labels[l] = {
+                'id': parseInt(feedItem.labels[l][0]),
+                'caption': feedItem.labels[l][1],
+                'fg_color': (feedItem.labels[l][2] === "" ? "black" : feedItem.labels[l][2]),
+                'bg_color': (feedItem.labels[l][3] === "" ? "white" : feedItem.labels[l][3])
+            }
+        }
+
+        var ttrss = rootWindow.getTTRSS()
+        var modelEntry = {
+            title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+            content:    content,
+            subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
+            id:         parseInt(feedItem.id),
+            unread:     !!feedItem.unread,
+            marked:     !!feedItem.marked,
+            rss:        feedItem.published,
+            url:        url,
+            date:       formatedDate,
+            images:     images,
+            attachments:feedItem.attachments,
+            note:       feedItem.note,
+            feedId:     parseInt(feedItem.feed_id),
+            feedTitle:  ttrss.html_entity_decode(feedItem.feed_title, 'ENT_QUOTES'),
+            labels:     labels,
+            icon:       settings.displayIcons ? ttrss.getIconUrl(feedItem.feed_id) : '',
+            selected:   false
+        }
+        return modelEntry;
     }
 
     /** @private */
@@ -452,7 +508,7 @@ ListModel {
         var newState = !item.rss
 
         ttrss.updateFeedRSS(item.id, newState, function(successful,
-                                                         errorMessage) {
+                                                        errorMessage) {
             if (successful) {
                 root.setProperty(index, "rss", newState)
                 root.itemPublishedChanged(item)

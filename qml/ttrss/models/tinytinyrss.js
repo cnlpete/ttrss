@@ -1185,6 +1185,7 @@ function updateLabels(articleId, callback) {
         'sid': state['token'],
         'article_id': articleId
     }
+    console.error(">>>>======", "updateLabels", JSON.stringify(params))
 
     networkCall(params, function(http) { process_updateLabels(callback, http) });
 }
@@ -1203,6 +1204,7 @@ function process_updateLabels(callback, httpreq) {
         return;
     }
 
+    console.error(">>>>======", "process_updateLabels", JSON.stringify(response.content))
     state['labelscache'] = response.content
 
     if(!processPendingRequests(callback) && callback) {
@@ -1244,7 +1246,7 @@ function setLabel(articleId, labelId, assign, callback) {
         'label_id': labelId,
         'assign': assign
     }
-
+console.error(">>>>======", "setLabel", JSON.stringify(params))
     networkCall(params, function(http) { process_setLabel(callback, http) });
 }
 
@@ -1405,7 +1407,7 @@ function process_readyState(httpreq) {
             responseContentType.match(/json/) &&
             httpreq.responseText &&
             httpreq.responseText.length > 2)  {
-        console.log(httpreq.responseText);
+        //console.log(httpreq.responseText);
 
         try {
             responseObject = JSON.parse(httpreq.responseText);
