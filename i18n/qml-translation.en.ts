@@ -44,7 +44,7 @@
     </message>
     <message>
         <location filename="../qml/ttrss/components/AboutPage.qml" line="141"/>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="149"/>
         <source>Issuetracker</source>
         <translation>Issuetracker</translation>
     </message>
@@ -78,22 +78,22 @@
         <translation>Contributors</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="134"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="135"/>
         <source>Feature Requests &amp; Bugs</source>
         <translation>Feature Requests &amp; Bugs</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="141"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="142"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
         <translation>If you encounter bugs or have feature requests, please visit the Issue Tracker</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="160"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="161"/>
         <source>Legal Notice</source>
         <translation>Legal Notice</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="176"/>
+        <location filename="../qml/ttrss/sailfish/pages/AboutPage.qml" line="177"/>
         <source>The source code is available at %1.</source>
         <translation>The source code is available at %1.</translation>
     </message>
@@ -101,17 +101,17 @@
 <context>
     <name>AddSubscription</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="52"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="50"/>
         <source>Add subscription</source>
         <translation>Add subscription</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="57"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="55"/>
         <source>Feed address</source>
         <translation>Feed address</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="70"/>
+        <location filename="../qml/ttrss/sailfish/pages/AddSubscription.qml" line="68"/>
         <source>Category</source>
         <translation>Category</translation>
     </message>
@@ -367,7 +367,7 @@
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="93"/>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="313"/>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="316"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="57"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="69"/>
         <source>Open in Web Browser</source>
         <translation>Open in web browser</translation>
     </message>
@@ -386,21 +386,31 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="327"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="69"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="81"/>
         <source>Edit Note</source>
         <translation>Edit note</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="337"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="81"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="93"/>
         <source>Assign Labels</source>
         <translation>Assign Labels</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="171"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="194"/>
         <source>Note: %1</source>
         <translation>Note: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="57"/>
+        <source>Mark all above as read</source>
+        <translation>Mark all above as read</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="60"/>
+        <source>Marked all above as read</source>
+        <translation>Marked all above as read</translation>
     </message>
 </context>
 <context>
@@ -419,7 +429,7 @@
 <context>
     <name>FeedItemModel</name>
     <message>
-        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="110"/>
+        <location filename="../qml/ttrss/models/FeedItemModel.qml" line="192"/>
         <source>Today</source>
         <translation>Today</translation>
     </message>
@@ -437,28 +447,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="87"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="197"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="213"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="200"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="216"/>
         <source>Load more</source>
         <translation>Load more</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="230"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="233"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation>Loading</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="231"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation>No items in feed</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="231"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation>No unread items in feed</translation>
@@ -505,14 +515,14 @@
         <translation>Open in web browser</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="129"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="132"/>
         <source>Update</source>
         <translation>Update</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="143"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="151"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="146"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="154"/>
         <source>Mark all loaded read</source>
         <translation>Mark all loaded read</translation>
     </message>
@@ -522,12 +532,12 @@
         <translation>%1 selected</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="221"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="224"/>
         <source>Last updated: %1</source>
         <translation>Last updated: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="261"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="264"/>
         <source>Marking all loaded as read</source>
         <translation>Marking all loaded as read</translation>
     </message>
@@ -684,6 +694,19 @@
     </message>
 </context>
 <context>
+    <name>ImageViewer</name>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ImageViewer.qml" line="161"/>
+        <source>Loading image...%1</source>
+        <translation>Loading image...%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/ImageViewer.qml" line="170"/>
+        <source>Error loading image</source>
+        <translation>Error loading image</translation>
+    </message>
+</context>
+<context>
     <name>LabelUpdater</name>
     <message>
         <location filename="../qml/ttrss/harmattan/LabelUpdater.qml" line="39"/>
@@ -811,25 +834,25 @@
 <context>
     <name>NoteEditor</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="42"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="45"/>
         <source>Reset</source>
         <translation>Reset</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="46"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="54"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
         <source>Edit Note</source>
         <translation>Edit Note</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="30"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="55"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="57"/>
         <source>Save Note</source>
         <translation>Save Note</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/NoteEditor.qml" line="31"/>
-        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="56"/>
+        <location filename="../qml/ttrss/sailfish/pages/NoteEditor.qml" line="58"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
