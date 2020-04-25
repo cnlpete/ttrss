@@ -161,9 +161,22 @@ ListModel {
                 t = url.substring(url.lastIndexOf('/')+1);
             }
 
+            if (settings.stripInvisibleImg) {
+                // remove images with a height or width of 0 or 1
+                var width_height_regex = /<img\s[^>]*((height|width)="[01]"[^>]*)+>/gi;
+                if (width_height_regex.test(match)) {
+                    return ""
+                }
+            }
+
             images.push({'title': t, 'url': url});
 
-            return "<a href=\"|||" + url + "|||" + t + "|||\">" + t + "</a> "
+            if (settings.displayImages) {
+                return "<a href=\"|||" + url + "|||" + t + "|||\">" + match + "</a> "
+            }
+            else {
+                return "<a href=\"|||" + url + "|||" + t + "|||\">" + t + "</a> "
+            }
         }
 
         var image_regex = /<img\s*[^>]*src=\"([^"]+)\"[^>]*>/gi;

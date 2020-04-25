@@ -444,20 +444,6 @@ Page {
         if (data) {
             var content = data.content.replace('target="_blank"', '')
 
-            if (!settings.displayImages) {
-                // remove images
-                var image_regex = /<img\s[^>]*>/gi;
-                content = content.replace(image_regex, "")
-
-            } else if (settings.stripInvisibleImg) {
-                // remove images with a height or width of 0 or 1
-                var height_regex = /<img\s[^>]*height="[01]"[^>]*>/gi;
-                content = content.replace(height_regex, "")
-
-                var width_regex = /<img\s[^>]*width="[01]"[^>]*>/gi;
-                content = content.replace(width_regex, "")
-            }
-
             if (!content.match(/<body>/gi)) {
                 // not yet html, detect urls
                 console.log('doing link detection on ' + content)
