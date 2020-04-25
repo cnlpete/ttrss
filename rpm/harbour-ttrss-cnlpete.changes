@@ -1,3 +1,9 @@
+* Sat Apr 25 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.1-1-dev
+- updated translations
+- readded "mark above as read" feature
+- added seperate image viewer page for images
+- fixed icon colors
+
 * Thu Apr 16 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.0-1-dev
 - updated translations
 - split main page and login page into seperate screens (and fixing the dialog login bug)
