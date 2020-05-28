@@ -45,7 +45,8 @@ API.
 
 %qtc_qmake5  \
     VERSION=%{version} \
-    RELEASE=%{release}
+    RELEASE=%{release} \
+    %{name}.pro
 
 %qtc_make %{?_smp_mflags}
 
@@ -67,7 +68,7 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}
+%{_bindir}/%{name}
 %{_datadir}/%{name}/qml
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
