@@ -1,3 +1,6 @@
+* Wed Jun 03 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.2-1-dev
+- fix for cyrillic characters
+
 * Sat Apr 25 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.1-1-dev
 - updated translations
 - readded "mark above as read" feature
