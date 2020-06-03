@@ -46,7 +46,7 @@ API.
 %qtc_qmake5  \
     VERSION=%{version} \
     RELEASE=%{release} \
-    %{name}.pro
+    harbour-ttrss-cnlpete.pro
 
 %qtc_make %{?_smp_mflags}
 
@@ -69,19 +69,12 @@ desktop-file-install --delete-original       \
 %files
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
-%{_datadir}/%{name}/qml
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-%{_datadir}/icons/hicolor/86x86/apps
 %{_datadir}/icons/hicolor/108x108/apps/%{name}.png
-%{_datadir}/icons/hicolor/108x108/apps
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-%{_datadir}/icons/hicolor/128x128/apps
 %{_datadir}/icons/hicolor/172x172/apps/%{name}.png
-%{_datadir}/icons/hicolor/172x172/apps
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-%{_datadir}/icons/hicolor/256x256/apps
 # >> files
 # << files
