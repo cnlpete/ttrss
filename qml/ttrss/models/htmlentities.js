@@ -193,7 +193,7 @@ function html_entity_decode (string, quote_style) {
     }
     tmp_str = tmp_str.split('&#039;').join("'");
     //decode numeric html entities
-    tmp_str = tmp_str.replace(/&#([0-9]{1,3});/gi, function(match, numStr) {
+    tmp_str = tmp_str.replace(/&#([0-9]{1,4});/gi, function(match, numStr) {
         var num = parseInt(numStr, 10);
         return String.fromCharCode(num);
     });
