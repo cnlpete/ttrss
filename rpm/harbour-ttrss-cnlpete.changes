@@ -1,3 +1,7 @@
+* Tue May 25 2021 Hauke Schade <cnlpete@cnlpete.de> 0.7.3-1-dev
+- release aarch64 build
+- add support for MyBackup
+
 * Wed Jun 03 2020 Hauke Schade <cnlpete@cnlpete.de> 0.7.2-1-dev
 - fix for cyrillic characters
 

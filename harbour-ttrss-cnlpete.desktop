@@ -5,3 +5,5 @@ Name=Tiny Tiny RSS
 Icon=harbour-ttrss-cnlpete
 Exec=harbour-ttrss-cnlpete
 
+[X-HarbourBackup]
+BackupPathList=.config/harbour-ttrss-cnlpete/
