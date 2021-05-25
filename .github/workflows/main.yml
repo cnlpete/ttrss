@@ -1,0 +1,60 @@
+name: harbour-ttrss
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Prepare
+      run: mkdir output
+
+    - name: Build armv7hl
+      id: build_armv7hl
+      uses: coderus/github-sfos-build@master
+      with:
+        arch: armv7hl
+        release: 4.0.1.45
+
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: harbour-ttrss-rpms
+        path: RPMS
+
+    - name: Build aarch64
+      id: build_aarch64
+      uses: coderus/github-sfos-build@master
+      with:
+        arch: aarch64
+        release: 4.0.1.45
+
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: harbour-ttrss-rpms
+        path: RPMS
+
+    - name: Build i486
+      id: build_i486
+      uses: coderus/github-sfos-build@master
+      with:
+        arch: i486
+        release: 4.0.1.45
+      
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: harbour-ttrss-rpms
+        path: RPMS
