@@ -22,6 +22,8 @@ PkgConfigBR:
 - Qt5Qml
 - Qt5Core
 - sailfishapp >= 0.0.10
+PkgBR:
+- qt5-qttools-linguist
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
 - qt5-plugin-imageformat-ico
@@ -34,4 +36,3 @@ Files:
 - '%{_datadir}/icons/hicolor/128x128/apps/%{name}.png'
 - '%{_datadir}/icons/hicolor/172x172/apps/%{name}.png'
 - '%{_datadir}/icons/hicolor/256x256/apps/%{name}.png'
-PkgBR: []
