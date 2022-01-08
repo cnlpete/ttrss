@@ -17,3 +17,4 @@ CONTRIBUTORS
 - ajya
 - dashinfantry
 - Alexus230
+- rinigus
