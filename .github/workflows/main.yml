@@ -25,12 +25,12 @@ jobs:
       uses: coderus/github-sfos-build@master
       with:
         arch: armv7hl
-        release: 4.0.1.45
+        release: 4.3.0.12
 
     - name: Upload build result
       uses: actions/upload-artifact@v2
       with:
-        name: harbour-ttrss-rpms
+        name: sailfish-syncthing-bin-rpms
         path: RPMS
 
     - name: Build aarch64
@@ -38,12 +38,12 @@ jobs:
       uses: coderus/github-sfos-build@master
       with:
         arch: aarch64
-        release: 4.0.1.45
+        release: 4.3.0.12
 
     - name: Upload build result
       uses: actions/upload-artifact@v2
       with:
-        name: harbour-ttrss-rpms
+        name: sailfish-syncthing-bin-rpms
         path: RPMS
 
     - name: Build i486
@@ -51,7 +51,7 @@ jobs:
       uses: coderus/github-sfos-build@master
       with:
         arch: i486
-        release: 4.0.1.45
+        release: 4.3.0.12
       
     - name: Upload build result
       uses: actions/upload-artifact@v2
