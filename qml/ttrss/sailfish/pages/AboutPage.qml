@@ -124,7 +124,7 @@ Page {
                 text: "Francois Cattin, Jakub Kožíšek, Alberto Mardegan, "
                       + "gwmgdemj, equeim, Silviu Vulcan, Michael Käufl, "
                       + "Patrik Nilsson, Alexey, clovis86, Heimen Stoffels, "
-                      + "mp107, dashinfantry, Alexus230"
+                      + "mp107, dashinfantry, Alexus230, rinigus"
             }
 
             // -- Feature Requests & Bugs --
