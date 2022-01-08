@@ -11,6 +11,18 @@ Description: |-
   ttrss is a Tiny Tiny RSS Reader App for the Nokia N9 and the Jolla
   smartphone, written using Qt/QML. It uses the Tiny Tiny RSS JSON
   API.
+
+  %if "%{?vendor}" == "chum"
+  PackageName: TTRSS
+  Type: desktop-application
+  Categories:
+    - Network
+    - News
+  Custom:
+    Repo: https://github.com/cnlpete/ttrss
+  Icon: https://raw.githubusercontent.com/cnlpete/ttrss/master/images/icons/harbour-ttrss-cnlpete.svg
+  %endif
+
 Configure: none
 Builder: qtc5
 QMakeOptions:
