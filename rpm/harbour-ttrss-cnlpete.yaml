@@ -21,6 +21,12 @@ Description: |-
   Custom:
     Repo: https://github.com/cnlpete/ttrss
   Icon: https://raw.githubusercontent.com/cnlpete/ttrss/master/images/icons/harbour-ttrss-cnlpete.svg
+  Screenshots:
+   - https://github.com/cnlpete/ttrss/raw/ttrss.cnlpete.de/assets/screenshots/sailfish/feeditem.jpg
+   - https://github.com/cnlpete/ttrss/raw/ttrss.cnlpete.de/assets/screenshots/sailfish/feeds.jpg
+   - https://github.com/cnlpete/ttrss/raw/ttrss.cnlpete.de/assets/screenshots/sailfish/categories.jpg
+  Url:
+    Donation: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUWGSGAK8K7ZN
   %endif
 
 Configure: none
