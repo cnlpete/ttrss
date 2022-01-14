@@ -1,3 +1,7 @@
+* Fri Jan 25 2022 Hauke Schade <cnlpete@cnlpete.de> 0.7.4-1-dev
+- add support for chum builds
+- add support for SailJail
+
 * Tue May 25 2021 Hauke Schade <cnlpete@cnlpete.de> 0.7.3-1-dev
 - release aarch64 build
 - add support for MyBackup
