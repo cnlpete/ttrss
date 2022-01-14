@@ -65,22 +65,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     app->setApplicationVersion(APP_VERSION);
-    app->setApplicationName(TARGET);
-    app->setOrganizationName(TARGET);
+    app->setApplicationName(QStringLiteral("ttrss"));
+    app->setOrganizationName(QStringLiteral("de.cnlpete"));
 
-    // check for the old settings file, try to move it to new location
-    QFileInfo settingsfileInfo(".config/Hauke Schade/ttrss.conf");
-    QFile settingsfile(settingsfileInfo.absoluteFilePath());
-    if (settingsfile.exists()) {
-        if (!QDir(".config/" + QString(TARGET)).exists())
-            QDir(".config/").mkdir(TARGET);
-        QFileInfo newSettingsfileInfo(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
-        QFile newSettingsfile(newSettingsfileInfo.absoluteFilePath());
-        if (newSettingsfile.exists())
-            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".old.conf");
-        else
-            settingsfile.rename(".config/" + QString(TARGET) + "/" + QString(TARGET) + ".conf");
-    }
+    // check for old settings files, try to migrate to new location
+    Settings::migrateSettings_v1();
+    Settings::migrateSettings_v2();
 
     QString locale = QLocale::system().name();
     QTranslator translator;

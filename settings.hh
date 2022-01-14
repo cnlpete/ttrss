@@ -76,6 +76,9 @@ class Settings : public QObject
 public:
     static Settings *instance();
 
+    static void migrateSettings_v1();
+    static void migrateSettings_v2();
+
     // Login Credentials
     QString servername() const {
         return this->_servername;

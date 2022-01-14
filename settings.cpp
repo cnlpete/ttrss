@@ -22,8 +22,42 @@
 #include "settings.hh"
 
 #include <QtCore/QSettings>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtCore/QFileInfo>
 
 QScopedPointer<Settings> Settings::m_instance(0);
+
+void Settings::migrateSettings_v1() {
+    // The new location of config file
+    QSettings newSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-ttrss-cnlpete/harbour-ttrss-cnlpete.conf", QSettings::NativeFormat);
+
+    if (newSettings.contains("migrated-v1"))
+        return;
+
+    QSettings oldSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/Hauke Schade/ttrss.conf", QSettings::NativeFormat);
+
+    for (const QString& key : oldSettings.childKeys())
+        newSettings.setValue(key, oldSettings.value(key));
+
+    newSettings.setValue("migrated-v1", true);
+}
+
+void Settings::migrateSettings_v2() {
+    // The new location of config file
+    QSettings newSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.cnlpete/ttrss/ttrss.conf", QSettings::NativeFormat);
+
+    if (newSettings.contains("migrated-v2"))
+        return;
+
+    QSettings oldSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-ttrss-cnlpete/harbour-ttrss-cnlpete.conf", QSettings::NativeFormat);
+
+    for (const QString& key : oldSettings.childKeys())
+        newSettings.setValue(key, oldSettings.value(key));
+
+    newSettings.setValue("migrated-v2", true);
+}
 
 Settings *Settings::instance() {
     if (m_instance.isNull())

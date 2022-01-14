@@ -7,3 +7,8 @@ Exec=harbour-ttrss-cnlpete
 
 [X-HarbourBackup]
 BackupPathList=.config/harbour-ttrss-cnlpete/
+
+[X-Sailjail]
+Permissions=Internet
+OrganizationName=de.cnlpete
+ApplicationName=ttrss
