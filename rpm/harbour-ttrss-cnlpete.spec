@@ -42,7 +42,7 @@ Categories:
   - News
 Custom:
   Repo: https://github.com/cnlpete/ttrss
-Icon: https://raw.githubusercontent.com/cnlpete/ttrss/master/images/icons/harbour-ttrss-cnlpete.svg
+Icon: https://raw.githubusercontent.com/cnlpete/ttrss/master/images/icons/256x256/harbour-ttrss-cnlpete.png
 Screenshots:
  - https://github.com/cnlpete/ttrss/raw/ttrss.cnlpete.de/assets/screenshots/sailfish/feeditem.jpg
  - https://github.com/cnlpete/ttrss/raw/ttrss.cnlpete.de/assets/screenshots/sailfish/feeds.jpg
