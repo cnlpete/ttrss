@@ -6,7 +6,7 @@ Icon=harbour-ttrss-cnlpete
 Exec=harbour-ttrss-cnlpete
 
 [X-HarbourBackup]
-BackupPathList=.config/harbour-ttrss-cnlpete/
+BackupPathList=.config/de.cnlpete/ttrss/
 
 [X-Sailjail]
 Permissions=Internet;WebView
