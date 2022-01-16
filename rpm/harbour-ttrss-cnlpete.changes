@@ -1,4 +1,8 @@
-* Fri Jan 25 2022 Hauke Schade <cnlpete@cnlpete.de> 0.7.4-1-dev
+* Sun Jan 16 2022 Hauke Schade <cnlpete@cnlpete.de> 0.7.5-1-dev
+- fix support for SailJail
+- added material svg icons
+
+* Fri Jan 14 2022 Hauke Schade <cnlpete@cnlpete.de> 0.7.4-1-dev
 - add support for chum builds
 - add support for SailJail
 
