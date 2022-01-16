@@ -262,6 +262,7 @@ signals:
 private:
     static QScopedPointer<Settings> m_instance;
 
+    QString settingFile() const;
     explicit Settings(QObject *parent = 0);
     Q_DISABLE_COPY(Settings)
 

@@ -21,8 +21,10 @@
 
 #include "settings.hh"
 
+#include <QtCore/QDebug>
 #include <QtCore/QSettings>
 #include <QtCore/QStandardPaths>
+#include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QFile>
 #include <QtCore/QFileInfo>
@@ -42,6 +44,7 @@ void Settings::migrateSettings_v1() {
         newSettings.setValue(key, oldSettings.value(key));
 
     newSettings.setValue("migrated-v1", true);
+    qDebug() << "migrated Settings from " << oldSettings.fileName() << " to " << newSettings.fileName();
 }
 
 void Settings::migrateSettings_v2() {
@@ -57,6 +60,7 @@ void Settings::migrateSettings_v2() {
         newSettings.setValue(key, oldSettings.value(key));
 
     newSettings.setValue("migrated-v2", true);
+    qDebug() << "migrated Settings from " << oldSettings.fileName() << " to " << newSettings.fileName();
 }
 
 Settings *Settings::instance() {
@@ -364,7 +368,22 @@ void Settings::setShowAll(bool showAll) {
     }
 }
 
-Settings::Settings(QObject *parent) : QObject(parent), m_settings(new QSettings(this)) {
+QString Settings::settingFile() const {
+  QString config = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+  QString file = config + QDir::separator() +
+                 QCoreApplication::organizationName() + QDir::separator() +
+                 QCoreApplication::applicationName()  + QDir::separator() +
+                 QCoreApplication::applicationName() + ".conf";
+  qDebug() << "config:" << file;
+  return file;
+}
+
+Settings::Settings(QObject *parent) :
+    QObject(parent),
+    m_settings(new QSettings(settingFile(), QSettings::NativeFormat)) {
+
+    qDebug() << "using config at " << m_settings->fileName();
+
     // Login Credentials
     _servername = m_settings->value("servername", "http://").toString();
     _username = m_settings->value("username", "").toString();

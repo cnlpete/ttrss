@@ -57,7 +57,7 @@
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #if defined(Q_OS_SAILFISH)
-    QGuiApplication *app = SailfishApp::application(argc, argv);
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 #elif (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
     QScopedPointer<QGuiApplication> app(new QGuiApplication(argc, argv));
 #else
@@ -67,6 +67,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName(QStringLiteral("ttrss"));
     app->setOrganizationName(QStringLiteral("de.cnlpete"));
+    app->setOrganizationDomain(QStringLiteral("de.cnlpete"));
 
     // check for old settings files, try to migrate to new location
     Settings::migrateSettings_v1();
