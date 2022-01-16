@@ -11,5 +11,9 @@
         <file alias="ic_star_enabled.png">images/resources/ic_star_enabled.png</file>
         <file alias="ic_unread.png">images/resources/ic_unread.png</file>
         <file alias="ttrss256.png">images/resources/ttrss256.png</file>
+        <file alias="ic_rss.svg">images/resources/material/rss_feed_black_48dp.svg</file>
+        <file alias="ic_star.svg">images/resources/material/star_black_48dp.svg</file>
+        <file alias="ic_read.svg">images/resources/material/check_circle_black_48dp.svg</file>
+        <file alias="ic_unread.svg">images/resources/material/circle_black_48dp.svg</file>
     </qresource>
 </RCC>

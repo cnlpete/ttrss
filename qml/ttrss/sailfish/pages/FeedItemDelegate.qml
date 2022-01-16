@@ -38,19 +38,28 @@ ListItem {
     Row {
         id: markerRow
         spacing: Theme.paddingMedium
-        anchors.fill: parent
-        anchors.leftMargin: (icon.visible ? icon.width : 0) + Theme.paddingMedium
-        Image {
-            source: "qrc:///images/ic_star_enabled.png"
+        anchors.rightMargin: Theme.paddingMedium
+        anchors.right: parent.right
+
+        Icon {
+            source: "qrc:///images/ic_star.svg"
             visible: model.marked
+            color: Theme.highlightColor
+            highlighted: listItem.highlighted
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
+            width: Theme.iconSizeSmallPlus
+            height: Theme.iconSizeSmallPlus
         }
-        Image {
-            source: "qrc:///images/ic_rss_enabled.png"
+        Icon {
+            source: "qrc:///images/ic_rss.svg"
             visible: model.rss
+            color: Theme.highlightColor
+            highlighted: listItem.highlighted
             anchors.verticalCenter: parent.verticalCenter
             opacity: 0.5
+            width: Theme.iconSizeSmallPlus
+            height: Theme.iconSizeSmallPlus
         }
     }
 

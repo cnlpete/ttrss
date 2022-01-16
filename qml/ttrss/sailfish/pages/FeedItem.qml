@@ -141,27 +141,24 @@ Page {
                 }
                 spacing: Theme.paddingSmall
 
-                Image {
-                    id: starImage
+                Icon {
+                    source: "qrc:///images/ic_star.svg"
+                    height: dateLabel.height
+                    width: height
+                    color: Theme.highlightColor
                     opacity: marked ? 1 : 0
-                    width: 32
-                    height: 32
-                    sourceSize.width: 32
-                    sourceSize.height: 32
-                    source: "qrc:///images/ic_star_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
-                Image {
-                    id: rssImage
+                Icon {
+                    source: "qrc:///images/ic_rss.svg"
+                    height: dateLabel.height
+                    width: height
+                    color: Theme.highlightColor
                     opacity: rss ? 1 : 0
-                    width: 32
-                    height: 32
-                    sourceSize.width: 32
-                    sourceSize.height: 32
-                    source: "qrc:///images/ic_rss_enabled.png"
                     Behavior on opacity { FadeAnimation{} }
                 }
                 Label {
+                    id: dateLabel
                     text: date
                     font.pixelSize: Theme.fontSizeSmall
                     font.weight: Font.Light
@@ -307,6 +304,7 @@ Page {
             anchors.centerIn: parent
 
             IconButton {
+                id: previousButton
                 icon.source: "image://theme/icon-m-previous"
                 enabled: previousId !== false
                 onClicked: {
@@ -318,9 +316,10 @@ Page {
             }
 
             IconButton {
-                icon.source: "qrc:///images/ic_rss_"
-                             + (rss ? "enabled" : "disabled") + ".png"
-                icon.color: undefined
+                icon.source: "qrc:///images/ic_rss.svg"
+                icon.color: rss ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.togglePublished(function(successful,
                                                            errorMessage,
@@ -332,9 +331,10 @@ Page {
             }
 
             IconButton {
-                icon.source: "qrc:///images/ic_star_"
-                             + (marked ? "enabled" : "disabled") + ".png"
-                icon.color: undefined
+                icon.source: "qrc:///images/ic_star.svg"
+                icon.color: marked ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.toggleStar(function(successful, errorMessage,
                                                       state) {
@@ -346,8 +346,10 @@ Page {
 
             IconButton {
                 icon.source: "qrc:///images/ic_"
-                             + (unread ? "unread" : "read") + ".png"
-                icon.color: undefined
+                             + (unread ? "unread" : "read") + ".svg"
+                icon.color: unread ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.toggleRead(function(successful, errorMessage,
                                                       state) {
@@ -386,9 +388,10 @@ Page {
             }
 
             IconButton {
-                icon.source: "qrc:///images/ic_rss_"
-                             + (rss ? "enabled" : "disabled") + ".png"
-                icon.color: undefined
+                icon.source: "qrc:///images/ic_rss.svg"
+                icon.color: rss ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.togglePublished(function(successful,
                                                            errorMessage,
@@ -400,9 +403,10 @@ Page {
             }
 
             IconButton {
-                icon.source: "qrc:///images/ic_star_"
-                             + (marked ? "enabled" : "disabled") + ".png"
-                icon.color: undefined
+                icon.source: "qrc:///images/ic_star.svg"
+                icon.color: marked ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.toggleStar(function(successful, errorMessage,
                                                       state) {
@@ -414,8 +418,10 @@ Page {
 
             IconButton {
                 icon.source: "qrc:///images/ic_"
-                             + (unread ? "unread" : "read") + ".png"
-                icon.color: undefined
+                             + (unread ? "unread" : "read") + ".svg"
+                icon.color: unread ? Theme.highlightColor : Theme.secondaryColor
+                icon.width: Theme.iconSizeSmallPlus
+                icon.height: Theme.iconSizeSmallPlus
                 onClicked: {
                     feedItemModel.toggleRead(function(successful, errorMessage,
                                                       state) {

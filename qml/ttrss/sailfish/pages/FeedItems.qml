@@ -89,9 +89,10 @@ Page {
 
                     IconButton {
                         enabled: feedItemModel.selectedItems > 0
-                        icon.source: "qrc:///images/ic_rss_"
-                                     + (feedItemModel.allPublished ? "enabled" : "disabled") + ".png"
-                        icon.color: undefined
+                        icon.source: "qrc:///images/ic_rss.svg"
+                        icon.color: feedItemModel.allPublished ? Theme.highlightColor : Theme.secondaryColor
+                        icon.width: Theme.iconSizeSmallPlus
+                        icon.height: Theme.iconSizeSmallPlus
                         onClicked: {
                             feedItemModel.setAllSelectedRSSState(!feedItemModel.allPublished)
                         }
@@ -99,9 +100,10 @@ Page {
 
                     IconButton {
                         enabled: feedItemModel.selectedItems > 0
-                        icon.source: "qrc:///images/ic_star_"
-                                     + (feedItemModel.allStarred ? "enabled" : "disabled") + ".png"
-                        icon.color: undefined
+                        icon.source: "qrc:///images/ic_star.svg"
+                        icon.color: feedItemModel.allStarred ? Theme.highlightColor : Theme.secondaryColor
+                        icon.width: Theme.iconSizeSmallPlus
+                        icon.height: Theme.iconSizeSmallPlus
                         onClicked: {
                             feedItemModel.setAllSelectedMarkedState(!feedItemModel.allStarred)
                         }
@@ -110,8 +112,10 @@ Page {
                     IconButton {
                         enabled: feedItemModel.selectedItems > 0
                         icon.source: "qrc:///images/ic_"
-                                     + (feedItemModel.allUnread ? "unread" : "read") + ".png"
-                        icon.color: undefined
+                                     + (feedItemModel.allUnread ? "unread" : "read") + ".svg"
+                        icon.color: feedItemModel.allUnread ? Theme.highlightColor : Theme.secondaryColor
+                        icon.width: Theme.iconSizeSmallPlus
+                        icon.height: Theme.iconSizeSmallPlus
                         onClicked: {
                             feedItemModel.setAllSelectedReadState(feedItemModel.allUnread)
                         }
