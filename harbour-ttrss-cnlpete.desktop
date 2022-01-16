@@ -9,6 +9,6 @@ Exec=harbour-ttrss-cnlpete
 BackupPathList=.config/harbour-ttrss-cnlpete/
 
 [X-Sailjail]
-Permissions=Internet
+Permissions=Internet;WebView
 OrganizationName=de.cnlpete
 ApplicationName=ttrss
