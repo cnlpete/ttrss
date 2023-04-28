@@ -7,6 +7,8 @@ It uses the [Tiny Tiny RSS API](http://tt-rss.org/redmine/projects/tt-rss/wiki/J
 
 If you want to support me or this app, [buy me a beer](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUWGSGAK8K7ZN) (in &euro;).
 
+[![](https://github.com/cnlpete/ttrss/actions/workflows/main.yml/badge.svg)](https://github.com/cnlpete/ttrss/actions/workflows/main.yml)
+
 ArtWork
 ----------
 * TinyTinyRSS Logo is taken from the [Android Project](http://tt-rss.org/redmine/projects/tt-rss-android/wiki/)
