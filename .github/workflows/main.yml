@@ -27,12 +27,11 @@ jobs:
     - name: Prepare
       run: mkdir output
 
-    - name: Build ${{ matrix.arch }}
-      id: build_${{ matrix.arch }}
+    - name: Build (${{ matrix.arch }})
       uses: coderus/github-sfos-build@master
       with:
         arch: ${{ matrix.arch }}
-        release: $OS_VERSION
+        release: ${{ OS_VERSION }}
 
     - name: Upload RPM (${{ matrix.arch }})
       uses: actions/upload-artifact@v3
