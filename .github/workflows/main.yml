@@ -10,9 +10,6 @@ on:
     branches:
       - master
 
-env:
-  OS_VERSION: 4.5.0.16
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +28,7 @@ jobs:
       uses: coderus/github-sfos-build@master
       with:
         arch: ${{ matrix.arch }}
-        release: ${{ OS_VERSION }}
+        release: 4.5.0.16
 
     - name: Upload RPM (${{ matrix.arch }})
       uses: actions/upload-artifact@v3
