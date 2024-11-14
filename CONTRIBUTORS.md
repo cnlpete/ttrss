@@ -18,3 +18,4 @@ CONTRIBUTORS
 - dashinfantry
 - Alexus230
 - rinigus
+- Priit Jõerüüt (tlend)

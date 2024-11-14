@@ -118,6 +118,7 @@ TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.de.ts \
     i18n/qml-translation.en.ts \
     i18n/qml-translation.es.ts \
+    i18n/qml-translation.et.ts \
     i18n/qml-translation.fr.ts \
     i18n/qml-translation.nl_NL.ts \
     i18n/qml-translation.pl.ts \
