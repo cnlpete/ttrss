@@ -390,7 +390,7 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="194"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="191"/>
         <source>Note: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -408,12 +408,12 @@
 <context>
     <name>FeedItemDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="131"/>
         <source>Note: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="156"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="165"/>
         <source>Marking all above as read</source>
         <translation type="unfinished"></translation>
     </message>
@@ -439,28 +439,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="87"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="200"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="216"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="204"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="220"/>
         <source>Load more</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="233"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="237"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="238"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="238"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation type="unfinished"></translation>
@@ -507,14 +507,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="132"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="136"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="146"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="154"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="158"/>
         <source>Mark all loaded read</source>
         <translation type="unfinished"></translation>
     </message>
@@ -524,12 +524,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="224"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="228"/>
         <source>Last updated: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="264"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="268"/>
         <source>Marking all loaded as read</source>
         <translation type="unfinished"></translation>
     </message>
