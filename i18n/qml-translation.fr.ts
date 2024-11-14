@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
 <context>
     <name>AboutItem</name>
     <message>
@@ -183,19 +183,19 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="109"/>
         <source>Additional HTTP Auth?</source>
-        <translation type="unfinished"/>
+        <translation>Authent HTTP additionnelle ? </translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="117"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="118"/>
         <source>HTTP Auth Username</source>
-        <translation type="unfinished"/>
+        <translation>Utilisateur HTTP d&apos;authentification</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="130"/>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="131"/>
         <source>HTTP Auth Password</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe HTTP d&apos;authentification</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ApiSettings.qml" line="143"/>
@@ -214,17 +214,17 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
-        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
-        <source>No categories have unread items</source>
-        <translation>Aucune catégorie sans article non-lu</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
         <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="79"/>
         <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
         <source>No categories to display</source>
         <translation>Aucune catégorie</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Categories.qml" line="65"/>
+        <location filename="../qml/ttrss/sailfish/pages/Categories.qml" line="80"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Categories.qml" line="81"/>
+        <source>No categories have unread items</source>
+        <translation>Aucune catégorie sans article non-lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Categories.qml" line="81"/>
@@ -339,16 +339,6 @@
 <context>
     <name>FeedDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="95"/>
-        <source>Mark all read</source>
-        <translation>Tout marquer comme lu</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="99"/>
-        <source>Unsubscribe</source>
-        <translation>Désinscrire</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="113"/>
         <source>Marking all read</source>
         <translation>Marquer tout comme lu</translation>
@@ -357,6 +347,16 @@
         <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="121"/>
         <source>Unsubcribing</source>
         <translation>Désabonnement</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="95"/>
+        <source>Mark all read</source>
+        <translation>Tout marquer comme lu</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/FeedDelegate.qml" line="99"/>
+        <source>Unsubscribe</source>
+        <translation>Désinscrire</translation>
     </message>
 </context>
 <context>
@@ -375,14 +375,6 @@
         <translation>Partager</translation>
     </message>
     <message>
-        <source>Hide Dock</source>
-        <translation type="vanished">Cacher le dock</translation>
-    </message>
-    <message>
-        <source>Open Dock</source>
-        <translation type="vanished">Montrer le dock</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="327"/>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="81"/>
         <source>Edit Note</source>
@@ -396,30 +388,30 @@
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItem.qml" line="103"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="194"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="191"/>
         <source>Note: %1</source>
         <translation>Note: %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="57"/>
         <source>Mark all above as read</source>
-        <translation type="unfinished"/>
+        <translation>Marquer tout au dessus comme lu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/FeedItem.qml" line="60"/>
         <source>Marked all above as read</source>
-        <translation type="unfinished"/>
+        <translation>Marquer tout en dessous comme lu</translation>
     </message>
 </context>
 <context>
     <name>FeedItemDelegate</name>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="122"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="131"/>
         <source>Note: %1</source>
         <translation>Note: %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="156"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItemDelegate.qml" line="165"/>
         <source>Marking all above as read</source>
         <translation>Marquer tout en-dessous comme lu</translation>
     </message>
@@ -445,28 +437,28 @@
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="80"/>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="87"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="200"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="216"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="204"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="220"/>
         <source>Load more</source>
         <translation>Charger plus</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="233"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="237"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="94"/>
         <source>Loading</source>
         <translation>Chargement</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="238"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No items in feed</source>
         <translation>Pas d&apos;article dans le flux</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="234"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="238"/>
         <location filename="../qml/ttrss/ubuntu-touch/FeedItems.qml" line="95"/>
         <source>No unread items in feed</source>
         <translation>Pas d&apos;article non-lu dans le flux</translation>
@@ -513,14 +505,14 @@
         <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="132"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="136"/>
         <source>Update</source>
         <translation>Mise à jour</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/FeedItems.qml" line="145"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="146"/>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="154"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="150"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="158"/>
         <source>Mark all loaded read</source>
         <translation>Marquer tous comme lu</translation>
     </message>
@@ -530,12 +522,12 @@
         <translation>%1 séléctionné</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="224"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="228"/>
         <source>Last updated: %1</source>
         <translation>Dernière MAJ : %1</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="264"/>
+        <location filename="../qml/ttrss/sailfish/pages/FeedItems.qml" line="268"/>
         <source>Marking all loaded as read</source>
         <translation>Marquer tout comme lu</translation>
     </message>
@@ -696,12 +688,12 @@
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ImageViewer.qml" line="161"/>
         <source>Loading image...%1</source>
-        <translation type="unfinished"/>
+        <translation>Chargement de l&apos;image,,,%1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/ImageViewer.qml" line="170"/>
         <source>Error loading image</source>
-        <translation type="unfinished"/>
+        <translation>Erreur lors du chargement de l&apos;image</translation>
     </message>
 </context>
 <context>
@@ -747,6 +739,12 @@ Vous pouvez les créer dans le menu.</translation>
         <translation>Mot de passe:</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
+        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="108"/>
+        <source>Ignore SSL Errors</source>
+        <translation>Ignorer les erreurs SSL</translation>
+    </message>
+    <message>
         <location filename="../qml/ttrss/harmattan/MainPage.qml" line="116"/>
         <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="121"/>
         <source>Clear</source>
@@ -765,12 +763,6 @@ Vous pouvez les créer dans le menu.</translation>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="45"/>
         <source>No Account Yet?</source>
         <translation>Pas encore de compte ?</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/MainPage.qml" line="93"/>
-        <location filename="../qml/ttrss/ubuntu-touch/MainPage.qml" line="108"/>
-        <source>Ignore SSL Errors</source>
-        <translation>Ignorer les erreurs SSL</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="38"/>
@@ -796,22 +788,6 @@ Vous pouvez les créer dans le menu.</translation>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="96"/>
         <source>with httpauth (%1)</source>
         <translation>avec httpauth (%1)</translation>
-    </message>
-    <message>
-        <source>Server address</source>
-        <translation type="vanished">Adresse du serveur</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="vanished">Nom d&apos;utilisateur</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Mot de passe</translation>
-    </message>
-    <message>
-        <source>Restore</source>
-        <translation type="vanished">Restaurer</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/MainPage.qml" line="150"/>
@@ -864,43 +840,6 @@ Vous pouvez les créer dans le menu.</translation>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="30"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="87"/>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
-        <source>Navigate to special page after login</source>
-        <translation>page après authentification</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
-        <source>Standard</source>
-        <translation>Standard</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
-        <source>All Feeds</source>
-        <translation>Tous les flux</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
-        <source>Special</source>
-        <translation>Spécial</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
-        <source>Special/Fresh Articles</source>
-        <translation>Articles récents/spéciaux</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
-        <source>Labels</source>
-        <translation>Etiquettes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="115"/>
@@ -1012,16 +951,6 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <translation>Login auto. au démarrage</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="74"/>
-        <source>You need to restart the App for this to take effect.</source>
-        <translation>Relancer l&apos;App pour activer les changements.</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="36"/>
-        <source>About</source>
-        <translation>À propos</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="55"/>
         <source>Save</source>
         <translation>Sauvegarder</translation>
@@ -1032,11 +961,21 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <translation>Annuler</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="176"/>
+        <source>Icons</source>
+        <translation>Icones</translation>
+    </message>
+    <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="72"/>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="61"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="60"/>
         <source>Startup</source>
         <translation>Démarrage</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="74"/>
+        <source>You need to restart the App for this to take effect.</source>
+        <translation>Relancer l&apos;App pour activer les changements.</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="151"/>
@@ -1046,9 +985,25 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <translation>Articles</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="176"/>
-        <source>Icons</source>
-        <translation>Icones</translation>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="212"/>
+        <source>Images</source>
+        <translation>Images</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="218"/>
+        <source>Display images</source>
+        <translation>Montrer les images</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="224"/>
+        <source>Strip invisible images</source>
+        <translation>Ignorer les images invisibles</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="227"/>
+        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="179"/>
+        <source>Tiny</source>
+        <translation>Minuscule</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="190"/>
@@ -1056,9 +1011,51 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <translation>Texte</translation>
     </message>
     <message>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="36"/>
+        <source>About</source>
+        <translation>À propos</translation>
+    </message>
+    <message>
         <location filename="../qml/ttrss/harmattan/Settings.qml" line="166"/>
         <source>Display Labels in Item List</source>
         <translation>Aff. étiquettes dans la liste d&apos;articles</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="87"/>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="110"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="72"/>
+        <source>Navigate to special page after login</source>
+        <translation>page après authentification</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="98"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="77"/>
+        <source>Standard</source>
+        <translation>Standard</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="99"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="78"/>
+        <source>All Feeds</source>
+        <translation>Tous les flux</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="100"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="79"/>
+        <source>Special</source>
+        <translation>Spécial</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="101"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="80"/>
+        <source>Special/Fresh Articles</source>
+        <translation>Articles récents/spéciaux</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/harmattan/Settings.qml" line="102"/>
+        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="81"/>
+        <source>Labels</source>
+        <translation>Etiquettes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="97"/>
@@ -1157,12 +1154,6 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <translation>Hauteur ou largeur inférieur à 2 pixels</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="227"/>
-        <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="179"/>
-        <source>Tiny</source>
-        <translation>Minuscule</translation>
-    </message>
-    <message>
         <location filename="../qml/ttrss/sailfish/pages/Settings.qml" line="230"/>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="180"/>
         <source>Small</source>
@@ -1185,21 +1176,6 @@ Votre serveur peut également ne pas supporter les derniers protocoles.</transla
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="183"/>
         <source>Huge</source>
         <translation>Énorme</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="212"/>
-        <source>Images</source>
-        <translation>Images</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="218"/>
-        <source>Display images</source>
-        <translation>Montrer les images</translation>
-    </message>
-    <message>
-        <location filename="../qml/ttrss/harmattan/Settings.qml" line="224"/>
-        <source>Strip invisible images</source>
-        <translation>Ignorer les images invisibles</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ubuntu-touch/Settings.qml" line="72"/>
